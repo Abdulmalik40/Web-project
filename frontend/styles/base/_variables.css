@@ -1,0 +1,28 @@
+/* frontend/styles/base/_variables.css */
+/* Import the Saudi cultural color system */
+@import '_saudi-cultural-colors.css';
+
+:root {
+    /* Legacy compatibility - map old variables to new Saudi cultural system */
+    --text: var(--color-text-primary);
+    --text-light: var(--color-text-secondary);
+    --text-muted: var(--color-text-tertiary);
+    --bg-primary: var(--color-bg-base);
+    --bg-secondary: var(--color-bg-surface);
+    --bg-accent: var(--color-bg-elevated);
+    
+    /* Additional Saudi colors for compatibility */
+    --saudi-red: #ce1126;
+    --saudi-gold: #f7dc6f;
+    --saudi-gold-bright: #FFD700;
+    
+    /* Layout variables */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    
+    /* Glass morphism (using new system) */
+    --glass: var(--color-bg-glass);
+    --glass-border: var(--color-border-lavender);
+  }

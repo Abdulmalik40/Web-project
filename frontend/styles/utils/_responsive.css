@@ -1,0 +1,99 @@
+/* frontend/styles/utils/_responsive.css */
+@media (max-width: 768px) {
+    .header-inner {
+      padding: 12px 20px;
+    }
+  
+    .nav {
+      display: none;
+    }
+  
+    .hero-content {
+      padding: 0 20px;
+    }
+  
+    .hero-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .cta-btn {
+      min-width: 200px;
+    }
+  
+    .title-line:first-child {
+      font-size: 1.5rem;
+    }
+  
+    .title-line.featured {
+      font-size: 3rem;
+    }
+  
+    .title-line.subtitle {
+      font-size: 1rem;
+      letter-spacing: 2px;
+    }
+  
+    .banner {
+      padding: 60px 20px 40px;
+    }
+  
+    .programs-section {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  
+    .program-header {
+      padding: 24px;
+    }
+  
+    .destinations-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .destination-card {
+      aspect-ratio: 16/10;
+    }
+  
+    .destination-card img {
+      height: 60%;
+    }
+  
+    .destination-card .card-content {
+      height: 40%;
+    }
+  
+    .scroll-indicator {
+      display: none;
+    }
+  
+    .islamic-tools-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  
+    .islamic-tool-card {
+      padding: 24px;
+    }
+  }
+  
+  /* Dark theme adjustments */
+  [data-theme="dark"] .destination-card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  [data-theme="dark"] .program-card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  [data-theme="dark"] .program-header {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  [data-theme="dark"] .theme-toggle {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  [data-theme="dark"] .islamic-tool-card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }

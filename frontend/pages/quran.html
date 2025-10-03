@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quran & Du’a • Islamic Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="brand-mark"></div>
+          <div>
+            <div class="brand-title">Visit Saudi Arabia</div>
+            <div class="brand-sub">Explore regions, heritage, and faith</div>
+          </div>
+        </div>
+        <div class="nav-container">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle theme"
+          >
+            🌙 Dark
+          </button>
+          <nav class="nav">
+            <div class="item"><a href="index.html#home">Home</a></div>
+            <div class="item"><a href="history.html">History</a></div>
+            <div class="item">
+              <a href="islamic-guide.html">Islamic Guide</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="quran-container">
+      <div class="section-header">
+        <h1 class="section-title">Quran & Du'a</h1>
+        <p class="section-desc">
+          Listen to the Holy Quran with beautiful recitations from renowned
+          reciters. Select your preferred reciter, surah, and enjoy the divine
+          words.
+        </p>
+      </div>
+
+      <div class="controls-section">
+        <div class="control-group">
+          <label class="control-label">Select Language</label>
+          <select id="languageSelect">
+            <option value="ar">العربية</option>
+            <option value="eng">English</option>
+            <option value="fr">Français</option>
+            <option value="ur">اردو</option>
+            <option value="id">Bahasa Indonesia</option>
+            <option value="tr">Türkçe</option>
+            <option value="es">Español</option>
+            <option value="ru">Русский</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Select Reciter</label>
+          <select id="reciterSelect" disabled>
+            <option value="">Loading reciters...</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Select Surah</label>
+          <select id="surahSelect" disabled>
+            <option value="">Select a reciter first</option>
+          </select>
+        </div>
+
+        <button id="loadBtn" class="btn" disabled>Load Recitation</button>
+      </div>
+
+      <div id="errorContainer" class="error" style="display: none"></div>
+
+      <div id="playerSection" class="player-section">
+        <div class="player-header">
+          <div class="current-info">
+            <h3 id="currentReciter">Reciter Name</h3>
+            <p id="currentSurah">Surah Name</p>
+          </div>
+          <button id="playBtn" class="btn">▶ Play</button>
+        </div>
+        <audio
+          id="audioPlayer"
+          class="audio-player"
+          controls
+          style="display: none"
+        ></audio>
+      </div>
+
+      <div id="loading" class="loading" style="display: none">
+        <p>Loading...</p>
+      </div>
+    </main>
+
+    <script src="../scripts/Script.js"></script>
+  </body>
+</html>

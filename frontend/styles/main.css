@@ -1,0 +1,19 @@
+/* frontend/styles/main.css */
+/* Import the Saudi cultural color system with exact specifications */
+@import 'base/_saudi-cultural-colors.css';
+
+/* Import base variables for compatibility */
+@import 'base/_variables.css';
+
+/* Import header component */
+@import 'components/_header.css';
+
+/* Import UI examples and components */
+@import 'components/_saudi-ui-examples.css';
+
+/* Import page-specific styles */
+@import 'pages/_history.css';
+@import 'pages/map.css';
+
+/* Import the complete original styles.css file */
+@import 'styles.css';

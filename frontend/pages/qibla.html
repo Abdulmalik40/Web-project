@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qibla Finder • Islamic Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="brand-mark"></div>
+          <div>
+            <div class="brand-title">Visit Saudi Arabia</div>
+            <div class="brand-sub">Explore regions, heritage, and faith</div>
+          </div>
+        </div>
+        <div class="nav-container">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle theme"
+          >
+            🌙 Dark
+          </button>
+          <nav class="nav">
+            <div class="item"><a href="index.html#home">Home</a></div>
+            <div class="item"><a href="history.html">History</a></div>
+            <div class="item">
+              <a href="islamic-guide.html">Islamic Guide</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="qibla-container">
+      <div class="section-header">
+        <h1 class="section-title">Qibla Finder</h1>
+        <p class="section-desc">
+          Find the exact direction of Qibla from your current location or by
+          entering coordinates.
+        </p>
+      </div>
+
+      <div class="qibla-controls">
+        <div class="control-group">
+          <button id="useLocationBtn" class="btn primary">
+            Use My Location
+          </button>
+          <p class="helper-text">
+            Allow location access for automatic detection
+          </p>
+        </div>
+
+        <div class="manual-input">
+          <div class="control-group">
+            <label class="control-label">Latitude</label>
+            <input
+              type="number"
+              id="latitudeInput"
+              step="any"
+              placeholder="e.g. 19.071017570421"
+            />
+          </div>
+          <div class="control-group">
+            <label class="control-label">Longitude</label>
+            <input
+              type="number"
+              id="longitudeInput"
+              step="any"
+              placeholder="e.g. 72.838622286762"
+            />
+          </div>
+          <button id="manualBtn" class="btn secondary">
+            Find Qibla Direction
+          </button>
+        </div>
+      </div>
+
+      <div id="errorContainer" class="error" style="display: none"></div>
+      <div id="loading" class="loading" style="display: none">
+        Calculating Qibla direction...
+      </div>
+
+      <div id="resultSection" class="result-section" style="display: none">
+        <div class="compass-container">
+          <div class="compass">
+            <div class="needle" id="compassNeedle"></div>
+            <div class="center-dot"></div>
+            <div class="direction-labels">
+              <span class="north">N</span>
+              <span class="east">E</span>
+              <span class="south">S</span>
+              <span class="west">W</span>
+            </div>
+          </div>
+        </div>
+        <div class="result-info">
+          <h3>Qibla Direction</h3>
+          <p id="directionText">280.08° (West-Northwest)</p>
+          <p id="coordinatesText">
+            From: <span id="resultCoords">19.0710°, 72.8386°</span>
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <script src="../scripts/Script.js"></script>
+  </body>
+</html>

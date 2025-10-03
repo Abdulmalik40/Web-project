@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Islamic Guide • Saudi Tourism</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <style>
+      .guide-container {
+        max-width: 1100px;
+        margin: 140px auto 60px;
+        padding: 0 20px;
+      }
+      .guide-title {
+        font-family: "Cairo", system-ui, sans-serif;
+        font-weight: 800;
+        font-size: 2rem;
+        margin: 0 0 4px;
+      }
+      .guide-sub {
+        margin: 0 0 24px;
+        opacity: 0.85;
+      }
+      .guide-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .guide-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 18px;
+        border-radius: 14px;
+        background: var(--bg-secondary);
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .guide-item:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+      }
+      .guide-icon {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--saudi-green), #1d7b4e);
+        color: #fff;
+        font-size: 22px;
+      }
+      .guide-item h3 {
+        margin: 0;
+        font-weight: 800;
+        font-family: "Cairo", system-ui, sans-serif;
+      }
+      .guide-item p {
+        margin: 2px 0 0;
+        color: var(--text-light);
+      }
+      @media (max-width: 700px) {
+        .guide-list {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div>
+            <div class="brand-title">Visit Saudi Arabia</div>
+            <div class="brand-sub">Explore regions, heritage, and faith</div>
+          </div>
+        </div>
+
+        <div class="nav-container">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle theme"
+          >
+            🌙 Dark
+          </button>
+
+          <nav class="nav" aria-label="Main Navigation">
+          <div class="item"><a href="index.html#home">Home</a></div>
+          <div class="item"><a href="index.html#religious">Religious Sites</a></div>
+          <div class="item"><a href="history.html">History</a></div>
+          <div class="item"><a href="index.html#heritage">Heritage</a></div>
+          <div class="item"><a href="index.html#regions">Regions</a></div>
+          <div class="item has-dropdown">
+            <a href="islamic-guide.html">Islamic Guide ▾</a>
+            <div class="dropdown" role="menu">
+              <a href="qibla.html" role="menuitem">Qibla Finder</a>
+              <a href="prayer-times.html" role="menuitem">Prayer Times</a>
+              <a href="quran.html" role="menuitem">Quran & Du'a</a>
+              <a href="mosques.html" role="menuitem">Nearby Mosques</a>
+            </div>
+          </div>
+        </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="guide-container">
+      <h1 class="guide-title">Islamic Guide</h1>
+      <p class="guide-sub">Choose a tool to continue</p>
+      <div class="guide-list">
+        <a class="guide-item" href="qibla.html">
+          <div class="guide-icon">🧭</div>
+          <div>
+            <h3>Qibla Finder</h3>
+            <p>Find the direction to Mecca from your location</p>
+          </div>
+        </a>
+        <a class="guide-item" href="prayer-times.html">
+          <div class="guide-icon">🕐</div>
+          <div>
+            <h3>Prayer Times</h3>
+            <p>Accurate times for your city</p>
+          </div>
+        </a>
+        <a class="guide-item" href="quran.html">
+          <div class="guide-icon">📖</div>
+          <div>
+            <h3>Quran & Du'a</h3>
+            <p>Essential verses and travel supplications</p>
+          </div>
+        </a>
+        <a class="guide-item" href="mosques.html">
+          <div class="guide-icon">🕌</div>
+          <div>
+            <h3>Nearby Mosques</h3>
+            <p>Find the closest places to pray</p>
+          </div>
+        </a>
+      </div>
+    </main>
+    <script src="../scripts/Script.js"></script>
+  </body>
+</html>

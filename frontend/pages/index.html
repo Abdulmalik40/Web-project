@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saudi Tourism - Discover the Kingdom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <style>
+      /* Immediate fixes for header and dropdown */
+      .brand-mark {
+        display: none !important;
+      }
+
+      .header {
+        background: rgba(26, 26, 26, 0.8) !important;
+        backdrop-filter: blur(20px) saturate(180%) !important;
+        border-bottom: 1px solid rgba(0, 108, 53, 0.3) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+      }
+
+      .nav .dropdown {
+        background: rgba(26, 26, 26, 0.95) !important;
+        border: 1px solid rgba(0, 108, 53, 0.3) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+      }
+
+      .nav .dropdown a {
+        color: #f0f0f0 !important;
+        padding: 12px 16px !important;
+        border-radius: 6px !important;
+        margin-bottom: 2px !important;
+        font-size: 0.9rem !important;
+      }
+
+      .nav .dropdown a:hover {
+        background: rgba(0, 108, 53, 0.2) !important;
+        color: #ffffff !important;
+        transform: translateX(4px) !important;
+        box-shadow: 0 2px 8px rgba(0, 108, 53, 0.3) !important;
+      }
+
+      /* Light mode overrides - softer, easier on the eyes */
+      [data-theme="light"] .header {
+        background: rgba(248, 248, 248, 0.9) !important;
+        border-bottom: 1px solid rgba(0, 108, 53, 0.15) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+      }
+
+      [data-theme="light"] .nav .dropdown {
+        background: rgba(248, 248, 248, 0.95) !important;
+        border: 1px solid rgba(0, 108, 53, 0.15) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08) !important;
+      }
+
+      [data-theme="light"] .nav .dropdown a {
+        color: #2a2a2a !important;
+      }
+
+      [data-theme="light"] .nav .dropdown a:hover {
+        background: rgba(0, 108, 53, 0.08) !important;
+        color: #006c35 !important;
+      }
+
+      /* Theme toggle button styling */
+      .theme-toggle {
+        background: rgba(0, 108, 53, 0.1) !important;
+        border: 1px solid rgba(0, 108, 53, 0.3) !important;
+        border-radius: 8px !important;
+        padding: 8px 16px !important;
+        font-size: 0.875rem !important;
+        font-weight: 500 !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        color: #006c35 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+      }
+
+      .theme-toggle:hover {
+        background: rgba(0, 108, 53, 0.2) !important;
+        border-color: rgba(0, 108, 53, 0.5) !important;
+        transform: translateY(-1px) !important;
+      }
+
+      /* Dark mode theme toggle */
+      [data-theme="dark"] .theme-toggle {
+        background: rgba(0, 108, 53, 0.2) !important;
+        border-color: rgba(0, 108, 53, 0.4) !important;
+        color: #4ade80 !important;
+      }
+
+      [data-theme="dark"] .theme-toggle:hover {
+        background: rgba(0, 108, 53, 0.3) !important;
+        border-color: rgba(0, 108, 53, 0.6) !important;
+      }
+
+      /* Global light mode - much darker and easier on the eyes */
+      [data-theme="light"] body {
+        background: #e8e8e8 !important;
+        color: #1a1a1a !important;
+      }
+
+      [data-theme="light"] .hero {
+        background: linear-gradient(
+          135deg,
+          #d8d8d8 0%,
+          #c8c8c8 100%
+        ) !important;
+      }
+
+      [data-theme="light"] .hero-overlay {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 108, 53, 0.15) 0%,
+          rgba(255, 215, 0, 0.08) 50%,
+          rgba(0, 0, 0, 0.3) 100%
+        ) !important;
+      }
+
+      [data-theme="light"] .section-title {
+        color: #1a1a1a !important;
+        background: linear-gradient(135deg, #006c35, #004d61) !important;
+        background-clip: text !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+      }
+
+      [data-theme="light"] .section-desc {
+        color: #444444 !important;
+      }
+
+      [data-theme="light"] .program-card {
+        background: rgba(240, 240, 240, 0.9) !important;
+        border: 1px solid rgba(0, 108, 53, 0.15) !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+      }
+
+      [data-theme="light"] .program-card:hover {
+        background: rgba(245, 245, 245, 0.95) !important;
+        border-color: rgba(0, 108, 53, 0.25) !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+      }
+
+      [data-theme="light"] .program-card h3 {
+        color: #1a1a1a !important;
+      }
+
+      [data-theme="light"] .program-card p {
+        color: #555555 !important;
+      }
+
+      [data-theme="light"] .cta-btn.primary {
+        background: linear-gradient(135deg, #006c35, #008a42) !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 12px rgba(0, 108, 53, 0.25) !important;
+      }
+
+      [data-theme="light"] .cta-btn.secondary {
+        background: transparent !important;
+        color: #006c35 !important;
+        border: 2px solid #006c35 !important;
+      }
+
+      [data-theme="light"] .cta-btn.secondary:hover {
+        background: rgba(0, 108, 53, 0.12) !important;
+        color: #006c35 !important;
+      }
+
+      /* Make header even darker in light mode */
+      [data-theme="light"] .header {
+        background: rgba(220, 220, 220, 0.9) !important;
+        border-bottom: 1px solid rgba(0, 108, 53, 0.2) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+      }
+
+      [data-theme="light"] .nav .dropdown {
+        background: rgba(220, 220, 220, 0.95) !important;
+        border: 1px solid rgba(0, 108, 53, 0.2) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+      }
+
+      [data-theme="light"] .nav .dropdown a {
+        color: #1a1a1a !important;
+      }
+
+      [data-theme="light"] .nav .dropdown a:hover {
+        background: rgba(0, 108, 53, 0.1) !important;
+        color: #006c35 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="header-inner">
+        <div class="brand" aria-label="Saudi Tourism">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div>
+            <div class="brand-title">Visit Saudi Arabia</div>
+            <div class="brand-sub">Explore regions, heritage, and faith</div>
+          </div>
+        </div>
+
+        <div class="nav-container">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle theme"
+          >
+            🌙 Dark
+          </button>
+
+          <nav class="nav" aria-label="Main Navigation">
+            <div class="item"><a href="#home">Home</a></div>
+            <div class="item">
+              <a href="map-interactive.html">Interactive Map</a>
+            </div>
+            <div class="item"><a href="#religious">Religious Sites</a></div>
+            <div class="item"><a href="history.html">History</a></div>
+            <div class="item"><a href="#heritage">Heritage</a></div>
+            <div class="item"><a href="#regions">Regions</a></div>
+            <div class="item has-dropdown">
+              <a href="islamic-guide.html">Islamic Guide ▾</a>
+              <div class="dropdown" role="menu">
+                <a href="qibla.html" role="menuitem">Qibla Finder</a>
+                <a href="prayer-times.html" role="menuitem">Prayer Times</a>
+                <a href="quran.html" role="menuitem">Quran & Du'a</a>
+                <a href="mosques.html" role="menuitem">Nearby Mosques</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero" aria-label="Hero section">
+      <div class="hero-bg">
+        <img
+          src="../assets/images/cities/Neom2.jpg"
+          alt="NEOM - Future of Saudi Arabia"
+          class="hero-image"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-particles">
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+        </div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="title-line">DISCOVER</span>
+            <span class="title-line featured">SAUDI ARABIA</span>
+            <span class="title-line subtitle">THE FUTURE IS NOW</span>
+          </h1>
+          <p class="hero-sub">
+            Journey through ancient heritage, futuristic cities, and sacred
+            lands across the Kingdom of Saudi Arabia
+          </p>
+          <div class="hero-cta">
+            <button class="cta-btn primary">Begin Your Journey</button>
+            <button class="cta-btn secondary">Watch Video</button>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <div class="scroll-arrow"></div>
+        <span>Scroll to Explore</span>
+      </div>
+    </section>
+
+    <main class="banner" id="home">
+      <!-- Program Headers -->
+      <section class="programs-section">
+        <div class="program-card">
+          <h3>Walking Holiday Programs</h3>
+          <p>
+            Working holidays around the World in partnership with volunteer
+            communities. A rewarding way to gain experience and give back.
+          </p>
+          <button class="explore-btn">Explore All Programs</button>
+        </div>
+
+        <div class="program-card">
+          <h3>Volunteering Abroad</h3>
+          <p>
+            A wide range of meaningful volunteering opportunities with local
+            communities. Make a positive impact while exploring Saudi culture.
+          </p>
+          <button class="explore-btn">Explore All Programs</button>
+        </div>
+      </section>
+
+      <!-- Religious Destinations -->
+      <div class="program-header">
+        <h2>Religious Journeys</h2>
+        <p>Pilgrimage experiences in the holy cities of Makkah and Madinah</p>
+        <button class="explore-btn">Explore All Destinations</button>
+      </div>
+
+      <section class="destinations-grid">
+        <article class="destination-card" id="makkah">
+          <span class="badge religious">Religious</span>
+          <img
+            src="../assets/images/destinations/makkah1.jpg"
+            alt="Makkah - The holy city"
+            loading="lazy"
+          />
+          <div class="card-content">
+            <h3>Makkah</h3>
+            <p class="location">Holy City • Saudi Arabia</p>
+          </div>
+        </article>
+
+        <article class="destination-card" id="madinah">
+          <span class="badge religious">Religious</span>
+          <img
+            src="../assets/images/destinations/madinah.png"
+            alt="Madinah - The Prophet's city"
+            loading="lazy"
+          />
+          <div class="card-content">
+            <h3>Madinah</h3>
+            <p class="location">Prophet's City • Saudi Arabia</p>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <span class="badge capital">Capital</span>
+          <img
+            src="../assets/images/destinations/Riyadh1.jpg"
+            alt="Riyadh - Modern capital"
+            loading="lazy"
+          />
+          <div class="card-content">
+            <h3>Riyadh</h3>
+            <p class="location">Capital City • Saudi Arabia</p>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <span class="badge industrial">Industrial</span>
+          <img
+            src="../assets/images/destinations/alkobar.jpg"
+            alt="Eastern Region - Industrial hub"
+            loading="lazy"
+          />
+          <div class="card-content">
+            <h3>Eastern Region</h3>
+            <p class="location">Al-Khobar • Saudi Arabia</p>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <span class="badge heritage">Heritage</span>
+          <img
+            src="../assets/images/destinations/baha.jpg"
+            alt="Northern Region - Heritage sites"
+            loading="lazy"
+          />
+          <div class="card-content">
+            <h3>Northern Region</h3>
+            <p class="location">Al-Baha • Saudi Arabia</p>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <span class="badge natural">Natural</span>
+          <img
+            src="../assets/images/destinations/Tabuk.jpg"
+            alt="Southern Region - Natural beauty"
+            loading="lazy"
+          />
+          <div class="card-content">
+            <h3>Southern Region</h3>
+            <p class="location">Tabuk • Saudi Arabia</p>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <span class="badge futuristic">Future</span>
+          <img
+            src="../assets/images/destinations/lands.jpg"
+            alt="Lands - Future development projects"
+            loading="lazy"
+          />
+          <div class="card-content">
+            <h3>Lands</h3>
+            <p class="location">Development Project • Saudi Arabia</p>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <span class="badge vision">Vision 2030</span>
+          <img
+            src="../assets/images/destinations/2030.jpg"
+            alt="Vision 2030 - Saudi transformation"
+            loading="lazy"
+          />
+          <div class="card-content">
+            <h3>Vision 2030</h3>
+            <p class="location">Future Saudi Arabia • Transformation</p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script type="module" src="../scripts/main.js"></script>
+    <script>
+      // Theme toggle functionality
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeToggle = document.querySelector(".theme-toggle");
+        const body = document.body;
+
+        // Get saved theme or default to light
+        const savedTheme = localStorage.getItem("theme") || "light";
+        body.setAttribute("data-theme", savedTheme);
+
+        // Update button text based on current theme
+        const updateButtonText = () => {
+          const currentTheme = body.getAttribute("data-theme");
+          if (currentTheme === "dark") {
+            themeToggle.innerHTML = "☀️ Light";
+          } else {
+            themeToggle.innerHTML = "🌙 Dark";
+          }
+        };
+
+        // Initialize button text
+        updateButtonText();
+
+        // Theme toggle event listener
+        if (themeToggle) {
+          themeToggle.addEventListener("click", () => {
+            const currentTheme = body.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+            body.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+            updateButtonText();
+          });
+        }
+      });
+
+      // Immediate dropdown functionality
+      document.addEventListener("DOMContentLoaded", () => {
+        const dropdowns = document.querySelectorAll(".nav .has-dropdown");
+
+        dropdowns.forEach((dropdown) => {
+          const dropdownMenu = dropdown.querySelector(".dropdown");
+          const dropdownLink = dropdown.querySelector("a");
+
+          if (dropdownMenu && dropdownLink) {
+            let hoverTimeout;
+
+            // Show dropdown on hover
+            dropdown.addEventListener("mouseenter", () => {
+              clearTimeout(hoverTimeout);
+              hoverTimeout = setTimeout(() => {
+                dropdownMenu.style.display = "block";
+                setTimeout(() => {
+                  dropdownMenu.style.opacity = "1";
+                  dropdownMenu.style.transform = "translateY(0)";
+                }, 10);
+              }, 100);
+            });
+
+            // Hide dropdown when mouse leaves
+            dropdown.addEventListener("mouseleave", () => {
+              clearTimeout(hoverTimeout);
+              hoverTimeout = setTimeout(() => {
+                dropdownMenu.style.opacity = "0";
+                dropdownMenu.style.transform = "translateY(-10px)";
+                setTimeout(() => {
+                  dropdownMenu.style.display = "none";
+                }, 300);
+              }, 150);
+            });
+
+            // Keep dropdown open when hovering over it
+            dropdownMenu.addEventListener("mouseenter", () => {
+              clearTimeout(hoverTimeout);
+              dropdownMenu.style.display = "block";
+              dropdownMenu.style.opacity = "1";
+              dropdownMenu.style.transform = "translateY(0)";
+            });
+
+            dropdownMenu.addEventListener("mouseleave", () => {
+              clearTimeout(hoverTimeout);
+              hoverTimeout = setTimeout(() => {
+                dropdownMenu.style.opacity = "0";
+                dropdownMenu.style.transform = "translateY(-10px)";
+                setTimeout(() => {
+                  dropdownMenu.style.display = "none";
+                }, 300);
+              }, 150);
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

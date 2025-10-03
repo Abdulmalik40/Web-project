@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>خريطة السعودية التفاعلية • اكتشف المملكة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <style>
+      body {
+        font-family: "Tajawal", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #faf8f3;
+        direction: rtl;
+      }
+
+      .header {
+        background: rgba(0, 98, 51, 0.95);
+        color: white;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 98, 51, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-family: "Cairo", sans-serif;
+        font-size: 1.8rem;
+      }
+
+      .header p {
+        margin: 0.5rem 0 0 0;
+        opacity: 0.9;
+      }
+
+      .map-container {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 0;
+        height: calc(100vh - 80px);
+      }
+
+      .controls-panel {
+        background: white;
+        padding: 20px;
+        box-shadow: 2px 0 10px rgba(0, 98, 51, 0.1);
+        border-left: 1px solid #e8f5e8;
+        overflow-y: auto;
+        height: 100%;
+      }
+
+      .controls-panel h2 {
+        color: #006233;
+        font-family: "Cairo", sans-serif;
+        font-weight: 700;
+        margin: 0 0 16px 0;
+        text-align: center;
+        font-size: 1.2rem;
+      }
+
+      .search-section {
+        margin-bottom: 20px;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid #e8f5e8;
+        border-radius: 12px;
+        font-family: "Tajawal", sans-serif;
+        font-size: 1rem;
+        margin-bottom: 10px;
+        direction: rtl;
+        box-sizing: border-box;
+      }
+
+      .search-input:focus {
+        outline: none;
+        border-color: #006233;
+      }
+
+      .search-btn {
+        width: 100%;
+        padding: 12px;
+        background: #006233;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-family: "Tajawal", sans-serif;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .search-btn:hover {
+        background: #004d26;
+      }
+
+      .filter-section {
+        margin-bottom: 20px;
+      }
+
+      .filter-label {
+        display: block;
+        font-weight: 600;
+        color: #004d26;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+      }
+
+      .filter-select {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #e8f5e8;
+        border-radius: 8px;
+        font-family: "Tajawal", sans-serif;
+        direction: rtl;
+        box-sizing: border-box;
+      }
+
+      .category-filters {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+      }
+
+      .checkbox-label input[type="checkbox"] {
+        margin: 0;
+      }
+
+      .map-wrapper {
+        position: relative;
+        background: white;
+      }
+
+      #saudiMap {
+        width: 100%;
+        height: 100%;
+      }
+
+      .loading-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        font-family: "Tajawal", sans-serif;
+        color: #006233;
+        font-size: 1.1rem;
+      }
+
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #e8f5e8;
+        border-top: 4px solid #006233;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 16px;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .stats {
+        background: #e8f5e8;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 16px;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      .action-btn {
+        width: 100%;
+        padding: 10px;
+        background: #006233;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-family: "Tajawal", sans-serif;
+        font-size: 0.9rem;
+        cursor: pointer;
+        margin-bottom: 8px;
+        transition: background 0.3s ease;
+      }
+
+      .action-btn:hover {
+        background: #004d26;
+      }
+
+      .action-btn.secondary {
+        background: #6c757d;
+      }
+
+      .action-btn.secondary:hover {
+        background: #545b62;
+      }
+
+      /* Custom Leaflet popup styles */
+      .leaflet-popup-content-wrapper {
+        border-radius: 12px;
+        font-family: "Tajawal", sans-serif;
+        direction: rtl;
+        text-align: right;
+      }
+
+      .leaflet-popup-content {
+        margin: 12px 16px;
+        line-height: 1.4;
+      }
+
+      .place-popup h3 {
+        color: #006233;
+        margin: 0 0 8px 0;
+        font-family: "Cairo", sans-serif;
+        font-size: 1.1rem;
+      }
+
+      .place-popup p {
+        margin: 4px 0;
+        font-size: 0.9rem;
+      }
+
+      .place-popup .category-badge {
+        background: #006233;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        display: inline-block;
+        margin-top: 8px;
+      }
+
+      /* Custom marker icons */
+      .custom-marker-icon {
+        background: #006233;
+        border: 2px solid white;
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: bold;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .custom-marker-icon.mosque {
+        background: #006233;
+      }
+
+      .custom-marker-icon.restaurant {
+        background: #dc3545;
+      }
+
+      .custom-marker-icon.hotel {
+        background: #007bff;
+      }
+
+      .custom-marker-icon.tourism {
+        background: #28a745;
+      }
+
+      .custom-marker-icon.museum {
+        background: #6f42c1;
+      }
+
+      /* Legend */
+      .map-legend {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background: white;
+        padding: 12px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        font-family: "Tajawal", sans-serif;
+        font-size: 0.8rem;
+      }
+
+      .map-legend h4 {
+        margin: 0 0 8px 0;
+        color: #006233;
+        font-family: "Cairo", sans-serif;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 4px;
+      }
+
+      .legend-icon {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .map-container {
+          grid-template-columns: 1fr;
+          height: auto;
+        }
+
+        .controls-panel {
+          height: auto;
+          border-left: none;
+          border-bottom: 1px solid #e8f5e8;
+        }
+
+        .map-wrapper {
+          height: 60vh;
+        }
+
+        .map-legend {
+          bottom: 10px;
+          right: 10px;
+          font-size: 0.7rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>🗺️ خريطة السعودية التفاعلية</h1>
+      <p>
+        اكتشف المعالم السياحية والتراثية والثقافية في المملكة العربية السعودية
+      </p>
+    </header>
+
+    <div class="map-container">
+      <!-- Controls Panel -->
+      <div class="controls-panel">
+        <h2>🔍 البحث والتصفية</h2>
+
+        <!-- Search Section -->
+        <div class="search-section">
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="ابحث عن مكان أو معلم..."
+          />
+          <button id="searchBtn" class="search-btn">🔍 البحث</button>
+        </div>
+
+        <!-- Region Filter -->
+        <div class="filter-section">
+          <label for="regionFilter" class="filter-label">اختر المنطقة:</label>
+          <select id="regionFilter" class="filter-select">
+            <option value="all">جميع المناطق</option>
+            <option value="riyadh">منطقة الرياض</option>
+            <option value="makkah">منطقة مكة المكرمة</option>
+            <option value="madinah">منطقة المدينة المنورة</option>
+            <option value="eastern">المنطقة الشرقية</option>
+            <option value="qassim">منطقة القصيم</option>
+            <option value="hail">منطقة حائل</option>
+            <option value="tabuk">منطقة تبوك</option>
+            <option value="northern">المنطقة الشمالية</option>
+            <option value="jazan">منطقة جازان</option>
+            <option value="najran">منطقة نجران</option>
+            <option value="baha">منطقة الباحة</option>
+            <option value="jouf">منطقة الجوف</option>
+          </select>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter-section">
+          <label class="filter-label">فئات المعالم:</label>
+          <div class="category-filters">
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                id="mosques"
+                value="religion.place_of_worship"
+                checked
+              />
+              🕌 المساجد والمعالم الدينية
+            </label>
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                id="restaurants"
+                value="commercial.restaurant"
+                checked
+              />
+              🍽️ المطاعم والمقاهي
+            </label>
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                id="hotels"
+                value="accommodation.hotel"
+                checked
+              />
+              🏨 الفنادق والإقامة
+            </label>
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                id="tourism"
+                value="tourism.sights"
+                checked
+              />
+              🏛️ المعالم السياحية
+            </label>
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                id="museums"
+                value="tourism.museum"
+                checked
+              />
+              🏛️ المتاحف والمعارض
+            </label>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="filter-section">
+          <button id="loadPlaces" class="action-btn">📍 تحميل المعالم</button>
+          <button id="loadBoundaries" class="action-btn">
+            🗺️ عرض حدود المناطق
+          </button>
+          <button id="centerMap" class="action-btn">
+            🎯 مركز على السعودية
+          </button>
+          <button id="testApi" class="action-btn" style="background: #28a745">
+            🧪 اختبار API
+          </button>
+          <button id="resetFilters" class="action-btn secondary">
+            🔄 إعادة تعيين
+          </button>
+        </div>
+
+        <!-- Stats -->
+        <div id="stats" class="stats" style="display: none">
+          <div id="statsText">0 معلم</div>
+        </div>
+      </div>
+
+      <!-- Map Area -->
+      <div class="map-wrapper">
+        <div id="loading" class="loading-overlay" style="display: flex">
+          <div>
+            <div class="loading-spinner"></div>
+            <p>🔄 جاري تحميل الخريطة...</p>
+          </div>
+        </div>
+        <div id="saudiMap"></div>
+
+        <!-- Legend -->
+        <div class="map-legend">
+          <h4>دليل الرموز</h4>
+          <div class="legend-item">
+            <div class="legend-icon mosque">🕌</div>
+            <span>المساجد</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-icon restaurant">🍽️</div>
+            <span>المطاعم</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-icon hotel">🏨</div>
+            <span>الفنادق</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-icon tourism">🏛️</div>
+            <span>المعالم السياحية</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-icon museum">🏛️</div>
+            <span>المتاحف</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+      // Saudi Tourism Interactive Map Controller
+      class SaudiInteractiveMap {
+        constructor() {
+          this.apiBaseUrl = "../api.php"; // Use our secure PHP proxy
+          this.map = null;
+          this.markers = [];
+          this.boundaries = [];
+          this.currentPlaces = [];
+          this.currentRegion = "all";
+          this.selectedCategories = new Set([
+            "religion.place_of_worship",
+            "commercial.restaurant",
+            "accommodation.hotel",
+            "tourism.sights",
+            "tourism.museum",
+          ]);
+
+          // Saudi Arabia regions with coordinates
+          this.regions = {
+            riyadh: { west: 43.0, east: 48.0, south: 22.0, north: 27.0 },
+            makkah: { west: 38.0, east: 42.0, south: 20.0, north: 25.0 },
+            madinah: { west: 36.0, east: 42.0, south: 22.0, north: 28.0 },
+            eastern: { west: 46.0, east: 55.0, south: 16.0, north: 28.0 },
+            qassim: { west: 42.0, east: 46.0, south: 25.0, north: 27.0 },
+            hail: { west: 40.0, east: 43.0, south: 26.0, north: 29.0 },
+            tabuk: { west: 34.0, east: 40.0, south: 26.0, north: 32.0 },
+            northern: { west: 38.0, east: 44.0, south: 28.0, north: 32.0 },
+            jazan: { west: 41.0, east: 44.0, south: 16.0, north: 19.0 },
+            najran: { west: 43.0, east: 47.0, south: 17.0, north: 20.0 },
+            baha: { west: 41.0, east: 42.5, south: 19.0, north: 20.5 },
+            jouf: { west: 38.0, east: 42.0, south: 29.0, north: 32.0 },
+          };
+
+          this.init();
+        }
+
+        async init() {
+          this.setupEventListeners();
+          await this.initializeMap();
+          this.hideLoading();
+        }
+
+        async initializeMap() {
+          // Initialize Leaflet map centered on Saudi Arabia
+          this.map = L.map("saudiMap", {
+            center: [23.8859, 45.0792],
+            zoom: 6,
+            maxBounds: [
+              [32.5, 34.0],
+              [16.0, 56.0],
+            ], // Restrict to Saudi Arabia area
+            maxBoundsViscosity: 1.0, // Prevent panning outside bounds
+          });
+
+          // Add OpenStreetMap tiles
+          L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "© OpenStreetMap contributors",
+            maxZoom: 18,
+            bounds: [
+              [32.5, 34.0],
+              [16.0, 56.0],
+            ], // Restrict tiles to Saudi Arabia
+          }).addTo(this.map);
+
+          // Add Saudi Arabia boundary and blur overlay
+          await this.addSaudiBoundary();
+          this.addSaudiFocus();
+
+          // Load initial places
+          await this.loadPlaces();
+        }
+
+        async addSaudiBoundary() {
+          try {
+            // Create Saudi Arabia boundary with proper coordinates
+            const saudiBounds = [
+              [32.2, 34.5], // [north, west]
+              [16.3, 55.7], // [south, east]
+            ];
+
+            const saudiBoundary = L.rectangle(saudiBounds, {
+              color: "#006233",
+              weight: 3,
+              fillColor: "#006233",
+              fillOpacity: 0.1,
+              dashArray: "5, 5",
+            }).addTo(this.map);
+
+            // Add popup to boundary
+            saudiBoundary.bindPopup(`
+                        <div class="place-popup">
+                            <h3>🇸🇦 المملكة العربية السعودية</h3>
+                            <p><strong>العاصمة:</strong> الرياض</p>
+                            <p><strong>المساحة:</strong> 2,149,690 كم²</p>
+                            <p><strong>عدد السكان:</strong> 34.8 مليون</p>
+                            <p><strong>المناطق:</strong> 13 منطقة إدارية</p>
+                            <p><strong>API:</strong> متصل عبر الخادم الآمن</p>
+                        </div>
+                    `);
+          } catch (error) {
+            console.error("Error loading Saudi boundary:", error);
+          }
+        }
+
+        addSaudiFocus() {
+          // Create overlay to blur areas outside Saudi Arabia
+          const worldBounds = [
+            [85, -180],
+            [-85, 180],
+          ];
+          const saudiBounds = [
+            [32.2, 34.5],
+            [16.3, 55.7],
+          ];
+
+          // Create a large rectangle covering the world
+          const worldOverlay = L.rectangle(worldBounds, {
+            color: "rgba(0,0,0,0.3)",
+            fillColor: "rgba(0,0,0,0.3)",
+            fillOpacity: 0.7,
+            weight: 0,
+          }).addTo(this.map);
+
+          // Create a hole in the overlay for Saudi Arabia
+          const saudiHole = L.rectangle(saudiBounds, {
+            color: "transparent",
+            fillColor: "transparent",
+            fillOpacity: 0,
+            weight: 0,
+          });
+
+          // Add the hole to the overlay
+          worldOverlay.addLayer(saudiHole);
+        }
+
+        setupEventListeners() {
+          // Search functionality
+          document.getElementById("searchBtn").addEventListener("click", () => {
+            this.searchPlaces();
+          });
+
+          document
+            .getElementById("searchInput")
+            .addEventListener("keypress", (e) => {
+              if (e.key === "Enter") {
+                this.searchPlaces();
+              }
+            });
+
+          // Region filter
+          document
+            .getElementById("regionFilter")
+            .addEventListener("change", (e) => {
+              this.currentRegion = e.target.value;
+            });
+
+          // Category filters
+          document
+            .querySelectorAll('.category-filters input[type="checkbox"]')
+            .forEach((checkbox) => {
+              checkbox.addEventListener("change", () => {
+                this.updateSelectedCategories();
+              });
+            });
+
+          // Action buttons
+          document
+            .getElementById("loadPlaces")
+            .addEventListener("click", () => {
+              this.loadPlaces();
+            });
+
+          document
+            .getElementById("loadBoundaries")
+            .addEventListener("click", () => {
+              this.loadRegionBoundaries();
+            });
+
+          document.getElementById("centerMap").addEventListener("click", () => {
+            this.centerOnSaudi();
+          });
+
+          document.getElementById("testApi").addEventListener("click", () => {
+            this.testApiConnection();
+          });
+
+          document
+            .getElementById("resetFilters")
+            .addEventListener("click", () => {
+              this.resetFilters();
+            });
+        }
+
+        updateSelectedCategories() {
+          this.selectedCategories.clear();
+          document
+            .querySelectorAll(
+              '.category-filters input[type="checkbox"]:checked'
+            )
+            .forEach((checkbox) => {
+              this.selectedCategories.add(checkbox.value);
+            });
+        }
+
+        async searchPlaces() {
+          const searchTerm = document
+            .getElementById("searchInput")
+            .value.trim();
+          if (!searchTerm) {
+            alert("يرجى إدخال مصطلح البحث");
+            return;
+          }
+
+          this.showLoading();
+
+          try {
+            // Use our secure PHP proxy for geocoding
+            const searchUrl = `${
+              this.apiBaseUrl
+            }/geocode?text=${encodeURIComponent(
+              searchTerm
+            )}&countrycode=sa&limit=50`;
+
+            console.log("Searching with URL:", searchUrl);
+
+            const response = await fetch(searchUrl);
+            const data = await response.json();
+
+            console.log("Search response:", data);
+
+            if (data.features && data.features.length > 0) {
+              // Filter results to ensure they are actually in Saudi Arabia
+              const saudiResults = data.features.filter((feature) => {
+                const country =
+                  feature.properties.country_code || feature.properties.country;
+                const coords = feature.geometry.coordinates;
+                const lat = coords[1];
+                const lng = coords[0];
+
+                // Check if coordinates are within Saudi Arabia bounds
+                const inSaudiBounds =
+                  lat >= 16.3 && lat <= 32.2 && lng >= 34.5 && lng <= 55.7;
+
+                return (
+                  country === "SA" ||
+                  country === "Saudi Arabia" ||
+                  inSaudiBounds
+                );
+              });
+
+              if (saudiResults.length > 0) {
+                this.clearMarkers();
+                this.addSearchResults(saudiResults);
+                this.centerOnSearchResults(saudiResults);
+                alert(
+                  `تم العثور على ${saudiResults.length} نتيجة في السعودية لـ: ${searchTerm}`
+                );
+              } else {
+                alert(
+                  `لم يتم العثور على نتائج في السعودية لـ: ${searchTerm}. جرب البحث بكلمات مختلفة.`
+                );
+              }
+            } else {
+              alert(
+                `لم يتم العثور على نتائج لـ: ${searchTerm}. جرب البحث بكلمات مختلفة.`
+              );
+            }
+          } catch (error) {
+            console.error("Search error:", error);
+            alert(`خطأ في البحث: ${error.message}`);
+          } finally {
+            this.hideLoading();
+          }
+        }
+
+        async loadPlaces() {
+          this.showLoading();
+
+          try {
+            const categories = Array.from(this.selectedCategories).join(",");
+            const bounds =
+              this.currentRegion === "all"
+                ? { west: 34.5, east: 55.7, south: 16.3, north: 32.2 }
+                : this.regions[this.currentRegion];
+
+            // Load multiple batches to get more results
+            let allPlaces = [];
+            let offset = 0;
+            const limit = 100; // Maximum per request
+            const maxRequests = 5; // Limit to prevent too many API calls
+
+            for (let i = 0; i < maxRequests; i++) {
+              // Use our secure PHP proxy for places
+              const rectParam = `${bounds.west},${bounds.south},${bounds.east},${bounds.north}`;
+              const placesUrl = `${this.apiBaseUrl}/places?categories=${categories}&rect=${rectParam}&limit=${limit}&offset=${offset}`;
+
+              console.log(`Loading batch ${i + 1} from URL:`, placesUrl);
+
+              const response = await fetch(placesUrl);
+              const data = await response.json();
+
+              console.log(`Batch ${i + 1} response:`, data);
+
+              if (data.features && data.features.length > 0) {
+                allPlaces = allPlaces.concat(data.features);
+
+                // If we got less than the limit, we've reached the end
+                if (data.features.length < limit) {
+                  break;
+                }
+
+                offset += limit;
+              } else {
+                break;
+              }
+            }
+
+            console.log(`Total places loaded: ${allPlaces.length}`);
+
+            if (allPlaces.length > 0) {
+              // Filter results to ensure they are actually in Saudi Arabia
+              const saudiPlaces = allPlaces.filter((feature) => {
+                const coords = feature.geometry.coordinates;
+                const lat = coords[1];
+                const lng = coords[0];
+
+                // Check if coordinates are within Saudi Arabia bounds
+                const inSaudiBounds =
+                  lat >= 16.3 && lat <= 32.2 && lng >= 34.5 && lng <= 55.7;
+
+                // Additional check for region if not "all"
+                if (this.currentRegion !== "all") {
+                  const region = this.regions[this.currentRegion];
+                  const inRegionBounds =
+                    lat >= region.south &&
+                    lat <= region.north &&
+                    lng >= region.west &&
+                    lng <= region.east;
+                  return inSaudiBounds && inRegionBounds;
+                }
+
+                return inSaudiBounds;
+              });
+
+              if (saudiPlaces.length > 0) {
+                this.clearMarkers();
+                this.addPlacesToMap(saudiPlaces);
+                this.currentPlaces = saudiPlaces;
+                this.updateStats();
+
+                // Center on region if specific region selected
+                if (this.currentRegion !== "all") {
+                  this.centerOnRegion(this.currentRegion);
+                }
+
+                alert(
+                  `تم تحميل ${saudiPlaces.length} معلم في السعودية بنجاح! (من ${allPlaces.length} نتيجة إجمالية)`
+                );
+              } else {
+                alert(
+                  "لم يتم العثور على معالم في السعودية في هذه المنطقة. جرب تغيير المنطقة أو الفئة."
+                );
+              }
+            } else {
+              alert(
+                "لم يتم العثور على معالم في هذه المنطقة. جرب تغيير المنطقة أو الفئة."
+              );
+            }
+          } catch (error) {
+            console.error("Error loading places:", error);
+            alert(`خطأ في تحميل المعالم: ${error.message}`);
+          } finally {
+            this.hideLoading();
+          }
+        }
+
+        async loadRegionBoundaries() {
+          this.showLoading();
+
+          try {
+            // Clear existing boundaries
+            this.boundaries.forEach((boundary) =>
+              this.map.removeLayer(boundary)
+            );
+            this.boundaries = [];
+
+            // Load boundaries for each region
+            const regionPromises = Object.keys(this.regions).map(
+              async (regionKey) => {
+                try {
+                  const region = this.regions[regionKey];
+                  const searchUrl = `${
+                    this.apiBaseUrl
+                  }/geocode?text=${encodeURIComponent(
+                    this.getRegionName(regionKey)
+                  )}&countrycode=sa&limit=1`;
+
+                  const response = await fetch(searchUrl);
+                  const data = await response.json();
+
+                  if (data.features && data.features.length > 0) {
+                    const feature = data.features[0];
+                    const coordinates = feature.geometry.coordinates;
+
+                    // Create boundary rectangle for the region
+                    const bounds = [
+                      [region.north, region.west],
+                      [region.south, region.east],
+                    ];
+
+                    const boundary = L.rectangle(bounds, {
+                      color: "#006233",
+                      weight: 2,
+                      fillColor: "#006233",
+                      fillOpacity: 0.1,
+                    }).addTo(this.map);
+
+                    // Add popup
+                    boundary.bindPopup(`
+                                    <div class="place-popup">
+                                        <h3>${this.getRegionName(
+                                          regionKey
+                                        )}</h3>
+                                        <p>الإحداثيات: ${coordinates[1].toFixed(
+                                          6
+                                        )}, ${coordinates[0].toFixed(6)}</p>
+                                    </div>
+                                `);
+
+                    this.boundaries.push(boundary);
+                  }
+                } catch (error) {
+                  console.warn(
+                    `Error loading boundary for ${regionKey}:`,
+                    error
+                  );
+                }
+              }
+            );
+
+            await Promise.all(regionPromises);
+          } catch (error) {
+            alert(`خطأ في تحميل حدود المناطق: ${error.message}`);
+          } finally {
+            this.hideLoading();
+          }
+        }
+
+        addPlacesToMap(places) {
+          places.forEach((place) => {
+            this.addPlaceMarker(place);
+          });
+        }
+
+        addSearchResults(places) {
+          places.forEach((place) => {
+            this.addPlaceMarker(place, true);
+          });
+        }
+
+        addPlaceMarker(place, isSearchResult = false) {
+          const coordinates = place.geometry.coordinates;
+          const lat = coordinates[1];
+          const lng = coordinates[0];
+
+          // Determine marker type and icon
+          const category = place.properties.categories?.[0] || "";
+          const markerType = this.getMarkerType(category);
+          const icon = this.getMarkerIcon(category);
+
+          // Create custom marker icon
+          const customIcon = L.divIcon({
+            className: "custom-marker-icon",
+            html: `<div class="custom-marker-icon ${markerType}">${icon}</div>`,
+            iconSize: [30, 30],
+            iconAnchor: [15, 15],
+            popupAnchor: [0, -15],
+          });
+
+          // Create marker
+          const marker = L.marker([lat, lng], { icon: customIcon }).addTo(
+            this.map
+          );
+
+          // Create popup content
+          const popupContent = this.createPopupContent(place);
+          marker.bindPopup(popupContent);
+
+          this.markers.push(marker);
+        }
+
+        getMarkerType(category) {
+          if (category.includes("religion")) return "mosque";
+          if (category.includes("restaurant")) return "restaurant";
+          if (category.includes("hotel")) return "hotel";
+          if (category.includes("tourism")) return "tourism";
+          if (category.includes("museum")) return "museum";
+          return "tourism";
+        }
+
+        getMarkerIcon(category) {
+          if (category.includes("religion")) return "🕌";
+          if (category.includes("restaurant")) return "🍽️";
+          if (category.includes("hotel")) return "🏨";
+          if (category.includes("tourism")) return "🏛️";
+          if (category.includes("museum")) return "🏛️";
+          return "📍";
+        }
+
+        createPopupContent(place) {
+          const name = place.properties.name || "مكان غير معروف";
+          const address =
+            place.properties.formatted || place.properties.address_line2 || "";
+          const phone = place.properties.phone || "";
+          const website = place.properties.website || "";
+          const category = this.getCategoryName(
+            place.properties.categories?.[0]
+          );
+          const coordinates = place.geometry.coordinates;
+
+          return `
+                    <div class="place-popup">
+                        <h3>${name}</h3>
+                        <p><strong>النوع:</strong> ${category}</p>
+                        ${
+                          address
+                            ? `<p><strong>العنوان:</strong> ${address}</p>`
+                            : ""
+                        }
+                        ${
+                          phone
+                            ? `<p><strong>الهاتف:</strong> ${phone}</p>`
+                            : ""
+                        }
+                        ${
+                          website
+                            ? `<p><strong>الموقع:</strong> <a href="${website}" target="_blank">زيارة الموقع</a></p>`
+                            : ""
+                        }
+                        <p><strong>الإحداثيات:</strong> ${coordinates[1].toFixed(
+                          6
+                        )}, ${coordinates[0].toFixed(6)}</p>
+                        <div class="category-badge">${category}</div>
+                    </div>
+                `;
+        }
+
+        getCategoryName(category) {
+          const categoryNames = {
+            "religion.place_of_worship": "معلم ديني",
+            "commercial.restaurant": "مطعم",
+            "accommodation.hotel": "فندق",
+            "tourism.sights": "معلم سياحي",
+            "tourism.museum": "متحف",
+          };
+          return categoryNames[category] || "معلم";
+        }
+
+        getRegionName(regionKey) {
+          const regionNames = {
+            riyadh: "منطقة الرياض",
+            makkah: "منطقة مكة المكرمة",
+            madinah: "منطقة المدينة المنورة",
+            eastern: "المنطقة الشرقية",
+            qassim: "منطقة القصيم",
+            hail: "منطقة حائل",
+            tabuk: "منطقة تبوك",
+            northern: "المنطقة الشمالية",
+            jazan: "منطقة جازان",
+            najran: "منطقة نجران",
+            baha: "منطقة الباحة",
+            jouf: "منطقة الجوف",
+          };
+          return regionNames[regionKey] || "منطقة";
+        }
+
+        centerOnSaudi() {
+          this.map.setView([23.8859, 45.0792], 6);
+          // Clear any existing markers and boundaries
+          this.clearMarkers();
+          this.boundaries.forEach((boundary) => this.map.removeLayer(boundary));
+          this.boundaries = [];
+          // Reload Saudi boundary
+          this.addSaudiBoundary();
+        }
+
+        centerOnRegion(regionKey) {
+          const region = this.regions[regionKey];
+          if (region) {
+            const bounds = [
+              [region.north, region.west],
+              [region.south, region.east],
+            ];
+            this.map.fitBounds(bounds);
+          }
+        }
+
+        centerOnSearchResults(places) {
+          if (places.length === 1) {
+            const coords = places[0].geometry.coordinates;
+            this.map.setView([coords[1], coords[0]], 12);
+          } else if (places.length > 1) {
+            const group = new L.featureGroup();
+            places.forEach((place) => {
+              const coords = place.geometry.coordinates;
+              group.addLayer(L.marker([coords[1], coords[0]]));
+            });
+            this.map.fitBounds(group.getBounds().pad(0.1));
+          }
+        }
+
+        clearMarkers() {
+          this.markers.forEach((marker) => this.map.removeLayer(marker));
+          this.markers = [];
+        }
+
+        updateStats() {
+          const statsDiv = document.getElementById("stats");
+          const statsText = document.getElementById("statsText");
+
+          statsText.textContent = `${this.currentPlaces.length} معلم`;
+          statsDiv.style.display = "block";
+        }
+
+        resetFilters() {
+          // Reset search
+          document.getElementById("searchInput").value = "";
+
+          // Reset region
+          document.getElementById("regionFilter").value = "all";
+          this.currentRegion = "all";
+
+          // Reset categories
+          document
+            .querySelectorAll('.category-filters input[type="checkbox"]')
+            .forEach((checkbox) => {
+              checkbox.checked = true;
+            });
+          this.updateSelectedCategories();
+
+          // Clear markers and boundaries
+          this.clearMarkers();
+          this.boundaries.forEach((boundary) => this.map.removeLayer(boundary));
+          this.boundaries = [];
+
+          // Reset stats
+          document.getElementById("stats").style.display = "none";
+
+          // Center on Saudi Arabia
+          this.centerOnSaudi();
+        }
+
+        showLoading() {
+          document.getElementById("loading").style.display = "flex";
+        }
+
+        hideLoading() {
+          document.getElementById("loading").style.display = "none";
+        }
+
+        async testApiConnection() {
+          this.showLoading();
+
+          try {
+            // Test both Geocoding and Places APIs through our PHP proxy
+            const geocodeUrl = `${this.apiBaseUrl}/geocode?text=Riyadh&countrycode=sa&limit=5`;
+            const placesUrl = `${this.apiBaseUrl}/places?categories=religion.place_of_worship&rect=34.5,16.3,55.7,32.2&limit=5`;
+
+            console.log("Testing Geocoding API:", geocodeUrl);
+            console.log("Testing Places API:", placesUrl);
+
+            // Test Geocoding API
+            const geocodeResponse = await fetch(geocodeUrl);
+            const geocodeData = await geocodeResponse.json();
+
+            // Test Places API
+            const placesResponse = await fetch(placesUrl);
+            const placesData = await placesResponse.json();
+
+            console.log("Geocoding API Response:", geocodeData);
+            console.log("Places API Response:", placesData);
+
+            let results = [];
+
+            if (geocodeData.features && geocodeData.features.length > 0) {
+              results = results.concat(geocodeData.features);
+            }
+
+            if (placesData.features && placesData.features.length > 0) {
+              results = results.concat(placesData.features);
+            }
+
+            if (results.length > 0) {
+              // Filter to Saudi Arabia only
+              const saudiResults = results.filter((feature) => {
+                const coords = feature.geometry.coordinates;
+                const lat = coords[1];
+                const lng = coords[0];
+                const inSaudiBounds =
+                  lat >= 16.3 && lat <= 32.2 && lng >= 34.5 && lng <= 55.7;
+                return inSaudiBounds;
+              });
+
+              if (saudiResults.length > 0) {
+                alert(
+                  `✅ API يعمل بشكل صحيح!\n\n🔍 Geocoding API: ${
+                    geocodeData.features?.length || 0
+                  } نتيجة\n📍 Places API: ${
+                    placesData.features?.length || 0
+                  } نتيجة\n🇸🇦 في السعودية: ${
+                    saudiResults.length
+                  } نتيجة\n\nمثال: ${
+                    saudiResults[0].properties.formatted ||
+                    saudiResults[0].properties.name
+                  }`
+                );
+
+                // Show the results on map
+                this.clearMarkers();
+                this.addSearchResults(saudiResults);
+                this.centerOnSearchResults(saudiResults);
+              } else {
+                alert("❌ API يعمل لكن لا توجد نتائج في السعودية");
+              }
+            } else {
+              alert("❌ API لا يعمل أو لا توجد نتائج");
+            }
+          } catch (error) {
+            console.error("API Test Error:", error);
+            alert(`❌ خطأ في الاتصال بـ API: ${error.message}`);
+          } finally {
+            this.hideLoading();
+          }
+        }
+      }
+
+      // Initialize the interactive map when the page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        new SaudiInteractiveMap();
+      });
+    </script>
+  </body>
+</html>
