@@ -115,8 +115,9 @@ if ($error) {
     echo json_encode(['error' => 'Proxy request failed', 'details' => $error]);
     exit;
 }
-
+//test
 // Return Geoapify's response as-is (with proper status code)
 http_response_code($http_code);
 echo $response;
 ?>
+
