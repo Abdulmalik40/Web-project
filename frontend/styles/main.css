@@ -7,6 +7,7 @@
 
 /* Import header component */
 @import 'components/_header.css';
+@import 'components/_header-overrides.css';
 
 /* Import UI examples and components */
 @import 'components/_saudi-ui-examples.css';

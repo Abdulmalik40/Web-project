@@ -607,6 +607,8 @@ body {
   cursor: pointer;
   position: relative;
   aspect-ratio: 4/5;
+  display: flex;
+  flex-direction: column;
 }
 
 .destination-card:hover {
@@ -614,9 +616,18 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-.destination-card img {
+.destination-card > a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.destination-card img,
+.destination-card > a > img {
   width: 100%;
-  height: 70%;
+  height: 60%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
@@ -625,10 +636,11 @@ body {
   transform: scale(1.05);
 }
 
-.destination-card .card-content {
+.destination-card .card-content,
+.destination-card > a > .card-content {
   padding: 20px;
   position: relative;
-  height: 30%;
+  height: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1292,51 +1304,171 @@ input[type="number"]:focus {
 .compass-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle Islamic pattern background */
+.compass-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(44, 62, 80, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(44, 62, 80, 0.03) 0%, transparent 50%);
+  animation: rotate 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .compass {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: conic-gradient(
-    from 0deg,
-    #ff6b6b 0deg 45deg,
-    #4ecdc4 45deg 90deg,
-    #45b7d1 90deg 135deg,
-    #96ceb4 135deg 180deg,
-    #feca57 180deg 225deg,
-    #ff9ff3 225deg 270deg,
-    #54a0ff 270deg 315deg,
-    #5f27cd 315deg 360deg
-  );
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 3px solid #2c3e50;
   position: relative;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 
+              0 0 0 1px rgba(44, 62, 80, 0.1);
+  transition: all 0.3s ease;
+  animation: compassSlideIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes compassSlideIn {
+  0% { 
+    transform: translateY(-50px); 
+    opacity: 0; 
+  }
+  70% { 
+    opacity: 0.7; 
+  }
+  100% { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+.compass:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 
+              0 0 0 1px rgba(44, 62, 80, 0.2);
+}
+
+/* Compass rose pattern */
+.compass::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(44, 62, 80, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(44, 62, 80, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(44, 62, 80, 0.05) 0%, transparent 70%);
+  z-index: 1;
+}
+
+/* Compass rose directional markers */
+.compass::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  background: 
+    linear-gradient(0deg, transparent 48%, rgba(44, 62, 80, 0.1) 49%, rgba(44, 62, 80, 0.1) 51%, transparent 52%),
+    linear-gradient(90deg, transparent 48%, rgba(44, 62, 80, 0.1) 49%, rgba(44, 62, 80, 0.1) 51%, transparent 52%),
+    linear-gradient(45deg, transparent 48%, rgba(44, 62, 80, 0.05) 49%, rgba(44, 62, 80, 0.05) 51%, transparent 52%),
+    linear-gradient(135deg, transparent 48%, rgba(44, 62, 80, 0.05) 49%, rgba(44, 62, 80, 0.05) 51%, transparent 52%);
+  border-radius: 50%;
+  z-index: 1;
 }
 
 .needle {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 4px;
-  height: 90px;
-  background: linear-gradient(to top, #d63031, #e17055);
+  width: 6px;
+  height: 85px;
+  background: linear-gradient(to top, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
   transform-origin: bottom center;
   transform: translate(-50%, -100%) rotate(0deg);
-  border-radius: 2px 2px 0 0;
-  z-index: 2;
+  border-radius: 3px 3px 0 0;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Needle tip */
+.needle::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 12px solid #2c3e50;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Needle tail */
+.needle::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 8px solid #34495e;
 }
 
 .center-dot {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 16px;
-  height: 16px;
-  background: #2d3436;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  border: 3px solid #ffffff;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  z-index: 3;
+  z-index: 4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Islamic star pattern in center */
+.center-dot::before {
+  content: '★';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .direction-labels {
@@ -1345,20 +1477,48 @@ input[type="number"]:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 16px;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9);
+  z-index: 2;
 }
 
 .direction-labels span {
   position: absolute;
+  font-family: 'Cairo', 'Tajawal', 'Arial', sans-serif;
+  font-size: 18px;
+  color: #2c3e50;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-.north { top: 10px; left: 50%; transform: translateX(-50%); }
-.east { top: 50%; right: 10px; transform: translateY(-50%); }
-.south { bottom: 10px; left: 50%; transform: translateX(-50%); }
-.west { top: 50%; left: 10px; transform: translateY(-50%); }
+.north { 
+  top: 15px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+
+.east { 
+  top: 50%; 
+  right: 15px; 
+  transform: translateY(-50%); 
+}
+
+.south { 
+  bottom: 15px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+
+.west { 
+  top: 50%; 
+  left: 15px; 
+  transform: translateY(-50%); 
+}
 
 .result-info h3 {
   font-family: "Cairo", sans-serif;
@@ -1382,6 +1542,11 @@ input[type="number"]:focus {
   
   .section-title {
     font-size: 2rem;
+  }
+  
+  .compass-container {
+    padding: 15px;
+    margin-bottom: 24px;
   }
   
   .compass {
