@@ -11,17 +11,19 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles/main.css" />
+    <script src="../scripts/header-component.js" defer></script>
   </head>
   <body>
-    <header class="header" id="header">
+    <header class="header" id="header" data-header-placeholder>
       <div class="header-inner">
-        <div class="brand">
-          <div class="brand-mark"></div>
+        <div class="brand" aria-label="Saudi Tourism">
+          <div class="brand-mark" aria-hidden="true"></div>
           <div>
             <div class="brand-title">Visit Saudi Arabia</div>
             <div class="brand-sub">Explore regions, heritage, and faith</div>
           </div>
         </div>
+
         <div class="nav-container">
           <button
             class="theme-toggle"
@@ -30,11 +32,24 @@
           >
             🌙 Dark
           </button>
-          <nav class="nav">
+
+          <nav class="nav" aria-label="Main Navigation">
             <div class="item"><a href="index.html#home">Home</a></div>
-            <div class="item"><a href="history.html">History</a></div>
             <div class="item">
-              <a href="islamic-guide.html">Islamic Guide</a>
+              <a href="map-interactive.html">Interactive Map</a>
+            </div>
+            <div class="item"><a href="index.html#religious">Religious Sites</a></div>
+            <div class="item"><a href="history.html">History</a></div>
+            <div class="item"><a href="index.html#heritage">Heritage</a></div>
+            <div class="item"><a href="index.html#regions">Regions</a></div>
+            <div class="item has-dropdown">
+              <a href="islamic-guide.html">Islamic Guide ▾</a>
+              <div class="dropdown" role="menu">
+                <a href="qibla.html" role="menuitem">Qibla Finder</a>
+                <a href="prayer-times.html" role="menuitem">Prayer Times</a>
+                <a href="quran.html" role="menuitem">Quran & Du'a</a>
+                <a href="mosques.html" role="menuitem">Nearby Mosques</a>
+              </div>
             </div>
           </nav>
         </div>
