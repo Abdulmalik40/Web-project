@@ -10,10 +10,62 @@
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
     <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/chatbot.css">
+    <script src="../scripts/chatbot.js" defer></script>
     <script src="../scripts/header-component.js" defer></script>
   </head>
   <body>
+     <!-- chatbot toggle button -->
+    <button id="chatbot-toggler">
+      <span class="material-symbols-outlined">mode_comment</span>
+      <span class="material-symbols-rounded">close</span>
+    </button>
+
+    <!-- chatbot container -->
+    <div class="chatbot-popup">
+      <!-- header -->
+      <div class="chat-header">
+        <div class="header-info">
+          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <h2 class="logo-text">Saudi Tourism Bot</h2>
+        </div>
+        <button id="close-chatbot" class="material-symbols-rounded">
+          keyboard_arrow_down
+        </button>
+      </div>
+
+      <!-- chat body -->
+      <div class="chat-body">
+        <div class="message bot-message">
+          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <div dir="rtl" class="message-text">
+            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
+          </div>
+        </div>
+      </div>
+
+      <!-- chat footer -->
+      <div class="chat-footer">
+        <form action="#" class="chat-form">
+          <textarea dir="rtl"
+            placeholder="اكتب سؤالك عن السياحة في السعودية..."
+            class="message-input"
+            required
+          ></textarea>
+          <div class="chat-controls">
+            <button type="submit" id="send-message" class="material-symbols-rounded">
+              arrow_upward
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <header class="header" id="header" data-header-placeholder>
       <div class="header-inner">
         <div class="brand" aria-label="Saudi Tourism">
@@ -105,9 +157,273 @@
       </div>
     </section>
 
-    <main class="banner">
-      <section class="destinations-grid"></section>
-    </main>
+    <main dir="rtl" class="history-container">
+  <!-- Replace the entire <section class="section" id="first-state"> with this -->
+  <section class="section" id="first-state">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi1.png"
+          alt="العلا — واحة التاريخ والطبيعة"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">العُلا – واحة التاريخ والطبيعة</h2>
+        <h3 class="section-subtitle">نبذة تاريخية موجزة</h3>
+        <p class="section-body">
+          تمتد العُلا على وادٍ خصيب يتوسط تشكيلات صخرية مهيبة وبساتين نخيلٍ
+          وحمضيات، وكانت عبر قرون معبرًا لقوافل التجارة والحجاج ومحطةً لحضاراتٍ
+          عريقة كالدادانية واللحيانية والنبطية. هنا تلتقي الذاكرة الحضارية
+          بالبيئة الصحراوية الفريدة لتصوغ هويةً لا تُشبه سواها.
+        </p>
+        <p class="section-body">
+          مع تطور البنية السياحية واستعادة المواقع الأثرية رونقها، أصبحت العلا
+          وجهةً عالمية للتاريخ والثقافة والمغامرة، تجمع التجارب الأصيلة
+          بالخدمات الحديثة ضمن منظومة استقبال وإرشادٍ عالية الكفاءة.
+        </p>
+        <p class="section-body">
+          اليوم تقدّم العلا رحلة متوازنة: جبال ونقوش ومقابر منحوتة، مسارات
+          مشيٍ وهايكنغ ومراقبة نجوم، ومشاهد فنية ومعمارية معاصرة تُحترم فيها
+          أصالة المكان.
+        </p>
+        <p class="section-body">
+          وتستمر مشاريع الحماية وإدارة الزوار في صون التراث الطبيعي
+          والثقافي، وتفعيل اقتصادٍ إبداعي يشارك فيه أهل المنطقة.
+        </p>
+        <h4 class="section-subtitle">ملامح تُميّز العلا</h4>
+        <ul class="section-list">
+          <li>موقع تراث عالمي منحوت في الصخر</li>
+          <li>واحة خضراء ومسارات طبيعية</li>
+          <li>تجارب مغامرة ومراقبة نجوم</li>
+          <li>عمارة معاصرة تحاور الطبيعة</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- الحجر (مدائن صالح) -->
+  <section class="section" id="second-state">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi2.jpg"
+          alt="الحِجر — مدائن صالح"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">الحِجر (مدائن صالح)</h2>
+        <h3 class="section-subtitle">واجهات صخرية ومقابر نبطية ونقوش</h3>
+        <p class="section-body">
+          يُعد موقع الحِجر أول موقع سعودي مُسجّل على قائمة التراث العالمي؛
+          يضم واجهاتٍ صخرية هائلة ودورَ دفنٍ منحوتة ونقوشًا تروي قصة
+          العمارة النبطية وعلاقاتها التجارية والطقسية.
+        </p>
+        <p class="section-body">
+          تُنظّم الزيارة عبر مسارات محددة وحافلاتٍ داخلية ومرشدين معتمدين،
+          مع لوحات تعريفية متعددة اللغات وإرشادات للحفاظ على سلامة الموقع.
+        </p>
+        <p class="section-body">
+          يُستحسن اختيار أوقات معتدلة من اليوم، وارتداء أحذيةٍ مريحة واصطحاب
+          الماء، والالتزام بتوجيهات الحفظ وعدم لمس الواجهات أو التسلق عليها.
+        </p>
+        <h4 class="section-subtitle">محطات رئيسية لرحلتك</h4>
+        <ul class="section-list">
+          <li>قصر الصانع وقصر البنت</li>
+          <li>جبل إثلب والديوان</li>
+          <li>القطار الحجازي ومحطته التاريخية</li>
+          <li>مراكز الزوار وخدمات الإرشاد</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- العلا اليوم -->
+  <section class="section" id="modern-kingdom">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi3.jpg"
+          alt="العلا الحديثة — مطار وخدمات ومسارات"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">العلا اليوم</h2>
+        <h3 class="section-subtitle">وصول ميسّر ومنظومة خدمات متكاملة</h3>
+        <p class="section-body">
+          ترتبط العلا جوًا عبر مطار العلا، وبرًا بشبكات طرق حديثة ومواقف
+          منظمة ونقلٍ داخلي إلى أبرز الوجهات، مع خرائط تفاعلية وتطبيقات
+          للحجوزات والجولات.
+        </p>
+        <p class="section-body">
+          تتوافر خيارات إقامة متنوّعة من نُزُلٍ صحراوية ومنتجعاتٍ مطلّة إلى
+          بيوت ضيافة محلية، مع معايير استدامة تُراعي حساسية البيئة.
+        </p>
+        <p class="section-body">
+          وتتكامل التجربة ببرامج ثقافية وموسمية ومعارض فنية وحفلات على
+          منصات معمارية معاصرة، ضمن تنظيمٍ مُحكَم لإدارة الحشود.
+        </p>
+        <ul class="section-list">
+          <li>مطار العلا وخدمات الاستقبال</li>
+          <li>حافلات داخلية ومسارات محددة</li>
+          <li>خرائط تفاعلية وتذاكر رقمية</li>
+          <li>مراكز زوار ونقاط إرشاد</li>
+          <li>خيارات إقامة وتجارب طهوية محلية</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- صخرة الفيل -->
+  <section class="section" id="king-abdulaziz">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/King abdulaziz.jpg"
+          alt="صخرة الفيل — تشكيل طبيعي أيقوني"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">صخرة الفيل (جبل الفيل)</h2>
+        <h3 class="section-subtitle">مشهد غروب ونُزهة على الرمال</h3>
+        <p class="section-body">
+          يُعد هذا التكوين الصخري أيقونة العلا؛ حيث تمتد الرمال الذهبية
+          وتتلون السماء عند الغروب. تتوافر مناطق جلوس ومقاهٍ متنقلة ومساحات
+          تصوير آمنة تُحافظ على البيئة.
+        </p>
+        <p class="section-body">
+          يُنصح بالزيارة في ساعات العصر والمساء، والالتزام بالممرات المحددة
+          وعدم تسلق الصخور حفاظًا على السلامة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- البلدة القديمة -->
+  <section class="section" id="kings">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/kings/king saud.jpg" alt="البلدة القديمة — سوق وبيوت طينية" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">البلدة القديمة في العلا</h2>
+        <h3 class="section-subtitle">أزقة وسوق وبنية طينية متدرجة</h3>
+        <p class="section-body">
+          تحكي البلدة القديمة قصة الاستيطان حول الواحة: بيوتٌ طينية متلاصقة،
+          أزقة ضيقة، وسوق نابض بالمقاهي والحِرَف. تجربة مثالية للمشي
+          والتصوير والتذوق المحلي.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- دادان وجبل عكمة -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king faisal.jpg"
+          alt="دادان وجبل عكمة — نقوش ومسلات"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">موقِعا دادان وجبل عِكمة</h2>
+        <h3 class="section-subtitle">نقوش ولغات قديمة في وادٍ واحد</h3>
+        <p class="section-body">
+          يكشف دادان عن آثار مملكةٍ عربيةٍ قديمة ومسلاتٍ مميزة، فيما يُعرف
+          جبل عِكمة بـ“مكتبةٍ مفتوحة” لنقوش ونصوص تاريخية توثّق شؤونًا
+          اجتماعية ودينية ولغوية.
+        </p>
+        <p class="section-body">
+          الزيارة عبر جولات منظّمة ومسارات واضحة ولوحات تعريفية تدعم فهم
+          السياق التاريخي للموقعين.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- مرايا -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king khalid.jpg"
+          alt="قاعة مرايا — عمارة تعكس الصحراء"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">قاعة مرايا</h2>
+        <h3 class="section-subtitle">معمار معاصر يعانق التكوينات</h3>
+        <p class="section-body">
+          أيقونة معمارية بواجهات عاكسة تحتضن حفلاتٍ وعروضًا ومعارض. يتناغم
+          المبنى مع التكوينات الرملية والصخرية ليمنح تجربة بصرية فريدة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- واحة العلا ومسار الواحة -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king fahad.jpg"
+          alt="واحة العلا — نخيل ومجارٍ مائية"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">واحة العلا ومسار الواحة</h2>
+        <h3 class="section-subtitle">بساتين نخيل وحمضيات ومشي تحت الظلال</h3>
+        <p class="section-body">
+          يتيح المسار التجول بين بساتين الواحة وقنواتها وزراعاتها المحلية،
+          مع محطات استراحة وأسواقٍ صغيرة ومنتجاتٍ من المزرعة إلى المائدة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- مغامرات وسماء العلا -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king abdullah.jpg"
+          alt="مغامرات وسماء العلا — منطاد وزِب لاين وهايكنغ"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">المغامرات وسماء العلا</h2>
+        <h3 class="section-subtitle">هايكنغ، منطاد، ونجوم لا تُعدّ</h3>
+        <p class="section-body">
+          من مسارات الهايكنغ والدراجات إلى المنطاد والزيب لاين وتجارب مراقبة
+          النجوم، تقدّم العلا باقة نشاطاتٍ تتنوّع بين الاسترخاء والمغامرة،
+          ضمن معايير سلامة وتنظيم عالية.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- المطبخ المحلي والإقامة -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king salman.jpg"
+          alt="المشهد الطهوي والإقامة — نُزُل ومنتجعات"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">المشهد الطهوي والإقامة</h2>
+        <h3 class="section-subtitle">نكهات محلية وإطلالات على الوادي</h3>
+        <p class="section-body">
+          تمتد الخيارات من المطابخ المحلية الموسمية إلى قوائم عصرية بلمسات
+          صحراوية، وتتوزع أماكن الإقامة بين نُزُلٍ متوارية في الوادي ومنتجعات
+          تحيطها التكوينات الصخرية بإطلالاتٍ أخّاذة.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
 
     <script src="../scripts/Script.js"></script>
   </body>
