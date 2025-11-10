@@ -7,10 +7,62 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
     <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/chatbot.css">
+    <script src="../scripts/chatbot.js" defer></script>
     <script src="../scripts/header-component.js" defer></script>
   </head>
   <body>
+     <!-- chatbot toggle button -->
+    <button id="chatbot-toggler">
+      <span class="material-symbols-outlined">mode_comment</span>
+      <span class="material-symbols-rounded">close</span>
+    </button>
+
+    <!-- chatbot container -->
+    <div class="chatbot-popup">
+      <!-- header -->
+      <div class="chat-header">
+        <div class="header-info">
+          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <h2 class="logo-text">Saudi Tourism Bot</h2>
+        </div>
+        <button id="close-chatbot" class="material-symbols-rounded">
+          keyboard_arrow_down
+        </button>
+      </div>
+
+      <!-- chat body -->
+      <div class="chat-body">
+        <div class="message bot-message">
+          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <div dir="rtl" class="message-text">
+            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
+          </div>
+        </div>
+      </div>
+
+      <!-- chat footer -->
+      <div class="chat-footer">
+        <form action="#" class="chat-form">
+          <textarea dir="rtl"
+            placeholder="اكتب سؤالك عن السياحة في السعودية..."
+            class="message-input"
+            required
+          ></textarea>
+          <div class="chat-controls">
+            <button type="submit" id="send-message" class="material-symbols-rounded">
+              arrow_upward
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <header class="header" id="header" data-header-placeholder>
       <div class="header-inner">
         <div class="brand" aria-label="Saudi Tourism">
@@ -81,10 +133,651 @@
       <div class="scroll-indicator"><div class="scroll-arrow"></div><span>Scroll to Explore</span></div>
     </section>
 
-    <main class="banner">
-      <section class="destinations-grid">
-      </section>
-    </main>
+    <main dir="rtl" class="history-container">
+  <!-- Replace the entire <section class="section" id="first-state"> with this -->
+  <section class="section" id="first-state">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi1.png"
+          alt="مشاريع السعودية الجديدة — نمو مستقبلي وابتكار"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">مشاريع السعودية الجديدة — نموٌ مستقبلي وابتكار</h2>
+        <h3 class="section-subtitle">نبذة موجزة</h3>
+        <p class="section-body">
+          تمضي المملكة في مسار تحوّل نوعي يوازن بين تنويع الاقتصاد وحماية البيئة وازدهار الإنسان. 
+          تتكامل <em>المشاريع العملاقة</em> والبنى التحتية الذكية والاقتصادات الإبداعية لتصوغ مدنًا قابلة للعيش، 
+          وتجارب سياحية عالمية، وقاعدة صناعية وتقنية متقدمة.
+        </p>
+        <p class="section-body">
+          يرتكز هذا التوجّه على تمكين الاستثمار، ونقل التقنية وتوطينها، 
+          وتطوير المهارات، وخلق منظومات ريادة أعمال تتصل بالأسواق العالمية وتنافس عليها.
+        </p>
+        <p class="section-body">
+          النتيجة: فرص نوعية للمواطن والمقيم والمستثمر، ونمو مستدام يدعم مكانة المملكة كمحورٍ للابتكار والربط الإقليمي.
+        </p>
+        <h4 class="section-subtitle">ركائز التحوّل</h4>
+        <ul class="section-list">
+          <li>مشاريع مدن ووجهات مستقبلية</li>
+          <li>طاقة نظيفة وحلول كفاءة واستدامة</li>
+          <li>اقتصاد رقمي وبيانات وسحابة وذكاء اصطناعي</li>
+          <li>ثقافة وسياحة وتجارب عالمية بهوية محلية</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- محفظة المشاريع العملاقة -->
+  <section class="section" id="second-state">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi2.jpg"
+          alt="محفظة المشاريع العملاقة — مدن ووجهات وسواحل"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">محفظة المشاريع العملاقة</h2>
+        <h3 class="section-subtitle">وجهات رائدة وهوية عمرانية جديدة</h3>
+        <p class="section-body">
+          تتوزّع في المملكة مشاريع طموحة تعيد تعريف العيش والعمل والترفيه: 
+          مدن مبتكرة، وسواحل مستدامة، ووجهات ثقافية ورياضية، وعمارةٍ معاصرة 
+          تحترم البيئة وتستمد مادتها من المكان.
+        </p>
+        <p class="section-body">
+          تتكامل هذه الوجهات عبر بنى تحتية متقدّمة، وأنظمة تنقّل مرنة، 
+          ومعايير تشغيل رقمية تجعل تجربة الزائر والمقيم سلسة وآمنة.
+        </p>
+        <h4 class="section-subtitle">نماذج بارزة</h4>
+        <ul class="section-list">
+          <li>مدن وواجهات مستقبلية في الشمال الغربي</li>
+          <li>سواحل سياحية فاخرة على البحر الأحمر</li>
+          <li>عاصمة للترفيه والرياضات النوعية</li>
+          <li>مناطق تراثية مُفعّلة ومعاد توظيفها</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- مدن وتنقّل المستقبل -->
+  <section class="section" id="modern-kingdom">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi3.jpg"
+          alt="مدن وتنقّل المستقبل — محاور خضراء ومترو ومسارات"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">مدن وتنقّل المستقبل</h2>
+        <h3 class="section-subtitle">محاور خضراء، مترو، وأنسنة أحياء</h3>
+        <p class="section-body">
+          يجري تشكيل شبكة حضرية عالية الكفاءة: مترو ونقل عام، محاور خضراء للمشاة والدراجات، 
+          وحدائق حضرية كبرى ترفع جودة الحياة وتحدّ من الانبعاثات.
+        </p>
+        <p class="section-body">
+          التصاميم تُقدّم أولويّة للإنسان والمساحات المفتوحة، وتربط بين الأحياء بأسلوبٍ 
+          يقلّل زمن الرحلة ويزيد إنتاجية المدينة ورفاهها.
+        </p>
+        <ul class="section-list">
+          <li>مسارات مشاة ودراجات مترابطة</li>
+          <li>حدائق ومتنزهات حضرية كبرى</li>
+          <li>شبكات نقل عام ذكية</li>
+          <li>واجهات مدينية متعددة الوظائف</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- الطاقة والاستدامة -->
+  <section class="section" id="king-abdulaziz">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/King abdulaziz.jpg"
+          alt="الطاقة والاستدامة — الهيدروجين الأخضر والاقتصاد الدائري للكربون"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">الطاقة والاستدامة</h2>
+        <h3 class="section-subtitle">الهيدروجين الأخضر وكفاءة الموارد</h3>
+        <p class="section-body">
+          تتقدّم المملكة في حلول الطاقة النظيفة وسلاسل إمداد الهيدروجين الأخضر، 
+          وتطبّق نهج الاقتصاد الدائري للكربون للحدّ من الانبعاثات وتعظيم كفاءة الاستخدام.
+        </p>
+        <p class="section-body">
+          يوازي ذلك استثمارات في الطاقة المتجددة، وتحلية أكثر كفاءة، 
+          وتقنيات إدارة نفايات وتحويلها إلى قيمة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- السياحة والثقافة -->
+  <section class="section" id="kings">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/kings/king saud.jpg" alt="السياحة والثقافة — وجهات عالمية وهوية محلية" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">السياحة والثقافة</h2>
+        <h3 class="section-subtitle">وجهات عالمية بهوية سعودية</h3>
+        <p class="section-body">
+          تُفعَّل المواقع التاريخية عبر متاحف مفتوحة وبرامج تفسيرية، 
+          وتتجاور الفنون العامة والمهرجانات مع عمارةٍ تحافظ على روح المكان وتوسّع خيارات الضيافة.
+        </p>
+        <ul class="section-list">
+          <li>مواقع تراث عالمي ومسارات تفسيرية</li>
+          <li>مهرجانات موسمية وفنون عامة</li>
+          <li>إقامات نوعية وتجارب ضيافة أصيلة</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- الاقتصاد الرقمي والذكاء الاصطناعي -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king faisal.jpg"
+          alt="الاقتصاد الرقمي — سحابة وبيانات وذكاء اصطناعي"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">الاقتصاد الرقمي والذكاء الاصطناعي</h2>
+        <h3 class="section-subtitle">بنى سحابية وبيانات وحلول تفكير آلي</h3>
+        <p class="section-body">
+          تُبنى مناطق بيانات وسحابة محلية وحوسبة طرفية لتشغيل الخدمات الرقمية 
+          بسلاسة، مع أطر حوكمة بيانات وتمكين مطوّرين وشركات ناشئة في مجالات 
+          الذكاء الاصطناعي والتوأمة الرقمية وإنترنت الأشياء.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- الصناعة المتقدمة واللوجستيات -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king khalid.jpg"
+          alt="الصناعة المتقدمة واللوجستيات — موانئ ومناطق اقتصادية"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">الصناعة المتقدمة واللوجستيات</h2>
+        <h3 class="section-subtitle">مناطق اقتصادية وموانئ مؤتمتة</h3>
+        <p class="section-body">
+          تتوسّع سلاسل الصناعات المتقدمة من المعادن الحرجة إلى المركبات والتجهيزات 
+          الذكية، مع موانئ مؤتمتة ومناطق اقتصادية خاصة تربط آسيا وأفريقيا وأوروبا.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- الرياضة والترفيه -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king fahad.jpg"
+          alt="الرياضة والترفيه — منشآت وفعاليات دولية"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">الرياضة والترفيه</h2>
+        <h3 class="section-subtitle">منشآت حديثة وتجارب جماهيرية</h3>
+        <p class="section-body">
+          تُقام منشآت رياضية وترفيهية بمعايير عالمية تستضيف فعاليات دولية 
+          وتوفّر تجارب عائلية وشبابية على مدار العام، مع بنية تحتية للرياضات النوعية والرياضات الإلكترونية.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- الصحة والتقنيات الحيوية -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king abdullah.jpg"
+          alt="الصحة والتقنيات الحيوية — تصنيع متقدّم وبحث سريري"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">الصحة والتقنيات الحيوية</h2>
+        <h3 class="section-subtitle">منصّات تصنيع وبحث وتطوير</h3>
+        <p class="section-body">
+          يجري تطوير قدرات تصنيع دوائي وحيوي، ودعم البحث السريري، 
+          ومنظومات وقاية ورعاية أولية رقمية تعزّز جودة الحياة والابتكار الصحي.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- التعليم والبحث والابتكار -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king salman.jpg"
+          alt="التعليم والبحث والابتكار — جامعات وحاضنات وشراكات"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">التعليم والبحث والابتكار</h2>
+        <h3 class="section-subtitle">شراكات جامعية وحاضنات وتسريع أعمال</h3>
+        <p class="section-body">
+          تتقاطع الجامعات ومراكز الأبحاث مع القطاع الخاص عبر حاضنات ومسرّعات 
+          وتمويل تنافسي لمشروعات البحث والتطوير، وصولًا إلى شركات تقنية ناشئة 
+          قادرة على التوسّع العالمي.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ريادة الأعمال وتمويل النمو -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi1.png"
+          alt="ريادة الأعمال — صناديق واستوديوهات ومناطق ابتكار"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">ريادة الأعمال وتمويل النمو</h2>
+        <h3 class="section-subtitle">صناديق رأس المال الجريء ومناطق ابتكار</h3>
+        <p class="section-body">
+          تُنمّى منظومة الشركات الناشئة عبر صناديق وتمويل مشترك وحاضنات قطاعية 
+          وأطر تنظيمية مرنة، مع مسرّعات متخصصة واستوديوهات لبناء الشركات 
+          تُحوّل المعرفة إلى منتجات قابلة للتوسّع.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== أقسام المشاريع الفردية (قابلة للزيادة) ===================== -->
+
+  <!-- NEOM -->
+  <section class="section" id="project-neom">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/cities/Saudi1.png" alt="NEOM — THE LINE / OXAGON / TROJENA / Sindalah" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">NEOM</h2>
+        <h3 class="section-subtitle">Future Growth & Innovation</h3>
+        <p class="section-body">
+          منظومة وجهات متخصصة تعيد ابتكار أنماط العيش والعمل: مدينة صناعية ذكية على البحر، وجهة جبلية للرياضات، 
+          جزيرة على البحر الأحمر، ونموذج حضري خطي يقود كفاءة الطاقة وحركة المشاة.
+        </p>
+        <ul class="section-list">
+          <li>ابتكار حضري وخدمات آلية</li>
+          <li>اقتصاد دائري وتقنيات نظيفة</li>
+          <li>تجارب سياحية وعافية نوعية</li>
+          <li>جذب للمواهب والاستثمارات</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Red Sea -->
+  <section class="section" id="project-redsea">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/cities/Saudi2.jpg" alt="The Red Sea — سياحة مستدامة" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">The Red Sea</h2>
+        <h3 class="section-subtitle">وجهة سياحية مستدامة على ساحلٍ بكر</h3>
+        <p class="section-body">
+          ضيافة فاخرة منخفضة الأثر البيئي، بنية طاقة متجددة، وتجربة بحرية فريدة تعيد رسم خارطة السياحة الراقية في المنطقة.
+        </p>
+        <ul class="section-list">
+          <li>تصاميم منسجمة مع الطبيعة</li>
+          <li>طاقة نظيفة وبصمة كربونية منخفضة</li>
+          <li>رفع سلسلة القيمة السياحية</li>
+          <li>وظائف نوعية للمجتمع المحلي</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMAALA -->
+  <section class="section" id="project-amaala">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/cities/Saudi3.jpg" alt="AMAALA — عافية وفخامة" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">AMAALA</h2>
+        <h3 class="section-subtitle">عافية راقية وتجربة ضيافة متكاملة</h3>
+        <p class="section-body">
+          وجهة عافية وثقافة بحرية تعمل على الطاقة المتجددة وتقدّم برامج علاجية ورياضية متخصصة تدعم اقتصاد التجارب.
+        </p>
+        <ul class="section-list">
+          <li>عافية وسبا عالمي</li>
+          <li>استدامة وتشغيل نظيف</li>
+          <li>فعاليات وفنون بحرية</li>
+          <li>تنويع إنفاق السائح</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diriyah -->
+  <section class="section" id="project-diriyah">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/kings/king saud.jpg" alt="Diriyah — تراث وهوية" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">Diriyah</h2>
+        <h3 class="section-subtitle">Place-making ثقافي بحضور عالمي</h3>
+        <p class="section-body">
+          إعادة توظيف للتراث النجدي في أحياء قابلة للمشي، ومتاحف وميادين عامة، ومشهد مطاعم وفنون يعزّز الاقتصاد الثقافي.
+        </p>
+        <ul class="section-list">
+          <li>إحياء حي الطريف ومحيطه</li>
+          <li>فعاليات ومتاحف ومعارض</li>
+          <li>مقاصد ضيافة ومطاعم مميّزة</li>
+          <li>توظيف مهني للمجتمع المحلي</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qiddiya City -->
+  <section class="section" id="project-qiddiya">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/kings/king faisal.jpg" alt="Qiddiya City — ترفيه ورياضة" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">Qiddiya City</h2>
+        <h3 class="section-subtitle">عاصمة الترفيه والرياضة</h3>
+        <p class="section-body">
+          منظومة ترفيه ورياضة وثقافة، من محركات السرعة إلى الألعاب الإلكترونية، ترفع جاذبية الرياض وتخلق اقتصاد تجارب مزدهر.
+        </p>
+        <ul class="section-list">
+          <li>حدائق ترفيهية ومسارح</li>
+          <li>رياضات نوعية وبنية تنافسية</li>
+          <li>سياحة داخلية نشطة</li>
+          <li>سلاسل إمداد وخدمات مرافقة</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Murabba & The Mukaab -->
+  <section class="section" id="project-new-murabba">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/kings/king khalid.jpg" alt="New Murabba — The Mukaab" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">New Murabba & The Mukaab</h2>
+        <h3 class="section-subtitle">Downtown جديد بتجربة غامرة</h3>
+        <p class="section-body">
+          وجهة حضرية متكاملة للترفيه والتجزئة والتقنيات الغامرة، تعيد تعريف قلب العاصمة وتفتح فرصًا استثمارية واسعة.
+        </p>
+        <ul class="section-list">
+          <li>تجارب رقمية غامرة</li>
+          <li>مزيج سكني–تجاري متكامل</li>
+          <li>تصميم مَعلمي أيقوني</li>
+          <li>تحفيز لريادة الأعمال</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jeddah Central -->
+  <section class="section" id="project-jeddah-central">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/cities/Saudi1.png" alt="Jeddah Central — واجهة بحرية" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">Jeddah Central</h2>
+        <h3 class="section-subtitle">إعادة تشكيل الواجهة البحرية</h3>
+        <p class="section-body">
+          متحف وأوبرا وملعب وأحياء قابلة للمشي على واجهة بحرية ممتدة، تعزز مكانة جدة في السياحة والفعاليات.
+        </p>
+        <ul class="section-list">
+          <li>مسارح ومتاحف وأوبرا</li>
+          <li>أحياء ساحلية نابضة</li>
+          <li>استثمارات ضيافة وتجزئة</li>
+          <li>وظائف في اقتصاد التجارب</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- King Salman Park -->
+  <section class="section" id="project-king-salman-park">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/cities/Saudi2.jpg" alt="King Salman Park — حديقة كبرى" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">King Salman Park</h2>
+        <h3 class="section-subtitle">أكبر حديقة حضرية وجودة حياة</h3>
+        <p class="section-body">
+          مساحة خضراء شاسعة بفعاليات ثقافية ورياضية، تدعم الصحة العامة وقيمة الأصول العقارية والسياحة الحضرية.
+        </p>
+        <ul class="section-list">
+          <li>متاحف وحدائق موضوعية</li>
+          <li>مسارح ومسارات ركض ودراجات</li>
+          <li>مناطق عائلية ومقاصف</li>
+          <li>تنشيط اقتصادي مجاور</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sports Boulevard -->
+  <section class="section" id="project-sports-boulevard">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/cities/Saudi3.jpg" alt="Sports Boulevard — محور أخضر" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">Sports Boulevard</h2>
+        <h3 class="section-subtitle">محور رياضي وثقافي بطول المدينة</h3>
+        <p class="section-body">
+          شبكة مسارات ودروب وملاعب ومراكز رياضية مفتوحة، تدفع اقتصاد الرياضة والأنشطة المجتمعية.
+        </p>
+        <ul class="section-list">
+          <li>135 كم من المسارات المترابطة</li>
+          <li>منشآت مجتمعية وصحية</li>
+          <li>فرص تجارية على المسار</li>
+          <li>تحسين الهواء والبيئة</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Green Riyadh -->
+  <section class="section" id="project-green-riyadh">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/kings/king abdullah.jpg" alt="Green Riyadh — تشجير العاصمة" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">Green Riyadh</h2>
+        <h3 class="section-subtitle">تشجير واسع لخفض الحرارة وتحسين الهواء</h3>
+        <p class="section-body">
+          برنامج تشجير يرفع نصيب الفرد من المساحات الخضراء ويُحسّن جودة الحياة ويتيح فرصًا للبحث والتقنيات البيئية.
+        </p>
+        <ul class="section-list">
+          <li>أشجار متكيفة مع المناخ</li>
+          <li>إدارة مياه ريّ بكفاءة</li>
+          <li>تظليل للمشاة ومسارات</li>
+          <li>تنشيط عقاري وحضري</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- KSIA مطار الملك سلمان الدولي -->
+  <section class="section" id="project-ksia">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/kings/king salman.jpg" alt="King Salman International Airport — محور لوجستي" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">King Salman International Airport</h2>
+        <h3 class="section-subtitle">منصة عالمية للسفر واللوجستيات</h3>
+        <p class="section-body">
+          مطار محوري حديث يوسّع الربط الجوي والسياحة والأعمال ويحفّز سلاسل الخدمات اللوجستية.
+        </p>
+        <ul class="section-list">
+          <li>قدرات محطات متقدمة</li>
+          <li>ربط متعدد القارات</li>
+          <li>فرص استثمارية واسعة</li>
+          <li>تجربة مسافر ذكية</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Riyadh Metro -->
+  <section class="section" id="project-riyadh-metro">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/cities/Saudi1.png" alt="Riyadh Metro — 6 خطوط" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">Riyadh Metro</h2>
+        <h3 class="section-subtitle">تنقّل ذكي يقلّل الازدحام والانبعاثات</h3>
+        <p class="section-body">
+          ستة خطوط آلية تعيد تشكيل الحركة الحضرية وتفتح فرص تطوير حول المحطات وتدعم إنتاجية المدينة.
+        </p>
+        <ul class="section-list">
+          <li>تكامل مع الحافلات</li>
+          <li>محطات متعددة الوظائف</li>
+          <li>تحفيز للنشاط التجاري</li>
+          <li>تحسين جودة الهواء</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPARK -->
+  <section class="section" id="project-spark">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/cities/Saudi2.jpg" alt="SPARK — مدينة الطاقة" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">King Salman Energy Park (SPARK)</h2>
+        <h3 class="section-subtitle">سلاسل تصنيع وخدمات للطاقة المتقدمة</h3>
+        <p class="section-body">
+          مدينة صناعية متكاملة بخدمات «Plug-and-Play» وحلول رقمية تدعم التصنيع النظيف وسلاسل الإمداد المحلية.
+        </p>
+        <ul class="section-list">
+          <li>مجمعات صناعية مرنة</li>
+          <li>مراكز تدريب ومواهب</li>
+          <li>خدمات لوجستية متقدمة</li>
+          <li>تكامل مع مزودي التقنية</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROSHN -->
+  <section class="section" id="project-roshn">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/cities/Saudi3.jpg" alt="ROSHN — أحياء متكاملة" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">ROSHN Communities</h2>
+        <h3 class="section-subtitle">أحياء حضرية قابلة للمشي وخدمات يومية</h3>
+        <p class="section-body">
+          مطوّر وطني يعيد تعريف السكن عبر أحياء متكاملة وخدمات قرب البيت ومسارات خضراء ترفع جودة الحياة.
+        </p>
+        <ul class="section-list">
+          <li>شبكات مشاة ودراجات</li>
+          <li>مدارس ومراكز صحية قرب السكن</li>
+          <li>مناطق تجارية مجاورة</li>
+          <li>تصاميم مستدامة وكفاءة طاقية</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Soudah Peaks -->
+  <section class="section" id="project-soudah-peaks">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/kings/king saud.jpg" alt="Soudah Peaks — وجهة جبلية" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">Soudah Peaks</h2>
+        <h3 class="section-subtitle">سياحة جبلية فاخرة في قمم عسير</h3>
+        <p class="section-body">
+          إطلالات شاهقة ومناخ معتدل وتجارب إقامة راقية تدعم المواسم السياحية وتخلق وظائف خضراء.
+        </p>
+        <ul class="section-list">
+          <li>منتجعات على القمم</li>
+          <li>مسارات هايكنغ ودراجات</li>
+          <li>حفظ للبيئة الجبلية</li>
+          <li>تمكين للمجتمع المحلي</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Riyadh Expo 2030 -->
+  <section class="section" id="project-expo-2030">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/kings/king faisal.jpg" alt="Riyadh Expo 2030 — تظاهرة عالمية" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">Riyadh Expo 2030</h2>
+        <h3 class="section-subtitle">منصة ابتكار وثقافات من العالم</h3>
+        <p class="section-body">
+          حدث عالمي يسرّع الاستثمار الحضري ويستعرض حلول المستقبل ويُثري التجربة الثقافية للزوار من كل القارات.
+        </p>
+        <ul class="section-list">
+          <li>أجنحة دولية مبتكرة</li>
+          <li>بنية تحتية دائمة ما بعد الحدث</li>
+          <li>فرص سياحية وتجارية</li>
+          <li>توظيف وتطوع للشباب</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AlUla (تطوير مستمر) -->
+  <section class="section" id="project-alula">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/kings/king khalid.jpg" alt="AlUla — تراث وطبيعة" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">AlUla — Future Heritage</h2>
+        <h3 class="section-subtitle">تراث عالمي وتجارب مغامرة</h3>
+        <p class="section-body">
+          وجهة تاريخية وطبيعية تُدار بمعايير حماية عالية وتبتكر تجارب ثقافية ومغامرات ومسارات وادي خضراء.
+        </p>
+        <ul class="section-list">
+          <li>الحِجر ودادان وعِكمة</li>
+          <li>قاعات ومعارض فنية</li>
+          <li>مراقبة نجوم ومغامرات</li>
+          <li>نُزُل ومنتجعات منسجمة مع البيئة</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
 
     <script src="../scripts/Script.js"></script>
   </body>

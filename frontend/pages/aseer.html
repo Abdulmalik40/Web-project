@@ -7,10 +7,63 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
+    <link rel="stylesheet" href="../styles/chatbot.css">
     <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/chatbot.css">
+    <script src="../scripts/chatbot.js" defer></script>
     <script src="../scripts/header-component.js" defer></script>
   </head>
   <body>
+     <!-- chatbot toggle button -->
+    <button id="chatbot-toggler">
+      <span class="material-symbols-outlined">mode_comment</span>
+      <span class="material-symbols-rounded">close</span>
+    </button>
+
+    <!-- chatbot container -->
+    <div class="chatbot-popup">
+      <!-- header -->
+      <div class="chat-header">
+        <div class="header-info">
+          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <h2 class="logo-text">Saudi Tourism Bot</h2>
+        </div>
+        <button id="close-chatbot" class="material-symbols-rounded">
+          keyboard_arrow_down
+        </button>
+      </div>
+
+      <!-- chat body -->
+      <div class="chat-body">
+        <div class="message bot-message">
+          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <div dir="rtl" class="message-text">
+            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
+          </div>
+        </div>
+      </div>
+
+      <!-- chat footer -->
+      <div class="chat-footer">
+        <form action="#" class="chat-form">
+          <textarea dir="rtl"
+            placeholder="اكتب سؤالك عن السياحة في السعودية..."
+            class="message-input"
+            required
+          ></textarea>
+          <div class="chat-controls">
+            <button type="submit" id="send-message" class="material-symbols-rounded">
+              arrow_upward
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <header class="header" id="header" data-header-placeholder>
       <div class="header-inner">
         <div class="brand" aria-label="Saudi Tourism">
@@ -81,10 +134,266 @@
       <div class="scroll-indicator"><div class="scroll-arrow"></div><span>Scroll to Explore</span></div>
     </section>
 
-    <main class="banner">
-      <section class="destinations-grid">
-      </section>
-    </main>
+    <main dir="rtl" class="history-container">
+  <!-- Replace the entire <section class="section" id="first-state"> with this -->
+  <section class="section" id="first-state">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi1.png"
+          alt="عسير — مرتفعات السروات وهوية الجنوب"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">عسير – علوّ المكان وخصوبة الهوية</h2>
+        <h3 class="section-subtitle">نبذة تاريخية موجزة</h3>
+        <p class="section-body">
+          تمتد منطقة عسير على سفوح جبال السروات حتى تهامة والبحر، فترسم تدرّجًا
+          مدهشًا في المناخ والطبيعة والعمران. عبر قرونٍ من الزراعة المدرّجة
+          والتجارة الجبلية، صاغت عسير شخصيةً ثقافية غنية تُرى في العمارة الحجرية
+          والزيّ واللغة والفنون الشعبية.
+        </p>
+        <p class="section-body">
+          ومع النهضة الحديثة، تعزّزت مكانة عسير وجهةً سياحية صيفية وبيئية على
+          مدار العام؛ حيث تتجاور القرى التاريخية والمراصد العالية مع متنزّهات
+          منظمة وبنية تحتية تُيسّر الحركة بين قمم السروات ووديان تهامة.
+        </p>
+        <p class="section-body">
+          اليوم تقدّم عسير تجربةً تجمع النسيم العليل والضباب الموسمي والإطلالات
+          الشاسعة، مع مسارات للمشي والرياضات الجبلية ومشاهد فنية وحدائق
+          مرتفعة، في مزيجٍ متوازن من الأصالة والخدمات الحديثة.
+        </p>
+        <p class="section-body">
+          وتستمر برامج الارتقاء الحضري والسياحي في صون الهوية المحلية وتفعيل
+          الاقتصاد الإبداعي، مع عناية بالاستدامة والمسارات الطبيعية.
+        </p>
+        <h4 class="section-subtitle">ملامح تُميّز عسير</h4>
+        <ul class="section-list">
+          <li>مرتفعات السروات ومناخها المعتدل</li>
+          <li>القرى الحجرية والزراعة المدرّجة</li>
+          <li>المتنزهات الوطنية ومسارات المشاة</li>
+          <li>فنون مفتوحة وأسواق موسمية</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- السودة ومرتفعات السروات -->
+  <section class="section" id="second-state">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi2.jpg"
+          alt="السودة — غابات العرعر وإطلالات شاهقة"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">السودة ومرتفعات السروات</h2>
+        <h3 class="section-subtitle">ضباب عليل ومراصد ومغامرات</h3>
+        <p class="section-body">
+          تمنح السودة أعلى القمم في المملكة مشاهد بانورامية على الوديان والقرى،
+          مع غابات عرعر ومسارات طبيعية ومناطق جلوس مطلّة على السحاب.
+        </p>
+        <p class="section-body">
+          تتكامل الخدمات عبر مواقف منظّمة ونقاط إرشاد ومقاهي مرتفعة، فيما
+          تستوعب الممرات المظلّلة والعربات الهوائية والزحاليق الجبلية تجارب
+          عائلية ومغامرات خفيفة.
+        </p>
+        <p class="section-body">
+          يُنصح بمتابعة أحوال الطقس والضباب، وارتداء ملابس دافئة في الأمسيات،
+          والالتزام بمسارات المشاة حفاظًا على البيئة.
+        </p>
+        <h4 class="section-subtitle">محطات رئيسية لرحلتك</h4>
+        <ul class="section-list">
+          <li>منصّات الإطلالة في السودة</li>
+          <li>مسارات المشي والهايكنغ</li>
+          <li>مناطق استجمام وسط الغابات</li>
+          <li>أنشطة المغامرة الخفيفة</li>
+          <li>نقاط الإرشاد والخدمات</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- عسير اليوم -->
+  <section class="section" id="modern-kingdom">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi3.jpg"
+          alt="عسير الحديثة — مطار وخدمات ومنتزهات"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">عسير اليوم</h2>
+        <h3 class="section-subtitle">وصول ميسّر وتجربة طبيعية وثقافية</h3>
+        <p class="section-body">
+          ترتبط المنطقة عبر مطار أبها وشبكات طرق تربط المرتفعات بسهول تهامة،
+          مع ممرات حضرية ومتنزهات منظمة ومسارات درّاجات ومناطق فعّاليات موسمية.
+        </p>
+        <p class="section-body">
+          تدعم التطبيقات والخرائط التفاعلية التخطيط للزيارة، من اختيار المسارات
+          إلى تعرّف النقاط الثقافية والمطاعم والأسواق.
+        </p>
+        <p class="section-body">
+          وتتكامل خيارات الضيافة بين المنتجعات الجبلية ودور الضيافة الريفية
+          لتقديم تجارب إقامة متنوّعة بإطلالات خضراء.
+        </p>
+        <ul class="section-list">
+          <li>مطار أبها الدولي</li>
+          <li>طرق تربط القمم بالسهول</li>
+          <li>متنزّهات حضرية وخدمات ذكية</li>
+          <li>فعاليات موسمية وأسواق حرفية</li>
+          <li>خيارات إقامة مطلّة على الجبال</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- قرية رجال ألمع -->
+  <section class="section" id="king-abdulaziz">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/King abdulaziz.jpg"
+          alt="قرية رجال ألمع — عمارة حجرية وهوية متجددة"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">قرية رجال ألمع التراثية</h2>
+        <h3 class="section-subtitle">حكاية حجارة وألوان وفنون</h3>
+        <p class="section-body">
+          تكشف رجال ألمع عن عمارة جبلية مميّزة ببيوتٍ حجرية مزوّقة ونوافذ خشبية
+          وأزقّة صاعدة. تتجاور المتاحف الصغيرة والمسارح المفتوحة مع المقاهي
+          والأسواق المحلية في تجربةٍ ثقافية حيّة.
+        </p>
+        <p class="section-body">
+          تُناسب الزيارة ساعات العصر والمساء، مع أحذية مريحة واستكشافٍ على مهل،
+          واحترام لخصوصية الأهالي والحفاظ على نظافة المكان.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- أبها: قلب المنطقة -->
+  <section class="section" id="kings">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/kings/king saud.jpg" alt="أبها — حدائق وممشى وإطلالات" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">أبها — قلب عسير</h2>
+        <h3 class="section-subtitle">حدائق مرتفعة وممشى وإطلالات</h3>
+        <p class="section-body">
+          تحتضن أبها متنزّهات مطلّة مثل أبو خيال وممشى السحاب، إلى جانب
+          بحيرة السد ومناطق جلوس ومقاهٍ ذات شرفات مفتوحة على الوديان.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- قرية المفتاحة للفنون -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king faisal.jpg"
+          alt="قرية المفتاحة — جداريات ومعارض"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">قرية المفتاحة للفنون</h2>
+        <h3 class="section-subtitle">جداريات ومعارض ومسارح صغيرة</h3>
+        <p class="section-body">
+          يقدّم الحيّ مشهدًا فنيًا نابضًا من جداريات ومعارض وأمسيات ثقافية،
+          مع ورش وحِرف محلية ومساحات تصوير مفتوحة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- متنزه عسير الوطني -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king khalid.jpg"
+          alt="متنزه عسير الوطني — مسارات ومناظر عليا"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">متنزّه عسير الوطني</h2>
+        <h3 class="section-subtitle">مسارات طبيعية ونِقاط مشاهدة</h3>
+        <p class="section-body">
+          يوفّر المتنزّه مسارات مشي ومناطق تخييم ونقاط مشاهدة على القمم
+          والأودية، مع لوحات تعريفية وإرشادات للسلوك البيئي الآمن.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- عربات أبها الهوائية -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king fahad.jpg"
+          alt="عربات أبها الهوائية — انتقال بانورامي"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">العربات الهوائية في أبها</h2>
+        <h3 class="section-subtitle">ربط المشاهد العالية بالمتنزّهات</h3>
+        <p class="section-body">
+          تمنح العربات الهوائية انتقالًا بانوراميًا بين القمم والمتنزّهات،
+          ويُنصح بالاطلاع على ساعات التشغيل وحجز التذاكر في المواسم.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- تهامة عسير والساحل -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king abdullah.jpg"
+          alt="تهامة وساحل عسير — من الجبل إلى البحر"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">تهامة عسير والساحل</h2>
+        <h3 class="section-subtitle">تنوّع مناخي ومشاهد متبدّلة</h3>
+        <p class="section-body">
+          من قمم السروات إلى سهول تهامة وسواحل عسير، تتبدّل المشاهد والمناخ
+          في ساعاتٍ قليلة. تُشكّل القرى التهامية وأسواقها محطة مغايرة لتجربة
+          الجبل، مع أطباق بحرية ومحاصيل موسمية.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- المأكولات والأسواق -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king salman.jpg"
+          alt="المأكولات والأسواق — ذائقة محلية وتجارب عائلية"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">المأكولات والأسواق</h2>
+        <h3 class="section-subtitle">ذائقة محلية وتجارب عائلية</h3>
+        <p class="section-body">
+          تُعرف عسير بأطباقها التقليدية ومخابزها الريفية وأسواقها الأسبوعية
+          التي تجمع منتجات المزارع والحرف اليدوية، في أجواء عائلية ممتعة.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
 
     <script src="../scripts/Script.js"></script>
   </body>

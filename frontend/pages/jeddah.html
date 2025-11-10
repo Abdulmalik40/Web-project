@@ -10,10 +10,62 @@
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
     <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/chatbot.css">
+    <script src="../scripts/chatbot.js" defer></script>
     <script src="../scripts/header-component.js" defer></script>
   </head>
   <body>
+     <!-- chatbot toggle button -->
+    <button id="chatbot-toggler">
+      <span class="material-symbols-outlined">mode_comment</span>
+      <span class="material-symbols-rounded">close</span>
+    </button>
+
+    <!-- chatbot container -->
+    <div class="chatbot-popup">
+      <!-- header -->
+      <div class="chat-header">
+        <div class="header-info">
+          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <h2 class="logo-text">Saudi Tourism Bot</h2>
+        </div>
+        <button id="close-chatbot" class="material-symbols-rounded">
+          keyboard_arrow_down
+        </button>
+      </div>
+
+      <!-- chat body -->
+      <div class="chat-body">
+        <div class="message bot-message">
+          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <div dir="rtl" class="message-text">
+            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
+          </div>
+        </div>
+      </div>
+
+      <!-- chat footer -->
+      <div class="chat-footer">
+        <form action="#" class="chat-form">
+          <textarea dir="rtl"
+            placeholder="اكتب سؤالك عن السياحة في السعودية..."
+            class="message-input"
+            required
+          ></textarea>
+          <div class="chat-controls">
+            <button type="submit" id="send-message" class="material-symbols-rounded">
+              arrow_upward
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <header class="header" id="header" data-header-placeholder>
       <div class="header-inner">
         <div class="brand" aria-label="Saudi Tourism">
@@ -105,9 +157,281 @@
       </div>
     </section>
 
-    <main class="banner">
-      <section class="destinations-grid"></section>
-    </main>
+    <main dir="rtl" class="history-container">
+  <!-- Replace the entire <section class="section" id="first-state"> with this -->
+  <section class="section" id="first-state">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi1.png"
+          alt="جدة — عروس البحر الأحمر"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">جدة – عروس البحر الأحمر</h2>
+        <h3 class="section-subtitle">نبذة تاريخية موجزة</h3>
+        <p class="section-body">
+          ارتبط اسم جدة بالبحر والتجارة والضيافة منذ قرون؛ فهي بوابة الحجاز
+          ومرفأ الحجاج والزوار. ومع تحوّلاتها العمرانية الحديثة، ظلت المدينة
+          محافظةً على روحها البحرية وأسواقها التراثية ونبضها الثقافي.
+        </p>
+        <p class="section-body">
+          شهدت جدة موجات تطوير شاملة لأنسنة الأحياء والواجهة البحرية وشبكات
+          الطرق والممرات، فغدت تجربة الزيارة أكثر سلاسة وجودة، مع تكامل بين
+          التاريخ والهوية من جهة، والبنية التحتية والخدمات الذكية من جهة أخرى.
+        </p>
+        <p class="section-body">
+          اليوم تقدّم جدة تجربة متوازنة: سياحة بحرية وثقافية وفنية على مدار
+          العام، ومشهدًا طهويًا متنوعًا، وفعاليات موسمية على الكورنيش ومحاور
+          المدينة الحديثة.
+        </p>
+        <p class="section-body">
+          وتستمر مشاريع الارتقاء الحضري في رفع جودة الحياة، مع عناية خاصة
+          بالمساحات المفتوحة والفنون العامة وتجربة المشاة.
+        </p>
+        <h4 class="section-subtitle">أبرز ما يميّز جدة</h4>
+        <ul class="section-list">
+          <li>الواجهة البحرية والكورنيش الشمالي</li>
+          <li>جدة التاريخية (البلد) وبيوتها التراثية</li>
+          <li>الفعاليات الموسمية والفنون العامة</li>
+          <li>المطاعم والمقاهي ذات المذاقات العالمية</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- الواجهة البحرية -->
+  <section class="section" id="second-state">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi2.jpg"
+          alt="الواجهة البحرية — كورنيش جدة"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">الواجهة البحرية والكورنيش</h2>
+        <h3 class="section-subtitle">ممشى ممتد ومسارات وأنشطة بحرية</h3>
+        <p class="section-body">
+          يمتد كورنيش جدة بمسارات مشي وركوب دراجات وحدائق مفتوحة ومناطق لعب
+          للأطفال، مع منصات إطلالة على البحر ومراسي قوارب ومطاعم مطلة على
+          الواجهة.
+        </p>
+        <p class="section-body">
+          تتوزع على الكورنيش أعمال فنية ونوافير ومناطق فعاليات موسمية، إلى جانب
+          محطات جلوس وأنفاق عبور وخدمات مرافق تعزز راحة الزائر.
+        </p>
+        <p class="section-body">
+          كما تتكامل مع الكورنيش مناطق تجارية ومطاعم عالمية ومقاهي بإطلالات
+          بحرية، ما يصنع تجربة نزهة متكاملة للعائلات والزوار.
+        </p>
+        <p class="section-body">
+          وتتوفر حلول مواقف وتنظيم حركة ذكية تتيح انسيابية الوصول وتوزيع
+          الحشود في مواسم الإقبال.
+        </p>
+        <h4 class="section-subtitle">تجربتك على الواجهة</h4>
+        <ul class="section-list">
+          <li>ممشى الكورنيش الشمالي</li>
+          <li>المناطق الخضراء وحدائق العائلات</li>
+          <li>المطاعم والمقاهي المطلة على البحر</li>
+          <li>المراسي والأنشطة البحرية</li>
+          <li>العروض والفعاليات الموسمية</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- جدة اليوم -->
+  <section class="section" id="modern-kingdom">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi3.jpg"
+          alt="جدة الحديثة — مطار وقطار وفنون"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">جدة اليوم</h2>
+        <h3 class="section-subtitle">وصول سهل وخدمات ذكية وتجربة نابضة</h3>
+        <p class="section-body">
+          ترتبط جدة بالعالم عبر مطار الملك عبدالعزيز الدولي، وبالمدن المجاورة
+          عبر قطار الحرمين السريع وشبكات طرق دائرية حديثة.
+        </p>
+        <p class="section-body">
+          تستقبل المدينة زوارها بفنادق ومنتجعات ومراكز تسوق رئيسية، إلى جانب
+          أحياء حديثة ومساحات عامة أنسنت التجربة الحضرية.
+        </p>
+        <p class="section-body">
+          وتعزّز الخدمات الرقمية الإرشاد والتنقل والاختيار، مع خرائط تفاعلية
+          وتحديثات للفعاليات والأنشطة.
+        </p>
+        <p class="section-body">
+          وتتكامل الفنون العامة والبرامج الثقافية في صقل هوية المدينة وشخصيتها
+          البحرية المعاصرة.
+        </p>
+        <ul class="section-list">
+          <li>مطار الملك عبدالعزيز الدولي (T1)</li>
+          <li>قطار الحرمين — محطات مطار جدة والمدينة</li>
+          <li>الطرق الدائرية ومحاور الوصول للكورنيش</li>
+          <li>خدمات الإرشاد والخرائط التفاعلية</li>
+          <li>فعاليات فنية وثقافية على مدار العام</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- جدة التاريخية (البلد) -->
+  <section class="section" id="king-abdulaziz">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/King abdulaziz.jpg"
+          alt="جدة التاريخية — البلد"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">جدة التاريخية (البلد)</h2>
+        <h3 class="section-subtitle">أزقة وأسواق وبيوت تراثية</h3>
+        <p class="section-body">
+          تحتفظ “البلد” بملامح جدة القديمة: بيوت حجريّة وشبابيك روشان مزخرفة
+          وأزقة وأسواق عتيقة تروي سيرة البحر والتجارة والضيافة.
+        </p>
+        <p class="section-body">
+          بين بيوت تاريخية مثل بيت نصيف ومقاهي وساحات متجددة، سيجد الزائر
+          تجربة ثقافية حيّة تتجاور فيها الذاكرة مع العروض الفنية والمهرجانات.
+        </p>
+        <p class="section-body">
+          يُنصح بالزيارة مساءً لاعتدال الأجواء وازدهار الحركة، مع الالتزام
+          بإرشادات الحفاظ على المواقع التراثية.
+        </p>
+        <h4 class="section-subtitle">نصائح قبل الزيارة</h4>
+        <p class="section-body">
+          ارتداء أحذية مريحة، استكشاف الأزقة على مهل، الاستفادة من الجولات
+          الإرشادية، وتوثيق التجربة بالصور مع احترام خصوصية السكان.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- نافورة الملك فهد -->
+  <section class="section" id="kings">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/kings/king saud.jpg" alt="نافورة الملك فهد" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">نافورة الملك فهد</h2>
+        <h3 class="section-subtitle">أيقونة على ساحل البحر الأحمر</h3>
+        <p class="section-body">
+          تُعد النافورة معلمًا بصريًا ليلًا، يمكن مشاهدتها من عدة نقاط على
+          الكورنيش؛ وتحيط بها مساحات جلوس وممشى وإطلالات بحرية مفتوحة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- متحف جدة للمجسمات والفنون العامة -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king faisal.jpg"
+          alt="متحف جدة للمجسمات — فنون عامة"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">متحف جدة للمجسمات</h2>
+        <h3 class="section-subtitle">حديقة مفتوحة للفن المعاصر</h3>
+        <p class="section-body">
+          يضم المتحف المفتوح أعمالًا نحتية لفنانين عالميين ومحليين على امتداد
+          الكورنيش، ما يجعل النزهة تجربة ثقافية ومشهدية في الوقت ذاته.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- مسجد الرحمة (المسجد العائم) -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king khalid.jpg"
+          alt="مسجد الرحمة — المسجد العائم"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">مسجد الرحمة (المسجد العائم)</h2>
+        <h3 class="section-subtitle">هندسة بحرية وإطلالة صفاء</h3>
+        <p class="section-body">
+          يُعد مسجد الرحمة من أشهر معالم جدة البحرية؛ تتماهى قبابه البيضاء مع
+          زرقة البحر، ويمنح زواره لحظات روحية على صفحة الماء.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- آرت بروميناد ومرسى اليخوت -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king fahad.jpg"
+          alt="ممشى آرت بروميناد ومرسى اليخوت"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">ممشى آرت بروميناد ومرسى اليخوت</h2>
+        <h3 class="section-subtitle">مطاعم وإطلالات ومراسي حديثة</h3>
+        <p class="section-body">
+          تتجاور المطاعم الراقية والمقاهي مع مراسي اليخوت ومناطق فعاليات، لتصنع
+          أمسية حضرية بإطلالات بحرية ومشهد معماري معاصر.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- مراكز التسوق والمشهد الطهوي -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king abdullah.jpg"
+          alt="مراكز التسوق والمطاعم في جدة"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">التسوق والمشهد الطهوي</h2>
+        <h3 class="section-subtitle">تجارب عالمية بنكهات بحرية</h3>
+        <p class="section-body">
+          من مراكز التسوق الكبرى إلى المطاعم المحلية والعالمية، تقدّم جدة
+          مزيجًا طهويًا واسع الخيارات؛ من الأسماك الطازجة إلى المطابخ
+          العالمية، في أجواء عائلية على امتداد المدينة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- الرياضة والفعاليات -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king salman.jpg"
+          alt="الفعاليات والرياضة في جدة"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">الفعاليات والرياضة</h2>
+        <h3 class="section-subtitle">مواسم نابضة ومسارح متعددة</h3>
+        <p class="section-body">
+          تستضيف جدة فعاليات فنية ورياضية على مدار العام، مع مسارح ومنصات
+          خارجية ومناطق احتفالية، ما يجعل الزيارة متجددة في كل موسم.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
 
     <script src="../scripts/Script.js"></script>
   </body>

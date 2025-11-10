@@ -7,10 +7,62 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
     <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/chatbot.css">
+    <script src="../scripts/chatbot.js" defer></script>
     <script src="../scripts/header-component.js" defer></script>
   </head>
   <body>
+     <!-- chatbot toggle button -->
+    <button id="chatbot-toggler">
+      <span class="material-symbols-outlined">mode_comment</span>
+      <span class="material-symbols-rounded">close</span>
+    </button>
+
+    <!-- chatbot container -->
+    <div class="chatbot-popup">
+      <!-- header -->
+      <div class="chat-header">
+        <div class="header-info">
+          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <h2 class="logo-text">Saudi Tourism Bot</h2>
+        </div>
+        <button id="close-chatbot" class="material-symbols-rounded">
+          keyboard_arrow_down
+        </button>
+      </div>
+
+      <!-- chat body -->
+      <div class="chat-body">
+        <div class="message bot-message">
+          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <div dir="rtl" class="message-text">
+            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
+          </div>
+        </div>
+      </div>
+
+      <!-- chat footer -->
+      <div class="chat-footer">
+        <form action="#" class="chat-form">
+          <textarea dir="rtl"
+            placeholder="اكتب سؤالك عن السياحة في السعودية..."
+            class="message-input"
+            required
+          ></textarea>
+          <div class="chat-controls">
+            <button type="submit" id="send-message" class="material-symbols-rounded">
+              arrow_upward
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <header class="header" id="header" data-header-placeholder>
       <div class="header-inner">
         <div class="brand" aria-label="Saudi Tourism">
@@ -81,10 +133,274 @@
       <div class="scroll-indicator"><div class="scroll-arrow"></div><span>Scroll to Explore</span></div>
     </section>
 
-    <main class="banner">
-      <section class="destinations-grid">
-      </section>
-    </main>
+    <main dir="rtl" class="history-container">
+  <!-- Replace the entire <section class="section" id="first-state"> with this -->
+  <section class="section" id="first-state">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi1.png"
+          alt="المدينة المنورة — المسجد النبوي ومعالمها"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">المدينة المنورة – طيبة الطيبة</h2>
+        <h3 class="section-subtitle">نبذة تاريخية موجزة</h3>
+        <p class="section-body">
+          تكتسب المدينة المنورة مكانتها من الهجرة النبوية وبناء المسجد النبوي،
+          حيث تأسست أول نواة للدولة الإسلامية وقيمها في الإدارة والعدل
+          والمؤاخاة. ومنذ ذلك التاريخ ظلت طيبة مقصدًا للعلم والعبادة وموطنًا
+          للسكينة والضيافة.
+        </p>
+        <p class="section-body">
+          توالت على المدينة توسعات عمرانية منظّمة حافظت على أصالتها، وطالت
+          ساحات المسجد النبوي ومرافقه وشبكات الطرق والإرشاد، ما جعل الحركة
+          والانسيابية أكثر يسرًا للزوار على مدار العام.
+        </p>
+        <p class="section-body">
+          تجمع المدينة اليوم بين روحانية المكان ومنظومات خدمة ذكية؛ من النقل
+          والضيافة والخرائط التفاعلية إلى إدارة الحشود وجودة الحياة للساكنين
+          والزوّار.
+        </p>
+        <p class="section-body">
+          وتستمر مشاريع التطوير في تعزيز التجربة الإنسانية والإيمانية، مع صون
+          المواقع التاريخية وإحيائها بمحتوى ثقافي ومعرفي.
+        </p>
+        <h4 class="section-subtitle">معالم تاريخية بارزة</h4>
+        <ul class="section-list">
+          <li>المسجد النبوي والروضة الشريفة</li>
+          <li>البقيع ومواقع الصحابة</li>
+          <li>مسجد قباء — أول مسجد أُسِّس في الإسلام</li>
+          <li>مسجد القبلتين وموقع الخندق (جبل سلع)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- المسارات الإيمانية والمعالم المحيطة -->
+  <section class="section" id="second-state">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi2.jpg"
+          alt="المعالم الإيمانية — قباء والقبلتين والخندق"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">المسارات الإيمانية</h2>
+        <h3 class="section-subtitle">قباء والقبلتين والخندق وميقات ذي الحليفة</h3>
+        <p class="section-body">
+          تمتد حول المسجد النبوي مواقع إيمانية تروي فصول السيرة: قباء والقبلتين
+          وجبل سلع (موقع الخندق) وميقات ذي الحليفة (أبيار علي). تتكامل فيها
+          خدمات الإرشاد والتنقل والضيافة لضمان تجربة هادئة ومنظّمة.
+        </p>
+        <p class="section-body">
+          تتوافر مسارات مشاة ومواقف خارجية ونقل ترددي، مع لوحات تعريفية
+          باللغتين وإرشادات تخص السلوك العام واحترام خصوصية الأحياء التاريخية.
+        </p>
+        <p class="section-body">
+          تُساند التجربة تطبيقات توجيه رقمية لتحديد أوقات الذروة والمسارات
+          الأنسب، وتقديم معلومات موثوقة عن المواقع وأثرها في تاريخ الإسلام.
+        </p>
+        <p class="section-body">
+          يُراعى لباس محتشم، والمحافظة على نظافة المواقع، وعدم إعاقة حركة
+          المصلين والزوّار.
+        </p>
+        <h4 class="section-subtitle">محطات رئيسية لرحلتك</h4>
+        <ul class="section-list">
+          <li>مسجد قباء — زيارة وصلاة ركعتين</li>
+          <li>مسجد القبلتين — قصة تحويل القبلة</li>
+          <li>موقع الخندق — جبل سلع</li>
+          <li>ميقات ذي الحليفة (أبيار علي) — الإحرام للعمرة</li>
+          <li>مراكز الإرشاد والدعم التطوعي</li>
+          <li>حلول النقل الترددي ومواقف الأطراف</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- المدينة اليوم -->
+  <section class="section" id="modern-kingdom">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/cities/Saudi3.jpg"
+          alt="المدينة الحديثة — نقل وخدمات ذكية"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">المدينة اليوم</h2>
+        <h3 class="section-subtitle">وصول ميسّر ومنظومة خدمات متكاملة</h3>
+        <p class="section-body">
+          ترتبط المدينة عبر مطار الأمير محمد بن عبدالعزيز الدولي، وقطار الحرمين
+          السريع، وشبكة طرق دائرية وأنفاق تُيسّر الوصول للساحات المحيطة
+          بالمسجد النبوي.
+        </p>
+        <p class="section-body">
+          ظلّت المظلات العملاقة في الساحات نموذجًا للهندسة المكيّفة
+          والرحابة، مع مسارات منظمة للمشاة وأماكن انتظار وخدمات لكبار السن
+          وذوي الإعاقة.
+        </p>
+        <p class="section-body">
+          تدعم التطبيقات الذكية والخرائط التفاعلية اتخاذ القرار في أوقات
+          الزيارة والانتقال بين المواقع، مع تحديثات آنية لحركة الحشود.
+        </p>
+        <p class="section-body">
+          وتزخر المدينة بخيارات ضيافة متنوعة وأسواق تراثية ومطابخ محلية
+          تعزّز تجربة الضيف وتُقارب ذائقته.
+        </p>
+        <ul class="section-list">
+          <li>قطار الحرمين — محطة المدينة</li>
+          <li>مطار الأمير محمد بن عبدالعزيز (الصالة الحديثة)</li>
+          <li>الساحات المظللة حول المسجد النبوي</li>
+          <li>أنفاق ومسارات مشاة منسّقة</li>
+          <li>خدمات الإرشاد والخرائط التفاعلية</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- جبل أحد -->
+  <section class="section" id="king-abdulaziz">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/King abdulaziz.jpg"
+          alt="جبل أحد — سيرة وشواهد"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">جبل أحد</h2>
+        <h3 class="section-subtitle">سيرة وشواهد على صفحة التاريخ</h3>
+        <p class="section-body">
+          يحمل جبل أحد رمزية خاصة في السيرة النبوية. يزور الضيوف المنطقة
+          بتؤدة واحترام، ويطّلعون على الدروس المستفادة من الأحداث التاريخية
+          ومكانتها في الوعي الإسلامي.
+        </p>
+        <p class="section-body">
+          يُنصح بالزيارة في أوقات معتدلة واتباع مسارات المشاة واللوحات
+          الإرشادية، مع المحافظة على نظافة الموقع.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- وادي العقيق -->
+  <section class="section" id="kings">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/kings/king saud.jpg" alt="وادي العقيق التاريخي" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">وادي العقيق</h2>
+        <h3 class="section-subtitle">طبيعة وتاريخ وروح المدينة</h3>
+        <p class="section-body">
+          يُعد وادي العقيق من أشهر أودية المدينة، ارتبط بذكريات تاريخية
+          وروح المكان. تتوافر في محيطه مساحات للنزهة الهادئة ومسارات خضراء
+          عند اعتدال الأجواء.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- مسجد قباء -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king faisal.jpg"
+          alt="مسجد قباء"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">مسجد قباء</h2>
+        <h3 class="section-subtitle">أول مسجد في الإسلام</h3>
+        <p class="section-body">
+          زيارة قباء محطة إيمانية أصيلة؛ يمتاز بتنظيمه وخدماته وساحاته
+          الرحبة ومواقف قريبة ومسارات مشاة منسّقة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- مسجد القبلتين -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king khalid.jpg"
+          alt="مسجد القبلتين"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">مسجد القبلتين</h2>
+        <h3 class="section-subtitle">قصة تحويل القبلة</h3>
+        <p class="section-body">
+          يعرّف المسجد الزائرين بواقعة تحويل القبلة، مع قاعات صلاة
+          منظّمة وخدمات إرشاد ومواقف مخصصة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ميقات ذي الحليفة (أبيار علي) -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img src="../assets/images/kings/king fahad.jpg" alt="ميقات ذي الحليفة — أبيار علي" />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">ميقات ذي الحليفة (أبيار علي)</h2>
+        <h3 class="section-subtitle">منصة جاهزية للإحرام</h3>
+        <p class="section-body">
+          يُعد أقرب المواقيت لسكان المدينة للعمرة، ويضم مرافق وخدمات
+          متكاملة تسهّل على المعتمرين الإحرام والتنقّل بأريحية.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- الأسواق والمأكولات -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king abdullah.jpg"
+          alt="أسواق ومأكولات المدينة"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">الأسواق والمشهد الطهوي</h2>
+        <h3 class="section-subtitle">نكهات محلية وتجارب عائلية</h3>
+        <p class="section-body">
+          من سوق قباء إلى المجمعات الحديثة، تقدّم المدينة خيارات طهوية
+          محلية وعالمية، مع مقاهٍ عائلية وأجواء هادئة بعد أوقات الصلاة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- الفعاليات والمسارات الحضرية -->
+  <section class="section">
+    <div class="section-content">
+      <div class="section-image">
+        <img
+          src="../assets/images/kings/king salman.jpg"
+          alt="الفعاليات والمسارات الحضرية"
+        />
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">الفعاليات والمسارات الحضرية</h2>
+        <h3 class="section-subtitle">ممشى الهجرة وحدائق وأنشطة موسمية</h3>
+        <p class="section-body">
+          تحتضن المدينة ممرات مشاة وحدائق ومناطق فعاليات موسمية، ما يعزز
+          جودة الحياة ويوفّر بدائل نزهة هادئة للأسَر والزوار.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
 
     <script src="../scripts/Script.js"></script>
   </body>
