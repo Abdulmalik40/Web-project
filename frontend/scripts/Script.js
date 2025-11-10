@@ -1,32 +1,37 @@
 // Theme Toggle Functionality
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
-
-// Check for saved theme or default to light
-const savedTheme = localStorage.getItem('theme') || 'light';
-body.setAttribute('data-theme', savedTheme);
-updateThemeToggle(savedTheme);
-
-// Theme toggle event listener
-themeToggle.addEventListener('click', () => {
-  const currentTheme = body.getAttribute('data-theme');
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+// Only initialize if not already initialized by header-component.js
+if (document.getElementById('themeToggle') && !document.documentElement.hasAttribute('data-theme-initialized')) {
+  const themeToggle = document.getElementById('themeToggle');
   
-  // Add smooth transition
-  body.style.transition = 'all 0.3s ease';
-  body.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-  updateThemeToggle(newTheme);
+  // Check for saved theme or default to dark (matching header component)
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  document.documentElement.setAttribute('data-theme-initialized', 'true');
+  updateThemeToggle(savedTheme);
   
-  // Remove transition after animation
-  setTimeout(() => {
-    body.style.transition = '';
-  }, 300);
-});
-
-// Update theme toggle button text and icon
-function updateThemeToggle(theme) {
-  themeToggle.innerHTML = theme === 'dark' ? '☀️ Light' : '🌙 Dark';
+  // Theme toggle event listener
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    // Add smooth transition
+    document.body.style.transition = 'all 0.3s ease';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeToggle(newTheme);
+    
+    // Remove transition after animation
+    setTimeout(() => {
+      document.body.style.transition = '';
+    }, 300);
+  });
+  
+  // Update theme toggle button text and icon
+  function updateThemeToggle(theme) {
+    if (themeToggle) {
+      themeToggle.textContent = theme === 'dark' ? '☀️ Light' : '🌙 Dark';
+    }
+  }
 }
 
 // Header scroll effect with enhanced animations

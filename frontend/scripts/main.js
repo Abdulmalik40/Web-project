@@ -1,11 +1,14 @@
 // frontend/scripts/main.js
 // Main JavaScript loader - using the original complete Script.js
 
+// Import i18n module first
+import './modules/i18n.js';
+
 // Import the original complete Script.js file
 import './Script.js';
 
-// Import dropdown functionality fix
-import './dropdown-fix.js';
+// Import dropdown functionality fix (temporarily disabled to test language switcher)
+// import './dropdown-fix.js';
 
 // Initialize page loading animation
 document.addEventListener('DOMContentLoaded', () => {

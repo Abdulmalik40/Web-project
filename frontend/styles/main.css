@@ -7,6 +7,7 @@
 
 /* Import header component */
 @import 'components/_header.css';
+@import 'components/_header-overrides.css';
 
 /* Import UI examples and components */
 @import 'components/_saudi-ui-examples.css';
@@ -14,6 +15,9 @@
 /* Import page-specific styles */
 @import 'pages/_history.css';
 @import 'pages/map.css';
+
+/* Import RTL support */
+@import 'utils/_rtl.css';
 
 /* Import the complete original styles.css file */
 @import 'styles.css';
