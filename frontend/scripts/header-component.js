@@ -25,36 +25,47 @@
         <div class="brand" aria-label="Saudi Tourism">
           <div class="brand-mark" aria-hidden="true"></div>
           <div>
-            <div class="brand-title">Visit Saudi Arabia</div>
-            <div class="brand-sub">Explore regions, heritage, and faith</div>
+            <div class="brand-title" data-i18n="header.brandTitle">Visit Saudi Arabia</div>
+            <div class="brand-sub" data-i18n="header.brandSub">Explore regions, heritage, and faith</div>
           </div>
         </div>
 
         <div class="nav-container">
           <button
+            class="language-toggle"
+            id="language-switcher"
+            aria-label="Toggle language"
+            title="Switch Language"
+          >
+            <span class="lang-icon">🌐</span>
+            <span class="lang-text" data-i18n="common.language">Language</span>
+          </button>
+
+          <button
             class="theme-toggle"
             id="themeToggle"
             aria-label="Toggle theme"
           >
-            🌙 Dark
+            <span class="theme-icon">🌙</span>
+            <span class="theme-text" data-i18n="common.dark">Dark</span>
           </button>
 
           <nav class="nav" aria-label="Main Navigation">
-            <div class="item"><a href="${getLink('home')}">Home</a></div>
+            <div class="item"><a href="${getLink('home')}" data-i18n="common.home">Home</a></div>
             <div class="item">
-              <a href="map-interactive.html">Interactive Map</a>
+              <a href="map-interactive.html" data-i18n="common.interactiveMap">Interactive Map</a>
             </div>
-            <div class="item"><a href="${getLink('religious')}">Religious Sites</a></div>
-            <div class="item"><a href="history.html">History</a></div>
-            <div class="item"><a href="${getLink('heritage')}">Heritage</a></div>
-            <div class="item"><a href="${getLink('regions')}">Regions</a></div>
+            <div class="item"><a href="${getLink('religious')}" data-i18n="common.religiousSites">Religious Sites</a></div>
+            <div class="item"><a href="history.html" data-i18n="common.history">History</a></div>
+            <div class="item"><a href="${getLink('heritage')}" data-i18n="common.heritage">Heritage</a></div>
+            <div class="item"><a href="${getLink('regions')}" data-i18n="common.regions">Regions</a></div>
             <div class="item has-dropdown">
-              <a href="islamic-guide.html">Islamic Guide ▾</a>
+              <a href="islamic-guide.html" data-i18n="common.islamicGuide">Islamic Guide ▾</a>
               <div class="dropdown" role="menu">
-                <a href="qibla.html" role="menuitem">Qibla Finder</a>
-                <a href="prayer-times.html" role="menuitem">Prayer Times</a>
-                <a href="quran.html" role="menuitem">Quran & Du'a</a>
-                <a href="mosques.html" role="menuitem">Nearby Mosques</a>
+                <a href="qibla.html" role="menuitem" data-i18n="common.qiblaFinder">Qibla Finder</a>
+                <a href="prayer-times.html" role="menuitem" data-i18n="common.prayerTimes">Prayer Times</a>
+                <a href="quran.html" role="menuitem" data-i18n="common.quran">Quran & Du'a</a>
+                <a href="mosques.html" role="menuitem" data-i18n="common.nearbyMosques">Nearby Mosques</a>
               </div>
             </div>
           </nav>
@@ -109,6 +120,14 @@
     initThemeToggle();
     initHeaderScroll();
     initDropdownHandlers();
+    initLanguageSwitcher();
+    
+    // Refresh translations if i18n is available
+    if (window.i18n) {
+      setTimeout(() => {
+        window.i18n.refresh();
+      }, 100);
+    }
   }
 
   // Initialize theme toggle
@@ -137,7 +156,27 @@
   function updateThemeButton(theme) {
     const themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
-      themeToggle.textContent = theme === 'dark' ? '☀️ Light' : '🌙 Dark';
+      const icon = themeToggle.querySelector('.theme-icon');
+      const text = themeToggle.querySelector('.theme-text');
+      if (icon) {
+        icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      }
+      // Text will be updated by i18n module
+      if (text) {
+        text.setAttribute('data-i18n', theme === 'dark' ? 'common.light' : 'common.dark');
+      }
+    }
+  }
+
+  // Initialize language switcher
+  function initLanguageSwitcher() {
+    const langSwitcher = document.getElementById('language-switcher');
+    if (langSwitcher && window.i18n) {
+      langSwitcher.addEventListener('click', () => {
+        const currentLang = window.i18n.getLanguage();
+        const newLang = currentLang === 'en' ? 'ar' : 'en';
+        window.i18n.setLanguage(newLang);
+      });
     }
   }
 

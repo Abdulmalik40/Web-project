@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,7 +33,7 @@
       <div class="chat-header">
         <div class="header-info">
           <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
-          <h2 class="logo-text">Saudi Tourism Bot</h2>
+          <h2 class="logo-text" data-i18n="chatbot.title">Saudi Tourism Bot</h2>
         </div>
         <button id="close-chatbot" class="material-symbols-rounded">
           keyboard_arrow_down
@@ -44,8 +44,8 @@
       <div class="chat-body">
         <div class="message bot-message">
           <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
-          <div dir="rtl" class="message-text">
-            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
+          <div dir="auto" class="message-text" data-i18n="chatbot.greeting">
+            Hello, I'm Mutlaq, your personal assistant in choosing your next destination. How can I help you?
           </div>
         </div>
       </div>
@@ -53,8 +53,10 @@
       <!-- chat footer -->
       <div class="chat-footer">
         <form action="#" class="chat-form">
-          <textarea dir="rtl"
-            placeholder="اكتب سؤالك عن السياحة في السعودية..."
+          <textarea dir="auto"
+            data-i18n="chatbot.placeholder"
+            data-i18n-attr="placeholder"
+            placeholder="Ask your question about tourism in Saudi Arabia..."
             class="message-input"
             required
           ></textarea>
@@ -140,11 +142,11 @@
       <div class="hero-content">
         <div class="hero-text">
           <h1 class="hero-title">
-            <span class="title-line">DISCOVER</span>
-            <span class="title-line featured">SAUDI ARABIA</span>
-            <span class="title-line subtitle">THE FUTURE IS NOW</span>
+            <span class="title-line" data-i18n="hero.titleLine1">DISCOVER</span>
+            <span class="title-line featured" data-i18n="hero.titleLine2">SAUDI ARABIA</span>
+            <span class="title-line subtitle" data-i18n="hero.titleLine3">THE FUTURE IS NOW</span>
           </h1>
-          <p class="hero-sub">
+          <p class="hero-sub" data-i18n="hero.subtitle">
             Journey through ancient heritage, futuristic cities, and sacred
             lands across the Kingdom of Saudi Arabia
           </p>
@@ -153,7 +155,7 @@
       </div>
       <div class="scroll-indicator">
         <div class="scroll-arrow"></div>
-        <span>Scroll to Explore</span>
+        <span data-i18n="common.scrollToExplore">Scroll to Explore</span>
       </div>
     </section>
 
@@ -164,15 +166,15 @@
             href="makkah.html"
             style="display: block; text-decoration: none; color: inherit"
           >
-            <span class="badge religious">Religious</span>
+            <span class="badge religious" data-i18n="destinations.religious">Religious</span>
             <img
               src="../assets/images/destinations/makkah1.jpg"
               alt="Makkah - The holy city"
               loading="lazy"
             />
             <div class="card-content">
-              <h3>Makkah</h3>
-              <p class="location">Holy City • Saudi Arabia</p>
+              <h3 data-i18n="destinations.makkah">Makkah</h3>
+              <p class="location"><span data-i18n="destinations.holyCity">Holy City</span> • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
             </div>
           </a>
         </article>
@@ -182,15 +184,15 @@
             href="madinah.html"
             style="display: block; text-decoration: none; color: inherit"
           >
-            <span class="badge religious">Religious</span>
+            <span class="badge religious" data-i18n="destinations.religious">Religious</span>
             <img
               src="../assets/images/destinations/madinah.png"
               alt="Madinah - The Prophet's city"
               loading="lazy"
             />
             <div class="card-content">
-              <h3>Madinah</h3>
-              <p class="location">Prophet's City • Saudi Arabia</p>
+              <h3 data-i18n="destinations.madinah">Madinah</h3>
+              <p class="location"><span data-i18n="destinations.prophetsCity">Prophet's City</span> • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
             </div>
           </a>
         </article>
@@ -200,15 +202,15 @@
             href="riyadh.html"
             style="display: block; text-decoration: none; color: inherit"
           >
-            <span class="badge capital">Capital</span>
+            <span class="badge capital" data-i18n="destinations.capital">Capital</span>
             <img
               src="../assets/images/destinations/Riyadh1.jpg"
               alt="Riyadh - Modern capital"
               loading="lazy"
             />
             <div class="card-content">
-              <h3>Riyadh</h3>
-              <p class="location">Capital City • Saudi Arabia</p>
+              <h3 data-i18n="destinations.riyadh">Riyadh</h3>
+              <p class="location"><span data-i18n="destinations.capitalCity">Capital City</span> • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
             </div>
           </a>
         </article>
@@ -218,15 +220,15 @@
             href="alkhobar.html"
             style="display: block; text-decoration: none; color: inherit"
           >
-            <span class="badge industrial">Industrial</span>
+            <span class="badge industrial" data-i18n="destinations.industrial">Industrial</span>
             <img
               src="../assets/images/destinations/alkobar.jpg"
               alt="Eastern Region - Industrial hub"
               loading="lazy"
             />
             <div class="card-content">
-              <h3>Eastern Region</h3>
-              <p class="location">Al-Khobar • Saudi Arabia</p>
+              <h3 data-i18n="destinations.easternRegion">Eastern Region</h3>
+              <p class="location">Al-Khobar • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
             </div>
           </a>
         </article>
@@ -236,15 +238,15 @@
             href="aseer.html"
             style="display: block; text-decoration: none; color: inherit"
           >
-            <span class="badge heritage">Heritage</span>
+            <span class="badge heritage" data-i18n="destinations.heritage">Heritage</span>
             <img
               src="../assets/images/destinations/baha.jpg"
               alt="Northern Region - Heritage sites"
               loading="lazy"
             />
             <div class="card-content">
-              <h3>Southern Region</h3>
-              <p class="location">Al-Baha • Saudi Arabia</p>
+              <h3 data-i18n="destinations.southernRegion">Southern Region</h3>
+              <p class="location">Al-Baha • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
             </div>
           </a>
         </article>
@@ -254,15 +256,15 @@
             href="alula.html"
             style="display: block; text-decoration: none; color: inherit"
           >
-            <span class="badge natural">Natural</span>
+            <span class="badge natural" data-i18n="destinations.natural">Natural</span>
             <img
               src="../assets/images/destinations/Tabuk.jpg"
               alt="Southern Region - Natural beauty"
               loading="lazy"
             />
             <div class="card-content">
-              <h3>Northern Region</h3>
-              <p class="location">Tabuk • Saudi Arabia</p>
+              <h3 data-i18n="destinations.northernRegion">Northern Region</h3>
+              <p class="location">Tabuk • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
             </div>
           </a>
         </article>
@@ -272,15 +274,15 @@
             href="land.html"
             style="display: block; text-decoration: none; color: inherit"
           >
-            <span class="badge futuristic">Future</span>
+            <span class="badge futuristic" data-i18n="destinations.future">Future</span>
             <img
               src="../assets/images/destinations/lands.jpg"
               alt="Lands - Future development projects"
               loading="lazy"
             />
             <div class="card-content">
-              <h3>Lands</h3>
-              <p class="location">Development Project • Saudi Arabia</p>
+              <h3 data-i18n="destinations.lands">Lands</h3>
+              <p class="location"><span data-i18n="destinations.developmentProject">Development Project</span> • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
             </div>
           </a>
         </article>
@@ -290,15 +292,15 @@
             href="jeddah.html"
             style="display: block; text-decoration: none; color: inherit"
           >
-            <span class="badge industrial">Jeddah</span>
+            <span class="badge industrial" data-i18n="destinations.jeddah">Jeddah</span>
             <img
               src="../assets/images/destinations/jeddah.avif"
               alt="Jeddah - Saudi Arabia"
               loading="lazy"
             />
             <div class="card-content">
-              <h3>Jeddah</h3>
-              <p class="location">Jeddah • Saudi Arabia</p>
+              <h3 data-i18n="destinations.jeddah">Jeddah</h3>
+              <p class="location"><span data-i18n="destinations.jeddah">Jeddah</span> • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
             </div>
           </a>
         </article>
@@ -306,9 +308,9 @@
 
       <section class="tour-plans" id="tour-plans">
         <div class="tour-plans__intro">
-          <span class="eyebrow">Curated Experiences</span>
-          <h2>Choose Your Ideal Saudi Tour Plan</h2>
-          <p>
+          <span class="eyebrow" data-i18n="tourPlans.eyebrow">Curated Experiences</span>
+          <h2 data-i18n="tourPlans.title">Choose Your Ideal Saudi Tour Plan</h2>
+          <p data-i18n="tourPlans.description">
             Whether you have a full month or just a couple of weeks, explore
             hand-crafted itineraries that balance heritage, spirituality, and
             adventure across the Kingdom.
@@ -323,17 +325,17 @@
               loading="lazy"
             />
             <div class="plan-card__content">
-              <span class="plan-duration">30 Days</span>
-              <h3>Grand 1-Month Saudi Discovery</h3>
-              <p>
+              <span class="plan-duration" data-i18n="tourPlans.days30">30 Days</span>
+              <h3 data-i18n="tourPlans.grandMonth">Grand 1-Month Saudi Discovery</h3>
+              <p data-i18n="tourPlans.grandMonthDesc">
                 Immerse yourself in every region with paced stays, iconic
                 landmarks, coastal retreats, and desert adventures tailored for
                 long-stay explorers.
               </p>
               <ul class="plan-highlights">
-                <li>Full Kingdom circuit with rest days</li>
-                <li>Spiritual visits in Makkah &amp; Madinah</li>
-                <li>Heritage villages, Red Sea leisure, NEOM vision</li>
+                <li data-i18n="tourPlans.grandMonthHighlight1">Full Kingdom circuit with rest days</li>
+                <li data-i18n="tourPlans.grandMonthHighlight2">Spiritual visits in Makkah &amp; Madinah</li>
+                <li data-i18n="tourPlans.grandMonthHighlight3">Heritage villages, Red Sea leisure, NEOM vision</li>
               </ul>
             </div>
           </a>
@@ -345,17 +347,17 @@
               loading="lazy"
             />
             <div class="plan-card__content">
-              <span class="plan-duration">14 Days</span>
-              <h3>Two-Week Highlights Journey</h3>
-              <p>
+              <span class="plan-duration" data-i18n="tourPlans.days14">14 Days</span>
+              <h3 data-i18n="tourPlans.twoWeek">Two-Week Highlights Journey</h3>
+              <p data-i18n="tourPlans.twoWeekDesc">
                 Perfect for travelers seeking a balanced mix of culture,
                 history, and modern marvels across the western and central
                 regions.
               </p>
               <ul class="plan-highlights">
-                <li>Historic cores of Jeddah, Makkah, Madinah</li>
-                <li>Capital city experiences and Diriyah evenings</li>
-                <li>Desert safari &amp; Asir mountain escape</li>
+                <li data-i18n="tourPlans.twoWeekHighlight1">Historic cores of Jeddah, Makkah, Madinah</li>
+                <li data-i18n="tourPlans.twoWeekHighlight2">Capital city experiences and Diriyah evenings</li>
+                <li data-i18n="tourPlans.twoWeekHighlight3">Desert safari &amp; Asir mountain escape</li>
               </ul>
             </div>
           </a>
@@ -367,16 +369,16 @@
               loading="lazy"
             />
             <div class="plan-card__content">
-              <span class="plan-duration">12 Days</span>
-              <h3>12-Day Coastal &amp; Heritage Escape</h3>
-              <p>
+              <span class="plan-duration" data-i18n="tourPlans.days12">12 Days</span>
+              <h3 data-i18n="tourPlans.coastal">12-Day Coastal &amp; Heritage Escape</h3>
+              <p data-i18n="tourPlans.coastalDesc">
                 A focused itinerary covering Red Sea indulgence, AlUla's
                 timeless landscapes, and immersive cultural workshops.
               </p>
               <ul class="plan-highlights">
-                <li>Red Sea resorts &amp; Jeddah waterfront</li>
-                <li>UNESCO marvels in AlUla and Mada'in Saleh</li>
-                <li>Hands-on crafts and culinary evenings</li>
+                <li data-i18n="tourPlans.coastalHighlight1">Red Sea resorts &amp; Jeddah waterfront</li>
+                <li data-i18n="tourPlans.coastalHighlight2">UNESCO marvels in AlUla and Mada'in Saleh</li>
+                <li data-i18n="tourPlans.coastalHighlight3">Hands-on crafts and culinary evenings</li>
               </ul>
             </div>
           </a>

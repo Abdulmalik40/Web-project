@@ -1,6 +1,9 @@
 // frontend/scripts/main.js
 // Main JavaScript loader - using the original complete Script.js
 
+// Import i18n module first
+import './modules/i18n.js';
+
 // Import the original complete Script.js file
 import './Script.js';
 

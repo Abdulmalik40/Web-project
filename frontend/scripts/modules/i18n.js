@@ -1,0 +1,176 @@
+/**
+ * Internationalization (i18n) Module
+ * Handles language switching and translations for English and Arabic
+ */
+
+class I18n {
+  constructor() {
+    this.currentLang = localStorage.getItem('language') || 'en';
+    this.translations = {};
+    this.observers = [];
+    this.init();
+  }
+
+  async init() {
+    await this.loadTranslations();
+    this.applyLanguage(this.currentLang);
+    this.setupLanguageSwitcher();
+  }
+
+  async loadTranslations() {
+    try {
+      const [enTranslations, arTranslations] = await Promise.all([
+        fetch('../locales/en.json').then(res => res.json()),
+        fetch('../locales/ar.json').then(res => res.json())
+      ]);
+      
+      this.translations = {
+        en: enTranslations,
+        ar: arTranslations
+      };
+    } catch (error) {
+      console.error('Error loading translations:', error);
+      // Fallback to empty translations
+      this.translations = { en: {}, ar: {} };
+    }
+  }
+
+  t(key, params = {}) {
+    const keys = key.split('.');
+    let value = this.translations[this.currentLang];
+    
+    for (const k of keys) {
+      value = value?.[k];
+      if (value === undefined) {
+        // Fallback to English if translation not found
+        value = this.translations.en;
+        for (const k2 of keys) {
+          value = value?.[k2];
+        }
+        break;
+      }
+    }
+    
+    // Replace parameters if provided
+    if (typeof value === 'string' && params) {
+      Object.keys(params).forEach(param => {
+        value = value.replace(`{{${param}}}`, params[param]);
+      });
+    }
+    
+    return value || key;
+  }
+
+  setLanguage(lang) {
+    if (lang !== 'en' && lang !== 'ar') {
+      console.warn(`Unsupported language: ${lang}. Defaulting to 'en'.`);
+      lang = 'en';
+    }
+    
+    this.currentLang = lang;
+    localStorage.setItem('language', lang);
+    this.applyLanguage(lang);
+    this.notifyObservers();
+  }
+
+  getLanguage() {
+    return this.currentLang;
+  }
+
+  applyLanguage(lang) {
+    // Update HTML lang attribute
+    document.documentElement.lang = lang;
+    
+    // Update dir attribute for RTL
+    if (lang === 'ar') {
+      document.documentElement.dir = 'rtl';
+      document.body.classList.add('rtl');
+      document.body.classList.remove('ltr');
+    } else {
+      document.documentElement.dir = 'ltr';
+      document.body.classList.add('ltr');
+      document.body.classList.remove('rtl');
+    }
+
+    // Translate all elements with data-i18n attribute
+    this.translateElements();
+  }
+
+  translateElements() {
+    const elements = document.querySelectorAll('[data-i18n]');
+    
+    elements.forEach(element => {
+      const key = element.getAttribute('data-i18n');
+      const translation = this.t(key);
+      
+      if (translation && translation !== key) {
+        // Check if element has data-i18n-attr attribute for custom attributes (priority)
+        if (element.hasAttribute('data-i18n-attr')) {
+          const attr = element.getAttribute('data-i18n-attr');
+          element.setAttribute(attr, translation);
+        }
+        // Check if element is input/textarea placeholder
+        else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+          if (element.hasAttribute('placeholder')) {
+            element.placeholder = translation;
+          } else {
+            element.value = translation;
+          }
+        }
+        // Default: set text content
+        else {
+          element.textContent = translation;
+        }
+      }
+    });
+
+    // Translate elements with data-i18n-html (for HTML content)
+    const htmlElements = document.querySelectorAll('[data-i18n-html]');
+    htmlElements.forEach(element => {
+      const key = element.getAttribute('data-i18n-html');
+      const translation = this.t(key);
+      if (translation && translation !== key) {
+        element.innerHTML = translation;
+      }
+    });
+  }
+
+  setupLanguageSwitcher() {
+    // This will be called after header is loaded
+    const switcher = document.getElementById('language-switcher');
+    if (switcher) {
+      switcher.addEventListener('click', () => {
+        const newLang = this.currentLang === 'en' ? 'ar' : 'en';
+        this.setLanguage(newLang);
+      });
+    }
+  }
+
+  // Observer pattern for components that need to react to language changes
+  subscribe(callback) {
+    this.observers.push(callback);
+  }
+
+  unsubscribe(callback) {
+    this.observers = this.observers.filter(obs => obs !== callback);
+  }
+
+  notifyObservers() {
+    this.observers.forEach(callback => callback(this.currentLang));
+  }
+
+  // Refresh translations (useful after dynamic content is added)
+  refresh() {
+    this.translateElements();
+  }
+}
+
+// Create global instance
+const i18n = new I18n();
+
+// Expose to window for header component and other scripts
+window.i18n = i18n;
+
+// Export for use in other modules
+export default i18n;
+

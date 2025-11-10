@@ -16,5 +16,8 @@
 @import 'pages/_history.css';
 @import 'pages/map.css';
 
+/* Import RTL support */
+@import 'utils/_rtl.css';
+
 /* Import the complete original styles.css file */
 @import 'styles.css';

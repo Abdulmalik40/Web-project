@@ -1,0 +1,81 @@
+{
+  "common": {
+    "home": "Home",
+    "interactiveMap": "Interactive Map",
+    "religiousSites": "Religious Sites",
+    "history": "History",
+    "heritage": "Heritage",
+    "regions": "Regions",
+    "islamicGuide": "Islamic Guide",
+    "qiblaFinder": "Qibla Finder",
+    "prayerTimes": "Prayer Times",
+    "quran": "Quran & Du'a",
+    "nearbyMosques": "Nearby Mosques",
+    "dark": "Dark",
+    "light": "Light",
+    "language": "Language",
+    "english": "English",
+    "arabic": "Arabic",
+    "scrollToExplore": "Scroll to Explore"
+  },
+  "header": {
+    "brandTitle": "Visit Saudi Arabia",
+    "brandSub": "Explore regions, heritage, and faith"
+  },
+  "hero": {
+    "titleLine1": "DISCOVER",
+    "titleLine2": "SAUDI ARABIA",
+    "titleLine3": "THE FUTURE IS NOW",
+    "subtitle": "Journey through ancient heritage, futuristic cities, and sacred lands across the Kingdom of Saudi Arabia"
+  },
+  "destinations": {
+    "religious": "Religious",
+    "capital": "Capital",
+    "industrial": "Industrial",
+    "heritage": "Heritage",
+    "natural": "Natural",
+    "future": "Future",
+    "jeddah": "Jeddah",
+    "holyCity": "Holy City",
+    "prophetsCity": "Prophet's City",
+    "capitalCity": "Capital City",
+    "saudiArabia": "Saudi Arabia",
+    "makkah": "Makkah",
+    "madinah": "Madinah",
+    "riyadh": "Riyadh",
+    "easternRegion": "Eastern Region",
+    "southernRegion": "Southern Region",
+    "northernRegion": "Northern Region",
+    "lands": "Lands",
+    "developmentProject": "Development Project"
+  },
+  "tourPlans": {
+    "eyebrow": "Curated Experiences",
+    "title": "Choose Your Ideal Saudi Tour Plan",
+    "description": "Whether you have a full month or just a couple of weeks, explore hand-crafted itineraries that balance heritage, spirituality, and adventure across the Kingdom.",
+    "days30": "30 Days",
+    "days14": "14 Days",
+    "days12": "12 Days",
+    "grandMonth": "Grand 1-Month Saudi Discovery",
+    "grandMonthDesc": "Immerse yourself in every region with paced stays, iconic landmarks, coastal retreats, and desert adventures tailored for long-stay explorers.",
+    "grandMonthHighlight1": "Full Kingdom circuit with rest days",
+    "grandMonthHighlight2": "Spiritual visits in Makkah & Madinah",
+    "grandMonthHighlight3": "Heritage villages, Red Sea leisure, NEOM vision",
+    "twoWeek": "Two-Week Highlights Journey",
+    "twoWeekDesc": "Perfect for travelers seeking a balanced mix of culture, history, and modern marvels across the western and central regions.",
+    "twoWeekHighlight1": "Historic cores of Jeddah, Makkah, Madinah",
+    "twoWeekHighlight2": "Capital city experiences and Diriyah evenings",
+    "twoWeekHighlight3": "Desert safari & Asir mountain escape",
+    "coastal": "12-Day Coastal & Heritage Escape",
+    "coastalDesc": "A focused itinerary covering Red Sea indulgence, AlUla's timeless landscapes, and immersive cultural workshops.",
+    "coastalHighlight1": "Red Sea resorts & Jeddah waterfront",
+    "coastalHighlight2": "UNESCO marvels in AlUla and Mada'in Saleh",
+    "coastalHighlight3": "Hands-on crafts and culinary evenings"
+  },
+  "chatbot": {
+    "title": "Saudi Tourism Bot",
+    "greeting": "Hello, I'm Mutlaq, your personal assistant in choosing your next destination. How can I help you?",
+    "placeholder": "Ask your question about tourism in Saudi Arabia..."
+  }
+}
+
