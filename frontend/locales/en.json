@@ -244,6 +244,75 @@
     "ctaDesc": "Share your travel goals and preferred experiences so our team can tailor this itinerary—whether you want more relaxation, more adventure, or a bit of both.",
     "ctaButton1": "Customize This Plan",
     "ctaButton2": "Back to All Plans"
+  },
+  "islamicGuidePage": {
+    "title": "Islamic Guide",
+    "subtitle": "Choose a tool to continue",
+    "qiblaTitle": "Qibla Finder",
+    "qiblaDesc": "Find the direction to Mecca from your location",
+    "prayerTitle": "Prayer Times",
+    "prayerDesc": "Accurate times for your city",
+    "quranTitle": "Quran & Du'a",
+    "quranDesc": "Essential verses and travel supplications",
+    "mosquesTitle": "Nearby Mosques",
+    "mosquesDesc": "Find the closest places to pray"
+  },
+  "qiblaPage": {
+    "title": "Qibla Finder",
+    "subtitle": "Find the exact direction of Qibla from your current location or by entering coordinates.",
+    "useLocation": "Use My Location",
+    "manualFind": "Find Qibla Direction",
+    "allowLocation": "Allow location access for automatic detection",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "loading": "Calculating Qibla direction...",
+    "directionTitle": "Qibla Direction",
+    "fromCoordinates": "From:",
+    "bearing": "Bearing",
+    "distance": "Distance",
+    "errorDenied": "Location access denied. Please allow permission and try again.",
+    "errorUnavailable": "Unable to get your location. Check GPS and try again."
+  },
+  "prayerTimesPage": {
+    "title": "Prayer Times",
+    "subtitle": "Stay connected with your faith during your journey through Saudi Arabia",
+    "widgetTitle": "Prayer Times",
+    "widgetDesc": "Enter a city or use your current location to view today's prayer timetable.",
+    "locationPlaceholder": "Enter city or address (e.g., Riyadh, Saudi Arabia)",
+    "getPrayerTimesBtn": "Get Prayer Times",
+    "useCurrentLocationBtn": "Use Current Location",
+    "loadingText": "Getting prayer times...",
+    "nextPrayer": "Next Prayer",
+    "currentLocation": "Current Location",
+    "prayers": {
+      "fajr": "Fajr",
+      "sunrise": "Sunrise",
+      "dhuhr": "Dhuhr",
+      "asr": "Asr",
+      "maghrib": "Maghrib",
+      "isha": "Isha"
+    },
+    "retryBtn": "Try Again",
+    "errors": {
+      "pleaseEnterLocation": "Please enter a location.",
+      "geoUnsupported": "Geolocation is not supported by your browser.",
+      "allowLocation": "Please allow location access to use this feature.",
+      "locationUnavailable": "Location information is unavailable.",
+      "timeout": "The request to get your location timed out.",
+      "genericLocation": "Failed to get your location. Please try entering a location manually.",
+      "genericFetch": "Failed to get prayer times. Please check the location and try again."
+    }
+  },
+  "quranPage": {
+    "title": "Quran & Du'a",
+    "description": "Listen to the Holy Quran with beautiful recitations. Select your preferred reciter and surah.",
+    "selectLanguage": "Select Language",
+    "selectReciter": "Select Reciter",
+    "selectSurah": "Select Surah",
+    "loadRecitation": "Load Recitation",
+    "playBtn": "Play",
+    "currentReciter": "Reciter Name",
+    "currentSurah": "Surah Name",
+    "loading": "Loading..."
   }
 }
-

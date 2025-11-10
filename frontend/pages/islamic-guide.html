@@ -1,203 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Islamic Guide • Saudi Tourism</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
-    />
-    <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/chatbot.css">
-    <script src="../scripts/chatbot.js" defer></script>
-    <script src="../scripts/header-component.js" defer></script>
-    <style>
-      .guide-container {
-        max-width: 1100px;
-        margin: 140px auto 60px;
-        padding: 0 20px;
-      }
-      .guide-title {
-        font-family: "Cairo", system-ui, sans-serif;
-        font-weight: 800;
-        font-size: 2rem;
-        margin: 0 0 4px;
-      }
-      .guide-sub {
-        margin: 0 0 24px;
-        opacity: 0.85;
-      }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="islamicGuidePage.title">Islamic Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/chatbot.css">
+
+  <script src="../scripts/chatbot.js" defer></script>
+  <!-- i18n module -->
+  <script type="module" src="../scripts/modules/i18n.js"></script>
+  <script src="../scripts/header-component.js" defer></script>
+
+  <style>
+    .guide-container {
+      max-width: 1100px;
+      margin: 140px auto 60px;
+      padding: 0 20px;
+    }
+
+    .guide-title {
+      font-family: "Cairo", system-ui, sans-serif;
+      font-weight: 800;
+      font-size: 2rem;
+      margin: 0 0 4px;
+    }
+
+    .guide-sub {
+      margin: 0 0 24px;
+      opacity: 0.85;
+    }
+
+    .guide-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .guide-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: var(--bg-secondary);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .guide-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .guide-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--saudi-green), #1d7b4e);
+      color: #fff;
+      font-size: 22px;
+    }
+
+    .guide-item h3 {
+      margin: 0;
+      font-weight: 800;
+      font-family: "Cairo", system-ui, sans-serif;
+    }
+
+    .guide-item p {
+      margin: 2px 0 0;
+      color: var(--text-light);
+    }
+
+    @media (max-width: 700px) {
       .guide-list {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        grid-template-columns: 1fr;
       }
-      .guide-item {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        padding: 16px 18px;
-        border-radius: 14px;
-        background: var(--bg-secondary);
-        box-shadow: var(--shadow-sm);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      .guide-item:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-md);
-      }
-      .guide-icon {
-        width: 44px;
-        height: 44px;
-        display: grid;
-        place-items: center;
-        border-radius: 12px;
-        background: linear-gradient(135deg, var(--saudi-green), #1d7b4e);
-        color: #fff;
-        font-size: 22px;
-      }
-      .guide-item h3 {
-        margin: 0;
-        font-weight: 800;
-        font-family: "Cairo", system-ui, sans-serif;
-      }
-      .guide-item p {
-        margin: 2px 0 0;
-        color: var(--text-light);
-      }
-      @media (max-width: 700px) {
-        .guide-list {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-  </head>
-  <body>  <!-- chatbot toggle button -->
-    <button id="chatbot-toggler">
-      <span class="material-symbols-outlined">mode_comment</span>
-      <span class="material-symbols-rounded">close</span>
-    </button>
+    }
+  </style>
+</head>
 
-    <!-- chatbot container -->
-    <div class="chatbot-popup">
-      <!-- header -->
-      <div class="chat-header">
-        <div class="header-info">
-          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
-          <h2 class="logo-text">Saudi Tourism Bot</h2>
-        </div>
-        <button id="close-chatbot" class="material-symbols-rounded">
-          keyboard_arrow_down
-        </button>
+<body>
+  <!-- chatbot toggle button -->
+  <button id="chatbot-toggler">
+    <span class="material-symbols-outlined">mode_comment</span>
+    <span class="material-symbols-rounded">close</span>
+  </button>
+
+  <!-- chatbot container -->
+  <div class="chatbot-popup">
+    <!-- header -->
+    <div class="chat-header">
+      <div class="header-info">
+        <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+        <h2 class="logo-text" data-i18n="chatbot.title">Saudi Tourism Bot</h2>
       </div>
+      <button id="close-chatbot" class="material-symbols-rounded">keyboard_arrow_down</button>
+    </div>
 
-      <!-- chat body -->
-      <div class="chat-body">
-        <div class="message bot-message">
-          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
-          <div dir="rtl" class="message-text">
-            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
-          </div>
+    <!-- chat body -->
+    <div class="chat-body">
+      <div class="message bot-message">
+        <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+        <div dir="auto" class="message-text" data-i18n="chatbot.greeting">
+          Hello, I'm Mutlaq, your personal assistant in choosing your next destination. How can I help you?
         </div>
-      </div>
-
-      <!-- chat footer -->
-      <div class="chat-footer">
-        <form action="#" class="chat-form">
-          <textarea dir="rtl"
-            placeholder="اكتب سؤالك عن السياحة في السعودية..."
-            class="message-input"
-            required
-          ></textarea>
-          <div class="chat-controls">
-            <button type="submit" id="send-message" class="material-symbols-rounded">
-              arrow_upward
-            </button>
-          </div>
-        </form>
       </div>
     </div>
 
-    <header class="header" id="header">
-      <div class="header-inner">
-        <div class="brand">
-          <div class="brand-mark" aria-hidden="true"></div>
-          <div>
-            <div class="brand-title">Visit Saudi Arabia</div>
-            <div class="brand-sub">Explore regions, heritage, and faith</div>
-          </div>
+    <!-- chat footer -->
+    <div class="chat-footer">
+      <form action="#" class="chat-form">
+        <textarea dir="auto" class="message-input" required data-i18n="chatbot.placeholder" data-i18n-attr="placeholder"
+          placeholder="Ask your question about tourism in Saudi Arabia..."></textarea>
+        <div class="chat-controls">
+          <button type="submit" id="send-message" class="material-symbols-rounded">arrow_upward</button>
         </div>
+      </form>
+    </div>
+  </div>
 
-        <div class="nav-container">
-          <button
-            class="theme-toggle"
-            id="themeToggle"
-            aria-label="Toggle theme"
-          >
-            🌙 Dark
-          </button>
+  <header class="header" id="header" data-header-placeholder></header>
 
-          <nav class="nav" aria-label="Main Navigation">
-          <div class="item"><a href="index.html#home">Home</a></div>
-          <div class="item"><a href="index.html#religious">Religious Sites</a></div>
-          <div class="item"><a href="history.html">History</a></div>
-          <div class="item"><a href="index.html#heritage">Heritage</a></div>
-          <div class="item"><a href="index.html#regions">Regions</a></div>
+  <!-- <header class="header" id="header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <div class="brand-title" data-i18n="header.brandTitle">Visit Saudi Arabia</div>
+          <div class="brand-sub" data-i18n="header.brandSub">Explore regions, heritage, and faith</div>
+        </div>
+      </div>
+
+      <div class="nav-container">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          🌙 <span data-i18n="common.dark">Dark</span>
+        </button>
+
+        <nav class="nav" aria-label="Main Navigation">
+          <div class="item"><a href="index.html#home" data-i18n="common.home">Home</a></div>
+          <div class="item"><a href="index.html#religious" data-i18n="common.religiousSites">Religious Sites</a></div>
+          <div class="item"><a href="history.html" data-i18n="common.history">History</a></div>
+          <div class="item"><a href="index.html#heritage" data-i18n="common.heritage">Heritage</a></div>
+          <div class="item"><a href="index.html#regions" data-i18n="common.regions">Regions</a></div>
           <div class="item has-dropdown">
-            <a href="islamic-guide.html">Islamic Guide ▾</a>
+            <a href="islamic-guide.html" data-i18n="common.islamicGuide">Islamic Guide ▾</a>
             <div class="dropdown" role="menu">
-              <a href="qibla.html" role="menuitem">Qibla Finder</a>
-              <a href="prayer-times.html" role="menuitem">Prayer Times</a>
-              <a href="quran.html" role="menuitem">Quran & Du'a</a>
-              <a href="mosques.html" role="menuitem">Nearby Mosques</a>
+              <a href="qibla.html" role="menuitem" data-i18n="common.qiblaFinder">Qibla Finder</a>
+              <a href="prayer-times.html" role="menuitem" data-i18n="common.prayerTimes">Prayer Times</a>
+              <a href="quran.html" role="menuitem" data-i18n="common.quran">Quran &amp; Du'a</a>
+              <a href="mosques.html" role="menuitem" data-i18n="common.nearbyMosques">Nearby Mosques</a>
             </div>
           </div>
         </nav>
-        </div>
       </div>
-    </header>
+    </div>
+  </header> -->
 
-    <main class="guide-container">
-      <h1 class="guide-title">Islamic Guide</h1>
-      <p class="guide-sub">Choose a tool to continue</p>
-      <div class="guide-list">
-        <a class="guide-item" href="qibla.html">
-          <div class="guide-icon">🧭</div>
-          <div>
-            <h3>Qibla Finder</h3>
-            <p>Find the direction to Mecca from your location</p>
-          </div>
-        </a>
-        <a class="guide-item" href="prayer-times.html">
-          <div class="guide-icon">🕐</div>
-          <div>
-            <h3>Prayer Times</h3>
-            <p>Accurate times for your city</p>
-          </div>
-        </a>
-        <a class="guide-item" href="quran.html">
-          <div class="guide-icon">📖</div>
-          <div>
-            <h3>Quran & Du'a</h3>
-            <p>Essential verses and travel supplications</p>
-          </div>
-        </a>
-        <a class="guide-item" href="mosques.html">
-          <div class="guide-icon">🕌</div>
-          <div>
-            <h3>Nearby Mosques</h3>
-            <p>Find the closest places to pray</p>
-          </div>
-        </a>
-      </div>
-    </main>
-    <script src="../scripts/Script.js"></script>
-  </body>
+  <main class="guide-container">
+    <h1 class="guide-title" data-i18n="islamicGuidePage.title">Islamic Guide</h1>
+    <p class="guide-sub" data-i18n="islamicGuidePage.subtitle">Choose a tool to continue</p>
+
+    <div class="guide-list">
+      <a class="guide-item" href="qibla.html">
+        <div class="guide-icon">🧭</div>
+        <div>
+          <h3 data-i18n="islamicGuidePage.qiblaTitle">Qibla Finder</h3>
+          <p data-i18n="islamicGuidePage.qiblaDesc">Find the direction to Mecca from your location</p>
+        </div>
+      </a>
+
+      <a class="guide-item" href="prayer-times.html">
+        <div class="guide-icon">🕐</div>
+        <div>
+          <h3 data-i18n="islamicGuidePage.prayerTitle">Prayer Times</h3>
+          <p data-i18n="islamicGuidePage.prayerDesc">Accurate times for your city</p>
+        </div>
+      </a>
+
+      <a class="guide-item" href="quran.html">
+        <div class="guide-icon">📖</div>
+        <div>
+          <h3 data-i18n="islamicGuidePage.quranTitle">Quran &amp; Du'a</h3>
+          <p data-i18n="islamicGuidePage.quranDesc">Essential verses and travel supplications</p>
+        </div>
+      </a>
+
+      <a class="guide-item" href="mosques.html">
+        <div class="guide-icon">🕌</div>
+        <div>
+          <h3 data-i18n="islamicGuidePage.mosquesTitle">Nearby Mosques</h3>
+          <p data-i18n="islamicGuidePage.mosquesDesc">Find the closest places to pray</p>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <script src="../scripts/Script.js"></script>
+
+  <!-- تحديث عنوان الصفحة بعد أي refresh من i18n -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const applyTitleI18n = () => {
+        const key = document.querySelector('title')?.getAttribute('data-i18n');
+        if (window.i18n && key) document.title = i18n.t(key);
+      };
+      applyTitleI18n();
+
+      // لو i18n.refresh موجود، نحقن تحديث العنوان بعده
+      if (window.i18n && typeof i18n.refresh === 'function') {
+        const originalRefresh = i18n.refresh.bind(i18n);
+        i18n.refresh = (...args) => {
+          const result = originalRefresh(...args);
+          applyTitleI18n();
+          return result;
+        };
+      }
+    });
+  </script>
+</body>
+
 </html>
