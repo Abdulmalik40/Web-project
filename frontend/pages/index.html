@@ -75,36 +75,47 @@
         <div class="brand" aria-label="Saudi Tourism">
           <div class="brand-mark" aria-hidden="true"></div>
           <div>
-            <div class="brand-title">Visit Saudi Arabia</div>
-            <div class="brand-sub">Explore regions, heritage, and faith</div>
+            <div class="brand-title" data-i18n="header.brandTitle">Visit Saudi Arabia</div>
+            <div class="brand-sub" data-i18n="header.brandSub">Explore regions, heritage, and faith</div>
           </div>
         </div>
 
         <div class="nav-container">
           <button
+            class="language-toggle"
+            id="language-switcher"
+            aria-label="Toggle language"
+            title="Switch Language"
+          >
+            <span class="lang-icon">🌐</span>
+            <span class="lang-text" data-i18n="common.language">Language</span>
+          </button>
+
+          <button
             class="theme-toggle"
             id="themeToggle"
             aria-label="Toggle theme"
           >
-            🌙 Dark
+            <span class="theme-icon">🌙</span>
+            <span class="theme-text" data-i18n="common.dark">Dark</span>
           </button>
 
           <nav class="nav" aria-label="Main Navigation">
-            <div class="item"><a href="#home">Home</a></div>
+            <div class="item"><a href="#home" data-i18n="common.home">Home</a></div>
             <div class="item">
-              <a href="map-interactive.html">Interactive Map</a>
+              <a href="map-interactive.html" data-i18n="common.interactiveMap">Interactive Map</a>
             </div>
-            <div class="item"><a href="#religious">Religious Sites</a></div>
-            <div class="item"><a href="history.html">History</a></div>
-            <div class="item"><a href="#heritage">Heritage</a></div>
-            <div class="item"><a href="#regions">Regions</a></div>
+            <div class="item"><a href="#religious" data-i18n="common.religiousSites">Religious Sites</a></div>
+            <div class="item"><a href="history.html" data-i18n="common.history">History</a></div>
+            <div class="item"><a href="#heritage" data-i18n="common.heritage">Heritage</a></div>
+            <div class="item"><a href="#regions" data-i18n="common.regions">Regions</a></div>
             <div class="item has-dropdown">
-              <a href="islamic-guide.html">Islamic Guide ▾</a>
+              <a href="islamic-guide.html" data-i18n="common.islamicGuide">Islamic Guide ▾</a>
               <div class="dropdown" role="menu">
-                <a href="qibla.html" role="menuitem">Qibla Finder</a>
-                <a href="prayer-times.html" role="menuitem">Prayer Times</a>
-                <a href="quran.html" role="menuitem">Quran & Du'a</a>
-                <a href="mosques.html" role="menuitem">Nearby Mosques</a>
+                <a href="qibla.html" role="menuitem" data-i18n="common.qiblaFinder">Qibla Finder</a>
+                <a href="prayer-times.html" role="menuitem" data-i18n="common.prayerTimes">Prayer Times</a>
+                <a href="quran.html" role="menuitem" data-i18n="common.quran">Quran & Du'a</a>
+                <a href="mosques.html" role="menuitem" data-i18n="common.nearbyMosques">Nearby Mosques</a>
               </div>
             </div>
           </nav>
@@ -403,10 +414,17 @@
         // Update button text based on current theme
         const updateButtonText = () => {
           const currentTheme = body.getAttribute("data-theme");
-          if (currentTheme === "dark") {
-            themeToggle.innerHTML = "☀️ Light";
-          } else {
-            themeToggle.innerHTML = "🌙 Dark";
+          const icon = themeToggle.querySelector(".theme-icon");
+          const text = themeToggle.querySelector(".theme-text");
+          if (icon) {
+            icon.textContent = currentTheme === "dark" ? "☀️" : "🌙";
+          }
+          if (text) {
+            text.setAttribute("data-i18n", currentTheme === "dark" ? "common.light" : "common.dark");
+            // Refresh translation if i18n is available
+            if (window.i18n) {
+              window.i18n.refresh();
+            }
           }
         };
 
@@ -424,6 +442,37 @@
             updateButtonText();
           });
         }
+
+        // Language switcher is handled by i18n module
+        // Just ensure i18n is ready
+        const initLangSwitcher = () => {
+          const langSwitcher = document.getElementById("language-switcher");
+          console.log("Looking for language switcher button:", langSwitcher);
+          
+          if (window.i18n) {
+            console.log("i18n module found, setting up language switcher");
+            window.i18n.setupLanguageSwitcher();
+            
+            // Also add a direct test handler
+            if (langSwitcher) {
+              langSwitcher.addEventListener("click", (e) => {
+                console.log("Direct click handler fired!");
+                if (window.i18n) {
+                  const currentLang = window.i18n.getLanguage();
+                  const newLang = currentLang === "en" ? "ar" : "en";
+                  console.log("Direct handler switching to:", newLang);
+                  window.i18n.setLanguage(newLang);
+                }
+              });
+            }
+          } else {
+            console.log("i18n not ready yet, retrying...");
+            setTimeout(initLangSwitcher, 100);
+          }
+        };
+        
+        // Start initialization
+        setTimeout(initLangSwitcher, 100);
       });
 
       // Video header functionality

@@ -52,13 +52,17 @@
   flex-direction: row-reverse;
 }
 
-/* RTL Hero section */
+/* RTL Hero section - keep centered like English */
 [dir="rtl"] .hero-content {
-  text-align: right;
+  text-align: center;
 }
 
 [dir="rtl"] .hero-title {
-  text-align: right;
+  text-align: center;
+}
+
+[dir="rtl"] .title-line {
+  text-align: center;
 }
 
 /* RTL Cards and grids */
@@ -157,6 +161,13 @@
 [dir="rtl"] h5,
 [dir="rtl"] h6 {
   text-align: right;
+}
+
+/* Keep hero text centered */
+[dir="rtl"] .hero-title,
+[dir="rtl"] .hero-sub,
+[dir="rtl"] .title-line {
+  text-align: center !important;
 }
 
 [dir="rtl"] p {

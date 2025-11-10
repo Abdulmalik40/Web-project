@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../styles/main.css" />
     <link rel="stylesheet" href="../styles/chatbot.css">
     <script src="../scripts/chatbot.js" defer></script>
+    <script type="module" src="../scripts/modules/i18n.js"></script>
     <script src="../scripts/header-component.js" defer></script>
   </head>
   <body>
@@ -32,7 +33,7 @@
       <div class="chat-header">
         <div class="header-info">
           <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
-          <h2 class="logo-text">Saudi Tourism Bot</h2>
+          <h2 class="logo-text" data-i18n="chatbot.title">Saudi Tourism Bot</h2>
         </div>
         <button id="close-chatbot" class="material-symbols-rounded">
           keyboard_arrow_down
@@ -43,8 +44,8 @@
       <div class="chat-body">
         <div class="message bot-message">
           <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
-          <div dir="rtl" class="message-text">
-            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
+          <div dir="auto" class="message-text" data-i18n="chatbot.greeting">
+            Hello, I'm Mutlaq, your personal assistant in choosing your next destination. How can I help you?
           </div>
         </div>
       </div>
@@ -52,8 +53,10 @@
       <!-- chat footer -->
       <div class="chat-footer">
         <form action="#" class="chat-form">
-          <textarea dir="rtl"
-            placeholder="اكتب سؤالك عن السياحة في السعودية..."
+          <textarea dir="auto"
+            data-i18n="chatbot.placeholder"
+            data-i18n-attr="placeholder"
+            placeholder="Ask your question about tourism in Saudi Arabia..."
             class="message-input"
             required
           ></textarea>
@@ -121,11 +124,11 @@
       <div class="hero-content">
         <div class="hero-text">
           <h1 class="hero-title">
-            <span class="title-line">ULTIMATE EXPEDITION</span>
-            <span class="title-line featured">30-DAY GRAND DISCOVERY</span>
-            <span class="title-line subtitle">HERITAGE • COASTLINES • FUTURE VISIONS</span>
+            <span class="title-line" data-i18n="planOneMonth.heroTitle1">ULTIMATE EXPEDITION</span>
+            <span class="title-line featured" data-i18n="planOneMonth.heroTitle2">30-DAY GRAND DISCOVERY</span>
+            <span class="title-line subtitle" data-i18n="planOneMonth.heroTitle3">HERITAGE • COASTLINES • FUTURE VISIONS</span>
           </h1>
-          <p class="hero-sub">
+          <p class="hero-sub" data-i18n="planOneMonth.heroSubtitle">
             A month-long immersion that traces Saudi Arabia's sacred heartlands,
             modern capitals, Red Sea escapes, and mountain retreats at an
             unhurried pace.
@@ -134,14 +137,14 @@
       </div>
       <div class="scroll-indicator">
         <div class="scroll-arrow"></div>
-        <span>Scroll to Explore the Itinerary</span>
+        <span data-i18n="planOneMonth.scrollToExplore">Scroll to Explore the Itinerary</span>
       </div>
     </section>
 
     <main class="plan-page">
       <section class="plan-section plan-overview">
-        <h2>Plan Overview</h2>
-        <p>
+        <h2 data-i18n="planOneMonth.planOverview">Plan Overview</h2>
+        <p data-i18n="planOneMonth.planOverviewDesc">
           Designed for travelers who want to absorb every facet of Saudi Arabia,
           the 30-day Grand Discovery balances spiritual reflection, cultural
           depth, and rejuvenating downtime. Each week focuses on a different
@@ -150,98 +153,98 @@
         </p>
         <div class="plan-summary-grid">
           <div class="plan-summary-card">
-            <span>Duration</span>
-            <strong>30 Days</strong>
-            <p>Four themed weeks with optional rest days built into each stage.</p>
+            <span data-i18n="planOneMonth.duration">Duration</span>
+            <strong data-i18n="planOneMonth.durationValue">30 Days</strong>
+            <p data-i18n="planOneMonth.durationDesc">Four themed weeks with optional rest days built into each stage.</p>
           </div>
           <div class="plan-summary-card">
-            <span>Pace</span>
-            <strong>Balanced</strong>
-            <p>Alternating immersive excursions with restorative beach and spa time.</p>
+            <span data-i18n="planOneMonth.pace">Pace</span>
+            <strong data-i18n="planOneMonth.paceValue">Balanced</strong>
+            <p data-i18n="planOneMonth.paceDesc">Alternating immersive excursions with restorative beach and spa time.</p>
           </div>
           <div class="plan-summary-card">
-            <span>Regions Covered</span>
-            <strong>Kingdom-Wide</strong>
-            <p>Makkah, Madinah, Riyadh, AlUla, Red Sea coast, Asir Highlands, and NEOM.</p>
+            <span data-i18n="planOneMonth.regionsCovered">Regions Covered</span>
+            <strong data-i18n="planOneMonth.regionsValue">Kingdom-Wide</strong>
+            <p data-i18n="planOneMonth.regionsDesc">Makkah, Madinah, Riyadh, AlUla, Red Sea coast, Asir Highlands, and NEOM.</p>
           </div>
           <div class="plan-summary-card">
-            <span>Ideal For</span>
-            <strong>Deep Explorers</strong>
-            <p>Families and cultural travelers seeking authentic encounters plus premium comfort.</p>
+            <span data-i18n="planOneMonth.idealFor">Ideal For</span>
+            <strong data-i18n="planOneMonth.idealForValue">Deep Explorers</strong>
+            <p data-i18n="planOneMonth.idealForDesc">Families and cultural travelers seeking authentic encounters plus premium comfort.</p>
           </div>
         </div>
       </section>
 
       <section class="plan-section">
-        <h2>Week-by-Week Journey</h2>
+        <h2 data-i18n="planOneMonth.weekByWeek">Week-by-Week Journey</h2>
         <div class="plan-itinerary-grid">
           <div class="plan-phase">
-            <span>Week 1</span>
-            <h3>Spiritual Origins</h3>
+            <span data-i18n="planOneMonth.week1">Week 1</span>
+            <h3 data-i18n="planOneMonth.week1Title">Spiritual Origins</h3>
             <ul>
-              <li>Pilgrimage-inspired stays in Makkah and Madinah</li>
-              <li>Guided visits to historic mosques and sacred landmarks</li>
-              <li>Evening reflections and traditional Hijazi dining</li>
+              <li data-i18n="planOneMonth.week1Item1">Pilgrimage-inspired stays in Makkah and Madinah</li>
+              <li data-i18n="planOneMonth.week1Item2">Guided visits to historic mosques and sacred landmarks</li>
+              <li data-i18n="planOneMonth.week1Item3">Evening reflections and traditional Hijazi dining</li>
             </ul>
           </div>
           <div class="plan-phase">
-            <span>Week 2</span>
-            <h3>Culture &amp; Heritage</h3>
+            <span data-i18n="planOneMonth.week2">Week 2</span>
+            <h3 data-i18n="planOneMonth.week2Title">Culture &amp; Heritage</h3>
             <ul>
-              <li>Diriyah living history, Riyadh skyline experiences</li>
-              <li>AlUla sandstone valleys, Hegra UNESCO explorations</li>
-              <li>Hands-on artisan workshops and farm-to-table dinners</li>
+              <li data-i18n="planOneMonth.week2Item1">Diriyah living history, Riyadh skyline experiences</li>
+              <li data-i18n="planOneMonth.week2Item2">AlUla sandstone valleys, Hegra UNESCO explorations</li>
+              <li data-i18n="planOneMonth.week2Item3">Hands-on artisan workshops and farm-to-table dinners</li>
             </ul>
           </div>
           <div class="plan-phase">
-            <span>Week 3</span>
-            <h3>Coastal Horizons</h3>
+            <span data-i18n="planOneMonth.week3">Week 3</span>
+            <h3 data-i18n="planOneMonth.week3Title">Coastal Horizons</h3>
             <ul>
-              <li>Jeddah Corniche, Red Sea snorkeling, yacht charter options</li>
-              <li>NEOM &amp; The Line preview with sustainability showcases</li>
-              <li>Wellness retreats and curated sunset gatherings</li>
+              <li data-i18n="planOneMonth.week3Item1">Jeddah Corniche, Red Sea snorkeling, yacht charter options</li>
+              <li data-i18n="planOneMonth.week3Item2">NEOM &amp; The Line preview with sustainability showcases</li>
+              <li data-i18n="planOneMonth.week3Item3">Wellness retreats and curated sunset gatherings</li>
             </ul>
           </div>
           <div class="plan-phase">
-            <span>Week 4</span>
-            <h3>Southern Highlands</h3>
+            <span data-i18n="planOneMonth.week4">Week 4</span>
+            <h3 data-i18n="planOneMonth.week4Title">Southern Highlands</h3>
             <ul>
-              <li>Asir mountain villages, cloud forests, and cable car vistas</li>
-              <li>Jazan spice markets and Farasan Island marine sanctuary</li>
-              <li>Final days for bespoke interests or private desert safari</li>
+              <li data-i18n="planOneMonth.week4Item1">Asir mountain villages, cloud forests, and cable car vistas</li>
+              <li data-i18n="planOneMonth.week4Item2">Jazan spice markets and Farasan Island marine sanctuary</li>
+              <li data-i18n="planOneMonth.week4Item3">Final days for bespoke interests or private desert safari</li>
             </ul>
           </div>
         </div>
       </section>
 
       <section class="plan-section">
-        <h2>What’s Included</h2>
+        <h2 data-i18n="planOneMonth.whatsIncluded">What's Included</h2>
         <div class="plan-inclusions-grid">
           <article class="plan-inclusion">
-            <h3>Premium Stays &amp; Transfers</h3>
-            <p>
+            <h3 data-i18n="planOneMonth.inclusion1Title">Premium Stays &amp; Transfers</h3>
+            <p data-i18n="planOneMonth.inclusion1Desc">
               Handpicked luxury hotels, boutique eco-lodges, and private villa
               upgrades with chauffeured ground transfers and optional domestic
               flights.
             </p>
           </article>
           <article class="plan-inclusion">
-            <h3>Expert Cultural Hosts</h3>
-            <p>
+            <h3 data-i18n="planOneMonth.inclusion2Title">Expert Cultural Hosts</h3>
+            <p data-i18n="planOneMonth.inclusion2Desc">
               Licensed guides, historians, and local storytellers who unlock the
               narratives behind sacred sites, UNESCO treasures, and Vision 2030 projects.
             </p>
           </article>
           <article class="plan-inclusion">
-            <h3>Signature Experiences</h3>
-            <p>
+            <h3 data-i18n="planOneMonth.inclusion3Title">Signature Experiences</h3>
+            <p data-i18n="planOneMonth.inclusion3Desc">
               Private majlis dinners, desert stargazing, marine expeditions,
               and interactive craft ateliers curated to your interests.
             </p>
           </article>
           <article class="plan-inclusion">
-            <h3>Flexible Enhancements</h3>
-            <p>
+            <h3 data-i18n="planOneMonth.inclusion4Title">Flexible Enhancements</h3>
+            <p data-i18n="planOneMonth.inclusion4Desc">
               Concierge support for spa appointments, helicopter tours, dining
               reservations, and additional rest days tailored to your pace.
             </p>
@@ -250,20 +253,37 @@
       </section>
 
       <section class="plan-section plan-cta">
-        <h2>Design Your Grand Saudi Month</h2>
-        <p>
+        <h2 data-i18n="planOneMonth.ctaTitle">Design Your Grand Saudi Month</h2>
+        <p data-i18n="planOneMonth.ctaDesc">
           Ready to personalize this 30-day journey? Share your travel dates and
           group details so our specialists can craft a bespoke itinerary and
           confirm availability across the Kingdom.
         </p>
         <div class="hero-cta">
-          <a class="cta-btn primary" href="mailto:travel@visitsaudi.example">Plan with a Specialist</a>
-          <a class="cta-btn secondary" href="index.html#tour-plans">Back to All Plans</a>
+          <a class="cta-btn primary" href="mailto:travel@visitsaudi.example" data-i18n="planOneMonth.ctaButton1">Plan with a Specialist</a>
+          <a class="cta-btn secondary" href="index.html#tour-plans" data-i18n="planOneMonth.ctaButton2">Back to All Plans</a>
         </div>
       </section>
     </main>
 
     <script src="../scripts/Script.js"></script>
+    <script>
+      // Initialize i18n after page loads
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.i18n) {
+          window.i18n.refresh();
+        } else {
+          // Wait for i18n to load
+          const checkI18n = setInterval(() => {
+            if (window.i18n) {
+              window.i18n.refresh();
+              clearInterval(checkI18n);
+            }
+          }, 100);
+          setTimeout(() => clearInterval(checkI18n), 5000);
+        }
+      });
+    </script>
   </body>
 </html>
 

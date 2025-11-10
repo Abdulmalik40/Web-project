@@ -15,21 +15,44 @@ class I18n {
     await this.loadTranslations();
     this.applyLanguage(this.currentLang);
     this.setupLanguageSwitcher();
+    console.log('i18n initialized with language:', this.currentLang);
+    console.log('Translations loaded:', Object.keys(this.translations));
   }
 
   async loadTranslations() {
     try {
+      console.log('Loading translations from ../locales/');
+      const enUrl = '../locales/en.json';
+      const arUrl = '../locales/ar.json';
+      
+      const [enResponse, arResponse] = await Promise.all([
+        fetch(enUrl),
+        fetch(arUrl)
+      ]);
+      
+      if (!enResponse.ok) {
+        throw new Error(`Failed to load en.json: ${enResponse.status} ${enResponse.statusText}`);
+      }
+      if (!arResponse.ok) {
+        throw new Error(`Failed to load ar.json: ${arResponse.status} ${arResponse.statusText}`);
+      }
+      
       const [enTranslations, arTranslations] = await Promise.all([
-        fetch('../locales/en.json').then(res => res.json()),
-        fetch('../locales/ar.json').then(res => res.json())
+        enResponse.json(),
+        arResponse.json()
       ]);
       
       this.translations = {
         en: enTranslations,
         ar: arTranslations
       };
+      console.log('Translations loaded successfully:', {
+        en: Object.keys(enTranslations),
+        ar: Object.keys(arTranslations)
+      });
     } catch (error) {
       console.error('Error loading translations:', error);
+      console.error('Error details:', error.message, error.stack);
       // Fallback to empty translations
       this.translations = { en: {}, ar: {} };
     }
@@ -67,10 +90,12 @@ class I18n {
       lang = 'en';
     }
     
+    console.log(`Setting language to: ${lang}`);
     this.currentLang = lang;
     localStorage.setItem('language', lang);
     this.applyLanguage(lang);
     this.notifyObservers();
+    console.log('Language changed, translations applied');
   }
 
   getLanguage() {
@@ -136,13 +161,42 @@ class I18n {
   }
 
   setupLanguageSwitcher() {
-    // This will be called after header is loaded
-    const switcher = document.getElementById('language-switcher');
-    if (switcher) {
-      switcher.addEventListener('click', () => {
-        const newLang = this.currentLang === 'en' ? 'ar' : 'en';
-        this.setLanguage(newLang);
-      });
+    // Wait for DOM to be ready, then setup the switcher
+    const setup = () => {
+      const switcher = document.getElementById('language-switcher');
+      if (switcher) {
+        // Remove any existing listeners by cloning the element
+        const newSwitcher = switcher.cloneNode(true);
+        switcher.parentNode.replaceChild(newSwitcher, switcher);
+        
+        newSwitcher.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const newLang = this.currentLang === 'en' ? 'ar' : 'en';
+          console.log('Switching language from', this.currentLang, 'to', newLang);
+          this.setLanguage(newLang);
+        });
+        console.log('Language switcher button found and handler attached');
+        return true;
+      }
+      return false;
+    };
+
+    // Try immediately
+    if (!setup()) {
+      // If button doesn't exist yet, wait for DOMContentLoaded
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          setup();
+        });
+      } else {
+        // DOM is ready, but button might load later, retry after a delay
+        setTimeout(() => {
+          if (!setup()) {
+            console.warn('Language switcher button not found after retry');
+          }
+        }, 500);
+      }
     }
   }
 

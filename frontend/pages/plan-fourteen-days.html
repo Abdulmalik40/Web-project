@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../styles/main.css" />
     <link rel="stylesheet" href="../styles/chatbot.css">
     <script src="../scripts/chatbot.js" defer></script>
+    <script type="module" src="../scripts/modules/i18n.js"></script>
     <script src="../scripts/header-component.js" defer></script>
   </head>
   <body>
@@ -32,7 +33,7 @@
       <div class="chat-header">
         <div class="header-info">
           <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
-          <h2 class="logo-text">Saudi Tourism Bot</h2>
+          <h2 class="logo-text" data-i18n="chatbot.title">Saudi Tourism Bot</h2>
         </div>
         <button id="close-chatbot" class="material-symbols-rounded">
           keyboard_arrow_down
@@ -43,8 +44,8 @@
       <div class="chat-body">
         <div class="message bot-message">
           <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
-          <div dir="rtl" class="message-text">
-            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
+          <div dir="auto" class="message-text" data-i18n="chatbot.greeting">
+            Hello, I'm Mutlaq, your personal assistant in choosing your next destination. How can I help you?
           </div>
         </div>
       </div>
@@ -52,8 +53,10 @@
       <!-- chat footer -->
       <div class="chat-footer">
         <form action="#" class="chat-form">
-          <textarea dir="rtl"
-            placeholder="اكتب سؤالك عن السياحة في السعودية..."
+          <textarea dir="auto"
+            data-i18n="chatbot.placeholder"
+            data-i18n-attr="placeholder"
+            placeholder="Ask your question about tourism in Saudi Arabia..."
             class="message-input"
             required
           ></textarea>
@@ -121,11 +124,11 @@
       <div class="hero-content">
         <div class="hero-text">
           <h1 class="hero-title">
-            <span class="title-line">TWO-WEEK SIGNATURE</span>
-            <span class="title-line featured">14-DAY HIGHLIGHTS JOURNEY</span>
-            <span class="title-line subtitle">HOLY CITIES • CAPITAL ENERGY • ALULA MAGIC</span>
+            <span class="title-line" data-i18n="planFourteenDays.heroTitle1">TWO-WEEK SIGNATURE</span>
+            <span class="title-line featured" data-i18n="planFourteenDays.heroTitle2">14-DAY HIGHLIGHTS JOURNEY</span>
+            <span class="title-line subtitle" data-i18n="planFourteenDays.heroTitle3">HOLY CITIES • CAPITAL ENERGY • ALULA MAGIC</span>
           </h1>
-          <p class="hero-sub">
+          <p class="hero-sub" data-i18n="planFourteenDays.heroSubtitle">
             Capture Saudi Arabia's most iconic experiences in fourteen days,
             blending sacred moments, urban discovery, and sandstone wonderlands
             with expert guidance.
@@ -134,14 +137,14 @@
       </div>
       <div class="scroll-indicator">
         <div class="scroll-arrow"></div>
-        <span>Scroll to Explore the Journey</span>
+        <span data-i18n="planFourteenDays.scrollToExplore">Scroll to Explore the Journey</span>
       </div>
     </section>
 
     <main class="plan-page">
       <section class="plan-section plan-overview">
-        <h2>Plan Overview</h2>
-        <p>
+        <h2 data-i18n="planFourteenDays.planOverview">Plan Overview</h2>
+        <p data-i18n="planFourteenDays.planOverviewDesc">
           This two-week blueprint prioritizes the west and central regions,
           delivering a dynamic rhythm of pilgrimage, modern city life, and
           desert heritage. Logistics are streamlined so you can focus on living
@@ -149,97 +152,97 @@
         </p>
         <div class="plan-summary-grid">
           <div class="plan-summary-card">
-            <span>Duration</span>
-            <strong>14 Days</strong>
-            <p>Perfectly paced for travelers with limited vacation time.</p>
+            <span data-i18n="planFourteenDays.duration">Duration</span>
+            <strong data-i18n="planFourteenDays.durationValue">14 Days</strong>
+            <p data-i18n="planFourteenDays.durationDesc">Perfectly paced for travelers with limited vacation time.</p>
           </div>
           <div class="plan-summary-card">
-            <span>Focus</span>
-            <strong>Holy Cities &amp; Heritage</strong>
-            <p>Makkah, Madinah, Riyadh, Diriyah, and AlUla within one seamless route.</p>
+            <span data-i18n="planFourteenDays.focus">Focus</span>
+            <strong data-i18n="planFourteenDays.focusValue">Holy Cities &amp; Heritage</strong>
+            <p data-i18n="planFourteenDays.focusDesc">Makkah, Madinah, Riyadh, Diriyah, and AlUla within one seamless route.</p>
           </div>
           <div class="plan-summary-card">
-            <span>Style</span>
-            <strong>Dynamic &amp; Curated</strong>
-            <p>Daily highlights with evening leisure and optional premium add-ons.</p>
+            <span data-i18n="planFourteenDays.style">Style</span>
+            <strong data-i18n="planFourteenDays.styleValue">Dynamic &amp; Curated</strong>
+            <p data-i18n="planFourteenDays.styleDesc">Daily highlights with evening leisure and optional premium add-ons.</p>
           </div>
           <div class="plan-summary-card">
-            <span>Ideal For</span>
-            <strong>First-Time Visitors</strong>
-            <p>Couples, small groups, and families wanting an executive snapshot of the Kingdom.</p>
+            <span data-i18n="planFourteenDays.idealFor">Ideal For</span>
+            <strong data-i18n="planFourteenDays.idealForValue">First-Time Visitors</strong>
+            <p data-i18n="planFourteenDays.idealForDesc">Couples, small groups, and families wanting an executive snapshot of the Kingdom.</p>
           </div>
         </div>
       </section>
 
       <section class="plan-section">
-        <h2>Itinerary Snapshot</h2>
+        <h2 data-i18n="planFourteenDays.itinerarySnapshot">Itinerary Snapshot</h2>
         <div class="plan-itinerary-grid">
           <div class="plan-phase">
-            <span>Days 1 - 4</span>
-            <h3>Sacred Beginnings</h3>
+            <span data-i18n="planFourteenDays.days1to4">Days 1 - 4</span>
+            <h3 data-i18n="planFourteenDays.days1to4Title">Sacred Beginnings</h3>
             <ul>
-              <li>Arrival assistance and settling in Makkah</li>
-              <li>Guided ziyarat to key sites in Madinah</li>
-              <li>Evening reflections and curated spiritual lectures</li>
+              <li data-i18n="planFourteenDays.days1to4Item1">Arrival assistance and settling in Makkah</li>
+              <li data-i18n="planFourteenDays.days1to4Item2">Guided ziyarat to key sites in Madinah</li>
+              <li data-i18n="planFourteenDays.days1to4Item3">Evening reflections and curated spiritual lectures</li>
             </ul>
           </div>
           <div class="plan-phase">
-            <span>Days 5 - 8</span>
-            <h3>Capital Vibrance</h3>
+            <span data-i18n="planFourteenDays.days5to8">Days 5 - 8</span>
+            <h3 data-i18n="planFourteenDays.days5to8Title">Capital Vibrance</h3>
             <ul>
-              <li>Riyadh skyline tour, Edge of the World excursion</li>
-              <li>Diriyah heritage walk and traditional Najdi cuisine</li>
-              <li>Optional shopping, spa, or museum experiences</li>
+              <li data-i18n="planFourteenDays.days5to8Item1">Riyadh skyline tour, Edge of the World excursion</li>
+              <li data-i18n="planFourteenDays.days5to8Item2">Diriyah heritage walk and traditional Najdi cuisine</li>
+              <li data-i18n="planFourteenDays.days5to8Item3">Optional shopping, spa, or museum experiences</li>
             </ul>
           </div>
           <div class="plan-phase">
-            <span>Days 9 - 11</span>
-            <h3>AlUla Wonders</h3>
+            <span data-i18n="planFourteenDays.days9to11">Days 9 - 11</span>
+            <h3 data-i18n="planFourteenDays.days9to11Title">AlUla Wonders</h3>
             <ul>
-              <li>Hegra UNESCO tour with archaeologist host</li>
-              <li>Hot air balloon sunrise or helicopter fly-over</li>
-              <li>Starlit dining among sandstone formations</li>
+              <li data-i18n="planFourteenDays.days9to11Item1">Hegra UNESCO tour with archaeologist host</li>
+              <li data-i18n="planFourteenDays.days9to11Item2">Hot air balloon sunrise or helicopter fly-over</li>
+              <li data-i18n="planFourteenDays.days9to11Item3">Starlit dining among sandstone formations</li>
             </ul>
           </div>
           <div class="plan-phase">
-            <span>Days 12 - 14</span>
-            <h3>Red Sea Finale</h3>
+            <span data-i18n="planFourteenDays.days12to14">Days 12 - 14</span>
+            <h3 data-i18n="planFourteenDays.days12to14Title">Red Sea Finale</h3>
             <ul>
-              <li>Jeddah Corniche, Al-Balad heritage souqs</li>
-              <li>Snorkeling or island-hopping across the Red Sea</li>
-              <li>Farewell dinner featuring contemporary Saudi cuisine</li>
+              <li data-i18n="planFourteenDays.days12to14Item1">Jeddah Corniche, Al-Balad heritage souqs</li>
+              <li data-i18n="planFourteenDays.days12to14Item2">Snorkeling or island-hopping across the Red Sea</li>
+              <li data-i18n="planFourteenDays.days12to14Item3">Farewell dinner featuring contemporary Saudi cuisine</li>
             </ul>
           </div>
         </div>
       </section>
 
       <section class="plan-section">
-        <h2>Inclusions &amp; Enhancements</h2>
+        <h2 data-i18n="planFourteenDays.inclusions">Inclusions &amp; Enhancements</h2>
         <div class="plan-inclusions-grid">
           <article class="plan-inclusion">
-            <h3>Premium Logistics</h3>
-            <p>
+            <h3 data-i18n="planFourteenDays.inclusion1Title">Premium Logistics</h3>
+            <p data-i18n="planFourteenDays.inclusion1Desc">
               Airport meet-and-greet, visa support, business-class domestic
               flights, and private transfers keep the pace effortless.
             </p>
           </article>
           <article class="plan-inclusion">
-            <h3>Guided Access</h3>
-            <p>
+            <h3 data-i18n="planFourteenDays.inclusion2Title">Guided Access</h3>
+            <p data-i18n="planFourteenDays.inclusion2Desc">
               Dedicated guides in each city provide context, translation, and
               behind-the-scenes access to cultural showcases.
             </p>
           </article>
           <article class="plan-inclusion">
-            <h3>Signature Moments</h3>
-            <p>
+            <h3 data-i18n="planFourteenDays.inclusion3Title">Signature Moments</h3>
+            <p data-i18n="planFourteenDays.inclusion3Desc">
               Exclusive evening at Diriyah, AlUla equestrian trails, and Red
               Sea sunset cruise tailored to your interests.
             </p>
           </article>
           <article class="plan-inclusion">
-            <h3>Flex Days</h3>
-            <p>
+            <h3 data-i18n="planFourteenDays.inclusion4Title">Flex Days</h3>
+            <p data-i18n="planFourteenDays.inclusion4Desc">
               Built-in open slots let you add spa retreats, shopping tours, or
               extra time for prayer and reflection.
             </p>
@@ -248,20 +251,36 @@
       </section>
 
       <section class="plan-section plan-cta">
-        <h2>Secure Your 14-Day Saudi Adventure</h2>
-        <p>
+        <h2 data-i18n="planFourteenDays.ctaTitle">Secure Your 14-Day Saudi Adventure</h2>
+        <p data-i18n="planFourteenDays.ctaDesc">
           Tell us your preferred travel window and group details so we can
           confirm availability, reserve top-rated accommodations, and personalize
           each day's highlights for you.
         </p>
         <div class="hero-cta">
-          <a class="cta-btn primary" href="mailto:travel@visitsaudi.example">Start Planning</a>
-          <a class="cta-btn secondary" href="index.html#tour-plans">Back to All Plans</a>
+          <a class="cta-btn primary" href="mailto:travel@visitsaudi.example" data-i18n="planFourteenDays.ctaButton1">Start Planning</a>
+          <a class="cta-btn secondary" href="index.html#tour-plans" data-i18n="planFourteenDays.ctaButton2">Back to All Plans</a>
         </div>
       </section>
     </main>
 
     <script src="../scripts/Script.js"></script>
+    <script>
+      // Initialize i18n after page loads
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.i18n) {
+          window.i18n.refresh();
+        } else {
+          const checkI18n = setInterval(() => {
+            if (window.i18n) {
+              window.i18n.refresh();
+              clearInterval(checkI18n);
+            }
+          }, 100);
+          setTimeout(() => clearInterval(checkI18n), 5000);
+        }
+      });
+    </script>
   </body>
 </html>
 
