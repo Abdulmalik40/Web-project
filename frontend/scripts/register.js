@@ -1,24 +1,45 @@
-// عنوان الـ API حق الباكند (Laravel)
+console.log("register.js loaded");
+
 const API_BASE_URL = "http://127.0.0.1:9000/api";
 
 const registerForm = document.getElementById("registerForm");
 const messageEl = document.getElementById("registerMessage");
 
-if (registerForm) {
+// عناصر الإدخال من الصفحة
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+
+if (!registerForm) {
+  console.warn("registerForm not found on this page");
+}
+
+if (registerForm && nameInput && emailInput && passwordInput) {
   registerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // ناخذ القيم من الحقول
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
 
-    // تصفير الرسالة
+    if (!messageEl) {
+      console.error("registerMessage element not found");
+      return;
+    }
+
+    // تفريغ الرسالة القديمة
     messageEl.textContent = "";
-    messageEl.style.color = "";
+    messageEl.className = "auth-message";
+
+    // تحقّق بسيط قبل الإرسال
+    if (!name || !email || !password) {
+      messageEl.textContent = "Please fill all fields.";
+      messageEl.classList.add("error");
+      return;
+    }
 
     try {
-      const response = await fetch(`${API_BASE_URL}/register`, {
+      const res = await fetch(`${API_BASE_URL}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,17 +47,16 @@ if (registerForm) {
         body: JSON.stringify({ name, email, password }),
       });
 
-      const data = await response.json();
+      const data = await res.json();
+      console.log("Register response:", data);
 
-      if (!response.ok) {
-        // لو الفاليديشن أو أي خطأ ثاني
-        console.error("Register error:", data);
+      if (!res.ok) {
         messageEl.textContent = data.message || "Registration failed";
-        messageEl.style.color = "red";
+        messageEl.classList.add("error");
         return;
       }
 
-      // نجاح ✅: نخزن التوكن مثلاً ونطلع رسالة
+      // حفظ التوكن والمعلومات (اختياري حالياً)
       if (data.token) {
         localStorage.setItem("auth_token", data.token);
         localStorage.setItem("user_name", data.user?.name || "");
@@ -44,15 +64,18 @@ if (registerForm) {
       }
 
       messageEl.textContent = "Account created successfully 🎉";
-      messageEl.style.color = "green";
+      messageEl.classList.add("success");
 
-      // ممكن مستقبلاً نوجّه لصفحة تسجيل الدخول / الصفحة الرئيسية
-      // window.location.href = "/pages/login.html";
-
+      // تحويل سريع لصفحة تسجيل الدخول
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 800);
     } catch (err) {
-      console.error(err);
+      console.error("Register fetch error:", err);
       messageEl.textContent = "Error connecting to server";
-      messageEl.style.color = "red";
+      messageEl.classList.add("error");
     }
   });
+} else {
+  console.warn("Some auth inputs not found (name/email/password).");
 }
