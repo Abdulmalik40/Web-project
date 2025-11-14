@@ -1,0 +1,1995 @@
+/* Color variables are now imported from _saudi-cultural-colors.css */
+/* Legacy compatibility mappings are handled in _variables.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", "Tajawal", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] .header {
+  background: rgba(26, 32, 44, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+}
+
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--color-accent-saudi-green), var(--color-accent-gold));
+  box-shadow: var(--shadow-saudi);
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-mark::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  border-radius: var(--radius-sm);
+  background: conic-gradient(from 140deg, var(--color-accent-gold), var(--color-accent-gold), var(--color-accent-gold));
+}
+
+.brand-title {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-accent-saudi-green);
+  text-shadow: 0 1px 2px rgba(0, 108, 53, 0.1);
+}
+
+.brand-sub {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.theme-toggle {
+  background: var(--color-bg-elevated);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-md);
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--color-bg-base);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav .item a {
+  padding: 8px 16px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+}
+
+.nav .item a:hover {
+  color: var(--color-accent-saudi-green);
+  background: var(--color-hover-primary);
+  transform: translateY(-1px);
+}
+
+.nav .item a.active {
+  color: var(--color-accent-saudi-green);
+  background: var(--color-hover-primary);
+  font-weight: 600;
+}
+
+.nav .item a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: var(--color-accent-lavender);
+  border-radius: 1px;
+}
+
+/* Islamic Guide dropdown in header */
+.nav .has-dropdown { position: relative; }
+.nav .has-dropdown > a { display: inline-flex; align-items: center; gap: 6px; }
+.nav .dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 10px;
+  min-width: 240px;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  padding: 8px;
+  display: none;
+  z-index: 1001;
+}
+.nav .dropdown a { 
+  display: block; 
+  color: var(--color-text-primary); 
+  padding: 12px 16px; 
+  border-radius: 10px; 
+  margin-bottom: 4px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  position: relative;
+}
+
+.nav .dropdown a:hover { 
+  background: var(--color-hover-lavender); 
+  color: var(--color-accent-saudi-green);
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(167, 139, 186, 0.2);
+}
+
+.nav .dropdown a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: var(--color-accent-gold);
+  border-radius: 2px;
+  transition: height 0.3s ease;
+}
+
+.nav .dropdown a:hover::before {
+  height: 20px;
+}
+.nav .has-dropdown:hover .dropdown,
+.nav .has-dropdown:focus-within .dropdown { display: block; }
+
+/* Hero Section - Full Screen NEOM */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.7) contrast(1.1) saturate(1.2);
+  transform: scale(1.1);
+  animation: heroZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+  0% { transform: scale(1.1); }
+  100% { transform: scale(1.2); }
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(0, 98, 51, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(247, 220, 111, 0.2) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 100%);
+  z-index: 2;
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  background: var(--color-accent-gold);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: float 8s ease-in-out infinite;
+}
+
+.particle:nth-child(1) { 
+  width: 6px; height: 6px; 
+  top: 20%; left: 10%; 
+  animation-delay: 0s;
+  animation-duration: 6s;
+}
+.particle:nth-child(2) { 
+  width: 4px; height: 4px; 
+  top: 70%; left: 85%; 
+  animation-delay: 2s;
+  animation-duration: 8s;
+}
+.particle:nth-child(3) { 
+  width: 8px; height: 8px; 
+  top: 50%; left: 5%; 
+  animation-delay: 4s;
+  animation-duration: 10s;
+}
+.particle:nth-child(4) { 
+  width: 5px; height: 5px; 
+  top: 30%; left: 90%; 
+  animation-delay: 1s;
+  animation-duration: 7s;
+}
+.particle:nth-child(5) { 
+  width: 7px; height: 7px; 
+  top: 80%; left: 60%; 
+  animation-delay: 3s;
+  animation-duration: 9s;
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  25% { 
+    transform: translateY(-30px) translateX(10px) rotate(90deg);
+    opacity: 1;
+  }
+  50% { 
+    transform: translateY(-20px) translateX(-15px) rotate(180deg);
+    opacity: 0.8;
+  }
+  75% { 
+    transform: translateY(-40px) translateX(20px) rotate(270deg);
+    opacity: 0.9;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 24px;
+}
+
+.hero-text {
+  animation: heroContentFadeIn 2s ease-out;
+}
+
+@keyframes heroContentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title {
+  font-family: "Orbitron", "Space Grotesk", sans-serif;
+  margin-bottom: 32px;
+  line-height: 1.1;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.title-line {
+  display: block;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.title-line:first-child {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  color: var(--color-accent-gold);
+  margin-bottom: 8px;
+  animation: slideInLeft 1s ease-out 0.5s both;
+}
+
+.title-line.featured {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 900;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ffffff, var(--color-accent-gold));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+  animation: slideInRight 1s ease-out 0.8s both;
+}
+
+.title-line.subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.8rem);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  letter-spacing: 4px;
+  animation: fadeInUp 1s ease-out 1.2s both;
+}
+
+.hero-sub {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 48px;
+  animation: fadeInUp 1s ease-out 1.5s both;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 1s ease-out 1.8s both;
+}
+
+.cta-btn {
+  padding: 16px 32px;
+  border: none;
+  border-radius: 50px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.cta-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.cta-btn.primary {
+  background: linear-gradient(135deg, var(--color-button-primary), var(--color-button-primary-hover));
+  color: var(--color-button-text);
+  box-shadow: var(--shadow-saudi);
+}
+
+.cta-btn.primary:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: var(--shadow-lg);
+  background: linear-gradient(135deg, var(--color-button-primary-hover), var(--color-button-primary));
+}
+
+.cta-btn.secondary {
+  background: var(--color-button-tertiary);
+  color: var(--color-button-tertiary-text);
+  border: 2px solid var(--color-button-tertiary-border);
+}
+
+.cta-btn.secondary:hover {
+  background: var(--color-hover-lavender);
+  border-color: var(--color-accent-saudi-green);
+  transform: translateY(-4px);
+  color: var(--color-accent-saudi-green);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  animation: fadeInUp 2s ease-out 2s both;
+}
+
+.scroll-arrow {
+  width: 2px;
+  height: 30px;
+  background: white;
+  margin-bottom: 8px;
+  position: relative;
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.scroll-arrow::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -3px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg);
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.6; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(10px); }
+}
+
+.scroll-indicator span {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* Main Content */
+.banner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: contentReveal 1s ease-out 0.5s both;
+}
+
+@keyframes contentReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Program Headers */
+.program-header {
+  background: var(--color-bg-base);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.program-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent-saudi-green), var(--color-accent-gold), var(--saudi-red));
+}
+
+.program-header h2 {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.program-header p {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-accent-saudi-green);
+  color: white;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.explore-btn:hover {
+  background: var(--saudi-green-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.explore-btn::after {
+  content: "→";
+  font-weight: bold;
+}
+
+/* Cards Grid - Template Style */
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.destination-card {
+  background: var(--color-bg-base);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  aspect-ratio: 4/5;
+  display: flex;
+  flex-direction: column;
+}
+
+.destination-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.destination-card > a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.destination-card img,
+.destination-card > a > img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.destination-card:hover img {
+  transform: scale(1.05);
+}
+
+.destination-card .card-content,
+.destination-card > a > .card-content {
+  padding: 20px;
+  position: relative;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.destination-card h3 {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.destination-card .location {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--color-accent-saudi-green);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.badge.religious {
+  background: var(--color-accent-saudi-green);
+}
+
+.badge.capital {
+  background: var(--saudi-red);
+}
+
+.badge.industrial {
+  background: #2b6cb0;
+}
+
+.badge.heritage {
+  background: #d69e2e;
+}
+
+.badge.natural {
+  background: #38a169;
+}
+
+.badge.futuristic {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.badge.vision {
+  background: linear-gradient(135deg, var(--color-accent-gold), var(--saudi-red));
+}
+
+/* Two Column Layout for Programs */
+.programs-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 60px 0;
+}
+
+.tour-plans {
+  margin-top: 72px;
+}
+
+.tour-plans__intro {
+  max-width: 760px;
+  margin: 0 auto 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tour-plans__intro .eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-accent-saudi-green);
+}
+
+.tour-plans__intro h2 {
+  font-family: "Cairo", sans-serif;
+  font-size: clamp(1.75rem, 2.5vw, 2.4rem);
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.tour-plans__intro p {
+  color: var(--color-text-secondary);
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.plan-card {
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: inherit;
+  text-decoration: none;
+}
+
+.plan-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.plan-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.plan-card__content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.plan-duration {
+  align-self: flex-start;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--color-accent-lavender-faded, rgba(103, 58, 183, 0.12));
+  color: var(--color-accent-saudi-green);
+}
+
+.plan-card__content h3 {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.plan-card__content p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.plan-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+.plan-highlights li {
+  padding-left: 26px;
+  position: relative;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.plan-highlights li::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent-saudi-green);
+  box-shadow: 0 0 0 2px rgba(0, 108, 53, 0.15);
+}
+
+[data-theme="dark"] .plan-card {
+  background: #0f1014;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .plan-highlights li {
+  color: rgba(226, 232, 240, 0.85);
+}
+
+[data-theme="dark"] .plan-duration {
+  background: rgba(56, 189, 148, 0.12);
+  color: #3cd4a0;
+}
+
+.plan-page {
+  max-width: 1100px;
+  margin: 120px auto 80px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.plan-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.plan-section h2 {
+  font-family: "Cairo", sans-serif;
+  font-size: clamp(1.75rem, 2.3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.plan-section p,
+.plan-section li {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.plan-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.plan-summary-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+}
+
+.plan-summary-card span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent-saudi-green);
+}
+
+.plan-summary-card strong {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.plan-itinerary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.plan-phase {
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan-phase span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent-saudi-green);
+}
+
+.plan-phase h3 {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.plan-phase ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.plan-phase li::before {
+  content: "•";
+  color: var(--color-accent-saudi-green);
+  margin-right: 8px;
+}
+
+.plan-inclusions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.plan-inclusion {
+  padding: 24px;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan-inclusion h3 {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.plan-cta {
+  text-align: center;
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.plan-cta p {
+  max-width: 600px;
+}
+
+[data-theme="dark"] .plan-summary-card,
+[data-theme="dark"] .plan-phase,
+[data-theme="dark"] .plan-inclusion,
+[data-theme="dark"] .plan-cta {
+  background: rgba(10, 12, 18, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .plan-phase li::before {
+  color: #3cd4a0;
+}
+
+.program-card {
+  background: var(--color-bg-base);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.program-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent-saudi-green), var(--color-accent-gold));
+}
+
+.program-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.program-card h3 {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.program-card p {
+  color: var(--color-text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Islamic Guide Tools Section */
+.islamic-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.islamic-tool-card {
+  background: var(--color-bg-base);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.islamic-tool-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--color-accent-saudi-green);
+}
+
+.qibla-card::before {
+  background: linear-gradient(90deg, var(--color-accent-saudi-green), var(--color-accent-gold));
+}
+
+.prayer-card::before {
+  background: linear-gradient(90deg, #2b6cb0, var(--color-accent-saudi-green));
+}
+
+.quran-card::before {
+  background: linear-gradient(90deg, var(--color-accent-gold), var(--saudi-red));
+}
+
+.mosque-card::before {
+  background: linear-gradient(90deg, var(--saudi-red), var(--color-accent-saudi-green));
+}
+
+.islamic-tool-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.tool-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.islamic-tool-card h3 {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.islamic-tool-card p {
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.tool-btn {
+  background: var(--color-accent-saudi-green);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tool-btn:hover {
+  background: var(--saudi-green-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-inner {
+    padding: 12px 20px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .hero-content {
+    padding: 0 20px;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-btn {
+    min-width: 200px;
+  }
+
+  .title-line:first-child {
+    font-size: 1.5rem;
+  }
+
+  .title-line.featured {
+    font-size: 3rem;
+  }
+
+  .title-line.subtitle {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .banner {
+    padding: 60px 20px 40px;
+  }
+
+  .programs-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .program-header {
+    padding: 24px;
+  }
+
+  .destinations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .destination-card {
+    aspect-ratio: 16/10;
+  }
+
+  .destination-card img {
+    height: 60%;
+  }
+
+  .destination-card .card-content {
+    height: 40%;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  .tour-plans {
+    margin-top: 56px;
+  }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .plan-card__content {
+    padding: 20px;
+  }
+
+  .plan-page {
+    margin: 100px auto 60px;
+    gap: 48px;
+  }
+
+  .plan-summary-grid,
+  .plan-itinerary-grid,
+  .plan-inclusions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-cta {
+    padding: 32px 24px;
+  }
+
+  .islamic-tools-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .islamic-tool-card {
+    padding: 24px;
+  }
+}
+
+/* Animations */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.destination-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.destination-card:nth-child(1) { animation-delay: 0.1s; }
+.destination-card:nth-child(2) { animation-delay: 0.2s; }
+.destination-card:nth-child(3) { animation-delay: 0.3s; }
+.destination-card:nth-child(4) { animation-delay: 0.4s; }
+.destination-card:nth-child(5) { animation-delay: 0.5s; }
+.destination-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Dark theme adjustments */
+[data-theme="dark"] .destination-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .program-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .program-header {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .theme-toggle {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .islamic-tool-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* Quran Page Specific Styles */
+.quran-container {
+  max-width: 1200px;
+  margin: 120px auto 60px;
+  padding: 0 24px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-family: "Cairo", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--color-accent-saudi-green), var(--color-accent-gold));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-desc {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.controls-section {
+  background: var(--color-bg-base);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.control-group {
+  margin-bottom: 24px;
+}
+
+.control-label {
+  display: block;
+  font-family: "Cairo", sans-serif;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+select, input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+select:focus, input:focus {
+  outline: none;
+  border-color: var(--color-accent-saudi-green);
+  box-shadow: 0 0 0 3px rgba(0, 98, 51, 0.1);
+}
+
+.player-section {
+  background: var(--color-bg-base);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: none;
+}
+
+.player-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.current-info h3 {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.current-info p {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.audio-player {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--color-text-secondary);
+}
+
+.error {
+  background: rgba(206, 17, 38, 0.1);
+  border: 1px solid var(--saudi-red);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin: 20px 0;
+  color: var(--saudi-red);
+}
+
+.btn {
+  background: var(--color-accent-saudi-green);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn:hover {
+  background: var(--saudi-green-dark);
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  background: var(--text-muted);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .quran-container {
+    margin-top: 100px;
+    padding: 0 20px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .controls-section,
+  .player-section {
+    padding: 24px;
+  }
+  
+  .player-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+/* Qibla Finder Styles */
+.qibla-container {
+  max-width: 800px;
+  margin: 120px auto 60px;
+  padding: 0 24px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-family: "Cairo", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--color-accent-saudi-green), var(--color-accent-gold));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-desc {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.qibla-controls {
+  background: var(--color-bg-base);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.control-group {
+  margin-bottom: 20px;
+}
+
+.helper-text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.manual-input {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.control-label {
+  display: block;
+  font-family: "Cairo", sans-serif;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--color-accent-saudi-green);
+  box-shadow: 0 0 0 3px rgba(0, 98, 51, 0.1);
+}
+
+.btn {
+  background: var(--color-accent-saudi-green);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn:hover {
+  background: var(--saudi-green-dark);
+  transform: translateY(-1px);
+}
+
+.btn.secondary {
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.btn.secondary:hover {
+  background: var(--color-bg-base);
+  border-color: var(--color-accent-saudi-green);
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: var(--color-text-secondary);
+}
+
+.error {
+  background: rgba(206, 17, 38, 0.1);
+  border: 1px solid var(--saudi-red);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin: 16px 0;
+  color: var(--saudi-red);
+  text-align: center;
+}
+
+.result-section {
+  background: var(--color-bg-base);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.compass-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle Islamic pattern background */
+.compass-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(44, 62, 80, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(44, 62, 80, 0.03) 0%, transparent 50%);
+  animation: rotate 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.compass {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 3px solid #2c3e50;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 
+              0 0 0 1px rgba(44, 62, 80, 0.1);
+  transition: all 0.3s ease;
+  animation: compassSlideIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes compassSlideIn {
+  0% { 
+    transform: translateY(-50px); 
+    opacity: 0; 
+  }
+  70% { 
+    opacity: 0.7; 
+  }
+  100% { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+.compass:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 
+              0 0 0 1px rgba(44, 62, 80, 0.2);
+}
+
+/* Compass rose pattern */
+.compass::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(44, 62, 80, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(44, 62, 80, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(44, 62, 80, 0.05) 0%, transparent 70%);
+  z-index: 1;
+}
+
+/* Compass rose directional markers */
+.compass::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  background: 
+    linear-gradient(0deg, transparent 48%, rgba(44, 62, 80, 0.1) 49%, rgba(44, 62, 80, 0.1) 51%, transparent 52%),
+    linear-gradient(90deg, transparent 48%, rgba(44, 62, 80, 0.1) 49%, rgba(44, 62, 80, 0.1) 51%, transparent 52%),
+    linear-gradient(45deg, transparent 48%, rgba(44, 62, 80, 0.05) 49%, rgba(44, 62, 80, 0.05) 51%, transparent 52%),
+    linear-gradient(135deg, transparent 48%, rgba(44, 62, 80, 0.05) 49%, rgba(44, 62, 80, 0.05) 51%, transparent 52%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.needle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 85px;
+  background: linear-gradient(to top, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+  transform-origin: bottom center;
+  transform: translate(-50%, -100%) rotate(0deg);
+  border-radius: 3px 3px 0 0;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Needle tip */
+.needle::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 12px solid #2c3e50;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Needle tail */
+.needle::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 8px solid #34495e;
+}
+
+.center-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Islamic star pattern in center */
+.center-dot::before {
+  content: '★';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.direction-labels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 16px;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9);
+  z-index: 2;
+}
+
+.direction-labels span {
+  position: absolute;
+  font-family: 'Cairo', 'Tajawal', 'Arial', sans-serif;
+  font-size: 18px;
+  color: #2c3e50;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.north { 
+  top: 15px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+
+.east { 
+  top: 50%; 
+  right: 15px; 
+  transform: translateY(-50%); 
+}
+
+.south { 
+  bottom: 15px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+
+.west { 
+  top: 50%; 
+  left: 15px; 
+  transform: translateY(-50%); 
+}
+
+.result-info h3 {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.result-info p {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  margin: 6px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .qibla-container {
+    margin-top: 100px;
+    padding: 0 20px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .compass-container {
+    padding: 15px;
+    margin-bottom: 24px;
+  }
+  
+  .compass {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* History Page Custom Styles */
+.section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.section-content {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.section.visible .section-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-image {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.section-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+}
+
+.section-image:hover img {
+  transform: scale(1.05);
+}
+
+.section-text {
+  width: 50%;
+  padding: 40px;
+  background: var(--color-bg-base);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.section-title {
+  font-family: "Cairo", sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--color-accent-saudi-green), var(--color-accent-gold));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+  font-family: "Tajawal", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-accent-saudi-green);
+  margin-bottom: 24px;
+}
+
+.section-body {
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.section-list {
+  padding-right: 20px;
+  margin: 16px 0;
+}
+
+.section-list li {
+  margin: 8px 0;
+  color: var(--color-text-primary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .section-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .section-image,
+  .section-text {
+    width: 100%;
+    height: auto;
+  }
+  
+  .section-text {
+    padding: 32px;
+  }
+}

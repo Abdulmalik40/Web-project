@@ -1,0 +1,19 @@
+/* frontend/styles/base/_reset.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: "Inter", "Tajawal", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-secondary);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+  }

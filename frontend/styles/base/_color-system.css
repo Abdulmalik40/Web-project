@@ -1,0 +1,209 @@
+/* ========================================
+   SAUDI TOURISM WEBSITE - COMPLETE COLOR SYSTEM
+   ======================================== */
+
+/* Light Mode (Default) */
+:root {
+  /* === CORE IDENTITY COLORS === */
+  --saudi-green: #006C35;
+  --saudi-green-light: #008A42;
+  --saudi-green-dark: #005229;
+  --saudi-lavender: #A78BBA;
+  --saudi-lavender-light: #B8A5C7;
+  --saudi-lavender-dark: #9674A8;
+
+  /* === BACKGROUND SYSTEM === */
+  --bg-primary: #FFFFFF;           /* Main background */
+  --bg-secondary: #F8F9FA;         /* Card/surface backgrounds */
+  --bg-tertiary: #F1F3F4;          /* Subtle surface variations */
+  --bg-overlay: rgba(26, 26, 26, 0.7); /* Modal overlays */
+  --bg-glass: rgba(255, 255, 255, 0.8); /* Glass morphism */
+  --bg-glass-border: rgba(255, 255, 255, 0.2);
+
+  /* === TEXT SYSTEM === */
+  --text-primary: #1A1A1A;         /* Main text */
+  --text-secondary: #4A4A4A;       /* Secondary text */
+  --text-tertiary: #6B7280;        /* Muted text */
+  --text-disabled: #9CA3AF;        /* Disabled text */
+  --text-inverse: #FFFFFF;         /* Text on dark backgrounds */
+  --text-accent: #006C35;          /* Accent text (Saudi green) */
+
+  /* === ACCENT COLORS === */
+  --accent-primary: #006C35;       /* Saudi green - primary CTA */
+  --accent-primary-hover: #008A42;
+  --accent-primary-active: #005229;
+  --accent-secondary: #A78BBA;      /* Lavender - decorative only */
+  --accent-secondary-hover: #B8A5C7;
+  --accent-teal: #004D61;          /* Original teal */
+  --accent-teal-light: #006B7A;
+  --accent-ruby: #822659;          /* Original ruby */
+  --accent-ruby-light: #A03A7A;
+
+  /* === UI ELEMENTS === */
+  --border-primary: #E5E7EB;       /* Main borders */
+  --border-secondary: #D1D5DB;     /* Subtle borders */
+  --border-accent: #006C35;        /* Accent borders */
+  --border-focus: #006C35;         /* Focus rings */
+  --divider: #E5E7EB;              /* Section dividers */
+
+  /* === INTERACTIVE STATES === */
+  --hover-primary: rgba(0, 108, 53, 0.1);
+  --hover-secondary: rgba(167, 139, 186, 0.1);
+  --focus-ring: rgba(0, 108, 53, 0.3);
+  --active-primary: rgba(0, 108, 53, 0.2);
+
+  /* === STATUS COLORS === */
+  --success: #10B981;
+  --success-bg: #D1FAE5;
+  --warning: #F59E0B;
+  --warning-bg: #FEF3C7;
+  --error: #EF4444;
+  --error-bg: #FEE2E2;
+  --info: #3B82F6;
+  --info-bg: #DBEAFE;
+
+  /* === SHADOWS === */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+  /* === CORE IDENTITY COLORS (unchanged) === */
+  --saudi-green: #006C35;
+  --saudi-green-light: #008A42;
+  --saudi-green-dark: #005229;
+  --saudi-lavender: #A78BBA;
+  --saudi-lavender-light: #B8A5C7;
+  --saudi-lavender-dark: #9674A8;
+
+  /* === BACKGROUND SYSTEM === */
+  --bg-primary: #1A1A1A;          /* Main dark background */
+  --bg-secondary: #2D2D2D;           /* Card/surface backgrounds */
+  --bg-tertiary: #3A3A3A;            /* Subtle surface variations */
+  --bg-overlay: rgba(0, 0, 0, 0.8); /* Modal overlays */
+  --bg-glass: rgba(26, 26, 26, 0.8); /* Glass morphism */
+  --bg-glass-border: rgba(255, 255, 255, 0.1);
+
+  /* === TEXT SYSTEM === */
+  --text-primary: #F0F0F0;          /* Main text */
+  --text-secondary: #B8B8B8;        /* Secondary text */
+  --text-tertiary: #9CA3AF;         /* Muted text */
+  --text-disabled: #6B7280;         /* Disabled text */
+  --text-inverse: #1A1A1A;          /* Text on light backgrounds */
+  --text-accent: #4ADE80;           /* Accent text (lighter green for dark mode) */
+
+  /* === ACCENT COLORS === */
+  --accent-primary: #006C35;        /* Saudi green - primary CTA */
+  --accent-primary-hover: #008A42;
+  --accent-primary-active: #005229;
+  --accent-secondary: #A78BBA;      /* Lavender - decorative only */
+  --accent-secondary-hover: #B8A5C7;
+  --accent-teal: #0D9488;           /* Adjusted teal for dark mode */
+  --accent-teal-light: #14B8A6;
+  --accent-ruby: #BE185D;           /* Adjusted ruby for dark mode */
+  --accent-ruby-light: #EC4899;
+
+  /* === UI ELEMENTS === */
+  --border-primary: #374151;        /* Main borders */
+  --border-secondary: #4B5563;     /* Subtle borders */
+  --border-accent: #006C35;         /* Accent borders */
+  --border-focus: #006C35;          /* Focus rings */
+  --divider: #374151;               /* Section dividers */
+
+  /* === INTERACTIVE STATES === */
+  --hover-primary: rgba(0, 108, 53, 0.2);
+  --hover-secondary: rgba(167, 139, 186, 0.15);
+  --focus-ring: rgba(0, 108, 53, 0.4);
+  --active-primary: rgba(0, 108, 53, 0.3);
+
+  /* === STATUS COLORS === */
+  --success: #10B981;
+  --success-bg: rgba(16, 185, 129, 0.1);
+  --warning: #F59E0B;
+  --warning-bg: rgba(245, 158, 11, 0.1);
+  --error: #EF4444;
+  --error-bg: rgba(239, 68, 68, 0.1);
+  --info: #3B82F6;
+  --info-bg: rgba(59, 130, 246, 0.1);
+
+  /* === SHADOWS === */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================
+   SEMANTIC COLOR UTILITIES
+   ======================================== */
+
+/* Background utilities */
+.bg-primary { background-color: var(--bg-primary); }
+.bg-secondary { background-color: var(--bg-secondary); }
+.bg-tertiary { background-color: var(--bg-tertiary); }
+.bg-glass { background-color: var(--bg-glass); }
+
+/* Text utilities */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-disabled { color: var(--text-disabled); }
+.text-inverse { color: var(--text-inverse); }
+.text-accent { color: var(--text-accent); }
+
+/* Accent utilities */
+.accent-primary { color: var(--accent-primary); }
+.accent-secondary { color: var(--accent-secondary); }
+.accent-teal { color: var(--accent-teal); }
+.accent-ruby { color: var(--accent-ruby); }
+
+/* Border utilities */
+.border-primary { border-color: var(--border-primary); }
+.border-secondary { border-color: var(--border-secondary); }
+.border-accent { border-color: var(--border-accent); }
+
+/* Interactive utilities */
+.hover-primary:hover { background-color: var(--hover-primary); }
+.hover-secondary:hover { background-color: var(--hover-secondary); }
+.focus-ring:focus { box-shadow: 0 0 0 3px var(--focus-ring); }
+
+/* ========================================
+   COMPONENT-SPECIFIC OVERRIDES
+   ======================================== */
+
+/* Ensure Saudi green is always the primary CTA color */
+.btn-primary {
+  background-color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--text-inverse);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-primary-hover);
+  border-color: var(--accent-primary-hover);
+}
+
+.btn-primary:active {
+  background-color: var(--accent-primary-active);
+  border-color: var(--accent-primary-active);
+}
+
+/* Lavender used sparingly for decorative elements */
+.decorative-accent {
+  color: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+}
+
+.decorative-accent:hover {
+  color: var(--accent-secondary-hover);
+  border-color: var(--accent-secondary-hover);
+}
+
+/* Status indicators */
+.status-success { color: var(--success); background-color: var(--success-bg); }
+.status-warning { color: var(--warning); background-color: var(--warning-bg); }
+.status-error { color: var(--error); background-color: var(--error-bg); }
+.status-info { color: var(--info); background-color: var(--info-bg); }

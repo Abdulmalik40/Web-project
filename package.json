@@ -1,0 +1,25 @@
+{
+  "name": "saudi-tourism-website",
+  "version": "1.0.0",
+  "description": "Saudi Arabia Tourism Website with Islamic Features",
+  "main": "frontend/scripts/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "python start-server.py",
+    "start": "python start-server.py",
+    "build": "node build.js",
+    "serve": "cd frontend && python -m http.server 8000"
+  },
+  "keywords": [
+    "saudi-arabia",
+    "tourism",
+    "islamic",
+    "website",
+    "frontend"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "i18n-js": "^4.5.1"
+  }
+}

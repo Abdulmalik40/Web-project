@@ -1,0 +1,343 @@
+/* ========================================
+   SAUDI TOURISM WEBSITE - CULTURAL COLOR SYSTEM
+   EXACT SPECIFICATIONS - NO SUBSTITUTIONS
+   ======================================== */
+
+/* LIGHT MODE - Pure White Base */
+:root {
+  /* === CORE SAUDI CULTURAL COLORS (MANDATORY) === */
+  --color-accent-saudi-green: #006C35;        /* Saudi National Green - CTAs, badges, key actions */
+  --color-accent-lavender: #A78BBA;           /* Vision 2030 Lavender - hover effects, dividers, accents */
+  --color-accent-gold: #FFD700;               /* Desert Sunset Gold - decorative lines, icons, highlights */
+  --color-accent-ruby: #822659;               /* Heritage Ruby - premium, featured, special tags */
+  --color-accent-teal: #004D61;               /* Skyline Teal - modern accents, info sections */
+  --color-text-off-white: #F0F0F0;           /* Off-White Text (dark mode) */
+  --color-bg-midnight: #1A1A1A;               /* Midnight Black (dark mode base) */
+  --color-bg-pure-white: #FFFFFF;            /* Pure White (light mode base) */
+
+  /* === LIGHT MODE BACKGROUND SYSTEM === */
+  --color-bg-base: #FFFFFF;                  /* Pure white - main background */
+  --color-bg-surface: #F8F8F8;               /* Soft off-white - cards, panels */
+  --color-bg-elevated: #F5F5F5;              /* Elevated surfaces - modals, dropdowns */
+  --color-bg-glass: rgba(255, 255, 255, 0.85); /* Glass morphism */
+  --color-bg-overlay: rgba(26, 26, 26, 0.6);   /* Modal overlays */
+
+  /* === LIGHT MODE TEXT SYSTEM === */
+  --color-text-primary: #1A1A1A;             /* Rich black - main text */
+  --color-text-secondary: #555555;            /* Secondary text */
+  --color-text-tertiary: #777777;            /* Muted text */
+  --color-text-disabled: #AAAAAA;            /* Disabled text */
+  --color-text-inverse: #FFFFFF;             /* White text on dark backgrounds */
+
+  /* === LIGHT MODE INTERACTIVE ELEMENTS === */
+  --color-button-primary: #006C35;           /* Saudi green - primary CTAs */
+  --color-button-primary-hover: #008A42;     /* Darker green on hover */
+  --color-button-primary-active: #005229;    /* Active state */
+  --color-button-secondary: #004D61;         /* Teal - secondary buttons */
+  --color-button-secondary-hover: #006B7A;   /* Darker teal on hover */
+  --color-button-tertiary: transparent;      /* Ghost buttons */
+  --color-button-tertiary-border: #A78BBA;   /* Lavender border */
+  --color-button-tertiary-text: #A78BBA;     /* Lavender text */
+  --color-button-text: #FFFFFF;              /* White text on buttons */
+
+  /* === LIGHT MODE BORDERS & DIVIDERS === */
+  --color-border: #DDDDDD;                    /* Light borders */
+  --color-border-subtle: #EEEEEE;             /* Very subtle borders */
+  --color-border-accent: #006C35;            /* Saudi green borders */
+  --color-border-lavender: #A78BBA;          /* Lavender accent borders */
+  --color-border-gold: #FFD700;              /* Gold accent borders */
+  --color-divider: #DDDDDD;                  /* Section dividers */
+
+  /* === LIGHT MODE HOVER & FOCUS STATES === */
+  --color-hover-overlay: rgba(167, 139, 186, 0.05); /* 5% lavender overlay */
+  --color-hover-primary: rgba(0, 108, 53, 0.08);    /* Saudi green hover */
+  --color-hover-lavender: rgba(167, 139, 186, 0.08); /* Lavender hover */
+  --color-focus-ring: rgba(0, 108, 53, 0.3);        /* Focus ring */
+  --color-active: rgba(0, 108, 53, 0.12);           /* Active state */
+
+  /* === LIGHT MODE BADGE/TAG SYSTEM === */
+  --color-badge-religious: #006C35;          /* Religious tags */
+  --color-badge-capital: #822659;            /* Capital tags */
+  --color-badge-industrial: #004D61;         /* Industrial tags */
+  --color-badge-heritage: #FFD700;           /* Heritage tags */
+  --color-badge-vision: #A78BBA;             /* Vision 2030 tags */
+  --color-badge-text: #FFFFFF;               /* White text on badges */
+
+  /* === LIGHT MODE ACCENT LINES === */
+  --color-accent-line: #FFD700;              /* Gold accent lines under headers */
+  --color-nav-active: #006C35;               /* Navigation active state underline */
+
+  /* === LIGHT MODE SHADOWS === */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-saudi: 0 4px 12px rgba(0, 108, 53, 0.15); /* Saudi green shadow */
+}
+
+/* DARK MODE - Midnight Black Base */
+[data-theme="dark"] {
+  /* === CORE SAUDI CULTURAL COLORS (unchanged) === */
+  --color-accent-saudi-green: #006C35;        /* Saudi National Green - unchanged */
+  --color-accent-lavender: #A78BBA;           /* Vision 2030 Lavender - unchanged */
+  --color-accent-gold: #FFD700;               /* Desert Sunset Gold - unchanged */
+  --color-accent-ruby: #822659;               /* Heritage Ruby - unchanged */
+  --color-accent-teal: #004D61;               /* Skyline Teal - unchanged */
+  --color-text-off-white: #F0F0F0;           /* Off-White Text - unchanged */
+  --color-bg-midnight: #1A1A1A;               /* Midnight Black - unchanged */
+  --color-bg-pure-white: #FFFFFF;            /* Pure White - unchanged */
+
+  /* === DARK MODE BACKGROUND SYSTEM === */
+  --color-bg-base: #1A1A1A;                  /* Midnight Black - main background */
+  --color-bg-surface: #222222;               /* Slightly lighter for depth - cards, panels */
+  --color-bg-elevated: #2A2A2A;             /* Elevated surfaces - modals, dropdowns */
+  --color-bg-glass: rgba(26, 26, 26, 0.85);  /* Dark glass morphism */
+  --color-bg-overlay: rgba(0, 0, 0, 0.8);    /* Dark modal overlays */
+
+  /* === DARK MODE TEXT SYSTEM === */
+  --color-text-primary: #F0F0F0;             /* Off-white - main text */
+  --color-text-secondary: #CCCCCC;          /* Softer gray - secondary text */
+  --color-text-tertiary: #AAAAAA;           /* Muted gray - captions, labels */
+  --color-text-disabled: #666666;           /* Disabled text */
+  --color-text-inverse: #1A1A1A;            /* Dark text on light backgrounds */
+
+  /* === DARK MODE INTERACTIVE ELEMENTS === */
+  --color-button-primary: #006C35;           /* Saudi green - unchanged */
+  --color-button-primary-hover: #008A42;     /* Darker green on hover */
+  --color-button-primary-active: #005229;    /* Active state */
+  --color-button-secondary: #004D61;         /* Teal - unchanged */
+  --color-button-secondary-hover: #006B7A;   /* Darker teal on hover */
+  --color-button-tertiary: transparent;      /* Ghost buttons */
+  --color-button-tertiary-border: #A78BBA;   /* Lavender border */
+  --color-button-tertiary-text: #A78BBA;     /* Lavender text */
+  --color-button-text: #FFFFFF;              /* White text on buttons */
+
+  /* === DARK MODE BORDERS & DIVIDERS === */
+  --color-border: #333333;                  /* Dark borders */
+  --color-border-subtle: #444444;           /* Subtle dark borders */
+  --color-border-accent: #006C35;          /* Saudi green borders */
+  --color-border-lavender: #A78BBA;         /* Lavender accent borders */
+  --color-border-gold: #FFD700;             /* Gold accent borders */
+  --color-divider: #333333;                 /* Dark section dividers */
+
+  /* === DARK MODE HOVER & FOCUS STATES === */
+  --color-hover-overlay: rgba(167, 139, 186, 0.1); /* 10% lavender overlay */
+  --color-hover-primary: rgba(0, 108, 53, 0.15);   /* Enhanced Saudi green hover */
+  --color-hover-lavender: rgba(167, 139, 186, 0.12); /* Enhanced lavender hover */
+  --color-focus-ring: rgba(0, 108, 53, 0.4);        /* Enhanced focus ring */
+  --color-active: rgba(0, 108, 53, 0.2);            /* Enhanced active state */
+
+  /* === DARK MODE BADGE/TAG SYSTEM === */
+  --color-badge-religious: #006C35;          /* Religious tags */
+  --color-badge-capital: #822659;            /* Capital tags */
+  --color-badge-industrial: #004D61;         /* Industrial tags */
+  --color-badge-heritage: #FFD700;           /* Heritage tags */
+  --color-badge-vision: #A78BBA;            /* Vision 2030 tags */
+  --color-badge-text: #FFFFFF;               /* White text on badges */
+
+  /* === DARK MODE ACCENT LINES === */
+  --color-accent-line: #FFD700;              /* Gold accent lines under headers */
+  --color-nav-active: #006C35;               /* Navigation active state underline */
+
+  /* === DARK MODE SHADOWS === */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+  --shadow-saudi: 0 4px 12px rgba(0, 108, 53, 0.3);  /* Enhanced Saudi green shadow */
+}
+
+/* ========================================
+   CULTURAL COMPONENT STYLES
+   ======================================== */
+
+/* Saudi Primary CTA Button */
+.btn-saudi-primary {
+  background-color: var(--color-button-primary);
+  color: var(--color-button-text);
+  border: 2px solid var(--color-button-primary);
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-saudi-primary:hover {
+  background-color: var(--color-button-primary-hover);
+  border-color: var(--color-button-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-saudi);
+}
+
+.btn-saudi-primary:active {
+  background-color: var(--color-button-primary-active);
+  border-color: var(--color-button-primary-active);
+}
+
+/* Saudi Secondary Button */
+.btn-saudi-secondary {
+  background-color: var(--color-button-secondary);
+  color: var(--color-button-text);
+  border: 2px solid var(--color-button-secondary);
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-saudi-secondary:hover {
+  background-color: var(--color-button-secondary-hover);
+  border-color: var(--color-button-secondary-hover);
+  transform: translateY(-1px);
+}
+
+/* Saudi Tertiary (Ghost) Button */
+.btn-saudi-tertiary {
+  background-color: var(--color-button-tertiary);
+  color: var(--color-button-tertiary-text);
+  border: 2px solid var(--color-button-tertiary-border);
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-saudi-tertiary:hover {
+  background-color: var(--color-hover-lavender);
+  color: var(--color-button-tertiary-text);
+}
+
+/* Saudi Tourism Card */
+.tourism-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tourism-card:hover {
+  border-color: var(--color-border-lavender);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.tourism-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent-saudi-green), var(--color-accent-lavender));
+  border-radius: 12px 12px 0 0;
+}
+
+/* Saudi Badge System */
+.badge-religious {
+  background-color: var(--color-badge-religious);
+  color: var(--color-badge-text);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-capital {
+  background-color: var(--color-badge-capital);
+  color: var(--color-badge-text);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-industrial {
+  background-color: var(--color-badge-industrial);
+  color: var(--color-badge-text);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-heritage {
+  background-color: var(--color-badge-heritage);
+  color: var(--color-text-primary);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-vision {
+  background-color: var(--color-badge-vision);
+  color: var(--color-badge-text);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Saudi Navigation Active State */
+.nav-link.active {
+  color: var(--color-accent-saudi-green);
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-nav-active);
+  border-radius: 1px;
+}
+
+/* Saudi Section Headers with Gold Accent */
+.section-header {
+  position: relative;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.section-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--color-accent-line);
+  border-radius: 2px;
+}
+
+/* Saudi Hover Effects */
+.card-hover-effect:hover {
+  background-color: var(--color-hover-overlay);
+  border-color: var(--color-border-lavender);
+}
+
+.button-hover-effect:hover {
+  background-color: var(--color-hover-primary);
+}

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حدود المملكة العربية السعودية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
+    <link rel="stylesheet" href="../styles/chatbot.css">
+    <script src="../scripts/chatbot.js" defer></script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #faf8f3;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 98, 51, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e8f5e8;
+        }
+
+        .header h1 {
+            color: #006233;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .header p {
+            color: #666;
+            margin: 8px 0 0 0;
+        }
+
+        .test-section {
+            background: #f8f9fa;
+            border: 1px solid #e8f5e8;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .test-section h3 {
+            color: #006233;
+            font-family: 'Cairo', sans-serif;
+            margin: 0 0 16px 0;
+        }
+
+        .btn {
+            background: #006233;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 8px 8px 8px 0;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #004d26;
+        }
+
+        .btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .result {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .success {
+            background: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .error {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+        .loading {
+            background: #d1ecf1;
+            border-color: #bee5eb;
+            color: #0c5460;
+        }
+
+        .region-info {
+            background: #e8f5e8;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 8px 0;
+        }
+
+        .coordinates {
+            font-family: monospace;
+            background: #f1f1f1;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+     <!-- chatbot toggle button -->
+    <button id="chatbot-toggler">
+      <span class="material-symbols-outlined">mode_comment</span>
+      <span class="material-symbols-rounded">close</span>
+    </button>
+
+    <!-- chatbot container -->
+    <div class="chatbot-popup">
+      <!-- header -->
+      <div class="chat-header">
+        <div class="header-info">
+          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <h2 class="logo-text">Saudi Tourism Bot</h2>
+        </div>
+        <button id="close-chatbot" class="material-symbols-rounded">
+          keyboard_arrow_down
+        </button>
+      </div>
+
+      <!-- chat body -->
+      <div class="chat-body">
+        <div class="message bot-message">
+          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <div dir="rtl" class="message-text">
+            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
+          </div>
+        </div>
+      </div>
+
+      <!-- chat footer -->
+      <div class="chat-footer">
+        <form action="#" class="chat-form">
+          <textarea dir="rtl"
+            placeholder="اكتب سؤالك عن السياحة في السعودية..."
+            class="message-input"
+            required
+          ></textarea>
+          <div class="chat-controls">
+            <button type="submit" id="send-message" class="material-symbols-rounded">
+              arrow_upward
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🗺️ حدود المملكة العربية السعودية</h1>
+            <p>اختبار Geoapify Boundaries API للحصول على حدود المناطق السعودية</p>
+        </div>
+
+        <div class="test-section">
+            <h3>🔍 اختبار البحث عن السعودية</h3>
+            <p>البحث عن المملكة العربية السعودية في قاعدة البيانات الجغرافية</p>
+            <button id="searchSaudi" class="btn">🔍 البحث عن السعودية</button>
+            <div id="saudiSearchResult" class="result" style="display: none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>📍 اختبار حدود المناطق</h3>
+            <p>اختبار الحصول على حدود المناطق السعودية المختلفة</p>
+            <button id="getRegions" class="btn">📍 تحميل حدود المناطق</button>
+            <button id="getRiyadh" class="btn">🏛️ منطقة الرياض</button>
+            <button id="getMakkah" class="btn">🕌 منطقة مكة</button>
+            <button id="getMadinah" class="btn">🕌 منطقة المدينة</button>
+            <div id="regionsResult" class="result" style="display: none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>🎯 اختبار المعالم</h3>
+            <p>اختبار الحصول على المعالم السياحية والدينية في السعودية</p>
+            <button id="getMosques" class="btn">🕌 المساجد</button>
+            <button id="getRestaurants" class="btn">🍽️ المطاعم</button>
+            <button id="getHotels" class="btn">🏨 الفنادق</button>
+            <div id="placesResult" class="result" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        class SaudiBoundariesTester {
+            constructor() {
+                this.apiKey = '636790d9734f4bf2af3a9f2393bdcc1d';
+                this.setupEventListeners();
+            }
+
+            setupEventListeners() {
+                document.getElementById('searchSaudi').addEventListener('click', () => this.searchSaudi());
+                document.getElementById('getRegions').addEventListener('click', () => this.getRegions());
+                document.getElementById('getRiyadh').addEventListener('click', () => this.getRegionBoundaries('Riyadh'));
+                document.getElementById('getMakkah').addEventListener('click', () => this.getRegionBoundaries('Makkah'));
+                document.getElementById('getMadinah').addEventListener('click', () => this.getRegionBoundaries('Medina'));
+                document.getElementById('getMosques').addEventListener('click', () => this.getPlaces('religion.place_of_worship'));
+                document.getElementById('getRestaurants').addEventListener('click', () => this.getPlaces('commercial.restaurant'));
+                document.getElementById('getHotels').addEventListener('click', () => this.getPlaces('accommodation.hotel'));
+            }
+
+            async searchSaudi() {
+                const resultDiv = document.getElementById('saudiSearchResult');
+                this.showLoading(resultDiv, 'البحث عن السعودية...');
+
+                try {
+                    const searchUrl = `https://api.geoapify.com/v1/geocode/search?text=Saudi Arabia&limit=5&apiKey=${this.apiKey}`;
+                    
+                    const response = await fetch(searchUrl);
+                    const data = await response.json();
+
+                    if (data.features && data.features.length > 0) {
+                        const saudiInfo = data.features.find(feature => 
+                            feature.properties.country === 'Saudi Arabia' || 
+                            feature.properties.country_code === 'SA'
+                        );
+
+                        if (saudiInfo) {
+                            this.showSuccess(resultDiv, `
+                                <h4>🇸🇦 معلومات المملكة العربية السعودية</h4>
+                                <div class="region-info">
+                                    <strong>الاسم:</strong> ${saudiInfo.properties.name || 'المملكة العربية السعودية'}<br>
+                                    <strong>الرمز:</strong> ${saudiInfo.properties.country_code || 'SA'}<br>
+                                    <strong>الإحداثيات:</strong> 
+                                    <span class="coordinates">${saudiInfo.geometry.coordinates[1].toFixed(6)}, ${saudiInfo.geometry.coordinates[0].toFixed(6)}</span><br>
+                                    <strong>النوع:</strong> ${saudiInfo.properties.type || 'country'}
+                                </div>
+                                <pre>${JSON.stringify(saudiInfo.properties, null, 2)}</pre>
+                            `);
+                        } else {
+                            this.showError(resultDiv, 'لم يتم العثور على السعودية في النتائج');
+                        }
+                    } else {
+                        this.showError(resultDiv, 'لم يتم العثور على نتائج');
+                    }
+                } catch (error) {
+                    this.showError(resultDiv, `خطأ في البحث: ${error.message}`);
+                }
+            }
+
+            async getRegions() {
+                const resultDiv = document.getElementById('regionsResult');
+                this.showLoading(resultDiv, 'تحميل معلومات المناطق...');
+
+                try {
+                    const regions = [
+                        'Riyadh Region',
+                        'Makkah Region', 
+                        'Medina Region',
+                        'Eastern Province',
+                        'Al Qassim Region',
+                        'Hail Region',
+                        'Tabuk Region',
+                        'Northern Borders Region',
+                        'Jazan Region',
+                        'Najran Region',
+                        'Al Bahah Region',
+                        'Al Jouf Region'
+                    ];
+
+                    let results = [];
+                    
+                    for (const region of regions.slice(0, 3)) { // Test first 3 regions
+                        try {
+                            const searchUrl = `https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(region)}&filter=countrycode:sa&limit=1&apiKey=${this.apiKey}`;
+                            const response = await fetch(searchUrl);
+                            const data = await response.json();
+                            
+                            if (data.features && data.features.length > 0) {
+                                results.push(data.features[0]);
+                            }
+                        } catch (error) {
+                            console.warn(`Error searching for ${region}:`, error);
+                        }
+                    }
+
+                    if (results.length > 0) {
+                        let html = '<h4>📍 المناطق السعودية الموجودة</h4>';
+                        results.forEach(region => {
+                            html += `
+                                <div class="region-info">
+                                    <strong>${region.properties.name || 'منطقة'}</strong><br>
+                                    <strong>النوع:</strong> ${region.properties.type || 'unknown'}<br>
+                                    <strong>الإحداثيات:</strong> 
+                                    <span class="coordinates">${region.geometry.coordinates[1].toFixed(6)}, ${region.geometry.coordinates[0].toFixed(6)}</span>
+                                </div>
+                            `;
+                        });
+                        this.showSuccess(resultDiv, html);
+                    } else {
+                        this.showError(resultDiv, 'لم يتم العثور على معلومات المناطق');
+                    }
+                } catch (error) {
+                    this.showError(resultDiv, `خطأ في تحميل المناطق: ${error.message}`);
+                }
+            }
+
+            async getRegionBoundaries(regionName) {
+                const resultDiv = document.getElementById('regionsResult');
+                this.showLoading(resultDiv, `تحميل حدود ${regionName}...`);
+
+                try {
+                    // First search for the region
+                    const searchUrl = `https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(regionName)}&filter=countrycode:sa&limit=1&apiKey=${this.apiKey}`;
+                    const response = await fetch(searchUrl);
+                    const data = await response.json();
+
+                    if (data.features && data.features.length > 0) {
+                        const region = data.features[0];
+                        this.showSuccess(resultDiv, `
+                            <h4>📍 معلومات ${regionName}</h4>
+                            <div class="region-info">
+                                <strong>الاسم:</strong> ${region.properties.name}<br>
+                                <strong>النوع:</strong> ${region.properties.type}<br>
+                                <strong>الإحداثيات:</strong> 
+                                <span class="coordinates">${region.geometry.coordinates[1].toFixed(6)}, ${region.geometry.coordinates[0].toFixed(6)}</span><br>
+                                <strong>العنوان الكامل:</strong> ${region.properties.formatted || 'غير متوفر'}
+                            </div>
+                        `);
+                    } else {
+                        this.showError(resultDiv, `لم يتم العثور على ${regionName}`);
+                    }
+                } catch (error) {
+                    this.showError(resultDiv, `خطأ في البحث عن ${regionName}: ${error.message}`);
+                }
+            }
+
+            async getPlaces(category) {
+                const resultDiv = document.getElementById('placesResult');
+                const categoryName = {
+                    'religion.place_of_worship': 'المساجد',
+                    'commercial.restaurant': 'المطاعم',
+                    'accommodation.hotel': 'الفنادق'
+                }[category] || 'المعالم';
+
+                this.showLoading(resultDiv, `تحميل ${categoryName}...`);
+
+                try {
+                    // Saudi Arabia bounds
+                    const bounds = { west: 34.5, east: 55.7, south: 16.3, north: 32.2 };
+                    const placesUrl = `https://api.geoapify.com/v2/places?categories=${category}&filter=rect:${bounds.west},${bounds.north},${bounds.east},${bounds.south}&limit=10&apiKey=${this.apiKey}`;
+                    
+                    const response = await fetch(placesUrl);
+                    const data = await response.json();
+
+                    if (data.features && data.features.length > 0) {
+                        let html = `<h4>🎯 ${categoryName} في السعودية (${data.features.length} نتيجة)</h4>`;
+                        
+                        data.features.forEach(place => {
+                            const name = place.properties.name || 'غير معروف';
+                            const address = place.properties.formatted || '';
+                            const coordinates = place.geometry.coordinates;
+                            
+                            html += `
+                                <div class="region-info">
+                                    <strong>${name}</strong><br>
+                                    ${address ? `<strong>العنوان:</strong> ${address}<br>` : ''}
+                                    <strong>الإحداثيات:</strong> 
+                                    <span class="coordinates">${coordinates[1].toFixed(6)}, ${coordinates[0].toFixed(6)}</span>
+                                </div>
+                            `;
+                        });
+                        
+                        this.showSuccess(resultDiv, html);
+                    } else {
+                        this.showError(resultDiv, `لم يتم العثور على ${categoryName} في السعودية`);
+                    }
+                } catch (error) {
+                    this.showError(resultDiv, `خطأ في تحميل ${categoryName}: ${error.message}`);
+                }
+            }
+
+            showLoading(element, message) {
+                element.innerHTML = `<div class="loading">🔄 ${message}</div>`;
+                element.style.display = 'block';
+            }
+
+            showSuccess(element, content) {
+                element.innerHTML = `<div class="success">✅ ${content}</div>`;
+                element.style.display = 'block';
+            }
+
+            showError(element, message) {
+                element.innerHTML = `<div class="error">❌ ${message}</div>`;
+                element.style.display = 'block';
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new SaudiBoundariesTester();
+        });
+    </script>
+</body>
+</html>

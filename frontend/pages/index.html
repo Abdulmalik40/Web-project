@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saudi Tourism - Discover the Kingdom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
+    
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/chatbot.css">
+    <script src="../scripts/chatbot.js" defer></script>
+  </head>
+  <body>
+    <!-- chatbot toggle button -->
+    <button id="chatbot-toggler">
+      <span class="material-symbols-outlined">mode_comment</span>
+      <span class="material-symbols-rounded">close</span>
+    </button>
+
+    <!-- chatbot container -->
+    <div class="chatbot-popup">
+      <!-- header -->
+      <div class="chat-header">
+        <div class="header-info">
+          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <h2 class="logo-text" data-i18n="chatbot.title">Saudi Tourism Bot</h2>
+        </div>
+        <button id="close-chatbot" class="material-symbols-rounded">
+          keyboard_arrow_down
+        </button>
+      </div>
+
+      <!-- chat body -->
+      <div class="chat-body">
+        <div class="message bot-message">
+          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <div dir="auto" class="message-text" data-i18n="chatbot.greeting">
+            Hello, I'm Mutlaq, your personal assistant in choosing your next destination. How can I help you?
+          </div>
+        </div>
+      </div>
+
+      <!-- chat footer -->
+      <div class="chat-footer">
+        <form action="#" class="chat-form">
+          <textarea dir="auto"
+            data-i18n="chatbot.placeholder"
+            data-i18n-attr="placeholder"
+            placeholder="Ask your question about tourism in Saudi Arabia..."
+            class="message-input"
+            required
+          ></textarea>
+          <div class="chat-controls">
+            <button type="submit" id="send-message" class="material-symbols-rounded">
+              arrow_upward
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+    <header class="header" id="header">
+      <div class="header-inner">
+        <div class="brand" aria-label="Saudi Tourism">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div>
+            <div class="brand-title" data-i18n="header.brandTitle">Visit Saudi Arabia</div>
+            <div class="brand-sub" data-i18n="header.brandSub">Explore regions, heritage, and faith</div>
+          </div>
+        </div>
+
+        <div class="nav-container">
+          <button
+            class="language-toggle"
+            id="language-switcher"
+            aria-label="Toggle language"
+            title="Switch Language"
+          >
+            <span class="lang-icon">🌐</span>
+            <span class="lang-text" data-i18n="common.language">Language</span>
+          </button>
+
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle theme"
+          >
+            <span class="theme-icon">🌙</span>
+            <span class="theme-text" data-i18n="common.dark">Dark</span>
+          </button>
+
+          <nav class="nav" aria-label="Main Navigation">
+            <div class="item"><a href="#home" data-i18n="common.home">Home</a></div>
+            <div class="item">
+              <a href="map-interactive.html" data-i18n="common.interactiveMap">Interactive Map</a>
+            </div>
+            <div class="item"><a href="#religious" data-i18n="common.religiousSites">Religious Sites</a></div>
+            <div class="item"><a href="history.html" data-i18n="common.history">History</a></div>
+            <div class="item"><a href="#heritage" data-i18n="common.heritage">Heritage</a></div>
+            <div class="item"><a href="#regions" data-i18n="common.regions">Regions</a></div>
+            <div class="item has-dropdown">
+              <a href="islamic-guide.html" data-i18n="common.islamicGuide">Islamic Guide ▾</a>
+              <div class="dropdown" role="menu">
+                <a href="qibla.html" role="menuitem" data-i18n="common.qiblaFinder">Qibla Finder</a>
+                <a href="prayer-times.html" role="menuitem" data-i18n="common.prayerTimes">Prayer Times</a>
+                <a href="quran.html" role="menuitem" data-i18n="common.quran">Quran & Du'a</a>
+                <a href="mosques.html" role="menuitem" data-i18n="common.nearbyMosques">Nearby Mosques</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero" aria-label="Hero section">
+      <div class="hero-bg">
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        >
+          <source src="../styles/videos/Main_Header.mp4" type="video/mp4" />
+          <!-- Fallback image for browsers that don't support video -->
+          <img
+            src="../assets/images/cities/Neom2.jpg"
+            alt="NEOM - Future of Saudi Arabia"
+            class="hero-image"
+          />
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-particles">
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+        </div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="title-line" data-i18n="hero.titleLine1">DISCOVER</span>
+            <span class="title-line featured" data-i18n="hero.titleLine2">SAUDI ARABIA</span>
+            <span class="title-line subtitle" data-i18n="hero.titleLine3">THE FUTURE IS NOW</span>
+          </h1>
+          <p class="hero-sub" data-i18n="hero.subtitle">
+            Journey through ancient heritage, futuristic cities, and sacred
+            lands across the Kingdom of Saudi Arabia
+          </p>
+          <div class="hero-cta"></div>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <div class="scroll-arrow"></div>
+        <span data-i18n="common.scrollToExplore">Scroll to Explore</span>
+      </div>
+    </section>
+
+    <main class="banner" id="home">
+      <section class="destinations-grid">
+        <article class="destination-card" id="makkah">
+          <a
+            href="makkah.html"
+            style="display: block; text-decoration: none; color: inherit"
+          >
+            <span class="badge religious" data-i18n="destinations.religious">Religious</span>
+            <img
+              src="../assets/images/destinations/makkah1.jpg"
+              alt="Makkah - The holy city"
+              loading="lazy"
+            />
+            <div class="card-content">
+              <h3 data-i18n="destinations.makkah">Makkah</h3>
+              <p class="location"><span data-i18n="destinations.holyCity">Holy City</span> • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
+            </div>
+          </a>
+        </article>
+
+        <article class="destination-card" id="madinah">
+          <a
+            href="madinah.html"
+            style="display: block; text-decoration: none; color: inherit"
+          >
+            <span class="badge religious" data-i18n="destinations.religious">Religious</span>
+            <img
+              src="../assets/images/destinations/madinah.png"
+              alt="Madinah - The Prophet's city"
+              loading="lazy"
+            />
+            <div class="card-content">
+              <h3 data-i18n="destinations.madinah">Madinah</h3>
+              <p class="location"><span data-i18n="destinations.prophetsCity">Prophet's City</span> • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
+            </div>
+          </a>
+        </article>
+
+        <article class="destination-card">
+          <a
+            href="riyadh.html"
+            style="display: block; text-decoration: none; color: inherit"
+          >
+            <span class="badge capital" data-i18n="destinations.capital">Capital</span>
+            <img
+              src="../assets/images/destinations/Riyadh1.jpg"
+              alt="Riyadh - Modern capital"
+              loading="lazy"
+            />
+            <div class="card-content">
+              <h3 data-i18n="destinations.riyadh">Riyadh</h3>
+              <p class="location"><span data-i18n="destinations.capitalCity">Capital City</span> • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
+            </div>
+          </a>
+        </article>
+
+        <article class="destination-card">
+          <a
+            href="alkhobar.html"
+            style="display: block; text-decoration: none; color: inherit"
+          >
+            <span class="badge industrial" data-i18n="destinations.industrial">Industrial</span>
+            <img
+              src="../assets/images/destinations/alkobar.jpg"
+              alt="Eastern Region - Industrial hub"
+              loading="lazy"
+            />
+            <div class="card-content">
+              <h3 data-i18n="destinations.easternRegion">Eastern Region</h3>
+              <p class="location">Al-Khobar • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
+            </div>
+          </a>
+        </article>
+
+        <article class="destination-card">
+          <a
+            href="aseer.html"
+            style="display: block; text-decoration: none; color: inherit"
+          >
+            <span class="badge heritage" data-i18n="destinations.heritage">Heritage</span>
+            <img
+              src="../assets/images/destinations/baha.jpg"
+              alt="Northern Region - Heritage sites"
+              loading="lazy"
+            />
+            <div class="card-content">
+              <h3 data-i18n="destinations.southernRegion">Southern Region</h3>
+              <p class="location">Al-Baha • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
+            </div>
+          </a>
+        </article>
+
+        <article class="destination-card">
+          <a
+            href="alula.html"
+            style="display: block; text-decoration: none; color: inherit"
+          >
+            <span class="badge natural" data-i18n="destinations.natural">Natural</span>
+            <img
+              src="../assets/images/destinations/Tabuk.jpg"
+              alt="Southern Region - Natural beauty"
+              loading="lazy"
+            />
+            <div class="card-content">
+              <h3 data-i18n="destinations.northernRegion">Northern Region</h3>
+              <p class="location">Tabuk • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
+            </div>
+          </a>
+        </article>
+
+        <article class="destination-card">
+          <a
+            href="land.html"
+            style="display: block; text-decoration: none; color: inherit"
+          >
+            <span class="badge futuristic" data-i18n="destinations.future">Future</span>
+            <img
+              src="../assets/images/destinations/lands.jpg"
+              alt="Lands - Future development projects"
+              loading="lazy"
+            />
+            <div class="card-content">
+              <h3 data-i18n="destinations.lands">Lands</h3>
+              <p class="location"><span data-i18n="destinations.developmentProject">Development Project</span> • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
+            </div>
+          </a>
+        </article>
+
+        <article class="destination-card">
+          <a
+            href="jeddah.html"
+            style="display: block; text-decoration: none; color: inherit"
+          >
+            <span class="badge industrial" data-i18n="destinations.jeddah">Jeddah</span>
+            <img
+              src="../assets/images/destinations/jeddah.avif"
+              alt="Jeddah - Saudi Arabia"
+              loading="lazy"
+            />
+            <div class="card-content">
+              <h3 data-i18n="destinations.jeddah">Jeddah</h3>
+              <p class="location"><span data-i18n="destinations.jeddah">Jeddah</span> • <span data-i18n="destinations.saudiArabia">Saudi Arabia</span></p>
+            </div>
+          </a>
+        </article>
+      </section>
+
+      <section class="tour-plans" id="tour-plans">
+        <div class="tour-plans__intro">
+          <span class="eyebrow" data-i18n="tourPlans.eyebrow">Curated Experiences</span>
+          <h2 data-i18n="tourPlans.title">Choose Your Ideal Saudi Tour Plan</h2>
+          <p data-i18n="tourPlans.description">
+            Whether you have a full month or just a couple of weeks, explore
+            hand-crafted itineraries that balance heritage, spirituality, and
+            adventure across the Kingdom.
+          </p>
+        </div>
+
+        <div class="plans-grid">
+          <a class="plan-card" href="plan-one-month.html">
+            <img
+              src="../assets/images/Plans/Plan1Month.webp"
+              alt="One month tour plan cover"
+              loading="lazy"
+            />
+            <div class="plan-card__content">
+              <span class="plan-duration" data-i18n="tourPlans.days30">30 Days</span>
+              <h3 data-i18n="tourPlans.grandMonth">Grand 1-Month Saudi Discovery</h3>
+              <p data-i18n="tourPlans.grandMonthDesc">
+                Immerse yourself in every region with paced stays, iconic
+                landmarks, coastal retreats, and desert adventures tailored for
+                long-stay explorers.
+              </p>
+              <ul class="plan-highlights">
+                <li data-i18n="tourPlans.grandMonthHighlight1">Full Kingdom circuit with rest days</li>
+                <li data-i18n="tourPlans.grandMonthHighlight2">Spiritual visits in Makkah &amp; Madinah</li>
+                <li data-i18n="tourPlans.grandMonthHighlight3">Heritage villages, Red Sea leisure, NEOM vision</li>
+              </ul>
+            </div>
+          </a>
+
+          <a class="plan-card" href="plan-fourteen-days.html">
+            <img
+              src="../assets/images/Plans/Plan14days1.jpg"
+              alt="Fourteen day adventure plan cover"
+              loading="lazy"
+            />
+            <div class="plan-card__content">
+              <span class="plan-duration" data-i18n="tourPlans.days14">14 Days</span>
+              <h3 data-i18n="tourPlans.twoWeek">Two-Week Highlights Journey</h3>
+              <p data-i18n="tourPlans.twoWeekDesc">
+                Perfect for travelers seeking a balanced mix of culture,
+                history, and modern marvels across the western and central
+                regions.
+              </p>
+              <ul class="plan-highlights">
+                <li data-i18n="tourPlans.twoWeekHighlight1">Historic cores of Jeddah, Makkah, Madinah</li>
+                <li data-i18n="tourPlans.twoWeekHighlight2">Capital city experiences and Diriyah evenings</li>
+                <li data-i18n="tourPlans.twoWeekHighlight3">Desert safari &amp; Asir mountain escape</li>
+              </ul>
+            </div>
+          </a>
+
+          <a class="plan-card" href="plan-twelve-days.html">
+            <img
+              src="../assets/images/Plans/Plan12Days.webp"
+              alt="Twelve day coastal and heritage plan cover"
+              loading="lazy"
+            />
+            <div class="plan-card__content">
+              <span class="plan-duration" data-i18n="tourPlans.days12">12 Days</span>
+              <h3 data-i18n="tourPlans.coastal">12-Day Coastal &amp; Heritage Escape</h3>
+              <p data-i18n="tourPlans.coastalDesc">
+                A focused itinerary covering Red Sea indulgence, AlUla's
+                timeless landscapes, and immersive cultural workshops.
+              </p>
+              <ul class="plan-highlights">
+                <li data-i18n="tourPlans.coastalHighlight1">Red Sea resorts &amp; Jeddah waterfront</li>
+                <li data-i18n="tourPlans.coastalHighlight2">UNESCO marvels in AlUla and Mada'in Saleh</li>
+                <li data-i18n="tourPlans.coastalHighlight3">Hands-on crafts and culinary evenings</li>
+              </ul>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    
+
+    
+    <script type="module" src="../scripts/main.js"></script>
+    <script>
+      // Theme toggle functionality
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeToggle = document.querySelector(".theme-toggle");
+        const body = document.body;
+
+        // Get saved theme or default to light
+        const savedTheme = localStorage.getItem("theme") || "light";
+        body.setAttribute("data-theme", savedTheme);
+
+        // Update button text based on current theme
+        const updateButtonText = () => {
+          const currentTheme = body.getAttribute("data-theme");
+          const icon = themeToggle.querySelector(".theme-icon");
+          const text = themeToggle.querySelector(".theme-text");
+          if (icon) {
+            icon.textContent = currentTheme === "dark" ? "☀️" : "🌙";
+          }
+          if (text) {
+            text.setAttribute("data-i18n", currentTheme === "dark" ? "common.light" : "common.dark");
+            // Refresh translation if i18n is available
+            if (window.i18n) {
+              window.i18n.refresh();
+            }
+          }
+        };
+
+        // Initialize button text
+        updateButtonText();
+
+        // Theme toggle event listener
+        if (themeToggle) {
+          themeToggle.addEventListener("click", () => {
+            const currentTheme = body.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+            body.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+            updateButtonText();
+          });
+        }
+
+        // Language switcher is handled by i18n module
+        // Just ensure i18n is ready
+        const initLangSwitcher = () => {
+          const langSwitcher = document.getElementById("language-switcher");
+          console.log("Looking for language switcher button:", langSwitcher);
+          
+          if (window.i18n) {
+            console.log("i18n module found, setting up language switcher");
+            window.i18n.setupLanguageSwitcher();
+            
+            // Also add a direct test handler
+            if (langSwitcher) {
+              langSwitcher.addEventListener("click", (e) => {
+                console.log("Direct click handler fired!");
+                if (window.i18n) {
+                  const currentLang = window.i18n.getLanguage();
+                  const newLang = currentLang === "en" ? "ar" : "en";
+                  console.log("Direct handler switching to:", newLang);
+                  window.i18n.setLanguage(newLang);
+                }
+              });
+            }
+          } else {
+            console.log("i18n not ready yet, retrying...");
+            setTimeout(initLangSwitcher, 100);
+          }
+        };
+        
+        // Start initialization
+        setTimeout(initLangSwitcher, 100);
+      });
+
+      // Video header functionality
+      document.addEventListener("DOMContentLoaded", () => {
+        const heroVideo = document.querySelector(".hero-video");
+        const heroImage = document.querySelector(".hero-image");
+
+        if (heroVideo) {
+          // Handle video loading
+          heroVideo.addEventListener("loadeddata", () => {
+            console.log("Video loaded successfully");
+            if (heroImage) {
+              heroImage.style.display = "none";
+            }
+          });
+
+          // Handle video error - fallback to image
+          heroVideo.addEventListener("error", () => {
+            console.log("Video failed to load, using fallback image");
+            if (heroImage) {
+              heroImage.style.display = "block";
+            }
+            heroVideo.style.display = "none";
+          });
+
+          // Pause video when not in viewport (performance optimization)
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                heroVideo.play();
+              } else {
+                heroVideo.pause();
+              }
+            });
+          });
+
+          observer.observe(heroVideo);
+        }
+      });
+
+      // Immediate dropdown functionality
+      document.addEventListener("DOMContentLoaded", () => {
+        const dropdowns = document.querySelectorAll(".nav .has-dropdown");
+
+        dropdowns.forEach((dropdown) => {
+          const dropdownMenu = dropdown.querySelector(".dropdown");
+          const dropdownLink = dropdown.querySelector("a");
+
+          if (dropdownMenu && dropdownLink) {
+            let hoverTimeout;
+
+            // Show dropdown on hover
+            dropdown.addEventListener("mouseenter", () => {
+              clearTimeout(hoverTimeout);
+              hoverTimeout = setTimeout(() => {
+                dropdownMenu.style.display = "block";
+                setTimeout(() => {
+                  dropdownMenu.style.opacity = "1";
+                  dropdownMenu.style.transform = "translateY(0)";
+                }, 10);
+              }, 100);
+            });
+
+            // Hide dropdown when mouse leaves
+            dropdown.addEventListener("mouseleave", () => {
+              clearTimeout(hoverTimeout);
+              hoverTimeout = setTimeout(() => {
+                dropdownMenu.style.opacity = "0";
+                dropdownMenu.style.transform = "translateY(-10px)";
+                setTimeout(() => {
+                  dropdownMenu.style.display = "none";
+                }, 300);
+              }, 150);
+            });
+
+            // Keep dropdown open when hovering over it
+            dropdownMenu.addEventListener("mouseenter", () => {
+              clearTimeout(hoverTimeout);
+              dropdownMenu.style.display = "block";
+              dropdownMenu.style.opacity = "1";
+              dropdownMenu.style.transform = "translateY(0)";
+            });
+
+            dropdownMenu.addEventListener("mouseleave", () => {
+              clearTimeout(hoverTimeout);
+              hoverTimeout = setTimeout(() => {
+                dropdownMenu.style.opacity = "0";
+                dropdownMenu.style.transform = "translateY(-10px)";
+                setTimeout(() => {
+                  dropdownMenu.style.display = "none";
+                }, 300);
+              }, 150);
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
