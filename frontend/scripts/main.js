@@ -9,6 +9,7 @@ import './modules/i18n.js';
 
 // Import the original complete Script.js file
 import './Script.js';
+import './auth-nav.js';
 
 // Import dropdown functionality fix (temporarily disabled to test language switcher)
 // import './dropdown-fix.js';

@@ -20,6 +20,7 @@
   <!-- i18n module -->
   <script type="module" src="../scripts/modules/i18n.js"></script>
   <script src="../scripts/header-component.js" defer></script>
+  <script src="../scripts/auth-nav.js"></script>
 
   <style>
     .guide-container {
@@ -204,12 +205,13 @@
           <h3 data-i18n="islamicGuidePage.mosquesTitle">Nearby Mosques</h3>
           <p data-i18n="islamicGuidePage.mosquesDesc">Find the closest places to pray</p>
         </div>
+
       </a>
     </div>
   </main>
 
   <script src="../scripts/Script.js"></script>
-
+  <!-- ✅ تشغيل منطق الهيدر (Login / Register / Profile / Logout + links المحمية) -->
   <!-- تحديث عنوان الصفحة بعد أي refresh من i18n -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {

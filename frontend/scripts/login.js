@@ -59,7 +59,7 @@ if (loginForm) {
         return;
       }
 
-      // ✅ حفظ التوكن وبيانات المستخدم
+      //  حفظ التوكن وبيانات المستخدم (نفسه)
       if (data.token) {
         localStorage.setItem("auth_token", data.token);
         localStorage.setItem("user_name", data.user?.name || "");
@@ -69,10 +69,20 @@ if (loginForm) {
       loginMsgEl.textContent = "Logged in successfully ✅";
       loginMsgEl.classList.add("success");
 
-      // ✅ نرجع للهوم وهو مسجل دخول
+      //  نقرأ الوجهة اللي كان ناوي يروح لها قبل ما نوقفه
+      const redirectStored = localStorage.getItem("post_login_redirect");
+
+      //  نرجع للهوم أو للصفحة اللي كان يبيها وهو مسجل دخول
       setTimeout(() => {
-        // نفس فكرة register.js — عدّل المسار لو ملف login في مسار مختلف
-        window.location.href = "index.html";
+        //  (تعديل) لو فيه رابط محفوظ نستخدمه، غير كذا نرجع لـ index.html
+        const redirectTo = redirectStored || "index.html";
+
+        //  تنظيف القيمة بعد الاستخدام عشان ما تعلق
+        if (redirectStored) {
+          localStorage.removeItem("post_login_redirect");
+        }
+
+        window.location.href = redirectTo;
       }, 800);
 
     } catch (err) {
