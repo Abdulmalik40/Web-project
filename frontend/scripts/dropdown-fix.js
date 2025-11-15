@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
           dropdownMenu.style.display = 'block';
           setTimeout(() => {
             dropdownMenu.style.opacity = '1';
-          dropdownMenu.style.transform = 'translateY(0)';
+            dropdownMenu.style.transform = 'translateY(0)';
+          }, 100);
         }, 100);
       });
       

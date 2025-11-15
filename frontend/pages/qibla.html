@@ -1,187 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Qibla Finder • Islamic Guide</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
-    />
-    <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/chatbot.css">
-    <script src="../scripts/chatbot.js" defer></script>
-    <script src="../scripts/header-component.js" defer></script>
-  </head>
-  <body>
-     <!-- chatbot toggle button -->
-    <button id="chatbot-toggler">
-      <span class="material-symbols-outlined">mode_comment</span>
-      <span class="material-symbols-rounded">close</span>
-    </button>
 
-    <!-- chatbot container -->
-    <div class="chatbot-popup">
-      <!-- header -->
-      <div class="chat-header">
-        <div class="header-info">
-          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
-          <h2 class="logo-text">Saudi Tourism Bot</h2>
-        </div>
-        <button id="close-chatbot" class="material-symbols-rounded">
-          keyboard_arrow_down
-        </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="qiblaPage.title">Qibla Finder • Islamic Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/chatbot.css">
+  <script src="../scripts/chatbot.js" defer></script>
+  <script src="../scripts/header-component.js" defer></script>
+  <script type="module" src="../scripts/modules/i18n.js"></script>
+  <script src="../scripts/header-component.js" defer></script>
+
+</head>
+
+<body>
+  <!-- chatbot toggle button -->
+  <button id="chatbot-toggler">
+    <span class="material-symbols-outlined">mode_comment</span>
+    <span class="material-symbols-rounded">close</span>
+  </button>
+
+  <!-- chatbot container -->
+  <div class="chatbot-popup">
+    <!-- header -->
+    <div class="chat-header">
+      <div class="header-info">
+        <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+        <h2 class="logo-text">Saudi Tourism Bot</h2>
       </div>
+      <button id="close-chatbot" class="material-symbols-rounded">
+        keyboard_arrow_down
+      </button>
+    </div>
 
-      <!-- chat body -->
-      <div class="chat-body">
-        <div class="message bot-message">
-          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
-          <div dir="rtl" class="message-text">
-            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
-          </div>
+    <!-- chat body -->
+    <div class="chat-body">
+      <div class="message bot-message">
+        <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+        <div dir="rtl" class="message-text">
+          اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
         </div>
-      </div>
-
-      <!-- chat footer -->
-      <div class="chat-footer">
-        <form action="#" class="chat-form">
-          <textarea dir="rtl"
-            placeholder="اكتب سؤالك عن السياحة في السعودية..."
-            class="message-input"
-            required
-          ></textarea>
-          <div class="chat-controls">
-            <button type="submit" id="send-message" class="material-symbols-rounded">
-              arrow_upward
-            </button>
-          </div>
-        </form>
       </div>
     </div>
 
-    <header class="header" id="header" data-header-placeholder>
-      <div class="header-inner">
-        <div class="brand" aria-label="Saudi Tourism">
-          <div class="brand-mark" aria-hidden="true"></div>
-          <div>
-            <div class="brand-title">Visit Saudi Arabia</div>
-            <div class="brand-sub">Explore regions, heritage, and faith</div>
-          </div>
-        </div>
-
-        <div class="nav-container">
-          <button
-            class="theme-toggle"
-            id="themeToggle"
-            aria-label="Toggle theme"
-          >
-            🌙 Dark
+    <!-- chat footer -->
+    <div class="chat-footer">
+      <form action="#" class="chat-form">
+        <textarea dir="rtl" placeholder="اكتب سؤالك عن السياحة في السعودية..." class="message-input"
+          required></textarea>
+        <div class="chat-controls">
+          <button type="submit" id="send-message" class="material-symbols-rounded">
+            arrow_upward
           </button>
+        </div>
+      </form>
+    </div>
+  </div>
 
-          <nav class="nav" aria-label="Main Navigation">
-            <div class="item"><a href="index.html#home">Home</a></div>
-            <div class="item">
-              <a href="map-interactive.html">Interactive Map</a>
-            </div>
-            <div class="item">
-              <a href="index.html#religious">Religious Sites</a>
-            </div>
-            <div class="item"><a href="history.html">History</a></div>
-            <div class="item"><a href="index.html#heritage">Heritage</a></div>
-            <div class="item"><a href="index.html#regions">Regions</a></div>
-            <div class="item has-dropdown">
-              <a href="islamic-guide.html">Islamic Guide ▾</a>
-              <div class="dropdown" role="menu">
-                <a href="qibla.html" role="menuitem">Qibla Finder</a>
-                <a href="prayer-times.html" role="menuitem">Prayer Times</a>
-                <a href="quran.html" role="menuitem">Quran & Du'a</a>
-                <a href="mosques.html" role="menuitem">Nearby Mosques</a>
-              </div>
-            </div>
-          </nav>
+  <header class="header" id="header" data-header-placeholder>
+    <div class="header-inner">
+      <div class="brand" aria-label="Saudi Tourism">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <div class="brand-title">Visit Saudi Arabia</div>
+          <div class="brand-sub">Explore regions, heritage, and faith</div>
         </div>
       </div>
-    </header>
 
-    <main class="qibla-container">
-      <div class="section-header">
-        <h1 class="section-title">Qibla Finder</h1>
-        <p class="section-desc">
-          Find the exact direction of Qibla from your current location or by
-          entering coordinates.
+      <div class="nav-container">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          🌙 Dark
+        </button>
+
+        <nav class="nav" aria-label="Main Navigation">
+          <div class="item"><a href="index.html#home">Home</a></div>
+          <div class="item">
+            <a href="map-interactive.html">Interactive Map</a>
+          </div>
+          <div class="item">
+            <a href="index.html#religious">Religious Sites</a>
+          </div>
+          <div class="item"><a href="history.html">History</a></div>
+          <div class="item"><a href="index.html#heritage">Heritage</a></div>
+          <div class="item"><a href="index.html#regions">Regions</a></div>
+          <div class="item has-dropdown">
+            <a href="islamic-guide.html">Islamic Guide ▾</a>
+            <div class="dropdown" role="menu">
+              <a href="qibla.html" role="menuitem">Qibla Finder</a>
+              <a href="prayer-times.html" role="menuitem">Prayer Times</a>
+              <a href="quran.html" role="menuitem">Quran & Du'a</a>
+              <a href="mosques.html" role="menuitem">Nearby Mosques</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="qibla-container">
+    <div class="section-header">
+      <h1 class="section-title" data-i18n="qiblaPage.title">Qibla Finder</h1>
+      <p class="section-desc" data-i18n="qiblaPage.subtitle">
+        Find the exact direction of Qibla from your current location or by entering coordinates.
+      </p>
+    </div>
+
+    <div class="qibla-controls">
+      <div class="control-group">
+        <button id="useLocationBtn" class="btn primary" data-i18n="qiblaPage.useLocation">
+          Use My Location
+        </button>
+        <p class="helper-text" data-i18n="qiblaPage.allowLocation">
+          Allow location access for automatic detection
         </p>
       </div>
 
-      <div class="qibla-controls">
+      <div class="manual-input">
         <div class="control-group">
-          <button id="useLocationBtn" class="btn primary">
-            Use My Location
-          </button>
-          <p class="helper-text">
-            Allow location access for automatic detection
-          </p>
+          <label class="control-label" data-i18n="qiblaPage.latitude">Latitude</label>
+          <input type="number" id="latitudeInput" step="any" placeholder="e.g. 19.071017570421">
+
         </div>
+        <div class="control-group">
+          <label class="control-label" data-i18n="qiblaPage.longitude">Longitude</label>
+          <input type="number" id="longitudeInput" step="any" placeholder="e.g. 72.838622286762">
 
-        <div class="manual-input">
-          <div class="control-group">
-            <label class="control-label">Latitude</label>
-            <input
-              type="number"
-              id="latitudeInput"
-              step="any"
-              placeholder="e.g. 19.071017570421"
-            />
-          </div>
-          <div class="control-group">
-            <label class="control-label">Longitude</label>
-            <input
-              type="number"
-              id="longitudeInput"
-              step="any"
-              placeholder="e.g. 72.838622286762"
-            />
-          </div>
-          <button id="manualBtn" class="btn secondary">
-            Find Qibla Direction
-          </button>
         </div>
+        <button id="manualBtn" class="btn secondary" data-i18n="qiblaPage.manualFind">
+          Find Qibla Direction
+        </button>
       </div>
+    </div>
 
-      <div id="errorContainer" class="error" style="display: none"></div>
-      <div id="loading" class="loading" style="display: none">
-        Calculating Qibla direction...
-      </div>
+    <div id="errorContainer" class="error" style="display: none"></div>
+    <div id="loading" class="loading" style="display: none" data-i18n="qiblaPage.loading">
+      Calculating Qibla direction...
+    </div>
 
-      <div id="resultSection" class="result-section" style="display: none">
-        <div class="compass-container">
-          <div class="compass">
-            <div class="needle" id="compassNeedle"></div>
-            <div class="center-dot"></div>
-            <div class="direction-labels">
-              <span class="north">N</span>
-              <span class="east">E</span>
-              <span class="south">S</span>
-              <span class="west">W</span>
-            </div>
+    <div id="resultSection" class="result-section" style="display: none">
+      <div class="compass-container">
+        <div class="compass">
+          <div class="needle" id="compassNeedle"></div>
+          <div class="center-dot"></div>
+          <div class="direction-labels">
+            <span class="north">N</span>
+            <span class="east">E</span>
+            <span class="south">S</span>
+            <span class="west">W</span>
           </div>
         </div>
-        <div class="result-info">
-          <h3>Qibla Direction</h3>
-          <p id="directionText">280.08° (West-Northwest)</p>
-          <p id="coordinatesText">
-            From: <span id="resultCoords">19.0710°, 72.8386°</span>
-          </p>
-        </div>
       </div>
-    </main>
+      <div class="result-info">
+        <h3 data-i18n="qiblaPage.directionTitle">Qibla Direction</h3>
+        <p id="directionText">280.08° (West-Northwest)</p>
+        <p id="coordinatesText" data-i18n="qiblaPage.fromCoordinates">
+          From: <span id="resultCoords">19.0710°, 72.8386°</span>
+        </p>
+      </div>
+    </div>
+  </main>
 
-    <script src="../scripts/Script.js"></script>
-  </body>
+
+  <script src="../scripts/Script.js"></script>
+</body>
+
 </html>
