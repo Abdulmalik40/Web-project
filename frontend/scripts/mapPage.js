@@ -2,6 +2,7 @@
  * Saudi Tourism Map Page Controller
  * Main controller that initializes and coordinates all map components
  */
+import { addPlaceToTrip } from "./trip-details.js";
 
 class MapPageController {
     constructor() {
