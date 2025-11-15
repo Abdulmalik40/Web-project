@@ -56,7 +56,7 @@ if (registerForm && nameInput && emailInput && passwordInput) {
         return;
       }
 
-      // حفظ التوكن والمعلومات (اختياري حالياً)
+      // ✅ حفظ التوكن وبيانات المستخدم (نعتبره Logged-in مباشرة)
       if (data.token) {
         localStorage.setItem("auth_token", data.token);
         localStorage.setItem("user_name", data.user?.name || "");
@@ -66,16 +66,23 @@ if (registerForm && nameInput && emailInput && passwordInput) {
       messageEl.textContent = "Account created successfully 🎉";
       messageEl.classList.add("success");
 
-      // تحويل سريع لصفحة تسجيل الدخول
+      // ✅ نرجع للهوم وهو مسجل دخول
       setTimeout(() => {
-        window.location.href = "login.html";
+        // عدّل المسار إذا صفحة register في مجلد مختلف
+        window.location.href = "index.html";
       }, 800);
     } catch (err) {
       console.error("Register fetch error:", err);
-      messageEl.textContent = "Error connecting to server";
-      messageEl.classList.add("error");
+      if (messageEl) {
+        messageEl.textContent = "Error connecting to server";
+        messageEl.classList.add("error");
+      }
     }
   });
 } else {
   console.warn("Some auth inputs not found (name/email/password).");
 }
+
+// ⛔️ ملاحظة هامة:
+// لا نضيف هنا أي كود له علاقة بالـ navbar (Login / Register / Profile / Logout)
+// منطق التبديل سيكون في main.js فقط
