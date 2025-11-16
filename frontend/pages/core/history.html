@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
+    <!-- Required meta tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page title -->
     <title>التاريخ السعودي • اكتشف المملكة</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,23 +19,32 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
     />
-    <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/chatbot.css">
-    <script src="../scripts/chatbot.js" defer></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../styles/main.css" />
+    <link rel="stylesheet" href="../../styles/chatbot.css" />
+
+    <!-- Scripts (deferred) -->
+    <script src="../../scripts/chatbot.js" defer></script>
   </head>
+
   <body>
-    <!-- chatbot toggle button -->
+    <!-- Chatbot toggle button -->
     <button id="chatbot-toggler">
       <span class="material-symbols-outlined">mode_comment</span>
       <span class="material-symbols-rounded">close</span>
     </button>
 
-    <!-- chatbot container -->
+    <!-- Chatbot container -->
     <div class="chatbot-popup">
-      <!-- header -->
+      <!-- Chat header -->
       <div class="chat-header">
         <div class="header-info">
-          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <img
+            style="width: 50px; border-radius: 1000px;"
+            src="../../assets/icons/chatbot-icon.png"
+            alt=""
+          />
           <h2 class="logo-text">Saudi Tourism Bot</h2>
         </div>
         <button id="close-chatbot" class="material-symbols-rounded">
@@ -38,34 +52,44 @@
         </button>
       </div>
 
-      <!-- chat body -->
+      <!-- Chat body -->
       <div class="chat-body">
         <div class="message bot-message">
-          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <img
+            style="width: 50px; border-radius: 1000px;"
+            src="../../assets/icons/chatbot-icon.png"
+            alt=""
+          />
           <div dir="rtl" class="message-text">
             اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
           </div>
         </div>
       </div>
 
-      <!-- chat footer -->
+      <!-- Chat footer -->
       <div class="chat-footer">
         <form action="#" class="chat-form">
-          <textarea dir="rtl"
+          <textarea
+            dir="rtl"
             placeholder="اكتب سؤالك عن السياحة في السعودية..."
             class="message-input"
             required
           ></textarea>
           <div class="chat-controls">
-            <button type="submit" id="send-message" class="material-symbols-rounded">
+            <button
+              type="submit"
+              id="send-message"
+              class="material-symbols-rounded"
+            >
               arrow_upward
             </button>
           </div>
         </form>
       </div>
     </div>
-    
-    <header class="header" id="header">
+
+    <!-- Site header -->
+    <header class="header site-header" id="header">
       <div class="header-inner">
         <div class="brand">
           <div class="brand-mark"></div>
@@ -82,10 +106,10 @@
           >
             🌙 داكن
           </button>
-          <nav class="nav">
-            <div class="item"><a href="index.html#home">الرئيسية</a></div>
+          <nav class="nav" aria-label="التنقل الرئيسي">
+            <div class="item"><a href="../index.html#home">الرئيسية</a></div>
             <div class="item">
-              <a href="map-interactive.html">الخريطة التفاعلية</a>
+              <a href="../maps/map-interactive.html">الخريطة التفاعلية</a>
             </div>
             <div class="item"><a href="#first-state">الدولة الأولى</a></div>
             <div class="item"><a href="#second-state">الدولة الثانية</a></div>
@@ -96,15 +120,16 @@
           </nav>
         </div>
       </div>
-    </header>
+    </header -->
 
-    <main class="history-container">
-      <!-- Replace the entire <section class="section" id="first-state"> with this -->
+    <!-- Main content -->
+    <main class="history-container site-main">
+      <!-- الدولة السعودية الأولى -->
       <section class="section" id="first-state">
         <div class="section-content">
           <div class="section-image">
             <img
-              src="../assets/images/cities/Saudi1.png"
+              src="../../assets/images/cities/Saudi1.png"
               alt="الدرعية - عاصمة الدولة السعودية الأولى"
             />
           </div>
@@ -141,7 +166,9 @@
             </p>
             <h4 class="section-subtitle">حكام الدولة السعودية الأولى</h4>
             <ul class="section-list">
-              <li>الإمام محمد بن سعود بن مقرن (1139-1179هـ)/1727-1765م)</li>
+              <li>
+                الإمام محمد بن سعود بن مقرن (1139-1179هـ)/1727-1765م)
+              </li>
               <li>
                 الإمام عبد العزيز بن محمد بن سعود(117​9-1218هـ/1765-1803م)
               </li>
@@ -157,12 +184,12 @@
         </div>
       </section>
 
-      <!-- Second Saudi State -->
+      <!-- الدولة السعودية الثانية -->
       <section class="section" id="second-state">
         <div class="section-content">
           <div class="section-image">
             <img
-              src="../assets/images/cities/Saudi2.jpg"
+              src="../../assets/images/cities/Saudi2.jpg"
               alt="رياض - عاصمة الدولة السعودية الثانية"
             />
           </div>
@@ -212,7 +239,9 @@
                 الإمام عبدالله بن فيصل بن تركي . الفترة الأولى ( 1282-1288هـ /
                 1865-1871م)
               </li>
-              <li>الإمام سعود بن فيصل بن تركي ( 1288-1291هـ / 1871-1875م)</li>
+              <li>
+                الإمام سعود بن فيصل بن تركي ( 1288-1291هـ / 1871-1875م)
+              </li>
               <li>
                 الإمام عبدالرحمن بن فيصل بن تركي . الفترة الأولى (1291-1293هـ /
                 1875-1876م)
@@ -230,12 +259,12 @@
         </div>
       </section>
 
-      <!-- Modern Kingdom -->
+      <!-- المملكة العربية السعودية الحديثة -->
       <section class="section" id="modern-kingdom">
         <div class="section-content">
           <div class="section-image">
             <img
-              src="../assets/images/cities/Saudi3.jpg"
+              src="../../assets/images/cities/Saudi3.jpg"
               alt="المملكة الحديثة"
             />
           </div>
@@ -274,12 +303,12 @@
         </div>
       </section>
 
-      <!-- King Abdulaziz Section -->
+      <!-- الملك عبد العزيز -->
       <section class="section" id="king-abdulaziz">
         <div class="section-content">
           <div class="section-image">
             <img
-              src="../assets/images/kings/King abdulaziz.jpg"
+              src="../../assets/images/kings/King abdulaziz.jpg"
               alt="الملك عبدالعزيز"
             />
           </div>
@@ -316,11 +345,11 @@
         </div>
       </section>
 
-      <!-- Kings -->
+      <!-- الملوك بعد الملك عبدالعزيز -->
       <section class="section" id="kings">
         <div class="section-content">
           <div class="section-image">
-            <img src="../assets/images/kings/king saud.jpg" alt="الملك سعود" />
+            <img src="../../assets/images/kings/king saud.jpg" alt="الملك سعود" />
           </div>
           <div class="section-text">
             <h2 class="section-title">الملك سعود بن عبد العزيز</h2>
@@ -341,7 +370,7 @@
         <div class="section-content">
           <div class="section-image">
             <img
-              src="../assets/images/kings/king faisal.jpg"
+              src="../../assets/images/kings/king faisal.jpg"
               alt="الملك فيصل"
             />
           </div>
@@ -367,7 +396,7 @@
         <div class="section-content">
           <div class="section-image">
             <img
-              src="../assets/images/kings/king khalid.jpg"
+              src="../../assets/images/kings/king khalid.jpg"
               alt="الملك خالد"
             />
           </div>
@@ -390,7 +419,7 @@
       <section class="section">
         <div class="section-content">
           <div class="section-image">
-            <img src="../assets/images/kings/king fahad.jpg" alt="الملك فهد" />
+            <img src="../../assets/images/kings/king fahad.jpg" alt="الملك فهد" />
           </div>
           <div class="section-text">
             <h2 class="section-title">
@@ -424,7 +453,7 @@
         <div class="section-content">
           <div class="section-image">
             <img
-              src="../assets/images/kings/king abdullah.jpg"
+              src="../../assets/images/kings/king abdullah.jpg"
               alt="الملك عبدالله"
             />
           </div>
@@ -460,7 +489,7 @@
         <div class="section-content">
           <div class="section-image">
             <img
-              src="../assets/images/kings/king salman.jpg"
+              src="../../assets/images/kings/king salman.jpg"
               alt="الملك سلمان"
             />
           </div>
@@ -487,6 +516,7 @@
       </section>
     </main>
 
-    <script src="../scripts/Script.js"></script>
+    <!-- Page scripts -->
+    <script src="../../scripts/Script.js"></script>
   </body>
 </html>

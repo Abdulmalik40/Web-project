@@ -14,11 +14,12 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
     />
-    <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/chatbot.css">
-    <script src="../scripts/chatbot.js" defer></script>
-    <script type="module" src="../scripts/modules/i18n.js"></script>
-    <script src="../scripts/header-component.js" defer></script>
+    <link rel="stylesheet" href="../../styles/main.css" />
+    <link rel="stylesheet" href="../../styles/chatbot.css">
+    
+    <script src="../../scripts/chatbot.js" defer></script>
+    <script type="module" src="../../scripts/modules/i18n.js"></script>
+    <script src="../../scripts/header-component.js" defer></script>
   </head>
   <body>
      <!-- chatbot toggle button -->
@@ -32,7 +33,7 @@
       <!-- header -->
       <div class="chat-header">
         <div class="header-info">
-          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <img style="width: 50px; border-radius: 1000px;" src="../../assets/icons/chatbot-icon.png" alt="">
           <h2 class="logo-text" data-i18n="chatbot.title">Saudi Tourism Bot</h2>
         </div>
         <button id="close-chatbot" class="material-symbols-rounded">
@@ -43,7 +44,7 @@
       <!-- chat body -->
       <div class="chat-body">
         <div class="message bot-message">
-          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+          <img style="width: 50px; border-radius: 1000px;" src="../../assets/icons/chatbot-icon.png" alt="">
           <div dir="auto" class="message-text" data-i18n="chatbot.greeting">
             Hello, I'm Mutlaq, your personal assistant in choosing your next destination. How can I help you?
           </div>
@@ -84,17 +85,17 @@
             🌙 Dark
           </button>
           <nav class="nav" aria-label="Main Navigation">
-            <div class="item"><a href="index.html#home">Home</a></div>
-            <div class="item"><a href="map-interactive.html">Interactive Map</a></div>
-            <div class="item"><a href="history.html">History</a></div>
-            <div class="item"><a href="index.html#tour-plans">Tour Plans</a></div>
+            <div class="item"><a href="../index.html#home">Home</a></div>
+            <div class="item"><a href="../maps/map-interactive.html">Interactive Map</a></div>
+            <div class="item"><a href="../core/history.html">History</a></div>
+            <div class="item"><a href="../index.html#tour-plans">Tour Plans</a></div>
             <div class="item has-dropdown">
-              <a href="islamic-guide.html">Islamic Guide ▾</a>
+              <a href="../islamic-guide/islamic-guide.html">Islamic Guide ▾</a>
               <div class="dropdown" role="menu">
-                <a href="qibla.html" role="menuitem">Qibla Finder</a>
-                <a href="prayer-times.html" role="menuitem">Prayer Times</a>
-                <a href="quran.html" role="menuitem">Quran &amp; Du'a</a>
-                <a href="mosques.html" role="menuitem">Nearby Mosques</a>
+                <a href="../islamic-guide/qibla.html" role="menuitem">Qibla Finder</a>
+                <a href="../islamic-guide/prayer-times.html" role="menuitem">Prayer Times</a>
+                <a href="../islamic-guide/quran.html" role="menuitem">Quran &amp; Du'a</a>
+                <a href="../islamic-guide/mosques.html" role="menuitem">Nearby Mosques</a>
               </div>
             </div>
           </nav>
@@ -105,9 +106,9 @@
     <section class="hero" aria-label="12-day tour hero">
       <div class="hero-bg">
         <video class="hero-video" autoplay muted loop playsinline preload="metadata">
-          <source src="../assets/images/Plans/PlansHeader.mp4" type="video/mp4" />
+          <source src="../../assets/images/Plans/PlansHeader.mp4" type="video/mp4" />
           <img
-            src="../assets/images/Plans/Plan12Days.webp"
+            src="../../assets/images/Plans/Plan12Days.webp"
             alt="Twelve-day Saudi tour"
             class="hero-image"
           />
@@ -256,12 +257,12 @@
         </p>
         <div class="hero-cta">
           <a class="cta-btn primary" href="mailto:travel@visitsaudi.example" data-i18n="planTwelveDays.ctaButton1">Customize This Plan</a>
-          <a class="cta-btn secondary" href="index.html#tour-plans" data-i18n="planTwelveDays.ctaButton2">Back to All Plans</a>
+          <a class="cta-btn secondary" href="../index.html#tour-plans" data-i18n="planTwelveDays.ctaButton2">Back to All Plans</a>
         </div>
       </section>
     </main>
 
-    <script src="../scripts/Script.js"></script>
+    <script src="../../scripts/Script.js"></script>
     <script>
       // Initialize i18n after page loads
       document.addEventListener('DOMContentLoaded', () => {
