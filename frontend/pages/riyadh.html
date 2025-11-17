@@ -1,434 +1,0 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Riyadh • Capital City</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
-    />
-    <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/chatbot.css">
-    <script src="../scripts/chatbot.js" defer></script>
-    <script src="../scripts/header-component.js" defer></script>
-  </head>
-  <body>
-     <!-- chatbot toggle button -->
-    <button id="chatbot-toggler">
-      <span class="material-symbols-outlined">mode_comment</span>
-      <span class="material-symbols-rounded">close</span>
-    </button>
-
-    <!-- chatbot container -->
-    <div class="chatbot-popup">
-      <!-- header -->
-      <div class="chat-header">
-        <div class="header-info">
-          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
-          <h2 class="logo-text">Saudi Tourism Bot</h2>
-        </div>
-        <button id="close-chatbot" class="material-symbols-rounded">
-          keyboard_arrow_down
-        </button>
-      </div>
-
-      <!-- chat body -->
-      <div class="chat-body">
-        <div class="message bot-message">
-          <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
-          <div dir="rtl" class="message-text">
-            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
-          </div>
-        </div>
-      </div>
-
-      <!-- chat footer -->
-      <div class="chat-footer">
-        <form action="#" class="chat-form">
-          <textarea dir="rtl"
-            placeholder="اكتب سؤالك عن السياحة في السعودية..."
-            class="message-input"
-            required
-          ></textarea>
-          <div class="chat-controls">
-            <button type="submit" id="send-message" class="material-symbols-rounded">
-              arrow_upward
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <header class="header" id="header" data-header-placeholder>
-      <div class="header-inner">
-        <div class="brand" aria-label="Saudi Tourism">
-          <div class="brand-mark" aria-hidden="true"></div>
-          <div>
-            <div class="brand-title">Visit Saudi Arabia</div>
-            <div class="brand-sub">Explore regions, heritage, and faith</div>
-          </div>
-        </div>
-
-        <div class="nav-container">
-          <button
-            class="theme-toggle"
-            id="themeToggle"
-            aria-label="Toggle theme"
-          >
-            🌙 Dark
-          </button>
-
-          <nav class="nav" aria-label="Main Navigation">
-            <div class="item"><a href="index.html#home">Home</a></div>
-            <div class="item">
-              <a href="map-interactive.html">Interactive Map</a>
-            </div>
-            <div class="item">
-              <a href="index.html#religious">Religious Sites</a>
-            </div>
-            <div class="item"><a href="history.html">History</a></div>
-            <div class="item"><a href="index.html#heritage">Heritage</a></div>
-            <div class="item"><a href="index.html#regions">Regions</a></div>
-            <div class="item has-dropdown">
-              <a href="islamic-guide.html">Islamic Guide ▾</a>
-              <div class="dropdown" role="menu">
-                <a href="qibla.html" role="menuitem">Qibla Finder</a>
-                <a href="prayer-times.html" role="menuitem">Prayer Times</a>
-                <a href="quran.html" role="menuitem">Quran & Du'a</a>
-                <a href="mosques.html" role="menuitem">Nearby Mosques</a>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </header>
-
-    <section class="hero" aria-label="Hero section">
-      <div class="hero-bg">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-        >
-          <source src="../styles/videos/Riyadh.mp4" type="video/mp4" />
-          <img
-            src="../assets/images/cities/Saudi3.jpg"
-            alt="Riyadh - Capital City"
-            class="hero-image"
-          />
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-particles">
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-        </div>
-      </div>
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="title-line">CAPITAL CITY</span>
-            <span class="title-line featured">RIYADH</span>
-            <span class="title-line subtitle"
-              >SKYLINE • CULTURE • BUSINESS</span
-            >
-          </h1>
-          <p class="hero-sub">
-            A modern metropolis blending tradition and innovation at the heart
-            of the Kingdom.
-          </p>
-        </div>
-      </div>
-      <div class="scroll-indicator">
-        <div class="scroll-arrow"></div>
-        <span>Scroll to Explore</span>
-      </div>
-    </section>
-
-    <main dir="rtl" class="history-container">
-  <!-- Replace the entire <section class="section" id="first-state"> with this -->
-  <section class="section" id="first-state">
-    <div class="section-content">
-      <div class="section-image">
-        <img
-          src="../assets/images/cities/Saudi1.png"
-          alt="الرياض — العاصمة الثقافية والاقتصادية"
-        />
-      </div>
-      <div class="section-text">
-        <h2 class="section-title">الرياض – قلب المملكة النابض</h2>
-        <h3 class="section-subtitle">نبذة تاريخية موجزة</h3>
-        <p class="section-body">
-          تمتد جذور الرياض إلى واحات نجد ومدنها التاريخية، حيث انطلقت من
-          الدرعية شرارة التوحيد ثم ازدهرت الرياض عاصمةً حديثة تجمع أصالة
-          المكان باندفاعٍ عمراني واقتصادي وثقافي متسارع.
-        </p>
-        <p class="section-body">
-          احتضنت المدينة مؤسسات الدولة ومراكز اتخاذ القرار، وتطورت فيها
-          البنية التحتية والفضاءات العامة والوجهات الثقافية، مع الحفاظ على
-          سمات الضيافة النجدية والهوية المعمارية المحلية.
-        </p>
-        <p class="section-body">
-          اليوم تقدّم الرياض تجربة حضرية متكاملة: فعاليات دولية ومتاحف
-          وحدائق كبرى ومشهد طهوي متنوّع، إلى جانب أحياء تراثية أعيد إحياؤها
-          لتروي قصة المدينة عبر العصور.
-        </p>
-        <p class="section-body">
-          وتستمر برامج الارتقاء الحضري في رفع جودة الحياة عبر مشاريع خضراء
-          ومسارات مشاة ونقل عام حديث وخدمات رقمية للإرشاد والتنقل.
-        </p>
-        <h4 class="section-subtitle">أبرز ما يميّز الرياض</h4>
-        <ul class="section-list">
-          <li>الدرعية التاريخية وحي الطريف (موقع تراث عالمي)</li>
-          <li>المتحف الوطني ومنطقة المربع</li>
-          <li>المراكز المالية والتجارية الحديثة</li>
-          <li>الفعاليات الموسمية والمشهد الثقافي والفني</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- الدرعية ووادي حنيفة -->
-  <section class="section" id="second-state">
-    <div class="section-content">
-      <div class="section-image">
-        <img
-          src="../assets/images/cities/Saudi2.jpg"
-          alt="الدرعية ووادي حنيفة — عمارة طينية وطبيعة وادٍ ممتد"
-        />
-      </div>
-      <div class="section-text">
-        <h2 class="section-title">الدرعية ووادي حنيفة</h2>
-        <h3 class="section-subtitle">هوية نجدية ومسارات طبيعية</h3>
-        <p class="section-body">
-          تُعد الدرعية مهد الدولة السعودية وواجهة للعمارة النجدية؛ وفي
-          محيطها يمتد وادي حنيفة بحدائقه وممراته وجسوره، ليشكّل متنزّهًا
-          مفتوحًا للتنزه والمشي وركوب الدراجات.
-        </p>
-        <p class="section-body">
-          يجتمع في المنطقة محتوى ثقافي ومعماري مع مطاعم ومقاهي مطلّة على
-          الوادي، إضافة إلى مسارات إنارة ولوحات تعريفية تُثري تجربة الزائر.
-        </p>
-        <p class="section-body">
-          تتكامل الخدمات عبر مواقف منظمة، وممرات مُهيّأة للعائلات وكبار السن،
-          مع إرشادٍ رقمي وتوجيه للفعاليات والمعارض المتخصصة.
-        </p>
-        <p class="section-body">
-          تُحترم الأنظمة البيئية للموقع بالحفاظ على النظافة والهدوء، وعدم
-          الإضرار بالغطاء النباتي أو التضاريس التاريخية.
-        </p>
-        <h4 class="section-subtitle">محطات رئيسية لرحلتك</h4>
-        <ul class="section-list">
-          <li>حي الطريف — عمارة طينية ومسارات عرض</li>
-          <li>ميادين وباحات الدرعية الثقافية</li>
-          <li>ممرات المشاة على ضفاف وادي حنيفة</li>
-          <li>مطلات ومناطق جلوس عائلية</li>
-          <li>جولات إرشادية ومراكز زوار</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- الرياض اليوم -->
-  <section class="section" id="modern-kingdom">
-    <div class="section-content">
-      <div class="section-image">
-        <img
-          src="../assets/images/cities/Saudi3.jpg"
-          alt="الرياض الحديثة — مترو وحدائق كبرى ومشاريع خضراء"
-        />
-      </div>
-      <div class="section-text">
-        <h2 class="section-title">الرياض اليوم</h2>
-        <h3 class="section-subtitle">وصول ميسّر وخدمات ذكية وتجربة حضرية متوازنة</h3>
-        <p class="section-body">
-          ترتبط المدينة بالعالم عبر مطار الملك خالد الدولي، وتتهيأ بمنظومة
-          نقل عام حديثة يجري تشغيلها تدريجيًا، مع طرق دائرية ومحاور ربط
-          تضمن انسيابية التنقل بين أحيائها ومحاورها الرئيسة.
-        </p>
-        <p class="section-body">
-          وتزدهر الرياض بحدائق ومتنزهات حضرية وممرات مشاة ومشاريع خضراء
-          كبرى، إلى جانب مرافق ثقافية وواجهات مدينية تستوعب الفعاليات الدولية.
-        </p>
-        <p class="section-body">
-          تدعم التطبيقات الذكية والخرائط التفاعلية التخطيط للزيارة واختيار
-          المسارات وتحديثات الفعاليات والمطاعم والمتاحف.
-        </p>
-        <p class="section-body">
-          كما تتكامل خيارات الضيافة والتسوّق والترفيه لتقديم تجربة مدينة
-          عالمية الهوى بهوية محلية راسخة.
-        </p>
-        <ul class="section-list">
-          <li>مطار الملك خالد الدولي</li>
-          <li>شبكة نقل عام حديثة ومسارات حضرية</li>
-          <li>حدائق كبرى وممرات مشاة</li>
-          <li>واجهات ثقافية ومتاحف ومعارض</li>
-          <li>خدمات إرشاد وخرائط تفاعلية</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- حي الطريف (الدرعية) -->
-  <section class="section" id="king-abdulaziz">
-    <div class="section-content">
-      <div class="section-image">
-        <img
-          src="../assets/images/kings/King abdulaziz.jpg"
-          alt="حي الطريف — موقع تراث عالمي"
-        />
-      </div>
-      <div class="section-text">
-        <h2 class="section-title">حي الطريف — الدرعية</h2>
-        <h3 class="section-subtitle">عمارة طينية وقصص تأسيس</h3>
-        <p class="section-body">
-          يقدّم حي الطريف تجربة متحفية في الهواء الطلق، بمسارات عرض
-          ومكونات عمرانية تُعرّف بالعمارة النجدية ومسارات التأسيس، مع
-          فعاليات فنية وموسمية تُضيء فناءات الحي وساحاته.
-        </p>
-        <p class="section-body">
-          يُنصح بحجز التذاكر مبكرًا، وارتداء أحذية مناسبة للمشي، والاستفادة من
-          الجولات الإرشادية والوسائط الرقمية المتاحة في الموقع.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- قصر المصمك ومنطقة قصر الحكم -->
-  <section class="section" id="kings">
-    <div class="section-content">
-      <div class="section-image">
-        <img src="../assets/images/kings/king saud.jpg" alt="قصر المصمك — قلب الرياض التاريخي" />
-      </div>
-      <div class="section-text">
-        <h2 class="section-title">قصر المصمك ومنطقة قصر الحكم</h2>
-        <h3 class="section-subtitle">ذاكرة المدينة ومشهدها التراثي</h3>
-        <p class="section-body">
-          يشكّل المصمك محطة تاريخية بارزة في قلب الرياض؛ تحيط به ساحات
-          ومنابر ثقافية وأسواق تقليدية، ما يجعل الزيارة فرصة للتعرّف على
-          ملامح المدينة القديمة وعاداتها التجارية.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- المتحف الوطني ومنطقة المربع -->
-  <section class="section">
-    <div class="section-content">
-      <div class="section-image">
-        <img
-          src="../assets/images/kings/king faisal.jpg"
-          alt="المتحف الوطني ومنطقة المربع"
-        />
-      </div>
-      <div class="section-text">
-        <h2 class="section-title">المتحف الوطني ومنطقة المربع</h2>
-        <h3 class="section-subtitle">سردية الجزيرة العربية عبر العصور</h3>
-        <p class="section-body">
-          يعرض المتحف الوطني مسارات تتبّع تاريخ الجزيرة العربية، من
-          العصور القديمة حتى الدولة السعودية، ويجاوره مجمّع المربع
-          بعمارة نجديّة وحدائق رحبة ومعارض دورية.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- بوليفارد رياض سيتي -->
-  <section class="section">
-    <div class="section-content">
-      <div class="section-image">
-        <img
-          src="../assets/images/kings/king khalid.jpg"
-          alt="بوليفارد رياض سيتي — ترفيه ومطاعم وفعاليات"
-        />
-      </div>
-      <div class="section-text">
-        <h2 class="section-title">بوليفارد رياض سيتي</h2>
-        <h3 class="section-subtitle">مطاعم وعروض ومسارح مفتوحة</h3>
-        <p class="section-body">
-          وجهة ترفيهية نابضة تحتضن فعاليات موسمية ومطاعم ومقاهي ومتاجر
-          وتجارب تفاعلية، مع منصات عروض ومسارح في الهواء الطلق.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- كافد (مركز الملك عبدالله المالي) -->
-  <section class="section">
-    <div class="section-content">
-      <div class="section-image">
-        <img
-          src="../assets/images/kings/king fahad.jpg"
-          alt="كافد — مركز الملك عبدالله المالي"
-        />
-      </div>
-      <div class="section-text">
-        <h2 class="section-title">مركز الملك عبدالله المالي (كافد)</h2>
-        <h3 class="section-subtitle">أفق معماري ومشهد أعمال حديث</h3>
-        <p class="section-body">
-          يبرز كافد بأبراجه وتصاميمه المعمارية ومساحاته العامة، ويستضيف
-          مؤسسات مالية وشركات وخيارات ضيافة، مع ممرات مشاة مُهيّأة
-          وفنون عامة تُثري المشهد الحضري.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- حديقة الملك عبدالله -->
-  <section class="section">
-    <div class="section-content">
-      <div class="section-image">
-        <img
-          src="../assets/images/kings/king abdullah.jpg"
-          alt="حديقة الملك عبدالله — مسطحات خضراء ونوافير"
-        />
-      </div>
-      <div class="section-text">
-        <h2 class="section-title">حديقة الملك عبدالله</h2>
-        <h3 class="section-subtitle">متنفس حضري ومسارات عائلية</h3>
-        <p class="section-body">
-          تُوفّر مسطحات خضراء ومسارات مشاة ومناطق لعب، مع عروض نوافير
-          ومرافق خدمية تجعلها خيارًا عائليًا لوقتٍ هادئ في قلب المدينة.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- حافة العالم (جبل فِهرين) -->
-  <section class="section">
-    <div class="section-content">
-      <div class="section-image">
-        <img
-          src="../assets/images/kings/king salman.jpg"
-          alt="حافة العالم — إطلالة جيومورفولوجية فريدة"
-        />
-      </div>
-      <div class="section-text">
-        <h2 class="section-title">حافة العالم (جبل فِهرين)</h2>
-        <h3 class="section-subtitle">طبيعة صحراوية وإطلالات شاسعة</h3>
-        <p class="section-body">
-          على مسافة من المدينة تمنح “حافة العالم” مشهدًا بانوراميًا على
-          الأودية والنتوءات الصخرية. يُنصح بالزيارة مع دليلٍ مختص ومركبة
-          مناسبة، واصطحاب الماء وتجهيزات السلامة والالتزام بتعليمات الموقع.
-        </p>
-      </div>
-    </div>
-  </section>
-</main>
-
-
-    <script src="../scripts/Script.js"></script>
-  </body>
-</html>

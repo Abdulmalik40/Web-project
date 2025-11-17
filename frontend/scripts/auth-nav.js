@@ -31,7 +31,7 @@ export function requireAuth() {
 
     // نخزن الوجهة اللي نرجع لها بعد اللوقن
     localStorage.setItem("post_login_redirect", redirect);
-    window.location.href = "login.html";
+    window.location.href = "auth/login.html";
     return false;
   }
 
@@ -104,7 +104,7 @@ function bindProtectedLinks() {
 
         console.log("[auth-nav] saving post_login_redirect:", targetHref);
         localStorage.setItem("post_login_redirect", targetHref);
-        window.location.href = "login.html";
+        window.location.href = "auth/login.html";
       }
     });
   });

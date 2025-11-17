@@ -461,15 +461,18 @@ body {
 .scroll-indicator {
   position: absolute;
   bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 4;
+  left: 0;
+  right: 0;
+  margin-inline: auto;      /* center horizontally */
   display: flex;
+  justify-content: center;  /* center content inside */
   flex-direction: column;
   align-items: center;
   color: white;
+  z-index: 4;
   animation: fadeInUp 2s ease-out 2s both;
 }
+
 
 .scroll-arrow {
   width: 2px;
@@ -484,7 +487,7 @@ body {
   content: '';
   position: absolute;
   bottom: 0;
-  left: -3px;
+  left: -3.8px;
   width: 8px;
   height: 8px;
   border-right: 2px solid white;
@@ -499,7 +502,7 @@ body {
 
 .scroll-indicator span {
   font-family: "Space Grotesk", sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   letter-spacing: 1px;
   text-transform: uppercase;
   opacity: 0.8;

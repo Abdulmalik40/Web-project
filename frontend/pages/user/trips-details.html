@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Trip Details • Smart Tourism Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../../styles/main.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+      <h1 id="tripTitle">Loading...</h1>
+      <div id="itemsContainer" class="trip-items"></div>
+    </main>
+
+    <script>
+      fetch("../components/header.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("header-placeholder").innerHTML = html;
+        });
+    </script>
+
+    <script type="module" src="../../scripts/auth-nav.js"></script>
+    <script type="module" src="../../scripts/trip-details.js"></script>
+  </body>
+</html>

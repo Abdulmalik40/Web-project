@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page title -->
+    <title>Al Khobar • Eastern Region</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../styles/main.css" />
+    <link rel="stylesheet" href="../../styles/chatbot.css" />
+
+    <!-- Scripts (deferred) -->
+    <script src="../../scripts/chatbot.js" defer></script>
+    <script src="../../scripts/header-component.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Chatbot toggle button -->
+    <button id="chatbot-toggler">
+      <span class="material-symbols-outlined">mode_comment</span>
+      <span class="material-symbols-rounded">close</span>
+    </button>
+
+    <!-- Chatbot container -->
+    <div class="chatbot-popup">
+      <!-- Chat header -->
+      <div class="chat-header">
+        <div class="header-info">
+          <img
+            style="width: 50px; border-radius: 1000px;"
+            src="../../assets/icons/chatbot-icon.png"
+            alt=""
+          />
+          <h2 class="logo-text">Saudi Tourism Bot</h2>
+        </div>
+        <button id="close-chatbot" class="material-symbols-rounded">
+          keyboard_arrow_down
+        </button>
+      </div>
+
+      <!-- Chat body -->
+      <div class="chat-body">
+        <div class="message bot-message">
+          <img
+            style="width: 50px; border-radius: 1000px;"
+            src="../../assets/icons/chatbot-icon.png"
+            alt=""
+          />
+          <div dir="rtl" class="message-text">
+            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat footer -->
+      <div class="chat-footer">
+        <form action="#" class="chat-form">
+          <textarea
+            dir="rtl"
+            placeholder="اكتب سؤالك عن السياحة في السعودية..."
+            class="message-input"
+            required
+          ></textarea>
+          <div class="chat-controls">
+            <button
+              type="submit"
+              id="send-message"
+              class="material-symbols-rounded"
+            >
+              arrow_upward
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Site header -->
+    <header class="header" id="header" data-header-placeholder>
+      <div class="header-inner">
+        <div class="brand" aria-label="Saudi Tourism">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div>
+            <div class="brand-title">Visit Saudi Arabia</div>
+            <div class="brand-sub">Explore regions, heritage, and faith</div>
+          </div>
+        </div>
+
+        <div class="nav-container">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle theme"
+          >
+            🌙 Dark
+          </button>
+
+          <nav class="nav" aria-label="Main Navigation">
+            <div class="item">
+              <a href="../index.html#home">Home</a>
+            </div>
+            <div class="item">
+              <a href="../maps/map-interactive.html">Interactive Map</a>
+            </div>
+            <div class="item">
+              <a href="../index.html#religious">Religious Sites</a>
+            </div>
+            <div class="item">
+              <a href="../core/history.html">History</a>
+            </div>
+            <div class="item">
+              <a href="../index.html#heritage">Heritage</a>
+            </div>
+            <div class="item">
+              <a href="../index.html#regions">Regions</a>
+            </div>
+            <div class="item has-dropdown">
+              <a href="../islamic-guide/islamic-guide.html">Islamic Guide ▾</a>
+              <div class="dropdown" role="menu">
+                <a href="../islamic-guide/qibla.html" role="menuitem">Qibla Finder</a>
+                <a href="../islamic-guide/prayer-times.html" role="menuitem">Prayer Times</a>
+                <a href="../islamic-guide/quran.html" role="menuitem">Quran & Du'a</a>
+                <a href="../islamic-guide/mosques.html" role="menuitem">Nearby Mosques</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero section -->
+    <section class="hero" aria-label="Hero section">
+      <div class="hero-bg">
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        >
+          <source
+            src="../../styles/videos/alkhobar_trim.mp4"
+            type="video/mp4"
+          />
+          <img
+            src="../../assets/images/cities/Saudi3.jpg"
+            alt="Al Khobar - Eastern Region"
+            class="hero-image"
+          />
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-particles">
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+        </div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="title-line">EASTERN REGION</span>
+            <span class="title-line featured">AL KHOBAR</span>
+            <span class="title-line subtitle">
+              COAST • CORNICHE • MODERN LIFESTYLE
+            </span>
+          </h1>
+          <p class="hero-sub">
+            Discover the vibrant coastal city of Al Khobar in Saudi Arabia's
+            Eastern Province.
+          </p>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <div class="scroll-arrow"></div>
+        <span>Scroll to Explore</span>
+      </div>
+    </section>
+
+    <!-- Main content -->
+    <main dir="rtl" class="history-container site-main">
+      <!-- مقدمة عن الخبر -->
+      <section class="section" id="first-state">
+        <div class="section-content">
+          <div class="section-image">
+            <img
+              src="../../assets/images/cities/Saudi1.png"
+              alt="الخبر — بوابة الخليج وواجهة المنطقة الشرقية"
+            />
+          </div>
+          <div class="section-text">
+            <h2 class="section-title">الخبر – أنفاس البحر وروح الحداثة</h2>
+            <h3 class="section-subtitle">نبذة تاريخية موجزة</h3>
+            <p class="section-body">
+              نشأت الخبر على ضفاف الخليج العربي وتطورت مع نهضة النفط
+              ومرافئه، لتصبح جزءًا من الحاضرة الشرقية إلى جانب الظهران
+              والدمام. تمازجت فيها التجارة البحرية مع بنى حضرية حديثة جعلت
+              المدينة عنوانًا للانفتاح والضيافة وجودة الحياة.
+            </p>
+            <p class="section-body">
+              بفضل موقعها الاستراتيجي واتصالها بجسر الملك فهد، غدت الخبر
+              نقطة عبور إقليمية وتجربة حضرية متوازنة تجمع الواجهة البحرية
+              والمناطق الخضراء والمشهد الثقافي والرياضي على امتداد العام.
+            </p>
+            <p class="section-body">
+              اليوم تقدّم الخبر نزهات بحرية مترفة، وممشى واسعًا، ووجهات
+              ترفيهية وعائلية، إلى جانب مراكز علمية وثقافية في نطاق حضري
+              متصل.
+            </p>
+            <p class="section-body">
+              وتستمر مشاريع التطوير في تعزيز أنسنة الأحياء، وتفعيل مسارات
+              المشاة والدراجات، ورفع كفاءة الخدمات الذكية للزوار والسكان.
+            </p>
+            <h4 class="section-subtitle">أبرز ملامح الخبر</h4>
+            <ul class="section-list">
+              <li>الواجهة البحرية والكورنيش</li>
+              <li>اتصال مباشر بجسر الملك فهد</li>
+              <li>قرب نصف القمر وشواطئ الأنشطة</li>
+              <li>مراكز تسوق ومشهد طهوي بحري</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- الواجهة البحرية -->
+      <section class="section" id="second-state">
+        <div class="section-content">
+          <div class="section-image">
+            <img
+              src="../../assets/images/cities/Saudi2.jpg"
+              alt="الواجهة البحرية — كورنيش الخبر وممراته"
+            />
+          </div>
+          <div class="section-text">
+            <h2 class="section-title">الواجهة البحرية والكورنيش</h2>
+            <h3 class="section-subtitle">
+              ممشى ممتد، حدائق، وإطلالات على الخليج
+            </h3>
+            <p class="section-body">
+              يمتد كورنيش الخبر بمسارات مشاة ودراجات وحدائق مفتوحة ونقاط
+              جلوس مطلة على البحر، مع منصات مشاهدة، ملاعب أطفال، ونقاط
+              تصوير على الامتداد الأزرق للخليج.
+            </p>
+            <p class="section-body">
+              تتوزع على الواجهة أعمال فنية ومناطق فعاليات موسمية، إلى جانب
+              مطاعم ومقاهٍ بإطلالات بحرية ومسارات إنارة تعزز متعة النزهة
+              المسائية.
+            </p>
+            <p class="section-body">
+              تتكامل التجربة بحلول مواقف منظمة وعبّارات آمنة لعبور المشاة،
+              وخدمات لذوي الإعاقة وكبار السن، وإرشادٍ بيئي يحفظ نظافة
+              الشاطئ.
+            </p>
+            <p class="section-body">
+              وتتيح المسارات اتصالًا سهلًا بين الحدائق، والمناطق التجارية،
+              ومراسي الأنشطة البحرية الخفيفة.
+            </p>
+            <h4 class="section-subtitle">تجربتك على الواجهة</h4>
+            <ul class="section-list">
+              <li>ممشى الكورنيش وممرات الدراجات</li>
+              <li>الحدائق والمساحات الخضراء</li>
+              <li>المطاعم والمقاهي المطلة على البحر</li>
+              <li>مناطق ألعاب ومنصات مشاهدة</li>
+              <li>فعاليات موسمية ومسارح مفتوحة</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- الخبر اليوم -->
+      <section class="section" id="modern-kingdom">
+        <div class="section-content">
+          <div class="section-image">
+            <img
+              src="../../assets/images/cities/Saudi3.jpg"
+              alt="الخبر الحديثة — مطار، قطار، وخدمات ذكية"
+            />
+          </div>
+          <div class="section-text">
+            <h2 class="section-title">الخبر اليوم</h2>
+            <h3 class="section-subtitle">
+              وصول ميسّر وخدمات ذكية وتجربة حضرية بحرية
+            </h3>
+            <p class="section-body">
+              ترتبط الخبر بالعالم عبر مطار الملك فهد الدولي (الدمام)،
+              وبالمدن المجاورة عبر شبكة طرق حديثة ومحطة قطار الدمام
+              القريبة، ما يجعل الوصول للواجهة البحرية والوجهات الترفيهية
+              سهلًا وسلسًا.
+            </p>
+            <p class="section-body">
+              تدعم التطبيقات والخرائط التفاعلية التخطيط للزيارة، من المواقف
+              إلى الفعاليات والمطاعم، مع تحديثات آنية وأدلة إرشادية متعددة
+              اللغات.
+            </p>
+            <p class="section-body">
+              وتقدّم المدينة خليطًا من الضيافة الراقية، والمراكز التجارية
+              الكبرى، والأنشطة الرياضية والبحرية، في مشهد حضري متصل مع
+              الظهران والدمام.
+            </p>
+            <ul class="section-list">
+              <li>مطار الملك فهد الدولي</li>
+              <li>محطة قطار الدمام (قريبة بالسيارة)</li>
+              <li>شبكات طرق ومخارج متصلة بالكورنيش</li>
+              <li>خدمات إرشاد وخرائط تفاعلية</li>
+              <li>فنادق ومنتجعات ومراكز تسوق</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- جسر الملك فهد -->
+      <section class="section" id="king-abdulaziz">
+        <div class="section-content">
+          <div class="section-image">
+            <img
+              src="../../assets/images/kings/King abdulaziz.jpg"
+              alt="جسر الملك فهد — ارتباط إقليمي"
+            />
+          </div>
+          <div class="section-text">
+            <h2 class="section-title">جسر الملك فهد</h2>
+            <h3 class="section-subtitle">صلة برية إلى مملكة البحرين</h3>
+            <p class="section-body">
+              يربط الجسر الخبر بالبحرين عبر مسار بحري مذهل. يُنصح بالاطلاع
+              على الحالة المرورية ومتطلبات العبور قبل الانطلاق، واختيار
+              أوقات خارج الذروة لتجربة أكثر سلاسة.
+            </p>
+            <p class="section-body">
+              تتوافر خدمات ومرافق على امتداد الطريق، مع نقاط تفتيش وتنظيم
+              يعزّز السلامة والانسيابية.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- نصف القمر -->
+      <section class="section" id="kings">
+        <div class="section-content">
+          <div class="section-image">
+            <img
+              src="../../assets/images/kings/king saud.jpg"
+              alt="خليج نصف القمر — شواطئ وأنشطة"
+            />
+          </div>
+          <div class="section-text">
+            <h2 class="section-title">خليج نصف القمر</h2>
+            <h3 class="section-subtitle">
+              شواطئ ممتدة وأنشطة بحرية عائلية
+            </h3>
+            <p class="section-body">
+              يوفّر نصف القمر شواطئ رملية وأنشطة بحرية ومناطق جلوس ورياضات
+              مائية خفيفة. يُستحسن متابعة أحوال البحر والرياح، والالتزام
+              بإرشادات السلامة والنظافة.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- مركز سايتك للعلوم -->
+      <section class="section">
+        <div class="section-content">
+          <div class="section-image">
+            <img
+              src="../../assets/images/kings/king faisal.jpg"
+              alt="مركز سايتك للعلوم — تجارب تفاعلية"
+            />
+          </div>
+          <div class="section-text">
+            <h2 class="section-title">مركز سايتك للعلوم</h2>
+            <h3 class="section-subtitle">علوم مدهشة ومعارض تعليمية</h3>
+            <p class="section-body">
+              يقدّم المركز معارض تفاعلية وتجارب تعليمية للعائلات والناشئة،
+              ما يجعل الزيارة رحلة معرفية ممتعة على مقربة من الواجهة
+              البحرية.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- إثراء (الظهران) -->
+      <section class="section">
+        <div class="section-content">
+          <div class="section-image">
+            <img
+              src="../../assets/images/kings/king khalid.jpg"
+              alt="إثراء — مركز الملك عبدالعزيز الثقافي العالمي"
+            />
+          </div>
+          <div class="section-text">
+            <h2 class="section-title">إثراء (الظهران)</h2>
+            <h3 class="section-subtitle">ثقافة وفنون ومعارض عالمية</h3>
+            <p class="section-body">
+              على بُعد دقائق من الخبر، يتيح “إثراء” متاحف وقاعات معارض وسينما
+              ومكتبة عامة وبرامج إبداعية متجددة، ضمن تحفة معمارية لافتة.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- التسوق والمشهد الطهوي -->
+      <section class="section">
+        <div class="section-content">
+          <div class="section-image">
+            <img
+              src="../../assets/images/kings/king fahad.jpg"
+              alt="التسوق والمطاعم — تجربة بحرية وعائلية"
+            />
+          </div>
+          <div class="section-text">
+            <h2 class="section-title">التسوق والمشهد الطهوي</h2>
+            <h3 class="section-subtitle">
+              مراكز كبرى ونكهات بحرية عالمية
+            </h3>
+            <p class="section-body">
+              تنتشر في الخبر مراكز تسوق رئيسية وواجهات مطاعم بحرية ومقاهي
+              حديثة؛ من المأكولات البحرية الطازجة إلى المطابخ العالمية، في
+              أجواء عائلية ممتدة على الواجهة والشوارع المحيطة.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- الرياضة والأنشطة البحرية -->
+      <section class="section">
+        <div class="section-content">
+          <div class="section-image">
+            <img
+              src="../../assets/images/kings/king abdullah.jpg"
+              alt="الرياضة والأنشطة البحرية — مسارات وفعاليات"
+            />
+          </div>
+          <div class="section-text">
+            <h2 class="section-title">الرياضة والأنشطة البحرية</h2>
+            <h3 class="section-subtitle">
+              دراجات، جري، وتجارب على الماء
+            </h3>
+            <p class="section-body">
+              يضم الكورنيش مسارات جري ودراجات وأنشطة بحرية خفيفة، مع فعاليات
+              رياضية موسمية ومساحات لليوغا والتمارين الصباحية في أفقٍ بحري
+              مفتوح.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- وجهات قريبة -->
+      <section class="section">
+        <div class="section-content">
+          <div class="section-image">
+            <img
+              src="../../assets/images/kings/king salman.jpg"
+              alt="وجهات قريبة — الدمام والظهران والبحرين"
+            />
+          </div>
+          <div class="section-text">
+            <h2 class="section-title">وجهات قريبة من الخبر</h2>
+            <h3 class="section-subtitle">
+              تنقّل إقليمي سريع وتجارب متنوعة
+            </h3>
+            <p class="section-body">
+              يسهُل من الخبر الوصول إلى الدمام والظهران والأسواق التراثية
+              القريبة، إضافة إلى رحلة قصيرة عبر الجسر إلى مملكة البحرين، ما
+              يوسّع باقة التجارب أمام الزائر في نطاقٍ حضري متصل.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Page scripts -->
+    <script src="../../scripts/Script.js"></script>
+  </body>
+</html>

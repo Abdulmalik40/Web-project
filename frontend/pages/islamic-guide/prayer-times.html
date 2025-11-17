@@ -12,12 +12,12 @@
     rel="stylesheet" />
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
-  <link rel="stylesheet" href="../styles/main.css" />
-  <link rel="stylesheet" href="../styles/chatbot.css">
-  <script src="../scripts/chatbot.js" defer></script>
-  <script src="../scripts/header-component.js" defer></script>
-  <script type="module" src="../scripts/modules/i18n.js"></script>
-  <script src="../scripts/header-component.js" defer></script>
+  <link rel="stylesheet" href="../../styles/main.css" />
+  <link rel="stylesheet" href="../../styles/chatbot.css" />
+  
+  <script src="../../scripts/chatbot.js" defer></script>
+  <script type="module" src="../../scripts/modules/i18n.js"></script>
+  <script src="../../scripts/header-component.js" defer></script>
 
   <style>
     .prayer-container {
@@ -150,7 +150,6 @@
       z-index: 1;
     }
 
-    /* Location Input Styles */
     .location-input-section {
       padding: 20px;
       background: white;
@@ -224,7 +223,6 @@
       border-color: var(--saudi-green);
     }
 
-    /* Loading State */
     .loading-state {
       display: flex;
       flex-direction: column;
@@ -256,7 +254,6 @@
       }
     }
 
-    /* Prayer Times Display - Dark Theme */
     .prayer-times-display {
       background: linear-gradient(135deg, #1a1a2e, #16213e);
       border-radius: 20px;
@@ -404,7 +401,6 @@
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
-    /* Animation keyframes */
     @keyframes slideInFromLeft {
       0% {
         opacity: 0;
@@ -441,7 +437,6 @@
       }
     }
 
-    /* Error State */
     .error-state {
       display: flex;
       flex-direction: column;
@@ -613,7 +608,6 @@
       }
     }
 
-    /* --- Simplified black & white overrides --- */
     body {
       background: #0d0d0f;
       color: #f5f5f5;
@@ -910,7 +904,6 @@
       }
     }
 
-    /* Light mode support */
     [data-theme="light"] body {
       background: #f5f5f5 !important;
       color: #1a1a1a !important;
@@ -1082,7 +1075,7 @@
   <div class="chatbot-popup">
     <div class="chat-header">
       <div class="header-info">
-        <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+        <img style="width: 50px; border-radius: 1000px;" src="../../assets/icons/chatbot-icon.png" alt="">
         <h2 class="logo-text">Saudi Tourism Bot</h2>
       </div>
       <button id="close-chatbot" class="material-symbols-rounded">keyboard_arrow_down</button>
@@ -1090,7 +1083,7 @@
 
     <div class="chat-body">
       <div class="message bot-message">
-        <img style="width: 50px; border-radius: 1000px;" src="../assets/icons/chatbot-icon.png" alt="">
+        <img style="width: 50px; border-radius: 1000px;" src="../../assets/icons/chatbot-icon.png" alt="">
         <div dir="rtl" class="message-text">
           اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
         </div>
@@ -1122,12 +1115,12 @@
       <div class="nav-container">
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙 Dark</button>
         <nav class="nav" aria-label="Main Navigation">
-          <div class="item"><a href="index.html#home">Home</a></div>
-          <div class="item"><a href="map-interactive.html">Interactive Map</a></div>
-          <div class="item"><a href="index.html#religious">Religious Sites</a></div>
-          <div class="item"><a href="history.html">History</a></div>
-          <div class="item"><a href="index.html#heritage">Heritage</a></div>
-          <div class="item"><a href="index.html#regions">Regions</a></div>
+          <div class="item"><a href="../index.html#home">Home</a></div>
+          <div class="item"><a href="../maps/map-interactive.html">Interactive Map</a></div>
+          <div class="item"><a href="../index.html#religious">Religious Sites</a></div>
+          <div class="item"><a href="../core/history.html">History</a></div>
+          <div class="item"><a href="../index.html#heritage">Heritage</a></div>
+          <div class="item"><a href="../index.html#regions">Regions</a></div>
           <div class="item has-dropdown">
             <a href="islamic-guide.html">Islamic Guide ▾</a>
             <div class="dropdown" role="menu">
@@ -1144,7 +1137,6 @@
 
   <main class="prayer-container">
     <div class="prayer-header">
-      <!-- ✅ عناوين مترجمة -->
       <h1 class="prayer-title" data-i18n="prayerTimesPage.title">Prayer Times</h1>
       <p class="prayer-subtitle" data-i18n="prayerTimesPage.subtitle">
         Stay connected with your faith during your journey through Saudi Arabia
@@ -1152,27 +1144,22 @@
     </div>
 
     <div class="prayer-widget-section">
-      <!-- ✅ عنوان الودجت ونبذة -->
       <h3 class="widget-title" data-i18n="prayerTimesPage.widgetTitle">Prayer Times</h3>
       <p class="widget-description" data-i18n="prayerTimesPage.widgetDesc">
         Enter a city or use your current location to view today's prayer timetable.
       </p>
 
       <div class="prayer-widget-container">
-        <!-- Location Input -->
         <div class="location-input-section">
           <div class="input-group">
-            <!-- ✅ placeholder قابل للترجمة -->
             <input type="text" id="locationInput" class="location-input" data-i18n="prayerTimesPage.locationPlaceholder"
               data-i18n-attr="placeholder" placeholder="Enter city or address (e.g., Riyadh, Saudi Arabia)" />
-            <!-- ✅ زر البحث مترجم -->
             <button id="getPrayerTimes" class="search-btn" data-i18n="prayerTimesPage.getPrayerTimesBtn">
               <span class="search-icon">🔍</span>
               Get Prayer Times
             </button>
           </div>
           <div class="current-location-wrapper">
-            <!-- ✅ زر استخدام موقعي مترجم -->
             <button id="useCurrentLocation" class="current-location-btn"
               data-i18n="prayerTimesPage.useCurrentLocationBtn">
               📍 Use Current Location
@@ -1180,14 +1167,11 @@
           </div>
         </div>
 
-        <!-- Loading State -->
         <div id="loadingState" class="loading-state" style="display: none">
           <div class="loading-spinner"></div>
-          <!-- ✅ نص التحميل مترجم -->
           <p data-i18n="prayerTimesPage.loadingText">Getting prayer times...</p>
         </div>
 
-        <!-- Prayer Times Display -->
         <div id="prayerTimesDisplay" class="prayer-times-display" style="display: none">
           <div class="prayer-header-info">
             <h4 id="locationName" class="location-name"></h4>
@@ -1195,7 +1179,6 @@
           </div>
 
           <div class="next-prayer" id="nextPrayer">
-            <!-- ✅ تسمية "الصلاة التالية" مترجمة -->
             <span class="next-prayer-label" data-i18n="prayerTimesPage.nextPrayer">Next Prayer</span>
             <span class="next-prayer-value">
               <span id="nextPrayerName"></span>
@@ -1207,7 +1190,6 @@
           <div class="prayer-times-grid">
             <div class="prayer-time-item fajr">
               <span class="prayer-time" id="fajrTime"></span>
-              <!-- ✅ أسماء الصلوات مترجمة -->
               <span class="prayer-name" data-i18n="prayerTimesPage.prayers.fajr">Fajr</span>
             </div>
 
@@ -1242,21 +1224,18 @@
           </div>
         </div>
 
-        <!-- Error State -->
         <div id="errorState" class="error-state" style="display: none">
           <div class="error-icon">⚠️</div>
           <p id="errorMessage" class="error-message"></p>
-          <!-- ✅ زر المحاولة مرة أخرى مترجم -->
           <button id="retryBtn" class="retry-btn" data-i18n="prayerTimesPage.retryBtn">Try Again</button>
         </div>
       </div>
     </div>
   </main>
 
-  <script src="../scripts/Script.js"></script>
+  <script src="../../scripts/Script.js"></script>
 
   <script>
-    // ✅ دالة مساعدة للترجمة داخل الجافاسكربت (تتحمل الغياب برشاقة)
     const t = (key, fallback = "") => {
       try {
         if (window.i18n && typeof window.i18n.t === "function") {
@@ -1269,7 +1248,6 @@
       return fallback || key;
     };
 
-    // Prayer Times API Integration
     class PrayerTimesWidget {
       constructor() {
         this.apiBase = "https://api.aladhan.com/v1";
@@ -1286,7 +1264,6 @@
         this.errorState = document.getElementById("errorState");
         this.retryBtn = document.getElementById("retryBtn");
 
-        // Prayer time elements
         this.locationName = document.getElementById("locationName");
         this.currentDate = document.getElementById("currentDate");
         this.hijriDate = document.getElementById("hijriDate");
@@ -1307,15 +1284,17 @@
         this.useCurrentLocationBtn.addEventListener("click", () => this.useCurrentLocation());
         this.retryBtn.addEventListener("click", () => this.retry());
 
-        this.locationInput.addEventListener("keypress", (e) => {
-          if (e.key === "Enter") this.getPrayerTimes();
+        this.locationInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            this.getPrayerTimes();
+          }
         });
       }
 
       async getPrayerTimes() {
         const location = this.locationInput.value.trim();
         if (!location) {
-          // ✅ رسالة خطأ مترجمة
           this.showError(t("prayerTimesPage.errors.pleaseEnterLocation", "Please enter a location"));
           return;
         }
@@ -1343,14 +1322,12 @@
           }
         } catch (error) {
           console.error("Error fetching prayer times:", error);
-          // ✅ رسالة خطأ مترجمة
           this.showError(t("prayerTimesPage.errors.genericFetch", "Failed to get prayer times. Please check the location and try again."));
         }
       }
 
       async useCurrentLocation() {
         if (!navigator.geolocation) {
-          // ✅ رسالة خطأ مترجمة
           this.showError(t("prayerTimesPage.errors.geoUnsupported", "Geolocation is not supported by your browser."));
           return;
         }
@@ -1386,7 +1363,6 @@
           }
         } catch (error) {
           console.error("Error getting current location:", error);
-          // ✅ رسائل الأخطاء مترجمة حسب الكود
           if (error.code === 1) {
             this.showError(t("prayerTimesPage.errors.allowLocation", "Please allow location access to use this feature."));
           } else if (error.code === 2) {
@@ -1402,12 +1378,10 @@
       displayPrayerTimes(data, location) {
         const { timings, date } = data;
 
-        // Update location and date
         this.locationName.textContent = location;
         this.currentDate.textContent = date.readable;
         this.hijriDate.textContent = `${date.hijri.date} (${date.hijri.month.en} ${date.hijri.year} AH)`;
 
-        // Update prayer times
         this.fajrTime.textContent = timings.Fajr;
         this.sunriseTime.textContent = timings.Sunrise;
         this.dhuhrTime.textContent = timings.Dhuhr;
@@ -1441,7 +1415,6 @@
 
         this.nextPrayerContainer.classList.remove("is-visible");
 
-        // ✅ أسماء الصلوات عبر i18n
         const orderedPrayers = [
           { key: "Fajr", label: t("prayerTimesPage.prayers.fajr", "Fajr") },
           { key: "Dhuhr", label: t("prayerTimesPage.prayers.dhuhr", "Dhuhr") },
@@ -1531,10 +1504,8 @@
       }
     }
 
-    // Initialize the prayer times widget when the page loads
     document.addEventListener("DOMContentLoaded", () => {
       new PrayerTimesWidget();
-      // ✅ تأكد من تحديث النصوص عند التحميل (لو i18n جاهز)
       if (window.i18n && typeof window.i18n.refresh === "function") {
         window.i18n.refresh();
       }

@@ -18,11 +18,32 @@
   const currentPage = currentPath.split('/').pop() || '';
   const isIndexPage =
     currentPage === 'index.html' || currentPage === '' || currentPage.endsWith('/');
+  
+  // Determine if we're in a subfolder and get the path prefix
+  // Find the 'pages' folder in the path and get everything after it
+  const pagesIndex = currentPath.indexOf('/pages/');
+  const pathAfterPages = pagesIndex >= 0 
+    ? currentPath.substring(pagesIndex + '/pages/'.length)
+    : currentPath;
+  const pathParts = pathAfterPages.split('/').filter(p => p);
+  const isInSubfolder = pathParts.length > 1; // More than just the filename
+  const pathPrefix = isInSubfolder ? '../' : '';
 
   // Helper to get correct path for links داخل /pages/ أو من الصفحة الرئيسية
   function getLink(hash, file) {
     if (file) return file;                    // لو عطيناه ملف محدد استخدمه كما هو
-    return isIndexPage ? `#${hash}` : `index.html#${hash}`; // غير كذا رجّعه للهوم مع الـ hash
+    return isIndexPage ? `#${hash}` : `${pathPrefix}index.html#${hash}`; // غير كذا رجّعه للهوم مع الـ hash
+  }
+  
+  // Helper to get correct path for files in other folders
+  function getNavPath(folder, file) {
+    // If we're in the same folder, no prefix needed
+    const currentFolder = pathParts.length > 1 ? pathParts[pathParts.length - 2] : '';
+    if (currentFolder === folder) {
+      return file;
+    }
+    // Otherwise, use pathPrefix to go up and then into the folder
+    return `${pathPrefix}${folder}/${file}`;
   }
 
   /**
@@ -70,7 +91,7 @@
             </div>
 
             <div class="item">
-              <a href="map-interactive.html" data-i18n="common.interactiveMap">Interactive Map</a>
+              <a href="${getNavPath('maps', 'map-interactive.html')}" data-i18n="common.interactiveMap">Interactive Map</a>
             </div>
 
             <div class="item">
@@ -78,7 +99,7 @@
             </div>
 
             <div class="item">
-              <a href="history.html" data-i18n="common.history">History</a>
+              <a href="${getNavPath('core', 'history.html')}" data-i18n="common.history">History</a>
             </div>
 
             <div class="item">
@@ -91,28 +112,28 @@
 
             <!-- قائمة الدليل الإسلامي (نفس index) -->
             <div class="item has-dropdown">
-              <a href="islamic-guide.html" data-i18n="common.islamicGuide">Islamic Guide ▾</a>
+              <a href="${getNavPath('islamic-guide', 'islamic-guide.html')}" data-i18n="common.islamicGuide">Islamic Guide ▾</a>
               <div class="dropdown" role="menu">
-                <a href="qibla.html" role="menuitem" data-i18n="common.qiblaFinder">Qibla Finder</a>
-                <a href="prayer-times.html" role="menuitem" data-i18n="common.prayerTimes">Prayer Times</a>
-                <a href="quran.html" role="menuitem" data-i18n="common.quran">Quran & Du'a</a>
-                <a href="mosques.html" role="menuitem" data-i18n="common.nearbyMosques">Nearby Mosques</a>
+                <a href="${getNavPath('islamic-guide', 'qibla.html')}" role="menuitem" data-i18n="common.qiblaFinder">Qibla Finder</a>
+                <a href="${getNavPath('islamic-guide', 'prayer-times.html')}" role="menuitem" data-i18n="common.prayerTimes">Prayer Times</a>
+                <a href="${getNavPath('islamic-guide', 'quran.html')}" role="menuitem" data-i18n="common.quran">Quran & Du'a</a>
+                <a href="${getNavPath('islamic-guide', 'mosques.html')}" role="menuitem" data-i18n="common.nearbyMosques">Nearby Mosques</a>
               </div>
             </div>
 
             <!-- 🆕 عناصر الدخول والتسجيل / البروفايل / تسجيل الخروج
                  نفس اللي في index.html وبنفس IDs عشان يشتغل auth-nav.js -->
             <div class="item" id="nav-login">
-              <a href="login.html">Login</a>
+              <a href="${getNavPath('auth', 'login.html')}">Login</a>
             </div>
 
             <div class="item" id="nav-register">
-              <a href="register.html">Register</a>
+              <a href="${getNavPath('auth', 'register.html')}">Register</a>
             </div>
 
             <!-- Profile & Logout (مخفية افتراضيًا) -->
             <div class="item" id="nav-profile" style="display: none;">
-              <a href="profile.html">Profile</a>
+              <a href="${getNavPath('user', 'profile.html')}">Profile</a>
             </div>
 
             <div class="item" id="nav-logout" style="display: none;">
