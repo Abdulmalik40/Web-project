@@ -12,11 +12,14 @@
 const API_KEYS = {
     // Google Maps API Key
     // Get your key from: https://console.cloud.google.com/google/maps-apis
-    GOOGLE_MAPS: process.env.GOOGLE_MAPS_API_KEY || 'YOUR_GOOGLE_MAPS_API_KEY_HERE', // Replace with your actual key
+    GOOGLE_MAPS: 'YOUR_GOOGLE_MAPS_API_KEY_HERE', // Replace with your actual key
     
     // Geoapify API Key (provided)
     // Documentation: https://www.geoapify.com/
-    GEOAPIFY: process.env.GEOAPIFY_API_KEY || '636790d9734f4bf2af3a9f2393bdcc1d'
+    GEOAPIFY: '636790d9734f4bf2af3a9f2393bdcc1d',
+    
+    // OpenWeatherMap API Key
+    OPENWEATHER: '03f856a13f83b6957cdd514980222245' // Replace with your actual key
 };
 
 // API Configuration
@@ -30,6 +33,22 @@ const API_CONFIG = {
         
         // Rate limiting (requests per minute)
         RATE_LIMIT: 1000,
+        
+        // Request timeout (milliseconds)
+        TIMEOUT: 10000
+    },
+    
+    // OpenWeatherMap API configuration
+    OPENWEATHER: {
+        BASE_URL: 'https://api.openweathermap.org/data/2.5',
+        CURRENT_ENDPOINT: '/weather',
+        FORECAST_ENDPOINT: '/forecast',
+        
+        // Default units: 'metric' (Celsius), 'imperial' (Fahrenheit), 'standard' (Kelvin)
+        DEFAULT_UNITS: 'metric',
+        
+        // Rate limiting (requests per minute for free tier)
+        RATE_LIMIT: 60,
         
         // Request timeout (milliseconds)
         TIMEOUT: 10000
@@ -107,7 +126,8 @@ const SECURITY_CONFIG = {
         'connect-src': [
             "'self'",
             "https://api.geoapify.com",
-            "https://maps.googleapis.com"
+            "https://maps.googleapis.com",
+            "https://api.openweathermap.org"
         ]
     }
 };
@@ -130,6 +150,10 @@ function validateConfiguration() {
     
     if (!validateApiKey(API_KEYS.GEOAPIFY, 'Geoapify')) {
         errors.push('Geoapify API key is missing or invalid');
+    }
+    
+    if (!validateApiKey(API_KEYS.OPENWEATHER, 'OpenWeather')) {
+        errors.push('OpenWeather API key is missing or invalid');
     }
     
     if (errors.length > 0) {

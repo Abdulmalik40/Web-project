@@ -18,7 +18,12 @@
 
     <link rel="stylesheet" href="../../styles/main.css" />
     <link rel="stylesheet" href="../../styles/chatbot.css" />
+    <link rel="stylesheet" href="../../styles/components/_weather-widget.css" />
+    <link rel="stylesheet" href="../../styles/components/_weather-widget-weekly.css" />
 
+    <script src="../../config/api-keys.js" defer></script>
+    <script src="../../scripts/modules/weatherApi.js" defer></script>
+    <script src="../../scripts/modules/weatherWidget.js" defer></script>
     <script src="../../scripts/chatbot.js" defer></script>
     <script src="../../scripts/header-component.js" defer></script>
   </head>
@@ -457,6 +462,11 @@
         </div>
       </section>
     </main>
+
+    <!-- Weather Widget at Bottom -->
+    <div style="max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 2rem;">
+      <div id="weather-widget" data-city="riyadh"></div>
+    </div>
 
     <script src="../../scripts/Script.js"></script>
   </body>
