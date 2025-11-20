@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Settings • Smart Tourism</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../styles/main.css" />
+  <link rel="stylesheet" href="../../styles/header.css" />
+
+  <!-- Page-specific styles -->
+  <style>
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+
+    .settings-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      margin-bottom: 1.5rem;
+    }
+
+    .settings-card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .setting-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .setting-row:last-child {
+      border-bottom: none;
+    }
+
+    .setting-label {
+      flex: 1;
+    }
+
+    .setting-label h4 {
+      margin: 0 0 0.25rem 0;
+      font-weight: 600;
+      color: #333;
+      font-size: 1rem;
+    }
+
+    .setting-label p {
+      margin: 0;
+      color: #666;
+      font-size: 0.875rem;
+    }
+
+    .setting-control {
+      margin-left: 1rem;
+    }
+
+    /* Toggle Switch */
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.3s;
+      border-radius: 26px;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .toggle-slider {
+      background-color: #006233;
+    }
+
+    input:checked + .toggle-slider:before {
+      transform: translateX(24px);
+    }
+
+    /* Select Dropdown */
+    .select-control {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      min-width: 150px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .select-control:focus {
+      outline: none;
+      border-color: #006233;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      text-decoration: none;
+      border: none;
+      background: #006233;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .btn-secondary {
+      background: #f3f4f6;
+      color: #333;
+    }
+
+    .save-message {
+      display: none;
+      padding: 0.75rem 1rem;
+      background: #d1fae5;
+      color: #065f46;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .save-message.show {
+      display: block;
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background: #1a1a1a;
+      color: #e5e5e5;
+    }
+
+    body.dark-mode .container {
+      color: #e5e5e5;
+    }
+
+    body.dark-mode .section-title {
+      color: #fff;
+    }
+
+    body.dark-mode .section-subtitle {
+      color: #aaa;
+    }
+
+    body.dark-mode .settings-card {
+      background: #2a2a2a;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .settings-card-title {
+      color: #fff;
+    }
+
+    body.dark-mode .setting-label h4 {
+      color: #fff;
+    }
+
+    body.dark-mode .setting-label p {
+      color: #aaa;
+    }
+
+    body.dark-mode .setting-row {
+      border-bottom-color: rgba(255, 255, 255, 0.05);
+    }
+
+    body.dark-mode .select-control {
+      background: #1a1a1a;
+      border-color: rgba(255, 255, 255, 0.1);
+      color: #e5e5e5;
+    }
+
+    body.dark-mode .btn-secondary {
+      background: #3a3a3a;
+      color: #e5e5e5;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <a href="../index.html" class="logo">Smart Tourism</a>
+      </div>
+
+      <nav class="nav" aria-label="Main Navigation">
+        <div class="item"><a href="../index.html">Home</a></div>
+        <div class="item"><a href="../maps/map-interactive.html">Interactive Map</a></div>
+        <div class="item"><a href="../core/history.html">History</a></div>
+        <div class="item"><a href="../index.html#regions">Regions</a></div>
+
+        <div class="item has-dropdown">
+          <a href="../islamic-guide/islamic-guide.html">Islamic Guide ▾</a>
+          <div class="dropdown"></div>
+        </div>
+
+        <div class="item" id="nav-login">
+          <a href="../auth/login.html">Login</a>
+        </div>
+        <div class="item" id="nav-register">
+          <a href="../auth/register.html">Register</a>
+        </div>
+
+        <div class="item" id="nav-profile" style="display: none;">
+          <a href="profile.html">Profile</a>
+        </div>
+        <div class="item" id="nav-logout" style="display: none;">
+          <a href="#" id="logoutBtn">Logout</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content" style="padding-top: 100px; min-height: 100vh;">
+    <section class="settings-section container">
+      <h1 class="section-title">Settings</h1>
+      <p class="section-subtitle">
+        Customize your experience and manage your preferences.
+      </p>
+
+      <!-- Success message -->
+      <div id="saveMessage" class="save-message">
+        ✅ Settings saved successfully!
+      </div>
+
+      <!-- Appearance Settings -->
+      <div class="settings-card">
+        <h3 class="settings-card-title">Appearance</h3>
+        
+        <div class="setting-row">
+          <div class="setting-label">
+            <h4>Dark Mode</h4>
+            <p>Switch between light and dark theme</p>
+          </div>
+          <div class="setting-control">
+            <label class="toggle-switch">
+              <input type="checkbox" id="darkModeToggle">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            <h4>Language</h4>
+            <p>Choose your preferred language</p>
+          </div>
+          <div class="setting-control">
+            <select id="languageSelect" class="select-control">
+              <option value="en">English</option>
+              <option value="ar">العربية (Arabic)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notification Settings -->
+      <div class="settings-card">
+        <h3 class="settings-card-title">Notifications</h3>
+        
+        <div class="setting-row">
+          <div class="setting-label">
+            <h4>Email Notifications</h4>
+            <p>Receive updates and news via email</p>
+          </div>
+          <div class="setting-control">
+            <label class="toggle-switch">
+              <input type="checkbox" id="emailNotifications">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            <h4>Trip Reminders</h4>
+            <p>Get notified about upcoming trips</p>
+          </div>
+          <div class="setting-control">
+            <label class="toggle-switch">
+              <input type="checkbox" id="tripReminders">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            <h4>Prayer Time Alerts</h4>
+            <p>Receive notifications for prayer times</p>
+          </div>
+          <div class="setting-control">
+            <label class="toggle-switch">
+              <input type="checkbox" id="prayerAlerts">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Settings -->
+      <div class="settings-card">
+        <h3 class="settings-card-title">Privacy</h3>
+        
+        <div class="setting-row">
+          <div class="setting-label">
+            <h4>Profile Visibility</h4>
+            <p>Control who can see your profile</p>
+          </div>
+          <div class="setting-control">
+            <select id="profileVisibility" class="select-control">
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+              <option value="friends">Friends Only</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            <h4>Show Trip History</h4>
+            <p>Display your past trips on your profile</p>
+          </div>
+          <div class="setting-control">
+            <label class="toggle-switch">
+              <input type="checkbox" id="showTripHistory">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="settings-actions">
+        <button id="saveBtn" class="btn">Save Changes</button>
+        <a href="profile.html" class="btn btn-secondary">Back to Profile</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script type="module" src="../../scripts/main.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const token = localStorage.getItem("auth_token");
+
+      // Redirect to login if not authenticated
+      if (!token) {
+        window.location.href = "../auth/login.html";
+        return;
+      }
+
+      // Settings keys
+      const SETTINGS_KEY = "user_settings";
+
+      // Default settings
+      const defaultSettings = {
+        darkMode: false,
+        language: "en",
+        emailNotifications: true,
+        tripReminders: true,
+        prayerAlerts: true,
+        profileVisibility: "public",
+        showTripHistory: true
+      };
+
+      // Load settings from localStorage
+      function loadSettings() {
+        const savedSettings = localStorage.getItem(SETTINGS_KEY);
+        return savedSettings ? JSON.parse(savedSettings) : defaultSettings;
+      }
+
+      // Save settings to localStorage
+      function saveSettings(settings) {
+        localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+      }
+
+      // Apply settings to UI
+      function applySettings(settings) {
+        // Dark mode
+        document.getElementById("darkModeToggle").checked = settings.darkMode;
+        if (settings.darkMode) {
+          document.body.classList.add("dark-mode");
+        } else {
+          document.body.classList.remove("dark-mode");
+        }
+
+        // Language
+        document.getElementById("languageSelect").value = settings.language;
+
+        // Notifications
+        document.getElementById("emailNotifications").checked = settings.emailNotifications;
+        document.getElementById("tripReminders").checked = settings.tripReminders;
+        document.getElementById("prayerAlerts").checked = settings.prayerAlerts;
+
+        // Privacy
+        document.getElementById("profileVisibility").value = settings.profileVisibility;
+        document.getElementById("showTripHistory").checked = settings.showTripHistory;
+      }
+
+      // Get current settings from UI
+      function getCurrentSettings() {
+        return {
+          darkMode: document.getElementById("darkModeToggle").checked,
+          language: document.getElementById("languageSelect").value,
+          emailNotifications: document.getElementById("emailNotifications").checked,
+          tripReminders: document.getElementById("tripReminders").checked,
+          prayerAlerts: document.getElementById("prayerAlerts").checked,
+          profileVisibility: document.getElementById("profileVisibility").value,
+          showTripHistory: document.getElementById("showTripHistory").checked
+        };
+      }
+
+      // Show save message
+      function showSaveMessage() {
+        const message = document.getElementById("saveMessage");
+        message.classList.add("show");
+        setTimeout(() => {
+          message.classList.remove("show");
+        }, 3000);
+      }
+
+      // Initialize settings
+      const currentSettings = loadSettings();
+      applySettings(currentSettings);
+
+      // Dark mode toggle - apply immediately
+      document.getElementById("darkModeToggle").addEventListener("change", (e) => {
+        if (e.target.checked) {
+          document.body.classList.add("dark-mode");
+        } else {
+          document.body.classList.remove("dark-mode");
+        }
+      });
+
+      // Save button
+      document.getElementById("saveBtn").addEventListener("click", () => {
+        const settings = getCurrentSettings();
+        saveSettings(settings);
+        showSaveMessage();
+        console.log("Settings saved:", settings);
+      });
+    });
+  </script>
+</body>
+</html>
