@@ -5383,7 +5383,6 @@
               return;
             }
 
-            // آخر خطة (أحدث واحدة)
             const latestTrip = trips.sort(
               (a, b) => new Date(b.created_at) - new Date(a.created_at)
             )[0];
@@ -5392,7 +5391,6 @@
             console.log("Using latest trip id:", this.currentTripId, latestTrip.title);
           }
 
-          // الآن نرسل المكان لهذه الخطة
           const res = await fetch(
             `http://localhost:9000/api/trips/${this.currentTripId}/items`,
             {
@@ -5405,7 +5403,7 @@
                 place_id: placeId,
                 place_name: name,
                 category: category,
-                day_number: 1, // حالياً نخليها اليوم الأول، نطوّرها لاحقاً
+                day_number: 1, 
                 lat,
                 lng,
               }),
@@ -5730,8 +5728,6 @@
       }
     }
 
-    // دالة عامة يستدعيها زر "أضف إلى الخطة"
-    // حالياً بس تجربة - لاحقاً نربطها بالـ Laravel /api/trips/{id}/items
     window.addPlaceToTrip = function (placeId, name, lat, lng, category) {
       console.log("Add to trip:", { placeId, name, lat, lng, category });
       alert(`🤝 (MVP تجريبي)\n\nسيتم إضافة:\n${name}\nإلى خطة الرحلة المختارة لاحقاً.`);
