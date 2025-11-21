@@ -22,26 +22,26 @@ class I18n {
   async loadTranslations() {
     try {
       console.log('Loading translations from ../locales/');
-      const enUrl = '../locales/en.json';
+      const enUrl = '../locales/en.json'; 
       const arUrl = '../locales/ar.json';
-      
+
       const [enResponse, arResponse] = await Promise.all([
         fetch(enUrl),
         fetch(arUrl)
       ]);
-      
+
       if (!enResponse.ok) {
         throw new Error(`Failed to load en.json: ${enResponse.status} ${enResponse.statusText}`);
       }
       if (!arResponse.ok) {
         throw new Error(`Failed to load ar.json: ${arResponse.status} ${arResponse.statusText}`);
       }
-      
+
       const [enTranslations, arTranslations] = await Promise.all([
         enResponse.json(),
         arResponse.json()
       ]);
-      
+
       this.translations = {
         en: enTranslations,
         ar: arTranslations
@@ -61,7 +61,7 @@ class I18n {
   t(key, params = {}) {
     const keys = key.split('.');
     let value = this.translations[this.currentLang];
-    
+
     for (const k of keys) {
       value = value?.[k];
       if (value === undefined) {
@@ -73,14 +73,14 @@ class I18n {
         break;
       }
     }
-    
+
     // Replace parameters if provided
     if (typeof value === 'string' && params) {
       Object.keys(params).forEach(param => {
         value = value.replace(`{{${param}}}`, params[param]);
       });
     }
-    
+
     return value || key;
   }
 
@@ -89,7 +89,7 @@ class I18n {
       console.warn(`Unsupported language: ${lang}. Defaulting to 'en'.`);
       lang = 'en';
     }
-    
+
     console.log(`Setting language to: ${lang}`);
     this.currentLang = lang;
     localStorage.setItem('language', lang);
@@ -105,7 +105,7 @@ class I18n {
   applyLanguage(lang) {
     // Update HTML lang attribute
     document.documentElement.lang = lang;
-    
+
     // Update dir attribute for RTL
     if (lang === 'ar') {
       document.documentElement.dir = 'rtl';
@@ -123,11 +123,11 @@ class I18n {
 
   translateElements() {
     const elements = document.querySelectorAll('[data-i18n]');
-    
+
     elements.forEach(element => {
       const key = element.getAttribute('data-i18n');
       const translation = this.t(key);
-      
+
       if (translation && translation !== key) {
         // Check if element has data-i18n-attr attribute for custom attributes (priority)
         if (element.hasAttribute('data-i18n-attr')) {
@@ -168,7 +168,7 @@ class I18n {
         // Remove any existing listeners by cloning the element
         const newSwitcher = switcher.cloneNode(true);
         switcher.parentNode.replaceChild(newSwitcher, switcher);
-        
+
         newSwitcher.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();

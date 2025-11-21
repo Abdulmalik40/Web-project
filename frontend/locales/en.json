@@ -314,5 +314,31 @@
     "currentReciter": "Reciter Name",
     "currentSurah": "Surah Name",
     "loading": "Loading..."
+  },
+  "plannerPage": {
+    "title": "Plan your trip with the specialist",
+    "description": "Choose your city, number of days, and interests to get a suggested itinerary based on top attractions.",
+    "destinationLabel": "Destination",
+    "chooseCity": "Select a city",
+    "cityMakkah": "Makkah",
+    "cityMadinah": "Madinah",
+    "cityEastern": "Eastern Region",
+    "daysLabel": "Number of days",
+    "hoursLabel": "Available hours per day",
+    "startTimeLabel": "Day start time",
+    "interestsLabel": "Your interests",
+    "interestHistory": "History",
+    "interestCulture": "Culture",
+    "interestReligion": "Religion",
+    "interestFood": "Food / Cafes",
+    "interestEntertainment": "Entertainment",
+    "resetBtn": "Reset",
+    "generateBtn": "Generate plan",
+    "initialHint": "Once you fill the form and click \"Generate plan\", your itinerary will appear here.",
+    "day": "Day",
+    "approxHours": "Approximate hours for this day:",
+    "hoursSuffix": "hours",
+    "noPlaces": "Not enough places available for this day.",
+    "viewOnMaps": "View on Google Maps"
   }
 }
