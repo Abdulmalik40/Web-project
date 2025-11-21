@@ -219,41 +219,53 @@
         <div class="plan-accommodation-card">
           <h3>Makkah & Madinah (Days 1-4)</h3>
           <h4><strong>Near Haram:</strong> Swissôtel Makkah</h4>
-          <p>Steps from the Grand Mosque with panoramic views, luxury amenities, and spiritual atmosphere. Perfect for pilgrims.</p>
+          <p>Steps from the Grand Mosque with panoramic views, luxury amenities, and spiritual atmosphere. Perfect for
+            pilgrims.</p>
           <h4><strong>Madinah Premium:</strong> Anwar Al Madinah Mövenpick</h4>
-          <p>Adjacent to the Prophet's Mosque with elegant rooms, multiple dining options, and excellent service for spiritual travelers.</p>
+          <p>Adjacent to the Prophet's Mosque with elegant rooms, multiple dining options, and excellent service for
+            spiritual travelers.</p>
           <h4><strong>Comfort Choice:</strong> Dar Al Eiman Royal Hotel</h4>
-          <p>Affordable option with close proximity to both holy mosques, clean facilities, and helpful multilingual staff.</p>
+          <p>Affordable option with close proximity to both holy mosques, clean facilities, and helpful multilingual
+            staff.</p>
         </div>
 
         <div class="plan-accommodation-card">
           <h3>Riyadh (Days 5-8)</h3>
           <h4><strong>Luxury:</strong> The Ritz-Carlton Riyadh</h4>
-          <p>Opulent palace-style hotel in diplomatic quarter, world-class spa, and proximity to major attractions and business district.</p>
+          <p>Opulent palace-style hotel in diplomatic quarter, world-class spa, and proximity to major attractions and
+            business district.</p>
           <h4><strong>Modern Choice:</strong> Centro Waha by Rotana</h4>
-          <p>Central location, contemporary design, excellent breakfast, and easy access to Diriyah, malls, and museums.</p>
+          <p>Central location, contemporary design, excellent breakfast, and easy access to Diriyah, malls, and museums.
+          </p>
           <h4><strong>Near Diriyah:</strong> Bab Samhan, A Luxury Collection Hotel</h4>
-          <p>Exquisite heritage-inspired design overlooking Diriyah, with rooftop dining and authentic Najdi architectural elements.</p>
+          <p>Exquisite heritage-inspired design overlooking Diriyah, with rooftop dining and authentic Najdi
+            architectural elements.</p>
         </div>
 
         <div class="plan-accommodation-card">
           <h3>AlUla (Days 9-11)</h3>
           <h4><strong>Ultimate Luxury:</strong> Chedi Hegra</h4>
-          <p>Unmatched desert elegance with private villas, infinity pools overlooking canyons, and Michelin-level dining experiences.</p>
+          <p>Unmatched desert elegance with private villas, infinity pools overlooking canyons, and Michelin-level
+            dining experiences.</p>
           <h4><strong>Unique Stay:</strong> Sahary AlUla Resort</h4>
-          <p>Tent-style rooms in dramatic rock canyon setting, private facilities, stellar breakfast, and proximity to Hegra tours.</p>
+          <p>Tent-style rooms in dramatic rock canyon setting, private facilities, stellar breakfast, and proximity to
+            Hegra tours.</p>
           <h4><strong>Convenient:</strong> Rural Compound AlUla</h4>
-          <p>New property in town center with modern rooms, great value, and easy walking distance to restaurants and tour operators.</p>
+          <p>New property in town center with modern rooms, great value, and easy walking distance to restaurants and
+            tour operators.</p>
         </div>
 
         <div class="plan-accommodation-card">
           <h3>Jeddah (Days 12-14)</h3>
           <h4><strong>Waterfront Luxury:</strong> The Jeddah EDITION</h4>
-          <p>Contemporary beachfront property with rooftop infinity pool, exceptional dining, and stunning Red Sea sunset views.</p>
+          <p>Contemporary beachfront property with rooftop infinity pool, exceptional dining, and stunning Red Sea
+            sunset views.</p>
           <h4><strong>Best Value:</strong> Ibis Jeddah City Center</h4>
-          <p>Prime location for exploring Al-Balad, free parking, comfortable modern rooms, and walking distance to historic sites.</p>
+          <p>Prime location for exploring Al-Balad, free parking, comfortable modern rooms, and walking distance to
+            historic sites.</p>
           <h4><strong>Classic Choice:</strong> Ritz-Carlton Jeddah</h4>
-          <p>Elegant Red Sea resort with private beach, multiple pools, spa, and fine dining overlooking the waterfront.</p>
+          <p>Elegant Red Sea resort with private beach, multiple pools, spa, and fine dining overlooking the waterfront.
+          </p>
         </div>
       </div>
     </section>
@@ -412,8 +424,9 @@
         each day's highlights for you.
       </p>
       <div class="hero-cta">
-        <a class="cta-btn primary" href="mailto:travel@visitsaudi.example" data-i18n="planFourteenDays.ctaButton1">Start
-          Planning</a>
+        <a class="cta-btn primary" href="/frontend/pages/plans/planner.html" data-i18n="planOneMonth.ctaButton1">Plan
+          with a
+          Specialist</a>
         <a class="cta-btn secondary" href="../index.html#tour-plans" data-i18n="planFourteenDays.ctaButton2">Back to All
           Plans</a>
       </div>
@@ -427,6 +440,7 @@
       if (window.i18n) {
         window.i18n.refresh();
       } else {
+        // Wait for i18n to load
         const checkI18n = setInterval(() => {
           if (window.i18n) {
             window.i18n.refresh();
@@ -436,6 +450,15 @@
         setTimeout(() => clearInterval(checkI18n), 5000);
       }
     });
+    const specialistBtn = document.querySelector(
+      'a[data-i18n="planOneMonth.ctaButton1"]'
+    );
+    if (specialistBtn) {
+      specialistBtn.addEventListener("click", function (e) {
+        e.preventDefault(); // نمنع أي JS ثاني من تخريب الحركة
+        window.location.href = "/pages/plans/planner.html";
+      });
+    }
   </script>
 </body>
 
