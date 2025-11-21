@@ -207,7 +207,7 @@
 
 <body>
 
-    <!-- 🔥 تمت إضافة الهيدر الحقيقي من index.html (بدون تعديل أي شيء آخر) -->
+    <!--  تمت إضافة الهيدر الحقيقي من index.html (بدون تعديل أي شيء آخر) -->
     <header class="header site-header" id="header">
         <div class="header-inner">
             <div class="brand" aria-label="Saudi Tourism">
@@ -242,81 +242,84 @@
             </div>
         </div>
     </header>
-    <!-- 🔥 نهاية الهيدر -->
+    <!-- نهاية الهيدر -->
 
     <main class="page-wrapper">
         <section class="planner-card">
             <div class="planner-header">
-                <h1>سوي خطتك مع الأخصائي</h1>
-                <p>اختر المدينة، عدد الأيام واهتماماتك، ونولد لك خطة مقترحة بناءً على أفضل الأماكن السياحية.</p>
+                <h1 data-i18n="plannerPage.title"></h1>
+                <p data-i18n="plannerPage.description"></p>
             </div>
 
             <form id="plannerForm">
                 <div class="planner-grid">
                     <div class="field">
-                        <label for="city">الوجهة</label>
+                        <label for="city" data-i18n="plannerPage.destinationLabel"></label>
                         <select id="city" required>
-                            <option value="">اختر المدينة</option>
-                            <option value="Makkah">مكة المكرمة</option>
-                            <option value="Madinah">المدينة المنورة</option>
-                            <option value="Eastern">المنطقة الشرقية</option>
+                            <option value="" data-i18n="plannerPage.chooseCity"></option>
+                            <option value="Makkah" data-i18n="plannerPage.cityMakkah"></option>
+                            <option value="Madinah" data-i18n="plannerPage.cityMadinah"></option>
+                            <option value="Eastern" data-i18n="plannerPage.cityEastern"></option>
                         </select>
                     </div>
 
                     <div class="field">
-                        <label for="days">عدد الأيام</label>
+                        <label for="days" data-i18n="plannerPage.daysLabel"></label>
                         <input type="number" id="days" min="1" max="14" value="3" required />
                     </div>
 
                     <div class="field">
-                        <label for="hoursPerDay">عدد الساعات المتاحة في اليوم</label>
+                        <label for="hoursPerDay" data-i18n="plannerPage.hoursLabel"></label>
                         <input type="number" id="hoursPerDay" min="2" max="16" value="6" required />
                     </div>
 
                     <div class="field">
-                        <label for="startTime">وقت بداية اليوم</label>
+                        <label for="startTime" data-i18n="plannerPage.startTimeLabel"></label>
                         <input type="time" id="startTime" value="09:00" />
                     </div>
                 </div>
 
                 <div class="field" style="margin-top: 16px;">
-                    <label>اهتماماتك</label>
+                    <label data-i18n="plannerPage.interestsLabel"></label>
                     <div class="chips-group">
                         <label class="chip">
                             <input type="checkbox" name="interests" value="history" />
-                            <span>تاريخ</span>
+                            <span data-i18n="plannerPage.interestHistory"></span>
                         </label>
                         <label class="chip">
                             <input type="checkbox" name="interests" value="culture" />
-                            <span>ثقافة</span>
+                            <span data-i18n="plannerPage.interestCulture"></span>
                         </label>
                         <label class="chip">
                             <input type="checkbox" name="interests" value="religion" checked />
-                            <span>ديني</span>
+                            <span data-i18n="plannerPage.interestReligion"></span>
                         </label>
                         <label class="chip">
                             <input type="checkbox" name="interests" value="food" checked />
-                            <span>أكل / مقاهي</span>
+                            <span data-i18n="plannerPage.interestFood"></span>
                         </label>
                         <label class="chip">
                             <input type="checkbox" name="interests" value="entertainment" />
-                            <span>ترفيه</span>
+                            <span data-i18n="plannerPage.interestEntertainment"></span>
                         </label>
                     </div>
                 </div>
 
                 <div class="planner-actions">
-                    <button type="button" class="btn-secondary" id="resetPlanner">إعادة تعيين</button>
-                    <button type="submit" class="btn-primary" id="generateBtn">ولد الخطة</button>
+                    <button type="button" class="btn-secondary" id="resetPlanner"
+                        data-i18n="plannerPage.resetBtn"></button>
+                    <button type="submit" class="btn-primary" id="generateBtn"
+                        data-i18n="plannerPage.generateBtn"></button>
                 </div>
             </form>
 
             <div class="itinerary-result" id="itineraryResult">
-                <p class="muted">بعد ما تعبّي البيانات وتضغط "ولد الخطة" راح تظهر لك الخطة هنا.</p>
+                <p class="muted" data-i18n="plannerPage.initialHint"></p>
             </div>
         </section>
     </main>
 
+    <script type="module" src="../../scripts/main.js"></script>
     <script src="../../scripts/itinerary.js"></script>
 </body>
 

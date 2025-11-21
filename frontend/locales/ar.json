@@ -314,5 +314,31 @@
     "currentReciter": "اسم القارئ",
     "currentSurah": "اسم السورة",
     "loading": "جاري التحميل..."
+  },
+  "plannerPage": {
+    "title": "سوي خطتك مع الأخصائي",
+    "description": "اختر المدينة، عدد الأيام واهتماماتك، ونولد لك خطة مقترحة بناءً على أفضل الأماكن السياحية.",
+    "destinationLabel": "الوجهة",
+    "chooseCity": "اختر المدينة",
+    "cityMakkah": "مكة المكرمة",
+    "cityMadinah": "المدينة المنورة",
+    "cityEastern": "المنطقة الشرقية",
+    "daysLabel": "عدد الأيام",
+    "hoursLabel": "عدد الساعات المتاحة في اليوم",
+    "startTimeLabel": "وقت بداية اليوم",
+    "interestsLabel": "اهتماماتك",
+    "interestHistory": "تاريخ",
+    "interestCulture": "ثقافة",
+    "interestReligion": "ديني",
+    "interestFood": "أكل / مقاهي",
+    "interestEntertainment": "ترفيه",
+    "resetBtn": "إعادة تعيين",
+    "generateBtn": "ولد الخطة",
+    "initialHint": "بعد ما تعبّي البيانات وتضغط \"ولد الخطة\" راح تظهر لك الخطة هنا.",
+    "day": "اليوم",
+    "approxHours": "عدد الساعات التقريبية لهذا اليوم:",
+    "hoursSuffix": "ساعة",
+    "noPlaces": "ما فيه أماكن كفاية لهذا اليوم.",
+    "viewOnMaps": "عرض على خرائط قوقل"
   }
 }
