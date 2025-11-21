@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>خطتك مع الأخصائي • Smart Tourism Guide</title>
 
-    <!-- عدل المسارات لو عندك أسماء مختلفة -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,7 +16,6 @@
     <link rel="stylesheet" href="../../styles/chatbot.css">
 
     <script src="../../scripts/chatbot.js" defer></script>
-    <!-- <script type="module" src="../../scripts/modules/i18n.js"></script> -->
     <script src="../../scripts/header-component.js" defer></script>
 
     <style>
@@ -208,10 +206,43 @@
 </head>
 
 <body>
-    <!-- الهيدر: استخدم نفس الكود اللي عندك في باقي الصفحات -->
-    <header class="header">
-        <!-- محتوى الهيدر -->
+
+    <!-- 🔥 تمت إضافة الهيدر الحقيقي من index.html (بدون تعديل أي شيء آخر) -->
+    <header class="header site-header" id="header">
+        <div class="header-inner">
+            <div class="brand" aria-label="Saudi Tourism">
+                <div class="brand-mark" aria-hidden="true"></div>
+                <div>
+                    <div class="brand-title">Visit Saudi Arabia</div>
+                    <div class="brand-sub">Explore regions, heritage, and faith</div>
+                </div>
+            </div>
+
+            <div class="nav-container">
+                <button class="language-toggle" id="language-switcher">
+                    <span class="lang-icon">🌐</span>
+                    <span class="lang-text">Language</span>
+                </button>
+
+                <button class="theme-toggle" id="themeToggle">
+                    <span class="theme-icon">🌙</span>
+                    <span class="theme-text">Dark</span>
+                </button>
+
+                <nav class="nav">
+                    <div class="item"><a href="../../index.html">Home</a></div>
+                    <div class="item"><a href="../../maps/map-interactive.html">Interactive Map</a></div>
+                    <div class="item"><a href="../../index.html#religious">Religious Sites</a></div>
+                    <div class="item"><a href="../../core/history.html">History</a></div>
+                    <div class="item"><a href="../../index.html#heritage">Heritage</a></div>
+                    <div class="item"><a href="../../index.html#regions">Regions</a></div>
+                    <div class="item"><a href="../../auth/login.html">Login</a></div>
+                    <div class="item"><a href="../../auth/register.html">Register</a></div>
+                </nav>
+            </div>
+        </div>
     </header>
+    <!-- 🔥 نهاية الهيدر -->
 
     <main class="page-wrapper">
         <section class="planner-card">
@@ -220,7 +251,6 @@
                 <p>اختر المدينة، عدد الأيام واهتماماتك، ونولد لك خطة مقترحة بناءً على أفضل الأماكن السياحية.</p>
             </div>
 
-            <!-- نموذج المدخلات -->
             <form id="plannerForm">
                 <div class="planner-grid">
                     <div class="field">
@@ -230,7 +260,6 @@
                             <option value="Makkah">مكة المكرمة</option>
                             <option value="Madinah">المدينة المنورة</option>
                             <option value="Eastern">المنطقة الشرقية</option>
-                            <!-- تقدر تزود مدن حسب الداتا -->
                         </select>
                     </div>
 
@@ -245,7 +274,7 @@
                     </div>
 
                     <div class="field">
-                        <label for="startTime">وقت بداية اليوم (اختياري)</label>
+                        <label for="startTime">وقت بداية اليوم</label>
                         <input type="time" id="startTime" value="09:00" />
                     </div>
                 </div>
@@ -274,7 +303,6 @@
                             <span>ترفيه</span>
                         </label>
                     </div>
-                    <p class="muted">نستخدم هذه الاختيارات لتحديد نوع الأماكن المناسبة لك من الداتا الموجودة.</p>
                 </div>
 
                 <div class="planner-actions">
@@ -283,14 +311,12 @@
                 </div>
             </form>
 
-            <!-- مكان عرض الخطة -->
             <div class="itinerary-result" id="itineraryResult">
                 <p class="muted">بعد ما تعبّي البيانات وتضغط "ولد الخطة" راح تظهر لك الخطة هنا.</p>
             </div>
         </section>
     </main>
 
-    <!-- ربط ملف الجافاسكربت -->
     <script src="../../scripts/itinerary.js"></script>
 </body>
 
