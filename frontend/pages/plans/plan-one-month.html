@@ -13,6 +13,7 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
   <link rel="stylesheet" href="../../styles/main.css" />
+  <link rel="stylesheet" href="../../styles/plans.css" />
   <link rel="stylesheet" href="../../styles/chatbot.css">
 
   <script src="../../scripts/chatbot.js" defer></script>
@@ -136,7 +137,7 @@
   <main class="plan-page">
     <section class="plan-section plan-overview">
       <h2 data-i18n="planOneMonth.planOverview">Plan Overview</h2>
-      <p data-i18n="planOneMonth.planOverviewDesc">
+      <p class="title-desc" data-i18n="planOneMonth.planOverviewDesc">
         Designed for travelers who want to absorb every facet of Saudi Arabia,
         the 30-day Grand Discovery balances spiritual reflection, cultural
         depth, and rejuvenating downtime. Each week focuses on a different
@@ -213,7 +214,7 @@
 
     <section class="plan-section">
       <h2 data-i18n="planOneMonth.detailedItinerary">Detailed 30-Day Itinerary</h2>
-      <p data-i18n="planOneMonth.detailedItineraryDesc">
+      <p class="title-desc" data-i18n="planOneMonth.detailedItineraryDesc">
         This comprehensive month-long journey takes you through Saudi Arabia's four distinct regions,
         each offering unique landscapes, cultural treasures, and unforgettable experiences.
       </p>
@@ -385,53 +386,61 @@
 
     <section class="plan-section">
       <h2 data-i18n="planOneMonth.accommodationGuide">Accommodation Recommendations</h2>
-      <p data-i18n="planOneMonth.accommodationGuideDesc">
+      <p class="title-desc" data-i18n="planOneMonth.accommodationGuideDesc">
         Carefully selected hotels across all price ranges for the ultimate month-long Saudi adventure.
       </p>
       <div class="plan-accommodation-grid">
         <div class="plan-accommodation-card">
-          <h3>🏨 Eastern Province & Riyadh</h3>
-          <p><strong>Dammam:</strong> Braira Al Dammam (comfortable, excellent breakfast)</p>
-          <p><strong>Hofuf:</strong> Intercontinental Al-Ahsa or Somewhere Hotel (modern, great value)</p>
-          <p><strong>Riyadh:</strong> Centro Waha by Rotana (central), Aloft Riyadh (modern), or Bab Samhan near Diriyah
-            (luxury heritage)</p>
+          <h3><span class="material-symbols-rounded section-icon">apartment</span> Eastern Province & Riyadh</h3>
+          <div>
+            <p><strong>Dammam:</strong> Braira Al Dammam (comfortable, excellent breakfast)</p>
+            <p><strong>Hofuf:</strong> Intercontinental Al-Ahsa or Somewhere Hotel (modern, great value)</p>
+            <p><strong>Riyadh:</strong> Centro Waha by Rotana (central), Aloft Riyadh (modern), or Bab Samhan near Diriyah
+              (luxury heritage)</p>
+          </div>
         </div>
 
         <div class="plan-accommodation-card">
-          <h3>🏨 Southern Highlands</h3>
-          <p><strong>Najran:</strong> Park Inn Najran (modern, hyper-clean)</p>
-          <p><strong>Abha:</strong> Abha Gardn Millennium Hotel (exceptional value), Abha Palace (luxury mountain views)
-          </p>
-          <p><strong>Jizan:</strong> Novotel Jizan (oceanfront, comfortable)</p>
-          <p><strong>Al Bahah:</strong> Cloud City Hotel (best in town)</p>
+          <h3><span class="material-symbols-rounded section-icon">landscape</span> Southern Highlands</h3>
+          <div>
+            <p><strong>Najran:</strong> Park Inn Najran (modern, hyper-clean)</p>
+            <p><strong>Abha:</strong> Abha Gardn Millennium Hotel (exceptional value), Abha Palace (luxury mountain views)
+            </p>
+            <p><strong>Jizan:</strong> Novotel Jizan (oceanfront, comfortable)</p>
+            <p><strong>Al Bahah:</strong> Cloud City Hotel (best in town)</p>
+          </div>
         </div>
 
         <div class="plan-accommodation-card">
-          <h3>🏨 Western Cities</h3>
-          <p><strong>Taif:</strong> Remaj Hotel (central, distinctive decor)</p>
-          <p><strong>Jeddah:</strong> Jeddah EDITION (luxury), Ibis City Center (value, great location), Ritz-Carlton
-            (beachfront elegance)</p>
-          <p><strong>Madinah:</strong> Anwar Al Madinah Mövenpick (near Prophet's Mosque)</p>
+          <h3><span class="material-symbols-rounded section-icon">mosque</span> Western Cities</h3>
+          <div>
+            <p><strong>Taif:</strong> Remaj Hotel (central, distinctive decor)</p>
+            <p><strong>Jeddah:</strong> Jeddah EDITION (luxury), Ibis City Center (value, great location), Ritz-Carlton
+              (beachfront elegance)</p>
+            <p><strong>Madinah:</strong> Anwar Al Madinah Mövenpick (near Prophet's Mosque)</p>
+          </div>
         </div>
 
         <div class="plan-accommodation-card">
-          <h3>🏨 Northern Desert</h3>
-          <p><strong>AlUla:</strong> Chedi Hegra (ultimate luxury), Sahary Resort (unique tent rooms), Rural Compound
-            (budget-friendly)</p>
-          <p><strong>Tabuk:</strong> Ewaa Express Hotel (modern, near airport)</p>
-          <p><strong>Hail:</strong> Holiday Villa Hail (modern with character)</p>
+          <h3><span class="material-symbols-rounded section-icon">wb_sunny</span> Northern Desert</h3>
+          <div>
+            <p><strong>AlUla:</strong> Chedi Hegra (ultimate luxury), Sahary Resort (unique tent rooms), Rural Compound
+              (budget-friendly)</p>
+            <p><strong>Tabuk:</strong> Ewaa Express Hotel (modern, near airport)</p>
+            <p><strong>Hail:</strong> Holiday Villa Hail (modern with character)</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="plan-section">
+    <section class="plan-section cuisine-section">
       <h2 data-i18n="planOneMonth.regionalCuisine">Regional Cuisine Guide</h2>
       <p data-i18n="planOneMonth.regionalCuisineDesc">
         Experience authentic flavors from every corner of the Kingdom.
       </p>
       <div class="plan-dining-grid">
         <div class="plan-dining-card">
-          <h3>🍽️ Must-Try Saudi Chains</h3>
+          <h3><span class="material-symbols-rounded section-icon">fastfood</span> Must-Try Saudi Chains</h3>
           <ul>
             <li><strong>Al Baik</strong> – Legendary fried chicken, try it everywhere!</li>
             <li><strong>Mama Noura</strong> – Excellent shawarma and kabsa</li>
@@ -442,7 +451,7 @@
         </div>
 
         <div class="plan-dining-card">
-          <h3>🍽️ Regional Specialties</h3>
+          <h3><span class="material-symbols-rounded section-icon">restaurant_menu</span> Regional Specialties</h3>
           <ul>
             <li><strong>Jeddah:</strong> Fresh seafood at Corniche, Al Nakheel in Al-Balad</li>
             <li><strong>Riyadh:</strong> Najd Village (traditional Najdi), The Globe (fine dining)</li>
@@ -453,7 +462,7 @@
         </div>
 
         <div class="plan-dining-card">
-          <h3>🍽️ Traditional Dishes to Try</h3>
+          <h3><span class="material-symbols-rounded section-icon">soup_kitchen</span> Traditional Dishes to Try</h3>
           <ul>
             <li><strong>Kabsa</strong> – Spiced rice with lamb or chicken</li>
             <li><strong>Mandi</strong> – Slow-cooked meat with rice</li>
@@ -465,7 +474,7 @@
         </div>
 
         <div class="plan-dining-card">
-          <h3>🍽️ Dates & Coffee Culture</h3>
+          <h3><span class="material-symbols-rounded section-icon">coffee</span> Dates & Coffee Culture</h3>
           <ul>
             <li><strong>Ajwa Dates</strong> – Premium variety from Madinah</li>
             <li><strong>Sukkari Dates</strong> – Sweet caramel-like texture</li>
@@ -477,14 +486,18 @@
       </div>
     </section>
 
-    <section class="plan-section">
+    <section class="plan-section epic-experiences-section">
       <h2 data-i18n="planOneMonth.epicExperiences">Epic Experiences by Region</h2>
       <p data-i18n="planOneMonth.epicExperiencesDesc">
         Unforgettable adventures spanning the length and breadth of Saudi Arabia.
       </p>
+
       <div class="plan-experiences-grid">
         <div class="plan-experience-card">
-          <h3>🏖️ Red Sea & Coast</h3>
+          <h3>
+            <span class="plan-experience-icon">🏖️</span>
+            Red Sea & Coast
+          </h3>
           <ul>
             <li><strong>Diving & Snorkeling</strong> – Pristine coral reefs in Jeddah and Farasan Islands</li>
             <li><strong>Island Hopping</strong> – 80+ Farasan Islands by ferry</li>
@@ -495,7 +508,10 @@
         </div>
 
         <div class="plan-experience-card">
-          <h3>⛰️ Mountain Adventures</h3>
+          <h3>
+            <span class="plan-experience-icon">⛰️</span>
+            Mountain Adventures
+          </h3>
           <ul>
             <li><strong>Al Wa'bah Crater Hiking</strong> – Massive volcanic crater camping</li>
             <li><strong>Jabal Al Soudah Summit</strong> – Saudi Arabia's highest peak</li>
@@ -506,7 +522,10 @@
         </div>
 
         <div class="plan-experience-card">
-          <h3>🏜️ Desert Wonders</h3>
+          <h3>
+            <span class="plan-experience-icon">🏜️</span>
+            Desert Wonders
+          </h3>
           <ul>
             <li><strong>Hegra at Sunrise</strong> – 2,000-year-old Nabataean tombs</li>
             <li><strong>Hot Air Balloon Flight</strong> – AlUla sandstone valleys</li>
@@ -518,7 +537,10 @@
         </div>
 
         <div class="plan-experience-card">
-          <h3>🏛️ Heritage & Culture</h3>
+          <h3>
+            <span class="plan-experience-icon">🏛️</span>
+            Heritage & Culture
+          </h3>
           <ul>
             <li><strong>Ad Diriyah UNESCO Site</strong> – Birthplace of Saudi Arabia</li>
             <li><strong>Rijal Almaa Village</strong> – "Gingerbread village" architecture</li>
@@ -530,7 +552,10 @@
         </div>
 
         <div class="plan-experience-card">
-          <h3>🎭 Unique Activities</h3>
+          <h3>
+            <span class="plan-experience-icon">🎭</span>
+            Unique Activities
+          </h3>
           <ul>
             <li><strong>Via Ferrata Climbing</strong> – AlUla rock climbing adventure</li>
             <li><strong>Helicopter Tours</strong> – Aerial views of AlUla or Asir</li>
@@ -542,7 +567,10 @@
         </div>
 
         <div class="plan-experience-card">
-          <h3>🌅 Photo Opportunities</h3>
+          <h3>
+            <span class="plan-experience-icon">🌅</span>
+            Photo Opportunities
+          </h3>
           <ul>
             <li><strong>Elephant Rock</strong> – Iconic natural sandstone arch</li>
             <li><strong>Maraya Mirror Building</strong> – World's largest mirrored structure</li>

@@ -1,0 +1,513 @@
+:root {
+  --bg-dark: #121212;
+  --bg-card-dark: #111b21;
+  --bg-card-darker: #111b21;
+
+  --text-primary-dark: #ffffff;
+  --text-secondary-dark: #a0a0a0;
+
+  --text-primary-light: #1a1a1a;
+  --text-secondary-light: #555555;
+
+  --accent-green: #2ecc71;
+
+  --font-main: "Tajawal", sans-serif;
+  --font-heading: "Cairo", sans-serif;
+}
+
+/* ============================================================
+   GLOBAL
+   ============================================================ */
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary-dark);
+  font-family: var(--font-main);
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  margin-top: 0;
+}
+
+/* CTA block at top of page */
+.plan-cta {
+  text-align: center;
+  border-radius: var(--radius-xl);
+  margin-bottom: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.plan-cta p {
+  max-width: 600px;
+}
+
+/* ============================================================
+   SECTION GENERAL
+   ============================================================ */
+.plan-section {
+  padding: 4rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.plan-section h2 {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--text-primary-dark);
+  letter-spacing: 2px;
+}
+
+.plan-section > p {
+  max-width: 860px;
+  margin-bottom: 3.5rem;
+  font-size: 1.4rem;
+  color: var(--text-secondary-dark);
+  line-height: 1.5;
+}
+
+.section-icon {
+  color: var(--accent-green);
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
+.title-desc {
+  font-size: 1.5rem;
+}
+
+/* ============================================================
+   PLAN OVERVIEW
+   ============================================================ */
+.plan-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.75rem;
+  margin-top: 3rem;
+  padding: 0 1.2rem;
+}
+
+.plan-summary-card span {
+  color: var(--accent-green);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  font-weight: 800;
+  display: block;
+}
+
+.plan-summary-card strong {
+  font-size: 2.5rem;
+  color: var(--text-primary-dark);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.plan-summary-card p {
+  font-size: 1.2rem;
+  color: var(--text-secondary-dark);
+  line-height: 1.25;
+  max-width: 18rem;
+}
+
+/* ============================================================
+   WEEK-BY-WEEK JOURNEY
+   ============================================================ */
+.plan-itinerary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.5rem 3.5rem;
+  padding: 0 1.2rem;
+  margin-top: 4rem;
+}
+
+.plan-phase span {
+  color: var(--accent-green);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  font-size: 1.1rem;
+  display: block;
+}
+
+.plan-phase h3 {
+  font-size: 2.05rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary-dark);
+  font-weight: 900;
+}
+
+.plan-phase ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  list-style: disc;
+}
+
+.plan-phase ul li {
+  gap: 0.8rem;
+  color: var(--text-secondary-dark);
+  font-size: 1.3rem;
+}
+
+.plan-phase ul li::marker {
+  color: var(--accent-green);
+}
+
+/* ============================================================
+   DETAILED ITINERARY
+   ============================================================ */
+.plan-detailed-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.plan-day-block h3 {
+  font-size: 1.65rem;
+  margin-bottom: 0.85rem;
+  color: var(--text-primary-dark);
+  font-weight: 900;
+  border-left: 4px solid var(--accent-green);
+  padding-left: 1rem;
+}
+
+.plan-day-block p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--text-secondary-dark);
+  line-height: 1.6;
+}
+
+.plan-day-block ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.plan-day-block ul li {
+  margin-bottom: 0.65rem;
+  color: var(--text-secondary-dark);
+  line-height: 1.55;
+}
+
+.plan-day-block ul li::marker {
+  color: var(--accent-green);
+}
+
+.plan-day-block ul li strong {
+  color: var(--text-primary-dark);
+  font-weight: 800;
+}
+
+/* ============================================================
+   ACCOMMODATION – "Where to Stay" dark cards
+   ============================================================ */
+
+/* Wrapper for all regions inside the section */
+.plan-accommodation-wrapper {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* Region heading: e.g., "Makkah & Madinah (Days 1–4)" */
+.plan-accommodation-region-title {
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: var(--text-primary-dark);
+  margin-bottom: 2rem;
+}
+
+/* Grid of cards per region (desktop: 3, tablet: 2, mobile: 1) */
+.plan-accommodation-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+/* Individual hotel card */
+.plan-accommodation-card div{
+  margin: 0.7rem;
+  padding: 0rem 1.5rem;
+  border-left: 2px solid var(--accent-green);
+}
+.plan-accommodation-card div p{
+  margin-bottom: 1rem;
+}
+
+/* First row: green dot + label */
+.plan-accommodation-label {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--text-primary-dark);
+}
+
+/* The green circular icon */
+.plan-accommodation-dot {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 999px;
+  background-color: var(--accent-green);
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.plan-accommodation-tag {
+  font-weight: 800;
+}
+
+/* Hotel name line */
+.plan-accommodation-hotel {
+  margin-top: 0.25rem;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--text-primary-dark);
+}
+
+/* Description text */
+.plan-accommodation-desc {
+  margin-top: 0.75rem;
+  font-size: 1.02rem;
+  color: var(--text-secondary-dark);
+  line-height: 1.65;
+}
+
+/* ============================================================
+   REGIONAL CUISINE (Dark Theme)
+   ============================================================ */
+.cuisine-section {
+  background-color: transparent;
+  color: var(--text-primary-dark);
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  padding: 0;
+}
+
+.cuisine-section h2 {
+  color: var(--text-primary-dark);
+}
+
+.cuisine-section > p {
+  color: var(--text-secondary-dark);
+}
+
+.plan-dining-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+
+.plan-dining-card {
+  background-color: var(--bg-card-darker);
+  padding: 2.25rem 2rem;
+  border-radius: 14px;
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.plan-dining-card h3 {
+  color: var(--text-primary-dark);
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 900;
+}
+
+.plan-dining-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan-dining-card ul li {
+  color: var(--text-secondary-dark);
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #232323;
+  line-height: 1.6;
+  font-size: 1.02rem;
+}
+
+.plan-dining-card ul li:last-child {
+  border-bottom: none;
+}
+
+.plan-dining-card strong {
+  color: var(--text-primary-dark);
+  font-weight: 800;
+}
+
+/* ============================================================
+   WHAT'S INCLUDED (Dark Cards)
+   ============================================================ */
+.plan-inclusions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+  margin-top: 3rem;
+}
+
+.plan-inclusion {
+  background: linear-gradient(180deg, var(--bg-card-darker), var(--bg-card-dark));
+  border-radius: 14px;
+  padding: 2.5rem 2rem;
+  min-height: 15.5rem;
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.plan-inclusion h3 {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: var(--text-primary-dark);
+  margin-bottom: 1.15rem;
+  line-height: 1.3;
+}
+
+.plan-inclusion p {
+  font-size: 1.05rem;
+  color: var(--text-secondary-dark);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============================================================
+   EPIC EXPERIENCES
+   ============================================================ */
+.epic-experiences-section {
+  padding: 4rem 0;
+}
+
+/* Card grid – desktop: 3 / tablet: 2 / mobile: 1 */
+.plan-experiences-grid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* Dark cards */
+.plan-experience-card {
+  background-color: var(--bg-card-darker);
+  padding: 2.25rem 2rem;
+  border-radius: 14px;
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Heading with emoji + title */
+.plan-experience-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+}
+
+.plan-experience-icon {
+  font-size: 1.8rem;
+}
+
+/* List styling: inside bullets, green markers */
+.plan-experience-card ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+  list-style-position: inside;
+}
+
+.plan-experience-card li {
+  color: var(--text-secondary-dark);
+  margin-bottom: 0.85rem;
+  line-height: 1.6;
+  font-size: 1.02rem;
+}
+
+.plan-experience-card li::marker {
+  color: var(--accent-green);
+}
+
+.plan-experience-card li strong {
+  color: var(--text-primary-dark);
+  font-weight: 800;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* ~ lg: under 1100px */
+@media (max-width: 1100px) {
+  .plan-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .plan-inclusions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .plan-experiences-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .plan-accommodation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ~ md: under 900px */
+@media (max-width: 900px) {
+  .plan-itinerary-grid,
+  .plan-dining-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-itinerary-grid {
+    gap: 3rem;
+  }
+}
+
+/* ~ sm: under 700px */
+@media (max-width: 700px) {
+  .plan-experiences-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-accommodation-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* extra small: under 600px */
+@media (max-width: 600px) {
+  .plan-summary-grid,
+  .plan-inclusions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .plan-summary-card strong {
+    font-size: 1.9rem;
+  }
+}
