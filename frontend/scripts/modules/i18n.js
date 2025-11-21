@@ -22,9 +22,9 @@ class I18n {
   async loadTranslations() {
     try {
       console.log('Loading translations from ../locales/');
-      const enUrl = '../locales/en.json'; 
+      const enUrl = '../locales/en.json';  
       const arUrl = '../locales/ar.json';
-
+      
       const [enResponse, arResponse] = await Promise.all([
         fetch(enUrl),
         fetch(arUrl),

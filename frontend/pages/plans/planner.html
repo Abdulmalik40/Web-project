@@ -2,325 +2,337 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>خطتك مع الأخصائي • Smart Tourism Guide</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>خطتك مع الأخصائي • Smart Tourism Guide</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
-        rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
 
-    <link rel="stylesheet" href="../../styles/main.css" />
-    <link rel="stylesheet" href="../../styles/chatbot.css">
+  <link rel="stylesheet" href="../../styles/main.css" />
+  <link rel="stylesheet" href="../../styles/chatbot.css" />
 
-    <script src="../../scripts/chatbot.js" defer></script>
-    <script src="../../scripts/header-component.js" defer></script>
+  <script src="../../scripts/chatbot.js" defer></script>
+  <script src="../../scripts/header-component.js" defer></script>
 
-    <style>
-        body {
-            font-family: "Tajawal", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: #0b1220;
-            color: #f9fafb;
-            margin: 0;
-            padding: 0;
-        }
+  <style>
+    body {
+      font-family: "Tajawal", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b1220;
+      color: #f9fafb;
+      margin: 0;
+      padding: 0;
+    }
 
-        .page-wrapper {
-            max-width: 1100px;
-            margin: 100px auto 40px;
-            padding: 0 16px 40px;
-        }
+    .page-wrapper {
+      max-width: 1100px;
+      margin: 100px auto 40px;
+      padding: 0 16px 40px;
+    }
 
-        .planner-card {
-            background: rgba(15, 23, 42, 0.95);
-            border-radius: 20px;
-            padding: 24px 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(148, 163, 184, 0.35);
-        }
+    .planner-card {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 20px;
+      padding: 24px 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
 
-        .planner-header {
-            margin-bottom: 20px;
-        }
+    .planner-header {
+      margin-bottom: 20px;
+    }
 
-        .planner-header h1 {
-            font-size: 1.6rem;
-            margin: 0 0 6px;
-        }
+    .planner-header h1 {
+      font-size: 1.6rem;
+      margin: 0 0 6px;
+    }
 
-        .planner-header p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: #cbd5f5;
-        }
+    .planner-header p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #cbd5f5;
+    }
 
-        .planner-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 16px 20px;
-            margin-top: 16px;
-        }
+    .planner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px 20px;
+      margin-top: 16px;
+    }
 
-        .field {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            font-size: 0.9rem;
-        }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.9rem;
+    }
 
-        .field label {
-            font-weight: 600;
-            color: #e5e7eb;
-        }
+    .field label {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
 
-        .field input,
-        .field select {
-            border-radius: 10px;
-            border: 1px solid rgba(148, 163, 184, 0.5);
-            background: rgba(15, 23, 42, 0.9);
-            padding: 8px 10px;
-            color: #f9fafb;
-            font-size: 0.9rem;
-            outline: none;
-        }
+    .field input,
+    .field select {
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 8px 10px;
+      color: #f9fafb;
+      font-size: 0.9rem;
+      outline: none;
+    }
 
-        .field input:focus,
-        .field select:focus {
-            border-color: #38bdf8;
-            box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
-        }
+    .field input:focus,
+    .field select:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
+    }
 
-        .chips-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 6px;
-        }
+    .chips-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
 
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            border-radius: 999px;
-            border: 1px solid rgba(148, 163, 184, 0.5);
-            padding: 4px 10px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            user-select: none;
-            background: rgba(15, 23, 42, 0.8);
-        }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 4px 10px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      user-select: none;
+      background: rgba(15, 23, 42, 0.8);
+    }
 
-        .chip input {
-            accent-color: #38bdf8;
-        }
+    .chip input {
+      accent-color: #38bdf8;
+    }
 
-        .planner-actions {
-            margin-top: 18px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: flex-end;
-        }
+    .planner-actions {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
 
-        .btn-primary {
-            border: none;
-            border-radius: 999px;
-            padding: 10px 22px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            background: linear-gradient(135deg, #38bdf8, #22c55e);
-            color: #0b1220;
-        }
+    .btn-primary {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 22px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #38bdf8, #22c55e);
+      color: #0b1220;
+    }
 
-        .btn-primary:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
 
-        .btn-secondary {
-            border-radius: 999px;
-            padding: 9px 18px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(148, 163, 184, 0.6);
-            background: transparent;
-            color: #e5e7eb;
-            cursor: pointer;
-        }
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: transparent;
+      color: #e5e7eb;
+      cursor: pointer;
+    }
 
-        .itinerary-result {
-            margin-top: 24px;
-        }
+    .itinerary-result {
+      margin-top: 24px;
+    }
 
-        .day-card {
-            margin-top: 14px;
-            padding: 14px 14px 12px;
-            border-radius: 14px;
-            background: rgba(15, 23, 42, 0.85);
-            border: 1px solid rgba(148, 163, 184, 0.4);
-        }
+    .day-card {
+      margin-top: 14px;
+      padding: 14px 14px 12px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
 
-        .day-card h3 {
-            margin: 0 0 6px;
-            font-size: 1rem;
-        }
+    .day-card h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
 
-        .day-meta {
-            font-size: 0.8rem;
-            color: #9ca3af;
-            margin-bottom: 6px;
-        }
+    .day-meta {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-bottom: 6px;
+    }
 
-        .day-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 0.9rem;
-        }
+    .day-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.9rem;
+    }
 
-        .day-list li {
-            padding: 4px 0;
-            border-bottom: 1px dashed rgba(55, 65, 81, 0.7);
-        }
+    .day-list li {
+      padding: 4px 0;
+      border-bottom: 1px dashed rgba(55, 65, 81, 0.7);
+    }
 
-        .day-list li:last-child {
-            border-bottom: none;
-        }
+    .day-list li:last-child {
+      border-bottom: none;
+    }
 
-        .place-name {
-            font-weight: 600;
-        }
+    .place-name {
+      font-weight: 600;
+    }
 
-        .place-meta {
-            font-size: 0.8rem;
-            color: #9ca3af;
-        }
+    .place-meta {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
 
-        .muted {
-            color: #9ca3af;
-            font-size: 0.85rem;
-        }
-    </style>
+    .muted {
+      color: #9ca3af;
+      font-size: 0.85rem;
+    }
+  </style>
 </head>
 
 <body>
 
-    <!--  تمت إضافة الهيدر الحقيقي من index.html (بدون تعديل أي شيء آخر) -->
-    <header class="header site-header" id="header">
-        <div class="header-inner">
-            <div class="brand" aria-label="Saudi Tourism">
-                <div class="brand-mark" aria-hidden="true"></div>
-                <div>
-                    <div class="brand-title">Visit Saudi Arabia</div>
-                    <div class="brand-sub">Explore regions, heritage, and faith</div>
-                </div>
-            </div>
-
-            <div class="nav-container">
-                <button class="language-toggle" id="language-switcher">
-                    <span class="lang-icon">🌐</span>
-                    <span class="lang-text">Language</span>
-                </button>
-
-                <button class="theme-toggle" id="themeToggle">
-                    <span class="theme-icon">🌙</span>
-                    <span class="theme-text">Dark</span>
-                </button>
-
-                <nav class="nav">
-                    <div class="item"><a href="../../index.html">Home</a></div>
-                    <div class="item"><a href="../../maps/map-interactive.html">Interactive Map</a></div>
-                    <div class="item"><a href="../../index.html#religious">Religious Sites</a></div>
-                    <div class="item"><a href="../../core/history.html">History</a></div>
-                    <div class="item"><a href="../../index.html#heritage">Heritage</a></div>
-                    <div class="item"><a href="../../index.html#regions">Regions</a></div>
-                    <div class="item"><a href="../../auth/login.html">Login</a></div>
-                    <div class="item"><a href="../../auth/register.html">Register</a></div>
-                </nav>
-            </div>
+  <!-- الهيدر -->
+  <header class="header site-header" id="header">
+    <div class="header-inner">
+      <div class="brand" aria-label="Saudi Tourism">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <div class="brand-title">Visit Saudi Arabia</div>
+          <div class="brand-sub">Explore regions, heritage, and faith</div>
         </div>
-    </header>
-    <!-- نهاية الهيدر -->
+      </div>
 
-    <main class="page-wrapper">
-        <section class="planner-card">
-            <div class="planner-header">
-                <h1 data-i18n="plannerPage.title"></h1>
-                <p data-i18n="plannerPage.description"></p>
-            </div>
+      <div class="nav-container">
+        <button class="language-toggle" id="language-switcher">
+          <span class="lang-icon">🌐</span>
+          <span class="lang-text">Language</span>
+        </button>
 
-            <form id="plannerForm">
-                <div class="planner-grid">
-                    <div class="field">
-                        <label for="city" data-i18n="plannerPage.destinationLabel"></label>
-                        <select id="city" required>
-                            <option value="" data-i18n="plannerPage.chooseCity"></option>
-                            <option value="Makkah" data-i18n="plannerPage.cityMakkah"></option>
-                            <option value="Madinah" data-i18n="plannerPage.cityMadinah"></option>
-                            <option value="Eastern" data-i18n="plannerPage.cityEastern"></option>
-                        </select>
-                    </div>
+        <button class="theme-toggle" id="themeToggle">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-text">Dark</span>
+        </button>
 
-                    <div class="field">
-                        <label for="days" data-i18n="plannerPage.daysLabel"></label>
-                        <input type="number" id="days" min="1" max="14" value="3" required />
-                    </div>
+        <nav class="nav">
+          <div class="item"><a href="../../index.html">Home</a></div>
+          <div class="item">
+            <a href="../../maps/map-interactive.html">Interactive Map</a>
+          </div>
+          <div class="item"><a href="../../index.html#religious">Religious Sites</a></div>
+          <div class="item"><a href="../../core/history.html">History</a></div>
+          <div class="item"><a href="../../index.html#heritage">Heritage</a></div>
+          <div class="item"><a href="../../index.html#regions">Regions</a></div>
+          <div class="item"><a href="../../auth/login.html">Login</a></div>
+          <div class="item"><a href="../../auth/register.html">Register</a></div>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <!-- نهاية الهيدر -->
 
-                    <div class="field">
-                        <label for="hoursPerDay" data-i18n="plannerPage.hoursLabel"></label>
-                        <input type="number" id="hoursPerDay" min="2" max="16" value="6" required />
-                    </div>
+  <main class="page-wrapper">
+    <section class="planner-card">
+      <div class="planner-header">
+        <h1>سَوِّ خُطَّتَك مع الأخصائي</h1>
+        <p>اختر المدينة، عدد الأيام، الساعات المتاحة، ميزانيتك واهتماماتك، ونولد لك خطة مقترحة متوازنة بناءً على أفضل
+          الأماكن.</p>
+      </div>
 
-                    <div class="field">
-                        <label for="startTime" data-i18n="plannerPage.startTimeLabel"></label>
-                        <input type="time" id="startTime" value="09:00" />
-                    </div>
-                </div>
+      <form id="plannerForm">
+        <div class="planner-grid">
+          <div class="field">
+            <label for="city">الوجهة</label>
+            <select id="city" required>
+              <option value="">اختر المدينة</option>
+              <option value="Makkah">مكة المكرمة</option>
+              <option value="Madinah">المدينة المنورة</option>
+              <option value="Riyadh">الرياض</option>
+            </select>
+          </div>
 
-                <div class="field" style="margin-top: 16px;">
-                    <label data-i18n="plannerPage.interestsLabel"></label>
-                    <div class="chips-group">
-                        <label class="chip">
-                            <input type="checkbox" name="interests" value="history" />
-                            <span data-i18n="plannerPage.interestHistory"></span>
-                        </label>
-                        <label class="chip">
-                            <input type="checkbox" name="interests" value="culture" />
-                            <span data-i18n="plannerPage.interestCulture"></span>
-                        </label>
-                        <label class="chip">
-                            <input type="checkbox" name="interests" value="religion" checked />
-                            <span data-i18n="plannerPage.interestReligion"></span>
-                        </label>
-                        <label class="chip">
-                            <input type="checkbox" name="interests" value="food" checked />
-                            <span data-i18n="plannerPage.interestFood"></span>
-                        </label>
-                        <label class="chip">
-                            <input type="checkbox" name="interests" value="entertainment" />
-                            <span data-i18n="plannerPage.interestEntertainment"></span>
-                        </label>
-                    </div>
-                </div>
+          <div class="field">
+            <label for="days">عدد الأيام</label>
+            <input type="number" id="days" min="1" max="14" value="3" required />
+          </div>
 
-                <div class="planner-actions">
-                    <button type="button" class="btn-secondary" id="resetPlanner"
-                        data-i18n="plannerPage.resetBtn"></button>
-                    <button type="submit" class="btn-primary" id="generateBtn"
-                        data-i18n="plannerPage.generateBtn"></button>
-                </div>
-            </form>
+          <div class="field">
+            <label for="hoursPerDay">عدد الساعات المتاحة في اليوم</label>
+            <input type="number" id="hoursPerDay" min="2" max="16" value="6" required />
+          </div>
 
-            <div class="itinerary-result" id="itineraryResult">
-                <p class="muted" data-i18n="plannerPage.initialHint"></p>
-            </div>
-        </section>
-    </main>
+          <div class="field">
+            <label for="startTime">وقت بداية اليوم</label>
+            <input type="time" id="startTime" value="09:00" />
+          </div>
 
-    <script type="module" src="../../scripts/main.js"></script>
-    <script src="../../scripts/itinerary.js"></script>
+          <!-- حقل الميزانية -->
+          <div class="field">
+            <label for="budget">الميزانية المتوقعة</label>
+            <select id="budget">
+              <option value="any">بدون تقييد</option>
+              <option value="cheap">اقتصادية</option>
+              <option value="medium" selected>متوسطة</option>
+              <option value="luxury">فاخرة</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field" style="margin-top: 16px;">
+          <label>اهتماماتك</label>
+          <div class="chips-group">
+            <label class="chip">
+              <input type="checkbox" name="interests" value="history" />
+              <span>تاريخ</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" name="interests" value="culture" />
+              <span>ثقافة</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" name="interests" value="religion" checked />
+              <span>ديني</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" name="interests" value="food" checked />
+              <span>أكل / مقاهي</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" name="interests" value="entertainment" />
+              <span>ترفيه</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="planner-actions">
+          <button type="button" class="btn-secondary" id="resetPlanner">إعادة تعيين</button>
+          <button type="submit" class="btn-primary" id="generateBtn">ولّد الخطة</button>
+        </div>
+      </form>
+
+      <div class="itinerary-result" id="itineraryResult">
+        <p class="muted">بعد ما تعبّي البيانات وتضغط "ولّد الخطة" راح تظهر لك الخطة هنا.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ما نبغى main.js هنا عشان i18n وغيره -->
+  <script src="../../scripts/itinerary.js"></script>
 </body>
 
 </html>
