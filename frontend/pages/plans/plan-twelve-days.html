@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>12-Day Saudi Escape • Coastal & Heritage</title>
+  <title data-i18n="planTwelveDays.title">12-Day Saudi Escape • Coastal & Heritage</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -12,8 +13,11 @@
     rel="stylesheet" />
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+
+  <!-- Global + plans styles (same structure as other plan pages) -->
   <link rel="stylesheet" href="../../styles/main.css" />
-  <link rel="stylesheet" href="../../styles/chatbot.css">
+  <link rel="stylesheet" href="../../styles/plans.css" />
+  <link rel="stylesheet" href="../../styles/chatbot.css" />
 
   <script src="../../scripts/chatbot.js" defer></script>
   <script type="module" src="../../scripts/modules/i18n.js"></script>
@@ -64,6 +68,7 @@
     </div>
   </div>
 
+  <!-- Shared header (same structure as other plans) -->
   <header class="header" id="header" data-header-placeholder>
     <div class="header-inner">
       <div class="brand">
@@ -97,6 +102,7 @@
     </div>
   </header>
 
+  <!-- Hero (same structure as 14-day / 30-day) -->
   <section class="hero" aria-label="12-day tour hero">
     <div class="hero-bg">
       <video class="hero-video" autoplay muted loop playsinline preload="metadata">
@@ -134,9 +140,10 @@
   </section>
 
   <main class="plan-page">
+    <!-- Plan Overview (matches structure from other plans) -->
     <section class="plan-section plan-overview">
       <h2 data-i18n="planTwelveDays.planOverview">Plan Overview</h2>
-      <p data-i18n="planTwelveDays.planOverviewDesc">
+      <p class="title-desc" data-i18n="planTwelveDays.planOverviewDesc">
         Ideal for travelers seeking a balance of rest and discovery, this
         12-day route begins on the Red Sea, transitions through AlUla's
         dramatic landscapes, and concludes in the cool highlands of Asir.
@@ -169,6 +176,7 @@
       </div>
     </section>
 
+    <!-- Day-by-Day Flow (uses plan-itinerary-grid / plan-phase styles) -->
     <section class="plan-section">
       <h2 data-i18n="planTwelveDays.dayByDay">Day-by-Day Flow</h2>
       <div class="plan-itinerary-grid">
@@ -214,60 +222,151 @@
       </div>
     </section>
 
+    <!-- Where to Stay (uses plan-accommodation-wrapper / cards like other plans) -->
     <section class="plan-section">
       <h2 data-i18n="planTwelveDays.whereToStay">Where to Stay</h2>
-      <p data-i18n="planTwelveDays.whereToStayDesc">
+      <p class="title-desc" data-i18n="planTwelveDays.whereToStayDesc">
         Handpicked accommodations that blend comfort, location, and authentic Saudi hospitality.
       </p>
-      <div class="plan-accommodation-grid">
-        <div class="plan-accommodation-card">
-          <h3>Jeddah (Days 1-3 & 10-12)</h3>
-          <h4><strong>Luxury:</strong> The Jeddah EDITION</h4>
-          <p>Stunning Red Sea views, rooftop pool, and world-class dining. Steps from the Corniche with private beach
-            access.</p>
-          <h4><strong>Mid-Range:</strong> Ibis Jeddah City Center</h4>
-          <p>Central location near Al-Balad, easy parking, comfortable rooms, and excellent value. Perfect for exploring
-            historic Jeddah.</p>
-          <h4><strong>Boutique:</strong> Jeddah Hilton</h4>
-          <p>Waterfront location with multiple dining options, spa facilities, and easy access to both beach and city
-            attractions.</p>
+
+      <div class="plan-accommodation-wrapper">
+        <!-- Jeddah -->
+        <div class="plan-accommodation-region">
+          <h3 class="plan-accommodation-region-title">Jeddah (Days 1–3 &amp; 10–12)</h3>
+          <div class="plan-accommodation-grid">
+            <article class="plan-accommodation-card">
+              <p class="plan-accommodation-label">
+                <span class="plan-accommodation-dot"></span>
+                <span class="plan-accommodation-tag">Luxury</span>
+              </p>
+              <p class="plan-accommodation-hotel">The Jeddah EDITION</p>
+              <p class="plan-accommodation-desc">
+                Stunning Red Sea views, rooftop pool, and world-class dining.
+                Steps from the Corniche with private beach access.
+              </p>
+            </article>
+
+            <article class="plan-accommodation-card">
+              <p class="plan-accommodation-label">
+                <span class="plan-accommodation-dot"></span>
+                <span class="plan-accommodation-tag">Mid-Range</span>
+              </p>
+              <p class="plan-accommodation-hotel">Ibis Jeddah City Center</p>
+              <p class="plan-accommodation-desc">
+                Central location near Al-Balad, easy parking, comfortable rooms,
+                and excellent value. Perfect for exploring historic Jeddah.
+              </p>
+            </article>
+
+            <article class="plan-accommodation-card">
+              <p class="plan-accommodation-label">
+                <span class="plan-accommodation-dot"></span>
+                <span class="plan-accommodation-tag">Boutique</span>
+              </p>
+              <p class="plan-accommodation-hotel">Jeddah Hilton</p>
+              <p class="plan-accommodation-desc">
+                Waterfront location with multiple dining options, spa facilities,
+                and easy access to both beach and city attractions.
+              </p>
+            </article>
+          </div>
         </div>
 
-        <div class="plan-accommodation-card">
-          <h3>AlUla (Days 4-6)</h3>
-          <h4><strong>Luxury:</strong> Chedi Hegra</h4>
-          <p>Ultimate desert luxury with stunning canyon views, infinity pools, and direct access to heritage sites.
-            Includes gourmet dining.</p>
-          <h4><strong>Mid-Range:</strong> Sahary AlUla Resort</h4>
-          <p>Unique tent-style rooms nestled in rock canyons, private bathrooms, excellent breakfast, and exceptional
-            staff service.</p>
-          <h4><strong>Budget-Friendly:</strong> Rural Compound AlUla</h4>
-          <p>New property in town with modern amenities, great reviews, and easy access to tour departure points.</p>
+        <!-- AlUla -->
+        <div class="plan-accommodation-region">
+          <h3 class="plan-accommodation-region-title">AlUla (Days 4–6)</h3>
+          <div class="plan-accommodation-grid">
+            <article class="plan-accommodation-card">
+              <p class="plan-accommodation-label">
+                <span class="plan-accommodation-dot"></span>
+                <span class="plan-accommodation-tag">Luxury</span>
+              </p>
+              <p class="plan-accommodation-hotel">Chedi Hegra</p>
+              <p class="plan-accommodation-desc">
+                Ultimate desert luxury with stunning canyon views, infinity pools,
+                and direct access to heritage sites. Includes gourmet dining.
+              </p>
+            </article>
+
+            <article class="plan-accommodation-card">
+              <p class="plan-accommodation-label">
+                <span class="plan-accommodation-dot"></span>
+                <span class="plan-accommodation-tag">Mid-Range</span>
+              </p>
+              <p class="plan-accommodation-hotel">Sahary AlUla Resort</p>
+              <p class="plan-accommodation-desc">
+                Unique tent-style rooms nestled in rock canyons, private bathrooms,
+                excellent breakfast, and exceptional staff service.
+              </p>
+            </article>
+
+            <article class="plan-accommodation-card">
+              <p class="plan-accommodation-label">
+                <span class="plan-accommodation-dot"></span>
+                <span class="plan-accommodation-tag">Budget-Friendly</span>
+              </p>
+              <p class="plan-accommodation-hotel">Rural Compound AlUla</p>
+              <p class="plan-accommodation-desc">
+                New property in town with modern amenities, great reviews,
+                and easy access to tour departure points.
+              </p>
+            </article>
+          </div>
         </div>
 
-        <div class="plan-accommodation-card">
-          <h3>Abha (Days 7-9)</h3>
-          <h4><strong>Premium:</strong> Abha Palace Hotel</h4>
-          <p>Mountainside location with panoramic views, spa facilities, and traditional Asiri architecture blended with
-            modern luxury.</p>
-          <h4><strong>Best Value:</strong> Abha Gardn Millennium Hotel</h4>
-          <p>Exceptional value with luxury rooms, easy parking, helpful staff, and proximity to cable cars and heritage
-            villages.</p>
-          <h4><strong>Boutique:</strong> Intour Hotel Abha</h4>
-          <p>Modern design in the heart of Abha, close to restaurants and shopping, with comfortable rooms and mountain
-            views.</p>
+        <!-- Abha -->
+        <div class="plan-accommodation-region">
+          <h3 class="plan-accommodation-region-title">Abha (Days 7–9)</h3>
+          <div class="plan-accommodation-grid">
+            <article class="plan-accommodation-card">
+              <p class="plan-accommodation-label">
+                <span class="plan-accommodation-dot"></span>
+                <span class="plan-accommodation-tag">Premium</span>
+              </p>
+              <p class="plan-accommodation-hotel">Abha Palace Hotel</p>
+              <p class="plan-accommodation-desc">
+                Mountainside location with panoramic views, spa facilities, and
+                traditional Asiri architecture blended with modern luxury.
+              </p>
+            </article>
+
+            <article class="plan-accommodation-card">
+              <p class="plan-accommodation-label">
+                <span class="plan-accommodation-dot"></span>
+                <span class="plan-accommodation-tag">Best Value</span>
+              </p>
+              <p class="plan-accommodation-hotel">Abha Gardn Millennium Hotel</p>
+              <p class="plan-accommodation-desc">
+                Exceptional value with luxury rooms, easy parking, helpful staff,
+                and proximity to cable cars and heritage villages.
+              </p>
+            </article>
+
+            <article class="plan-accommodation-card">
+              <p class="plan-accommodation-label">
+                <span class="plan-accommodation-dot"></span>
+                <span class="plan-accommodation-tag">Boutique</span>
+              </p>
+              <p class="plan-accommodation-hotel">Intour Hotel Abha</p>
+              <p class="plan-accommodation-desc">
+                Modern design in the heart of Abha, close to restaurants and shopping,
+                with comfortable rooms and mountain views.
+              </p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="plan-section">
+    <!-- Dining Experiences (cuisine-section styles from plans.css) -->
+    <section class="plan-section cuisine-section">
       <h2 data-i18n="planTwelveDays.diningExperiences">Dining Experiences</h2>
       <p data-i18n="planTwelveDays.diningDesc">
         Savor authentic Saudi flavors alongside international cuisine at our recommended venues.
       </p>
       <div class="plan-dining-grid">
         <div class="plan-dining-card">
-          <h3>🍽️ Jeddah Dining</h3>
+          <h3><span class="material-symbols-rounded section-icon">restaurant_menu</span> Jeddah Dining</h3>
           <ul>
             <li><strong>Albaik</strong> – Iconic Saudi fried chicken chain, a must-try local favorite</li>
             <li><strong>Al Nakheel Restaurant</strong> – Traditional Saudi dishes in historic Al-Balad</li>
@@ -278,7 +377,7 @@
         </div>
 
         <div class="plan-dining-card">
-          <h3>🍽️ AlUla Dining</h3>
+          <h3><span class="material-symbols-rounded section-icon">landscape</span> AlUla Dining</h3>
           <ul>
             <li><strong>Suhail Restaurant</strong> – Fine dining under the stars at Sahary Resort</li>
             <li><strong>Maraya Restaurant</strong> – Contemporary cuisine at the mirrored building</li>
@@ -288,7 +387,7 @@
         </div>
 
         <div class="plan-dining-card">
-          <h3>🍽️ Abha Mountain Cuisine</h3>
+          <h3><span class="material-symbols-rounded section-icon">terrain</span> Abha Mountain Cuisine</h3>
           <ul>
             <li><strong>Rijal Almaa Village Cafes</strong> – Mountain coffee with honey from local bees</li>
             <li><strong>Ash Shafa Restaurants</strong> – Cloud-level dining with Asiri specialties</li>
@@ -299,16 +398,20 @@
       </div>
     </section>
 
-    <section class="plan-section">
+    <!-- Unique Experiences (epic-experiences-section like other plans) -->
+    <section class="plan-section epic-experiences-section">
       <h2 data-i18n="planTwelveDays.uniqueExperiences">Unique Experiences</h2>
       <p data-i18n="planTwelveDays.experiencesDesc">
         Curated adventures that reveal the soul of Saudi Arabia's diverse regions.
       </p>
       <div class="plan-experiences-grid">
         <div class="plan-experience-card">
-          <h3>🌊 Red Sea Adventures</h3>
+          <h3>
+            <span class="plan-experience-icon">🌊</span>
+            Red Sea Adventures
+          </h3>
           <ul>
-            <li><strong>Scuba Diving & Snorkeling</strong> – Pristine coral reefs with minimal tourism</li>
+            <li><strong>Scuba Diving &amp; Snorkeling</strong> – Pristine coral reefs with minimal tourism</li>
             <li><strong>Sunset Corniche Walk</strong> – 30km promenade with public art installations</li>
             <li><strong>Al-Balad Night Tour</strong> – UNESCO old town with street food tasting</li>
             <li><strong>King Fahd's Fountain at Dusk</strong> – Watch the world's tallest fountain illuminate</li>
@@ -317,7 +420,10 @@
         </div>
 
         <div class="plan-experience-card">
-          <h3>🏜️ AlUla Desert Magic</h3>
+          <h3>
+            <span class="plan-experience-icon">🏜️</span>
+            AlUla Desert Magic
+          </h3>
           <ul>
             <li><strong>Hegra Sunrise Tour</strong> – 2,000-year-old Nabataean tombs with expert guide</li>
             <li><strong>Hot Air Balloon Ride</strong> – Dawn flight over sandstone formations</li>
@@ -329,7 +435,10 @@
         </div>
 
         <div class="plan-experience-card">
-          <h3>⛰️ Asir Mountain Experiences</h3>
+          <h3>
+            <span class="plan-experience-icon">⛰️</span>
+            Asir Mountain Experiences
+          </h3>
           <ul>
             <li><strong>Al Habala Cable Car</strong> – Descend to the "Hanging Village" on cliffs</li>
             <li><strong>Jabal Al Soudah Summit</strong> – Highest peak in Saudi Arabia at 3,100m</li>
@@ -342,6 +451,7 @@
       </div>
     </section>
 
+    <!-- Included Enhancements (uses plan-inclusions-grid like others) -->
     <section class="plan-section">
       <h2 data-i18n="planTwelveDays.includedEnhancements">Included Enhancements</h2>
       <div class="plan-inclusions-grid">
@@ -374,6 +484,7 @@
       </div>
     </section>
 
+    <!-- CTA (same structure as other plan pages) -->
     <section class="plan-section plan-cta">
       <h2 data-i18n="planTwelveDays.ctaTitle">Create Your 12-Day Escape</h2>
       <p data-i18n="planTwelveDays.ctaDesc">
@@ -381,14 +492,15 @@
         this itinerary—whether you want more relaxation, more adventure, or a bit of both.
       </p>
       <div class="hero-cta">
-        <a class="cta-btn primary" href="/frontend/pages/plans/planner.html" data-i18n="planOneMonth.ctaButton1">Plan
-          with a
-          Specialist</a> <a class="cta-btn secondary" href="../index.html" data-i18n="planTwelveDays.ctaButton2">Back to
+        <a class="cta-btn primary" href="/frontend/pages/plans/planner.html"
+          data-i18n="planOneMonth.ctaButton1">Plan with a
+          Specialist</a>
+        <a class="cta-btn secondary" href="../index.html#tour-plans"
+          data-i18n="planTwelveDays.ctaButton2">Back to
           All Plans</a>
       </div>
     </section>
   </main>
-
 
   <script src="../../scripts/Script.js"></script>
   <script>
@@ -407,12 +519,14 @@
         setTimeout(() => clearInterval(checkI18n), 5000);
       }
     });
+
+    // Planner CTA – same behavior pattern as other plans
     const specialistBtn = document.querySelector(
       'a[data-i18n="planOneMonth.ctaButton1"]'
     );
     if (specialistBtn) {
       specialistBtn.addEventListener("click", function (e) {
-        e.preventDefault(); // نمنع أي JS ثاني من تخريب الحركة
+        e.preventDefault();
         window.location.href = "/pages/plans/planner.html";
       });
     }

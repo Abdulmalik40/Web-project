@@ -5,7 +5,7 @@
 
 class I18n {
   constructor() {
-    this.currentLang = localStorage.getItem('language') || 'en';
+    this.currentLang = localStorage.getItem("language") || "en";
     this.translations = {};
     this.observers = [];
     this.init();
@@ -15,53 +15,61 @@ class I18n {
     await this.loadTranslations();
     this.applyLanguage(this.currentLang);
     this.setupLanguageSwitcher();
-    console.log('i18n initialized with language:', this.currentLang);
-    console.log('Translations loaded:', Object.keys(this.translations));
+    console.log("i18n initialized with language:", this.currentLang);
+    console.log("Translations loaded:", Object.keys(this.translations));
   }
 
   async loadTranslations() {
     try {
-      console.log('Loading translations from ../locales/');
-      const enUrl = '../locales/en.json';
-      const arUrl = '../locales/ar.json';
-      
+      console.log("Loading translations from ../../locales/ (relative to i18n.js)");
+
+      // ✅ Build URLs relative to THIS FILE (i18n.js), not the page URL
+      const localesBase = new URL("../../locales/", import.meta.url);
+
+      const enUrl = new URL("en.json", localesBase).href;
+      const arUrl = new URL("ar.json", localesBase).href;
+
       const [enResponse, arResponse] = await Promise.all([
         fetch(enUrl),
-        fetch(arUrl)
+        fetch(arUrl),
       ]);
-      
+
       if (!enResponse.ok) {
-        throw new Error(`Failed to load en.json: ${enResponse.status} ${enResponse.statusText}`);
+        throw new Error(
+          `Failed to load en.json: ${enResponse.status} ${enResponse.statusText}`
+        );
       }
       if (!arResponse.ok) {
-        throw new Error(`Failed to load ar.json: ${arResponse.status} ${arResponse.statusText}`);
+        throw new Error(
+          `Failed to load ar.json: ${arResponse.status} ${arResponse.statusText}`
+        );
       }
-      
+
       const [enTranslations, arTranslations] = await Promise.all([
         enResponse.json(),
-        arResponse.json()
+        arResponse.json(),
       ]);
-      
+
       this.translations = {
         en: enTranslations,
-        ar: arTranslations
+        ar: arTranslations,
       };
-      console.log('Translations loaded successfully:', {
+      console.log("Translations loaded successfully:", {
         en: Object.keys(enTranslations),
-        ar: Object.keys(arTranslations)
+        ar: Object.keys(arTranslations),
       });
     } catch (error) {
-      console.error('Error loading translations:', error);
-      console.error('Error details:', error.message, error.stack);
+      console.error("Error loading translations:", error);
+      console.error("Error details:", error.message, error.stack);
       // Fallback to empty translations
       this.translations = { en: {}, ar: {} };
     }
   }
 
   t(key, params = {}) {
-    const keys = key.split('.');
+    const keys = key.split(".");
     let value = this.translations[this.currentLang];
-    
+
     for (const k of keys) {
       value = value?.[k];
       if (value === undefined) {
@@ -73,29 +81,29 @@ class I18n {
         break;
       }
     }
-    
+
     // Replace parameters if provided
-    if (typeof value === 'string' && params) {
-      Object.keys(params).forEach(param => {
+    if (typeof value === "string" && params) {
+      Object.keys(params).forEach((param) => {
         value = value.replace(`{{${param}}}`, params[param]);
       });
     }
-    
+
     return value || key;
   }
 
   setLanguage(lang) {
-    if (lang !== 'en' && lang !== 'ar') {
+    if (lang !== "en" && lang !== "ar") {
       console.warn(`Unsupported language: ${lang}. Defaulting to 'en'.`);
-      lang = 'en';
+      lang = "en";
     }
-    
+
     console.log(`Setting language to: ${lang}`);
     this.currentLang = lang;
-    localStorage.setItem('language', lang);
+    localStorage.setItem("language", lang);
     this.applyLanguage(lang);
     this.notifyObservers();
-    console.log('Language changed, translations applied');
+    console.log("Language changed, translations applied");
   }
 
   getLanguage() {
@@ -105,16 +113,16 @@ class I18n {
   applyLanguage(lang) {
     // Update HTML lang attribute
     document.documentElement.lang = lang;
-    
+
     // Update dir attribute for RTL
-    if (lang === 'ar') {
-      document.documentElement.dir = 'rtl';
-      document.body.classList.add('rtl');
-      document.body.classList.remove('ltr');
+    if (lang === "ar") {
+      document.documentElement.dir = "rtl";
+      document.body.classList.add("rtl");
+      document.body.classList.remove("ltr");
     } else {
-      document.documentElement.dir = 'ltr';
-      document.body.classList.add('ltr');
-      document.body.classList.remove('rtl');
+      document.documentElement.dir = "ltr";
+      document.body.classList.add("ltr");
+      document.body.classList.remove("rtl");
     }
 
     // Translate all elements with data-i18n attribute
@@ -122,21 +130,24 @@ class I18n {
   }
 
   translateElements() {
-    const elements = document.querySelectorAll('[data-i18n]');
-    
-    elements.forEach(element => {
-      const key = element.getAttribute('data-i18n');
+    const elements = document.querySelectorAll("[data-i18n]");
+
+    elements.forEach((element) => {
+      const key = element.getAttribute("data-i18n");
       const translation = this.t(key);
-      
+
       if (translation && translation !== key) {
         // Check if element has data-i18n-attr attribute for custom attributes (priority)
-        if (element.hasAttribute('data-i18n-attr')) {
-          const attr = element.getAttribute('data-i18n-attr');
+        if (element.hasAttribute("data-i18n-attr")) {
+          const attr = element.getAttribute("data-i18n-attr");
           element.setAttribute(attr, translation);
         }
         // Check if element is input/textarea placeholder
-        else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-          if (element.hasAttribute('placeholder')) {
+        else if (
+          element.tagName === "INPUT" ||
+          element.tagName === "TEXTAREA"
+        ) {
+          if (element.hasAttribute("placeholder")) {
             element.placeholder = translation;
           } else {
             element.value = translation;
@@ -150,9 +161,9 @@ class I18n {
     });
 
     // Translate elements with data-i18n-html (for HTML content)
-    const htmlElements = document.querySelectorAll('[data-i18n-html]');
-    htmlElements.forEach(element => {
-      const key = element.getAttribute('data-i18n-html');
+    const htmlElements = document.querySelectorAll("[data-i18n-html]");
+    htmlElements.forEach((element) => {
+      const key = element.getAttribute("data-i18n-html");
       const translation = this.t(key);
       if (translation && translation !== key) {
         element.innerHTML = translation;
@@ -163,20 +174,20 @@ class I18n {
   setupLanguageSwitcher() {
     // Wait for DOM to be ready, then setup the switcher
     const setup = () => {
-      const switcher = document.getElementById('language-switcher');
+      const switcher = document.getElementById("language-switcher");
       if (switcher) {
         // Remove any existing listeners by cloning the element
         const newSwitcher = switcher.cloneNode(true);
         switcher.parentNode.replaceChild(newSwitcher, switcher);
-        
-        newSwitcher.addEventListener('click', (e) => {
+
+        newSwitcher.addEventListener("click", (e) => {
           e.preventDefault();
           e.stopPropagation();
-          const newLang = this.currentLang === 'en' ? 'ar' : 'en';
-          console.log('Switching language from', this.currentLang, 'to', newLang);
+          const newLang = this.currentLang === "en" ? "ar" : "en";
+          console.log("Switching language from", this.currentLang, "to", newLang);
           this.setLanguage(newLang);
         });
-        console.log('Language switcher button found and handler attached');
+        console.log("Language switcher button found and handler attached");
         return true;
       }
       return false;
@@ -185,15 +196,15 @@ class I18n {
     // Try immediately
     if (!setup()) {
       // If button doesn't exist yet, wait for DOMContentLoaded
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => {
           setup();
         });
       } else {
         // DOM is ready, but button might load later, retry after a delay
         setTimeout(() => {
           if (!setup()) {
-            console.warn('Language switcher button not found after retry');
+            console.warn("Language switcher button not found after retry");
           }
         }, 500);
       }
@@ -206,11 +217,11 @@ class I18n {
   }
 
   unsubscribe(callback) {
-    this.observers = this.observers.filter(obs => obs !== callback);
+    this.observers = this.observers.filter((obs) => obs !== callback);
   }
 
   notifyObservers() {
-    this.observers.forEach(callback => callback(this.currentLang));
+    this.observers.forEach((callback) => callback(this.currentLang));
   }
 
   // Refresh translations (useful after dynamic content is added)
@@ -227,4 +238,3 @@ window.i18n = i18n;
 
 // Export for use in other modules
 export default i18n;
-
