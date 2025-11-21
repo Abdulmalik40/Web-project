@@ -21,10 +21,14 @@ class I18n {
 
   async loadTranslations() {
     try {
-      console.log('Loading translations from ../locales/');
-      const enUrl = '../locales/en.json';  
-      const arUrl = '../locales/ar.json';
-      
+      console.log("Loading translations from ../../locales/ (relative to i18n.js)");
+
+      // ✅ Build URLs relative to THIS FILE (i18n.js), not the page URL
+      const localesBase = new URL("../../locales/", import.meta.url);
+
+      const enUrl = new URL("en.json", localesBase).href;
+      const arUrl = new URL("ar.json", localesBase).href;
+
       const [enResponse, arResponse] = await Promise.all([
         fetch(enUrl),
         fetch(arUrl),
@@ -126,10 +130,10 @@ class I18n {
   }
 
   translateElements() {
-    const elements = document.querySelectorAll('[data-i18n]');
+    const elements = document.querySelectorAll("[data-i18n]");
 
-    elements.forEach(element => {
-      const key = element.getAttribute('data-i18n');
+    elements.forEach((element) => {
+      const key = element.getAttribute("data-i18n");
       const translation = this.t(key);
 
       if (translation && translation !== key) {
@@ -176,7 +180,7 @@ class I18n {
         const newSwitcher = switcher.cloneNode(true);
         switcher.parentNode.replaceChild(newSwitcher, switcher);
 
-        newSwitcher.addEventListener('click', (e) => {
+        newSwitcher.addEventListener("click", (e) => {
           e.preventDefault();
           e.stopPropagation();
           const newLang = this.currentLang === "en" ? "ar" : "en";
