@@ -8,27 +8,36 @@ async function loadPlaces() {
   try {
     const response = await fetch("../../data/places_unified.json");
     PLACES = await response.json();
+
     console.log("Loaded places:", PLACES.length);
+
+    const counts = {};
+    PLACES.forEach((p) => {
+      const r = (p.region || p.reigon || "UNKNOWN").toString();
+      counts[r] = (counts[r] || 0) + 1;
+    });
+    console.log("Places per region:", counts);
   } catch (err) {
     console.error("Error loading places:", err);
   }
 }
 
-// نبدأ التحميل أول ما يشتغل السكربت
 loadPlaces();
 
 // =====================================
-// 2) تصنيف الاهتمامات لكل مكان (enrichment)
+// 2) تصنيف الاهتمامات لكل مكان
 // =====================================
 
 function enrichPlaceInterests(place) {
   const name = (place.name || "").toLowerCase();
   const category = (place.category || "").toLowerCase();
+  const type = (place.category_type || "").toLowerCase();
 
   const interests = [];
 
   // ديني
   const isReligion =
+    type === "mosque" ||
     name.includes("mosque") ||
     name.includes("masjid") ||
     category.includes("mosque") ||
@@ -36,39 +45,40 @@ function enrichPlaceInterests(place) {
 
   if (isReligion) interests.push("religion");
 
-  // أكل / مقاهي / مطاعم
+  // متاحف → تاريخ
+  const isMuseum =
+    type === "museum" ||
+    name.includes("museum") ||
+    category.includes("museum");
+
+  if (isMuseum) interests.push("history");
+
+  // أكل / مقاهي
   const isFood =
-    ["cafe", "coffee", "restaurant", "food", "ice cream"].some((k) =>
-      name.includes(k)
-    ) ||
+    type === "restaurant" ||
+    type === "cafe" ||
+    ["cafe", "coffee", "restaurant"].some((k) => name.includes(k)) ||
     ["cafe", "restaurant", "food"].some((k) => category.includes(k));
 
   if (isFood) interests.push("food");
 
-  // ترفيهي
+  // ترفيهي (غير المتاحف)
   const isEntertainment =
-    category.includes("entertainment") ||
-    category.includes("park") ||
-    category.includes("mall") ||
-    category.includes("museum") ||
-    category.includes("cinema") ||
-    category.includes("hotel") ||
-    category.includes("hospital") ||
-    category.includes("metro") ||
-    name.includes("park") ||
-    name.includes("mall") ||
-    name.includes("museum") ||
-    name.includes("cinema") ||
-    name.includes("hotel") ||
-    name.includes("hospital") ||
-    name.includes("metro");
+    !isMuseum &&
+    (type === "entertainment" ||
+      type === "park" ||
+      type === "mall" ||
+      type === "hotel" ||
+      type === "hospital" ||
+      type === "metro" ||
+      category.includes("entertainment") ||
+      name.includes("park") ||
+      name.includes("mall") ||
+      name.includes("cinema"));
 
   if (isEntertainment) interests.push("entertainment");
 
-  // لو ما قدرنا نصنفه نهائياً → نحسبه ترفيهي
-  if (!isReligion && !isFood && !isEntertainment) {
-    interests.push("entertainment");
-  }
+  if (interests.length === 0) interests.push("entertainment");
 
   return interests;
 }
@@ -83,13 +93,13 @@ function getEnrichedPlaces() {
     return {
       ...p,
       interests,
-      estimated_duration: p.estimated_duration || 1.5, // default 1.5h
+      estimated_duration: p.estimated_duration || 1.5,
     };
   });
 }
 
 // =====================================
-// 2.1) دوال مساعدة
+// Helpers
 // =====================================
 
 function getPlaceId(place) {
@@ -97,34 +107,63 @@ function getPlaceId(place) {
     place.id ||
     place.place_id ||
     place.code ||
-    `${place.name || place.name_ar || JSON.stringify(place)}`
+    `${place.name || place.name_ar}`
   );
 }
 
 function isCafe(place) {
-  const name = (place.name || "").toString().toLowerCase();
-  const category = (place.category || "").toString().toLowerCase();
+  const type = (place.category_type || "").toLowerCase();
+  if (type === "cafe") return true;
 
-  const rawTags =
-    place.tags ||
-    place.types ||
-    place.interest_categories ||
-    place.interests ||
-    [];
+  const name = (place.name || "").toLowerCase();
+  const tags = (place.tags || []).join(" ").toLowerCase();
 
-  const tags = Array.isArray(rawTags)
-    ? rawTags.join(" ").toLowerCase()
-    : rawTags.toString().toLowerCase();
-
-  const cafeWords = ["كافيه", "كوفي", "مقهى", "cafe", "coffee", "قهوة"];
-
-  return cafeWords.some(
-    (w) => name.includes(w) || category.includes(w) || tags.includes(w)
+  return ["cafe", "coffee", "كوفي", "مقهى"].some(
+    (w) => name.includes(w) || tags.includes(w)
   );
 }
 
-// اختيار مكان لاهتمام معيّن
-// للدين نسمح بالتكرار بين الأيام (نفس المسجد ممكن ينعاد).
+// فلترة حسب الميزانية
+function matchesBudget(place, budget) {
+  if (budget === "any") return true;
+
+  const level = (place.price_level || "").toLowerCase();
+  const type = (place.category_type || "").toLowerCase();
+
+  if (type === "mosque") return true; // مساجد: بدون ميزانية
+
+  if (!level) return budget === "medium"; // بدون تقييم = متوسط
+
+  if (budget === "cheap") return level === "cheap";
+  if (budget === "medium") return level === "cheap" || level === "medium";
+  if (budget === "luxury") return level === "luxury";
+
+  return true;
+}
+
+// =======================
+// Helpers للوقت
+// =======================
+
+function parseTimeToMinutes(t) {
+  if (!t) return 540;
+  const [h, m] = t.split(":").map(Number);
+  return h * 60 + m;
+}
+
+function formatMinutesToTime(mins) {
+  mins = ((mins % 1440) + 1440) % 1440;
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  return `${h.toString().padStart(2, "0")}:${m
+    .toString()
+    .padStart(2, "0")}`;
+}
+
+// =====================================
+// اختيار مكان للاهتمام
+// =====================================
+
 function pickPlaceForInterest({
   interest,
   buckets,
@@ -136,29 +175,25 @@ function pickPlaceForInterest({
   const bucket = buckets[interest] || [];
   if (bucket.length === 0) return { place: null, cafesUsedToday };
 
-  const allowReuseReligion = interest === "religion";
+  const allowRepeat = interest === "religion";
 
   let startIndex = ptrs[interest] || 0;
 
   for (let offset = 0; offset < bucket.length; offset++) {
-    const j = (startIndex + offset) % bucket.length;
-    const p = bucket[j];
+    const idx = (startIndex + offset) % bucket.length;
+    const p = bucket[idx];
     const id = getPlaceId(p);
 
-    if (!allowReuseReligion && usedPlaceIds.has(id)) continue;
+    if (!allowRepeat && usedPlaceIds.has(id)) continue;
 
-    // ضبط الكافيهات
     if (interest === "food" && isCafe(p)) {
       if (cafesUsedToday >= maxCafesPerDay) continue;
-      cafesUsedToday += 1;
+      cafesUsedToday++;
     }
 
-    // اخترنا المكان
-    ptrs[interest] = (j + 1) % bucket.length;
+    ptrs[interest] = (idx + 1) % bucket.length;
 
-    if (!allowReuseReligion) {
-      usedPlaceIds.add(id);
-    }
+    if (!allowRepeat) usedPlaceIds.add(id);
 
     return { place: p, cafesUsedToday };
   }
@@ -167,191 +202,162 @@ function pickPlaceForInterest({
 }
 
 // =====================================
-// 3) توليد الخطة مع توزيع متوازن "لكل يوم"
-//    وتصفية الكافيهات من مكة عند تنوّع الاهتمامات
+// 3) توليد الخطة
 // =====================================
 
-function generateItinerary(options) {
-  const { city, days, hoursPerDay, interests } = options;
-
+function generateItinerary({ city, days, hoursPerDay, interests, budget, startTime }) {
   const enrichedPlaces = getEnrichedPlaces();
 
   const selectedInterests =
-    interests && interests.length > 0
+    interests.length > 0
       ? interests
       : ["religion", "food", "entertainment"];
 
-  const cityNorm = city ? city.toLowerCase() : "";
+  const cityNorm = city.toLowerCase();
 
   const isMakkah =
-    cityNorm.includes("makkah") ||
-    cityNorm.includes("mecca") ||
-    cityNorm.includes("مكة");
+    cityNorm.includes("makkah") || cityNorm.includes("mecca");
 
   const hasFood = selectedInterests.includes("food");
-  const hasNonFoodInterest = selectedInterests.some((i) => i !== "food");
+  const hasOther = selectedInterests.some((i) => i !== "food");
 
-  // فلترة حسب المدينة + الاهتمامات + وجود مدة
   let filtered = enrichedPlaces.filter((p) => {
-    const region = (p.region || "").toString().toLowerCase();
-    const regionMatch = cityNorm ? region.includes(cityNorm) : true;
+    const region = (p.region || p.reigon || "").toLowerCase();
+    const matchRegion = region.includes(cityNorm);
+    if (!matchRegion) return false;
 
-    const placeInterests = Array.isArray(p.interests) ? p.interests : [];
-    const interestsMatch = placeInterests.some((i) =>
+    if (!matchesBudget(p, budget)) return false;
+
+    const interestMatch = p.interests.some((i) =>
       selectedInterests.includes(i)
     );
+    if (!interestMatch) return false;
 
-    const hasDuration = (p.estimated_duration || 0) > 0;
-
-    if (!regionMatch || !interestsMatch || !hasDuration) return false;
-
-    // مكة + اهتمامات متنوّعة + فيها أكل: نشيل الكافيهات تمامًا
-    if (isMakkah && hasFood && hasNonFoodInterest && isCafe(p)) return false;
+    if (
+      isMakkah &&
+      hasFood &&
+      hasOther &&
+      isCafe(p)
+    )
+      return false;
 
     return true;
   });
 
+  console.log("After filter:", filtered.length);
+
   if (filtered.length === 0) {
-    return Array.from({ length: days }).map((_, idx) => ({
-      day: idx + 1,
+    return Array.from({ length: days }).map((_, d) => ({
+      day: d + 1,
       totalHours: 0,
       places: [],
     }));
   }
 
-  // ترتيب عام حسب التقييم
   filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
 
-  // سلال الاهتمامات
+  // buckets
   const buckets = {};
-  selectedInterests.forEach((i) => {
-    buckets[i] = [];
-  });
+  selectedInterests.forEach((i) => (buckets[i] = []));
 
   filtered.forEach((p) => {
-    if (!Array.isArray(p.interests)) return;
     p.interests.forEach((i) => {
-      if (selectedInterests.includes(i)) {
-        buckets[i].push(p);
-      }
+      if (selectedInterests.includes(i)) buckets[i].push(p);
     });
   });
 
-  // نهتم فقط بالاهتمامات اللي لها بيانات
-  let availableInterests = selectedInterests.filter(
-    (i) => (buckets[i] || []).length > 0
+  const available = selectedInterests.filter(
+    (i) => buckets[i].length > 0
   );
-
-  if (availableInterests.length === 0) {
-    return Array.from({ length: days }).map((_, idx) => ({
-      day: idx + 1,
-      totalHours: 0,
-      places: [],
-    }));
-  }
-
-  // food: مطاعم أول ثم أي شيء ثاني
-  if (buckets["food"]) {
-    buckets["food"].sort((a, b) => {
-      const aCafe = isCafe(a) ? 1 : 0;
-      const bCafe = isCafe(b) ? 1 : 0;
-      if (aCafe !== bCafe) return aCafe - bCafe;
-      return (b.rating || 0) - (a.rating || 0);
-    });
-  }
-
-  // باقي الاهتمامات: حسب التقييم
-  availableInterests.forEach((i) => {
-    if (i === "food") return;
-    buckets[i].sort((a, b) => (b.rating || 0) - (a.rating || 0));
-  });
 
   const result = [];
-  const usedPlaceIds = new Set();
-  const AVG_DURATION = 1.5;
+  const usedIds = new Set();
+  const AVG = 1.5;
 
-  // تقدير عدد الأنشطة في اليوم
-  const slotsPerDay = Math.max(
-    1,
-    Math.floor(hoursPerDay / AVG_DURATION)
-  );
+  const slotsPerDay = Math.max(1, Math.floor(hoursPerDay / AVG));
 
-  // مؤشرات لكل سلة (للدوران عليها)
   const ptrs = {};
-  availableInterests.forEach((i) => (ptrs[i] = 0));
+  available.forEach((i) => (ptrs[i] = 0));
 
-  for (let day = 1; day <= days; day++) {
-    let remainingSlots = slotsPerDay;
-    const dayPlaces = [];
+  const startMinutes = parseTimeToMinutes(startTime);
 
-    // حد الكافيهات في اليوم (خارج مكة مو مهم، لأن الكافيهات أصلاً موجودة فقط لو المستخدم مهتم بالأكل بس)
+  for (let d = 1; d <= days; d++) {
+    let slots = slotsPerDay;
+    const chosen = [];
+
     let cafesUsedToday = 0;
     const maxCafesPerDay =
-      isMakkah && hasFood && hasNonFoodInterest ? 0 : slotsPerDay; // في مكة + اهتمامات متنوعة: 0 كافيهات
+      isMakkah && hasFood && hasOther ? 0 : slots;
 
-    // نغيّر ترتيب الاهتمامات من يوم ليوم شوي
-    const dailyInterests = [];
-    for (let i = 0; i < availableInterests.length; i++) {
-      const idx = (day - 1 + i) % availableInterests.length;
-      dailyInterests.push(availableInterests[idx]);
-    }
+    const daily = [...available];
 
-    // 🔹 الخطوة 1: واحد على الأقل من كل اهتمام (لو فيه بيانات)
-    for (const interest of dailyInterests) {
-      if (remainingSlots <= 0) break;
-
+    // 1) واحد من كل اهتمام
+    for (const interest of daily) {
+      if (slots <= 0) break;
       const pick = pickPlaceForInterest({
         interest,
         buckets,
         ptrs,
-        usedPlaceIds,
+        usedPlaceIds: usedIds,
         cafesUsedToday,
         maxCafesPerDay,
       });
 
-      if (!pick.place) continue;
-
-      dayPlaces.push(pick.place);
-      cafesUsedToday = pick.cafesUsedToday;
-      remainingSlots--;
+      if (pick.place) {
+        chosen.push(pick.place);
+        cafesUsedToday = pick.cafesUsedToday;
+        slots--;
+      }
     }
 
-    // 🔹 الخطوة 2: لو باقي slots، نوزعها بالـ round-robin
-    while (remainingSlots > 0) {
+    // 2) الباقي round-robin
+    while (slots > 0) {
       let added = false;
-
-      for (const interest of dailyInterests) {
-        if (remainingSlots <= 0) break;
+      for (const interest of daily) {
+        if (slots <= 0) break;
 
         const pick = pickPlaceForInterest({
           interest,
           buckets,
           ptrs,
-          usedPlaceIds,
+          usedPlaceIds: usedIds,
           cafesUsedToday,
           maxCafesPerDay,
         });
 
-        if (!pick.place) continue;
-
-        dayPlaces.push(pick.place);
-        cafesUsedToday = pick.cafesUsedToday;
-        remainingSlots--;
-        added = true;
+        if (pick.place) {
+          chosen.push(pick.place);
+          cafesUsedToday = pick.cafesUsedToday;
+          slots--;
+          added = true;
+        }
       }
-
-      if (!added) break; // ما عاد فيه أماكن نضيفها
+      if (!added) break;
     }
 
-    const totalHours = dayPlaces.reduce(
-      (sum, p) => sum + (p.estimated_duration || AVG_DURATION),
+    // توزيع الأوقات
+    let cur = startMinutes;
+    const timed = chosen.map((p) => {
+      const dur = (p.estimated_duration || 1.5) * 60;
+      const start = cur;
+      const end = cur + dur;
+      cur = end;
+      return {
+        ...p,
+        visit_start: formatMinutesToTime(start),
+        visit_end: formatMinutesToTime(end),
+      };
+    });
+
+    const totalHours = timed.reduce(
+      (s, p) => s + (p.estimated_duration || 1.5),
       0
     );
 
     result.push({
-      day,
+      day: d,
       totalHours,
-      places: dayPlaces,
+      places: timed,
     });
   }
 
@@ -359,18 +365,17 @@ function generateItinerary(options) {
 }
 
 // =====================================
-// 4) ربط الفورم بالصفحة
+// 4) الفورم
 // =====================================
 
 document.getElementById("plannerForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
   const city = document.getElementById("city").value;
-  const days = parseInt(document.getElementById("days").value, 10);
-  const hoursPerDay = parseFloat(
-    document.getElementById("hoursPerDay").value
-  );
-  const startTime = document.getElementById("startTime").value; // احتياط للمستقبل
+  const days = parseInt(document.getElementById("days").value);
+  const hoursPerDay = parseFloat(document.getElementById("hoursPerDay").value);
+  const startTime = document.getElementById("startTime").value;
+  const budget = document.getElementById("budget")?.value || "any";
 
   const interests = Array.from(
     document.querySelectorAll("input[name='interests']:checked")
@@ -382,56 +387,64 @@ document.getElementById("plannerForm").addEventListener("submit", (e) => {
     hoursPerDay,
     startTime,
     interests,
+    budget,
   });
 
   renderItinerary(itinerary);
 });
 
 // =====================================
-// 5) عرض الخطة في الصفحة
+// 5) عرض الخطة
 // =====================================
 
 function renderItinerary(itinerary) {
   const container = document.getElementById("itineraryResult");
   container.innerHTML = "";
 
-  itinerary.forEach((dayInfo) => {
-    const dayDiv = document.createElement("div");
-    dayDiv.className = "day-card";
+  itinerary.forEach((day) => {
+    const div = document.createElement("div");
+    div.className = "day-card";
 
-    dayDiv.innerHTML = `
-      <h3>اليوم ${dayInfo.day}</h3>
+    div.innerHTML = `
+      <h3>اليوم ${day.day}</h3>
       <div class="day-meta">
-        عدد الساعات التقريبية لهذا اليوم: ${dayInfo.totalHours.toFixed(
-          1
-        )} ساعة
+        عدد الساعات التقريبية: ${day.totalHours.toFixed(1)} ساعة
       </div>
-      ${
-        dayInfo.places.length === 0
-          ? `<p class="muted">ما فيه أماكن كفاية لهذا اليوم.</p>`
-          : `<ul class="day-list">
-              ${dayInfo.places
-                .map(
-                  (p) => `
-                <li>
-                  <span class="place-name">${p.name}</span><br />
-                  <span class="place-meta">
-                    ${(p.region || "").toString()} • ${(p.category || "").toString()} • مدة الزيارة ${
-                    p.estimated_duration || 1.5
-                  } ساعة
-                  </span><br />
-                  ${
-                    p.link
-                      ? `<a href="${p.link}" target="_blank" style="color:#38bdf8;">عرض على خرائط قوقل</a>`
-                      : ""
-                  }
-                </li>`
-                )
-                .join("")}
-            </ul>`
-      }
+
+      ${day.places.length === 0
+        ? `<p class="muted">ما فيه أماكن كفاية لهذا اليوم.</p>`
+        : `
+        <ul class="day-list">
+          ${day.places
+          .map(
+            (p) => `
+            <li>
+              <div class="place-time">${p.visit_start} — ${p.visit_end}</div>
+              <span class="place-name">${p.name}</span><br>
+              <span class="place-meta">
+  ${(p.region || "").toString()} • ${p.category || ""}
+  • مدة الزيارة: ${p.estimated_duration || 1.5} ساعة
+  ${p.price_level
+                ? ` • ${p.price_level === "cheap"
+                  ? "اقتصادي"
+                  : p.price_level === "medium"
+                    ? "متوسط"
+                    : "فاخر"
+                }`
+                : ""
+              }
+</span><br>
+              ${p.link
+                ? `<a href="${p.link}" target="_blank" style="color:#38bdf8;">عرض على خرائط قوقل</a>`
+                : ""
+              }
+            </li>`
+          )
+          .join("")}
+        </ul>
+      `}
     `;
 
-    container.appendChild(dayDiv);
+    container.appendChild(div);
   });
 }
