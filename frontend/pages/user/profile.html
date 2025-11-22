@@ -146,17 +146,14 @@
   </main>
 
   <!-- Scripts -->
-  <!-- ✅ استدعاء main.js عشان يتحكم في الهيدر -->
   <script type="module" src="../../scripts/main.js"></script>
 
-  <!-- ✅ كود خاص بصفحة البروفايل -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const token = localStorage.getItem("auth_token");
 
-      // 🔒 لو ما فيه توكن رجّعه لصفحة تسجيل الدخول
+      //  لو ما فيه توكن رجّعه لصفحة تسجيل الدخول
       if (!token) {
-        // تقدر تغيرها لـ index.html لو تحب
         window.location.href = "../auth/login.html";
         return;
       }
