@@ -12,23 +12,6 @@
   --accent: #2ecc71;
   --accent-hover: #36e07c;
   --border-subtle: #202c33;
-<<<<<<< HEAD
-}
-
-
-/* =============== Reset & Base =============== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-=======
->>>>>>> 12ce494f2e52d72c36a6793ca2765e686c9fb8b3
-}
-
-/* (optional) page background */
-body {
-  background-color: var(--chat-bg);
-  font-family: "Inter", sans-serif;
 }
 
 /* =============== Chatbot Toggler Button =============== */
