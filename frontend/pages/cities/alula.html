@@ -24,7 +24,10 @@
     <link rel="stylesheet" href="../../styles/main.css" />
     <link rel="stylesheet" href="../../styles/chatbot.css" />
     <link rel="stylesheet" href="../../styles/components/_weather-widget.css" />
-    <link rel="stylesheet" href="../../styles/components/_weather-widget-weekly.css" />
+    <link
+      rel="stylesheet"
+      href="../../styles/components/_weather-widget-weekly.css"
+    />
 
     <!-- Scripts (deferred) -->
     <script src="../../config/api-keys.js" defer></script>
@@ -32,6 +35,7 @@
     <script src="../../scripts/modules/weatherWidget.js" defer></script>
     <script src="../../scripts/chatbot.js" defer></script>
     <script src="../../scripts/header-component.js" defer></script>
+    <script src="../../scripts/event-card-component.js" defer></script>
   </head>
 
   <body>
@@ -47,7 +51,7 @@
       <div class="chat-header">
         <div class="header-info">
           <img
-            style="width: 50px; border-radius: 1000px;"
+            style="width: 50px; border-radius: 1000px"
             src="../../assets/icons/chatbot-icon.png"
             alt=""
           />
@@ -62,7 +66,7 @@
       <div class="chat-body">
         <div class="message bot-message">
           <img
-            style="width: 50px; border-radius: 1000px;"
+            style="width: 50px; border-radius: 1000px"
             src="../../assets/icons/chatbot-icon.png"
             alt=""
           />
@@ -157,22 +161,20 @@
             <h2 class="section-title">العُلا – واحة التاريخ والطبيعة</h2>
             <h3 class="section-subtitle">نبذة تاريخية موجزة</h3>
             <p class="section-body">
-              تمتد العُلا على وادٍ خصيب يتوسط تشكيلات صخرية مهيبة وبساتين
-              نخيلٍ وحمضيات، وكانت عبر قرون معبرًا لقوافل التجارة والحجاج
-              ومحطةً لحضاراتٍ عريقة كالدادانية واللحيانية والنبطية. هنا
-              تلتقي الذاكرة الحضارية بالبيئة الصحراوية الفريدة لتصوغ هويةً
-              لا تُشبه سواها.
+              تمتد العُلا على وادٍ خصيب يتوسط تشكيلات صخرية مهيبة وبساتين نخيلٍ
+              وحمضيات، وكانت عبر قرون معبرًا لقوافل التجارة والحجاج ومحطةً
+              لحضاراتٍ عريقة كالدادانية واللحيانية والنبطية. هنا تلتقي الذاكرة
+              الحضارية بالبيئة الصحراوية الفريدة لتصوغ هويةً لا تُشبه سواها.
             </p>
             <p class="section-body">
               مع تطور البنية السياحية واستعادة المواقع الأثرية رونقها، أصبحت
               العلا وجهةً عالمية للتاريخ والثقافة والمغامرة، تجمع التجارب
-              الأصيلة بالخدمات الحديثة ضمن منظومة استقبال وإرشادٍ عالية
-              الكفاءة.
+              الأصيلة بالخدمات الحديثة ضمن منظومة استقبال وإرشادٍ عالية الكفاءة.
             </p>
             <p class="section-body">
-              اليوم تقدّم العلا رحلة متوازنة: جبال ونقوش ومقابر منحوتة،
-              مسارات مشيٍ وهايكنغ ومراقبة نجوم، ومشاهد فنية ومعمارية
-              معاصرة تُحترم فيها أصالة المكان.
+              اليوم تقدّم العلا رحلة متوازنة: جبال ونقوش ومقابر منحوتة، مسارات
+              مشيٍ وهايكنغ ومراقبة نجوم، ومشاهد فنية ومعمارية معاصرة تُحترم فيها
+              أصالة المكان.
             </p>
             <p class="section-body">
               وتستمر مشاريع الحماية وإدارة الزوار في صون التراث الطبيعي
@@ -200,23 +202,19 @@
           </div>
           <div class="section-text">
             <h2 class="section-title">الحِجر (مدائن صالح)</h2>
-            <h3 class="section-subtitle">
-              واجهات صخرية ومقابر نبطية ونقوش
-            </h3>
+            <h3 class="section-subtitle">واجهات صخرية ومقابر نبطية ونقوش</h3>
             <p class="section-body">
-              يُعد موقع الحِجر أول موقع سعودي مُسجّل على قائمة التراث
-              العالمي؛ يضم واجهاتٍ صخرية هائلة ودورَ دفنٍ منحوتة ونقوشًا
-              تروي قصة العمارة النبطية وعلاقاتها التجارية والطقسية.
+              يُعد موقع الحِجر أول موقع سعودي مُسجّل على قائمة التراث العالمي؛
+              يضم واجهاتٍ صخرية هائلة ودورَ دفنٍ منحوتة ونقوشًا تروي قصة العمارة
+              النبطية وعلاقاتها التجارية والطقسية.
             </p>
             <p class="section-body">
-              تُنظّم الزيارة عبر مسارات محددة وحافلاتٍ داخلية ومرشدين
-              معتمدين، مع لوحات تعريفية متعددة اللغات وإرشادات للحفاظ على
-              سلامة الموقع.
+              تُنظّم الزيارة عبر مسارات محددة وحافلاتٍ داخلية ومرشدين معتمدين،
+              مع لوحات تعريفية متعددة اللغات وإرشادات للحفاظ على سلامة الموقع.
             </p>
             <p class="section-body">
-              يُستحسن اختيار أوقات معتدلة من اليوم، وارتداء أحذيةٍ مريحة
-              واصطحاب الماء، والالتزام بتوجيهات الحفظ وعدم لمس الواجهات أو
-              التسلق عليها.
+              يُستحسن اختيار أوقات معتدلة من اليوم، وارتداء أحذيةٍ مريحة واصطحاب
+              الماء، والالتزام بتوجيهات الحفظ وعدم لمس الواجهات أو التسلق عليها.
             </p>
             <h4 class="section-subtitle">محطات رئيسية لرحلتك</h4>
             <ul class="section-list">
@@ -240,21 +238,19 @@
           </div>
           <div class="section-text">
             <h2 class="section-title">العلا اليوم</h2>
-            <h3 class="section-subtitle">
-              وصول ميسّر ومنظومة خدمات متكاملة
-            </h3>
+            <h3 class="section-subtitle">وصول ميسّر ومنظومة خدمات متكاملة</h3>
             <p class="section-body">
-              ترتبط العلا جوًا عبر مطار العلا، وبرًا بشبكات طرق حديثة
-              ومواقف منظمة ونقلٍ داخلي إلى أبرز الوجهات، مع خرائط تفاعلية
-              وتطبيقات للحجوزات والجولات.
+              ترتبط العلا جوًا عبر مطار العلا، وبرًا بشبكات طرق حديثة ومواقف
+              منظمة ونقلٍ داخلي إلى أبرز الوجهات، مع خرائط تفاعلية وتطبيقات
+              للحجوزات والجولات.
             </p>
             <p class="section-body">
-              تتوافر خيارات إقامة متنوّعة من نُزُلٍ صحراوية ومنتجعاتٍ مطلّة
-              إلى بيوت ضيافة محلية، مع معايير استدامة تُراعي حساسية البيئة.
+              تتوافر خيارات إقامة متنوّعة من نُزُلٍ صحراوية ومنتجعاتٍ مطلّة إلى
+              بيوت ضيافة محلية، مع معايير استدامة تُراعي حساسية البيئة.
             </p>
             <p class="section-body">
-              وتتكامل التجربة ببرامج ثقافية وموسمية ومعارض فنية وحفلات على
-              منصات معمارية معاصرة، ضمن تنظيمٍ مُحكَم لإدارة الحشود.
+              وتتكامل التجربة ببرامج ثقافية وموسمية ومعارض فنية وحفلات على منصات
+              معمارية معاصرة، ضمن تنظيمٍ مُحكَم لإدارة الحشود.
             </p>
             <ul class="section-list">
               <li>مطار العلا وخدمات الاستقبال</li>
@@ -281,12 +277,12 @@
             <h3 class="section-subtitle">مشهد غروب ونُزهة على الرمال</h3>
             <p class="section-body">
               يُعد هذا التكوين الصخري أيقونة العلا؛ حيث تمتد الرمال الذهبية
-              وتتلون السماء عند الغروب. تتوافر مناطق جلوس ومقاهٍ متنقلة
-              ومساحات تصوير آمنة تُحافظ على البيئة.
+              وتتلون السماء عند الغروب. تتوافر مناطق جلوس ومقاهٍ متنقلة ومساحات
+              تصوير آمنة تُحافظ على البيئة.
             </p>
             <p class="section-body">
-              يُنصح بالزيارة في ساعات العصر والمساء، والالتزام بالممرات
-              المحددة وعدم تسلق الصخور حفاظًا على السلامة.
+              يُنصح بالزيارة في ساعات العصر والمساء، والالتزام بالممرات المحددة
+              وعدم تسلق الصخور حفاظًا على السلامة.
             </p>
           </div>
         </div>
@@ -303,13 +299,11 @@
           </div>
           <div class="section-text">
             <h2 class="section-title">البلدة القديمة في العلا</h2>
-            <h3 class="section-subtitle">
-              أزقة وسوق وبنية طينية متدرجة
-            </h3>
+            <h3 class="section-subtitle">أزقة وسوق وبنية طينية متدرجة</h3>
             <p class="section-body">
-              تحكي البلدة القديمة قصة الاستيطان حول الواحة: بيوتٌ طينية
-              متلاصقة، أزقة ضيقة، وسوق نابض بالمقاهي والحِرَف. تجربة مثالية
-              للمشي والتصوير والتذوق المحلي.
+              تحكي البلدة القديمة قصة الاستيطان حول الواحة: بيوتٌ طينية متلاصقة،
+              أزقة ضيقة، وسوق نابض بالمقاهي والحِرَف. تجربة مثالية للمشي
+              والتصوير والتذوق المحلي.
             </p>
           </div>
         </div>
@@ -326,17 +320,15 @@
           </div>
           <div class="section-text">
             <h2 class="section-title">موقِعا دادان وجبل عِكمة</h2>
-            <h3 class="section-subtitle">
-              نقوش ولغات قديمة في وادٍ واحد
-            </h3>
+            <h3 class="section-subtitle">نقوش ولغات قديمة في وادٍ واحد</h3>
             <p class="section-body">
-              يكشف دادان عن آثار مملكةٍ عربيةٍ قديمة ومسلاتٍ مميزة، فيما
-              يُعرف جبل عِكمة بـ“مكتبةٍ مفتوحة” لنقوش ونصوص تاريخية
-              توثّق شؤونًا اجتماعية ودينية ولغوية.
+              يكشف دادان عن آثار مملكةٍ عربيةٍ قديمة ومسلاتٍ مميزة، فيما يُعرف
+              جبل عِكمة بـ“مكتبةٍ مفتوحة” لنقوش ونصوص تاريخية توثّق شؤونًا
+              اجتماعية ودينية ولغوية.
             </p>
             <p class="section-body">
-              الزيارة عبر جولات منظّمة ومسارات واضحة ولوحات تعريفية تدعم
-              فهم السياق التاريخي للموقعين.
+              الزيارة عبر جولات منظّمة ومسارات واضحة ولوحات تعريفية تدعم فهم
+              السياق التاريخي للموقعين.
             </p>
           </div>
         </div>
@@ -353,13 +345,10 @@
           </div>
           <div class="section-text">
             <h2 class="section-title">قاعة مرايا</h2>
-            <h3 class="section-subtitle">
-              معمار معاصر يعانق التكوينات
-            </h3>
+            <h3 class="section-subtitle">معمار معاصر يعانق التكوينات</h3>
             <p class="section-body">
-              أيقونة معمارية بواجهات عاكسة تحتضن حفلاتٍ وعروضًا ومعارض.
-              يتناغم المبنى مع التكوينات الرملية والصخرية ليمنح تجربة
-              بصرية فريدة.
+              أيقونة معمارية بواجهات عاكسة تحتضن حفلاتٍ وعروضًا ومعارض. يتناغم
+              المبنى مع التكوينات الرملية والصخرية ليمنح تجربة بصرية فريدة.
             </p>
           </div>
         </div>
@@ -380,9 +369,8 @@
               بساتين نخيل وحمضيات ومشي تحت الظلال
             </h3>
             <p class="section-body">
-              يتيح المسار التجول بين بساتين الواحة وقنواتها وزراعاتها
-              المحلية، مع محطات استراحة وأسواقٍ صغيرة ومنتجاتٍ من المزرعة
-              إلى المائدة.
+              يتيح المسار التجول بين بساتين الواحة وقنواتها وزراعاتها المحلية،
+              مع محطات استراحة وأسواقٍ صغيرة ومنتجاتٍ من المزرعة إلى المائدة.
             </p>
           </div>
         </div>
@@ -399,13 +387,11 @@
           </div>
           <div class="section-text">
             <h2 class="section-title">المغامرات وسماء العلا</h2>
-            <h3 class="section-subtitle">
-              هايكنغ، منطاد، ونجوم لا تُعدّ
-            </h3>
+            <h3 class="section-subtitle">هايكنغ، منطاد، ونجوم لا تُعدّ</h3>
             <p class="section-body">
-              من مسارات الهايكنغ والدراجات إلى المنطاد والزيب لاين وتجارب
-              مراقبة النجوم، تقدّم العلا باقة نشاطاتٍ تتنوّع بين الاسترخاء
-              والمغامرة، ضمن معايير سلامة وتنظيم عالية.
+              من مسارات الهايكنغ والدراجات إلى المنطاد والزيب لاين وتجارب مراقبة
+              النجوم، تقدّم العلا باقة نشاطاتٍ تتنوّع بين الاسترخاء والمغامرة،
+              ضمن معايير سلامة وتنظيم عالية.
             </p>
           </div>
         </div>
@@ -422,26 +408,103 @@
           </div>
           <div class="section-text">
             <h2 class="section-title">المشهد الطهوي والإقامة</h2>
-            <h3 class="section-subtitle">
-              نكهات محلية وإطلالات على الوادي
-            </h3>
+            <h3 class="section-subtitle">نكهات محلية وإطلالات على الوادي</h3>
             <p class="section-body">
-              تمتد الخيارات من المطابخ المحلية الموسمية إلى قوائم عصرية
-              بلمسات صحراوية، وتتوزع أماكن الإقامة بين نُزُلٍ متوارية في
-              الوادي ومنتجعات تحيطها التكوينات الصخرية بإطلالاتٍ أخّاذة.
+              تمتد الخيارات من المطابخ المحلية الموسمية إلى قوائم عصرية بلمسات
+              صحراوية، وتتوزع أماكن الإقامة بين نُزُلٍ متوارية في الوادي
+              ومنتجعات تحيطها التكوينات الصخرية بإطلالاتٍ أخّاذة.
             </p>
           </div>
+        </div>
+      </section>
+
+      <!-- أحدث الفعاليات -->
+      <section style="margin: 3rem 0; width: 100%">
+        <h2
+          class="section-title"
+          data-i18n="events.latestEvents"
+          style="
+            color: #006233;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            width: 100%;
+            display: block;
+          "
+        >
+          Latest Events
+        </h2>
+        <div
+          id="events-section"
+          style="
+            background: #0b141a;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            width: 100%;
+          "
+        >
+          <div id="events-container" class="events-container"></div>
         </div>
       </section>
     </main>
 
     <!-- Weather Widget at Bottom -->
-    <div style="max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 2rem;">
+    <div
+      style="max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 2rem"
+    >
       <div id="weather-widget" data-city="alula"></div>
     </div>
 
     <!-- Page scripts -->
-     <script type="module" src="../../scripts/main.js"></script>
+    <script type="module" src="../../scripts/main.js"></script>
     <script src="../../scripts/Script.js"></script>
+
+    <script>
+      // Initialize event cards when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        const eventsContainer = document.getElementById("events-container");
+
+        if (eventsContainer && window.createEventCards) {
+          const events = [
+            {
+              imageName: "ula1.png",
+              titleKey: "events.annabelsFineDining.title",
+              title: "Fine Dining: Annabel's",
+              descriptionKey: "events.annabelsFineDining.description",
+              description:
+                "A refined dining experience under the palms, blending Mayfair elegance with local charm, featuring signature dishes and live music vibes.",
+              date: "17 October - 13 December",
+              ticketLink:
+                "https://www.experiencealula.com/en/things-to-do/food-and-drink/annabels-alula?utm_campaign=Winter_Event_Calendar_2025_2026&utm_medium=Event&utm_source=Winter_Event_Calendar_2025_2026&utm_term=20250918",
+            },
+            {
+              imageName: "ula2.png",
+              titleKey: "events.hegraDroneShow.title",
+              title: "Hegra Drone Show - Stories from the Sky",
+              descriptionKey: "events.hegraDroneShow.description",
+              description:
+                "Experience a breathtaking fusion of light, sound, and storytelling as hundreds of drones light up the night sky.",
+              date: "20 - 29 November",
+              ticketLink:
+                "https://www.visitsaudi.com/en/alula/events/hegra-drone-show?utm_campaign=VS_Saudi_Winter_2025&utm_content=En&utm_medium=Post&utm_source=Unreal_Calendar_En_OCT23",
+            },
+            {
+              imageName: "ula3.png",
+              titleKey: "events.ancientKingdomsFestival.title",
+              title: "Ancient Kingdoms Festival",
+              descriptionKey: "events.ancientKingdomsFestival.description",
+              description:
+                "Become a Time Traveller and step into a world where history comes alive, from the epic rise of Dadan and Lihyan to the enduring marvels of the Nabataeans.",
+              date: "20 November - 6 December",
+              ticketLink:
+                "https://www.visitsaudi.com/en/alula/events/ancient-kingdoms-festival",
+            },
+          ];
+
+          window.createEventCards(eventsContainer, events);
+        }
+      });
+    </script>
   </body>
 </html>

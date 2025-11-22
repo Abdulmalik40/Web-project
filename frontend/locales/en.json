@@ -16,7 +16,11 @@
     "language": "Language",
     "english": "English",
     "arabic": "Arabic",
-    "scrollToExplore": "Scroll to Explore"
+    "scrollToExplore": "Scroll to Explore",
+    "login": "Login",
+    "register": "Register",
+    "profile": "Profile",
+    "logout": "Logout"
   },
   "header": {
     "brandTitle": "Visit Saudi Arabia",
@@ -340,5 +344,45 @@
     "hoursSuffix": "hours",
     "noPlaces": "Not enough places available for this day.",
     "viewOnMaps": "View on Google Maps"
+  },
+  "events": {
+    "latestEvents": "Latest Events",
+    "bookTicket": "Book Your Ticket",
+    "saudiFalconCup": {
+      "title": "Saudi Falcon Cup",
+      "description": "A unique heritage event uniting falcon enthusiasts in sporting and cultural competitions that reflect Saudi authenticity and national pride."
+    },
+    "generalAviationAirshow": {
+      "title": "General Aviation Airshow 2025 Sand & Fun",
+      "description": "Sand & Fun 2025, Saudi's first general aviation event, brings together air shows, innovation, and culture in a fun-filled experience for the whole family."
+    },
+    "blackHatMEA": {
+      "title": "Black Hat MEA",
+      "description": "Black Hat MEA gathers cybersecurity experts and tech innovators to confront threats and advance digital knowledge."
+    },
+    "worldRallyChampionship": {
+      "title": "World Rally Championship",
+      "description": "The World Rally Championship returns to Jeddah, showcasing elite drivers, thrilling stages, and high-speed excitement along Saudi's stunning landscapes."
+    },
+    "f1h2o": {
+      "title": "F1H2O",
+      "description": "Feel the adrenaline at F1H2O Jeddah, where world-class drivers race high-speed boats in thrilling water battles along the Red Sea."
+    },
+    "winterWonderland": {
+      "title": "Winter Wonderland",
+      "description": "Experience a magical winter escape with thrilling rides, games, shows, and festive fun for all ages."
+    },
+    "annabelsFineDining": {
+      "title": "Fine Dining: Annabel's",
+      "description": "A refined dining experience under the palms, blending Mayfair elegance with local charm, featuring signature dishes and live music vibes."
+    },
+    "hegraDroneShow": {
+      "title": "Hegra Drone Show - Stories from the Sky",
+      "description": "Experience a breathtaking fusion of light, sound, and storytelling as hundreds of drones light up the night sky."
+    },
+    "ancientKingdomsFestival": {
+      "title": "Ancient Kingdoms Festival",
+      "description": "Become a Time Traveller and step into a world where history comes alive, from the epic rise of Dadan and Lihyan to the enduring marvels of the Nabataeans."
+    }
   }
 }

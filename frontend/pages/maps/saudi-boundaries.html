@@ -151,7 +151,7 @@
       <div class="chat-header">
         <div class="header-info">
           <img
-            style="width: 50px; border-radius: 1000px;"
+            style="width: 50px; border-radius: 1000px"
             src="../../assets/icons/chatbot-icon.png"
             alt=""
           />
@@ -165,7 +165,7 @@
       <div class="chat-body">
         <div class="message bot-message">
           <img
-            style="width: 50px; border-radius: 1000px;"
+            style="width: 50px; border-radius: 1000px"
             src="../../assets/icons/chatbot-icon.png"
             alt=""
           />
@@ -206,11 +206,7 @@
         <h3>🔍 اختبار البحث عن السعودية</h3>
         <p>البحث عن المملكة العربية السعودية في قاعدة البيانات الجغرافية</p>
         <button id="searchSaudi" class="btn">🔍 البحث عن السعودية</button>
-        <div
-          id="saudiSearchResult"
-          class="result"
-          style="display: none;"
-        ></div>
+        <div id="saudiSearchResult" class="result" style="display: none"></div>
       </div>
 
       <div class="test-section">
@@ -220,11 +216,7 @@
         <button id="getRiyadh" class="btn">🏛️ منطقة الرياض</button>
         <button id="getMakkah" class="btn">🕌 منطقة مكة</button>
         <button id="getMadinah" class="btn">🕌 منطقة المدينة</button>
-        <div
-          id="regionsResult"
-          class="result"
-          style="display: none;"
-        ></div>
+        <div id="regionsResult" class="result" style="display: none"></div>
       </div>
 
       <div class="test-section">
@@ -233,11 +225,7 @@
         <button id="getMosques" class="btn">🕌 المساجد</button>
         <button id="getRestaurants" class="btn">🍽️ المطاعم</button>
         <button id="getHotels" class="btn">🏨 الفنادق</button>
-        <div
-          id="placesResult"
-          class="result"
-          style="display: none;"
-        ></div>
+        <div id="placesResult" class="result" style="display: none"></div>
       </div>
     </div>
 
@@ -317,8 +305,7 @@
                     <h4>🇸🇦 معلومات المملكة العربية السعودية</h4>
                     <div class="region-info">
                       <strong>الاسم:</strong> ${
-                        saudiInfo.properties.name ||
-                        "المملكة العربية السعودية"
+                        saudiInfo.properties.name || "المملكة العربية السعودية"
                       }<br>
                       <strong>الرمز:</strong> ${
                         saudiInfo.properties.country_code || "SA"
@@ -332,15 +319,14 @@
                         saudiInfo.properties.type || "country"
                       }
                     </div>
-                    <pre>${JSON.stringify(
-                      saudiInfo.properties,
-                      null,
-                      2
-                    )}</pre>
+                    <pre>${JSON.stringify(saudiInfo.properties, null, 2)}</pre>
                   `
                 );
               } else {
-                this.showError(resultDiv, "لم يتم العثور على السعودية في النتائج");
+                this.showError(
+                  resultDiv,
+                  "لم يتم العثور على السعودية في النتائج"
+                );
               }
             } else {
               this.showError(resultDiv, "لم يتم العثور على نتائج");
@@ -414,10 +400,7 @@
               this.showError(resultDiv, "لم يتم العثور على معلومات المناطق");
             }
           } catch (error) {
-            this.showError(
-              resultDiv,
-              `خطأ في تحميل المناطق: ${error.message}`
-            );
+            this.showError(resultDiv, `خطأ في تحميل المناطق: ${error.message}`);
           }
         }
 
@@ -501,11 +484,7 @@
                 html += `
                   <div class="region-info">
                     <strong>${name}</strong><br>
-                    ${
-                      address
-                        ? `<strong>العنوان:</strong> ${address}<br>`
-                        : ""
-                    }
+                    ${address ? `<strong>العنوان:</strong> ${address}<br>` : ""}
                     <strong>الإحداثيات:</strong>
                     <span class="coordinates">
                       ${coordinates[1].toFixed(6)},

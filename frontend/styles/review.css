@@ -39,7 +39,7 @@
   resize: none;
 }
 
-button {
+.but {
   margin-top: 10px;
   width: 100%;
   padding: 10px;
@@ -51,7 +51,7 @@ button {
   transition: 0.3s;
 }
 
-button:hover {
+.but:hover {
   background: #1474d4;
 }
 
