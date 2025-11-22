@@ -68,8 +68,7 @@ if (registerForm && nameInput && emailInput && passwordInput) {
 
       // ✅ نرجع للهوم وهو مسجل دخول
       setTimeout(() => {
-        // عدّل المسار إذا صفحة register في مجلد مختلف
-        window.location.href = "index.html";
+        window.location.href = "../../pages/index.html";
       }, 800);
     } catch (err) {
       console.error("Register fetch error:", err);

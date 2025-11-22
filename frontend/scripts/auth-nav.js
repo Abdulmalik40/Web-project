@@ -104,7 +104,7 @@ function bindProtectedLinks() {
 
         console.log("[auth-nav] saving post_login_redirect:", targetHref);
         localStorage.setItem("post_login_redirect", targetHref);
-        window.location.href = "auth/login.html";
+        window.location.href = "/pages/auth/login.html";
       }
     });
   });
