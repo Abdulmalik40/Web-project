@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../../styles/auth.css" />
 
     <script src="../../scripts/chatbot.js" defer></script>
+    <script src="../../scripts/header-component.js" defer></script>
   </head>
   <body class="auth-page">
     <!-- chatbot (اختياري) -->
@@ -66,45 +67,8 @@
     </div>
 
     <div class="auth-layout">
-      <header class="header" id="header">
-        <div class="header-inner">
-          <div class="brand" aria-label="Saudi Tourism">
-            <div class="brand-mark" aria-hidden="true"></div>
-            <div>
-              <div class="brand-title" data-i18n="header.brandTitle">Visit Saudi Arabia</div>
-              <div class="brand-sub" data-i18n="header.brandSub">Explore regions, heritage, and faith</div>
-            </div>
-          </div>
-
-          <div class="nav-container">
-            <button
-              class="language-toggle"
-              id="language-switcher"
-              aria-label="Toggle language"
-              title="Switch Language"
-            >
-              <span class="lang-icon">🌐</span>
-              <span class="lang-text" data-i18n="common.language">Language</span>
-            </button>
-
-            <button
-              class="theme-toggle"
-              id="themeToggle"
-              aria-label="Toggle theme"
-            >
-              <span class="theme-icon">🌙</span>
-              <span class="theme-text" data-i18n="common.dark">Dark</span>
-            </button>
-
-            <nav class="nav" aria-label="Main Navigation">
-              <div class="item"><a href="../index.html" data-i18n="common.home">Home</a></div>
-              <div class="item"><a href="../maps/map-interactive.html" data-i18n="common.interactiveMap">Interactive Map</a></div>
-              <div class="item"><a href="../core/history.html" data-i18n="common.history">History</a></div>
-              <div class="item"><a href="../islamic-guide/islamic-guide.html" data-i18n="common.islamicGuide">Islamic Guide</a></div>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <!-- Header - Injected by header-component.js -->
+      <header id="header" data-header-placeholder></header>
 
       <main class="auth-main">
         <div class="auth-wrapper">

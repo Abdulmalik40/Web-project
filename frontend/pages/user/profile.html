@@ -1,174 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>User Profile • Smart Tourism</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Profile • Smart Tourism</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="../../styles/main.css" />
-  <link rel="stylesheet" href="../../styles/header.css" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles/main.css" />
+    <link rel="stylesheet" href="../../styles/header.css" />
 
-  <!-- Page-specific styles -->
-  <style>
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1.5rem;
-    }
+    <!-- Page-specific styles -->
+    <style>
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 1.5rem;
+      }
 
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
 
-    .section-subtitle {
-      color: #666;
-      margin-bottom: 1.5rem;
-    }
+      .section-subtitle {
+        color: #666;
+        margin-bottom: 1.5rem;
+      }
 
-    .profile-card {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-      border: 1px solid rgba(0, 0, 0, 0.05);
-    }
+      .profile-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
 
-    .profile-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
+      .profile-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
 
-    .profile-row:last-child {
-      border-bottom: none;
-    }
+      .profile-row:last-child {
+        border-bottom: none;
+      }
 
-    .profile-row .label {
-      font-weight: 600;
-      color: #333;
-    }
+      .profile-row .label {
+        font-weight: 600;
+        color: #333;
+      }
 
-    .profile-row .value {
-      color: #444;
-    }
+      .profile-row .value {
+        color: #444;
+      }
 
-    .profile-actions {
-      margin-top: 1.5rem;
-    }
+      .profile-actions {
+        margin-top: 1.5rem;
+      }
 
-    .btn {
-      display: inline-block;
-      padding: 0.6rem 1.4rem;
-      border-radius: 999px;
-      text-decoration: none;
-      border: none;
-      background: #006233; /* Saudi green تقريبًا */
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
+      .btn {
+        display: inline-block;
+        padding: 0.6rem 1.4rem;
+        border-radius: 999px;
+        text-decoration: none;
+        border: none;
+        background: #006233; /* Saudi green تقريبًا */
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
 
-    .btn:hover {
-      opacity: 0.9;
-    }
-  </style>
-</head>
-<body>
-  <!-- Header / Navbar -->
-  <header class="header">
-    <div class="header-inner">
-      <div class="brand">
-        <a href="../index.html" class="logo">Smart Tourism</a>
+      .btn:hover {
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header / Navbar -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="brand">
+          <a href="../index.html" class="logo">Smart Tourism</a>
+        </div>
+
+        <nav class="nav" aria-label="Main Navigation">
+          <!-- نفس الروابط اللي تستخدمها في باقي الصفحات -->
+          <div class="item"><a href="../index.html">Home</a></div>
+          <div class="item">
+            <a href="../maps/map-interactive.html">Interactive Map</a>
+          </div>
+          <div class="item"><a href="../core/history.html">History</a></div>
+          <div class="item"><a href="../index.html#regions">Regions</a></div>
+
+          <div class="item has-dropdown">
+            <a href="../islamic-guide/islamic-guide.html">Islamic Guide ▾</a>
+            <div class="dropdown">
+              <!-- نفس محتوى الدروب داون اللي عندك (إن وجد) -->
+            </div>
+          </div>
+
+          <!-- عناصر الـ Auth (مهمة عشان main.js) -->
+          <div class="item" id="nav-login">
+            <a href="../auth/login.html">Login</a>
+          </div>
+          <div class="item" id="nav-register">
+            <a href="../auth/register.html">Register</a>
+          </div>
+
+          <div class="item" id="nav-profile" style="display: none">
+            <a href="profile.html">Profile</a>
+          </div>
+          <div class="item" id="nav-logout" style="display: none">
+            <a href="#" id="logoutBtn">Logout</a>
+          </div>
+        </nav>
       </div>
+    </header>
 
-      <nav class="nav" aria-label="Main Navigation">
-        <!-- نفس الروابط اللي تستخدمها في باقي الصفحات -->
-        <div class="item"><a href="../index.html">Home</a></div>
-        <div class="item"><a href="../maps/map-interactive.html">Interactive Map</a></div>
-        <div class="item"><a href="../core/history.html">History</a></div>
-        <div class="item"><a href="../index.html#regions">Regions</a></div>
+    <!-- Main Content -->
+    <main class="main-content" style="padding-top: 100px; min-height: 100vh">
+      <section class="profile-section container">
+        <h1 class="section-title">Your Profile</h1>
+        <p class="section-subtitle">
+          Here you can see the account information used to sign in.
+        </p>
 
-        <div class="item has-dropdown">
-          <a href="../islamic-guide/islamic-guide.html">Islamic Guide ▾</a>
-          <div class="dropdown">
-            <!-- نفس محتوى الدروب داون اللي عندك (إن وجد) -->
+        <div class="profile-card">
+          <div class="profile-row">
+            <span class="label">Name:</span>
+            <span class="value" id="profileName">-</span>
+          </div>
+          <div class="profile-row">
+            <span class="label">Email:</span>
+            <span class="value" id="profileEmail">-</span>
+          </div>
+          <div class="profile-row">
+            <span class="label">Status:</span>
+            <span class="value" id="profileStatus">-</span>
           </div>
         </div>
 
-        <!-- عناصر الـ Auth (مهمة عشان main.js) -->
-        <div class="item" id="nav-login">
-          <a href="../auth/login.html">Login</a>
+        <div class="profile-actions">
+          <a href="../index.html" class="btn">Back to Home</a>
         </div>
-        <div class="item" id="nav-register">
-          <a href="../auth/register.html">Register</a>
-        </div>
+      </section>
+    </main>
 
-        <div class="item" id="nav-profile" style="display: none;">
-          <a href="profile.html">Profile</a>
-        </div>
-        <div class="item" id="nav-logout" style="display: none;">
-          <a href="#" id="logoutBtn">Logout</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+    <!-- Scripts -->
+    <script type="module" src="../../scripts/main.js"></script>
+    <script src="../../scripts/header-component.js" defer></script>
 
-  <!-- Main Content -->
-  <main class="main-content" style="padding-top: 100px; min-height: 100vh;">
-    <section class="profile-section container">
-      <h1 class="section-title">Your Profile</h1>
-      <p class="section-subtitle">
-        Here you can see the account information used to sign in.
-      </p>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const token = localStorage.getItem("auth_token");
 
-      <div class="profile-card">
-        <div class="profile-row">
-          <span class="label">Name:</span>
-          <span class="value" id="profileName">-</span>
-        </div>
-        <div class="profile-row">
-          <span class="label">Email:</span>
-          <span class="value" id="profileEmail">-</span>
-        </div>
-        <div class="profile-row">
-          <span class="label">Status:</span>
-          <span class="value" id="profileStatus">-</span>
-        </div>
-      </div>
+        //  لو ما فيه توكن رجّعه لصفحة تسجيل الدخول
+        if (!token) {
+          window.location.href = "../auth/login.html";
+          return;
+        }
 
-      <div class="profile-actions">
-        <a href="../index.html" class="btn">Back to Home</a>
-      </div>
-    </section>
-  </main>
+        const name = localStorage.getItem("user_name") || "Unknown";
+        const email = localStorage.getItem("user_email") || "Unknown";
 
-  <!-- Scripts -->
-  <script type="module" src="../../scripts/main.js"></script>
+        const nameEl = document.getElementById("profileName");
+        const emailEl = document.getElementById("profileEmail");
+        const statusEl = document.getElementById("profileStatus");
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const token = localStorage.getItem("auth_token");
-
-      //  لو ما فيه توكن رجّعه لصفحة تسجيل الدخول
-      if (!token) {
-        window.location.href = "../auth/login.html";
-        return;
-      }
-
-      const name = localStorage.getItem("user_name") || "Unknown";
-      const email = localStorage.getItem("user_email") || "Unknown";
-
-      const nameEl = document.getElementById("profileName");
-      const emailEl = document.getElementById("profileEmail");
-      const statusEl = document.getElementById("profileStatus");
-
-      if (nameEl) nameEl.textContent = name;
-      if (emailEl) emailEl.textContent = email;
-      if (statusEl) statusEl.textContent = "Logged in ✅";
-    });
-  </script>
-</body>
+        if (nameEl) nameEl.textContent = name;
+        if (emailEl) emailEl.textContent = email;
+        if (statusEl) statusEl.textContent = "Logged in ✅";
+      });
+    </script>
+  </body>
 </html>

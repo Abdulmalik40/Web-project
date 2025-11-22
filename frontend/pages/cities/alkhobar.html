@@ -37,6 +37,9 @@
   </head>
 
   <body>
+    <!-- Header - Injected by header-component.js -->
+    <header id="header" data-header-placeholder></header>
+
     <!-- Chatbot toggle button -->
     <button id="chatbot-toggler">
       <span class="material-symbols-outlined">mode_comment</span>
@@ -474,9 +477,9 @@
       ★★★★★
     </div>
 
-    <textarea id="reviewText" placeholder="Write your review..."></textarea>
+    <textarea  id="reviewText" placeholder="Write your review..."></textarea>
 
-    <button id="submitReview">Submit</button>
+    <button class="but" id="submitReview">Submit</button>
   </div>
 
   <div id="reviewsList" class="reviews-list"></div>

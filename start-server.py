@@ -5,10 +5,10 @@ Run this script to start a local development server
 """
 
 import http.server
-import socketserver
 import os
-import webbrowser
 from pathlib import Path
+import socketserver
+import webbrowser
 
 # Change to frontend directory
 frontend_dir = Path(__file__).parent / "frontend"

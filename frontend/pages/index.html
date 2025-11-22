@@ -27,6 +27,7 @@
 
     <!-- Scripts (deferred) -->
     <script src="../scripts/chatbot.js" defer></script>
+    <script src="../scripts/header-component.js" defer></script>
   </head>
 
   <body>
@@ -98,145 +99,8 @@
       </div>
     </div>
 
-    <!-- Site header -->
-    <header class="header site-header" id="header">
-      <div class="header-inner">
-        <div class="brand" aria-label="Saudi Tourism">
-          <div class="brand-mark" aria-hidden="true"></div>
-          <div>
-            <div
-              class="brand-title"
-              data-i18n="header.brandTitle"
-            >
-              Visit Saudi Arabia
-            </div>
-            <div class="brand-sub" data-i18n="header.brandSub">
-              Explore regions, heritage, and faith
-            </div>
-          </div>
-        </div>
-
-        <div class="nav-container">
-          <!-- Language toggle -->
-          <button
-            class="language-toggle"
-            id="language-switcher"
-            aria-label="Toggle language"
-            title="Switch Language"
-          >
-            <span class="lang-icon">🌐</span>
-            <span class="lang-text" data-i18n="common.language">
-              Language
-            </span>
-          </button>
-
-          <!-- Theme toggle -->
-          <button
-            class="theme-toggle"
-            id="themeToggle"
-            aria-label="Toggle theme"
-          >
-            <span class="theme-icon">🌙</span>
-            <span class="theme-text" data-i18n="common.dark">
-              Dark
-            </span>
-          </button>
-
-          <!-- Main navigation -->
-          <nav class="nav" aria-label="Main Navigation">
-            <div class="item">
-              <a href="#home" data-i18n="common.home">Home</a>
-            </div>
-            <div class="item">
-              <a
-                href="maps/map-interactive.html"
-                data-i18n="common.interactiveMap"
-                >Interactive Map</a
-              >
-            </div>
-            <div class="item">
-              <a
-                href="#religious"
-                data-i18n="common.religiousSites"
-                >Religious Sites</a
-              >
-            </div>
-            <div class="item">
-              <a href="core/history.html" data-i18n="common.history">
-                History
-              </a>
-            </div>
-            <div class="item">
-              <a href="#heritage" data-i18n="common.heritage">
-                Heritage
-              </a>
-            </div>
-            <div class="item">
-              <a href="#regions" data-i18n="common.regions">
-                Regions
-              </a>
-            </div>
-            <div class="item has-dropdown">
-              <a
-                href="islamic-guide/islamic-guide.html"
-                data-i18n="common.islamicGuide"
-                >Islamic Guide ▾</a
-              >
-              <div class="dropdown" role="menu">
-                <a
-                  href="islamic-guide/qibla.html"
-                  role="menuitem"
-                  data-i18n="common.qiblaFinder"
-                  >Qibla Finder</a
-                >
-                <a
-                  href="islamic-guide/prayer-times.html"
-                  role="menuitem"
-                  data-i18n="common.prayerTimes"
-                  >Prayer Times</a
-                >
-                <a
-                  href="islamic-guide/quran.html"
-                  role="menuitem"
-                  data-i18n="common.quran"
-                  >Quran &amp; Du'a</a
-                >
-                <a
-                  href="islamic-guide/mosques.html"
-                  role="menuitem"
-                  data-i18n="common.nearbyMosques"
-                  >Nearby Mosques</a
-                >
-              </div>
-            </div>
-
-            <!-- Login / Register -->
-            <div class="item" id="nav-login">
-              <a href="auth/login.html">Login</a>
-            </div>
-            <div class="item" id="nav-register">
-              <a href="auth/register.html">Register</a>
-            </div>
-
-            <!-- Profile & Logout (hidden by default) -->
-            <div
-              class="item"
-              id="nav-profile"
-              style="display: none;"
-            >
-              <a href="user/profile.html">Profile</a>
-            </div>
-            <div
-              class="item"
-              id="nav-logout"
-              style="display: none;"
-            >
-              <a href="#" id="logoutBtn">Logout</a>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </header>
+    <!-- Site header - Injected by header-component.js -->
+    <header id="header" data-header-placeholder></header>
 
     <!-- Hero section -->
     <section class="hero" aria-label="Hero section">
@@ -689,87 +553,8 @@
     <script src="../scripts/auth-nav.js"></script>
 
     <script>
-      // Theme toggle functionality
-      document.addEventListener("DOMContentLoaded", () => {
-        const themeToggle = document.querySelector(".theme-toggle");
-        const body = document.body;
-
-        // Get saved theme or default to light
-        const savedTheme = localStorage.getItem("theme") || "light";
-        body.setAttribute("data-theme", savedTheme);
-
-        // Update button text based on current theme
-        const updateButtonText = () => {
-          const currentTheme = body.getAttribute("data-theme");
-          const icon = themeToggle.querySelector(".theme-icon");
-          const text = themeToggle.querySelector(".theme-text");
-          if (icon) {
-            icon.textContent = currentTheme === "dark" ? "☀️" : "🌙";
-          }
-          if (text) {
-            text.setAttribute(
-              "data-i18n",
-              currentTheme === "dark" ? "common.light" : "common.dark"
-            );
-            // Refresh translation if i18n is available
-            if (window.i18n) {
-              window.i18n.refresh();
-            }
-          }
-        };
-
-        // Initialize button text
-        updateButtonText();
-
-        // Theme toggle event listener
-        if (themeToggle) {
-          themeToggle.addEventListener("click", () => {
-            const currentTheme = body.getAttribute("data-theme");
-            const newTheme = currentTheme === "dark" ? "light" : "dark";
-
-            body.setAttribute("data-theme", newTheme);
-            localStorage.setItem("theme", newTheme);
-            updateButtonText();
-          });
-        }
-
-        // Language switcher is handled by i18n module
-        // Just ensure i18n is ready
-        const initLangSwitcher = () => {
-          const langSwitcher =
-            document.getElementById("language-switcher");
-          console.log(
-            "Looking for language switcher button:",
-            langSwitcher
-          );
-
-          if (window.i18n) {
-            console.log(
-              "i18n module found, setting up language switcher"
-            );
-            window.i18n.setupLanguageSwitcher();
-
-            // Also add a direct test handler
-            if (langSwitcher) {
-              langSwitcher.addEventListener("click", (e) => {
-                console.log("Direct click handler fired!");
-                if (window.i18n) {
-                  const currentLang = window.i18n.getLanguage();
-                  const newLang = currentLang === "en" ? "ar" : "en";
-                  console.log("Direct handler switching to:", newLang);
-                  window.i18n.setLanguage(newLang);
-                }
-              });
-            }
-          } else {
-            console.log("i18n not ready yet, retrying...");
-            setTimeout(initLangSwitcher, 100);
-          }
-        };
-
-        // Start initialization
-        setTimeout(initLangSwitcher, 100);
-      });
+      // Theme and language functionality is now handled by header-component.js
+      // This section is kept for any page-specific initialization if needed
 
       // Video header functionality
       document.addEventListener("DOMContentLoaded", () => {
@@ -809,62 +594,7 @@
         }
       });
 
-      // Immediate dropdown functionality
-      document.addEventListener("DOMContentLoaded", () => {
-        const dropdowns = document.querySelectorAll(".nav .has-dropdown");
-
-        dropdowns.forEach((dropdown) => {
-          const dropdownMenu = dropdown.querySelector(".dropdown");
-          const dropdownLink = dropdown.querySelector("a");
-
-          if (dropdownMenu && dropdownLink) {
-            let hoverTimeout;
-
-            // Show dropdown on hover
-            dropdown.addEventListener("mouseenter", () => {
-              clearTimeout(hoverTimeout);
-              hoverTimeout = setTimeout(() => {
-                dropdownMenu.style.display = "block";
-                setTimeout(() => {
-                  dropdownMenu.style.opacity = "1";
-                  dropdownMenu.style.transform = "translateY(0)";
-                }, 10);
-              }, 100);
-            });
-
-            // Hide dropdown when mouse leaves
-            dropdown.addEventListener("mouseleave", () => {
-              clearTimeout(hoverTimeout);
-              hoverTimeout = setTimeout(() => {
-                dropdownMenu.style.opacity = "0";
-                dropdownMenu.style.transform = "translateY(-10px)";
-                setTimeout(() => {
-                  dropdownMenu.style.display = "none";
-                }, 300);
-              }, 150);
-            });
-
-            // Keep dropdown open when hovering over it
-            dropdownMenu.addEventListener("mouseenter", () => {
-              clearTimeout(hoverTimeout);
-              dropdownMenu.style.display = "block";
-              dropdownMenu.style.opacity = "1";
-              dropdownMenu.style.transform = "translateY(0)";
-            });
-
-            dropdownMenu.addEventListener("mouseleave", () => {
-              clearTimeout(hoverTimeout);
-              hoverTimeout = setTimeout(() => {
-                dropdownMenu.style.opacity = "0";
-                dropdownMenu.style.transform = "translateY(-10px)";
-                setTimeout(() => {
-                  dropdownMenu.style.display = "none";
-                }, 300);
-              }, 150);
-            });
-          }
-        });
-      });
+      // Dropdown functionality is now handled by header-component.js
     </script>
   </body>
 </html>
