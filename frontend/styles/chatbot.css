@@ -14,20 +14,6 @@
   --border-subtle: #202c33;
 }
 
-
-/* =============== Reset & Base =============== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* (optional) page background */
-body {
-  background-color: var(--chat-bg);
-  font-family: "Inter", sans-serif;
-}
-
 /* =============== Chatbot Toggler Button =============== */
 #chatbot-toggler {
   position: fixed;
