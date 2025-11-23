@@ -1,7 +1,8 @@
 console.log("login.js loaded");
 
-// BACKEND CONNECTION
-const API_BASE_URL = "http://127.0.0.1:9000/api";
+// BACKEND CONNECTION - Load from config.js
+// Make sure config.js is loaded before this script
+const API_BASE_URL = window.API_BASE_URL || "http://127.0.0.1:9000/api";
 
 const loginForm  = document.getElementById("loginForm");
 const loginMsgEl = document.getElementById("loginMessage");

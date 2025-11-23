@@ -20,7 +20,9 @@
     <link rel="stylesheet" href="../../styles/chatbot.css" />
     <link rel="stylesheet" href="../../styles/auth.css" />
 
+    <script src="../../scripts/config.js"></script>
     <script src="../../scripts/chatbot.js" defer></script>
+    <script type="module" src="../../scripts/modules/i18n.js"></script>
     <script src="../../scripts/header-component.js" defer></script>
   </head>
   <body class="auth-page">
@@ -80,7 +82,7 @@
               </div>
               <h1 class="auth-title" data-i18n="auth.login.title">Welcome back</h1>
               <p class="auth-subtitle" data-i18n="auth.login.subtitle">
-                سجّل دخولك عشان تكمّل خطط الرحلات وتشوف تقييماتك السابقة.
+                Sign in to continue your travel plans and view your previous reviews.
               </p>
             </div>
 
@@ -120,8 +122,8 @@
             </form>
 
             <div class="auth-footer">
-              <span data-i18n="auth.login.footerText">ما عندك حساب؟</span>
-              <a href="register.html" data-i18n="auth.login.footerLink">إنشاء حساب جديد</a>
+              <span data-i18n="auth.login.footerText">Don't have an account?</span>
+              <a href="register.html" data-i18n="auth.login.footerLink">Create new account</a>
             </div>
           </div>
         </div>
@@ -130,27 +132,78 @@
 
     <script type="module" src="../../scripts/main.js"></script>
     <script src="../../scripts/login.js"></script>
-
-    <!-- (اختياري) مزامنة عنوان التبويب مع i18n، نفس فكرة Islamic Guide -->
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const applyTitleI18n = () => {
-          const titleEl = document.querySelector("title");
-          const key = titleEl?.getAttribute("data-i18n");
-          if (window.i18n && key) {
-            document.title = window.i18n.t(key);
+      // Initialize i18n after page loads
+      const initI18n = () => {
+        const refreshTranslations = () => {
+          if (window.i18n && window.i18n.translations && Object.keys(window.i18n.translations).length > 0) {
+            window.i18n.refresh();
+            // Update title
+            const titleEl = document.querySelector("title");
+            const key = titleEl?.getAttribute("data-i18n");
+            if (key) {
+              document.title = window.i18n.t(key);
+            }
+            return true;
           }
+          return false;
         };
-        applyTitleI18n();
 
-        if (window.i18n && typeof window.i18n.refresh === "function") {
-          const originalRefresh = window.i18n.refresh.bind(window.i18n);
-          window.i18n.refresh = (...args) => {
-            const res = originalRefresh(...args);
-            applyTitleI18n();
-            return res;
-          };
+        if (!refreshTranslations()) {
+          // Wait for i18n to load and translations to be ready
+          const checkI18n = setInterval(() => {
+            if (refreshTranslations()) {
+              clearInterval(checkI18n);
+              // Subscribe to language changes after i18n is ready
+              setupLanguageChangeListener();
+            }
+          }, 100);
+          setTimeout(() => {
+            clearInterval(checkI18n);
+            // Final attempt
+            if (refreshTranslations()) {
+              setupLanguageChangeListener();
+            }
+          }, 5000);
+        } else {
+          setupLanguageChangeListener();
         }
+      };
+
+      const setupLanguageChangeListener = () => {
+        // Update title and refresh translations when language changes
+        if (window.i18n && typeof window.i18n.subscribe === "function") {
+          window.i18n.subscribe(() => {
+            window.i18n.refresh();
+            const titleEl = document.querySelector("title");
+            const key = titleEl?.getAttribute("data-i18n");
+            if (key && window.i18n) {
+              document.title = window.i18n.t(key);
+            }
+          });
+        }
+      };
+
+      // Try on DOMContentLoaded
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initI18n);
+      } else {
+        // DOM already loaded, try immediately
+        initI18n();
+      }
+
+      // Also try on window load as fallback
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          if (window.i18n && window.i18n.translations && Object.keys(window.i18n.translations).length > 0) {
+            window.i18n.refresh();
+            const titleEl = document.querySelector("title");
+            const key = titleEl?.getAttribute("data-i18n");
+            if (key) {
+              document.title = window.i18n.t(key);
+            }
+          }
+        }, 100);
       });
     </script>
   </body>

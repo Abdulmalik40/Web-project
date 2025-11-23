@@ -14,23 +14,17 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/reviews', [ReviewController::class, 'store']); // for reviews
     Route::get('/reviews/{place_key}', [ReviewController::class, 'getByPlace']);
-    Route::post('/itineraries', [ItineraryController::class, 'store']);
-    // خطط الرحلات
+    
+    // خطط الرحلات (Itineraries)
     Route::post('/itineraries', [ItineraryController::class, 'store']);
     Route::get('/itineraries', [ItineraryController::class, 'index']);
+    Route::get('/itineraries/{id}', [ItineraryController::class, 'show']);
+    Route::delete('/itineraries/{id}', [ItineraryController::class, 'destroy']);
 
-    // قائمة الخطط الخاصة بالمستخدم
+    // قائمة الخطط الخاصة بالمستخدم (Trips - alternative system)
     Route::get('/trips', [TripController::class, 'index']);
-
-    // إنشاء خطة
     Route::post('/trips', [TripController::class, 'store']);
-
-    // جلب خطة محددة
     Route::get('/trips/{trip}', [TripController::class, 'show']);
-
-    // حذف خطة
     Route::delete('/trips/{trip}', [TripController::class, 'destroy']);
-
-    // إضافة مكان داخل خطة
     Route::post('/trips/{trip}/items', [TripController::class, 'addItem']);
 });
