@@ -154,8 +154,14 @@ class I18n {
           }
         }
         // Default: set text content
+        // Only update textContent if element doesn't have child elements with data-i18n
+        // This preserves sibling elements that also need translation
         else {
-          element.textContent = translation;
+          const hasTranslatableChildren = element.querySelector("[data-i18n]");
+          if (!hasTranslatableChildren) {
+            element.textContent = translation;
+          }
+          // If element has translatable children, skip it - children will be processed separately
         }
       }
     });

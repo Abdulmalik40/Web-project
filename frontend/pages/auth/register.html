@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Create Account – Saudi Tourism</title>
+  <title data-i18n="auth.register.titleTag">Create Account – Saudi Tourism</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="../../styles/auth.css" />
 
   <!-- Scripts -->
+  <script src="../../scripts/config.js"></script>
   <script src="../../scripts/chatbot.js" defer></script>
   <script type="module" src="../../scripts/modules/i18n.js"></script>
   <script src="../../scripts/header-component.js" defer></script>
@@ -102,50 +103,56 @@
           <div class="auth-header">
             <div class="auth-pill">
               <span class="emoji">🧳</span>
-              <span>Create account to save your trips</span>
+              <span data-i18n="auth.register.pill">Create account to save your trips</span>
             </div>
-            <h1 class="auth-title">Create your account</h1>
-            <p class="auth-subtitle">
-              سجّل عشان تقدر تكتب تقييمات للمعالم وتحفظ خطط الرحلات الخاصة فيك.
+            <h1 class="auth-title" data-i18n="auth.register.title">Create your account</h1>
+            <p class="auth-subtitle" data-i18n="auth.register.subtitle">
+              Register to write reviews for landmarks and save your custom travel plans.
             </p>
           </div>
 
           <form id="registerForm" class="auth-form">
             <div class="auth-field">
-              <label class="auth-label" for="name">Full name</label>
+              <label class="auth-label" for="name" data-i18n="auth.register.nameLabel">Full name</label>
               <input
                 type="text"
                 id="name"
                 class="auth-input"
-                placeholder="مثال: Anas Almehmadi"
+                placeholder="e.g., Anas Almehmadi"
+                data-i18n="auth.register.namePlaceholder"
+                data-i18n-attr="placeholder"
                 required
               />
             </div>
 
             <div class="auth-field">
-              <label class="auth-label" for="email">Email</label>
+              <label class="auth-label" for="email" data-i18n="auth.register.emailLabel">Email</label>
               <input
                 type="email"
                 id="email"
                 class="auth-input"
                 placeholder="you@example.com"
+                data-i18n="auth.register.emailPlaceholder"
+                data-i18n-attr="placeholder"
                 required
               />
             </div>
 
             <div class="auth-field">
-              <label class="auth-label" for="password">Password</label>
+              <label class="auth-label" for="password" data-i18n="auth.register.passwordLabel">Password</label>
               <input
                 type="password"
                 id="password"
                 class="auth-input"
                 placeholder="At least 6 characters"
+                data-i18n="auth.register.passwordPlaceholder"
+                data-i18n-attr="placeholder"
                 minlength="6"
                 required
               />
             </div>
 
-            <button type="submit" class="auth-btn">
+            <button type="submit" class="auth-btn" data-i18n="auth.register.button">
               Create account
             </button>
 
@@ -153,8 +160,8 @@
           </form>
 
           <div class="auth-footer">
-            عندك حساب جاهز؟
-            <a href="login.html">تسجيل الدخول</a>
+            <span data-i18n="auth.register.footerText">Already have an account?</span>
+            <a href="login.html" data-i18n="auth.register.footerLink">Sign in</a>
           </div>
         </div>
       </div>
@@ -164,5 +171,109 @@
   <!-- Scripts -->
   <script type="module" src="../../scripts/main.js"></script>
   <script src="../../scripts/register.js"></script>
+  <script>
+    // Initialize i18n after page loads
+    let languageChangeListenerSetup = false;
+    
+    const refreshTranslations = () => {
+      if (window.i18n && window.i18n.translations && Object.keys(window.i18n.translations).length > 0) {
+        console.log("Refreshing translations on register page, current language:", window.i18n.getLanguage());
+        window.i18n.refresh();
+        // Update title
+        const titleEl = document.querySelector("title");
+        const key = titleEl?.getAttribute("data-i18n");
+        if (key) {
+          document.title = window.i18n.t(key);
+        }
+        return true;
+      }
+      return false;
+    };
+
+    const setupLanguageChangeListener = () => {
+      if (languageChangeListenerSetup) return;
+      
+      // Subscribe to language changes
+      if (window.i18n && typeof window.i18n.subscribe === "function") {
+        window.i18n.subscribe(() => {
+          console.log("Language changed via subscribe, refreshing translations on register page");
+          // Small delay to ensure setLanguage has finished
+          setTimeout(() => {
+            refreshTranslations();
+          }, 50);
+        });
+        languageChangeListenerSetup = true;
+        console.log("Language change listener set up for register page");
+      }
+    };
+
+    const initI18n = () => {
+      if (refreshTranslations()) {
+        setupLanguageChangeListener();
+      } else {
+        // Wait for i18n to load and translations to be ready
+        const checkI18n = setInterval(() => {
+          if (refreshTranslations()) {
+            clearInterval(checkI18n);
+            setupLanguageChangeListener();
+          }
+        }, 100);
+        setTimeout(() => {
+          clearInterval(checkI18n);
+          if (refreshTranslations()) {
+            setupLanguageChangeListener();
+          }
+        }, 5000);
+      }
+    };
+
+    // Try on DOMContentLoaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initI18n);
+    } else {
+      // DOM already loaded, try immediately
+      initI18n();
+    }
+
+    // Also try on window load as fallback
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        refreshTranslations();
+        setupLanguageChangeListener();
+      }, 100);
+    });
+
+    // Listen directly to language switcher clicks (backup)
+    const setupLanguageSwitcherListener = () => {
+      const langSwitcher = document.getElementById('language-switcher');
+      if (langSwitcher) {
+        // Remove existing listeners by cloning
+        const newSwitcher = langSwitcher.cloneNode(true);
+        langSwitcher.parentNode.replaceChild(newSwitcher, langSwitcher);
+        
+        newSwitcher.addEventListener('click', (e) => {
+          console.log("Language switcher clicked on register page");
+          setTimeout(() => {
+            refreshTranslations();
+          }, 150);
+        });
+        return true;
+      }
+      return false;
+    };
+
+    // Try to set up language switcher listener
+    const trySetupSwitcher = () => {
+      if (!setupLanguageSwitcherListener()) {
+        setTimeout(trySetupSwitcher, 200);
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', trySetupSwitcher);
+    } else {
+      trySetupSwitcher();
+    }
+  </script>
 </body>
 </html>

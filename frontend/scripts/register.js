@@ -1,22 +1,60 @@
 console.log("register.js loaded");
 
-const API_BASE_URL = "http://127.0.0.1:9000/api";
+// BACKEND CONNECTION - Load from config.js
+// Make sure config.js is loaded before this script
+// Use window.API_BASE_URL directly to avoid redeclaration error
+const getApiUrl = () => {
+  return window.API_BASE_URL || "http://127.0.0.1:9000/api";
+};
 
-const registerForm = document.getElementById("registerForm");
-const messageEl = document.getElementById("registerMessage");
+// Wait for DOM to be ready
+const setupRegisterForm = () => {
+  console.log("Setting up register form...");
+  const registerForm = document.getElementById("registerForm");
+  const messageEl = document.getElementById("registerMessage");
 
-// عناصر الإدخال من الصفحة
-const nameInput = document.getElementById("name");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
+  if (!registerForm) {
+    console.error("registerForm not found! Retrying...");
+    // Retry after a short delay
+    setTimeout(setupRegisterForm, 100);
+    return;
+  }
 
-if (!registerForm) {
-  console.warn("registerForm not found on this page");
-}
+  console.log("Register form found, attaching submit handler");
 
-if (registerForm && nameInput && emailInput && passwordInput) {
-  registerForm.addEventListener("submit", async (e) => {
+  // Check if handler already attached
+  if (registerForm.hasAttribute('data-handler-attached')) {
+    console.log("Handler already attached, skipping");
+    return;
+  }
+
+  registerForm.setAttribute('data-handler-attached', 'true');
+
+  // Also attach click handler to button as backup
+  const submitButton = registerForm.querySelector('button[type="submit"]');
+  if (submitButton) {
+    console.log("Submit button found, attaching click handler");
+    submitButton.addEventListener("click", (e) => {
+      console.log("Submit button clicked!");
+      e.preventDefault();
+    });
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
+    console.log("✅ Register form submitted - preventDefault called");
+    console.log("Form element:", registerForm);
+    console.log("Event type:", e.type);
+    
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+
+    if (!nameInput || !emailInput || !passwordInput) {
+      console.error("Register inputs not found (name/email/password)");
+      return;
+    }
 
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
@@ -39,7 +77,11 @@ if (registerForm && nameInput && emailInput && passwordInput) {
     }
 
     try {
-      const res = await fetch(`${API_BASE_URL}/register`, {
+      const apiUrl = getApiUrl();
+      console.log("Making fetch request to:", `${apiUrl}/register`);
+      console.log("Request data:", { name, email, password: "***" });
+      
+      const res = await fetch(`${apiUrl}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,8 +89,23 @@ if (registerForm && nameInput && emailInput && passwordInput) {
         body: JSON.stringify({ name, email, password }),
       });
 
-      const data = await res.json();
-      console.log("Register response:", data);
+      console.log("Response status:", res.status);
+      console.log("Response ok:", res.ok);
+      console.log("Response headers:", res.headers);
+      
+      // Check if response has content
+      const responseText = await res.text();
+      console.log("Response text:", responseText);
+      
+      let data;
+      try {
+        data = JSON.parse(responseText);
+        console.log("Register response (parsed):", data);
+      } catch (parseError) {
+        console.error("Failed to parse response as JSON:", parseError);
+        console.error("Response was:", responseText);
+        throw new Error("Invalid JSON response from server");
+      }
 
       if (!res.ok) {
         messageEl.textContent = data.message || "Registration failed";
@@ -77,10 +134,37 @@ if (registerForm && nameInput && emailInput && passwordInput) {
         messageEl.classList.add("error");
       }
     }
-  });
+  };
+
+  registerForm.addEventListener("submit", handleSubmit);
+  
+  // Also attach to button click as backup
+  if (submitButton) {
+    submitButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log("Button clicked, triggering form submit handler");
+      handleSubmit(new Event('submit', { bubbles: true, cancelable: true }));
+    });
+  }
+  
+  console.log("Register form submit handler attached successfully");
+};
+
+// Initialize immediately if DOM is ready, otherwise wait
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupRegisterForm);
 } else {
-  console.warn("Some auth inputs not found (name/email/password).");
+  setupRegisterForm();
 }
+
+// Also try after a delay as fallback
+setTimeout(() => {
+  const form = document.getElementById("registerForm");
+  if (form && !form.hasAttribute('data-handler-attached')) {
+    console.log("Fallback: attaching handler");
+    setupRegisterForm();
+  }
+}, 500);
 
 // ⛔️ ملاحظة هامة:
 // لا نضيف هنا أي كود له علاقة بالـ navbar (Login / Register / Profile / Logout)

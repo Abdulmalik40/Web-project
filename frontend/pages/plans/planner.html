@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>خطتك مع الأخصائي • Smart Tourism Guide</title>
+    <title data-i18n="plannerPage.titleTag">خطتك مع الأخصائي • Smart Tourism Guide</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="../../styles/main.css" />
     <link rel="stylesheet" href="../../styles/chatbot.css" />
 
+    <script src="../../scripts/config.js"></script>
+    <script type="module" src="../../scripts/modules/i18n.js"></script>
     <script src="../../scripts/chatbot.js" defer></script>
     <script src="../../scripts/header-component.js" defer></script>
 
@@ -203,11 +205,115 @@
         color: #9ca3af;
         font-size: 0.85rem;
       }
+
+      /* Saved Plans Styles */
+      .saved-plan-card {
+        background: rgba(15, 23, 42, 0.85);
+        border-radius: 14px;
+        padding: 16px;
+        margin-bottom: 12px;
+        border: 1px solid rgba(148, 163, 184, 0.4);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .saved-plan-info {
+        flex: 1;
+      }
+
+      .saved-plan-info h4 {
+        margin: 0 0 4px;
+        font-size: 1rem;
+        color: #f9fafb;
+      }
+
+      .saved-plan-meta {
+        font-size: 0.85rem;
+        color: #9ca3af;
+        margin: 4px 0;
+      }
+
+      .saved-plan-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .btn-small {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+      }
+
+      .btn-load {
+        background: rgba(56, 189, 248, 0.2);
+        color: #38bdf8;
+        border: 1px solid rgba(56, 189, 248, 0.4);
+      }
+
+      .btn-load:hover {
+        background: rgba(56, 189, 248, 0.3);
+      }
+
+      .btn-delete {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+        border: 1px solid rgba(239, 68, 68, 0.4);
+      }
+
+      .btn-delete:hover {
+        background: rgba(239, 68, 68, 0.3);
+      }
+
+      /* Confirmation Dialog */
+      .confirmation-dialog {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      .confirmation-content {
+        background: rgba(15, 23, 42, 0.98);
+        border-radius: 16px;
+        padding: 24px;
+        max-width: 400px;
+        width: 90%;
+        border: 1px solid rgba(148, 163, 184, 0.4);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .confirmation-content h3 {
+        margin: 0 0 12px;
+        font-size: 1.2rem;
+      }
+
+      .confirmation-content p {
+        margin: 0 0 20px;
+        color: #cbd5f5;
+        font-size: 0.95rem;
+      }
+
+      .confirmation-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+      }
     </style>
   </head>
 
   <body>
-    <<<<<<< HEAD
     <!-- الهيدر -->
     <header class="header site-header" id="header">
       <div class="header-inner">
@@ -257,12 +363,11 @@
     </header>
     <!-- نهاية الهيدر -->
 
-    ======= >>>>>>> 12ce494f2e52d72c36a6793ca2765e686c9fb8b3
     <main class="page-wrapper">
       <section class="planner-card">
         <div class="planner-header">
-          <h1>سَوِّ خُطَّتَك مع الأخصائي</h1>
-          <p>
+          <h1 data-i18n="plannerPage.title">سَوِّ خُطَّتَك مع الأخصائي</h1>
+          <p data-i18n="plannerPage.description">
             اختر المدينة، عدد الأيام، الساعات المتاحة، ميزانيتك واهتماماتك،
             ونولد لك خطة مقترحة متوازنة بناءً على أفضل الأماكن.
           </p>
@@ -271,17 +376,17 @@
         <form id="plannerForm">
           <div class="planner-grid">
             <div class="field">
-              <label for="city">الوجهة</label>
+              <label for="city" data-i18n="plannerPage.destinationLabel">الوجهة</label>
               <select id="city" required>
-                <option value="">اختر المدينة</option>
-                <option value="Makkah">مكة المكرمة</option>
-                <option value="Madinah">المدينة المنورة</option>
-                <option value="Riyadh">الرياض</option>
+                <option value="" data-i18n="plannerPage.chooseCity">اختر المدينة</option>
+                <option value="Makkah" data-i18n="plannerPage.cityMakkah">مكة المكرمة</option>
+                <option value="Madinah" data-i18n="plannerPage.cityMadinah">المدينة المنورة</option>
+                <option value="Riyadh" data-i18n="plannerPage.cityRiyadh">الرياض</option>
               </select>
             </div>
 
             <div class="field">
-              <label for="days">عدد الأيام</label>
+              <label for="days" data-i18n="plannerPage.daysLabel">عدد الأيام</label>
               <input
                 type="number"
                 id="days"
@@ -293,7 +398,7 @@
             </div>
 
             <div class="field">
-              <label for="hoursPerDay">عدد الساعات المتاحة في اليوم</label>
+              <label for="hoursPerDay" data-i18n="plannerPage.hoursLabel">عدد الساعات المتاحة في اليوم</label>
               <input
                 type="number"
                 id="hoursPerDay"
@@ -305,32 +410,32 @@
             </div>
 
             <div class="field">
-              <label for="startTime">وقت بداية اليوم</label>
+              <label for="startTime" data-i18n="plannerPage.startTimeLabel">وقت بداية اليوم</label>
               <input type="time" id="startTime" value="09:00" />
             </div>
 
             <!-- حقل الميزانية -->
             <div class="field">
-              <label for="budget">الميزانية المتوقعة</label>
+              <label for="budget" data-i18n="plannerPage.budgetLabel">الميزانية المتوقعة</label>
               <select id="budget">
-                <option value="any">بدون تقييد</option>
-                <option value="cheap">اقتصادية</option>
-                <option value="medium" selected>متوسطة</option>
-                <option value="luxury">فاخرة</option>
+                <option value="any" data-i18n="plannerPage.budgetAny">بدون تقييد</option>
+                <option value="cheap" data-i18n="plannerPage.budgetCheap">اقتصادية</option>
+                <option value="medium" selected data-i18n="plannerPage.budgetMedium">متوسطة</option>
+                <option value="luxury" data-i18n="plannerPage.budgetLuxury">فاخرة</option>
               </select>
             </div>
           </div>
 
           <div class="field" style="margin-top: 16px">
-            <label>اهتماماتك</label>
+            <label data-i18n="plannerPage.interestsLabel">اهتماماتك</label>
             <div class="chips-group">
               <label class="chip">
                 <input type="checkbox" name="interests" value="history" />
-                <span>تاريخ</span>
+                <span data-i18n="plannerPage.interestHistory">تاريخ</span>
               </label>
               <label class="chip">
                 <input type="checkbox" name="interests" value="culture" />
-                <span>ثقافة</span>
+                <span data-i18n="plannerPage.interestCulture">ثقافة</span>
               </label>
               <label class="chip">
                 <input
@@ -339,44 +444,184 @@
                   value="religion"
                   checked
                 />
-                <span>ديني</span>
+                <span data-i18n="plannerPage.interestReligion">ديني</span>
               </label>
               <label class="chip">
                 <input type="checkbox" name="interests" value="food" checked />
-                <span>أكل / مقاهي</span>
+                <span data-i18n="plannerPage.interestFood">أكل / مقاهي</span>
               </label>
               <label class="chip">
                 <input type="checkbox" name="interests" value="entertainment" />
-                <span>ترفيه</span>
+                <span data-i18n="plannerPage.interestEntertainment">ترفيه</span>
               </label>
             </div>
           </div>
 
           <div class="planner-actions">
-            <button type="button" class="btn-secondary" id="resetPlanner">
+            <button type="button" class="btn-secondary" id="resetPlanner" data-i18n="plannerPage.resetBtn">
               إعادة تعيين
             </button>
-            <button type="submit" class="btn-primary" id="generateBtn">
+            <button type="submit" class="btn-primary" id="generateBtn" data-i18n="plannerPage.generateBtn">
               ولّد الخطة
             </button>
           </div>
         </form>
 
         <div class="itinerary-result" id="itineraryResult">
-          <p class="muted">
+          <p class="muted" data-i18n="plannerPage.initialHint">
             بعد ما تعبّي البيانات وتضغط "ولّد الخطة" راح تظهر لك الخطة هنا.
           </p>
+        </div>
+      </section>
+
+      <!-- Saved Plans Section -->
+      <section class="planner-card" id="savedPlansSection" style="margin-top: 24px; display: none;">
+        <div class="planner-header" style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h1 data-i18n="plannerPage.savedPlansTitle">خططك المحفوظة</h1>
+            <p data-i18n="plannerPage.savedPlansDesc">يمكنك عرض أو حذف الخطط التي حفظتها سابقاً</p>
+          </div>
+          <button class="btn-secondary" id="refreshSavedPlansBtn" style="display: none;" data-i18n="plannerPage.refreshBtn">
+            🔄 تحديث
+          </button>
+        </div>
+        <div id="savedPlansContainer">
+          <p class="muted" data-i18n="plannerPage.loadingPlans">جاري تحميل الخطط...</p>
         </div>
       </section>
     </main>
 
     <!-- ما نبغى main.js هنا عشان i18n وغيره -->
-    <<<<<<< HEAD
-    <script src="../../scripts/itinerary.js"></script>
-    =======
     <script type="module" src="../../scripts/main.js"></script>
     <script src="../../scripts/itinerary.js"></script>
 
-    >>>>>>> 12ce494f2e52d72c36a6793ca2765e686c9fb8b3
+    <script>
+      // Initialize i18n for planner page
+      let languageChangeListenerSetup = false;
+
+      const refreshTranslations = () => {
+        if (window.i18n && window.i18n.translations && Object.keys(window.i18n.translations).length > 0) {
+          console.log("Refreshing translations on planner page, current language:", window.i18n.getLanguage());
+          window.i18n.refresh();
+          
+          // Update title
+          const titleEl = document.querySelector("title");
+          const key = titleEl?.getAttribute("data-i18n");
+          if (key && window.i18n.t) {
+            document.title = window.i18n.t(key);
+          }
+          
+          // Update select options
+          updateSelectOptions();
+          
+          return true;
+        }
+        return false;
+      };
+
+      const updateSelectOptions = () => {
+        if (!window.i18n || !window.i18n.t) return;
+        
+        const t = (key) => window.i18n.t(key);
+        
+        // Update city select
+        const citySelect = document.getElementById("city");
+        if (citySelect) {
+          const chooseCityOption = citySelect.querySelector('option[value=""]');
+          if (chooseCityOption) {
+            chooseCityOption.textContent = t('plannerPage.chooseCity');
+          }
+          const makkahOption = citySelect.querySelector('option[value="Makkah"]');
+          if (makkahOption) {
+            makkahOption.textContent = t('plannerPage.cityMakkah');
+          }
+          const madinahOption = citySelect.querySelector('option[value="Madinah"]');
+          if (madinahOption) {
+            madinahOption.textContent = t('plannerPage.cityMadinah');
+          }
+          const riyadhOption = citySelect.querySelector('option[value="Riyadh"]');
+          if (riyadhOption) {
+            riyadhOption.textContent = t('plannerPage.cityRiyadh');
+          }
+        }
+        
+        // Update budget select
+        const budgetSelect = document.getElementById("budget");
+        if (budgetSelect) {
+          const anyOption = budgetSelect.querySelector('option[value="any"]');
+          if (anyOption) {
+            anyOption.textContent = t('plannerPage.budgetAny');
+          }
+          const cheapOption = budgetSelect.querySelector('option[value="cheap"]');
+          if (cheapOption) {
+            cheapOption.textContent = t('plannerPage.budgetCheap');
+          }
+          const mediumOption = budgetSelect.querySelector('option[value="medium"]');
+          if (mediumOption) {
+            mediumOption.textContent = t('plannerPage.budgetMedium');
+          }
+          const luxuryOption = budgetSelect.querySelector('option[value="luxury"]');
+          if (luxuryOption) {
+            luxuryOption.textContent = t('plannerPage.budgetLuxury');
+          }
+        }
+      };
+
+      const setupLanguageChangeListener = () => {
+        if (!languageChangeListenerSetup && window.i18n && typeof window.i18n.subscribe === "function") {
+          window.i18n.subscribe(() => {
+            console.log("Language changed via subscribe, refreshing translations on planner page");
+            refreshTranslations();
+          });
+          languageChangeListenerSetup = true;
+          console.log("Language change listener set up for planner page");
+        }
+      };
+
+      const initI18n = () => {
+        if (!refreshTranslations()) {
+          const checkI18n = setInterval(() => {
+            if (refreshTranslations()) {
+              clearInterval(checkI18n);
+              setupLanguageChangeListener();
+            }
+          }, 100);
+          setTimeout(() => {
+            clearInterval(checkI18n);
+            if (refreshTranslations()) {
+              setupLanguageChangeListener();
+            }
+          }, 5000);
+        } else {
+          setupLanguageChangeListener();
+        }
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initI18n);
+      } else {
+        initI18n();
+      }
+
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          if (window.i18n && window.i18n.translations && Object.keys(window.i18n.translations).length > 0) {
+            refreshTranslations();
+          }
+        }, 100);
+      });
+
+      // Direct listener for language switcher button as a backup
+      document.addEventListener('click', (e) => {
+        const langSwitcher = e.target.closest('#language-switcher');
+        if (langSwitcher) {
+          console.log("Language switcher clicked on planner page");
+          setTimeout(() => {
+            refreshTranslations();
+          }, 50);
+        }
+      });
+    </script>
+
   </body>
 </html>
