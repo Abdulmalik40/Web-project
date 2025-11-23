@@ -1,30 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Basic Setup -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page Title -->
     <title data-i18n="makkahPage.titleTag">Makkah • Religious City</title>
+
+    <!--Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Icons-->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
     />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="../../styles/main.css" />
     <link rel="stylesheet" href="../../styles/chatbot.css" />
+
+    <!-- Weather Widget Styles -->
     <link rel="stylesheet" href="../../styles/components/_weather-widget.css" />
     <link rel="stylesheet" href="../../styles/components/_weather-widget-weekly.css" />
-    
+
+    <!-- API Keys -->
     <script src="../../config/api-keys.js" defer></script>
+
+    <!-- Weather Scripts -->
     <script src="../../scripts/modules/weatherApi.js" defer></script>
     <script src="../../scripts/modules/weatherWidget.js" defer></script>
+
+    <!-- Chatbot Script -->
     <script src="../../scripts/chatbot.js" defer></script>
+
+    <!-- Header Component Script -->
     <script src="../../scripts/header-component.js" defer></script>
   </head>
+
   <body>
     <!-- chatbot toggle button -->
     <button id="chatbot-toggler">
@@ -85,243 +104,253 @@
       </div>
     </div>
 
-    <section class="hero" aria-label="Hero section">
-      <div class="hero-bg">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-        >
-          <source src="../../styles/videos/makkah.mp4" type="video/mp4" />
-          <img
-            src="../../assets/images/cities/Saudi3.jpg"
-            alt="Makkah - Religious City"
-            class="hero-image"
-          />
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-particles">
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-        </div>
-      </div>
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="title-line">RELIGIOUS CITY</span>
-            <span class="title-line featured">MAKKAH</span>
-            <span class="title-line subtitle"
-              >HARAM • PILGRIMAGE • HERITAGE</span
-            >
-          </h1>
-          <p class="hero-sub">
-            The heart of Islam and the sacred destination of Hajj and Umrah.
-          </p>
-        </div>
-      </div>
-      <div class="scroll-indicator">
-        <div class="scroll-arrow"></div>
-        <span data-i18n="common.scrollToExplore">Scroll to Explore</span>
-      </div>
-    </section>
+   
+<section class="hero" aria-label="Hero section">
 
-    <main dir="rtl" class="history-container">
-      <section class="section" id="first-state">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/makkah-img.png"
-              alt="مكة المكرمة — المسجد الحرام ومعالمها التاريخية"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title">مكة المكرمة – وجهة المسلمين الاولى</h2>
-            <h3 class="section-subtitle">عن مكة المكرمة</h3>
-            <p class="section-body">
-              تُعدّ مكة المكرمة من أعرق مدن الجزيرة العربية؛ احتفظت عبر القرون
-              بمكانتها الدينية والتجارية، ثم غدت قبلة المسلمين ومهوى الأفئدة
-              ومركزًا للعلم والضيافة مع بزوغ فجر الإسلام.
-            </p>
-            <p class="section-body">
-              تعاقبت على مكة مراحل تطوير وتنظيم واسعة طالت المسجد الحرام وساحاته
-              ومرافقه وشبكات الطرق، ما جعل تجربة العمرة والزيارة أكثر يُسرًا
-              على مدار العام مع المحافظة على خصوصية المكان وقدسيته.
-            </p>
-            <p class="section-body">
-              وبينما تتسارع وتيرة التنمية العمرانية والخدمية، تحافظ المدينة على
-              روحها الأصيلة وتقاليدها الضيافية، حيث تتجاور المعالم التاريخية مع
-              المشاريع الحديثة التي تخدم ملايين الزوار.
-            </p>
-            <p class="section-body">
-              وتقدّم مكة اليوم تجربة متوازنة تجمع السكينة الروحية بالكفاءة
-              التشغيلية، ضمن منظومة خدمات ذكية لإدارة الحشود والإرشاد والتنقل.
-            </p>
+  <!-- Background -->
+  <div class="hero-bg">
 
-            <h4 class="section-subtitle">معالم تاريخية بارزة</h4>
-            <ul class="section-list">
-              <li>المسجد الحرام والكعبة المشرفة</li> 
-              <li>المشاعر المقدسة</li>
-              <li>جبل النور - غار حراء</li>
-              <li>بئر زمزم</li>
-              <li>مجمع الملك عبد العزيز لكسوة الكعبة المشرفة</li>
-            </ul>
+    <!-- Background video -->
+    <video
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    >
 
-          </div>
-        </div>
-      </section>
+      <!-- Video source -->
+      <source src="../../styles/videos/makkah.mp4" type="video/mp4" />
+
+      <!-- if video fails to load -->
+      <img
+        src="../../assets/images/cities/Saudi3.jpg"
+        alt="Makkah - Religious City"
+        class="hero-image"
+      />
+    </video>
+    <div class="hero-overlay"></div>
+
+      <div class="hero-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+  </div>
+
+  <!-- Main hero content -->
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title">
+        <span class="title-line">RELIGIOUS CITY</span>
+        <span class="title-line featured">MAKKAH</span>
+        <span class="title-line subtitle">
+          HARAM • PILGRIMAGE • HERITAGE
+        </span>
+      </h1>
+
+      <!-- short city description -->
+      <p class="hero-sub">
+        The heart of Islam and the sacred destination of Hajj and Umrah.
+      </p>
+    </div>
+  </div>
+
+  <!-- Scroll -->
+  <div class="scroll-indicator">
+    <div class="scroll-arrow"></div>
+    <span data-i18n="common.scrollToExplore">Scroll to Explore</span>
+  </div>
+
+</section>
+
+ 
+<main dir="rtl" class="history-container">
+
+    
+<section class="section" id="first-state">
+  <div class="section-content">
+
+    <!-- Image -->
+    <div class="section-image">
+      <img
+        src="../../assets/images/destinations/makkah-img.png"
+        alt="مكة المكرمة — المسجد الحرام ومعالمها التاريخية"
+      />
+    </div>
+
+    <!-- description -->
+    <div class="section-text">
+
+      <!-- Title -->
+      <h2 class="section-title">مكة المكرمة – وجهة المسلمين الاولى</h2>
+
+      <!-- Subtitle -->
+      <h3 class="section-subtitle">عن مكة المكرمة</h3>
+
+      <!-- Description paragraphs -->
+      <p class="section-body">
+        تُعدّ مكة المكرمة من أعرق مدن الجزيرة العربية؛ احتفظت عبر القرون
+        بمكانتها الدينية والتجارية، ثم غدت قبلة المسلمين ومهوى الأفئدة
+        ومركزًا للعلم والضيافة مع بزوغ فجر الإسلام.
+      </p>
+
+      <p class="section-body">
+        تعاقبت على مكة مراحل تطوير وتنظيم واسعة طالت المسجد الحرام وساحاته
+        ومرافقه وشبكات الطرق، ما جعل تجربة العمرة والزيارة أكثر يُسرًا
+        على مدار العام مع المحافظة على خصوصية المكان وقدسيته.
+      </p>
+
+      <p class="section-body">
+        وبينما تتسارع وتيرة التنمية العمرانية والخدمية، تحافظ المدينة على
+        روحها الأصيلة وتقاليدها الضيافية، حيث تتجاور المعالم التاريخية مع
+        المشاريع الحديثة التي تخدم ملايين الزوار.
+      </p>
+
+      <p class="section-body">
+        وتقدّم مكة اليوم تجربة متوازنة تجمع السكينة الروحية بالكفاءة
+        التشغيلية، ضمن منظومة خدمات ذكية لإدارة الحشود والإرشاد والتنقل.
+      </p>
+
+      <!-- highlights list -->
+      <h4 class="section-subtitle">معالم تاريخية بارزة</h4>
+
+      <ul class="section-list">
+        <li>المسجد الحرام والكعبة المشرفة</li>
+        <li>المشاعر المقدسة</li>
+        <li>جبل النور - غار حراء</li>
+        <li>Bئر زمزم</li>
+        <li>مجمع الملك عبد العزيز لكسوة الكعبة المشرفة</li>
+      </ul>
+
+    </div>
+  </div>
+</section>
+
 
      
       <!-- المسجد الحرام -->
       <section class="section" id="modern-kingdom">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/alharam.jpg"
-              alt="المسجد الحرام"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title">المسجد الحرام</h2>
-            <h3 class="section-subtitle">
-قلب مكة وقبلة المسلمين            </h3>
-            <p class="section-body">
-              منذ بداية التاريخ البشري إلى ظهور الدين الإسلامي، احتلت الكعبة المشرفة في المسجد الحرام مكانة مقدسة، لما تحمله من دلالات دينية ترمز إلى الخالق عز وجل. اليوم، يدين بالإسلام قرابة ملياري إنسان، تتجه أرواحهم قبل أجسادهم نحو القبلة، التي أمرهم الله -عز وجل- بالتوجه نحوها، ليصلوا خمس مرات في اليوم الواحد، يطلبون العون والهداية والمغفرة. 
-               وتستقبل أرض مكة المكرمة سنويًا ملايين المعتمرين والحجاج والمصلين، لتأدية شعائرهم الدينية في حين تهفو قلوبهم إلى أجواء زاخرة بالروحانية، مستشعرين فيه سكينة الإيمان.
-               ننوه إلى أن زيارة المسجد الحرام في مكة المكرمة تقتصر على المسلمين فقط.
-            </p>
+  <div class="section-content">
+    <div class="section-image">
+      <img
+        src="../../assets/images/destinations/alharam3.png"
+        alt="المسجد الحرام"
+      />
+    </div>
 
+    <div class="section-text">
+      <h2 class="section-title">المسجد الحرام</h2>
+      <h3 class="section-subtitle">قلب مكة وقبلة المسلمين</h3>
 
-            <h3 class="section-subtitle">نبذه عن معالم المسجد الحرام</h3>
+      <p class="section-body">
+        يُعد المسجد الحرام أقدس مكان في الإسلام، وتحتل الكعبة المشرفة فيه موقعًا
+        مركزيًا منذ العصور الأولى للبشرية. تتجه قلوب المسلمين وأجسادهم نحوه في
+        الصلوات، ويزوره ملايين الحجاج والمعتمرين سنويًا لأداء الشعائر في أجواء
+        روحانية عامرة بالإيمان والسكينة. تقتصر زيارة المسجد الحرام على المسلمين فقط.
+      </p>
 
-           <dl class="section-list">
-            <dt>الكعبة الشريفة</dt>
-            <dd>أول بيت وضع للناس يتوجهون فيه لعبادة الله. <br> وتأخذ الكعبة شكلًا مكعبًا، وتتكون من عدة عناصر، والفناء الذي حولها يُسمى بالمطاف، حيث يطوف المسلمون حولها 7 مرات، وهو لا يهدأ على مدار 24 ساعة، فتجد فيه من يصلي، ومن يدعو، ومن يطوف تأديةً لتحية المسجد أو لعمرة أو حج.</dd>
-<br>
-            <dt>الحجر الأسود</dt>
-            <dd>ُوُصف الحجر الأسود بأنه من حجارة الجنة، ويبدأ المسلمون الطواف حول الكعبة، بمحاذاته، عكس عقارب الساعة، ويقع في الركن الشرقي للكعبة المشرفة، ويرتفع عن أرض المطاف ما يقارب مترًا ونصف، ويوجد داخل بناء الكعبة، ويظهر منه جزء بسيط. عُرف عن الرسول -صلى الله عليه وسلم- تقبيله للحجر الأسود؛ مما جعل من تقبيله أو حتى لمسه أمنية يحلم بها كل زائر للحرم المكي.</dd>
-<br>
+      <h3 class="section-subtitle">أبرز معالم المسجد الحرام</h3>
 
-            <dt>الركن اليماني</dt>
-            <dd>يعد الركن اليماني أحد أساسات الكعبة المشرفة منذ عهد إبراهيم -عليه السلام-، ويسبق موقعه الحجر الأسود، وبعد أن لمسه الرسول محمد -صلى الله عليه وسلم- بيده، صار ذلك سنة يحذو المسلمون حذوها.</dd>
-<br>
+      <dl class="section-list">
 
-            <dt>مقام إبراهيم</dt>
-            <dd>في الجهة المقابلة لباب الكعبة المشرفة، يقع مقام إبراهيم، الذي يحمي بهيئته الحالية المذهبة ما يضمه من حجرٍ مربع الشكل، يحمل آثار وقوف النبي إبراهيم -عليه السلام- عليه، أثناء رفعه لقواعد الكعبة.</dd>
-<br>
+        <dt>الكعبة المشرفة</dt>
+        <dd>أقدس بيت في الإسلام، يطوف المسلمون حوله سبعة أشواط طوال العام.</dd>
 
-            <dt>حِجر إسماعيل</dt>
-            <dd>يأخذ حِجر إسماعيل شكل نصف دائرة، وهو ملاصق لشمال الكعبة المشرفة. في الأصل كان جزءًا من الكعبة، ولكن لم تكفي النفقة التي رصدتها قريش لأجل البناء، فقصروا من بناء الكعبة في ناحية الميزاب نحو سبعة أذرع، وأحاطو المكان بسياج؛ لكي يطوف الناس من خارجه.
-  لُغويًا يعرف الحِجر بأنه الحضن، وسمي بذلك لأنه كان بمثابة العريش/البيت لإبراهيم وابنه إسماعيل -عليهما السلام.</dd>
-<br>
+        <dt>الحجر الأسود</dt>
+        <dd>حجر من الجنة يقع في الركن الشرقي للكعبة، يبدأ منه الطواف.</dd>
 
-            <dt>المسعى</dt>
-            <dd>بعد الانتهاء من الطواف حول الكعبة، يتوجه المعتمرون والحجاج إلى المسعى، الذي يقع شرق المسجد الحرام، لإكمال الشعائر الدينية حيث يبدأ سعيهم ما بين جبلي الصفا والمروة سبع أشواط؛ اقتداءً وتذكيرًا بقصة سيدتنا هاجر -عليها السلام-، ورحلة سعيها في البحث عن الماء.</dd>
-<br>
+        <dt>الركن اليماني</dt>
+        <dd>ركن أصيل من بناء إبراهيم عليه السلام، ويُسنّ لمسُه أثناء الطواف.</dd>
 
-            <dt>ماء زمزم</dt>
-            <dd>يعود تاريخ بئر زمزم إلى زمن سيدتنا هاجر وابنها إسماعيل -عليهما السلام- حينما تفجر الماء أثناء سعيها بين جبلي الصفا والمروة. حاليًا تقع البئر أسفل صحن المطاف، شرق الكعبة المشرفة. وقد اعتنت الهيئة العامة للعناية بشؤون المسجد الحرام والمسجد النبوي ببئر زمزم، وخصصت له لجنة تسمى بسقيا زمزم، تأسست عام 1400هـ، يصاحبها مختبر يُشرف على جميع المراحل؛ منذ لحظة استخراج الماء من البئر، ثم تعقيمه وتنظيفه، إلى أن تصل أيادي الزوار. وفي المسجد الحرام، تنتشر مياه زمزم في حافظات رُوعي فيها اختلاف درجات الحرارة لتناسب الشاربين، إضافة إلى مشربيات وصنابير موزعة في كافة أرجائه وساحاته</dd>
-<br>
+        <dt>مقام إبراهيم</dt>
+        <dd>حجر يحمل أثر قدمي النبي إبراهيم أثناء بناء الكعبة.</dd>
 
-            <dt>المآذن</dt>
-            <dd>بُنيت أول منارة للمسجد الحرام قبل ما يزيد عن العشرة قرون، تحديدًا في عام 139هـ بعهد الخليفة أبو جعفر المنصور.ويصدح النداء للصلاة اليوم من مآذن بديعة يصل عددها إلى 13 مئذنة. ويتميز تصميم مآذن الحرم المكي باحتوائه على 5 أجزاء، تبدأ بالقاعدة، فالشرفة الأولى، فعصب المئذنة الشامخ، فالشرفة الثانية، فالغطاء.</dd>
-<br>
+        <dt>حِجر إسماعيل</dt>
+        <dd>منطقة نصف دائرية كانت جزءًا من الكعبة في البناء القديم.</dd>
 
-            <dt>منبر الخطبة</dt>
-            <dd>مر المنبر الذي يخطب فيه إمام المسجد الحرام بأشكال عديدة على مدى قرون ماضية، فيما يعود تاريخ بناء المنبر الرخامي المستخدم حاليًا إلى عام 1423هـ/2002م، ويتسم تصميمه بإتقان جمالي وتقني مبهر، استعملت فيه أجود المواد، إلى جانب عجلات كهربائية تحركه بسرعة تصل إلى متر واحد في الثانية، وقد بلغت تكلفته الإجمالية 5 ملايين و750 ألف  سعودي.</dd>
-<br>
+        <dt>المسعى</dt>
+        <dd>مكان السعي بين الصفا والمروة اقتداءً بسعي السيدة هاجر بحثًا عن الماء.</dd>
 
-            <dt>أبواب المسجد الحرام</dt>
-            <dd>بحكم مساحة الحرم المكي الكبيرة؛ توجب فتح بوابات كثيرة لتيسير الدخول إليه والتقليل من الزحام، يصل عدد بوابات المسجد الحرام إلى 210 أبواب، مصنوعة من أجود أنواع الخشب، مزينة بزخارف من نحاس.</dd>
+        <dt>ماء زمزم</dt>
+        <dd>بئر معجزي تفجّر منذ عهد هاجر عليها السلام، وتتوفر مياهه في الحرم عبر حافظات ومشربيات.</dd>
 
-           </dl>
+        <dt>المآذن</dt>
+        <dd>يضم الحرم 13 مئذنة بديعة يصدح منها الأذان للصلاة.</dd>
 
-          </div>
-        </div>
-      </section>
+        <dt>منبر الخطبة</dt>
+        <dd>منبر رخامي حديث صُمّم بدقة عالية ويستخدم لخطب الجمعة.</dd>
+
+        <dt>أبواب المسجد الحرام</dt>
+        <dd>يضم أكثر من 210 أبواب لتسهيل حركة الزوار وتقليل الازدحام.</dd>
+
+      </dl>
+    </div>
+  </div>
+</section>
+
 
 
        <!-- المشاعر المقدسة -->
       <section class="section" id="second-state">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/almashaer.jpg"
-              alt="المشاعر المقدسة — منى ومزدلفة وعرفات"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title">المشاعر المقدسة</h2>
-            <h3 class="section-subtitle">
-              رحلة متصلة بين مكة ومنى ومزدلفة وعرفات
-            </h3>
-            <p class="section-body">
-              على مقربة من مكة تمتد المشاعر المقدسة التي تحتضن أركان الحج ومناسكه.
-              تتكامل فيها خدمات الضيافة والتنقل والإرشاد لتأمين حركة سلسة لملاين الحجاج والمعتمرين
-              في مواسم الذروة.
-            </p>
-            <p class="section-body">
-              تُدار حركة الزوار عبر حلول نقل متقدمة تشمل الحافلات الترددية
-              وقطار المشاعر، مع مسارات مشاة ومراكز توجيه تعزّز السلامة والانسيابية.
-            </p>
-            <p class="section-body">
-              وتتوفر خدمات الدعم والجاهزية الصحية والإسعافية والرقمية على نطاق واسع
-              بما يضمن رحلة عبادية آمنة ومنظمة.
-            </p>
-            <p class="section-body">
-              وتبقى قدسية المكان واحترام الأنظمة البيئية والسلوكية جزءًا أصيلًا
-              من تجربة الضيف في هذه البقاع الطاهرة.
-            </p>
-            <h4 class="section-subtitle">محطات رئيسية لرحلتك</h4>
-            <dl class="section-list">
-              <dt>منى</dt>
-              <dd>المخيمات المنظمة التي توفر بيئة آمنة ومريحة للحجاج.</dd>
-              <dd>خدمات ضيافة متكاملة تشمل الإعاشة والتكييف والأمن.</dd>
-<br>
-              <dt>جسر الجمرات</dt>
-              <dd>تنظيم متدرّج عالي السلامة لتفويج الحجاج بسلاسة.</dd>
-              <dd>تصميم هندسي متعدد الأدوار لتقليل الازدحام.</dd>
-<br>
+  <div class="section-content">
+    <div class="section-image">
+      <img
+        src="../../assets/images/destinations/almashaer.jpg"
+        alt="المشاعر المقدسة — منى ومزدلفة وعرفات"
+      />
+    </div>
 
-              <dt>عرفات</dt>
-              <dd>جبل الرحمة الذي يشكّل محطة مركزية في يوم عرفة.</dd>
-              <dd>ساحات فسيحة تستوعب ملايين الحجاج للصلاة والدعاء.</dd>
-<br>
+    <div class="section-text">
+      <h2 class="section-title">المشاعر المقدسة</h2>
+      <h3 class="section-subtitle">رحلة متصلة بين مكة ومنى ومزدلفة وعرفات</h3>
 
-              <dt>مسجد نمرة</dt>
-              <dd>يحتضن خُطبة يوم عرفة.</dd>
-              <dd>مرافق عبادة واسعة ومنظمة لاستيعاب الحشود.</dd>
-<br>
+      <p class="section-body">
+        تحتضن المشاعر المقدسة أركان الحج ومناسكه الكبرى، حيث تتكامل خدمات الضيافة
+        والتنقّل والإرشاد لضمان حركة سلسة لملايين الحجاج والمعتمرين خلال المواسم.
+        وتُدار حركة الزوار عبر أنظمة نقل حديثة تشمل الحافلات الترددية وقطار المشاعر،
+        مع مسارات مشاة ومراكز توجيه تعزّز الانسيابية والسلامة.
+      </p>
 
-              <dt>مزدلفة</dt>
-              <dd>المبيت بعد الإفاضة من عرفات في أجواء روحانية هادئة.</dd>
-              <dd>جمع الجمار استعدادًا لرميها في أيام التشريق.</dd>
-<br>
+      <p class="section-body">
+        كما تنتشر خدمات الدعم الصحي والإسعافي والرقمي على نطاق واسع لضمان رحلة عبادية
+        آمنة ومنظمة، فيما تبقى قدسية المكان واحترام الأنظمة البيئية والسلوكية جزءاً
+        أصيلاً من تجربة الحج.
+      </p>
 
-              <dt>قطار المشاعر</dt>
-              <dd>وسيلة نقل سريعة وآمنة تربط بين منى، عرفات، ومزدلفة.</dd>
-              <dd>يسهم في تقليل الازدحام والوقت المستغرق للتنقل.</dd>
-<br>
+      <h4 class="section-subtitle">محطات رئيسية في المشاعر</h4>
 
-              <dt>مراكز الإرشاد والخدمات التطوعية</dt>
-              <dd>توجيه الحجاج بلغات متعددة لضمان تجربة ميسرة.</dd>
-              <dd>فرق تطوعية تعمل على الدعم الميداني والإغاثي.</dd>
-<br>
+      <dl class="section-list">
+        <dt>منى</dt>
+        <dd>مخيمات مهيأة توفر بيئة آمنة ومريحة مع خدمات إعاشة وتكييف.</dd>
 
-              <dt>منظومة الدعم الصحي والطوارئ</dt>
-              <dd>عيادات ميدانية مجهّزة للتعامل مع الحالات الطارئة.</dd>
-              <dd>فرق إسعاف جاهزة على مدار الساعة لخدمة الحجاج.</dd>
+        <dt>جسر الجمرات</dt>
+        <dd>تنظيم متدرّج ومتعدد الأدوار لضمان التفويج السلس وتقليل الازدحام.</dd>
 
-            </dl>
+        <dt>عرفات</dt>
+        <dd>جبل الرحمة والساحات الفسيحة التي تستقبل ملايين الحجاج في يوم عرفة.</dd>
 
-          </div>
-        </div>
-      </section>
+        <dt>مسجد نمرة</dt>
+        <dd>موقع خطبة يوم عرفة ومرافق واسعة لاستيعاب الحشود.</dd>
+
+        <dt>مزدلفة</dt>
+        <dd>المبيت بعد الإفاضة وجمع الجمار استعداداً لأيام التشريق.</dd>
+
+        <dt>قطار المشاعر</dt>
+        <dd>وسيلة نقل سريعة تربط بين منى ومزدلفة وعرفات، وتخفف الازدحام.</dd>
+
+        <dt>مراكز الإرشاد والخدمات التطوعية</dt>
+        <dd>توجيه بلغات متعددة ودعم ميداني لخدمة الحجاج.</dd>
+
+        <dt>الدعم الصحي والطوارئ</dt>
+        <dd>عيادات وإسعافات جاهزة على مدار الساعة للتعامل مع الحالات الطارئة.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
 
 
 
@@ -570,7 +599,149 @@
         </div>
       </section> -->
 
+      <!-- أحدث الفعاليات -->
+       <div style="
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 60px 0;
+        
+      ">
+
+        <!-- CARD 1 -->
+        <div style="
+          width: 400px;
+          background: var(--card-bg);
+          border-radius: 18px;
+          overflow: hidden;
+          color: var(--text-color);
+          text-align: center;
+          padding-bottom: 20px;
+          border: 1px solid rgba(255,255,255,0.08);
+          display: flex;
+          flex-direction: column; 
+          box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+          -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+          -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        ">
+          <img src="../../assets/images/destinations/event1-makkah.jpg" style="
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+          ">
+
+          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;">The International Fairs and Museums of the Prophet’s Biography and Islamic Civilization</h3>
+          <p style="
+            font-size: 14px;
+            padding: 10px 20px;
+            opacity: 0.8;
+            line-height: 1.6;
+            text-align: center;
+          ">
+An immersive cultural exhibition showcasing the life of Prophet Muhammad ﷺ through interactive halls, models, and digital experiences. A ticketed museum-style event designed to educate visitors about Islamic history. Suitable for families and tourists.          </p>
+          <a href="https://tickets.asc.sa/?branch_slug=mkh"  style="
+            display: inline-block;        /* important: keeps width to content */
+            margin: 20px auto 0;          /* centers button horizontally */
+            background: #ff7d2d;
+            color: #fff;
+            padding: 12px 35px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top:auto;
+          ">Go</a>
+        </div>
+
+        <!-- CARD 2 -->
+        <div style="
+         width: 400px;
+          background: var(--card-bg);
+          border-radius: 18px;
+          overflow: hidden;
+          color: var(--text-color);
+          text-align: center;
+          padding-bottom: 20px;
+          border: 1px solid rgba(255,255,255,0.08);
+          display: flex;
+          flex-direction: column; 
+          box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+          -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+          -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        ">
+          <img src="../../assets/images/destinations/event2-makkah.jpg" style="
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+          ">
+
+          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;">Makkah Sky View Experience</h3>
+          <p style="
+            font-size: 14px;
+            padding: 10px 20px;
+            opacity: 0.8;
+            line-height: 1.6;
+            text-align: center;
+          ">
+           A guided tour around key historical sites in Makkah with panoramic viewpoints and storytelling. Includes visits to places like Jabal Khadijah and the Tree Mosque. Tickets required and booked as a full experience.</p>
+          <a href="https://halayalla.com/sa-en/experiences/Makkah/Experiences-tours/makkah-sky-view"  style="
+            display: inline-block;        /* important: keeps width to content */
+            margin: 20px auto 0;          /* centers button horizontally */
+            background: #ff7d2d;
+            color: #fff;
+            padding: 12px 35px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top:auto;
+          ">Go</a>
+        </div>
+
+        <!-- CARD 3 -->
+        <div style="
+          width: 400px;
+          background: var(--card-bg);
+          border-radius: 18px;
+          overflow: hidden;
+          color: var(--text-color);
+          text-align: center;
+          padding-bottom: 20px;
+          border: 1px solid rgba(255,255,255,0.08);
+          display: flex;
+          flex-direction: column; 
+          box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+          -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+          -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        ">
+          <img src="../../assets/images/destinations/event3-makkah.webp" style="
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+          ">
+
+          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;"> “Makkah Greets Us” – Hira Cultural District</h3>
+          <p style="
+            font-size: 14px;
+            padding: 10px 20px;
+            opacity: 0.8;
+            line-height: 1.6;
+            text-align: center;
+          ">
+          A cultural festival with shows, exhibits, and family activities celebrating Makkah’s heritage. Hosted in the Hira Cultural District with organized entry through tickets. Popular during holidays and seasonal events.</p>
+          <a href="https://www.rcmc.gov.sa/en-us/discover-makkah/events-and-activities/events/%D9%81%D8%B9%D8%A7%D9%84%D9%8A%D8%A9-%D9%85%D9%83%D8%A9-%D8%AA%D8%B9%D8%A7%D9%8A%D8%AF%D9%86%D8%A7-0004472699eafab8bc2890872cabef61" style="
+            display: inline-block;        /* important: keeps width to content */
+            margin: 20px auto 0;          /* centers button horizontally */
+            background: #ff7d2d;
+            color: #fff;
+            padding: 12px 35px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top:auto;
+          ">Go</a>
+        </div>
     </main>
+
     <script type="module" src="../../scripts/main.js"></script>
     <script src="../../scripts/Script.js"></script>
 
