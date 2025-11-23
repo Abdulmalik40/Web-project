@@ -47,4 +47,34 @@ class ItineraryController extends Controller
         return response()->json($itineraries);
     }
 
+    // جلب خطة محددة
+    public function show(Request $request, $id)
+    {
+        $itinerary = Itinerary::where('id', $id)
+            ->where('user_id', $request->user()->id)
+            ->first();
+
+        if (!$itinerary) {
+            return response()->json(['message' => 'Itinerary not found'], 404);
+        }
+
+        return response()->json($itinerary);
+    }
+
+    // حذف خطة
+    public function destroy(Request $request, $id)
+    {
+        $itinerary = Itinerary::where('id', $id)
+            ->where('user_id', $request->user()->id)
+            ->first();
+
+        if (!$itinerary) {
+            return response()->json(['message' => 'Itinerary not found'], 404);
+        }
+
+        $itinerary->delete();
+
+        return response()->json(['message' => 'Itinerary deleted successfully']);
+    }
+
 }
