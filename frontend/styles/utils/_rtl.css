@@ -221,3 +221,118 @@ body {
   animation: slideInRTL 0.6s ease-out;
 }
 
+/* RTL Plan Pages Specific Styles */
+[dir="rtl"] .plan-section {
+  text-align: right;
+}
+
+[dir="rtl"] .plan-section h2 {
+  text-align: right;
+}
+
+[dir="rtl"] .plan-section > p,
+[dir="rtl"] .title-desc {
+  text-align: right;
+}
+
+[dir="rtl"] .plan-summary-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .plan-summary-card {
+  text-align: right;
+}
+
+[dir="rtl"] .plan-itinerary-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .plan-phase {
+  text-align: right;
+}
+
+[dir="rtl"] .plan-phase ul {
+  padding-right: 1.2rem;
+  padding-left: 0;
+}
+
+[dir="rtl"] .plan-day-block h3 {
+  border-left: none;
+  border-right: 4px solid var(--accent-green);
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+[dir="rtl"] .plan-day-block p,
+[dir="rtl"] .plan-day-block ul {
+  text-align: right;
+}
+
+[dir="rtl"] .plan-day-block ul {
+  padding-right: 1.5rem;
+  padding-left: 0;
+}
+
+[dir="rtl"] .plan-accommodation-wrapper,
+[dir="rtl"] .plan-accommodation-region {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .plan-accommodation-card {
+  text-align: right;
+}
+
+[dir="rtl"] .plan-accommodation-label {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .plan-accommodation-dot {
+  margin-left: 8px;
+  margin-right: 0;
+}
+
+[dir="rtl"] .plan-dining-grid,
+[dir="rtl"] .plan-experiences-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .plan-dining-card,
+[dir="rtl"] .plan-experience-card {
+  text-align: right;
+}
+
+[dir="rtl"] .plan-dining-card h3,
+[dir="rtl"] .plan-experience-card h3 {
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .plan-dining-card ul,
+[dir="rtl"] .plan-experience-card ul {
+  padding-right: 1.5rem;
+  padding-left: 0;
+  text-align: right;
+}
+
+[dir="rtl"] .section-icon {
+  margin-left: 8px;
+  margin-right: 0;
+}
+
+[dir="rtl"] .plan-inclusions-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .plan-inclusion {
+  text-align: right;
+}
+
+[dir="rtl"] .plan-cta {
+  text-align: center;
+}
+
+[dir="rtl"] .hero-cta {
+  direction: rtl;
+}
+

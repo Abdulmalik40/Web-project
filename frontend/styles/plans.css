@@ -1,4 +1,5 @@
 :root {
+  /* Dark theme colors (default) */
   --bg-dark: #121212;
   --bg-card-dark: #111b21;
   --bg-card-darker: #111b21;
@@ -6,17 +7,37 @@
   --text-primary-dark: #ffffff;
   --text-secondary-dark: #a0a0a0;
 
+  /* Light theme colors */
+  --bg-light: #ffffff;
+  --bg-card-light: #f8f9fa;
+  --bg-card-lighter: #ffffff;
+
   --text-primary-light: #1a1a1a;
   --text-secondary-light: #555555;
 
+  /* Accent colors */
   --accent-green: #2ecc71;
+  --accent-gold: #d4af37;
+  --accent-blue: #3498db;
 
+  /* Fonts */
   --font-main: "Tajawal", sans-serif;
   --font-heading: "Cairo", sans-serif;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
 }
 
 /* ============================================================
-   GLOBAL
+   GLOBAL & THEME SUPPORT
    ============================================================ */
 body {
   background-color: var(--bg-dark);
@@ -24,6 +45,145 @@ body {
   font-family: var(--font-main);
   margin: 0;
   padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light theme - Comprehensive text color fixes */
+body[data-theme="light"] {
+  background-color: var(--bg-light);
+  color: var(--text-primary-light) !important;
+}
+
+/* All headings */
+body[data-theme="light"] .plan-section h2,
+body[data-theme="light"] .plan-section h3,
+body[data-theme="light"] h1,
+body[data-theme="light"] h2,
+body[data-theme="light"] h3,
+body[data-theme="light"] h4,
+body[data-theme="light"] h5,
+body[data-theme="light"] h6 {
+  color: var(--text-primary-light) !important;
+}
+
+/* All paragraphs and descriptions */
+body[data-theme="light"] .plan-section > p,
+body[data-theme="light"] .title-desc,
+body[data-theme="light"] p {
+  color: var(--text-secondary-light) !important;
+}
+
+/* Summary cards */
+body[data-theme="light"] .plan-summary-card span,
+body[data-theme="light"] .plan-summary-card strong,
+body[data-theme="light"] .plan-summary-card p {
+  color: var(--text-primary-light) !important;
+}
+
+body[data-theme="light"] .plan-summary-card p {
+  color: var(--text-secondary-light) !important;
+}
+
+/* Phase and day blocks */
+body[data-theme="light"] .plan-phase span,
+body[data-theme="light"] .plan-phase h3,
+body[data-theme="light"] .plan-phase ul li,
+body[data-theme="light"] .plan-day-block h3,
+body[data-theme="light"] .plan-day-block p,
+body[data-theme="light"] .plan-day-block ul li,
+body[data-theme="light"] .plan-day-block ul li strong {
+  color: var(--text-primary-light) !important;
+}
+
+body[data-theme="light"] .plan-phase ul li,
+body[data-theme="light"] .plan-day-block p {
+  color: var(--text-secondary-light) !important;
+}
+
+/* Cards */
+body[data-theme="light"] .plan-accommodation-card,
+body[data-theme="light"] .plan-dining-card,
+body[data-theme="light"] .plan-experience-card,
+body[data-theme="light"] .plan-inclusion {
+  background-color: var(--bg-card-light);
+  color: var(--text-primary-light) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="light"] .plan-accommodation-card h3,
+body[data-theme="light"] .plan-accommodation-card p,
+body[data-theme="light"] .plan-accommodation-label,
+body[data-theme="light"] .plan-accommodation-tag,
+body[data-theme="light"] .plan-accommodation-hotel,
+body[data-theme="light"] .plan-accommodation-desc,
+body[data-theme="light"] .plan-accommodation-region-title {
+  color: var(--text-primary-light) !important;
+}
+
+body[data-theme="light"] .plan-accommodation-desc {
+  color: var(--text-secondary-light) !important;
+}
+
+/* Dining cards */
+body[data-theme="light"] .plan-dining-card h3,
+body[data-theme="light"] .plan-dining-card ul li,
+body[data-theme="light"] .plan-dining-card ul li strong {
+  color: var(--text-primary-light) !important;
+}
+
+body[data-theme="light"] .plan-dining-card ul li {
+  color: var(--text-secondary-light) !important;
+}
+
+/* Experience cards */
+body[data-theme="light"] .plan-experience-card h3,
+body[data-theme="light"] .plan-experience-card ul li,
+body[data-theme="light"] .plan-experience-card ul li strong {
+  color: var(--text-primary-light) !important;
+}
+
+body[data-theme="light"] .plan-experience-card ul li {
+  color: var(--text-secondary-light) !important;
+}
+
+/* Inclusion cards */
+body[data-theme="light"] .plan-inclusion {
+  background: var(--bg-card-light) !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+body[data-theme="light"] .plan-inclusion h3 {
+  color: var(--text-primary-light) !important;
+}
+
+body[data-theme="light"] .plan-inclusion p {
+  color: var(--text-secondary-light) !important;
+}
+
+/* Lists */
+body[data-theme="light"] ul li,
+body[data-theme="light"] ul li strong {
+  color: var(--text-primary-light) !important;
+}
+
+body[data-theme="light"] ul li {
+  color: var(--text-secondary-light) !important;
+}
+
+/* Day numbers */
+body[data-theme="light"] .day-number {
+  color: var(--accent-green) !important;
+}
+
+/* Section icons */
+body[data-theme="light"] .section-icon {
+  color: var(--accent-green) !important;
+}
+
+/* CTA buttons */
+body[data-theme="light"] .cta-btn {
+  color: var(--text-primary-light) !important;
 }
 
 h1,
