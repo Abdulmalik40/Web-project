@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Page title -->
-    <title>التاريخ السعودي • اكتشف المملكة</title>
+    <title data-i18n="history.title">Saudi History • Discover the Kingdom</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,9 +26,13 @@
 
     <!-- Scripts (deferred) -->
     <script src="../../scripts/chatbot.js" defer></script>
+    <script type="module" src="../../scripts/modules/i18n.js"></script>
+    <script src="../../scripts/header-component.js" defer></script>
   </head>
 
   <body>
+    <!-- Header - Injected by header-component.js -->
+    <header id="header" data-header-placeholder></header>
     <!-- Chatbot toggle button -->
     <button id="chatbot-toggler">
       <span class="material-symbols-outlined">mode_comment</span>
@@ -45,7 +49,7 @@
             src="../../assets/icons/chatbot-icon.png"
             alt=""
           />
-          <h2 class="logo-text">Saudi Tourism Bot</h2>
+          <h2 class="logo-text" data-i18n="chatbot.title">Saudi Tourism Bot</h2>
         </div>
         <button id="close-chatbot" class="material-symbols-rounded">
           keyboard_arrow_down
@@ -60,8 +64,8 @@
             src="../../assets/icons/chatbot-icon.png"
             alt=""
           />
-          <div dir="rtl" class="message-text">
-            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
+          <div dir="auto" class="message-text" data-i18n="chatbot.greeting">
+            Hello, I'm Mutlaq, your personal assistant in choosing your next destination. How can I help you?
           </div>
         </div>
       </div>
@@ -70,8 +74,10 @@
       <div class="chat-footer">
         <form action="#" class="chat-form">
           <textarea
-            dir="rtl"
-            placeholder="اكتب سؤالك عن السياحة في السعودية..."
+            dir="auto"
+            data-i18n="chatbot.placeholder"
+            data-i18n-attr="placeholder"
+            placeholder="Ask your question about tourism in Saudi Arabia..."
             class="message-input"
             required
           ></textarea>
@@ -88,40 +94,6 @@
       </div>
     </div>
 
-    <!-- Site header -->
-    <header class="header site-header" id="header">
-      <div class="header-inner">
-        <div class="brand">
-          <div class="brand-mark"></div>
-          <div>
-            <div class="brand-title">Visit Saudi Arabia</div>
-            <div class="brand-sub">استكشف المناطق، التراث، والإيمان</div>
-          </div>
-        </div>
-        <div class="nav-container">
-          <button
-            class="theme-toggle"
-            id="themeToggle"
-            aria-label="تبديل الوضع"
-          >
-            🌙 داكن
-          </button>
-          <nav class="nav" aria-label="التنقل الرئيسي">
-            <div class="item"><a href="../index.html#home">الرئيسية</a></div>
-            <div class="item">
-              <a href="../maps/map-interactive.html">الخريطة التفاعلية</a>
-            </div>
-            <div class="item"><a href="#first-state">الدولة الأولى</a></div>
-            <div class="item"><a href="#second-state">الدولة الثانية</a></div>
-            <div class="item">
-              <a href="#modern-kingdom">المملكة الحديثة</a>
-            </div>
-            <div class="item"><a href="#kings">الملوك</a></div>
-          </nav>
-        </div>
-      </div>
-    </header -->
-
     <!-- Main content -->
     <main class="history-container site-main">
       <!-- الدولة السعودية الأولى -->
@@ -134,51 +106,26 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">الدولة السعودية الأولى</h2>
-            <h3 class="section-subtitle">1139-1233هـ / 1727-1818م</h3>
-            <p class="section-body">
-              كانت منطقة الجزيرة العربية في أوائل القرن الثاني عشر الهجري
-              (الثامن عشر ميلادي) تعيش في حالة من الفوضى وعدم الاستقرار السياسي،
-              وصف المؤرخون الحالة السياسية و الاجتماعية في منطقة الجزيرة
-              الع​ربية في تلك الفترة بالتفكك و انعدام الأمن وكثرة الإمارات
-              المتناثرة و المتناحرة.
+            <h2 class="section-title" data-i18n="history.firstState.title">The First Saudi State</h2>
+            <h3 class="section-subtitle" data-i18n="history.firstState.subtitle">1139-1233 AH / 1727-1818 CE</h3>
+            <p class="section-body" data-i18n="history.firstState.para1">
+              The Arabian Peninsula in the early 12th century AH (18th century CE) was in a state of chaos and political instability. Historians described the political and social conditions in the Arabian Peninsula during that period as fragmented, insecure, with numerous scattered and conflicting emirates.
             </p>
-            <p class="section-body">
-              وفي عام 1139هـ (1727م) تأسست الدولة السعودية الأولى على يد الإمام
-              محمد بن سعود و عاصمتها الدرعية في قلب الجزيرة العربية.
+            <p class="section-body" data-i18n="history.firstState.para2">
+              In 1139 AH (1727 CE), the First Saudi State was founded by Imam Muhammad bin Saud, with Diriyah as its capital in the heart of the Arabian Peninsula.
             </p>
-            <p class="section-body">
-              وتمكن أئمة الدولة السعودية الأولى من توحيد معظم مناطق شبة الجزيرة
-              العربية و نقلها إلى عهد جديد اتسم بالاستقرار و انتشار الأمن، و
-              تطبيق الشريعة الإسلامية في نواحي الحياة كافة. و نتيجة لقيام الدولة
-              السعودية ظهر كثير من العلماء، و ازدهرت المعارف و النواحي العلمية و
-              الاقتصادية،
+            <p class="section-body" data-i18n="history.firstState.para3">
+              The imams of the First Saudi State succeeded in unifying most regions of the Arabian Peninsula and ushering in a new era characterized by stability, security, and the application of Islamic law in all aspects of life. As a result of the establishment of the Saudi State, many scholars emerged, and knowledge, scientific, and economic aspects flourished.
             </p>
-            <p class="section-body">
-              وأنشئ كثير من المؤسسات و النظم الإدارية. وأصبحت الدولة السعودية
-              الاولى تتمتع بمكانة سياسة عظيمة نتيجة لقوتها و مبادئها الإسلامية،
-              واتساع رقعتها الجغرافية، وسياسة حكامها المتزنة والمتعمدة على نصرة
-              الدين الاسلامي، و خدمة المجتمع و الرقي بمستواه الحضاري. كان انتهاء
-              الدولة السعودية الأولى عام 1233هـ (1818م)؛ نتيجة للحملات التي
-              ارسلتها الدولة العثمانية من طريق واليها في مصر محمد على ، كان
-              آخرها حملة ابراهيم باشا التي تمكنت من هدم الدرعية و تدمير كثير من
-              البلدان في مناطق الدولة السعودية الأولى في انحاء الجزيرة العربية .
+            <p class="section-body" data-i18n="history.firstState.para4">
+              Many institutions and administrative systems were established. The First Saudi State enjoyed great political status due to its strength and Islamic principles, its vast geographical expanse, and the balanced policies of its rulers based on supporting Islam and serving society and elevating its civilizational level. The First Saudi State ended in 1233 AH (1818 CE) as a result of campaigns sent by the Ottoman Empire through its governor in Egypt, Muhammad Ali, the last of which was Ibrahim Pasha's campaign that succeeded in destroying Diriyah and many towns in the regions of the First Saudi State throughout the Arabian Peninsula.
             </p>
-            <h4 class="section-subtitle">حكام الدولة السعودية الأولى</h4>
+            <h4 class="section-subtitle" data-i18n="history.firstState.rulersTitle">Rulers of the First Saudi State</h4>
             <ul class="section-list">
-              <li>
-                الإمام محمد بن سعود بن مقرن (1139-1179هـ)/1727-1765م)
-              </li>
-              <li>
-                الإمام عبد العزيز بن محمد بن سعود(117​9-1218هـ/1765-1803م)
-              </li>
-              <li>
-                الإمام سعود بن عبدالعزيز بن محمد بن سعود(1218-1229هـ/1803-1814م)
-              </li>
-              <li>
-                الإمام عبد الله بن سعود بن عبدالعزيز بن محمد بن سعود
-                (1229-1233هـ/1814-1818م)
-              </li>
+              <li data-i18n="history.firstState.ruler1">Imam Muhammad bin Saud bin Muqrin (1139-1179 AH / 1727-1765 CE)</li>
+              <li data-i18n="history.firstState.ruler2">Imam Abdulaziz bin Muhammad bin Saud (1179-1218 AH / 1765-1803 CE)</li>
+              <li data-i18n="history.firstState.ruler3">Imam Saud bin Abdulaziz bin Muhammad bin Saud (1218-1229 AH / 1803-1814 CE)</li>
+              <li data-i18n="history.firstState.ruler4">Imam Abdullah bin Saud bin Abdulaziz bin Muhammad bin Saud (1229-1233 AH / 1814-1818 CE)</li>
             </ul>
           </div>
         </div>
@@ -194,66 +141,30 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">الدولة السعودية الثانية</h2>
-            <h3 class="section-subtitle">1240-1309هـ / 1824-1891م</h3>
-            <p class="section-body">
-              على رغم الدمار و الخراب الذي خلفته قوات محمد علي بقيادة ابراهيم
-              باشا في وسط الجزيرة العربية، و هدم الدرعية وتدمير كثير من البلدان،
-              و إشاعة الخوف في نواحي الجزيرة العربية، فإنها لم تتمكن من القضاء
-              على مقومات الدولة السعودية، حيث ظل الأهالي في البادية و الحاضرة
-              على ولائهم لأسرة آل سعود التي أسست الدولة السعودية الأولى و
-              تقديرهم لمعاملتهم و قيادتهم الحكيمة، ومناصرتهم للدعوة السلفية، فلم
-              يمض عامان من نهاية الدولة السعودية الأولى حتى عاد القادة من آل
-              سعود إلى الظهور من جديد لإعادة تكوين الدولة السعودية .
+            <h2 class="section-title" data-i18n="history.secondState.title">The Second Saudi State</h2>
+            <h3 class="section-subtitle" data-i18n="history.secondState.subtitle">1240-1309 AH / 1824-1891 CE</h3>
+            <p class="section-body" data-i18n="history.secondState.para1">
+              Despite the destruction and devastation left by Muhammad Ali's forces under the leadership of Ibrahim Pasha in central Arabia, the destruction of Diriyah and many towns, and the spread of fear throughout the Arabian Peninsula, they were unable to eliminate the foundations of the Saudi State. The people in both the desert and settled areas remained loyal to the House of Saud, which founded the First Saudi State, appreciating their treatment and wise leadership, and supporting the Salafi call. Not two years had passed since the end of the First Saudi State before the leaders from the House of Saud reappeared to re-establish the Saudi State.
             </p>
-            <p class="section-body">
-              وكانت أولى محاولاتهم عام 1235هـ/1820م عندما حاول الأمير مشاري بن
-              سعود إعادة الحكم السعودي في الدرعية لكنها لم تدم إلا مدة قصيرة لم
-              تتجاوز بضعة أشهر، ثم تلتها محاولة ناجحة قادها الإمام تركي بن عبد
-              الله ابن محمد بن سعود في عام 1240هـ/1824م أدت إلى تأسيس الدولة
-              السعودية الثانية و عاصمتها الرياض.
+            <p class="section-body" data-i18n="history.secondState.para2">
+              Their first attempt was in 1235 AH / 1820 CE when Prince Mishari bin Saud attempted to restore Saudi rule in Diriyah, but it lasted only a short period not exceeding a few months. This was followed by a successful attempt led by Imam Turki bin Abdullah bin Muhammad bin Saud in 1240 AH / 1824 CE, which led to the establishment of the Second Saudi State with Riyadh as its capital.
             </p>
-            <p class="section-body">
-              واستمرت الدولة السعودية الثانية على الأسس والركائز نفسها التي قامت
-              عليها الدولة السعودية الأولى من حيث اعتمادها على الإسلام , ونشر
-              الأمن والاستقرار , وتطبيق الشريعة الإسلامية . وكانت النظم الإدارية
-              والمالية مشابهة لتلك التي كانت في الدولة السعودية الأولى , كما
-              ازدهرت العلوم والآداب في ظل الدولة السعودية الثانية .
+            <p class="section-body" data-i18n="history.secondState.para3">
+              The Second Saudi State continued on the same foundations and pillars as the First Saudi State in terms of reliance on Islam, spreading security and stability, and applying Islamic law. The administrative and financial systems were similar to those in the First Saudi State, and sciences and literature flourished under the Second Saudi State.
             </p>
-            <p class="section-body">
-              وفي عام 1309 / 1891 م غادر الإمام عبدالرحمن بن فيصل بن تركي الرياض
-              إثر حدوث الخلافات بين أبناء الإمام فيصل بن تركي , وسيطرة محمد بن
-              رشيد حاكم حائل عليها . وبذلك انتهت الدولة السعودية الثانية .
+            <p class="section-body" data-i18n="history.secondState.para4">
+              In 1309 AH / 1891 CE, Imam Abdulrahman bin Faisal bin Turki left Riyadh following disagreements among the sons of Imam Faisal bin Turki, and the control of Muhammad bin Rashid, the ruler of Hail, over it. Thus ended the Second Saudi State.
             </p>
-            <h4 class="section-subtitle">حكام الدولة السعودية الثانية</h4>
+            <h4 class="section-subtitle" data-i18n="history.secondState.rulersTitle">Rulers of the Second Saudi State</h4>
             <ul class="section-list">
-              <li>
-                الإمام تركي بن عبدالله بن محمد بن سعود (1240-1249هـ /
-                1824-1834م)
-              </li>
-              <li>
-                الإمام فيصل بن تركي . الفترة الأولى (1250-1254هـ / 1834-1838م)
-              </li>
-              <li>الفترة الثانية (1259-1282هـ /1843-1865م)</li>
-              <li>
-                الإمام عبدالله بن فيصل بن تركي . الفترة الأولى ( 1282-1288هـ /
-                1865-1871م)
-              </li>
-              <li>
-                الإمام سعود بن فيصل بن تركي ( 1288-1291هـ / 1871-1875م)
-              </li>
-              <li>
-                الإمام عبدالرحمن بن فيصل بن تركي . الفترة الأولى (1291-1293هـ /
-                1875-1876م)
-              </li>
-              <li>
-                الإمام عبدالله بن فيصل بن تركي – الفترة الثانية (1293-1305هـ /
-                1876-1878م)
-              </li>
-              <li>
-                الإمام عبدالرحمن بن فيصل بن تركي . الفترة الثانية (1307-1309هـ /
-                1889-1891م)
-              </li>
+              <li data-i18n="history.secondState.ruler1">Imam Turki bin Abdullah bin Muhammad bin Saud (1240-1249 AH / 1824-1834 CE)</li>
+              <li data-i18n="history.secondState.ruler2">Imam Faisal bin Turki. First Period (1250-1254 AH / 1834-1838 CE)</li>
+              <li data-i18n="history.secondState.ruler3">Second Period (1259-1282 AH / 1843-1865 CE)</li>
+              <li data-i18n="history.secondState.ruler4">Imam Abdullah bin Faisal bin Turki. First Period (1282-1288 AH / 1865-1871 CE)</li>
+              <li data-i18n="history.secondState.ruler5">Imam Saud bin Faisal bin Turki (1288-1291 AH / 1871-1875 CE)</li>
+              <li data-i18n="history.secondState.ruler6">Imam Abdulrahman bin Faisal bin Turki. First Period (1291-1293 AH / 1875-1876 CE)</li>
+              <li data-i18n="history.secondState.ruler7">Imam Abdullah bin Faisal bin Turki – Second Period (1293-1305 AH / 1876-1878 CE)</li>
+              <li data-i18n="history.secondState.ruler8">Imam Abdulrahman bin Faisal bin Turki. Second Period (1307-1309 AH / 1889-1891 CE)</li>
             </ul>
           </div>
         </div>
@@ -269,35 +180,25 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">المملكة العربية السعودية</h2>
-            <h3 class="section-subtitle">
-              1319هـ - حتى الآن / 1902م - حتى الآن
+            <h2 class="section-title" data-i18n="history.modernKingdom.title">Kingdom of Saudi Arabia</h2>
+            <h3 class="section-subtitle" data-i18n="history.modernKingdom.subtitle">
+              1319 AH - Present / 1902 CE - Present
             </h3>
-            <p class="section-body">
-              وفي الخامس من ش​هر شوال عام 1319هـ الموافق للخامس عشر من شهر يناير
-              (1902م) تمكن الملك عبدالعزيز بن عبدالرحمن بن فيصل آل سعود من
-              استرداد الرياض والعودة بأسرته إليها لكي يبدأ صفحة جديدة من صفحات
-              التاريخ السعودي , ويعد هذا الحدث التاريخي نقطة تحول كبيرة في تاريخ
-              المنطقة ؛ لما أدى إليه من قيام دولة سعودية حديثة تمكنت من توحيد
-              معظم أجزاء شبه الجزيرة العربية , وتحقيق إنجازات حضارية واسعة في
-              مختلف المجالات .​
+            <p class="section-body" data-i18n="history.modernKingdom.para1">
+              On the fifth of Shawwal 1319 AH, corresponding to the fifteenth of January (1902 CE), King Abdulaziz bin Abdulrahman bin Faisal Al Saud succeeded in recapturing Riyadh and returning with his family to begin a new page in Saudi history. This historical event marked a major turning point in the region's history, leading to the establishment of a modern Saudi state that succeeded in unifying most parts of the Arabian Peninsula and achieving wide-ranging civilizational achievements in various fields.
             </p>
-            <p class="section-body">
-              تلقب الملك عبدالعزيز في عهده- إضافة إلى لقب الإمام– بعدد من
-              الألقاب:
+            <p class="section-body" data-i18n="history.modernKingdom.para2">
+              King Abdulaziz was given several titles during his reign, in addition to the title of Imam:
             </p>
             <ul class="section-list">
-              <li>أمير نجد ورئيس عشائرها 1319هـ (1902م)</li>
-              <li>سلطان نجد 1339هـ (1921م)</li>
-              <li>سلطان نجد وملحقاتها 1340هـ (1922م)</li>
-              <li>ملك الحجاز وسلطان نجد وملحقاتها 1345هـ (1927م)</li>
-              <li>ملك المملكة العربية السعودية 1351هـ (1932م)</li>
+              <li data-i18n="history.modernKingdom.title1">Prince of Najd and Chief of its Tribes 1319 AH (1902 CE)</li>
+              <li data-i18n="history.modernKingdom.title2">Sultan of Najd 1339 AH (1921 CE)</li>
+              <li data-i18n="history.modernKingdom.title3">Sultan of Najd and its Dependencies 1340 AH (1922 CE)</li>
+              <li data-i18n="history.modernKingdom.title4">King of Hejaz and Sultan of Najd and its Dependencies 1345 AH (1927 CE)</li>
+              <li data-i18n="history.modernKingdom.title5">King of the Kingdom of Saudi Arabia 1351 AH (1932 CE)</li>
             </ul>
-            <p class="section-body">
-              وفي السابع عشر من شهر جمادى الأولى عام 1351هـ الموافق التاسع عشر
-              من شهر سبتمبر عام 1932م صدر أمر ملكي للإعلان عن توحيد البلاد
-              وتسميتها باسم "المملكة العربية السعودية", ابتداءً من الخميس21 من
-              جمادى الأولى عام 1351هـ الموافق23 سبتمبر 1932م (الأول من الميزان).
+            <p class="section-body" data-i18n="history.modernKingdom.para3">
+              On the seventeenth of Jumada al-Awwal 1351 AH, corresponding to the nineteenth of September 1932 CE, a royal decree was issued to announce the unification of the country and naming it the \"Kingdom of Saudi Arabia\", starting from Thursday, the 21st of Jumada al-Awwal 1351 AH, corresponding to September 23, 1932 CE (the first of Libra).
             </p>
           </div>
         </div>
@@ -313,33 +214,19 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">الملك عبدالعزيز بن عبدالرحمن آل سعود</h2>
-            <h3 class="section-subtitle">مؤسس المملكة العربية السعودية</h3>
-            <p class="section-body">
-              وتوج هذا الإعلان جهود الملك عبدالعزيز العظيمة الرامية إلى توحيد
-              البلاد وتأسيس دولة راسخة تقوم على تطبيق أحكام القرآن والسنة
-              النبوية الشريفة, وحُدِّد يوم الأول من الميزان الموافق للثالث
-              والعشرين من شهر سبتمبر ليصبح اليوم الوطني للمملكة, وبهذا الإعلان
-              أسِّست المملكة العربية السعودية التي أصبحت دولة عظيمة في رسالتها
-              وإنجازاتها ومكانتها الإقليمية والدولية.
+            <h2 class="section-title" data-i18n="history.kingAbdulaziz.title">King Abdulaziz bin Abdulrahman Al Saud</h2>
+            <h3 class="section-subtitle" data-i18n="history.kingAbdulaziz.subtitle">Founder of the Kingdom of Saudi Arabia</h3>
+            <p class="section-body" data-i18n="history.kingAbdulaziz.para1">
+              This announcement crowned King Abdulaziz's great efforts to unify the country and establish a solid state based on the application of the provisions of the Quran and the noble Sunnah. The first day of Libra, corresponding to the twenty-third of September, was designated to become the National Day of the Kingdom. With this announcement, the Kingdom of Saudi Arabia was established, which became a great state in its message, achievements, and regional and international status.
             </p>
-            <p class="section-body">
-              وأصبحت المملكة العربية السعودية في عهد الملك عبدالعزيز ذات مكانة
-              دولية خاصة, حيث انضمت إلى كثير من المنظمات والاتفاقيات الدولية,
-              نتيجة لموقعها العظيم ورسوخها, بل كانت من أوائل الدول التي وقّعت
-              ميثاق هيئة الأمم المتحدة عام 1364هـ (1945م) وأسهمت في تأسيس كثير
-              من المنظمات الدولية التي ترمي إلى إرساء الأمن والاستقرار والعدل
-              الدولي, مثل جامعة الدول العربية في عام 1364هـ (1945م).
+            <p class="section-body" data-i18n="history.kingAbdulaziz.para2">
+              The Kingdom of Saudi Arabia during the reign of King Abdulaziz gained special international status, joining many international organizations and agreements, due to its great location and solidity. It was among the first countries to sign the United Nations Charter in 1364 AH (1945 CE) and contributed to the establishment of many international organizations aimed at establishing security, stability, and international justice, such as the League of Arab States in 1364 AH (1945 CE).
             </p>
-            <h4 class="section-subtitle">
-              مسيرة المملكة العربية السعودية بعد عهد الملك عبد العزيز
+            <h4 class="section-subtitle" data-i18n="history.kingAbdulaziz.afterTitle">
+              The Journey of the Kingdom of Saudi Arabia After King Abdulaziz's Reign
             </h4>
-            <p class="section-body">
-              وبعد وفاة الملك عبد العزيز – رحمه الله – في الثاني من شهر الأول من
-              عام 1373هـ الموافق للتاسع من شهر نوفمبر عام 1953 م سار أبناؤه على
-              نهجه ؛ وأكملوا التأسيس والبناء ووفق المبادئ السامية التي تستند
-              عليها الدولة السعودية. وحكم المملكة بعد الملك عبد العزيز أبناؤه
-              الملوك :
+            <p class="section-body" data-i18n="history.kingAbdulaziz.para3">
+              After the death of King Abdulaziz – may God have mercy on him – on the second of Rabi' al-Awwal 1373 AH, corresponding to the ninth of November 1953 CE, his sons followed his path and completed the foundation and building according to the lofty principles on which the Saudi state is based. After King Abdulaziz, his sons ruled as kings:
             </p>
           </div>
         </div>
@@ -352,15 +239,10 @@
             <img src="../../assets/images/kings/king saud.jpg" alt="الملك سعود" />
           </div>
           <div class="section-text">
-            <h2 class="section-title">الملك سعود بن عبد العزيز</h2>
-            <h3 class="section-subtitle">1373هـ -1384هـ (1953 – 1964)</h3>
-            <p class="section-body">
-              بويع ملكاً على البلاد في عهده إكمال البناء، ومسيرة التطور في مختلف
-              الجوانب . وحرص الملك سعود على القيام بكثير من الزيارات الداخلية في
-              أول عهده ؛ لتفقد البلاد ، والزيارات الخارجية لتوثيق عرى التعاون مع
-              الدول المجاورة والصديقة. وأولى الملك سعود القضايا العربية
-              والإسلامية عنايته الخاصة تواصلا ً مع منهج الملكـ عبد العزيز
-              والدولة السعودية .
+            <h2 class="section-title" data-i18n="history.kingSaud.title">King Saud bin Abdulaziz</h2>
+            <h3 class="section-subtitle" data-i18n="history.kingSaud.subtitle">1373-1384 AH (1953 – 1964)</h3>
+            <p class="section-body" data-i18n="history.kingSaud.para">
+              He was pledged allegiance as king of the country. During his reign, building was completed and the march of development continued in various aspects. King Saud was keen to make many internal visits at the beginning of his reign to inspect the country, and external visits to strengthen ties of cooperation with neighboring and friendly countries. King Saud gave special attention to Arab and Islamic issues, continuing the approach of King Abdulaziz and the Saudi state.
             </p>
           </div>
         </div>
@@ -375,18 +257,10 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">الملك فيصل بن عبد العزيز</h2>
-            <h3 class="section-subtitle">1384هـ -1395هـ(1964-1975م)</h3>
-            <p class="section-body">
-              بويع ملكاً على البلاد في عام 1384هـ (1964م)بعد تنازل أخيه الملكـ
-              سعود ،وواصل مسيرة البناء التي بدأها والده الملكـ عبد العزيز
-              وأكملها أخوه الملكـ سعود . فقد شهدت المملكة العربية السعودية في
-              عهد الملكـ فيصل كثيراً من التطورات في مجالات متعددة ،وأصبحت تتراس
-              الاجتماعات الدولية ،والقمم العربية والاسلامية نتيجة لمكانتها
-              الدولية ورسالتها السامية ،وفي مواجهة التكتلات الكبرى وانتشار
-              الأفكار والمبادي المضلله تمكن الملك فيصل من توجيه الجهود العربية
-              والإسلامية بقيادة المملكة العربية السعودية التي اصبحت مرتكزاً
-              أساسياً في السياسات الدولية .
+            <h2 class="section-title" data-i18n="history.kingFaisal.title">King Faisal bin Abdulaziz</h2>
+            <h3 class="section-subtitle" data-i18n="history.kingFaisal.subtitle">1384-1395 AH (1964-1975 CE)</h3>
+            <p class="section-body" data-i18n="history.kingFaisal.para">
+              He was pledged allegiance as king of the country in 1384 AH (1964 CE) after his brother King Saud's abdication, and continued the building march that his father King Abdulaziz began and his brother King Saud completed. The Kingdom of Saudi Arabia witnessed many developments in various fields during King Faisal's reign, and became a leader in international meetings, Arab and Islamic summits due to its international status and noble message. In facing major blocs and the spread of misleading ideas and principles, King Faisal succeeded in directing Arab and Islamic efforts under the leadership of the Kingdom of Saudi Arabia, which became a fundamental pillar in international politics.
             </p>
           </div>
         </div>
@@ -401,16 +275,10 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">الملك خالد بن عبد العزيز</h2>
-            <h3 class="section-subtitle">1395هـ -1402هـ (1975 م – 1982 م)</h3>
-            <p class="section-body">
-              بويع ملكا على البلاد في عام 1395 هـ (1975م) إثر استشهاد الملك
-              فيصل، ليواصل مسيرة التطور والبناء في المملكة العربية السعودية، حيث
-              شهدت البلاد في عهده تطورا بارزا في مختلف مجالات التنمية، من خلال
-              الاستفادة من الحضارة المدنية مع المحافظة على ثوابت الدولة السعودية
-              ومنهجا الإسلامي المتميز، واستمرت المملكة في عهده تتربع على قمة
-              السياسات العربية والإسلامية؛ لكونها دولة راسخة في قيادتها
-              ومبادئها، وتحتضن الحرمين الشرفين مهوى أفئدة المسلمين.
+            <h2 class="section-title" data-i18n="history.kingKhalid.title">King Khalid bin Abdulaziz</h2>
+            <h3 class="section-subtitle" data-i18n="history.kingKhalid.subtitle">1395-1402 AH (1975 – 1982 CE)</h3>
+            <p class="section-body" data-i18n="history.kingKhalid.para">
+              He was pledged allegiance as king of the country in 1395 AH (1975 CE) following the martyrdom of King Faisal, to continue the march of development and building in the Kingdom of Saudi Arabia. The country witnessed significant development in various fields of development during his reign, through benefiting from civilizational achievements while maintaining the constants of the Saudi state and its distinguished Islamic approach. The Kingdom continued during his reign to be at the top of Arab and Islamic policies, as it is a state firmly established in its leadership and principles, and hosts the Two Holy Mosques, the destination of Muslim hearts.
             </p>
           </div>
         </div>
@@ -422,28 +290,18 @@
             <img src="../../assets/images/kings/king fahad.jpg" alt="الملك فهد" />
           </div>
           <div class="section-text">
-            <h2 class="section-title">
-              الملك فهد بن عبد العزيز (خادم الحرمين الشريفين)
+            <h2 class="section-title" data-i18n="history.kingFahd.title">
+              King Fahd bin Abdulaziz (Custodian of the Two Holy Mosques)
             </h2>
-            <h3 class="section-subtitle">1402هـ (1982م) – 1426هـ (2005م)</h3>
-            <p class="section-body">
-              وفي عام 1402 هـ (1982م) تولى خادم الحرمين الشريفين الملك فهد بن
-              عبد العزيز الحكم مسترشدا بنهج والده الملك عبد العزيز في بناء
-              الدولة والمجتمع، والسير بهما نحو أعلى المستويات الحضارية.
+            <h3 class="section-subtitle" data-i18n="history.kingFahd.subtitle">1402 AH (1982 CE) – 1426 AH (2005 CE)</h3>
+            <p class="section-body" data-i18n="history.kingFahd.para1">
+              In 1402 AH (1982 CE), the Custodian of the Two Holy Mosques King Fahd bin Abdulaziz assumed power, guided by the approach of his father King Abdulaziz in building the state and society, and advancing them toward the highest civilizational levels.
             </p>
-            <p class="section-body">
-              ولقد شهد عهد الملك فهد بن عبد العزيز إنجازات حضارية عظيمة انعكست
-              في تقدم البلاد، وازدهار الحياة فيها، والاستمرار في تطبيق الشريعة
-              الإسلامية، والاهتمام بالأمن والناحية العلمية، كما واصلت المملكة
-              تطورها وتقدمها في المجالات الصناعية نتيجة لسياسته ورعايته لخطط
-              التنمية الشاملة، وإنشاء البنية الصناعية في المملكة.
+            <p class="section-body" data-i18n="history.kingFahd.para2">
+              The reign of King Fahd bin Abdulaziz witnessed great civilizational achievements reflected in the country's progress, the prosperity of life, the continuation of applying Islamic law, and attention to security and scientific aspects. The Kingdom also continued its development and progress in industrial fields as a result of his policies and care for comprehensive development plans and the establishment of the industrial infrastructure in the Kingdom.
             </p>
-            <p class="section-body">
-              وفي عهده حدثت أضخم توسعة تاريخية للحرمين الشريفين ووصلت المستويات
-              الاقتصادية والاجتماعية والحضارية في المملكة العربية السعودية إلى
-              أرقى درجاتها. كما اتسمت السياسة الخارجية السعودية في عهد خادم
-              الحرمين الشرفين الملك فهد بن عبد العزيز بالفاعلية والواقعية،
-              وصياغة الحلول المناسبة لأهم القضايا العربية والإسلامية.
+            <p class="section-body" data-i18n="history.kingFahd.para3">
+              During his reign, the largest historical expansion of the Two Holy Mosques occurred, and the economic, social, and civilizational levels in the Kingdom of Saudi Arabia reached their highest degrees. Saudi foreign policy during the reign of the Custodian of the Two Holy Mosques King Fahd bin Abdulaziz was characterized by effectiveness and realism, and formulating appropriate solutions for the most important Arab and Islamic issues.
             </p>
           </div>
         </div>
@@ -458,28 +316,16 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">الملك عبد الله بن عبد العزيز آل سعود</h2>
-            <h3 class="section-subtitle">1426هـ (2005م) - 1436هـ (2015م)</h3>
-            <p class="section-body">
-              في يوم الأربعاء 28 من جمادى الآخرة سنة 1426هـ (3/8/2005م) بويع
-              ملكاً للملكة العربية السعودية. دعم خادم الحرمين الشريفين الملك عبد
-              الله بن عبد العزيز التضامن الإسلامي، وعمق الروابط الأخوية بين
-              البلاد العربية، وكان له دور فاعل في مجال رأب الصدع في الصف العربي
-              إضافةً إلى دوره الفاعل في مجال الاقتصاد العالمي وهيئة الأمم
-              المتحدة، ومنظمة الدول المصدرة للنفط (أوبك)، ودول عدم الانحياز،
-              علاوةً على أياديه البيضاء في مجال أعمال الخير المحلية والإنسانية،
-              ودعم العلم والعلماء، وتطوير التعليم، وتأسيس المؤسسات المالية
-              والعلمية التقنية.
+            <h2 class="section-title" data-i18n="history.kingAbdullah.title">King Abdullah bin Abdulaziz Al Saud</h2>
+            <h3 class="section-subtitle" data-i18n="history.kingAbdullah.subtitle">1426 AH (2005 CE) - 1436 AH (2015 CE)</h3>
+            <p class="section-body" data-i18n="history.kingAbdullah.para1">
+              On Wednesday, the 28th of Jumada al-Thani 1426 AH (3/8/2005 CE), he was pledged allegiance as king of the Kingdom of Saudi Arabia. The Custodian of the Two Holy Mosques King Abdullah bin Abdulaziz supported Islamic solidarity, deepened fraternal bonds between Arab countries, and played an active role in bridging gaps in the Arab ranks, in addition to his active role in the global economy, the United Nations, the Organization of Petroleum Exporting Countries (OPEC), and non-aligned countries, as well as his generous contributions in local and humanitarian charitable works, supporting science and scholars, developing education, and establishing financial and scientific technical institutions.
             </p>
-            <p class="section-body">
-              ​وقد زار كثيراً من الدول العربية والإسلامية والصديقة في آسيا
-              وأوربا وأمريكا وإفريقية، وحضر كثيراً من مؤتمرات القمة العربية
-              والإسلامية، وكان حريصاً على تحقيق السلام في المنطقة العربية.
+            <p class="section-body" data-i18n="history.kingAbdullah.para2">
+              He visited many Arab, Islamic, and friendly countries in Asia, Europe, America, and Africa, attended many Arab and Islamic summit conferences, and was keen on achieving peace in the Arab region.
             </p>
-            <p class="section-body">
-              وشهد عهده كثيراً من الإنجازات في مجال التعليم العالي، والتعليم
-              العام، والقضاء، والصحة، وتوسعة المسجد النبوي، وتوسعة المسجد
-              الحرام، وتوسعة المطاف.
+            <p class="section-body" data-i18n="history.kingAbdullah.para3">
+              His reign witnessed many achievements in the fields of higher education, general education, judiciary, health, expansion of the Prophet's Mosque, expansion of the Grand Mosque, and expansion of the Tawaf area.
             </p>
           </div>
         </div>
@@ -494,22 +340,13 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">الملك سلمان بن عبد العزيز آل سعود</h2>
-            <h3 class="section-subtitle">1436هـ (2015م) - حتى الآن</h3>
-            <p class="section-body">
-              تمت مبايعة خادم الحرمين​ الشريفين الملك سلمان بن عبدالعزيز آل سعود
-              حفظه الله، ملكاً للمملكة العربية السعودية، في 3 ربيع الثاني 1436
-              هـ الموافق 23 يناير 2015م وكان الملك سلمان قد قضى أكثر من عامين
-              ونصف ولياً للعهد ونائباً لرئيس مجلس الوزراء إثر تعيينه في 18 يونيو
-              2012م بأمر ملكي كما بقي حينها في منصبه وزيراً للدفاع وهو المنصب
-              الذي عُيّن فيه منذ 5 نوفمبر 2011م قبل ذلك كان الملك سلمان أميراً
-              لمنطقة الرياض أكثر من خمسين عاماً.
+            <h2 class="section-title" data-i18n="history.kingSalman.title">King Salman bin Abdulaziz Al Saud</h2>
+            <h3 class="section-subtitle" data-i18n="history.kingSalman.subtitle">1436 AH (2015 CE) - Present</h3>
+            <p class="section-body" data-i18n="history.kingSalman.para1">
+              The Custodian of the Two Holy Mosques King Salman bin Abdulaziz Al Saud, may God protect him, was pledged allegiance as king of the Kingdom of Saudi Arabia on 3 Rabi' al-Thani 1436 AH, corresponding to January 23, 2015 CE. King Salman had spent more than two and a half years as Crown Prince and Deputy Prime Minister after his appointment on June 18, 2012 CE by royal decree, while remaining in his position as Minister of Defense, a position he had held since November 5, 2011 CE. Before that, King Salman was the Governor of Riyadh Region for more than fifty years.
             </p>
-            <p class="section-body">
-              وعرف خادم الحرمين الشريفين بالحرص على التراث والاهتمام بتاريخ
-              البلاد، إلى جانب جهوده المميزة في التنمية والتطوير في البلاد كما
-              أسهم في المجالات الإنسانية المتعددة داخل المملكة وخارجها وخصوصاً
-              ما يتعلق بمجالات الإغاثة والمساعدات.
+            <p class="section-body" data-i18n="history.kingSalman.para2">
+              The Custodian of the Two Holy Mosques is known for his care for heritage and attention to the country's history, alongside his distinguished efforts in development and advancement in the country. He has also contributed to various humanitarian fields within and outside the Kingdom, especially in the areas of relief and assistance.
             </p>
           </div>
         </div>
@@ -517,6 +354,50 @@
     </main>
 
     <!-- Page scripts -->
+    <script type="module" src="../../scripts/main.js"></script>
     <script src="../../scripts/Script.js"></script>
+    <script>
+      // Initialize i18n after page loads
+      document.addEventListener('DOMContentLoaded', () => {
+        const refreshTranslations = () => {
+          if (window.i18n && window.i18n.translations && Object.keys(window.i18n.translations).length > 0) {
+            window.i18n.refresh();
+            // Update title
+            const titleEl = document.querySelector("title");
+            const key = titleEl?.getAttribute("data-i18n");
+            if (key) {
+              document.title = window.i18n.t(key);
+            }
+            return true;
+          }
+          return false;
+        };
+
+        if (!refreshTranslations()) {
+          // Wait for i18n to load and translations to be ready
+          const checkI18n = setInterval(() => {
+            if (refreshTranslations()) {
+              clearInterval(checkI18n);
+            }
+          }, 100);
+          setTimeout(() => {
+            clearInterval(checkI18n);
+            // Final attempt
+            refreshTranslations();
+          }, 5000);
+        }
+
+        // Update title when language changes
+        if (window.i18n && typeof window.i18n.subscribe === "function") {
+          window.i18n.subscribe(() => {
+            const titleEl = document.querySelector("title");
+            const key = titleEl?.getAttribute("data-i18n");
+            if (key && window.i18n) {
+              document.title = window.i18n.t(key);
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>

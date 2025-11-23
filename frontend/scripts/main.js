@@ -69,8 +69,7 @@ function initMainScripts() {
       localStorage.removeItem("user_name");
       localStorage.removeItem("user_email");
 
-      // عدّل المسار حسب مكان index.html
-      window.location.href = "index.html";
+      window.location.href = "../../pages/index.html";
     });
   }
 

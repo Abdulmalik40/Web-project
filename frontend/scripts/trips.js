@@ -1,7 +1,8 @@
 // ../scripts/trips.js
 import { requireAuth, getToken } from "./auth-nav.js";
 
-const API = "http://localhost:9000/api";
+// Load from config.js (fallback to default if not available)
+const API = window.API_BASE_URL || "http://127.0.0.1:9000/api";
 
 console.log("[trips] file loaded");
 

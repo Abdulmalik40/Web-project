@@ -1,290 +1,639 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>30-Day Saudi Arabia Tour • Grand Discovery</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
-    />
-    <link rel="stylesheet" href="../../styles/main.css" />
-    <link rel="stylesheet" href="../../styles/chatbot.css">
-    
-    <script src="../../scripts/chatbot.js" defer></script>
-    <script type="module" src="../../scripts/modules/i18n.js"></script>
-    <script src="../../scripts/header-component.js" defer></script>
-  </head>
-  <body>
-     <!-- chatbot toggle button -->
-    <button id="chatbot-toggler">
-      <span class="material-symbols-outlined">mode_comment</span>
-      <span class="material-symbols-rounded">close</span>
-    </button>
 
-    <!-- chatbot container -->
-    <div class="chatbot-popup">
-      <!-- header -->
-      <div class="chat-header">
-        <div class="header-info">
-          <img style="width: 50px; border-radius: 1000px;" src="../../assets/icons/chatbot-icon.png" alt="">
-          <h2 class="logo-text" data-i18n="chatbot.title">Saudi Tourism Bot</h2>
-        </div>
-        <button id="close-chatbot" class="material-symbols-rounded">
-          keyboard_arrow_down
-        </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>30-Day Saudi Arabia Tour • Grand Discovery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+  <link rel="stylesheet" href="../../styles/main.css" />
+  <link rel="stylesheet" href="../../styles/plans.css" />
+  <link rel="stylesheet" href="../../styles/chatbot.css">
+
+  <script src="../../scripts/chatbot.js" defer></script>
+  <script type="module" src="../../scripts/modules/i18n.js"></script>
+  <script src="../../scripts/header-component.js" defer></script>
+</head>
+
+<body>
+  <!-- chatbot toggle button -->
+  <button id="chatbot-toggler">
+    <span class="material-symbols-outlined">mode_comment</span>
+    <span class="material-symbols-rounded">close</span>
+  </button>
+
+  <!-- chatbot container -->
+  <div class="chatbot-popup">
+    <!-- header -->
+    <div class="chat-header">
+      <div class="header-info">
+        <img style="width: 50px; border-radius: 1000px;" src="../../assets/icons/chatbot-icon.png" alt="">
+        <h2 class="logo-text" data-i18n="chatbot.title">Saudi Tourism Bot</h2>
       </div>
+      <button id="close-chatbot" class="material-symbols-rounded">
+        keyboard_arrow_down
+      </button>
+    </div>
 
-      <!-- chat body -->
-      <div class="chat-body">
-        <div class="message bot-message">
-          <img style="width: 50px; border-radius: 1000px;" src="../../assets/icons/chatbot-icon.png" alt="">
-          <div dir="auto" class="message-text" data-i18n="chatbot.greeting">
-            Hello, I'm Mutlaq, your personal assistant in choosing your next destination. How can I help you?
-          </div>
+    <!-- chat body -->
+    <div class="chat-body">
+      <div class="message bot-message">
+        <img style="width: 50px; border-radius: 1000px;" src="../../assets/icons/chatbot-icon.png" alt="">
+        <div dir="auto" class="message-text" data-i18n="chatbot.greeting">
+          Hello, I'm Mutlaq, your personal assistant in choosing your next destination. How can I help you?
         </div>
-      </div>
-
-      <!-- chat footer -->
-      <div class="chat-footer">
-        <form action="#" class="chat-form">
-          <textarea dir="auto"
-            data-i18n="chatbot.placeholder"
-            data-i18n-attr="placeholder"
-            placeholder="Ask your question about tourism in Saudi Arabia..."
-            class="message-input"
-            required
-          ></textarea>
-          <div class="chat-controls">
-            <button type="submit" id="send-message" class="material-symbols-rounded">
-              arrow_upward
-            </button>
-          </div>
-        </form>
       </div>
     </div>
 
-    <header class="header" id="header" data-header-placeholder>
-      <div class="header-inner">
-        <div class="brand">
-          <div class="brand-mark" aria-hidden="true"></div>
-          <div>
-            <div class="brand-title">Visit Saudi Arabia</div>
-            <div class="brand-sub">Explore regions, heritage, and faith</div>
-          </div>
-        </div>
-
-        <div class="nav-container">
-          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-            🌙 Dark
+    <!-- chat footer -->
+    <div class="chat-footer">
+      <form action="#" class="chat-form">
+        <textarea dir="auto" data-i18n="chatbot.placeholder" data-i18n-attr="placeholder"
+          placeholder="Ask your question about tourism in Saudi Arabia..." class="message-input" required></textarea>
+        <div class="chat-controls">
+          <button type="submit" id="send-message" class="material-symbols-rounded">
+            arrow_upward
           </button>
-          <nav class="nav" aria-label="Main Navigation">
-            <div class="item"><a href="../index.html#home">Home</a></div>
-            <div class="item"><a href="../maps/map-interactive.html">Interactive Map</a></div>
-            <div class="item"><a href="../core/history.html">History</a></div>
-            <div class="item"><a href="../index.html#tour-plans">Tour Plans</a></div>
-            <div class="item has-dropdown">
-              <a href="../islamic-guide/islamic-guide.html">Islamic Guide ▾</a>
-              <div class="dropdown" role="menu">
-                <a href="../islamic-guide/qibla.html" role="menuitem">Qibla Finder</a>
-                <a href="../islamic-guide/prayer-times.html" role="menuitem">Prayer Times</a>
-                <a href="../islamic-guide/quran.html" role="menuitem">Quran &amp; Du'a</a>
-                <a href="../islamic-guide/mosques.html" role="menuitem">Nearby Mosques</a>
-              </div>
-            </div>
-          </nav>
         </div>
-      </div>
-    </header>
+      </form>
+    </div>
+  </div>
 
-    <section class="hero" aria-label="30-day tour hero">
-      <div class="hero-bg">
-        <video class="hero-video" autoplay muted loop playsinline preload="metadata">
-          <source src="../../assets/images/Plans/PlansHeader.mp4" type="video/mp4" />
-          <img
-            src="../../assets/images/Plans/Plan1Month.webp"
-            alt="One month Saudi tour"
-            class="hero-image"
-          />
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-particles">
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-        </div>
+  <section class="hero" aria-label="30-day tour hero">
+    <div class="hero-bg">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+        <source src="../../assets/images/Plans/PlansHeader.mp4" type="video/mp4" />
+        <img src="../../assets/images/Plans/Plan1Month.webp" alt="One month Saudi tour" class="hero-image" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
       </div>
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="title-line" data-i18n="planOneMonth.heroTitle1">ULTIMATE EXPEDITION</span>
-            <span class="title-line featured" data-i18n="planOneMonth.heroTitle2">30-DAY GRAND DISCOVERY</span>
-            <span class="title-line subtitle" data-i18n="planOneMonth.heroTitle3">HERITAGE • COASTLINES • FUTURE VISIONS</span>
-          </h1>
-          <p class="hero-sub" data-i18n="planOneMonth.heroSubtitle">
-            A month-long immersion that traces Saudi Arabia's sacred heartlands,
-            modern capitals, Red Sea escapes, and mountain retreats at an
-            unhurried pace.
-          </p>
-        </div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="title-line" data-i18n="planOneMonth.heroTitle1">ULTIMATE EXPEDITION</span>
+          <span class="title-line featured" data-i18n="planOneMonth.heroTitle2">30-DAY GRAND DISCOVERY</span>
+          <span class="title-line subtitle" data-i18n="planOneMonth.heroTitle3">HERITAGE • COASTLINES • FUTURE
+            VISIONS</span>
+        </h1>
+        <p class="hero-sub" data-i18n="planOneMonth.heroSubtitle">
+          A month-long immersion that traces Saudi Arabia's sacred heartlands,
+          modern capitals, Red Sea escapes, and mountain retreats at an
+          unhurried pace.
+        </p>
       </div>
-      <div class="scroll-indicator">
-        <div class="scroll-arrow"></div>
-        <span data-i18n="planOneMonth.scrollToExplore">Scroll to Explore the Itinerary</span>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-arrow"></div>
+      <span data-i18n="planOneMonth.scrollToExplore">Scroll to Explore the Itinerary</span>
+    </div>
+  </section>
+
+  <main class="plan-page">
+    <section class="plan-section plan-overview">
+      <h2 data-i18n="planOneMonth.planOverview">Plan Overview</h2>
+      <p class="title-desc" data-i18n="planOneMonth.planOverviewDesc">
+        Designed for travelers who want to absorb every facet of Saudi Arabia,
+        the 30-day Grand Discovery balances spiritual reflection, cultural
+        depth, and rejuvenating downtime. Each week focuses on a different
+        region, with curated accommodations, guided experiences, and flexible
+        free days to explore independently.
+      </p>
+      <div class="plan-summary-grid">
+        <div class="plan-summary-card">
+          <span data-i18n="planOneMonth.duration">Duration</span>
+          <strong data-i18n="planOneMonth.durationValue">30 Days</strong>
+          <p data-i18n="planOneMonth.durationDesc">Four themed weeks with optional rest days built into each stage.</p>
+        </div>
+        <div class="plan-summary-card">
+          <span data-i18n="planOneMonth.pace">Pace</span>
+          <strong data-i18n="planOneMonth.paceValue">Balanced</strong>
+          <p data-i18n="planOneMonth.paceDesc">Alternating immersive excursions with restorative beach and spa time.</p>
+        </div>
+        <div class="plan-summary-card">
+          <span data-i18n="planOneMonth.regionsCovered">Regions Covered</span>
+          <strong data-i18n="planOneMonth.regionsValue">Kingdom-Wide</strong>
+          <p data-i18n="planOneMonth.regionsDesc">Makkah, Madinah, Riyadh, AlUla, Red Sea coast, Asir Highlands, and
+            NEOM.</p>
+        </div>
+        <div class="plan-summary-card">
+          <span data-i18n="planOneMonth.idealFor">Ideal For</span>
+          <strong data-i18n="planOneMonth.idealForValue">Deep Explorers</strong>
+          <p data-i18n="planOneMonth.idealForDesc">Families and cultural travelers seeking authentic encounters plus
+            premium comfort.</p>
+        </div>
       </div>
     </section>
 
-    <main class="plan-page">
-      <section class="plan-section plan-overview">
-        <h2 data-i18n="planOneMonth.planOverview">Plan Overview</h2>
-        <p data-i18n="planOneMonth.planOverviewDesc">
-          Designed for travelers who want to absorb every facet of Saudi Arabia,
-          the 30-day Grand Discovery balances spiritual reflection, cultural
-          depth, and rejuvenating downtime. Each week focuses on a different
-          region, with curated accommodations, guided experiences, and flexible
-          free days to explore independently.
-        </p>
-        <div class="plan-summary-grid">
-          <div class="plan-summary-card">
-            <span data-i18n="planOneMonth.duration">Duration</span>
-            <strong data-i18n="planOneMonth.durationValue">30 Days</strong>
-            <p data-i18n="planOneMonth.durationDesc">Four themed weeks with optional rest days built into each stage.</p>
-          </div>
-          <div class="plan-summary-card">
-            <span data-i18n="planOneMonth.pace">Pace</span>
-            <strong data-i18n="planOneMonth.paceValue">Balanced</strong>
-            <p data-i18n="planOneMonth.paceDesc">Alternating immersive excursions with restorative beach and spa time.</p>
-          </div>
-          <div class="plan-summary-card">
-            <span data-i18n="planOneMonth.regionsCovered">Regions Covered</span>
-            <strong data-i18n="planOneMonth.regionsValue">Kingdom-Wide</strong>
-            <p data-i18n="planOneMonth.regionsDesc">Makkah, Madinah, Riyadh, AlUla, Red Sea coast, Asir Highlands, and NEOM.</p>
-          </div>
-          <div class="plan-summary-card">
-            <span data-i18n="planOneMonth.idealFor">Ideal For</span>
-            <strong data-i18n="planOneMonth.idealForValue">Deep Explorers</strong>
-            <p data-i18n="planOneMonth.idealForDesc">Families and cultural travelers seeking authentic encounters plus premium comfort.</p>
+    <section class="plan-section">
+      <h2 data-i18n="planOneMonth.weekByWeek">Week-by-Week Journey</h2>
+      <div class="plan-itinerary-grid">
+        <div class="plan-phase">
+          <span data-i18n="planOneMonth.week1">Week 1</span>
+          <h3 data-i18n="planOneMonth.week1Title">Spiritual Origins</h3>
+          <ul>
+            <li data-i18n="planOneMonth.week1Item1">Pilgrimage-inspired stays in Makkah and Madinah</li>
+            <li data-i18n="planOneMonth.week1Item2">Guided visits to historic mosques and sacred landmarks</li>
+            <li data-i18n="planOneMonth.week1Item3">Evening reflections and traditional Hijazi dining</li>
+          </ul>
+        </div>
+        <div class="plan-phase">
+          <span data-i18n="planOneMonth.week2">Week 2</span>
+          <h3 data-i18n="planOneMonth.week2Title">Culture &amp; Heritage</h3>
+          <ul>
+            <li data-i18n="planOneMonth.week2Item1">Diriyah living history, Riyadh skyline experiences</li>
+            <li data-i18n="planOneMonth.week2Item2">AlUla sandstone valleys, Hegra UNESCO explorations</li>
+            <li data-i18n="planOneMonth.week2Item3">Hands-on artisan workshops and farm-to-table dinners</li>
+          </ul>
+        </div>
+        <div class="plan-phase">
+          <span data-i18n="planOneMonth.week3">Week 3</span>
+          <h3 data-i18n="planOneMonth.week3Title">Coastal Horizons</h3>
+          <ul>
+            <li data-i18n="planOneMonth.week3Item1">Jeddah Corniche, Red Sea snorkeling, yacht charter options</li>
+            <li data-i18n="planOneMonth.week3Item2">NEOM &amp; The Line preview with sustainability showcases</li>
+            <li data-i18n="planOneMonth.week3Item3">Wellness retreats and curated sunset gatherings</li>
+          </ul>
+        </div>
+        <div class="plan-phase">
+          <span data-i18n="planOneMonth.week4">Week 4</span>
+          <h3 data-i18n="planOneMonth.week4Title">Southern Highlands</h3>
+          <ul>
+            <li data-i18n="planOneMonth.week4Item1">Asir mountain villages, cloud forests, and cable car vistas</li>
+            <li data-i18n="planOneMonth.week4Item2">Jazan spice markets and Farasan Island marine sanctuary</li>
+            <li data-i18n="planOneMonth.week4Item3">Final days for bespoke interests or private desert safari</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="plan-section">
+      <h2 data-i18n="planOneMonth.detailedItinerary">Detailed 30-Day Itinerary</h2>
+      <p class="title-desc" data-i18n="planOneMonth.detailedItineraryDesc">
+        This comprehensive month-long journey takes you through Saudi Arabia's four distinct regions,
+        each offering unique landscapes, cultural treasures, and unforgettable experiences.
+      </p>
+
+      <div class="plan-detailed-breakdown">
+        <!-- Days 1-2: Dammam & Eastern Province -->
+        <div class="plan-day-block">
+          <h3><span class="day-number" data-i18n="planOneMonth.day1to2Number">Days 1-2</span> <span data-i18n="planOneMonth.day1to2Title">Dammam & The Eastern Province</span></h3>
+          <p data-i18n="planOneMonth.day1to2Desc">Begin your journey on the Persian Gulf coast with a blend of culture and natural beauty.</p>
+          <ul>
+            <li><strong data-i18n="planOneMonth.day1to2Item1Title">Ithra Cultural Centre</strong> – <span data-i18n="planOneMonth.day1to2Item1Desc">Saudi Arabia's stunning King Abdulaziz Center for World Culture</span>
+            </li>
+            <li><strong data-i18n="planOneMonth.day1to2Item2Title">Al-Ahsa Oasis</strong> – <span data-i18n="planOneMonth.day1to2Item2Desc">UNESCO World Heritage Site with lush date palm groves</span></li>
+            <li><strong data-i18n="planOneMonth.day1to2Item3Title">Hofuf's Ibrahim Palace</strong> – <span data-i18n="planOneMonth.day1to2Item3Desc">16th-century Ottoman architecture</span></li>
+            <li><strong data-i18n="planOneMonth.day1to2Item4Title">Jabal Qarah</strong> – <span data-i18n="planOneMonth.day1to2Item4Desc">Spectacular mesa with panoramic desert views</span></li>
+          </ul>
+        </div>
+
+        <!-- Days 3-6: Riyadh -->
+        <div class="plan-day-block">
+          <h3><span class="day-number" data-i18n="planOneMonth.day3to6Number">Days 3-6</span> <span data-i18n="planOneMonth.day3to6Title">Riyadh – The Capital Experience</span></h3>
+          <p data-i18n="planOneMonth.day3to6Desc">Explore Saudi Arabia's dynamic capital, where ancient heritage meets futuristic vision.</p>
+          <ul>
+            <li><strong data-i18n="planOneMonth.day3to6Item1Title">Ad Diriyah</strong> – <span data-i18n="planOneMonth.day3to6Item1Desc">UNESCO site and birthplace of the Saudi state</span></li>
+            <li><strong data-i18n="planOneMonth.day3to6Item2Title">Masmak Fort</strong> – <span data-i18n="planOneMonth.day3to6Item2Desc">Historic fortress in the heart of old Riyadh</span></li>
+            <li><strong data-i18n="planOneMonth.day3to6Item3Title">Edge of the World</strong> – <span data-i18n="planOneMonth.day3to6Item3Desc">Dramatic cliffs with breathtaking desert vistas</span></li>
+            <li><strong data-i18n="planOneMonth.day3to6Item4Title">Kingdom Tower Sky Bridge</strong> – <span data-i18n="planOneMonth.day3to6Item4Desc">300-meter-high observation deck</span></li>
+            <li><strong data-i18n="planOneMonth.day3to6Item5Title">Ushaiqer Heritage Village</strong> – <span data-i18n="planOneMonth.day3to6Item5Desc">Restored mudbrick architecture en route to Hail</span></li>
+            <li><strong data-i18n="planOneMonth.day3to6Item6Title">Modern Riyadh</strong> – <span data-i18n="planOneMonth.day3to6Item6Desc">World-class restaurants, museums, and shopping</span></li>
+          </ul>
+        </div>
+
+        <!-- Days 7-8: Najran -->
+        <div class="plan-day-block">
+          <h3><span class="day-number" data-i18n="planOneMonth.day7to8Number">Days 7-8</span> <span data-i18n="planOneMonth.day7to8Title">Najran – Gateway to the Empty Quarter</span></h3>
+          <p data-i18n="planOneMonth.day7to8Desc">Journey to the ancient frankincense trade route near the Yemeni border.</p>
+          <ul>
+            <li><strong data-i18n="planOneMonth.day7to8Item1Title">Al Ukhdud Archaeological Site</strong> – <span data-i18n="planOneMonth.day7to8Item1Desc">Pre-Islamic ruins and ancient inscriptions</span></li>
+            <li><strong data-i18n="planOneMonth.day7to8Item2Title">Al Aan Palace</strong> – <span data-i18n="planOneMonth.day7to8Item2Desc">17th-century palace with stunning oasis views</span></li>
+            <li><strong data-i18n="planOneMonth.day7to8Item3Title">Najran Dam</strong> – <span data-i18n="planOneMonth.day7to8Item3Desc">Saudi Arabia's largest, set in dramatic landscape</span></li>
+            <li><strong data-i18n="planOneMonth.day7to8Item4Title">Rub al Khali</strong> – <span data-i18n="planOneMonth.day7to8Item4Desc">Optional adventure into the legendary Empty Quarter</span></li>
+          </ul>
+        </div>
+
+        <!-- Days 9-12: Abha & Asir Mountains -->
+        <div class="plan-day-block">
+          <h3><span class="day-number" data-i18n="planOneMonth.day9to12Number">Days 9-12</span> <span data-i18n="planOneMonth.day9to12Title">Abha & The Asir Highlands</span></h3>
+          <p data-i18n="planOneMonth.day9to12Desc">Experience Saudi Arabia's lush mountain region with unique architecture and cool climate.</p>
+          <ul>
+            <li><strong data-i18n="planOneMonth.day9to12Item1Title">Rijal Almaa</strong> – <span data-i18n="planOneMonth.day9to12Item1Desc">UNESCO "Gingerbread Village" with distinctive multi-story architecture</span>
+            </li>
+            <li><strong data-i18n="planOneMonth.day9to12Item2Title">Al Habala Hanging Village</strong> – <span data-i18n="planOneMonth.day9to12Item2Desc">Cliffside settlement accessible by cable car</span></li>
+            <li><strong data-i18n="planOneMonth.day9to12Item3Title">Jabal Al Soudah</strong> – <span data-i18n="planOneMonth.day9to12Item3Desc">Saudi Arabia's highest peak at 3,100 meters</span></li>
+            <li><strong data-i18n="planOneMonth.day9to12Item4Title">Al-Qatt Al-Asiri Art</strong> – <span data-i18n="planOneMonth.day9to12Item4Desc">Traditional women's art in historic villages</span></li>
+            <li><strong data-i18n="planOneMonth.day9to12Item5Title">Mountain Drives</strong> – <span data-i18n="planOneMonth.day9to12Item5Desc">Winding roads through terraced farms and cloud forests</span></li>
+          </ul>
+        </div>
+
+        <!-- Days 13-15: Jizan & Farasan Islands -->
+        <div class="plan-day-block">
+          <h3><span class="day-number" data-i18n="planOneMonth.day13to15Number">Days 13-15</span> <span data-i18n="planOneMonth.day13to15Title">Jizan & Farasan Islands</span></h3>
+          <p data-i18n="planOneMonth.day13to15Desc">Discover Saudi Arabia's tropical coastline and pristine marine sanctuaries.</p>
+          <ul>
+            <li><strong data-i18n="planOneMonth.day13to15Item1Title">Farasan Islands</strong> – <span data-i18n="planOneMonth.day13to15Item1Desc">80+ islands with world-class diving and snorkeling</span></li>
+            <li><strong data-i18n="planOneMonth.day13to15Item2Title">Wadi Lajab</strong> – <span data-i18n="planOneMonth.day13to15Item2Desc">Dramatic canyon with waterfalls and emerald pools</span></li>
+            <li><strong data-i18n="planOneMonth.day13to15Item3Title">Red Sea Beaches</strong> – <span data-i18n="planOneMonth.day13to15Item3Desc">Crystal-clear waters and vibrant coral reefs</span></li>
+            <li><strong data-i18n="planOneMonth.day13to15Item4Title">Jizan Heritage Village</strong> – <span data-i18n="planOneMonth.day13to15Item4Desc">Traditional Tihamah architecture</span></li>
+          </ul>
+        </div>
+
+        <!-- Day 16: Thee Ain -->
+        <div class="plan-day-block">
+          <h3><span class="day-number" data-i18n="planOneMonth.day16Number">Day 16</span> <span data-i18n="planOneMonth.day16Title">Thee Ain – Mountain Oasis</span></h3>
+          <p data-i18n="planOneMonth.day16Desc">Visit one of Saudi Arabia's most photogenic heritage villages.</p>
+          <ul>
+            <li><strong data-i18n="planOneMonth.day16Item1Title">Thee Ain Village</strong> – <span data-i18n="planOneMonth.day16Item1Desc">Restored stone village with natural springs</span></li>
+            <li><strong data-i18n="planOneMonth.day16Item2Title">Marble Mountains</strong> – <span data-i18n="planOneMonth.day16Item2Desc">Stunning white peaks surrounding the valley</span></li>
+            <li><strong data-i18n="planOneMonth.day16Item3Title">Al Bahah Region</strong> – <span data-i18n="planOneMonth.day16Item3Desc">Scenic mountain drives and picnic spots</span></li>
+          </ul>
+        </div>
+
+        <!-- Days 17-18: Taif -->
+        <div class="plan-day-block">
+          <h3><span class="day-number" data-i18n="planOneMonth.day17to18Number">Days 17-18</span> <span data-i18n="planOneMonth.day17to18Title">Taif – City of Roses</span></h3>
+          <p data-i18n="planOneMonth.day17to18Desc">Explore the summer retreat known for its cool climate and rose gardens.</p>
+          <ul>
+            <li><strong data-i18n="planOneMonth.day17to18Item1Title">Al Hada Mountain</strong> – <span data-i18n="planOneMonth.day17to18Item1Desc">Spectacular views via scenic cable car ride</span></li>
+            <li><strong data-i18n="planOneMonth.day17to18Item2Title">Al Wa'bah Crater</strong> – <span data-i18n="planOneMonth.day17to18Item2Desc">Massive volcanic crater for hiking and camping</span></li>
+            <li><strong data-i18n="planOneMonth.day17to18Item3Title">Ash Shafa</strong> – <span data-i18n="planOneMonth.day17to18Item3Desc">Mountain villages perched above the clouds</span></li>
+            <li><strong data-i18n="planOneMonth.day17to18Item4Title">Rose Farms</strong> – <span data-i18n="planOneMonth.day17to18Item4Desc">Visit traditional rose water distilleries (seasonal)</span></li>
+          </ul>
+        </div>
+
+        <!-- Days 19-21: Jeddah -->
+        <div class="plan-day-block">
+          <h3><span class="day-number" data-i18n="planOneMonth.day19to21Number">Days 19-21</span> <span data-i18n="planOneMonth.day19to21Title">Jeddah – Gateway to the Red Sea</span></h3>
+          <p data-i18n="planOneMonth.day19to21Desc">Saudi Arabia's most cosmopolitan city blends history with modern luxury.</p>
+          <ul>
+            <li><strong data-i18n="planOneMonth.day19to21Item1Title">Al-Balad</strong> – <span data-i18n="planOneMonth.day19to21Item1Desc">UNESCO old town with stunning coral stone architecture</span></li>
+            <li><strong data-i18n="planOneMonth.day19to21Item2Title">Jeddah Corniche</strong> – <span data-i18n="planOneMonth.day19to21Item2Desc">30km waterfront promenade with sculptures</span></li>
+            <li><strong data-i18n="planOneMonth.day19to21Item3Title">King Fahd's Fountain</strong> – <span data-i18n="planOneMonth.day19to21Item3Desc">World's tallest at over 250 meters</span></li>
+            <li><strong data-i18n="planOneMonth.day19to21Item4Title">Floating Mosque</strong> – <span data-i18n="planOneMonth.day19to21Item4Desc">Al-Rahmah Mosque at sunset</span></li>
+            <li><strong data-i18n="planOneMonth.day19to21Item5Title">Red Sea Diving</strong> – <span data-i18n="planOneMonth.day19to21Item5Desc">World-class coral reefs and marine life</span></li>
+          </ul>
+        </div>
+
+        <!-- Day 22: Al Madinah -->
+        <div class="plan-day-block">
+          <h3><span class="day-number" data-i18n="planOneMonth.day22Number">Day 22</span> <span data-i18n="planOneMonth.day22Title">Al Madinah – The Illuminated City</span></h3>
+          <p data-i18n="planOneMonth.day22Desc">Visit Islam's second holiest city and the resting place of Prophet Muhammad (PBUH).</p>
+          <ul>
+            <li><strong data-i18n="planOneMonth.day22Item1Title">Al-Masjid an-Nabawi</strong> – <span data-i18n="planOneMonth.day22Item1Desc">The Prophet's Mosque (for Muslim visitors)</span></li>
+            <li><strong data-i18n="planOneMonth.day22Item2Title">Quba Mosque</strong> – <span data-i18n="planOneMonth.day22Item2Desc">First mosque built in Islamic history</span></li>
+            <li><strong data-i18n="planOneMonth.day22Item3Title">Hejaz Railway Station</strong> – <span data-i18n="planOneMonth.day22Item3Desc">Historic Ottoman-era station museum</span></li>
+            <li><strong data-i18n="planOneMonth.day22Item4Title">Date Markets</strong> – <span data-i18n="planOneMonth.day22Item4Desc">Sample Madinah's famous dates</span></li>
+          </ul>
+        </div>
+
+        <!-- Days 23-25: Al Ula -->
+        <div class="plan-day-block">
+          <h3><span class="day-number" data-i18n="planOneMonth.day23to25Number">Days 23-25</span> <span data-i18n="planOneMonth.day23to25Title">Al Ula – Saudi Arabia's Greatest Treasure</span></h3>
+          <p data-i18n="planOneMonth.day23to25Desc">Explore the ancient Nabataean city and dramatic desert landscapes.</p>
+          <ul>
+            <li><strong data-i18n="planOneMonth.day23to25Item1Title">Hegra (Madain Salih)</strong> – <span data-i18n="planOneMonth.day23to25Item1Desc">UNESCO site with 2,000-year-old Nabataean tombs</span></li>
+            <li><strong data-i18n="planOneMonth.day23to25Item2Title">Elephant Rock</strong> – <span data-i18n="planOneMonth.day23to25Item2Desc">Iconic natural sandstone formation</span></li>
+            <li><strong data-i18n="planOneMonth.day23to25Item3Title">Old Town Al Ula</strong> – <span data-i18n="planOneMonth.day23to25Item3Desc">Abandoned mudbrick village among cliffs</span></li>
+            <li><strong data-i18n="planOneMonth.day23to25Item4Title">Dadan & Jabal Ikmah</strong> – <span data-i18n="planOneMonth.day23to25Item4Desc">Ancient kingdoms and open-air library</span></li>
+            <li><strong data-i18n="planOneMonth.day23to25Item5Title">Maraya Concert Hall</strong> – <span data-i18n="planOneMonth.day23to25Item5Desc">World's largest mirrored building</span></li>
+            <li><strong data-i18n="planOneMonth.day23to25Item6Title">Harrat Uwayrid</strong> – <span data-i18n="planOneMonth.day23to25Item6Desc">Volcanic viewpoint over ancient lava fields</span></li>
+          </ul>
+        </div>
+
+        <!-- Days 26-27: Tabuk -->
+        <div class="plan-day-block">
+          <h3><span class="day-number" data-i18n="planOneMonth.day26to27Number">Days 26-27</span> <span data-i18n="planOneMonth.day26to27Title">Tabuk – Northern Landscapes</span></h3>
+          <p data-i18n="planOneMonth.day26to27Desc">Discover dramatic desert scenery near the Jordanian border.</p>
+          <ul>
+            <li><strong data-i18n="planOneMonth.day26to27Item1Title">Wadi Disah</strong> – <span data-i18n="planOneMonth.day26to27Item1Desc">Stunning canyon with palm groves and red cliffs</span></li>
+            <li><strong data-i18n="planOneMonth.day26to27Item2Title">Tayma</strong> – <span data-i18n="planOneMonth.day26to27Item2Desc">One of Arabia's oldest settlements with ancient ruins</span></li>
+            <li><strong data-i18n="planOneMonth.day26to27Item3Title">Tabuk Castle</strong> – <span data-i18n="planOneMonth.day26to27Item3Desc">16th-century Ottoman fortress</span></li>
+            <li><strong data-i18n="planOneMonth.day26to27Item4Title">Hejaz Railway</strong> – <span data-i18n="planOneMonth.day26to27Item4Desc">Historic stations from the Damascus-Madinah line</span></li>
+          </ul>
+        </div>
+
+        <!-- Days 28-29: Hail -->
+        <div class="plan-day-block">
+          <h3><span class="day-number" data-i18n="planOneMonth.day28to29Number">Days 28-29</span> <span data-i18n="planOneMonth.day28to29Title">Hail – Ancient Rock Art Capital</span></h3>
+          <p data-i18n="planOneMonth.day28to29Desc">Journey through the historical crossroads of Arabian pilgrim routes.</p>
+          <ul>
+            <li><strong data-i18n="planOneMonth.day28to29Item1Title">Jubbah Rock Art</strong> – <span data-i18n="planOneMonth.day28to29Item1Desc">UNESCO site with 10,000-year-old petroglyphs</span></li>
+            <li><strong data-i18n="planOneMonth.day28to29Item2Title">A'Arif Fort</strong> – <span data-i18n="planOneMonth.day28to29Item2Desc">Historic mud-brick fortification</span></li>
+            <li><strong data-i18n="planOneMonth.day28to29Item3Title">Barzan Palace</strong> – <span data-i18n="planOneMonth.day28to29Item3Desc">Renovated 19th-century palace</span></li>
+            <li><strong data-i18n="planOneMonth.day28to29Item4Title">Desert Landscapes</strong> – <span data-i18n="planOneMonth.day28to29Item4Desc">Endless vistas of Arabia's heartland</span></li>
+          </ul>
+        </div>
+
+        <!-- Day 30: Return to Riyadh -->
+        <div class="plan-day-block">
+          <h3><span class="day-number" data-i18n="planOneMonth.day30Number">Day 30</span> <span data-i18n="planOneMonth.day30Title">Return to Riyadh – Journey's End</span></h3>
+          <p data-i18n="planOneMonth.day30Desc">Conclude your epic Saudi adventure with final shopping and reflections.</p>
+          <ul>
+            <li><strong data-i18n="planOneMonth.day30Item1Title">Souvenir Shopping</strong> – <span data-i18n="planOneMonth.day30Item1Desc">Dates, oud, traditional crafts</span></li>
+            <li><strong data-i18n="planOneMonth.day30Item2Title">Final Dining Experience</strong> – <span data-i18n="planOneMonth.day30Item2Desc">Contemporary Saudi cuisine</span></li>
+            <li><strong data-i18n="planOneMonth.day30Item3Title">Departure Assistance</strong> – <span data-i18n="planOneMonth.day30Item3Desc">VIP airport services and transfers</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="plan-section">
+      <h2 data-i18n="planOneMonth.accommodationGuide">Accommodation Recommendations</h2>
+      <p class="title-desc" data-i18n="planOneMonth.accommodationGuideDesc">
+        Carefully selected hotels across all price ranges for the ultimate month-long Saudi adventure.
+      </p>
+      <div class="plan-accommodation-grid">
+        <div class="plan-accommodation-card">
+          <h3><span class="material-symbols-rounded section-icon">apartment</span> <span data-i18n="planOneMonth.accommodationRegion1">Eastern Province & Riyadh</span></h3>
+          <div>
+            <p><strong data-i18n="planOneMonth.accommodationRegion1City1">Dammam:</strong> <span data-i18n="planOneMonth.accommodationRegion1Desc1">Braira Al Dammam (comfortable, excellent breakfast)</span></p>
+            <p><strong data-i18n="planOneMonth.accommodationRegion1City2">Hofuf:</strong> <span data-i18n="planOneMonth.accommodationRegion1Desc2">Intercontinental Al-Ahsa or Somewhere Hotel (modern, great value)</span></p>
+            <p><strong data-i18n="planOneMonth.accommodationRegion1City3">Riyadh:</strong> <span data-i18n="planOneMonth.accommodationRegion1Desc3">Centro Waha by Rotana (central), Aloft Riyadh (modern), or Bab Samhan near Diriyah (luxury heritage)</span></p>
           </div>
         </div>
-      </section>
 
-      <section class="plan-section">
-        <h2 data-i18n="planOneMonth.weekByWeek">Week-by-Week Journey</h2>
-        <div class="plan-itinerary-grid">
-          <div class="plan-phase">
-            <span data-i18n="planOneMonth.week1">Week 1</span>
-            <h3 data-i18n="planOneMonth.week1Title">Spiritual Origins</h3>
-            <ul>
-              <li data-i18n="planOneMonth.week1Item1">Pilgrimage-inspired stays in Makkah and Madinah</li>
-              <li data-i18n="planOneMonth.week1Item2">Guided visits to historic mosques and sacred landmarks</li>
-              <li data-i18n="planOneMonth.week1Item3">Evening reflections and traditional Hijazi dining</li>
-            </ul>
-          </div>
-          <div class="plan-phase">
-            <span data-i18n="planOneMonth.week2">Week 2</span>
-            <h3 data-i18n="planOneMonth.week2Title">Culture &amp; Heritage</h3>
-            <ul>
-              <li data-i18n="planOneMonth.week2Item1">Diriyah living history, Riyadh skyline experiences</li>
-              <li data-i18n="planOneMonth.week2Item2">AlUla sandstone valleys, Hegra UNESCO explorations</li>
-              <li data-i18n="planOneMonth.week2Item3">Hands-on artisan workshops and farm-to-table dinners</li>
-            </ul>
-          </div>
-          <div class="plan-phase">
-            <span data-i18n="planOneMonth.week3">Week 3</span>
-            <h3 data-i18n="planOneMonth.week3Title">Coastal Horizons</h3>
-            <ul>
-              <li data-i18n="planOneMonth.week3Item1">Jeddah Corniche, Red Sea snorkeling, yacht charter options</li>
-              <li data-i18n="planOneMonth.week3Item2">NEOM &amp; The Line preview with sustainability showcases</li>
-              <li data-i18n="planOneMonth.week3Item3">Wellness retreats and curated sunset gatherings</li>
-            </ul>
-          </div>
-          <div class="plan-phase">
-            <span data-i18n="planOneMonth.week4">Week 4</span>
-            <h3 data-i18n="planOneMonth.week4Title">Southern Highlands</h3>
-            <ul>
-              <li data-i18n="planOneMonth.week4Item1">Asir mountain villages, cloud forests, and cable car vistas</li>
-              <li data-i18n="planOneMonth.week4Item2">Jazan spice markets and Farasan Island marine sanctuary</li>
-              <li data-i18n="planOneMonth.week4Item3">Final days for bespoke interests or private desert safari</li>
-            </ul>
+        <div class="plan-accommodation-card">
+          <h3><span class="material-symbols-rounded section-icon">landscape</span> <span data-i18n="planOneMonth.accommodationRegion2">Southern Highlands</span></h3>
+          <div>
+            <p><strong data-i18n="planOneMonth.accommodationRegion2City1">Najran:</strong> <span data-i18n="planOneMonth.accommodationRegion2Desc1">Park Inn Najran (modern, hyper-clean)</span></p>
+            <p><strong data-i18n="planOneMonth.accommodationRegion2City2">Abha:</strong> <span data-i18n="planOneMonth.accommodationRegion2Desc2">Abha Gardn Millennium Hotel (exceptional value), Abha Palace (luxury mountain views)</span></p>
+            <p><strong data-i18n="planOneMonth.accommodationRegion2City3">Jizan:</strong> <span data-i18n="planOneMonth.accommodationRegion2Desc3">Novotel Jizan (oceanfront, comfortable)</span></p>
+            <p><strong data-i18n="planOneMonth.accommodationRegion2City4">Al Bahah:</strong> <span data-i18n="planOneMonth.accommodationRegion2Desc4">Cloud City Hotel (best in town)</span></p>
           </div>
         </div>
-      </section>
 
-      <section class="plan-section">
-        <h2 data-i18n="planOneMonth.whatsIncluded">What's Included</h2>
-        <div class="plan-inclusions-grid">
-          <article class="plan-inclusion">
-            <h3 data-i18n="planOneMonth.inclusion1Title">Premium Stays &amp; Transfers</h3>
-            <p data-i18n="planOneMonth.inclusion1Desc">
-              Handpicked luxury hotels, boutique eco-lodges, and private villa
-              upgrades with chauffeured ground transfers and optional domestic
-              flights.
-            </p>
-          </article>
-          <article class="plan-inclusion">
-            <h3 data-i18n="planOneMonth.inclusion2Title">Expert Cultural Hosts</h3>
-            <p data-i18n="planOneMonth.inclusion2Desc">
-              Licensed guides, historians, and local storytellers who unlock the
-              narratives behind sacred sites, UNESCO treasures, and Vision 2030 projects.
-            </p>
-          </article>
-          <article class="plan-inclusion">
-            <h3 data-i18n="planOneMonth.inclusion3Title">Signature Experiences</h3>
-            <p data-i18n="planOneMonth.inclusion3Desc">
-              Private majlis dinners, desert stargazing, marine expeditions,
-              and interactive craft ateliers curated to your interests.
-            </p>
-          </article>
-          <article class="plan-inclusion">
-            <h3 data-i18n="planOneMonth.inclusion4Title">Flexible Enhancements</h3>
-            <p data-i18n="planOneMonth.inclusion4Desc">
-              Concierge support for spa appointments, helicopter tours, dining
-              reservations, and additional rest days tailored to your pace.
-            </p>
-          </article>
+        <div class="plan-accommodation-card">
+          <h3><span class="material-symbols-rounded section-icon">mosque</span> <span data-i18n="planOneMonth.accommodationRegion3">Western Cities</span></h3>
+          <div>
+            <p><strong data-i18n="planOneMonth.accommodationRegion3City1">Taif:</strong> <span data-i18n="planOneMonth.accommodationRegion3Desc1">Remaj Hotel (central, distinctive decor)</span></p>
+            <p><strong data-i18n="planOneMonth.accommodationRegion3City2">Jeddah:</strong> <span data-i18n="planOneMonth.accommodationRegion3Desc2">Jeddah EDITION (luxury), Ibis City Center (value, great location), Ritz-Carlton (beachfront elegance)</span></p>
+            <p><strong data-i18n="planOneMonth.accommodationRegion3City3">Madinah:</strong> <span data-i18n="planOneMonth.accommodationRegion3Desc3">Anwar Al Madinah Mövenpick (near Prophet's Mosque)</span></p>
+          </div>
         </div>
-      </section>
 
-      <section class="plan-section plan-cta">
-        <h2 data-i18n="planOneMonth.ctaTitle">Design Your Grand Saudi Month</h2>
-        <p data-i18n="planOneMonth.ctaDesc">
-          Ready to personalize this 30-day journey? Share your travel dates and
-          group details so our specialists can craft a bespoke itinerary and
-          confirm availability across the Kingdom.
-        </p>
-        <div class="hero-cta">
-          <a class="cta-btn primary" href="mailto:travel@visitsaudi.example" data-i18n="planOneMonth.ctaButton1">Plan with a Specialist</a>
-          <a class="cta-btn secondary" href="../index.html#tour-plans" data-i18n="planOneMonth.ctaButton2">Back to All Plans</a>
+        <div class="plan-accommodation-card">
+          <h3><span class="material-symbols-rounded section-icon">wb_sunny</span> <span data-i18n="planOneMonth.accommodationRegion4">Northern Desert</span></h3>
+          <div>
+            <p><strong data-i18n="planOneMonth.accommodationRegion4City1">AlUla:</strong> <span data-i18n="planOneMonth.accommodationRegion4Desc1">Chedi Hegra (ultimate luxury), Sahary Resort (unique tent rooms), Rural Compound (budget-friendly)</span></p>
+            <p><strong data-i18n="planOneMonth.accommodationRegion4City2">Tabuk:</strong> <span data-i18n="planOneMonth.accommodationRegion4Desc2">Ewaa Express Hotel (modern, near airport)</span></p>
+            <p><strong data-i18n="planOneMonth.accommodationRegion4City3">Hail:</strong> <span data-i18n="planOneMonth.accommodationRegion4Desc3">Holiday Villa Hail (modern with character)</span></p>
+          </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <script src="../../scripts/Script.js"></script>
-    <script>
-      // Initialize i18n after page loads
-      document.addEventListener('DOMContentLoaded', () => {
-        if (window.i18n) {
+    <section class="plan-section cuisine-section">
+      <h2 data-i18n="planOneMonth.regionalCuisine">Regional Cuisine Guide</h2>
+      <p data-i18n="planOneMonth.regionalCuisineDesc">
+        Experience authentic flavors from every corner of the Kingdom.
+      </p>
+      <div class="plan-dining-grid">
+        <div class="plan-dining-card">
+          <h3><span class="material-symbols-rounded section-icon">fastfood</span> <span data-i18n="planOneMonth.cuisineCard1Title">Must-Try Saudi Chains</span></h3>
+          <ul>
+            <li><strong data-i18n="planOneMonth.cuisineCard1Item1Title">Al Baik</strong> – <span data-i18n="planOneMonth.cuisineCard1Item1Desc">Legendary fried chicken, try it everywhere!</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard1Item2Title">Mama Noura</strong> – <span data-i18n="planOneMonth.cuisineCard1Item2Desc">Excellent shawarma and kabsa</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard1Item3Title">Al Tazaj</strong> – <span data-i18n="planOneMonth.cuisineCard1Item3Desc">Rotisserie chicken with Saudi spices</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard1Item4Title">Herfy</strong> – <span data-i18n="planOneMonth.cuisineCard1Item4Desc">Local fast food with Arabic flair</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard1Item5Title">Kudu</strong> – <span data-i18n="planOneMonth.cuisineCard1Item5Desc">Saudi burger chain worth trying</span></li>
+          </ul>
+        </div>
+
+        <div class="plan-dining-card">
+          <h3><span class="material-symbols-rounded section-icon">restaurant_menu</span> <span data-i18n="planOneMonth.cuisineCard2Title">Regional Specialties</span></h3>
+          <ul>
+            <li><strong data-i18n="planOneMonth.cuisineCard2Item1Title">Jeddah:</strong> <span data-i18n="planOneMonth.cuisineCard2Item1Desc">Fresh seafood at Corniche, Al Nakheel in Al-Balad</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard2Item2Title">Riyadh:</strong> <span data-i18n="planOneMonth.cuisineCard2Item2Desc">Najd Village (traditional Najdi), The Globe (fine dining)</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard2Item3Title">Abha:</strong> <span data-i18n="planOneMonth.cuisineCard2Item3Desc">Mountain honey, fresh coffee, Asiri dishes</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard2Item4Title">AlUla:</strong> <span data-i18n="planOneMonth.cuisineCard2Item4Desc">Desert dining experiences, Chedi Restaurant</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard2Item5Title">Taif:</strong> <span data-i18n="planOneMonth.cuisineCard2Item5Desc">Rose water infused desserts, mountain restaurants</span></li>
+          </ul>
+        </div>
+
+        <div class="plan-dining-card">
+          <h3><span class="material-symbols-rounded section-icon">soup_kitchen</span> <span data-i18n="planOneMonth.cuisineCard3Title">Traditional Dishes to Try</span></h3>
+          <ul>
+            <li><strong data-i18n="planOneMonth.cuisineCard3Item1Title">Kabsa</strong> – <span data-i18n="planOneMonth.cuisineCard3Item1Desc">Spiced rice with lamb or chicken</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard3Item2Title">Mandi</strong> – <span data-i18n="planOneMonth.cuisineCard3Item2Desc">Slow-cooked meat with rice</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard3Item3Title">Saleeg</strong> – <span data-i18n="planOneMonth.cuisineCard3Item3Desc">Creamy white rice with chicken</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard3Item4Title">Jareesh</strong> – <span data-i18n="planOneMonth.cuisineCard3Item4Desc">Crushed wheat porridge</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard3Item5Title">Mutabbaq</strong> – <span data-i18n="planOneMonth.cuisineCard3Item5Desc">Stuffed savory pancake</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard3Item6Title">Masoob</strong> – <span data-i18n="planOneMonth.cuisineCard3Item6Desc">Mashed dates with bread</span></li>
+          </ul>
+        </div>
+
+        <div class="plan-dining-card">
+          <h3><span class="material-symbols-rounded section-icon">coffee</span> <span data-i18n="planOneMonth.cuisineCard4Title">Dates & Coffee Culture</span></h3>
+          <ul>
+            <li><strong data-i18n="planOneMonth.cuisineCard4Item1Title">Ajwa Dates</strong> – <span data-i18n="planOneMonth.cuisineCard4Item1Desc">Premium variety from Madinah</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard4Item2Title">Sukkari Dates</strong> – <span data-i18n="planOneMonth.cuisineCard4Item2Desc">Sweet caramel-like texture</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard4Item3Title">Cafe Bateel</strong> – <span data-i18n="planOneMonth.cuisineCard4Item3Desc">Gourmet date products</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard4Item4Title">Arabic Coffee</strong> – <span data-i18n="planOneMonth.cuisineCard4Item4Desc">Cardamom-spiced, served everywhere</span></li>
+            <li><strong data-i18n="planOneMonth.cuisineCard4Item5Title">Mountain Coffee</strong> – <span data-i18n="planOneMonth.cuisineCard4Item5Desc">Fresh Asiri coffee in Abha region</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="plan-section epic-experiences-section">
+      <h2 data-i18n="planOneMonth.epicExperiences">Epic Experiences by Region</h2>
+      <p data-i18n="planOneMonth.epicExperiencesDesc">
+        Unforgettable adventures spanning the length and breadth of Saudi Arabia.
+      </p>
+
+      <div class="plan-experiences-grid">
+        <div class="plan-experience-card">
+          <h3>
+            <span class="plan-experience-icon">🏖️</span>
+            <span data-i18n="planOneMonth.experienceCard1Title">Red Sea & Coast</span>
+          </h3>
+          <ul>
+            <li><strong data-i18n="planOneMonth.experienceCard1Item1Title">Diving & Snorkeling</strong> – <span data-i18n="planOneMonth.experienceCard1Item1Desc">Pristine coral reefs in Jeddah and Farasan Islands</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard1Item2Title">Island Hopping</strong> – <span data-i18n="planOneMonth.experienceCard1Item2Desc">80+ Farasan Islands by ferry</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard1Item3Title">Al-Balad Night Walk</strong> – <span data-i18n="planOneMonth.experienceCard1Item3Desc">UNESCO old town with street food</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard1Item4Title">Corniche Cycling</strong> – <span data-i18n="planOneMonth.experienceCard1Item4Desc">30km waterfront path</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard1Item5Title">Sunset at Floating Mosque</strong> – <span data-i18n="planOneMonth.experienceCard1Item5Desc">Al-Rahmah magical evening light</span></li>
+          </ul>
+        </div>
+
+        <div class="plan-experience-card">
+          <h3>
+            <span class="plan-experience-icon">⛰️</span>
+            <span data-i18n="planOneMonth.experienceCard2Title">Mountain Adventures</span>
+          </h3>
+          <ul>
+            <li><strong data-i18n="planOneMonth.experienceCard2Item1Title">Al Wa'bah Crater Hiking</strong> – <span data-i18n="planOneMonth.experienceCard2Item1Desc">Massive volcanic crater camping</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard2Item2Title">Jabal Al Soudah Summit</strong> – <span data-i18n="planOneMonth.experienceCard2Item2Desc">Saudi Arabia's highest peak</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard2Item3Title">Above-Cloud Sunrise</strong> – <span data-i18n="planOneMonth.experienceCard2Item3Desc">Sarawat mountain range hikes</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard2Item4Title">Cable Car to Hanging Village</strong> – <span data-i18n="planOneMonth.experienceCard2Item4Desc">Al Habala cliff settlement</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard2Item5Title">Ash Shafa Scenic Drives</strong> – <span data-i18n="planOneMonth.experienceCard2Item5Desc">Winding mountain roads in mist</span></li>
+          </ul>
+        </div>
+
+        <div class="plan-experience-card">
+          <h3>
+            <span class="plan-experience-icon">🏜️</span>
+            <span data-i18n="planOneMonth.experienceCard3Title">Desert Wonders</span>
+          </h3>
+          <ul>
+            <li><strong data-i18n="planOneMonth.experienceCard3Item1Title">Hegra at Sunrise</strong> – <span data-i18n="planOneMonth.experienceCard3Item1Desc">2,000-year-old Nabataean tombs</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard3Item2Title">Hot Air Balloon Flight</strong> – <span data-i18n="planOneMonth.experienceCard3Item2Desc">AlUla sandstone valleys</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard3Item3Title">Edge of the World</strong> – <span data-i18n="planOneMonth.experienceCard3Item3Desc">Dramatic Tuwaiq escarpment</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard3Item4Title">Empty Quarter Expedition</strong> – <span data-i18n="planOneMonth.experienceCard3Item4Desc">Rub al Khali desert safari</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard3Item5Title">Wadi Disah Canyon</strong> – <span data-i18n="planOneMonth.experienceCard3Item5Desc">Palm-filled valley with red cliffs</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard3Item6Title">Desert Stargazing</strong> – <span data-i18n="planOneMonth.experienceCard3Item6Desc">Milky Way viewing experiences</span></li>
+          </ul>
+        </div>
+
+        <div class="plan-experience-card">
+          <h3>
+            <span class="plan-experience-icon">🏛️</span>
+            <span data-i18n="planOneMonth.experienceCard4Title">Heritage & Culture</span>
+          </h3>
+          <ul>
+            <li><strong data-i18n="planOneMonth.experienceCard4Item1Title">Ad Diriyah UNESCO Site</strong> – <span data-i18n="planOneMonth.experienceCard4Item1Desc">Birthplace of Saudi Arabia</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard4Item2Title">Rijal Almaa Village</strong> – <span data-i18n="planOneMonth.experienceCard4Item2Desc">"Gingerbread village" architecture</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard4Item3Title">Jubbah Rock Art</strong> – <span data-i18n="planOneMonth.experienceCard4Item3Desc">10,000-year-old petroglyphs</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard4Item4Title">Thee Ain Stone Village</strong> – <span data-i18n="planOneMonth.experienceCard4Item4Desc">Marble mountains setting</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard4Item5Title">Al-Qatt Al-Asiri Art</strong> – <span data-i18n="planOneMonth.experienceCard4Item5Desc">Women's traditional geometric art</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard4Item6Title">Ushaiqer Heritage Village</strong> – <span data-i18n="planOneMonth.experienceCard4Item6Desc">Restored mudbrick town</span></li>
+          </ul>
+        </div>
+
+        <div class="plan-experience-card">
+          <h3>
+            <span class="plan-experience-icon">🎭</span>
+            <span data-i18n="planOneMonth.experienceCard5Title">Unique Activities</span>
+          </h3>
+          <ul>
+            <li><strong data-i18n="planOneMonth.experienceCard5Item1Title">Via Ferrata Climbing</strong> – <span data-i18n="planOneMonth.experienceCard5Item1Desc">AlUla rock climbing adventure</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard5Item2Title">Helicopter Tours</strong> – <span data-i18n="planOneMonth.experienceCard5Item2Desc">Aerial views of AlUla or Asir</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard5Item3Title">Traditional Honey Tasting</strong> – <span data-i18n="planOneMonth.experienceCard5Item3Desc">Bees Tower Refinery in Rijal Almaa</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard5Item4Title">Equestrian Trails</strong> – <span data-i18n="planOneMonth.experienceCard5Item4Desc">Horseback riding through desert canyons</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard5Item5Title">Majlis Dinner Experience</strong> – <span data-i18n="planOneMonth.experienceCard5Item5Desc">Private traditional gathering</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard5Item6Title">Kingdom Tower Sky Bridge</strong> – <span data-i18n="planOneMonth.experienceCard5Item6Desc">300m-high glass floor</span></li>
+          </ul>
+        </div>
+
+        <div class="plan-experience-card">
+          <h3>
+            <span class="plan-experience-icon">🌅</span>
+            <span data-i18n="planOneMonth.experienceCard6Title">Photo Opportunities</span>
+          </h3>
+          <ul>
+            <li><strong data-i18n="planOneMonth.experienceCard6Item1Title">Elephant Rock</strong> – <span data-i18n="planOneMonth.experienceCard6Item1Desc">Iconic natural sandstone arch</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard6Item2Title">Maraya Mirror Building</strong> – <span data-i18n="planOneMonth.experienceCard6Item2Desc">World's largest mirrored structure</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard6Item3Title">King Fahd's Fountain</strong> – <span data-i18n="planOneMonth.experienceCard6Item3Desc">World's tallest at 260m</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard6Item4Title">Red Sand Dunes</strong> – <span data-i18n="planOneMonth.experienceCard6Item4Desc">Rust-colored desert near Riyadh</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard6Item5Title">Pigeon Towers of Ad Dilam</strong> – <span data-i18n="planOneMonth.experienceCard6Item5Desc">Historic mud structures</span></li>
+            <li><strong data-i18n="planOneMonth.experienceCard6Item6Title">Al Hada Mountain Views</strong> – <span data-i18n="planOneMonth.experienceCard6Item6Desc">Cable car panoramas</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="plan-section">
+      <h2 data-i18n="planOneMonth.whatsIncluded">What's Included</h2>
+      <div class="plan-inclusions-grid">
+        <article class="plan-inclusion">
+          <h3 data-i18n="planOneMonth.inclusion1Title">Premium Stays &amp; Transfers</h3>
+          <p data-i18n="planOneMonth.inclusion1Desc">
+            Handpicked luxury hotels, boutique eco-lodges, and private villa
+            upgrades with chauffeured ground transfers and optional domestic
+            flights.
+          </p>
+        </article>
+        <article class="plan-inclusion">
+          <h3 data-i18n="planOneMonth.inclusion2Title">Expert Cultural Hosts</h3>
+          <p data-i18n="planOneMonth.inclusion2Desc">
+            Licensed guides, historians, and local storytellers who unlock the
+            narratives behind sacred sites, UNESCO treasures, and Vision 2030 projects.
+          </p>
+        </article>
+        <article class="plan-inclusion">
+          <h3 data-i18n="planOneMonth.inclusion3Title">Signature Experiences</h3>
+          <p data-i18n="planOneMonth.inclusion3Desc">
+            Private majlis dinners, desert stargazing, marine expeditions,
+            and interactive craft ateliers curated to your interests.
+          </p>
+        </article>
+        <article class="plan-inclusion">
+          <h3 data-i18n="planOneMonth.inclusion4Title">Flexible Enhancements</h3>
+          <p data-i18n="planOneMonth.inclusion4Desc">
+            Concierge support for spa appointments, helicopter tours, dining
+            reservations, and additional rest days tailored to your pace.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="plan-section plan-cta">
+      <h2 data-i18n="planOneMonth.ctaTitle">Design Your Grand Saudi Month</h2>
+      <p data-i18n="planOneMonth.ctaDesc">
+        Ready to personalize this 30-day journey? Share your travel dates and
+        group details so our specialists can craft a bespoke itinerary and
+        confirm availability across the Kingdom.
+      </p>
+      <div class="hero-cta">
+        <a class="cta-btn primary" href="/frontend/pages/plans/planner.html" data-i18n="planOneMonth.ctaButton1">Plan
+          with a
+          Specialist</a>
+        <a class="cta-btn secondary" href="../index.html#tour-plans" data-i18n="planOneMonth.ctaButton2">Back to All
+          Plans</a>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="../../scripts/main.js"></script>
+  <script src="../../scripts/Script.js"></script>
+  <script>
+    // Initialize i18n after page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      const refreshTranslations = () => {
+        if (window.i18n && window.i18n.translations && Object.keys(window.i18n.translations).length > 0) {
           window.i18n.refresh();
-        } else {
-          // Wait for i18n to load
-          const checkI18n = setInterval(() => {
-            if (window.i18n) {
-              window.i18n.refresh();
-              clearInterval(checkI18n);
-            }
-          }, 100);
-          setTimeout(() => clearInterval(checkI18n), 5000);
+          return true;
         }
-      });
-    </script>
-  </body>
-</html>
+        return false;
+      };
 
+      if (!refreshTranslations()) {
+        // Wait for i18n to load and translations to be ready
+        const checkI18n = setInterval(() => {
+          if (refreshTranslations()) {
+            clearInterval(checkI18n);
+          }
+        }, 100);
+        setTimeout(() => {
+          clearInterval(checkI18n);
+          // Final attempt
+          refreshTranslations();
+        }, 5000);
+      }
+    });
+    const specialistBtn = document.querySelector(
+      'a[data-i18n="planOneMonth.ctaButton1"]'
+    );
+    if (specialistBtn) {
+      specialistBtn.addEventListener("click", function (e) {
+        e.preventDefault(); // نمنع أي JS ثاني من تخريب الحركة
+        window.location.href = "/pages/plans/planner.html";
+      });
+    }
+  </script>
+</body>
+
+</html>

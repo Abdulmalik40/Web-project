@@ -1,182 +1,191 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>خريطة السعودية التفاعلية • اكتشف المملكة</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
     />
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/pages/map.css">
-    <link rel="stylesheet" href="../../styles/chatbot.css">
-    
+    <link rel="stylesheet" href="../../styles/main.css" />
+    <link rel="stylesheet" href="../../styles/pages/map.css" />
+    <link rel="stylesheet" href="../../styles/chatbot.css" />
+
     <script src="../../scripts/chatbot.js" defer></script>
-</head>
-<body>
-    <header class="header" id="header">
-        <div class="header-inner">
-            <div class="brand">
-                <div class="brand-mark"></div>
-                <div>
-                    <div class="brand-title">Visit Saudi Arabia</div>
-                    <div class="brand-sub">استكشف المناطق، التراث، والإيمان</div>
-                </div>
-            </div>
-            <div class="nav-container">
-                <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع">
-                    🌙 داكن
-                </button>
-                <nav class="nav">
-                    <div class="item"><a href="../index.html#home">الرئيسية</a></div>
-                    <div class="item"><a href="map.html" class="active">الخريطة التفاعلية</a></div>
-                    <div class="item"><a href="../core/history.html">التاريخ</a></div>
-                    <div class="item"><a href="../islamic-guide/mosques.html">المساجد</a></div>
-                    <div class="item"><a href="../islamic-guide/islamic-guide.html">الدليل الإسلامي</a></div>
-                </nav>
-            </div>
-        </div>
-    </header>
-
+  </head>
+  <body>
     <main class="map-container">
-        <!-- Map Controls Panel -->
-        <div class="map-controls">
-            <div class="controls-header">
-                <h2>استكشف المملكة العربية السعودية</h2>
-                <p>اكتشف المعالم السياحية والتراثية والثقافية</p>
-            </div>
-            
-            <!-- Search Section -->
-            <div class="search-section">
-                <div class="search-input-group">
-                    <input type="text" id="placeSearch" placeholder="ابحث عن مكان أو معلم..." class="search-input">
-                    <button id="searchBtn" class="search-btn" aria-label="بحث">
-                        <span>🔍</span>
-                    </button>
-                </div>
-                <div class="search-suggestions" id="searchSuggestions"></div>
-            </div>
-
-            <!-- Regional Filter -->
-            <div class="filter-section">
-                <label for="regionFilter" class="filter-label">اختر المنطقة:</label>
-                <select id="regionFilter" class="filter-select">
-                    <option value="all">جميع المناطق</option>
-                    <option value="riyadh">منطقة الرياض</option>
-                    <option value="makkah">منطقة مكة المكرمة</option>
-                    <option value="madinah">منطقة المدينة المنورة</option>
-                    <option value="eastern">المنطقة الشرقية</option>
-                    <option value="qassim">منطقة القصيم</option>
-                    <option value="hail">منطقة حائل</option>
-                    <option value="tabuk">منطقة تبوك</option>
-                    <option value="northern">المنطقة الشمالية</option>
-                    <option value="jazan">منطقة جازان</option>
-                    <option value="najran">منطقة نجران</option>
-                    <option value="baha">منطقة الباحة</option>
-                    <option value="jouf">منطقة الجوف</option>
-                </select>
-            </div>
-
-            <!-- Category Filter -->
-            <div class="filter-section">
-                <label class="filter-label">فئات المعالم:</label>
-                <div class="category-filters">
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="mosques" value="religion.place_of_worship" checked>
-                        <span class="checkmark">🕌</span>
-                        المساجد والمعالم الدينية
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="historical" value="tourism.sights" checked>
-                        <span class="checkmark">🏛️</span>
-                        المعالم التاريخية
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="restaurants" value="commercial.restaurant" checked>
-                        <span class="checkmark">🍽️</span>
-                        المطاعم والمقاهي
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="hotels" value="accommodation.hotel" checked>
-                        <span class="checkmark">🏨</span>
-                        الفنادق والإقامة
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="museums" value="tourism.museum" checked>
-                        <span class="checkmark">🏛️</span>
-                        المتاحف والمعارض
-                    </label>
-                </div>
-            </div>
-
-            <!-- Map Controls -->
-            <div class="map-actions">
-                <button id="centerSaudi" class="action-btn primary">
-                    <span>🎯</span>
-                    مركز على السعودية
-                </button>
-                <button id="toggleSatellite" class="action-btn">
-                    <span>🛰️</span>
-                    عرض القمر الصناعي
-                </button>
-                <button id="resetFilters" class="action-btn">
-                    <span>🔄</span>
-                    إعادة تعيين
-                </button>
-            </div>
+      <!-- Map Controls Panel -->
+      <div class="map-controls">
+        <div class="controls-header">
+          <h2>استكشف المملكة العربية السعودية</h2>
+          <p>اكتشف المعالم السياحية والتراثية والثقافية</p>
         </div>
 
-        <!-- Map Container -->
-        <div class="map-wrapper">
-            <div id="saudi-map" class="saudi-map"></div>
-            <div class="map-loading" id="mapLoading">
-                <div class="loading-spinner"></div>
-                <p>جاري تحميل الخريطة...</p>
-            </div>
+        <!-- Search Section -->
+        <div class="search-section">
+          <div class="search-input-group">
+            <input
+              type="text"
+              id="placeSearch"
+              placeholder="ابحث عن مكان أو معلم..."
+              class="search-input"
+            />
+            <button id="searchBtn" class="search-btn" aria-label="بحث">
+              <span>🔍</span>
+            </button>
+          </div>
+          <div class="search-suggestions" id="searchSuggestions"></div>
         </div>
 
-        <!-- Map Legend -->
-        <div class="map-legend">
-            <h3>دليل الرموز</h3>
-            <div class="legend-items">
-                <div class="legend-item">
-                    <span class="legend-icon">🕌</span>
-                    <span>المساجد والمعالم الدينية</span>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-icon">🏛️</span>
-                    <span>المعالم التاريخية</span>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-icon">🍽️</span>
-                    <span>المطاعم والمقاهي</span>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-icon">🏨</span>
-                    <span>الفنادق والإقامة</span>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-icon">🏛️</span>
-                    <span>المتاحف والمعارض</span>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-icon">👑</span>
-                    <span>المواقع التاريخية المهمة</span>
-                </div>
-            </div>
+        <!-- Regional Filter -->
+        <div class="filter-section">
+          <label for="regionFilter" class="filter-label">اختر المنطقة:</label>
+          <select id="regionFilter" class="filter-select">
+            <option value="all">جميع المناطق</option>
+            <option value="riyadh">منطقة الرياض</option>
+            <option value="makkah">منطقة مكة المكرمة</option>
+            <option value="madinah">منطقة المدينة المنورة</option>
+            <option value="eastern">المنطقة الشرقية</option>
+            <option value="qassim">منطقة القصيم</option>
+            <option value="hail">منطقة حائل</option>
+            <option value="tabuk">منطقة تبوك</option>
+            <option value="northern">المنطقة الشمالية</option>
+            <option value="jazan">منطقة جازان</option>
+            <option value="najran">منطقة نجران</option>
+            <option value="baha">منطقة الباحة</option>
+            <option value="jouf">منطقة الجوف</option>
+          </select>
         </div>
+
+        <!-- Category Filter -->
+        <div class="filter-section">
+          <label class="filter-label">فئات المعالم:</label>
+          <div class="category-filters">
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                id="mosques"
+                value="religion.place_of_worship"
+                checked
+              />
+              <span class="checkmark">🕌</span>
+              المساجد والمعالم الدينية
+            </label>
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                id="historical"
+                value="tourism.sights"
+                checked
+              />
+              <span class="checkmark">🏛️</span>
+              المعالم التاريخية
+            </label>
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                id="restaurants"
+                value="commercial.restaurant"
+                checked
+              />
+              <span class="checkmark">🍽️</span>
+              المطاعم والمقاهي
+            </label>
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                id="hotels"
+                value="accommodation.hotel"
+                checked
+              />
+              <span class="checkmark">🏨</span>
+              الفنادق والإقامة
+            </label>
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                id="museums"
+                value="tourism.museum"
+                checked
+              />
+              <span class="checkmark">🏛️</span>
+              المتاحف والمعارض
+            </label>
+          </div>
+        </div>
+
+        <!-- Map Controls -->
+        <div class="map-actions">
+          <button id="centerSaudi" class="action-btn primary">
+            <span>🎯</span>
+            مركز على السعودية
+          </button>
+          <button id="toggleSatellite" class="action-btn">
+            <span>🛰️</span>
+            عرض القمر الصناعي
+          </button>
+          <button id="resetFilters" class="action-btn">
+            <span>🔄</span>
+            إعادة تعيين
+          </button>
+        </div>
+      </div>
+
+      <!-- Map Container -->
+      <div class="map-wrapper">
+        <div id="saudi-map" class="saudi-map"></div>
+        <div class="map-loading" id="mapLoading">
+          <div class="loading-spinner"></div>
+          <p>جاري تحميل الخريطة...</p>
+        </div>
+      </div>
+
+      <!-- Map Legend -->
+      <div class="map-legend">
+        <h3>دليل الرموز</h3>
+        <div class="legend-items">
+          <div class="legend-item">
+            <span class="legend-icon">🕌</span>
+            <span>المساجد والمعالم الدينية</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-icon">🏛️</span>
+            <span>المعالم التاريخية</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-icon">🍽️</span>
+            <span>المطاعم والمقاهي</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-icon">🏨</span>
+            <span>الفنادق والإقامة</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-icon">🏛️</span>
+            <span>المتاحف والمعارض</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-icon">👑</span>
+            <span>المواقع التاريخية المهمة</span>
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- Info Modal -->
     <div id="infoModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
-            <div id="modalContent"></div>
-        </div>
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <div id="modalContent"></div>
+      </div>
     </div>
 
     <!-- Scripts -->
@@ -186,5 +195,5 @@
     <script src="../../scripts/modules/regionalFilter.js"></script>
     <script src="../../scripts/modules/historicalMarkers.js"></script>
     <script src="../../scripts/mapPage.js"></script>
-</body>
+  </body>
 </html>

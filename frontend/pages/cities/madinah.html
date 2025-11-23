@@ -16,7 +16,12 @@
     />
     <link rel="stylesheet" href="../../styles/main.css" />
     <link rel="stylesheet" href="../../styles/chatbot.css" />
+    <link rel="stylesheet" href="../../styles/components/_weather-widget.css" />
+    <link rel="stylesheet" href="../../styles/components/_weather-widget-weekly.css" />
     
+    <script src="../../config/api-keys.js" defer></script>
+    <script src="../../scripts/modules/weatherApi.js" defer></script>
+    <script src="../../scripts/modules/weatherWidget.js" defer></script>
     <script src="../../scripts/chatbot.js" defer></script>
     <script src="../../scripts/header-component.js" defer></script>
   </head>
@@ -80,58 +85,6 @@
       </div>
     </div>
 
-    <header class="header" id="header" data-header-placeholder>
-      <div class="header-inner">
-        <div class="brand" aria-label="Saudi Tourism">
-          <div class="brand-mark" aria-hidden="true"></div>
-          <div>
-            <div class="brand-title">Visit Saudi Arabia</div>
-            <div class="brand-sub">Explore regions, heritage, and faith</div>
-          </div>
-        </div>
-
-        <div class="nav-container">
-          <button
-            class="theme-toggle"
-            id="themeToggle"
-            aria-label="Toggle theme"
-          >
-            🌙 Dark
-          </button>
-
-          <nav class="nav" aria-label="Main Navigation">
-            <div class="item">
-              <a href="../index.html#home">Home</a>
-            </div>
-            <div class="item">
-              <a href="../maps/map-interactive.html">Interactive Map</a>
-            </div>
-            <div class="item">
-              <a href="../index.html#religious">Religious Sites</a>
-            </div>
-            <div class="item">
-              <a href="../core/history.html">History</a>
-            </div>
-            <div class="item">
-              <a href="../index.html#heritage">Heritage</a>
-            </div>
-            <div class="item">
-              <a href="../index.html#regions">Regions</a>
-            </div>
-            <div class="item has-dropdown">
-              <a href="../islamic-guide/islamic-guide.html">Islamic Guide ▾</a>
-              <div class="dropdown" role="menu">
-                <a href="../islamic-guide/qibla.html" role="menuitem">Qibla Finder</a>
-                <a href="../islamic-guide/prayer-times.html" role="menuitem">Prayer Times</a>
-                <a href="../islamic-guide/quran.html" role="menuitem">Quran & Du'a</a>
-                <a href="../islamic-guide/mosques.html" role="menuitem">Nearby Mosques</a>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </header>
-
     <section class="hero" aria-label="Hero section">
       <div class="hero-bg">
         <video
@@ -179,12 +132,16 @@
     </section>
 
     <main dir="rtl" class="history-container">
+
+
+
+
       <!-- المدينة المنورة -->
       <section class="section" id="first-state">
         <div class="section-content">
           <div class="section-image">
             <img
-              src="../../assets/images/cities/Saudi1.png"
+              src="../../assets/images/destinations/madinah-onMap.jpg"
               alt="المدينة المنورة — المسجد النبوي ومعالمها"
             />
           </div>
@@ -192,10 +149,7 @@
             <h2 class="section-title">المدينة المنورة – طيبة الطيبة</h2>
             <h3 class="section-subtitle">نبذة تاريخية موجزة</h3>
             <p class="section-body">
-              تكتسب المدينة المنورة مكانتها من الهجرة النبوية وبناء المسجد النبوي،
-              حيث تأسست أول نواة للدولة الإسلامية وقيمها في الإدارة والعدل
-              والمؤاخاة. ومنذ ذلك التاريخ ظلت طيبة مقصدًا للعلم والعبادة وموطنًا
-              للسكينة والضيافة.
+              تتميز بأجواء استثنائية ومليئة بالروحانية، حيث يتوافد الزوار من مختلف أنحاء العالم للصلاة في المسجد النبوي، ويستشعرون الطمأنينة والسكينة في كل زاوية. إلى جانب الأجواء الروحانية، يمكن للزوار الاستمتاع بجولات في الأماكن الأثرية التي تروي تاريخ المدينة العريق
             </p>
             <p class="section-body">
               توالت على المدينة توسعات عمرانية منظّمة حافظت على أصالتها، وطالت
@@ -211,23 +165,25 @@
               وتستمر مشاريع التطوير في تعزيز التجربة الإنسانية والإيمانية، مع صون
               المواقع التاريخية وإحيائها بمحتوى ثقافي ومعرفي.
             </p>
-            <h4 class="section-subtitle">معالم تاريخية بارزة</h4>
+            <h4 class="section-subtitle">معالم بارزة</h4>
             <ul class="section-list">
               <li>المسجد النبوي والروضة الشريفة</li>
-              <li>البقيع ومواقع الصحابة</li>
               <li>مسجد قباء — أول مسجد أُسِّس في الإسلام</li>
+              <li>جبل أحد</li>
               <li>مسجد القبلتين وموقع الخندق (جبل سلع)</li>
+              <li>متحف دار المدينة</li>
             </ul>
           </div>
         </div>
       </section>
+
 
       <!-- المسارات الإيمانية -->
       <section class="section" id="second-state">
         <div class="section-content">
           <div class="section-image">
             <img
-              src="../../assets/images/cities/Saudi2.jpg"
+              src="../../assets/images/destinations/masarat.jpg"
               alt="المعالم الإيمانية — قباء والقبلتين والخندق"
             />
           </div>
@@ -266,12 +222,108 @@
         </div>
       </section>
 
+
+      
+      <!-- المسجد النبوي الشريف -->
+      <section class="section" id="king-abdulaziz">
+        <div class="section-content">
+          <div class="section-image">
+            <img
+              src="../../assets/images/destinations/almasjed-alnabawe.jpg"
+              alt="المسجد النبوي الشريف"
+            />
+          </div>
+          <div class="section-text">
+            <h2 class="section-title">المسجد النبوي الشريف</h2>
+            <h3 class="section-subtitle">نبذة عن المسجد النبوي</h3>
+            <p class="section-body">
+              بنى رسول الله ﷺ مسجده الشريف حينما وصل إلى المدينة مهاجرًا من مكة بعد بناء مسجد قباء، وشهد المسجد عدة توسعات عبر التاريخ؛ فأول توسعة له كان في عهده ﷺ في السنة السابعة للهجرة، ثم في عهد عمر بن الخطاب سنة 17هـ، وعثمان بن عفان سنة 29هـ، وأولى الحكام والولاة من الدول الإسلامية المتعاقبة عليه اهتمامهم ورعايتهم، وأجريت في عهد الملك عبد العزيز بن عبد الرحمن آل سعود وأبنائه الملوك عدة إصلاحات وتوسعات هي الأكبر في تاريخ عمارة المسجد النبوي الشريف.
+            </p>
+            <p class="section-body">
+              يُنصح بالزيارة في أوقات معتدلة واتباع مسارات المشاة واللوحات
+              الإرشادية، مع المحافظة على نظافة الموقع.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+       <!-- جبل أحد -->
+      <section class="section" id="king-abdulaziz">
+        <div class="section-content">
+          <div class="section-image">
+            <img
+              src="../../assets/images/destinations/jabal-ahod.jpg"
+              alt="جبل أحد — سيرة وشواهد"
+            />
+          </div>
+          <div class="section-text">
+            <h2 class="section-title">جبل أحد</h2>
+            <h3 class="section-subtitle">جبل مَهيب له مكانة خاصة عند رسولنا الكريم، فقد قال ﷺ: (أُحدٌ جبلٌ يُحِبُّنَا ونُحِبُّهُ).</h3>
+            <p class="section-body"> 
+         حصلت بجواره واحدة من أعظم معارك الإسلام، وهي معركة أحد التي استشهد فيها ٧٠ من الصحابة، منهم سيد الشهداء حمزة بن عبد المطلب رضي الله عنه.
+         <br>
+وكان رسول الله ﷺ كثيرًا ما يضرب به المثل لعظم الحجم، كقوله في مدح صحابته والثناء عليهم: “والذي نفسي بيده لو أنفق أحدكم مثل أُحد ذهبًا ما بلغ مُدَّ أحدهم ولا نَصِيفَه”.          
+            </p>
+            <p class="section-body">
+              يُنصح بالزيارة في أوقات معتدلة واتباع مسارات المشاة واللوحات
+              الإرشادية، مع المحافظة على نظافة الموقع.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!--مسجد قباء -->
+      <section class="section">
+        <div class="section-content">
+          <div class="section-image">
+            <img
+              src="../../assets/images/destinations/masjed-qebaa.jpg"
+              alt="مسجد "
+            />
+          </div>
+          <div class="section-text">
+            <h2 class="section-title">مسجد قباء </h2>
+            <h3 class="section-subtitle">أول مسجد بُني في الإسلام</h3>
+            <p class="section-body">
+              أول مسجد بني في الإسلام، وضع حجر أساسه نبينا بيديه الشريفتين، ورفع بنيانه المهاجرون والأنصار، وبيَّن الله فضله بقرآن يُتلى إلى يوم الدين ﴿لَمَسْجِدٌ أُسِّسَ عَلَى التَّقْوَى مِنْ أَوَّلِ يَوْمٍ أَحَقُّ أَنْ تَقُومَ فِيهِ﴾. أعظم مسجد في الإسلام بعد المساجد الثلاثة، يقع في ديار بني عمرو بن عوف من الأنصار، يربطه اليوم بالمسجد النبوي طريق المشاة على امتداد 3 كم، يقصده أهل المدينة وزوَّارها للصلاة والتعبُّد فيه اتباعًا لسنة النبي ﷺ وطلبًا للأجر.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- مسجد القبلتين -->
+      <section class="section">
+        <div class="section-content">
+          <div class="section-image">
+            <img
+              src="../../assets/images/destinations/masjed-alqeblaten.webp"
+              alt="مسجد قباء"
+            />
+          </div>
+          <div class="section-text">
+            <h2 class="section-title">مسجد القبلتين </h2>
+            <h3 class="section-subtitle">أيقونة تاريخية إسلاميّة</h3>
+            <p class="section-body">
+              يقع المسجد شمال غرب المدينة، قريبًا من العقيق، عُرف باسم مسجد بني سَلِمَة لوقوعه في ديارهم، وهم فرع من الأنصار، ثم سُمِّي بمسجد القبلتين لأن النبي ﷺ جاء لحيهم وصلى بهم فصادف أن جاء الأمر بالتحول من بيت المقدس إلى الكعبة وهو قائم يصلي الظهر فيه إماما بأصحابه، فصلى بالمسلمين ركعتين إلى بيت المقدس ثم أكمل الركعتين الباقيتين مستقبلا المسجد الحرام، ليصبح هذا المسجد من الآثار الشاهدة على حدث من أهم الأحداث في تاريخ المسلمين
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
       <!-- المدينة اليوم -->
       <section class="section" id="modern-kingdom">
         <div class="section-content">
           <div class="section-image">
             <img
-              src="../../assets/images/cities/Saudi3.jpg"
+              src="../../assets/images/destinations/madinah-today.webp"
               alt="المدينة الحديثة — نقل وخدمات ذكية"
             />
           </div>
@@ -309,93 +361,10 @@
         </div>
       </section>
 
-      <!-- جبل أحد -->
-      <section class="section" id="king-abdulaziz">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/kings/King abdulaziz.jpg"
-              alt="جبل أحد — سيرة وشواهد"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title">جبل أحد</h2>
-            <h3 class="section-subtitle">سيرة وشواهد على صفحة التاريخ</h3>
-            <p class="section-body">
-              يحمل جبل أحد رمزية خاصة في السيرة النبوية. يزور الضيوف المنطقة
-              بتؤدة واحترام، ويطّلعون على الدروس المستفادة من الأحداث التاريخية
-              ومكانتها في الوعي الإسلامي.
-            </p>
-            <p class="section-body">
-              يُنصح بالزيارة في أوقات معتدلة واتباع مسارات المشاة واللوحات
-              الإرشادية، مع المحافظة على نظافة الموقع.
-            </p>
-          </div>
-        </div>
-      </section>
+     
+      
 
-      <!-- وادي العقيق -->
-      <section class="section" id="kings">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/kings/king saud.jpg"
-              alt="وادي العقيق التاريخي"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title">وادي العقيق</h2>
-            <h3 class="section-subtitle">طبيعة وتاريخ وروح المدينة</h3>
-            <p class="section-body">
-              يُعد وادي العقيق من أشهر أودية المدينة، ارتبط بذكريات تاريخية
-              وروح المكان. تتوافر في محيطه مساحات للنزهة الهادئة ومسارات خضراء
-              عند اعتدال الأجواء.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- مسجد قباء -->
-      <section class="section">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/kings/king faisal.jpg"
-              alt="مسجد قباء"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title">مسجد قباء</h2>
-            <h3 class="section-subtitle">أول مسجد في الإسلام</h3>
-            <p class="section-body">
-              زيارة قباء محطة إيمانية أصيلة؛ يمتاز بتنظيمه وخدماته وساحاته
-              الرحبة ومواقف قريبة ومسارات مشاة منسّقة.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- مسجد القبلتين -->
-      <section class="section">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/kings/king khalid.jpg"
-              alt="مسجد القبلتين"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title">مسجد القبلتين</h2>
-            <h3 class="section-subtitle">قصة تحويل القبلة</h3>
-            <p class="section-body">
-              يعرّف المسجد الزائرين بواقعة تحويل القبلة، مع قاعات صلاة
-              منظّمة وخدمات إرشاد ومواقف مخصصة.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ميقات ذي الحليفة -->
+      <!-- ميقات ذي الحليفة
       <section class="section">
         <div class="section-content">
           <div class="section-image">
@@ -413,9 +382,9 @@
             </p>
           </div>
         </div>
-      </section>
+      </section> -->
 
-      <!-- الأسواق والمأكولات -->
+      <!-- الأسواق والمأكولات
       <section class="section">
         <div class="section-content">
           <div class="section-image">
@@ -433,9 +402,9 @@
             </p>
           </div>
         </div>
-      </section>
+      </section> -->
 
-      <!-- الفعاليات والمسارات الحضرية -->
+      <!-- الفعاليات والمسارات الحضرية
       <section class="section">
         <div class="section-content">
           <div class="section-image">
@@ -456,8 +425,10 @@
           </div>
         </div>
       </section>
-    </main>
+    </main> -->
 
+
+    <script type="module" src="../../scripts/main.js"></script>
     <script src="../../scripts/Script.js"></script>
 
     <!-- اختياري: مزامنة عنوان التبويب مع i18n إذا كان window.i18n موجود -->
@@ -483,5 +454,10 @@
         }
       });
     </script>
+
+    <!-- Weather Widget at Bottom -->
+    <div style="max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 2rem;">
+      <div id="weather-widget" data-city="madinah"></div>
+    </div>
   </body>
 </html>

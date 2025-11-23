@@ -1,7 +1,8 @@
 console.log("login.js loaded");
 
-// BACKEND CONNECTION
-const API_BASE_URL = "http://127.0.0.1:9000/api";
+// BACKEND CONNECTION - Load from config.js
+// Make sure config.js is loaded before this script
+const API_BASE_URL = window.API_BASE_URL || "http://127.0.0.1:9000/api";
 
 const loginForm  = document.getElementById("loginForm");
 const loginMsgEl = document.getElementById("loginMessage");
@@ -75,7 +76,7 @@ if (loginForm) {
       //  نرجع للهوم أو للصفحة اللي كان يبيها وهو مسجل دخول
       setTimeout(() => {
         //  (تعديل) لو فيه رابط محفوظ نستخدمه، غير كذا نرجع لـ index.html
-        const redirectTo = redirectStored || "index.html";
+        const redirectTo = redirectStored || "../../pages/index.html";
 
         //  تنظيف القيمة بعد الاستخدام عشان ما تعلق
         if (redirectStored) {
