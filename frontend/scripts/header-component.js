@@ -111,7 +111,7 @@
             </div>
             <div class="item">
               <a
-                href="${getIndexLink('maps/map-interactive.html')}"
+                href="${getIndexLink('maps/maplibre.html')}"
                 data-i18n="common.interactiveMap"
                 >Interactive Map</a
               >
