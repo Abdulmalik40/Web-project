@@ -74,7 +74,7 @@
             </div>
             <div class="item">
               <a
-                href="/maps/maplibre.html"
+                href="/maps/map-interactive.html"
                 data-i18n="common.interactiveMap"
               >Interactive Map</a>
             </div>
