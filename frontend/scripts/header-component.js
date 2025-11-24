@@ -63,7 +63,7 @@ function getHeaderHTML() {
             </div>
             <div class="item has-dropdown">
               <a
-                href="frontend/pages/islamic-guide/islamic-guide.html"
+                href="/frontend/pages/islamic-guide/islamic-guide.html"
                 data-i18n="common.islamicGuide"
               >Islamic Guide ▾</a>
               <div class="dropdown" role="menu">
