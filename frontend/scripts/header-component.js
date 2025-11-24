@@ -13,16 +13,7 @@
 (function () {
   'use strict';
 
-  // Base URL for absolute paths
-  const baseURL = '/frontend/pages';
-  
-  // Helper to get absolute paths
-  function getAbsoluteLink(path) {
-    if (path.startsWith('#')) {
-      return `${baseURL}/index.html${path}`;
-    }
-    return `${baseURL}/${path}`;
-  }
+
 
   /**
    * 🧱 Standard header HTML
@@ -81,41 +72,41 @@
           <!-- Main navigation -->
           <nav class="nav" aria-label="Main Navigation">
             <div class="item">
-              <a href="${getAbsoluteLink('index.html#home')}" data-i18n="common.home">Home</a>
+              <a href="http://165.227.237.78/var/www/Web-project/frontend/pages/index.html#home" data-i18n="common.home">Home</a>
             </div>
             <div class="item">
               <a
-                href="${getAbsoluteLink('maps/maplibre.html')}"
+                href="http://165.227.237.78/var/www/Web-project/frontend/pages/maps/maplibre.html"
                 data-i18n="common.interactiveMap"
                 >Interactive Map</a
               >
             </div>
             <div class="item">
-              <a href="${getAbsoluteLink('core/history.html')}" data-i18n="common.history">
+              <a href="http://165.227.237.78/var/www/Web-project/frontend/pages/core/history.html" data-i18n="common.history">
                 History
               </a>
             </div>
             <div class="item has-dropdown">
               <a
-                href="${getAbsoluteLink('islamic-guide/islamic-guide.html')}"
+                href="http://165.227.237.78/var/www/Web-project/frontend/pages/islamic-guide/islamic-guide.html"
                 data-i18n="common.islamicGuide"
                 >Islamic Guide ▾</a
               >
               <div class="dropdown" role="menu">
                 <a
-                  href="${getAbsoluteLink('islamic-guide/qibla.html')}"
+                  href="http://165.227.237.78/var/www/Web-project/frontend/pages/islamic-guide/qibla.html"
                   role="menuitem"
                   data-i18n="common.qiblaFinder"
                   >Qibla Finder</a
                 >
                 <a
-                  href="${getAbsoluteLink('islamic-guide/prayer-times.html')}"
+                  href="http://165.227.237.78/var/www/Web-project/frontend/pages/islamic-guide/prayer-times.html"
                   role="menuitem"
                   data-i18n="common.prayerTimes"
                   >Prayer Times</a
                 >
                 <a
-                  href="${getAbsoluteLink('islamic-guide/quran.html')}"
+                  href="http://165.227.237.78/var/www/Web-project/frontend/pages/islamic-guide/quran.html"
                   role="menuitem"
                   data-i18n="common.quran"
                   >Quran &amp; Du'a</a
@@ -125,10 +116,10 @@
 
             <!-- Login / Register -->
             <div class="item" id="nav-login">
-              <a href="${getAbsoluteLink('auth/login.html')}" data-i18n="common.login">Login</a>
+              <a href="http://165.227.237.78/var/www/Web-project/frontend/pages/auth/login.html" data-i18n="common.login">Login</a>
             </div>
             <div class="item" id="nav-register">
-              <a href="${getAbsoluteLink('auth/register.html')}" data-i18n="common.register">Register</a>
+              <a href="http://165.227.237.78/var/www/Web-project/frontend/pages/auth/register.html" data-i18n="common.register">Register</a>
             </div>
 
             <!-- Profile & Logout (hidden by default) -->
@@ -137,7 +128,7 @@
               id="nav-profile"
               style="display: none;"
             >
-              <a href="${getAbsoluteLink('user/profile.html')}" data-i18n="common.profile">Profile</a>
+              <a href="http://165.227.237.78/var/www/Web-project/frontend/pages/user/profile.html" data-i18n="common.profile">Profile</a>
             </div>
             <div
               class="item"
