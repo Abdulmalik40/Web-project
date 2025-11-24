@@ -42,6 +42,149 @@
 
     <!-- Header Component Script -->
     <script src="../../scripts/header-component.js" defer></script>
+    
+    <!-- Added: CSS animations for event cards
+         Includes fade-in, slide-up animations on load, and hover effects -->
+    <style>
+      /* Animation keyframes for card entrance */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Animation keyframes for card hover scale */
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.02);
+        }
+      }
+
+      /* Event card container with animation */
+      .event-card-animated {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Staggered animation delays for each card */
+      .event-card-animated:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .event-card-animated:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .event-card-animated:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      /* Hover effects for cards */
+      .event-card-animated:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+        -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+        -moz-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+      }
+
+      /* Image hover effect */
+      .event-card-animated img {
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .event-card-animated:hover img {
+        transform: scale(1.1);
+      }
+
+      /* Button hover effect */
+      .event-card-animated a {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .event-card-animated a::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .event-card-animated a:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .event-card-animated a:hover {
+        background: #ff8d3d;
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(255, 125, 45, 0.4);
+      }
+
+      /* Smooth transitions for all card elements */
+      .event-card-animated h3,
+      .event-card-animated p {
+        transition: color 0.3s ease;
+      }
+
+      .event-card-animated:hover h3 {
+        color: #ff7d2d;
+      }
+
+      /* RTL/LTR Layout Switching for Section Content */
+      .section-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .section-image {
+        flex: 1;
+        order: 1;
+      }
+
+      .section-text {
+        flex: 1;
+        order: 2;
+      }
+
+      /* RTL: image right, text left */
+      html[dir="rtl"] .section-content,
+      body.rtl .section-content {
+        flex-direction: row-reverse;
+      }
+
+      html[dir="rtl"] .section-image,
+      body.rtl .section-image {
+        order: 2;
+      }
+
+      html[dir="rtl"] .section-text,
+      body.rtl .section-text {
+        order: 1;
+      }
+
+      .history-container {
+        direction: inherit;
+      }
+    </style>
   </head>
 
   <body>
@@ -145,15 +288,15 @@
   <div class="hero-content">
     <div class="hero-text">
       <h1 class="hero-title">
-        <span class="title-line">RELIGIOUS CITY</span>
-        <span class="title-line featured">MAKKAH</span>
-        <span class="title-line subtitle">
+        <span class="title-line" data-i18n="makkahPage.heroTitle1">RELIGIOUS CITY</span>
+        <span class="title-line featured" data-i18n="makkahPage.heroTitle2">MAKKAH</span>
+        <span class="title-line subtitle" data-i18n="makkahPage.heroTitle3">
           HARAM • PILGRIMAGE • HERITAGE
         </span>
       </h1>
 
       <!-- short city description -->
-      <p class="hero-sub">
+      <p class="hero-sub" data-i18n="makkahPage.heroSubtitle">
         The heart of Islam and the sacred destination of Hajj and Umrah.
       </p>
     </div>
@@ -168,7 +311,7 @@
 </section>
 
  
-<main dir="rtl" class="history-container">
+<main class="history-container">
 
     
 <section class="section" id="first-state">
@@ -186,44 +329,44 @@
     <div class="section-text">
 
       <!-- Title -->
-      <h2 class="section-title">مكة المكرمة – وجهة المسلمين الاولى</h2>
+      <h2 class="section-title" data-i18n="makkahPage.section1Title">مكة المكرمة – وجهة المسلمين الاولى</h2>
 
       <!-- Subtitle -->
-      <h3 class="section-subtitle">عن مكة المكرمة</h3>
+      <h3 class="section-subtitle" data-i18n="makkahPage.section1Subtitle">عن مكة المكرمة</h3>
 
       <!-- Description paragraphs -->
-      <p class="section-body">
+      <p class="section-body" data-i18n="makkahPage.section1Para1">
         تُعدّ مكة المكرمة من أعرق مدن الجزيرة العربية؛ احتفظت عبر القرون
         بمكانتها الدينية والتجارية، ثم غدت قبلة المسلمين ومهوى الأفئدة
         ومركزًا للعلم والضيافة مع بزوغ فجر الإسلام.
       </p>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="makkahPage.section1Para2">
         تعاقبت على مكة مراحل تطوير وتنظيم واسعة طالت المسجد الحرام وساحاته
         ومرافقه وشبكات الطرق، ما جعل تجربة العمرة والزيارة أكثر يُسرًا
         على مدار العام مع المحافظة على خصوصية المكان وقدسيته.
       </p>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="makkahPage.section1Para3">
         وبينما تتسارع وتيرة التنمية العمرانية والخدمية، تحافظ المدينة على
         روحها الأصيلة وتقاليدها الضيافية، حيث تتجاور المعالم التاريخية مع
         المشاريع الحديثة التي تخدم ملايين الزوار.
       </p>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="makkahPage.section1Para4">
         وتقدّم مكة اليوم تجربة متوازنة تجمع السكينة الروحية بالكفاءة
         التشغيلية، ضمن منظومة خدمات ذكية لإدارة الحشود والإرشاد والتنقل.
       </p>
 
       <!-- highlights list -->
-      <h4 class="section-subtitle">معالم تاريخية بارزة</h4>
+      <h4 class="section-subtitle" data-i18n="makkahPage.section1Highlights">معالم تاريخية بارزة</h4>
 
       <ul class="section-list">
-        <li>المسجد الحرام والكعبة المشرفة</li>
-        <li>المشاعر المقدسة</li>
-        <li>جبل النور - غار حراء</li>
-        <li>Bئر زمزم</li>
-        <li>مجمع الملك عبد العزيز لكسوة الكعبة المشرفة</li>
+        <li data-i18n="makkahPage.section1Item1">المسجد الحرام والكعبة المشرفة</li>
+        <li data-i18n="makkahPage.section1Item2">المشاعر المقدسة</li>
+        <li data-i18n="makkahPage.section1Item3">جبل النور - غار حراء</li>
+        <li data-i18n="makkahPage.section1Item4">بئر زمزم</li>
+        <li data-i18n="makkahPage.section1Item5">مجمع الملك عبد العزيز لكسوة الكعبة المشرفة</li>
       </ul>
 
     </div>
@@ -243,49 +386,49 @@
     </div>
 
     <div class="section-text">
-      <h2 class="section-title">المسجد الحرام</h2>
-      <h3 class="section-subtitle">قلب مكة وقبلة المسلمين</h3>
+      <h2 class="section-title" data-i18n="makkahPage.section2Title">المسجد الحرام</h2>
+      <h3 class="section-subtitle" data-i18n="makkahPage.section2Subtitle">قلب مكة وقبلة المسلمين</h3>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="makkahPage.section2Para1">
         يُعد المسجد الحرام أقدس مكان في الإسلام، وتحتل الكعبة المشرفة فيه موقعًا
         مركزيًا منذ العصور الأولى للبشرية. تتجه قلوب المسلمين وأجسادهم نحوه في
         الصلوات، ويزوره ملايين الحجاج والمعتمرين سنويًا لأداء الشعائر في أجواء
         روحانية عامرة بالإيمان والسكينة. تقتصر زيارة المسجد الحرام على المسلمين فقط.
       </p>
 
-      <h3 class="section-subtitle">أبرز معالم المسجد الحرام</h3>
+      <h3 class="section-subtitle" data-i18n="makkahPage.section2Highlights">أبرز معالم المسجد الحرام</h3>
 
       <dl class="section-list">
 
-        <dt>الكعبة المشرفة</dt>
-        <dd>أقدس بيت في الإسلام، يطوف المسلمون حوله سبعة أشواط طوال العام.</dd>
+        <dt data-i18n="makkahPage.section2Item1Title">الكعبة المشرفة</dt>
+        <dd data-i18n="makkahPage.section2Item1Desc">أقدس بيت في الإسلام، يطوف المسلمون حوله سبعة أشواط طوال العام.</dd>
 
-        <dt>الحجر الأسود</dt>
-        <dd>حجر من الجنة يقع في الركن الشرقي للكعبة، يبدأ منه الطواف.</dd>
+        <dt data-i18n="makkahPage.section2Item2Title">الحجر الأسود</dt>
+        <dd data-i18n="makkahPage.section2Item2Desc">حجر من الجنة يقع في الركن الشرقي للكعبة، يبدأ منه الطواف.</dd>
 
-        <dt>الركن اليماني</dt>
-        <dd>ركن أصيل من بناء إبراهيم عليه السلام، ويُسنّ لمسُه أثناء الطواف.</dd>
+        <dt data-i18n="makkahPage.section2Item3Title">الركن اليماني</dt>
+        <dd data-i18n="makkahPage.section2Item3Desc">ركن أصيل من بناء إبراهيم عليه السلام، ويُسنّ لمسُه أثناء الطواف.</dd>
 
-        <dt>مقام إبراهيم</dt>
-        <dd>حجر يحمل أثر قدمي النبي إبراهيم أثناء بناء الكعبة.</dd>
+        <dt data-i18n="makkahPage.section2Item4Title">مقام إبراهيم</dt>
+        <dd data-i18n="makkahPage.section2Item4Desc">حجر يحمل أثر قدمي النبي إبراهيم أثناء بناء الكعبة.</dd>
 
-        <dt>حِجر إسماعيل</dt>
-        <dd>منطقة نصف دائرية كانت جزءًا من الكعبة في البناء القديم.</dd>
+        <dt data-i18n="makkahPage.section2Item5Title">حِجر إسماعيل</dt>
+        <dd data-i18n="makkahPage.section2Item5Desc">منطقة نصف دائرية كانت جزءًا من الكعبة في البناء القديم.</dd>
 
-        <dt>المسعى</dt>
-        <dd>مكان السعي بين الصفا والمروة اقتداءً بسعي السيدة هاجر بحثًا عن الماء.</dd>
+        <dt data-i18n="makkahPage.section2Item6Title">المسعى</dt>
+        <dd data-i18n="makkahPage.section2Item6Desc">مكان السعي بين الصفا والمروة اقتداءً بسعي السيدة هاجر بحثًا عن الماء.</dd>
 
-        <dt>ماء زمزم</dt>
-        <dd>بئر معجزي تفجّر منذ عهد هاجر عليها السلام، وتتوفر مياهه في الحرم عبر حافظات ومشربيات.</dd>
+        <dt data-i18n="makkahPage.section2Item7Title">ماء زمزم</dt>
+        <dd data-i18n="makkahPage.section2Item7Desc">بئر معجزي تفجّر منذ عهد هاجر عليها السلام، وتتوفر مياهه في الحرم عبر حافظات ومشربيات.</dd>
 
-        <dt>المآذن</dt>
-        <dd>يضم الحرم 13 مئذنة بديعة يصدح منها الأذان للصلاة.</dd>
+        <dt data-i18n="makkahPage.section2Item8Title">المآذن</dt>
+        <dd data-i18n="makkahPage.section2Item8Desc">يضم الحرم 13 مئذنة بديعة يصدح منها الأذان للصلاة.</dd>
 
-        <dt>منبر الخطبة</dt>
-        <dd>منبر رخامي حديث صُمّم بدقة عالية ويستخدم لخطب الجمعة.</dd>
+        <dt data-i18n="makkahPage.section2Item9Title">منبر الخطبة</dt>
+        <dd data-i18n="makkahPage.section2Item9Desc">منبر رخامي حديث صُمّم بدقة عالية ويستخدم لخطب الجمعة.</dd>
 
-        <dt>أبواب المسجد الحرام</dt>
-        <dd>يضم أكثر من 210 أبواب لتسهيل حركة الزوار وتقليل الازدحام.</dd>
+        <dt data-i18n="makkahPage.section2Item10Title">أبواب المسجد الحرام</dt>
+        <dd data-i18n="makkahPage.section2Item10Desc">يضم أكثر من 210 أبواب لتسهيل حركة الزوار وتقليل الازدحام.</dd>
 
       </dl>
     </div>
@@ -305,48 +448,48 @@
     </div>
 
     <div class="section-text">
-      <h2 class="section-title">المشاعر المقدسة</h2>
-      <h3 class="section-subtitle">رحلة متصلة بين مكة ومنى ومزدلفة وعرفات</h3>
+      <h2 class="section-title" data-i18n="makkahPage.section3Title">المشاعر المقدسة</h2>
+      <h3 class="section-subtitle" data-i18n="makkahPage.section3Subtitle">رحلة متصلة بين مكة ومنى ومزدلفة وعرفات</h3>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="makkahPage.section3Para1">
         تحتضن المشاعر المقدسة أركان الحج ومناسكه الكبرى، حيث تتكامل خدمات الضيافة
         والتنقّل والإرشاد لضمان حركة سلسة لملايين الحجاج والمعتمرين خلال المواسم.
         وتُدار حركة الزوار عبر أنظمة نقل حديثة تشمل الحافلات الترددية وقطار المشاعر،
         مع مسارات مشاة ومراكز توجيه تعزّز الانسيابية والسلامة.
       </p>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="makkahPage.section3Para2">
         كما تنتشر خدمات الدعم الصحي والإسعافي والرقمي على نطاق واسع لضمان رحلة عبادية
         آمنة ومنظمة، فيما تبقى قدسية المكان واحترام الأنظمة البيئية والسلوكية جزءاً
         أصيلاً من تجربة الحج.
       </p>
 
-      <h4 class="section-subtitle">محطات رئيسية في المشاعر</h4>
+      <h4 class="section-subtitle" data-i18n="makkahPage.section3Highlights">محطات رئيسية في المشاعر</h4>
 
       <dl class="section-list">
-        <dt>منى</dt>
-        <dd>مخيمات مهيأة توفر بيئة آمنة ومريحة مع خدمات إعاشة وتكييف.</dd>
+        <dt data-i18n="makkahPage.section3Item1Title">منى</dt>
+        <dd data-i18n="makkahPage.section3Item1Desc">مخيمات مهيأة توفر بيئة آمنة ومريحة مع خدمات إعاشة وتكييف.</dd>
 
-        <dt>جسر الجمرات</dt>
-        <dd>تنظيم متدرّج ومتعدد الأدوار لضمان التفويج السلس وتقليل الازدحام.</dd>
+        <dt data-i18n="makkahPage.section3Item2Title">جسر الجمرات</dt>
+        <dd data-i18n="makkahPage.section3Item2Desc">تنظيم متدرّج ومتعدد الأدوار لضمان التفويج السلس وتقليل الازدحام.</dd>
 
-        <dt>عرفات</dt>
-        <dd>جبل الرحمة والساحات الفسيحة التي تستقبل ملايين الحجاج في يوم عرفة.</dd>
+        <dt data-i18n="makkahPage.section3Item3Title">عرفات</dt>
+        <dd data-i18n="makkahPage.section3Item3Desc">جبل الرحمة والساحات الفسيحة التي تستقبل ملايين الحجاج في يوم عرفة.</dd>
 
-        <dt>مسجد نمرة</dt>
-        <dd>موقع خطبة يوم عرفة ومرافق واسعة لاستيعاب الحشود.</dd>
+        <dt data-i18n="makkahPage.section3Item4Title">مسجد نمرة</dt>
+        <dd data-i18n="makkahPage.section3Item4Desc">موقع خطبة يوم عرفة ومرافق واسعة لاستيعاب الحشود.</dd>
 
-        <dt>مزدلفة</dt>
-        <dd>المبيت بعد الإفاضة وجمع الجمار استعداداً لأيام التشريق.</dd>
+        <dt data-i18n="makkahPage.section3Item5Title">مزدلفة</dt>
+        <dd data-i18n="makkahPage.section3Item5Desc">المبيت بعد الإفاضة وجمع الجمار استعداداً لأيام التشريق.</dd>
 
-        <dt>قطار المشاعر</dt>
-        <dd>وسيلة نقل سريعة تربط بين منى ومزدلفة وعرفات، وتخفف الازدحام.</dd>
+        <dt data-i18n="makkahPage.section3Item6Title">قطار المشاعر</dt>
+        <dd data-i18n="makkahPage.section3Item6Desc">وسيلة نقل سريعة تربط بين منى ومزدلفة وعرفات، وتخفف الازدحام.</dd>
 
-        <dt>مراكز الإرشاد والخدمات التطوعية</dt>
-        <dd>توجيه بلغات متعددة ودعم ميداني لخدمة الحجاج.</dd>
+        <dt data-i18n="makkahPage.section3Item7Title">مراكز الإرشاد والخدمات التطوعية</dt>
+        <dd data-i18n="makkahPage.section3Item7Desc">توجيه بلغات متعددة ودعم ميداني لخدمة الحجاج.</dd>
 
-        <dt>الدعم الصحي والطوارئ</dt>
-        <dd>عيادات وإسعافات جاهزة على مدار الساعة للتعامل مع الحالات الطارئة.</dd>
+        <dt data-i18n="makkahPage.section3Item8Title">الدعم الصحي والطوارئ</dt>
+        <dd data-i18n="makkahPage.section3Item8Desc">عيادات وإسعافات جاهزة على مدار الساعة للتعامل مع الحالات الطارئة.</dd>
       </dl>
     </div>
   </div>
@@ -364,23 +507,23 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">جبل النور — غار حراء</h2>
-            <h3 class="section-subtitle">
+            <h2 class="section-title" data-i18n="makkahPage.section4Title">جبل النور — غار حراء</h2>
+            <h3 class="section-subtitle" data-i18n="makkahPage.section4Subtitle">
               إطلالة بانورامية وتجربة تاريخية
             </h3>
-            <p class="section-body">
+            <p class="section-body" data-i18n="makkahPage.section4Para1">
               جبل النور من أهم الأماكن في تاريخ الإسلام وسيرة نبيه محمد ﷺ؛ يقع شمال شرقي المسجد الحرام على مسافة أربعة كيلومترات، وفي أعلى قمة الجبل من الناحية الجنوبية الغربية يقع غار حراء الذي كان النبي ﷺ يخلو فيه بنفسه ليتعبد قبل البعثة؛ وفيه نزل عليه الوحي
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="makkahPage.section4Para2">
               المسار جبليّ يحتاج إلى لياقة متوسطة وتجهيزات بسيطة؛ وتُنصح زيارة
               الموقع في أوقات معتدلة تجنّبًا للحرارة والازدحام.
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="makkahPage.section4Para3">
               يحرص الزائر على الحفاظ على نظافة المكان واحترام قدسيته، والالتزام
               بتعليمات السلامة والتنظيم.
             </p>
-            <h4 class="section-subtitle">نصائح قبل الزيارة</h4>
-            <p class="section-body">
+            <h4 class="section-subtitle" data-i18n="makkahPage.section4Tips">نصائح قبل الزيارة</h4>
+            <p class="section-body" data-i18n="makkahPage.section4TipsText">
               انتعال أحذية مناسبة، اصطحاب كمية ماء كافية، متابعة الإرشادات الميدانية
               والخرائط الرقمية، وتجنّب ساعات الذروة ما أمكن.
             </p>
@@ -396,13 +539,15 @@
           <div class="section-image">
             <img
               src="../../assets/images/destinations/ber_zamzam.jfif"
-              alt=""
+              alt="Zamzam Well"
+              data-i18n-attr="alt"
+              data-i18n="makkahPage.section5Title"
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">بئر زمزم</h2>
-            <h3 class="section-subtitle">بئر ماء مباركة تقع في المسجد الحرام</h3>
-            <p class="section-body">
+            <h2 class="section-title" data-i18n="makkahPage.section5Title">بئر زمزم</h2>
+            <h3 class="section-subtitle" data-i18n="makkahPage.section5Subtitle">بئر ماء مباركة تقع في المسجد الحرام</h3>
+            <p class="section-body" data-i18n="makkahPage.section5Para1">
              بئر زمزم، هي بئر تقع في المسجد الحرام بمكة المكرمة بالقرب من الكعبة المشرفة، ينبع منها ماء زمزم، الذي وصفه الرسول محمد صلى الله عليه وسلم، بأنه ماء مبارك، وبيّن أنه شفاء من الأمراض.
             </p>
           </div>
@@ -420,9 +565,9 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">مجمع الملك عبد العزيز لكسوة الكعبة المشرفة</h2>
-            <h3 class="section-subtitle">هو الاسم الجديد لمصنع الكسوة بمكة المكرمة بعد صدور موافقة الملك سلمان بن عبد العزيز على تغيير الاسم في مايو 2017</h3>
-            <p class="section-body">
+            <h2 class="section-title" data-i18n="makkahPage.section6Title">مجمع الملك عبد العزيز لكسوة الكعبة المشرفة</h2>
+            <h3 class="section-subtitle" data-i18n="makkahPage.section6Subtitle">مكان صناعة كسوة الكعبة</h3>
+            <p class="section-body" data-i18n="makkahPage.section6Para1">
 في عام 1345هـ رأى الملك عبدالعزيز آل سعود بعد توقف مصر عن إرسال الكسوة بعد حادثة المحمل بضرورة صناعة كسوة للكعبة على وجه السرعة من الجوخ الأسود الفاخر المبطن بالقلع المتين كما عمل حزام الكعبة بآلة التطريز، وكتب عليها الآيات القرآنية بالقصب الفضي المموه بالذهب، وتم زركشتها بآلة التطريز أيضاً، وقد قام وزير المالية عبد الله السليمان الحمدان بجهودٍ كبيرة في سبيل إنجاز العمل في فترة يسيرة، وكُسيت الكعبة المشرفة في موعدها في اليوم العاشر من ذي الحجة سنة 1345هـ، وفي شهر محرم من العام التالي أمر الملك عبد العزيز بإنشاء دار خاصة بصناعة الكسوة؛ فاختار عبد الله السليمان محلة أجياد أمام وزارة المالية العمومية بمكة المكرمة على مساحة تبلغ 1500 متر مربع            </p>
           </div>
         </div>
@@ -439,33 +584,33 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">مكة اليوم</h2>
-            <h3 class="section-subtitle">
+            <h2 class="section-title" data-i18n="makkahPage.section7Title">مكة اليوم</h2>
+            <h3 class="section-subtitle" data-i18n="makkahPage.section7Subtitle">
               من الوصول حتى المغادرة — تجربة ضيف متكاملة
             </h3>
-            <p class="section-body">
+            <p class="section-body" data-i18n="makkahPage.section7Para1">
               تتنوع خيارات الوصول إلى مكة بين الربط السريع عبر قطار الحرمين
               والمطارات القريبة وشبكات الطرق الحديثة، مع مواقف خارجية كبيرة
               ونقلٍ تردديّ فعّال نحو نطاق الحرم.
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="makkahPage.section7Para2">
               وتزخر المدينة بمنظومة ضيافة عالمية ومعايير تشغيلية دقيقة، تشمل
               الساحات الرحبة وأنفاق المشاة وواجهات عمرانية معاصرة تُحيط بالمسجد الحرام.
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="makkahPage.section7Para3">
               تدعم التجربة خدمات رقمية للإرشاد وإدارة الحشود والخرائط التفاعلية
               وتحديثات آنية تُسهّل الحركة والاختيار.
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="makkahPage.section7Para4">
               وتظل رسالة مكة الضيافة والسكينة؛ ترحّب بزوارها على مدار العام مع
               عناية مستمرة براحة الضيف وكرامته.
             </p>
             <ul class="section-list">
-              <li>قطار الحرمين السريع</li>
-              <li>محطات كُدي والمواقف الخارجية مع الحافلات الترددية</li>
-              <li>أنفاق المشاة والساحات الواسعة حول الحرم</li>
-              <li>الطرق الدائرية والجسور التنظيمية</li>
-              <li>خدمات التوجيه الرقمي والخرائط التفاعلية</li>
+              <li data-i18n="makkahPage.section7Item1">قطار الحرمين السريع</li>
+              <li data-i18n="makkahPage.section7Item2">محطات كُدي والمواقف الخارجية مع الحافلات الترددية</li>
+              <li data-i18n="makkahPage.section7Item3">أنفاق المشاة والساحات الواسعة حول الحرم</li>
+              <li data-i18n="makkahPage.section7Item4">الطرق الدائرية والجسور التنظيمية</li>
+              <li data-i18n="makkahPage.section7Item5">خدمات التوجيه الرقمي والخرائط التفاعلية</li>
             </ul>
           </div>
         </div>
@@ -610,7 +755,10 @@
       ">
 
         <!-- CARD 1 -->
-        <div style="
+        <!-- Added: event-card-animated class for fade-in and hover animations -->
+        <div
+          class="event-card-animated"
+          style="
           width: 400px;
           background: var(--card-bg);
           border-radius: 18px;
@@ -631,14 +779,14 @@
             object-fit: cover;
           ">
 
-          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;">The International Fairs and Museums of the Prophet’s Biography and Islamic Civilization</h3>
+          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="makkahPage.event1Title">The International Fairs and Museums of the Prophet's Biography and Islamic Civilization</h3>
           <p style="
             font-size: 14px;
             padding: 10px 20px;
             opacity: 0.8;
             line-height: 1.6;
             text-align: center;
-          ">
+          " data-i18n="makkahPage.event1Description">
 An immersive cultural exhibition showcasing the life of Prophet Muhammad ﷺ through interactive halls, models, and digital experiences. A ticketed museum-style event designed to educate visitors about Islamic history. Suitable for families and tourists.          </p>
           <a href="https://tickets.asc.sa/?branch_slug=mkh"  style="
             display: inline-block;        /* important: keeps width to content */
@@ -654,7 +802,10 @@ An immersive cultural exhibition showcasing the life of Prophet Muhammad ﷺ thr
         </div>
 
         <!-- CARD 2 -->
-        <div style="
+        <!-- Added: event-card-animated class for fade-in and hover animations -->
+        <div
+          class="event-card-animated"
+          style="
          width: 400px;
           background: var(--card-bg);
           border-radius: 18px;
@@ -675,14 +826,14 @@ An immersive cultural exhibition showcasing the life of Prophet Muhammad ﷺ thr
             object-fit: cover;
           ">
 
-          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;">Makkah Sky View Experience</h3>
+          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="makkahPage.event2Title">Makkah Sky View Experience</h3>
           <p style="
             font-size: 14px;
             padding: 10px 20px;
             opacity: 0.8;
             line-height: 1.6;
             text-align: center;
-          ">
+          " data-i18n="makkahPage.event2Description">
            A guided tour around key historical sites in Makkah with panoramic viewpoints and storytelling. Includes visits to places like Jabal Khadijah and the Tree Mosque. Tickets required and booked as a full experience.</p>
           <a href="https://halayalla.com/sa-en/experiences/Makkah/Experiences-tours/makkah-sky-view"  style="
             display: inline-block;        /* important: keeps width to content */
@@ -698,7 +849,10 @@ An immersive cultural exhibition showcasing the life of Prophet Muhammad ﷺ thr
         </div>
 
         <!-- CARD 3 -->
-        <div style="
+        <!-- Added: event-card-animated class for fade-in and hover animations -->
+        <div
+          class="event-card-animated"
+          style="
           width: 400px;
           background: var(--card-bg);
           border-radius: 18px;
@@ -719,15 +873,15 @@ An immersive cultural exhibition showcasing the life of Prophet Muhammad ﷺ thr
             object-fit: cover;
           ">
 
-          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;"> “Makkah Greets Us” – Hira Cultural District</h3>
+          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="makkahPage.event3Title"> "Makkah Greets Us" – Hira Cultural District</h3>
           <p style="
             font-size: 14px;
             padding: 10px 20px;
             opacity: 0.8;
             line-height: 1.6;
             text-align: center;
-          ">
-          A cultural festival with shows, exhibits, and family activities celebrating Makkah’s heritage. Hosted in the Hira Cultural District with organized entry through tickets. Popular during holidays and seasonal events.</p>
+          " data-i18n="makkahPage.event3Description">
+          A cultural festival with shows, exhibits, and family activities celebrating Makkah's heritage. Hosted in the Hira Cultural District with organized entry through tickets. Popular during holidays and seasonal events.</p>
           <a href="https://www.rcmc.gov.sa/en-us/discover-makkah/events-and-activities/events/%D9%81%D8%B9%D8%A7%D9%84%D9%8A%D8%A9-%D9%85%D9%83%D8%A9-%D8%AA%D8%B9%D8%A7%D9%8A%D8%AF%D9%86%D8%A7-0004472699eafab8bc2890872cabef61" style="
             display: inline-block;        /* important: keeps width to content */
             margin: 20px auto 0;          /* centers button horizontally */
@@ -744,6 +898,71 @@ An immersive cultural exhibition showcasing the life of Prophet Muhammad ﷺ thr
 
     <script type="module" src="../../scripts/main.js"></script>
     <script src="../../scripts/Script.js"></script>
+    
+    <!-- Translation and RTL/LTR Layout Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const updateLayoutDirection = () => {
+          const main = document.querySelector(".history-container");
+          if (!main) return;
+
+          const currentLang =
+            window.i18n?.getLanguage() ||
+            localStorage.getItem("language") ||
+            "en";
+
+          if (currentLang === "ar") {
+            main.setAttribute("dir", "rtl");
+            document.documentElement.setAttribute("dir", "rtl");
+            document.body.classList.add("rtl");
+            document.body.classList.remove("ltr");
+          } else {
+            main.setAttribute("dir", "ltr");
+            document.documentElement.setAttribute("dir", "ltr");
+            document.body.classList.add("ltr");
+            document.body.classList.remove("rtl");
+          }
+        };
+
+        if (window.i18n) {
+          updateLayoutDirection();
+          window.i18n.subscribe(() => {
+            updateLayoutDirection();
+            if (window.i18n.refresh) {
+              window.i18n.refresh();
+            }
+          });
+        } else {
+          const checkI18n = setInterval(() => {
+            if (window.i18n) {
+              clearInterval(checkI18n);
+              updateLayoutDirection();
+              window.i18n.subscribe(() => {
+                updateLayoutDirection();
+                if (window.i18n.refresh) {
+                  window.i18n.refresh();
+                }
+              });
+            }
+          }, 100);
+          setTimeout(() => clearInterval(checkI18n), 5000);
+        }
+
+        const titleEl = document.querySelector("title");
+        if (titleEl && titleEl.hasAttribute("data-i18n")) {
+          const updateTitle = () => {
+            if (window.i18n && window.i18n.t) {
+              const key = titleEl.getAttribute("data-i18n");
+              document.title = window.i18n.t(key);
+            }
+          };
+          if (window.i18n) {
+            window.i18n.subscribe(updateTitle);
+            updateTitle();
+          }
+        }
+      });
+    </script>
 
     <!-- اختياري: مزامنة عنوان التبويب مع i18n إذا كان window.i18n موجود -->
     <script>
