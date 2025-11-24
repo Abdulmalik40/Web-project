@@ -1,0 +1,1671 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.761,24.586817 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Al+Aziziyah+Metro+Station/data=!4m7!3m6!1s0x3e2f090033be2987:0x5977a85d3aa84be1!8m2!3d24.5868167!4d46.7609998!16s%2Fg%2F11wp3h9fz7!19sChIJhym-MwAJLz4R4UuoOl2od1k?authuser=0&hl=en&rclk=1",
+    "name":"Al Aziziyah Metro Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.704639,24.659467 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Passport+Department+%7C+%D9%85%D8%AD%D8%B7%D8%A9+%D9%85%D8%AA%D8%B1%D9%88+%D8%A7%D9%84%D8%AC%D9%88%D8%A7%D8%B2%D8%A7%D8%AA%E2%80%AD/data=!4m7!3m6!1s0x3e2f05c5549c8ac5:0xa8f3c82e2257565!8m2!3d24.6594667!4d46.7046392!16s%2Fg%2F11gr3rh0ft!19sChIJxYqcVMUFLz4RZXUl4oI8jwo?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Passport Department | محطة مترو الجوازات",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.76626,24.791179 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Al+Yarmuk/data=!4m7!3m6!1s0x3e2efe3dfa18a3ab:0x484afb0f0c1fb450!8m2!3d24.7911787!4d46.7662597!16s%2Fg%2F11byyr3xp6!19sChIJq6MY-j3-Lj4RULQfDA_7Skg?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Al Yarmuk",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.696182,24.801427 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Uthman+Bin+Affan+Road/data=!4m7!3m6!1s0x3e2efd474da0ac4b:0xc3f6540f752a373f!8m2!3d24.8014268!4d46.696182!16s%2Fg%2F11fn2hp1kj!19sChIJS6ygTUf9Lj4RPzcqdQ9U9sM?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Uthman Bin Affan Road",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.702185,24.66461 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+%E2%80%8FStation+-+Al+Murabba%E2%80%AD/data=!4m7!3m6!1s0x3e2f0507ee59617b:0x377059e248f395bd!8m2!3d24.6646101!4d46.7021852!16s%2Fg%2F11vdw1ph87!19sChIJe2FZ7gcFLz4RvZXzSOJZcDc?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro ‏Station - Al Murabba",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.643062,24.767438 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/KAFD+Metro+Station/data=!4m7!3m6!1s0x3e2ee2e3176d641f:0x1215fddf918253bd!8m2!3d24.7674375!4d46.6430625!16s%2Fg%2F11hd6w04b1!19sChIJH2RtF-PiLj4RvVOCkd_9FRI?authuser=0&hl=en&rclk=1",
+    "name":"KAFD Metro Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.714418,24.63826 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Al+Batha+Metro+Station/data=!4m7!3m6!1s0x3e2f0500517cc509:0xaf10c0825a0f28ee!8m2!3d24.6382604!4d46.7144183!16s%2Fg%2F11ww4fcdhp!19sChIJCcV8UQAFLz4R7igPWoLAEK8?authuser=0&hl=en&rclk=1",
+    "name":"Al Batha Metro Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.667007,24.726637 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+-+STC+%D9%85%D8%AD%D8%B7%D8%A9+%D9%85%D8%AA%D8%B1%D9%88+%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6+-+%D8%A7%D8%B3+%D8%AA%D9%8A+%D8%B3%D9%8A+%28%D8%A7%D8%B2%D8%B1%D9%82%29%E2%80%AD/data=!4m7!3m6!1s0x3e2f1d78a3852877:0x76d5639c0f5a79f4!8m2!3d24.7266373!4d46.6670073!16s%2Fg%2F11gvz8n3xq!19sChIJdyiFo3gdLz4R9HlaD5xj1XY?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station - STC محطة مترو الرياض - اس تي سي (ازرق)",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.776073,24.560492 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/%D9%85%D8%AD%D8%B7%D8%A9+%D9%85%D8%AA%D8%B1%D9%88+%D8%A7%D9%84%D8%AF%D8%A7%D8%B1+%D8%A7%D9%84%D8%A8%D9%8A%D8%B6%D8%A7%D8%A1%E2%80%AD/data=!4m7!3m6!1s0x3e2f094c022dac6d:0xb53a598520973ec4!8m2!3d24.5604916!4d46.7760726!16s%2Fg%2F11gsmvwzfk!19sChIJbawtAkwJLz4RxD6XIIVZOrU?authuser=0&hl=en&rclk=1",
+    "name":"محطة مترو الدار البيضاء",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.716248,24.628561 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/3E2+Riyadh+Metro+Station+-+Qasr+Al-Hokm/data=!4m7!3m6!1s0x3e2f055e3bb78525:0xb8f509d559d688b9!8m2!3d24.628561!4d46.716248!16s%2Fg%2F11h5_vpcn7!19sChIJJYW3O14FLz4RuYjWWdUJ9bg?authuser=0&hl=en&rclk=1",
+    "name":"3E2 Riyadh Metro Station - Qasr Al-Hokm",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.77641,24.776465 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+-+Al+Hamra/data=!4m7!3m6!1s0x3e2f013ec9ba86df:0xea917c968b3d6869!8m2!3d24.7764653!4d46.7764096!16s%2Fg%2F11hdsrl4fb!19sChIJ34a6yT4BLz4RaWg9i5Z8keo?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station - Al Hamra",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.628302,24.71021 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station%7C+King+Saud+University/data=!4m7!3m6!1s0x3e2f1d421d5566ef:0x976f6e9db8189502!8m2!3d24.7102105!4d46.6283024!16s%2Fg%2F11vf8by7bx!19sChIJ72ZVHUIdLz4RApUYuJ1ub5c?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station| King Saud University",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.790233,24.756866 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/%E2%80%8FRiyadh+Metro+Station+-+Al+Andalus%E2%80%AD/data=!4m7!3m6!1s0x3e2f010c6b524dd5:0x2c177d83ffbd128c!8m2!3d24.7568662!4d46.790233!16s%2Fg%2F11h_v3_6rh!19sChIJ1U1SawwBLz4RjBK9_4N9Fyw?authuser=0&hl=en&rclk=1",
+    "name":"‏Riyadh Metro Station - Al Andalus",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.766124,24.791801 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Al+Yarmuk+Metro+station/data=!4m7!3m6!1s0x3e2eff003d3e433b:0x91399c4d5b4952a8!8m2!3d24.7918007!4d46.766124!16s%2Fg%2F11y9z5kwd9!19sChIJO0M-PQD_Lj4RqFJJW02cOZE?authuser=0&hl=en&rclk=1",
+    "name":"Al Yarmuk Metro station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.554398,24.560583 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Metro+Market/data=!4m7!3m6!1s0x3e2f1833282b171b:0xbc9446af633508fc!8m2!3d24.5605828!4d46.5543981!16s%2Fg%2F11c1s04ckj!19sChIJGxcrKDMYLz4R_Ag1Y69GlLw?authuser=0&hl=en&rclk=1",
+    "name":"Metro Market",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.543617,24.591617 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Jeddah+Road/data=!4m7!3m6!1s0x3e2f19aa0bbee0d3:0x90ca617ca27885d8!8m2!3d24.5916168!4d46.5436173!16s%2Fg%2F11gtzb3cyy!19sChIJ0-C-C6oZLz4R2IV4onxhypA?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Jeddah Road",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.675176,24.713473 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Al+Orobah+%D9%85%D8%AD%D8%B7%D8%A9+%D9%85%D8%AA%D8%B1%D9%88+%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6+-+%D8%A7%D9%84%D8%B9%D8%B1%D9%88%D8%A8%D8%A9+%28%D8%A7%D8%B2%D8%B1%D9%82%29%E2%80%AD/data=!4m7!3m6!1s0x3e2f03007977dd91:0xc65e6898493e10e!8m2!3d24.7134731!4d46.6751757!16s%2Fg%2F11y9q1zw7x!19sChIJkd13eQADLz4RDuGThInmZQw?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Al Orobah محطة مترو الرياض - العروبة (ازرق)",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.654239,24.754863 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Al+Murooj/data=!4m7!3m6!1s0x3e2ee3f05d02bfbd:0xf39a46c7442378d7!8m2!3d24.7548628!4d46.6542393!16s%2Fg%2F11vbkfxltf!19sChIJvb8CXfDjLj4R13gjRMdGmvM?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Al Murooj",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.744362,24.660572 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Metro+Station/data=!4m7!3m6!1s0x3e2f05a8347c8f35:0x574b72b30445bd27!8m2!3d24.6605724!4d46.7443619!16s%2Fg%2F11tny5976k!19sChIJNY98NKgFLz4RJ71FBLNyS1c?authuser=0&hl=en&rclk=1",
+    "name":"Metro Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.834312,24.799389 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+East+Depot/data=!4m7!3m6!1s0x3e2faaacde790197:0x51cab2e42fb80679!8m2!3d24.799389!4d46.8343116!16s%2Fg%2F11c5hjxb5f!19sChIJlwF53qyqLz4ReQa4L-SyylE?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro East Depot",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.660225,24.786344 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Ar+Rabi/data=!4m7!3m6!1s0x3e2ee33e37ff1e89:0x981733194edd7ed4!8m2!3d24.7863443!4d46.6602247!16s%2Fg%2F11h_1ynrzr!19sChIJiR7_Nz7jLj4R1H7dThkzF5g?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Ar Rabi",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.811212,24.722803 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/%E2%80%8FRiyadh+Metro+Station+-+Al-Salam%E2%80%AD/data=!4m7!3m6!1s0x3e2f01776317c931:0xa2e797e9feed22e8!8m2!3d24.7228026!4d46.8112123!16s%2Fg%2F11v0__q_9d!19sChIJMckXY3cBLz4R6CLt_umX56I?authuser=0&hl=en&rclk=1",
+    "name":"‏Riyadh Metro Station - Al-Salam",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.760765,24.587289 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Al+Aziziyah/data=!4m7!3m6!1s0x3e2f091a373b1a6f:0x54f447ecef3cae13!8m2!3d24.5872894!4d46.7607646!16s%2Fg%2F11h2hjmmkb!19sChIJbxo7NxoJLz4RE6487-xH9FQ?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Al Aziziyah",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.798327,24.740886 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Khurais+Road/data=!4m7!3m6!1s0x3e2f01e6619e9ec3:0xa5141991aa94a580!8m2!3d24.7408861!4d46.7983273!16s%2Fg%2F11fb0qbqcl!19sChIJw56eYeYBLz4RgKWUqpEZFKU?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Khurais Road",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.727505,24.6104 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/%D9%85%D8%AA%D8%B1%D9%88+%D9%85%D8%AD%D8%B7%D8%A9+%D8%A7%D9%84%D9%85%D9%86%D9%81%D9%88%D8%AD%D8%A9+-Metro+Manfuha+Station%E2%80%AD/data=!4m7!3m6!1s0x3e2f0500034a5ab1:0x8d53377ea533b81b!8m2!3d24.6104002!4d46.7275051!16s%2Fg%2F11wv26bst2!19sChIJsVpKAwAFLz4RG7gzpX43U40?authuser=0&hl=en&rclk=1",
+    "name":"مترو محطة المنفوحة -Metro Manfuha Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.7358,24.600695 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Al+Iman+Hospital/data=!4m7!3m6!1s0x3e2f0ff0e8e691e3:0x2759c101b47ae5ff!8m2!3d24.6006953!4d46.7358003!16s%2Fg%2F11fd13mtkn!19sChIJ45Hm6PAPLz4R_-V6tAHBWSc?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Al Iman Hospital",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.638765,24.717027 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/2A2+Riyadh+Metro+Station/data=!4m7!3m6!1s0x3e2f1d75d184288f:0xac0d988bff81488f!8m2!3d24.7170267!4d46.6387647!16s%2Fg%2F11q94n75l5!19sChIJjyiE0XUdLz4Rj0iB_4uYDaw?authuser=0&hl=en&rclk=1",
+    "name":"2A2 Riyadh Metro Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.654636,24.723809 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+At+Takhassussi/data=!4m7!3m6!1s0x3e2f1d00058ed7df:0xa15e3469d764fdb7!8m2!3d24.7238088!4d46.6546363!16s%2Fg%2F11wwhczp2l!19sChIJ39eOBQAdLz4Rt_1k12k0XqE?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | At Takhassussi",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.717762,24.698191 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Officers+Club/data=!4m7!3m6!1s0x3e2f032dcf162af7:0x24c4a37ce706c0c3!8m2!3d24.6981913!4d46.7177621!16s%2Fg%2F11gnrldp3s!19sChIJ9yoWzy0DLz4Rw8AG53yjxCQ?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Officers Club",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.643281,24.767044 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/%D9%85%D8%AD%D8%B7%D8%A9+%D9%85%D8%AA%D8%B1%D9%88+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2+%D8%A7%D9%84%D9%85%D8%A7%D9%84%D9%8A%E2%80%AD/data=!4m7!3m6!1s0x3e2ee3002de149d9:0xe76737d441e659ac!8m2!3d24.7670442!4d46.6432812!16s%2Fg%2F11wp1ctvh2!19sChIJ2UnhLQDjLj4RrFnmQdQ3Z-c?authuser=0&hl=en&rclk=1",
+    "name":"محطة مترو المركز المالي",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.779178,24.680192 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Al+Rajhi+Grand+Mosque+Station/data=!4m7!3m6!1s0x3e2f07a5c4179a6b:0xee28b6f806426e66!8m2!3d24.6801924!4d46.7791783!16s%2Fg%2F11l5qrhf_2!19sChIJa5oXxKUHLz4RZm5CBvi2KO4?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Al Rajhi Grand Mosque Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.643841,24.600656 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+-+Aishah+bint+Abi+Bakr+Street/data=!4m7!3m6!1s0x3e2f1bb01853ffa5:0x36b1c7eee11a647a!8m2!3d24.6006563!4d46.6438414!16s%2Fg%2F11h002g864!19sChIJpf9TGLAbLz4RemQa4e7HsTY?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station - Aishah bint Abi Bakr Street",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.701085,24.728326 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+King+Salman+Park/data=!4m7!3m6!1s0x3e2f03006f9e292d:0xc86d408b12dc337!8m2!3d24.7283265!4d46.7010846!16s%2Fg%2F11ld85l7v_!19sChIJLSmebwADLz4RN8MtsQjUhgw?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | King Salman Park",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.713626,24.645619 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/%E2%80%8FRiyadh+Metro+Station+-+National+Museum+%D9%85%D8%AD%D8%B7%D8%A9+%D9%85%D8%AA%D8%B1%D9%88+%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6+-+%D8%A7%D9%84%D9%85%D8%AA%D8%AD%D9%81+%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A%E2%80%AD/data=!4m7!3m6!1s0x3e2f0500201d8e11:0xeac8ac5de1d9b288!8m2!3d24.6456187!4d46.7136255!16s%2Fg%2F11y9ptkwjx!19sChIJEY4dIAAFLz4RiLLZ4V2syOo?authuser=0&hl=en&rclk=1",
+    "name":"‏Riyadh Metro Station - National Museum محطة مترو الرياض - المتحف الوطني",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.686524,24.614897 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Sultanah/data=!4m7!3m6!1s0x3e2f0532458d21df:0x622c7781a3e8f70f!8m2!3d24.6148966!4d46.6865244!16s%2Fg%2F11t29q1r8f!19sChIJ3yGNRTIFLz4RD_foo4F3LGI?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Sultanah",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.559648,24.585504 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Tuwaiq/data=!4m7!3m6!1s0x3e2f19e7579ff629:0x1a1bba7d95db0db3!8m2!3d24.5855038!4d46.5596484!16s%2Fg%2F11h57l37gk!19sChIJKfafV-cZLz4Rsw3blX26Gxo?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Tuwaiq",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.643138,24.767354 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+KAFD/data=!4m7!3m6!1s0x3e2ee3f756ab3031:0xaab488e49642b2fa!8m2!3d24.7673538!4d46.6431383!16s%2Fg%2F11tg2t64tc!19sChIJMTCrVvfjLj4R-rJCluSItKo?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | KAFD",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.714007,24.645896 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/1F4+Metro+station,+Line+1,+Riyadh+Metro/data=!4m7!3m6!1s0x3e2f0547e0c17db1:0xe23101c8257e1854!8m2!3d24.6458957!4d46.714007!16s%2Fg%2F11vd7dr0tm!19sChIJsX3B4EcFLz4RVBh-JcgBMeI?authuser=0&hl=en&rclk=1",
+    "name":"1F4 Metro station, Line 1, Riyadh Metro",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.680977,24.701991 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+1C2+Station/data=!4m7!3m6!1s0x3e2f0311bb1adbdf:0xeca9639a203f54f9!8m2!3d24.7019909!4d46.6809773!16s%2Fg%2F11v430x1mg!19sChIJ39sauxEDLz4R-VQ_IJpjqew?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro 1C2 Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.588305,24.582662 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+-+Ad+Douh/data=!4m7!3m6!1s0x3e2f19b0d6808ce3:0xd8e99f5005895fe3!8m2!3d24.5826625!4d46.5883051!16s%2Fg%2F11fn98c079!19sChIJ44yA1rAZLz4R41-JBVCf6dg?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station - Ad Douh",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.795071,24.782105 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Al+Khaleej+%7C+East+Entrance/data=!4m7!3m6!1s0x3e2f01006ae479cb:0x9808d07774c57411!8m2!3d24.7821052!4d46.7950707!16s%2Fg%2F11wwhb4zpt!19sChIJy3nkagABLz4REXTFdHfQCJg?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Al Khaleej | East Entrance",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.760311,24.673026 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Jarir+District/data=!4m7!3m6!1s0x3e2f07cf9eacfb05:0xe310b5ae3b5c8767!8m2!3d24.6730263!4d46.7603114!16s%2Fg%2F11hdr55hcz!19sChIJBfusns8HLz4RZ4dcO661EOM?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Jarir District",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.66343,24.736886 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/%E2%80%8FRiyadh+Metro+Station+%7C+King+Fahad+District+2%E2%80%AD/data=!4m7!3m6!1s0x3e2f1d516b078d75:0xfc1976a2cc335248!8m2!3d24.7368861!4d46.6634299!16s%2Fg%2F11f3w6gkwf!19sChIJdY0Ha1EdLz4RSFIzzKJ2Gfw?authuser=0&hl=en&rclk=1",
+    "name":"‏Riyadh Metro Station | King Fahad District 2",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.73103,24.637134 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/3E5+Riyadh+Metro+Station+-+As+Salehiyah/data=!4m7!3m6!1s0x3e2f05e95d86bde3:0xa48084b6cbaf060b!8m2!3d24.6371345!4d46.7310295!16s%2Fg%2F11j0vck9t9!19sChIJ472GXekFLz4RCwavy7aEgKQ?authuser=0&hl=en&rclk=1",
+    "name":"3E5 Riyadh Metro Station - As Salehiyah",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.696852,24.801432 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/%D9%85%D8%AD%D8%B7%D8%A9+%D9%85%D8%AA%D8%B1%D9%88+%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6+%7C+%D8%B9%D8%AB%D9%85%D8%A7%D9%86+%D8%A8%D9%86+%D8%B9%D9%81%D8%A7%D9%86%E2%80%AD/data=!4m7!3m6!1s0x3e2efd0007d5a983:0xa221a5bb70e68722!8m2!3d24.801432!4d46.6968519!16s%2Fg%2F11wpbb_8rr!19sChIJg6nVBwD9Lj4RIofmcLulIaI?authuser=0&hl=en&rclk=1",
+    "name":"محطة مترو الرياض | عثمان بن عفان",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.725639,24.633985 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+-+Al+Margab/data=!4m7!3m6!1s0x3e2f05a354724b3f:0x9f4ec94c5b23455c!8m2!3d24.6339847!4d46.7256388!16s%2Fg%2F11fmvbspmr!19sChIJP0tyVKMFLz4RXEUjW0zJTp8?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station - Al Margab",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.647204,24.720731 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/KACST+Metro+Station+%D9%85%D8%AD%D8%B7%D9%87+%D9%85%D8%AA%D8%B1%D9%88+%D8%A7%D9%84%D8%AA%D9%82%D9%86%D9%8A%D9%87%E2%80%AD/data=!4m7!3m6!1s0x3e2f1d0021303dc1:0xb4f36a13b6c483e6!8m2!3d24.7207307!4d46.6472039!16s%2Fg%2F11wjmk7nt1!19sChIJwT0wIQAdLz4R5oPEthNq87Q?authuser=0&hl=en&rclk=1",
+    "name":"KACST Metro Station محطه مترو التقنيه",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.695426,24.801068 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/4C1+Station+Fast/data=!4m7!3m6!1s0x3e2efd73115d1e3d:0xb7318bb3a3f620fd!8m2!3d24.8010683!4d46.6954259!16s%2Fg%2F11gv0q41bc!19sChIJPR5dEXP9Lj4R_SD2o7OLMbc?authuser=0&hl=en&rclk=1",
+    "name":"4C1 Station Fast",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.717881,24.6599 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+MEW%26A+Station/data=!4m7!3m6!1s0x3e2f053dc1dca0a7:0xb553876afda1d140!8m2!3d24.6598996!4d46.7178814!16s%2Fg%2F11vbzlrw74!19sChIJp6DcwT0FLz4RQNGh_WqHU7U?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro MEW&A Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.712667,24.748709 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/AlNuzha+Metro+station+Red+line/data=!4m7!3m6!1s0x3e2f03000bdcd33f:0xfb5100dc6b89ccaf!8m2!3d24.7487087!4d46.7126672!16s%2Fg%2F11wvb0pvq1!19sChIJP9PcCwADLz4Rr8yJa9wAUfs?authuser=0&hl=en&rclk=1",
+    "name":"AlNuzha Metro station Red line",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.702836,24.663968 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Blue+Line+Metro+Riyadh+AlMurraba+Station+24/data=!4m7!3m6!1s0x3e2f05003fc5776f:0xe40fecebbbebb8e8!8m2!3d24.6639685!4d46.7028356!16s%2Fg%2F11wtmd6kwx!19sChIJb3fFPwAFLz4R6Ljru-vsD-Q?authuser=0&hl=en&rclk=1",
+    "name":"Blue Line Metro Riyadh AlMurraba Station 24",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.71455,24.638237 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/AlBatha+Metro+Station/data=!4m7!3m6!1s0x3e2f05006335dc53:0xba3de7651698acd5!8m2!3d24.6382367!4d46.7145498!16s%2Fg%2F11x1p0l_dp!19sChIJU9w1YwAFLz4R1ayYFmXnPbo?authuser=0&hl=en&rclk=1",
+    "name":"AlBatha Metro Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.836402,24.793007 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/2G1+Riyadh+Metro+Station+-+King+Fahad+Stadium/data=!4m7!3m6!1s0x3e2fabbc1cd9a7ab:0x97e095b62ea63843!8m2!3d24.7930073!4d46.8364015!16s%2Fg%2F11h4cw0_y5!19sChIJq6fZHLyrLz4RQzimLraV4Jc?authuser=0&hl=en&rclk=1",
+    "name":"2G1 Riyadh Metro Station - King Fahad Stadium",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.82779,24.700878 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/3J1+%26+6H2+Riyadh+Metro+Station+-+An+Naseem/data=!4m7!3m6!1s0x3e2fa9cff000472f:0x11812f57b919f02!8m2!3d24.7008785!4d46.8277903!16s%2Fg%2F11j3vwm_5m!19sChIJL0cA8M-pLz4RAp-Re_USGAE?authuser=0&hl=en&rclk=1",
+    "name":"3J1 & 6H2 Riyadh Metro Station - An Naseem",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.714494,24.638474 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Batha+Metro+Station+27/data=!4m7!3m6!1s0x3e2f05001854baeb:0x5864eb5d91be4fcc!8m2!3d24.6384735!4d46.7144941!16s%2Fg%2F11ybkbrtq4!19sChIJ67pUGAAFLz4RzE--kV3rZFg?authuser=0&hl=en&rclk=1",
+    "name":"Batha Metro Station 27",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.684305,24.696593 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/RIYADH+METRO+1C3+STATION/data=!4m7!3m6!1s0x3e2f0328d2d1ba8d:0x6bef82082303c81a!8m2!3d24.6965928!4d46.6843052!16s%2Fg%2F11k39xdjbd!19sChIJjbrR0igDLz4RGsgDIwiC72s?authuser=0&hl=en&rclk=1",
+    "name":"RIYADH METRO 1C3 STATION",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.69536,24.673942 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/%E2%80%8FRiyadh+Metro+Station+-+Ministry+of+interior%E2%80%AD/data=!4m7!3m6!1s0x3e2f049de0d525d9:0xdaf050774cc6dc85!8m2!3d24.6739424!4d46.6953596!16s%2Fg%2F11c5rtfg84!19sChIJ2SXV4J0ELz4RhdzGTHdQ8No?authuser=0&hl=en&rclk=1",
+    "name":"‏Riyadh Metro Station - Ministry of interior",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.766321,24.791323 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Al+Yarmuk/data=!4m7!3m6!1s0x3e2efe1609f2254b:0xf8c1e82a211c3fd3!8m2!3d24.7913227!4d46.7663206!16s%2Fg%2F11wvklf3_0!19sChIJSyXyCRb-Lj4R0z8cISrowfg?authuser=0&hl=en&rclk=1",
+    "name":"Al Yarmuk",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.717603,24.660548 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/MEW%26A+Metro+station+5A2/data=!4m7!3m6!1s0x3e2f0507627ac80b:0xcb1bbbab5f572949!8m2!3d24.6605483!4d46.7176028!16s%2Fg%2F11q3sn1mv2!19sChIJC8h6YgcFLz4RSSlXX6u7G8s?authuser=0&hl=en&rclk=1",
+    "name":"MEW&A Metro station 5A2",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.836587,24.793223 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/King+Fahd+Sport+City/data=!4m7!3m6!1s0x3e2faab071d96fcf:0x7c2589de706eaff1!8m2!3d24.7932228!4d46.8365869!16s%2Fg%2F11wy030jvp!19sChIJz2_ZcbCqLz4R8a9ucN6JJXw?authuser=0&hl=en&rclk=1",
+    "name":"King Fahd Sport City",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.675521,24.713246 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Aruba+west+station/data=!4m7!3m6!1s0x3e2f030027b1d84d:0x5c20c35203e55eba!8m2!3d24.7132465!4d46.675521!16s%2Fg%2F11y9sxzr53!19sChIJTdixJwADLz4Rul7lA1LDIFw?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Aruba west station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.711502,24.6261 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+-+Courts+Complex/data=!4m7!3m6!1s0x3e2f05a054972325:0xa40989ac370719e8!8m2!3d24.6261005!4d46.7115025!16s%2Fg%2F11c1nxb19x!19sChIJJSOXVKAFLz4R6BkHN6yJCaQ?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station - Courts Complex",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.760904,24.587331 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Al+Aziziah/data=!4m7!3m6!1s0x3e2f08d91758b51d:0xdda5905d71cf159c!8m2!3d24.5873308!4d46.7609038!16s%2Fg%2F11wy0131g2!19sChIJHbVYF9kILz4RnBXPcV2Qpd0?authuser=0&hl=en&rclk=1",
+    "name":"Al Aziziah",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.739081,24.645045 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+-+First+Industrial+City/data=!4m7!3m6!1s0x3e2f054cbd661cbb:0x28cceead274dc411!8m2!3d24.6450446!4d46.7390813!16s%2Fg%2F11fm_3kgdw!19sChIJuxxmvUwFLz4REcRNJ63uzCg?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station - First Industrial City",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.759194,24.672495 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/3G1+Riyadh+Metro+Line+3/data=!4m7!3m6!1s0x3e2f075e4c3012af:0x77e79ba2b64f1891!8m2!3d24.6724952!4d46.7591942!16s%2Fg%2F11kjjhxr3_!19sChIJrxIwTF4HLz4RkRhPtqKb53c?authuser=0&hl=en&rclk=1",
+    "name":"3G1 Riyadh Metro Line 3",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.675517,24.713395 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Al+Urubah+Metro+Station/data=!4m7!3m6!1s0x3e2f030069d8c99b:0x7f3b20b42c2f592b!8m2!3d24.7133948!4d46.6755173!16s%2Fg%2F11xcqqjw8v!19sChIJm8nYaQADLz4RK1kvLLQgO38?authuser=0&hl=en&rclk=1",
+    "name":"Al Urubah Metro Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.68712,24.690224 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+-+King+Fahad+Library/data=!4m7!3m6!1s0x3e2f036c2c774fd1:0x1d6a434dc70246ec!8m2!3d24.6902235!4d46.6871202!16s%2Fg%2F11vdw20n4x!19sChIJ0U93LGwDLz4R7EYCx01Dah0?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station - King Fahad Library",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.738694,24.644528 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/3E6+Deep+Underground+Station/data=!4m7!3m6!1s0x3e2f05a39d7e7393:0x122e050a8f2e2c83!8m2!3d24.6445278!4d46.7386944!16s%2Fg%2F11g0md6kdg!19sChIJk3N-naMFLz4RgywujwoFLhI?authuser=0&hl=en&rclk=1",
+    "name":"3E6 Deep Underground Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.638854,24.717157 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/King+Salman+Oasis+Metro+Station/data=!4m7!3m6!1s0x3e2f1d004c7d5dcb:0x1d4211376a1b489!8m2!3d24.7171574!4d46.6388535!16s%2Fg%2F11lyftc1nw!19sChIJy119TAAdLz4RibShdhMh1AE?authuser=0&hl=en&rclk=1",
+    "name":"King Salman Oasis Metro Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.721308,24.625447 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+-+Al+Oud/data=!4m7!3m6!1s0x3e2f0596f026c009:0x35c649872123d68!8m2!3d24.6254471!4d46.721308!16s%2Fg%2F11f_bzhcnw!19sChIJCcAm8JYFLz4RaD0ScphkXAM?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station - Al Oud",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.697793,24.61832 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+-+Al+Jarradiyah/data=!4m7!3m6!1s0x3e2f0525d81d4ba9:0x2352ca8ec6aa0c5!8m2!3d24.6183204!4d46.6977927!16s%2Fg%2F11g_sqlx0d!19sChIJqUsd2CUFLz4RxaBq7KgsNQI?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station - Al Jarradiyah",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.681001,24.702323 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/%D9%85%D8%AA%D8%B1%D9%88+%D9%84%D8%A7%D9%88%D9%86%D8%AC+%7C+Metro+Lounge%E2%80%AD/data=!4m7!3m6!1s0x3e2f0302db62c949:0x12a1f377f093dab!8m2!3d24.7023226!4d46.6810012!16s%2Fg%2F11tfksbk4h!19sChIJScli2wIDLz4Rqz0JfzcfKgE?authuser=0&hl=en&rclk=1",
+    "name":"مترو لاونج | Metro Lounge",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.687436,24.615391 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/3D1+metro+station/data=!4m7!3m6!1s0x3e2f0549f8a9626f:0x5d35bd77de2f1d04!8m2!3d24.6153907!4d46.6874358!16s%2Fg%2F11v6b_4_hf!19sChIJb2Kp-EkFLz4RBB0v3ne9NV0?authuser=0&hl=en&rclk=1",
+    "name":"3D1 metro station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.668441,24.726614 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+STC/data=!4m7!3m6!1s0x3e2f1d360a4c8175:0xae303d957d43c8a4!8m2!3d24.7266144!4d46.6684413!16s%2Fg%2F11vbf1296m!19sChIJdYFMCjYdLz4RpMhDfZU9MK4?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | STC",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.666805,24.726732 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/STC/data=!4m7!3m6!1s0x3e2f1d4b793e2259:0xe1a9e6f1b147b315!8m2!3d24.7267324!4d46.6668053!16s%2Fg%2F11wy013_z1!19sChIJWSI-eUsdLz4RFbNHsfHmqeE?authuser=0&hl=en&rclk=1",
+    "name":"STC",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.724888,24.617973 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Skirinah/data=!4m7!3m6!1s0x3e2f058dbbb56ff7:0xffd129450026f8c0!8m2!3d24.617973!4d46.7248875!16s%2Fg%2F11hcdl9r59!19sChIJ92-1u40FLz4RwPgmAEUp0f8?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Skirinah",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.845213,24.711345 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/3J2+Station+Line+3/data=!4m7!3m6!1s0x3e2fa99530bc161f:0x73556de5791ec4a5!8m2!3d24.7113454!4d46.8452132!16s%2Fg%2F11f4rfm590!19sChIJHxa8MJWpLz4RpcQeeeVtVXM?authuser=0&hl=en&rclk=1",
+    "name":"3J2 Station Line 3",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.718357,24.676026 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/5A3+Station+Riyadh+Metro+Station+-+Al+Wizarat/data=!4m7!3m6!1s0x3e2f05b13ba454d7:0x3fe50dd21c4d6caa!8m2!3d24.6760255!4d46.7183566!16s%2Fg%2F11gl0bfy8k!19sChIJ11SkO7EFLz4RqmxNHNIN5T8?authuser=0&hl=en&rclk=1",
+    "name":"5A3 Station Riyadh Metro Station - Al Wizarat",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.710308,24.807295 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+SABIC+Station/data=!4m7!3m6!1s0x3e2efd00352107c1:0x6db9f1070b8d4fd5!8m2!3d24.807295!4d46.7103075!16s%2Fg%2F11yb3bphr5!19sChIJwQchNQD9Lj4R1U-NCwfxuW0?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | SABIC Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.832489,24.799998 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+East+Depot+Line+2+%28Gate+No.+367%29/data=!4m7!3m6!1s0x3e2fab1959f3d40b:0xbb298c76f00a63c8!8m2!3d24.799998!4d46.8324886!16s%2Fg%2F11ffv3rdc5!19sChIJC9TzWRmrLz4RyGMK8HaMKbs?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro East Depot Line 2 (Gate No. 367)",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.713544,24.748143 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+An+Nuzhah/data=!4m7!3m6!1s0x3e2f03b0cdf853f3:0x171ce9b9119463bc!8m2!3d24.748143!4d46.7135443!16s%2Fg%2F11s8h12zxs!19sChIJ81P4zbADLz4RvGOUEbnpHBc?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | An Nuzhah",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.794295,24.782037 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Al+Khaleej+Station/data=!4m7!3m6!1s0x3e2f012201f2492d:0xebcf894eb4f83afe!8m2!3d24.7820368!4d46.7942949!16s%2Fg%2F11vf59x1vb!19sChIJLUnyASIBLz4R_jr4tE6Jz-s?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Al Khaleej Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.718333,24.676141 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Al+Wizarat/data=!4m7!3m6!1s0x3e2f047a85db801f:0x78063a9e80d66a63!8m2!3d24.6761413!4d46.7183326!16s%2Fg%2F11wvkjchhz!19sChIJH4DbhXoELz4RY2rWgJ46Bng?authuser=0&hl=en&rclk=1",
+    "name":"Al Wizarat",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.721228,24.632102 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/3E3+Riyadh+Metro+station+-+Al+Hilla/data=!4m7!3m6!1s0x3e2f05007bd35891:0x54fc63f574a4747c!8m2!3d24.6321018!4d46.7212282!16s%2Fg%2F11y2p7h5f2!19sChIJkVjTewAFLz4RfHSkdPVj_FQ?authuser=0&hl=en&rclk=1",
+    "name":"3E3 Riyadh Metro station - Al Hilla",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.717763,24.698128 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Officers+Club+Station+5B2/data=!4m7!3m6!1s0x3e2f030d56efce45:0x3c1c8a4021900139!8m2!3d24.698128!4d46.7177631!16s%2Fg%2F11l343c9br!19sChIJRc7vVg0DLz4ROQGQIUCKHDw?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Officers Club Station 5B2",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.745156,24.598244 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Transportation+Center/data=!4m7!3m6!1s0x3e2f0f4a7c7b9f33:0xe11c5d0b8b5a922c!8m2!3d24.5982436!4d46.7451563!16s%2Fg%2F11wvkj4b7h!19sChIJM597fEoPLz4RLJJaiwtdHOE?authuser=0&hl=en&rclk=1",
+    "name":"Transportation Center",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.670947,24.721848 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+-+Al+Wurud/data=!4m7!3m6!1s0x3e2f034c24ca8eb1:0x7bba61155cdde5dd!8m2!3d24.7218475!4d46.6709471!16s%2Fg%2F11vdw0srf3!19sChIJsY7KJEwDLz4R3eXdXBVhuns?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station - Al Wurud",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.559699,24.585468 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Tuwaiq/data=!4m7!3m6!1s0x3e2f19a9618991d7:0xb5281d9835a59217!8m2!3d24.5854683!4d46.5596991!16s%2Fg%2F11wvkk2yhl!19sChIJ15GJYakZLz4RF5KlNZgdKLU?authuser=0&hl=en&rclk=1",
+    "name":"Tuwaiq",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.694983,24.674235 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Ministry+of+Interior+Station/data=!4m7!3m6!1s0x3e2f051af4d3ed67:0xc996e4934330aed5!8m2!3d24.6742352!4d46.6949828!16s%2Fg%2F11y1jr3hpx!19sChIJZ-3T9BoFLz4R1a4wQ5Pklsk?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Ministry of Interior Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.77666,24.776487 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Al+Hamra/data=!4m7!3m6!1s0x3e2f01d9fced8d3f:0xbff21a8bfb7ea673!8m2!3d24.7764873!4d46.7766603!16s%2Fg%2F11lzctxctn!19sChIJP43t_NkBLz4Rc6Z--4sa8r8?authuser=0&hl=en&rclk=1",
+    "name":"Al Hamra",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.718368,24.667622 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/5A5+Station/data=!4m7!3m6!1s0x3e2f05b37bf964ad:0x67e9af13d41b8211!8m2!3d24.6676219!4d46.7183676!16s%2Fg%2F11f7qyyym6!19sChIJrWT5e7MFLz4REYIb1BOv6Wc?authuser=0&hl=en&rclk=1",
+    "name":"5A5 Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.71683,24.706435 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Abu+Dhabi+Square+Station/data=!4m7!3m6!1s0x3e2f03c7b5fc3d59:0x6d0d6ff341cea926!8m2!3d24.7064349!4d46.71683!16s%2Fg%2F11vbzm3ndf!19sChIJWT38tccDLz4RJqnOQfNvDW0?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Abu Dhabi Square Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.713158,24.645339 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/National+Museum/data=!4m7!3m6!1s0x3e2f04549193673b:0x55f56d04c7447b86!8m2!3d24.6453391!4d46.7131583!16s%2Fg%2F11wvkm4w74!19sChIJO2eTkVQELz4RhntExwRt9VU?authuser=0&hl=en&rclk=1",
+    "name":"National Museum",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.614656,24.581668 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Western+Station/data=!4m7!3m6!1s0x3e2f1b0ac1ce7a83:0x9e3cdc2fade62838!8m2!3d24.5816683!4d46.6146556!16s%2Fg%2F11gsbclcb2!19sChIJg3rOwQobLz4ROCjmrS_cPJ4?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Western Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.847453,24.7127 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+-+Hassan+Ibn+Thabit+Street/data=!4m7!3m6!1s0x3e2fa962418f8d6f:0x4cc73bbd6b233780!8m2!3d24.7126996!4d46.8474534!16s%2Fg%2F11s8h0mpf0!19sChIJb42PQWKpLz4RgDcja707x0w?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station - Hassan Ibn Thabit Street",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.682841,24.716652 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Metro+bus+station+311/data=!4m7!3m6!1s0x3e2f03971eec4f27:0x727167933cd8e778!8m2!3d24.7166521!4d46.6828407!16s%2Fg%2F11ssz6yzlt!19sChIJJ0_sHpcDLz4ReOfYPJNncXI?authuser=0&hl=en&rclk=1",
+    "name":"Metro bus station 311",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.664382,24.737378 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/King+fahad+2+metro+station/data=!4m7!3m6!1s0x3e2f1d00478709ad:0x2c91f35b32170b47!8m2!3d24.7373785!4d46.6643824!16s%2Fg%2F11y9zggq82!19sChIJrQmHRwAdLz4RRwsXMlvzkSw?authuser=0&hl=en&rclk=1",
+    "name":"King fahad 2 metro station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.82755,24.700529 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/An+Naseem/data=!4m7!3m6!1s0x3e2fa9df046de8bf:0xd27e9fe7c7a855a2!8m2!3d24.7005294!4d46.8275498!16s%2Fg%2F11wx__cc8g!19sChIJv-htBN-pLz4RolWox-efftI?authuser=0&hl=en&rclk=1",
+    "name":"An Naseem",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.677489,24.732961 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Al+Wurud/data=!4m7!3m6!1s0x3e2f03054373b9f5:0x806cad3ff9be8a05!8m2!3d24.7329609!4d46.6774891!16s%2Fg%2F11vbg6s184!19sChIJ9blzQwUDLz4RBYq--T-tbIA?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Al Wurud",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.826561,24.700732 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Parking+-+An+Naseem+Station/data=!4m7!3m6!1s0x3e2fa9006790e757:0x6c24271142f08bb4!8m2!3d24.7007317!4d46.8265609!16s%2Fg%2F11w339brsk!19sChIJV-eQZwCpLz4RtIvwQhEnJGw?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Parking - An Naseem Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.72555,24.633566 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/3E4+Ar+Riyadh+Metro+station/data=!4m7!3m6!1s0x3e2f051190377629:0x6b2026d5df4b8108!8m2!3d24.6335664!4d46.7255499!16s%2Fg%2F11sd3wl58q!19sChIJKXY3kBEFLz4RCIFL39UmIGs?authuser=0&hl=en&rclk=1",
+    "name":"3E4 Ar Riyadh Metro station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.646829,24.720537 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+KACST/data=!4m7!3m6!1s0x3e2f1d91922d0d23:0xe557219fc5b2df6b!8m2!3d24.720537!4d46.6468294!16s%2Fg%2F11l33wrvt4!19sChIJIw0tkpEdLz4Ra9-yxZ8hV-U?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | KACST",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.718396,24.676019 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Al+Wizarat/data=!4m7!3m6!1s0x3e2f047a84fdb857:0xb9b0cc57d56c52ed!8m2!3d24.6760189!4d46.7183955!16s%2Fg%2F11lzcndy8j!19sChIJV7j9hHoELz4R7VJs1VfMsLk?authuser=0&hl=en&rclk=1",
+    "name":"Al Wizarat",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.685356,24.736825 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/King+Abdulaziz+Road/data=!4m7!3m6!1s0x3e2f02bc9b5ce149:0x2075f791347f49a8!8m2!3d24.7368253!4d46.6853555!16s%2Fg%2F11lzcq58x1!19sChIJSeFcm7wCLz4RqEl_NJH3dSA?authuser=0&hl=en&rclk=1",
+    "name":"King Abdulaziz Road",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.68761,24.689329 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/1C4+Metro+station,+Line+1,+Riyadh+Metro/data=!4m7!3m6!1s0x3e2f03716a966f87:0xb982507c9457b95f!8m2!3d24.6893291!4d46.6876104!16s%2Fg%2F11ssnfxr3b!19sChIJh2-WanEDLz4RX7lXlHxQgrk?authuser=0&hl=en&rclk=1",
+    "name":"1C4 Metro station, Line 1, Riyadh Metro",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.746629,24.59846 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/%28%D9%85%D8%AD%D8%B7%D9%87+%D8%A7%D9%84%D9%86%D9%82%D9%84+%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D8%B9%D9%8A%29+Park+%26+Ride+Metro+Station+-+1H2%E2%80%AD/data=!4m7!3m6!1s0x3e2f0f94a7cde97b:0x26b75b78b9e25b2f!8m2!3d24.5984601!4d46.7466289!16s%2Fg%2F11sm7bh589!19sChIJe-nNp5QPLz4RL1viuXhbtyY?authuser=0&hl=en&rclk=1",
+    "name":"(محطه النقل الجماعي) Park & Ride Metro Station - 1H2",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.743081,24.661276 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Al+Malaz+Station/data=!4m7!3m6!1s0x3e2f052fe58f86b1:0x6f0db4b9830a8aa1!8m2!3d24.6612765!4d46.7430808!16s%2Fg%2F11vfbjr6js!19sChIJsYaP5S8FLz4RoYoKg7m0DW8?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Al Malaz Station",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.654373,24.75457 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Al+Murooj/data=!4m7!3m6!1s0x3e2ee2bf122de209:0x57aafcaeb4a68dd3!8m2!3d24.7545696!4d46.6543726!16s%2Fg%2F11wvkjhmmp!19sChIJCeItEr_iLj4R042mtK78qlc?authuser=0&hl=en&rclk=1",
+    "name":"Al Murooj",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.654453,24.754529 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Al+Murooj/data=!4m7!3m6!1s0x3e2ee2bf116623cf:0xdc975c7bc1cca452!8m2!3d24.7545288!4d46.6544534!16s%2Fg%2F11lzctsgmt!19sChIJzyNmEb_iLj4RUqTMwXtcl9w?authuser=0&hl=en&rclk=1",
+    "name":"Al Murooj",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.666724,24.72683 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/STC/data=!4m7!3m6!1s0x3e2f1d4c2809ae13:0x8cf2a8163c6b6e8d!8m2!3d24.7268303!4d46.6667244!16s%2Fg%2F11lzcrgw3b!19sChIJE64JKEwdLz4RjW5rPBao8ow?authuser=0&hl=en&rclk=1",
+    "name":"STC",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.71624,24.62891 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Qasr+Al+Hokm/data=!4m7!3m6!1s0x3e2f05a3a65d734f:0xcc3c4c86fc8c1027!8m2!3d24.6289104!4d46.7162396!16s%2Fg%2F11wvkjycj7!19sChIJT3NdpqMFLz4RJxCM_IZMPMw?authuser=0&hl=en&rclk=1",
+    "name":"Qasr Al Hokm",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.685528,24.736802 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+King+Abdulaziz+Road/data=!4m7!3m6!1s0x3e2f0388b4ebe24d:0xda7496aae0637c9f!8m2!3d24.7368023!4d46.6855276!16s%2Fg%2F11g0l9bgbn!19sChIJTeLrtIgDLz4Rn3xj4KqWdNo?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | King Abdulaziz Road",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.74477,24.661423 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Al+Malaz/data=!4m7!3m6!1s0x3e2f042910122a7d:0xa6fa2ede761b31e0!8m2!3d24.6614228!4d46.7447701!16s%2Fg%2F11wvkld9t_!19sChIJfSoSECkELz4R4DEbdt4u-qY?authuser=0&hl=en&rclk=1",
+    "name":"Al Malaz",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.758648,24.767514 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Khalid+Bin+Akwakeed+Road/data=!4m7!3m6!1s0x3e2f0125a854d023:0xdb75e79c6a94356!8m2!3d24.7675135!4d46.7586481!16s%2Fg%2F11fk4k85hf!19sChIJI9BUqCUBLz4RVkOpxnletw0?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Khalid Bin Akwakeed Road",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.660426,24.78702 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Ar+Rabi+Metro+Parking+Building/data=!4m7!3m6!1s0x3e2ee30061b7bbb3:0x842cb3d51c8ab872!8m2!3d24.7870198!4d46.6604262!16s%2Fg%2F11w_k97qjh!19sChIJs7u3YQDjLj4RcriKHNWzLIQ?authuser=0&hl=en&rclk=1",
+    "name":"Ar Rabi Metro Parking Building",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.685499,24.736793 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/King+Abdulaziz+Road/data=!4m7!3m6!1s0x3e2f02bc852e9be5:0xfcaaf5c77d19e795!8m2!3d24.7367927!4d46.6854992!16s%2Fg%2F11lzctj3g6!19sChIJ5ZsuhbwCLz4RlecZfcf1qvw?authuser=0&hl=en&rclk=1",
+    "name":"King Abdulaziz Road",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.795857,24.6861 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Harun+ar+Rashid+Road/data=!4m7!3m6!1s0x3e2f071a73754155:0x816338ff876c8437!8m2!3d24.6860996!4d46.7958573!16s%2Fg%2F11wvkm0z69!19sChIJVUF1cxoHLz4RN4Rsh_84Y4E?authuser=0&hl=en&rclk=1",
+    "name":"Harun ar Rashid Road",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.744851,24.661456 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Al+Malaz/data=!4m7!3m6!1s0x3e2f04290fe4ea91:0x49b56524537198c2!8m2!3d24.6614555!4d46.7448509!16s%2Fg%2F11wvkj5pph!19sChIJkerkDykELz4RwphxUyRltUk?authuser=0&hl=en&rclk=1",
+    "name":"Al Malaz",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 46.811189,24.72274 ]
+    },
+    "properties": {
+    "link":"https://www.google.com/maps/place/Riyadh+Metro+Station+%7C+Al+Salam/data=!4m7!3m6!1s0x3e2f0100185ebd93:0x91f1ebf77ced5993!8m2!3d24.7227404!4d46.8111891!16s%2Fg%2F11vc076v85!19sChIJk71eGAABLz4Rk1ntfPfr8ZE?authuser=0&hl=en&rclk=1",
+    "name":"Riyadh Metro Station | Al Salam",
+    "rating":"",
+    "category":"Metro",
+    "region":"Riyadh"
+    }
+  }
+]
+}
