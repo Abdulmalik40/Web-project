@@ -1,31 +1,7 @@
-/**
- * Header Component - Reusable header for all pages
- * This script ensures a consistent header navigation across all pages
- * Uses the exact structure and styling from index.html
- *
- * 🆕 ملاحظة مهمة:
- * - أضفنا عناصر auth (login / register / profile / logout)
- *   بنفس IDs الموجودة في index.html:
- *   #nav-login, #nav-register, #nav-profile, #nav-logout, #logoutBtn
- *   حتى يشتغل معها ملف auth-nav.js في كل الصفحات
- */
+function getHeaderHTML() {
+  const headerClass = 'header site-header';
 
-(function () {
-  'use strict';
-
-
-
-  /**
-   * 🧱 Standard header HTML
-   * - مطابق لهيدر index.html بالضبط
-   * - مع إضافة عناصر auth (login/register/profile/logout)
-   * - يضيف class="site-header" للصفحة الرئيسية
-   */
-  function getHeaderHTML() {
-    // Use absolute paths consistently
-    const headerClass = 'header site-header';
-    
-    return `
+  return `
     <header class="${headerClass}" id="header">
       <div class="header-inner">
         <div class="brand" aria-label="Saudi Tourism">
@@ -72,54 +48,49 @@
           <!-- Main navigation -->
           <nav class="nav" aria-label="Main Navigation">
             <div class="item">
-              <a href="http://165.227.237.78/var/www/Web-project/frontend/pages/index.html#home" data-i18n="common.home">Home</a>
+              <a href="/index.html#home" data-i18n="common.home">Home</a>
             </div>
             <div class="item">
               <a
-                href="http://165.227.237.78/var/www/Web-project/frontend/pages/maps/maplibre.html"
+                href="/maps/maplibre.html"
                 data-i18n="common.interactiveMap"
-                >Interactive Map</a
-              >
+              >Interactive Map</a>
             </div>
             <div class="item">
-              <a href="http://165.227.237.78/var/www/Web-project/frontend/pages/core/history.html" data-i18n="common.history">
+              <a href="/core/history.html" data-i18n="common.history">
                 History
               </a>
             </div>
             <div class="item has-dropdown">
               <a
-                href="http://165.227.237.78/var/www/Web-project/frontend/pages/islamic-guide/islamic-guide.html"
+                href="/islamic-guide/islamic-guide.html"
                 data-i18n="common.islamicGuide"
-                >Islamic Guide ▾</a
-              >
+              >Islamic Guide ▾</a>
               <div class="dropdown" role="menu">
                 <a
-                  href="http://165.227.237.78/var/www/Web-project/frontend/pages/islamic-guide/qibla.html"
+                  href="/islamic-guide/qibla.html"
                   role="menuitem"
                   data-i18n="common.qiblaFinder"
-                  >Qibla Finder</a
-                >
+                >Qibla Finder</a>
                 <a
-                  href="http://165.227.237.78/var/www/Web-project/frontend/pages/islamic-guide/prayer-times.html"
+                  href="/islamic-guide/prayer-times.html"
                   role="menuitem"
                   data-i18n="common.prayerTimes"
-                  >Prayer Times</a
-                >
+                >Prayer Times</a>
                 <a
-                  href="http://165.227.237.78/var/www/Web-project/frontend/pages/islamic-guide/quran.html"
+                  href="/islamic-guide/quran.html"
                   role="menuitem"
                   data-i18n="common.quran"
-                  >Quran &amp; Du'a</a
-                >
+                >Quran &amp; Du'a</a>
               </div>
             </div>
 
             <!-- Login / Register -->
             <div class="item" id="nav-login">
-              <a href="http://165.227.237.78/var/www/Web-project/frontend/pages/auth/login.html" data-i18n="common.login">Login</a>
+              <a href="/auth/login.html" data-i18n="common.login">Login</a>
             </div>
             <div class="item" id="nav-register">
-              <a href="http://165.227.237.78/var/www/Web-project/frontend/pages/auth/register.html" data-i18n="common.register">Register</a>
+              <a href="/auth/register.html" data-i18n="common.register">Register</a>
             </div>
 
             <!-- Profile & Logout (hidden by default) -->
@@ -128,7 +99,7 @@
               id="nav-profile"
               style="display: none;"
             >
-              <a href="http://165.227.237.78/var/www/Web-project/frontend/pages/user/profile.html" data-i18n="common.profile">Profile</a>
+              <a href="/user/profile.html" data-i18n="common.profile">Profile</a>
             </div>
             <div
               class="item"
@@ -142,219 +113,4 @@
       </div>
     </header>
   `;
-  }
-
-  /**
-   * injectHeader
-   * - لو عندنا <header id="header" data-header-placeholder> يستبدله بالهيدر الموحّد
-   * - أو يضيف هيدر جديد في بداية الـ body لو مافيه هيدر
-   * - بعدين يفعّل الثيم + السكول + القائمة المنسدلة + اللغة
-   */
-  function injectHeader() {
-    const existingHeader = document.getElementById('header');
-    const headerHTML = getHeaderHTML();
-
-    // 🟢 الحالة 1: موجود header فيه data-header-placeholder → نستبدله بالكامل
-    if (existingHeader && existingHeader.hasAttribute('data-header-placeholder')) {
-      existingHeader.outerHTML = headerHTML;
-    }
-    // 🟡 الحالة 2: هيدر موجود بدون placeholder → نستبدله بالكامل (خاصة للصفحة الرئيسية)
-    else if (existingHeader) {
-      existingHeader.outerHTML = headerHTML;
-    }
-    // 🔵 الحالة 3: مافيه هيدر أبدًا → نضيف واحد جديد في أعلى الـ body
-    else {
-      const body = document.body;
-      if (body) {
-        body.insertAdjacentHTML('afterbegin', headerHTML);
-      }
-    }
-
-    // تهيئة الوظائف المساندة
-    initThemeToggle();
-    initHeaderScroll();
-    initDropdownHandlers();
-    initLanguageSwitcher();
-
-    // لو i18n متوفّر نعمل refresh بسيط بعد ما الهيدر يتركب
-    if (window.i18n) {
-      setTimeout(() => {
-        window.i18n.refresh();
-      }, 100);
-    }
-  }
-
-  /**
-   * 🌓 Theme toggle
-   * - يحفظ الثيم في localStorage
-   * - يحدّث الأيقونة والنص داخل الزر
-   */
-  function initThemeToggle() {
-    const themeToggle = document.getElementById('themeToggle');
-    if (!themeToggle) return;
-
-    // عشان ما يتصادم مع Script.js لو كان فيه تهيئة ثانية
-    // Check if theme is already initialized elsewhere
-    if (document.documentElement.hasAttribute('data-theme-initialized')) {
-      return;
-    }
-    document.documentElement.setAttribute('data-theme-initialized', 'true');
-
-    // Get saved theme or default to light (matching index.html behavior)
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.body.setAttribute('data-theme', savedTheme);
-    updateThemeButton(savedTheme);
-
-    themeToggle.addEventListener('click', function () {
-      const currentTheme = document.body.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      document.body.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeButton(newTheme);
-      
-      // Refresh translation if i18n is available
-      if (window.i18n) {
-        window.i18n.refresh();
-      }
-    });
-  }
-
-  // تحديث شكل زر الثيم (الأيقونة + data-i18n للنص)
-  function updateThemeButton(theme) {
-    const themeToggle = document.getElementById('themeToggle');
-    if (themeToggle) {
-      const icon = themeToggle.querySelector('.theme-icon');
-      const text = themeToggle.querySelector('.theme-text');
-      if (icon) {
-        icon.textContent = theme === 'dark' ? '☀️' : '🌙';
-      }
-      if (text) {
-        text.setAttribute('data-i18n', theme === 'dark' ? 'common.light' : 'common.dark');
-        // Refresh translation if i18n is available
-        if (window.i18n) {
-          window.i18n.refresh();
-        }
-      }
-    }
-  }
-
-  /**
-   * 🌐 Language switcher
-   * - يغير بين en / ar باستخدام i18n.js
-   * - يدعم نفس السلوك الموجود في index.html
-   */
-  function initLanguageSwitcher() {
-    const langSwitcher = document.getElementById('language-switcher');
-    if (!langSwitcher) return;
-
-    // Wait for i18n to be ready
-    const setupLangSwitcher = () => {
-      if (window.i18n) {
-        // Use the i18n module's setup if available
-        if (window.i18n.setupLanguageSwitcher) {
-          window.i18n.setupLanguageSwitcher();
-        }
-        
-        // Also add direct handler (matching index.html behavior)
-        langSwitcher.addEventListener('click', (e) => {
-          if (window.i18n) {
-            const currentLang = window.i18n.getLanguage();
-            const newLang = currentLang === 'en' ? 'ar' : 'en';
-            window.i18n.setLanguage(newLang);
-          }
-        });
-      } else {
-        // Retry if i18n not ready yet
-        setTimeout(setupLangSwitcher, 100);
-      }
-    };
-
-    // Start initialization
-    setTimeout(setupLangSwitcher, 100);
-  }
-
-  /**
-   * Scroll behavior للهيدر (إضافة كلاس scrolled بعد 100px)
-   */
-  function initHeaderScroll() {
-    const header = document.getElementById('header');
-    if (!header) return;
-
-    window.addEventListener('scroll', function () {
-      const currentScroll = window.pageYOffset;
-      if (currentScroll > 100) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-  }
-
-  /**
-   * Dropdown handlers
-   * - فتح/إغلاق قائمة Islamic Guide بالهوفر والفوكس
-   * - مطابق للسلوك في index.html
-   */
-  function initDropdownHandlers() {
-    const dropdowns = document.querySelectorAll('.nav .has-dropdown');
-
-    dropdowns.forEach((dropdown) => {
-      const dropdownMenu = dropdown.querySelector('.dropdown');
-      const dropdownLink = dropdown.querySelector('a');
-
-      if (dropdownMenu && dropdownLink) {
-        let hoverTimeout;
-
-        // Show dropdown on hover
-        dropdown.addEventListener('mouseenter', () => {
-          clearTimeout(hoverTimeout);
-          hoverTimeout = setTimeout(() => {
-            dropdownMenu.style.display = 'block';
-            setTimeout(() => {
-              dropdownMenu.style.opacity = '1';
-              dropdownMenu.style.transform = 'translateY(0)';
-            }, 10);
-          }, 100);
-        });
-
-        // Hide dropdown when mouse leaves
-        dropdown.addEventListener('mouseleave', () => {
-          clearTimeout(hoverTimeout);
-          hoverTimeout = setTimeout(() => {
-            dropdownMenu.style.opacity = '0';
-            dropdownMenu.style.transform = 'translateY(-10px)';
-            setTimeout(() => {
-              dropdownMenu.style.display = 'none';
-            }, 300);
-          }, 150);
-        });
-
-        // Keep dropdown open when hovering over it
-        dropdownMenu.addEventListener('mouseenter', () => {
-          clearTimeout(hoverTimeout);
-          dropdownMenu.style.display = 'block';
-          dropdownMenu.style.opacity = '1';
-          dropdownMenu.style.transform = 'translateY(0)';
-        });
-
-        dropdownMenu.addEventListener('mouseleave', () => {
-          clearTimeout(hoverTimeout);
-          hoverTimeout = setTimeout(() => {
-            dropdownMenu.style.opacity = '0';
-            dropdownMenu.style.transform = 'translateY(-10px)';
-            setTimeout(() => {
-              dropdownMenu.style.display = 'none';
-            }, 300);
-          }, 150);
-        });
-      }
-    });
-  }
-
-  // Inject header when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectHeader);
-  } else {
-    injectHeader();
-  }
-})();
+}
