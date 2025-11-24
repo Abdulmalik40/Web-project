@@ -120,15 +120,14 @@ const setupLoginForm = () => {
       loginMsgEl.classList.add("success");
 
       // نقرأ الوجهة اللي كان ناوي يروح لها قبل ما نوقفه
-      const redirectStored = localStorage.getItem("post_login_redirect");
+      let redirectStored = localStorage.getItem("post_login_redirect");
 
       // نرجع للهوم أو للصفحة اللي كان يبيها وهو مسجل دخول
       setTimeout(() => {
-        // (تعديل) لو فيه رابط محفوظ نستخدمه، غير كذا نرجع لـ index.html
-        const redirectTo = redirectStored || "/index.html";
-
-        // تنظيف القيمة بعد الاستخدام عشان ما تعلق
+        // Normalize redirect: remove /pages/ prefix if present
+        let redirectTo = "/index.html";
         if (redirectStored) {
+          redirectTo = redirectStored.replace(/^\/pages/, '') || "/index.html";
           localStorage.removeItem("post_login_redirect");
         }
 

@@ -123,9 +123,18 @@ const setupRegisterForm = () => {
       messageEl.textContent = "Account created successfully 🎉";
       messageEl.classList.add("success");
 
-      // ✅ نرجع للهوم وهو مسجل دخول
+      // ✅ نرجع للهوم وهو مسجل دخول (بدون /pages/)
       setTimeout(() => {
-        window.location.href = "/index.html";
+        // Normalize any stored redirect and remove /pages/ if present
+        const redirectStored = localStorage.getItem("post_login_redirect");
+        let redirectTo = "/index.html";
+        
+        if (redirectStored) {
+          redirectTo = redirectStored.replace(/^\/pages/, '') || "/index.html";
+          localStorage.removeItem("post_login_redirect");
+        }
+        
+        window.location.href = redirectTo;
       }, 800);
     } catch (err) {
       console.error("Register fetch error:", err);

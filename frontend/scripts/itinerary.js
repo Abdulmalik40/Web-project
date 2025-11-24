@@ -741,8 +741,10 @@ async function saveItinerary(itinerary, formData) {
   
   if (!token) {
     alert("يجب تسجيل الدخول أولاً لحفظ الخطة. سيتم توجيهك لصفحة تسجيل الدخول.");
-    localStorage.setItem("post_login_redirect", window.location.pathname);
-    window.location.href = "../../pages/auth/login.html";
+    // Remove /pages/ from the pathname and store just the root-relative path
+    const pathToStore = window.location.pathname.replace(/^\/pages/, '') || '/planner.html';
+    localStorage.setItem("post_login_redirect", pathToStore);
+    window.location.href = "/auth/login.html";
     return false;
   }
 
