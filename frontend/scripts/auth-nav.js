@@ -31,7 +31,7 @@ export function requireAuth() {
 
     // نخزن الوجهة اللي نرجع لها بعد اللوقن
     localStorage.setItem("post_login_redirect", redirect);
-    window.location.href = "auth/login.html";
+    window.location.href = "/pages/auth/login.html";
     return false;
   }
 
@@ -79,7 +79,7 @@ function bindLogout() {
     localStorage.removeItem("user_email");
     localStorage.removeItem("post_login_redirect");
 
-    window.location.href = "/index.html";
+    window.location.href = "/pages/index.html";
   });
 }
 
