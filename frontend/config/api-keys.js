@@ -16,11 +16,7 @@ const API_KEYS = {
     
     // Geoapify API Key (provided)
     // Documentation: https://www.geoapify.com/
-    GEOAPIFY: process.env.GEOAPIFY_API_KEY || '636790d9734f4bf2af3a9f2393bdcc1d',
-    
-    // Mapbox Access Token
-    // Get your token from: https://account.mapbox.com/
-    MAPBOX: process.env.MAPBOX_ACCESS_TOKEN || 'pk.eyJ1IjoiYWJkdWxtYWxpazQwIiwiYSI6ImNtaHphOHEzdDBlZngyanNmNXFobTJ1eXYifQ.BXgODp-9zJ1ZJ6lxFtA9gw'
+    GEOAPIFY: process.env.GEOAPIFY_API_KEY || '636790d9734f4bf2af3a9f2393bdcc1d'
 };
 
 // API Configuration
