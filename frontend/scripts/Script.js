@@ -318,49 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
     line.style.animationDelay = `${0.5 + (index * 0.3)}s`;
   });
   
-  // Hero CTA buttons enhanced animations
-  document.querySelectorAll('.cta-btn').forEach(button => {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      // Create ripple effect
-      const ripple = document.createElement('span');
-      const rect = this.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      const x = e.clientX - rect.left - size / 2;
-      const y = e.clientY - rect.top - size / 2;
-      
-      ripple.style.cssText = `
-        position: absolute;
-        width: ${size}px;
-        height: ${size}px;
-        left: ${x}px;
-        top: ${y}px;
-        background: rgba(255, 255, 255, 0.6);
-        border-radius: 50%;
-        transform: scale(0);
-        animation: ctaRipple 0.6s ease-out;
-        pointer-events: none;
-      `;
-      
-      this.appendChild(ripple);
-      
-      setTimeout(() => {
-        ripple.remove();
-        
-        // Scroll to content
-        if (this.textContent.includes('Journey')) {
-          const banner = document.querySelector('.banner');
-          if (banner) {
-            banner.scrollIntoView({ 
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        }
-      }, 600);
-    });
-  });
+  
   
   // Scroll indicator functionality
   const scrollIndicator = document.querySelector('.scroll-indicator');

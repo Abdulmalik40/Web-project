@@ -524,9 +524,9 @@ function showSaveConfirmation() {
     const statusEl = document.getElementById("saveStatus");
     if (statusEl) {
       statusEl.innerHTML = `💡 <strong>${t('plannerPage.saveTip').replace('💡 ', '').split(':')[0]}:</strong> ${t('plannerPage.saveTip').split(':')[1] || t('plannerPage.saveTip')}`;
-      statusEl.style.color = "#38bdf8";
-      statusEl.style.backgroundColor = "rgba(56, 189, 248, 0.1)";
-      statusEl.style.border = "1px solid rgba(56, 189, 248, 0.3)";
+      statusEl.style.color = "#2ECC71";
+      statusEl.style.backgroundColor = "#2ecc701a";
+      statusEl.style.border = "1px solid #2ECC71";
       statusEl.style.display = "block";
     }
     return;
@@ -877,7 +877,7 @@ function renderItinerary(itinerary) {
   ${p.price_level ? ` • ${getPriceLevelText(p.price_level)}` : ""}
 </span><br>
               ${p.link
-                ? `<a href="${p.link}" target="_blank" style="color:#38bdf8;">${t('plannerPage.viewOnMaps')}</a>`
+                ? `<a href="${p.link}" target="_blank" style="color:#2ECC71;">${t('plannerPage.viewOnMaps')}</a>`
                 : ""
               }
             </li>`

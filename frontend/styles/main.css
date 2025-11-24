@@ -20,5 +20,7 @@
 /* Import RTL support */
 @import "utils/_rtl.css";
 
+@import "cities.css";
+
 /* Import the complete original styles.css file */
 @import "styles.css";
