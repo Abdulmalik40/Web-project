@@ -125,7 +125,7 @@ const setupRegisterForm = () => {
 
       // ✅ نرجع للهوم وهو مسجل دخول
       setTimeout(() => {
-        window.location.href = "../../pages/index.html";
+        window.location.href = "/index.html";
       }, 800);
     } catch (err) {
       console.error("Register fetch error:", err);

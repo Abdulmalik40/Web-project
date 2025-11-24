@@ -125,7 +125,7 @@ const setupLoginForm = () => {
       // نرجع للهوم أو للصفحة اللي كان يبيها وهو مسجل دخول
       setTimeout(() => {
         // (تعديل) لو فيه رابط محفوظ نستخدمه، غير كذا نرجع لـ index.html
-        const redirectTo = redirectStored || "../../pages/index.html";
+        const redirectTo = redirectStored || "/index.html";
 
         // تنظيف القيمة بعد الاستخدام عشان ما تعلق
         if (redirectStored) {
