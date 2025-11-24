@@ -48,37 +48,37 @@ function getHeaderHTML() {
           <!-- Main navigation -->
           <nav class="nav" aria-label="Main Navigation">
             <div class="item">
-              <a href="http://165.227.237.78/frontend/pages/index.html#home" data-i18n="common.home">Home</a>
+              <a href="/frontend/pages/index.html#home" data-i18n="common.home">Home</a>
             </div>
             <div class="item">
               <a
-                href="http://165.227.237.78/frontend/pages/maps/map-interactive.html"
+                href="/frontend/pages/maps/map-interactive.html"
                 data-i18n="common.interactiveMap"
               >Interactive Map</a>
             </div>
             <div class="item">
-              <a href="http://165.227.237.78/frontend/pages/core/history.html" data-i18n="common.history">
+              <a href="/frontend/pages/core/history.html" data-i18n="common.history">
                 History
               </a>
             </div>
             <div class="item has-dropdown">
               <a
-                href="http://165.227.237.78/frontend/pages/islamic-guide/islamic-guide.html"
+                href="frontend/pages/islamic-guide/islamic-guide.html"
                 data-i18n="common.islamicGuide"
               >Islamic Guide ▾</a>
               <div class="dropdown" role="menu">
                 <a
-                  href="http://165.227.237.78/frontend/pages/islamic-guide/qibla.html"
+                  href="/frontend/pages/islamic-guide/qibla.html"
                   role="menuitem"
                   data-i18n="common.qiblaFinder"
                 >Qibla Finder</a>
                 <a
-                  href="http://165.227.237.78/frontend/pages/islamic-guide/prayer-times.html"
+                  href="/frontend/pages/islamic-guide/prayer-times.html"
                   role="menuitem"
                   data-i18n="common.prayerTimes"
                 >Prayer Times</a>
                 <a
-                  href="http://165.227.237.78/frontend/pages/islamic-guide/quran.html"
+                  href="/frontend/pages/islamic-guide/quran.html"
                   role="menuitem"
                   data-i18n="common.quran"
                 >Quran &amp; Du'a</a>
@@ -87,10 +87,10 @@ function getHeaderHTML() {
 
             <!-- Login / Register -->
             <div class="item" id="nav-login">
-              <a href="/pages/auth/login.html" data-i18n="common.login">Login</a>
+              <a href="/frontend/pages/auth/login.html" data-i18n="common.login">Login</a>
             </div>
             <div class="item" id="nav-register">
-              <a href="/pages/auth/register.html" data-i18n="common.register">Register</a>
+              <a href="/frontend/pages/auth/register.html" data-i18n="common.register">Register</a>
             </div>
 
             <!-- Profile & Logout (hidden by default) -->
@@ -99,7 +99,7 @@ function getHeaderHTML() {
               id="nav-profile"
               style="display: none;"
             >
-              <a href="pages/user/profile.html" data-i18n="common.profile">Profile</a>
+              <a href="/frontend/pages/user/profile.html" data-i18n="common.profile">Profile</a>
             </div>
             <div
               class="item"
