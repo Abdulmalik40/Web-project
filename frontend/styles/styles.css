@@ -237,7 +237,7 @@ a {
 }
 
 .hero-video {
-  max-width: 100%;
+  min-width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
@@ -372,7 +372,10 @@ a {
 
 .title-line:first-child {
   font-size: clamp(1.5rem, 4vw, 3rem);
-  color: var(--color-accent-gold);
+  color: rgba(255, 255, 255, 0);
+  background: linear-gradient(145deg, var(--color-accent-lavender-dark) 10%, var(--color-accent-lavender) 30%);
+  background-clip: text;
+  -webkit-background-clip: text;
   margin-bottom: 8px;
   animation: slideInLeft 1s ease-out 0.5s both;
 }
@@ -380,11 +383,10 @@ a {
 .title-line.featured {
   font-size: clamp(3rem, 8vw, 7rem);
   font-weight: 900;
-  color: #ffffff;
-  background: linear-gradient(135deg, #ffffff, var(--color-accent-gold));
-  background-clip: text;
+  color: rgba(255, 255, 255, 0);
+  background: linear-gradient(120deg, var(--color-accent-saudi-green) 10%, var(--accent-legacy-green) 60%);
+   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   margin-bottom: 8px;
   animation: slideInRight 1s ease-out 0.8s both;
 }

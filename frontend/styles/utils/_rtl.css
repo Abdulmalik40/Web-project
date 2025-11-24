@@ -118,10 +118,6 @@
   flex-direction: row-reverse;
 }
 
-[dir="rtl"] .message {
-  flex-direction: row-reverse;
-}
-
 [dir="rtl"] .message-text {
   text-align: right;
 }
