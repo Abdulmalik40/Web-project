@@ -146,12 +146,6 @@
                   data-i18n="common.quran"
                   >Quran &amp; Du'a</a
                 >
-                <a
-                  href="${getIndexLink('islamic-guide/mosques.html')}"
-                  role="menuitem"
-                  data-i18n="common.nearbyMosques"
-                  >Nearby Mosques</a
-                >
               </div>
             </div>
 

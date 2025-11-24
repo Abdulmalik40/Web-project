@@ -1,0 +1,359 @@
+/* ========================================
+   SAUDI TOURISM – PLANNER STYLES
+   Uses the same Saudi cultural token system:
+   - Colors: --color-*
+   - Shadows: --shadow-*
+   - Radii:  (optional) --radius-*
+   ======================================== */
+
+body {
+  font-family: "Tajawal", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: 0;
+}
+
+.page-wrapper {
+  max-width: 1100px;
+  margin: 100px auto 40px;
+  padding: 0 16px 40px;
+}
+
+.planner-card {
+  background: var(--color-bg-surface);
+  border-radius: 20px;
+  padding: 24px 20px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.planner-header {
+  margin-bottom: 20px;
+}
+
+.planner-header h1 {
+  font-size: 1.6rem;
+  margin: 0 0 6px;
+  color: var(--color-text-primary);
+}
+
+.planner-header p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.planner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px 20px;
+  margin-top: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+}
+
+.field label {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.field input,
+.field select {
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated, var(--color-bg-surface));
+  padding: 8px 10px;
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.field input::placeholder,
+.field select::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--color-accent-emerald);
+  box-shadow: 0 0 0 1px var(--color-accent-emerald);
+}
+
+/* Chips (interests, pace, etc.) */
+.chips-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-subtle);
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  user-select: none;
+  background: var(--color-bg-elevated, var(--color-bg-surface));
+  color: var(--color-text-secondary);
+}
+
+.chip input {
+  accent-color: var(--color-accent-emerald);
+}
+
+/* Actions row */
+.planner-actions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* Primary CTA */
+.btn-primary {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-emerald),
+    var(--color-accent-emerald)
+  );
+  color: var(--color-text-on-accent, var(--color-bg-base));
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Secondary button */
+.btn-secondary {
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 0.9rem;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+/* Itinerary result list */
+.itinerary-result {
+  margin-top: 24px;
+}
+
+.day-card {
+  margin-top: 14px;
+  padding: 14px 14px 12px;
+  border-radius: 14px;
+  background: var(--color-bg-elevated, var(--color-bg-surface));
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+.day-card h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+}
+
+.day-meta {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+
+.day-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.day-list li {
+  padding: 4px 0;
+  border-bottom: 1px dashed var(--color-border-subtle);
+}
+
+.day-list li:last-child {
+  border-bottom: none;
+}
+
+.place-name {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.place-meta {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.muted {
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+}
+
+/* Saved Plans Styles */
+.saved-plan-card {
+  background: var(--color-bg-elevated, var(--color-bg-surface));
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid var(--color-border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.saved-plan-info {
+  flex: 1;
+}
+
+.saved-plan-info h4 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+}
+
+.saved-plan-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin: 4px 0;
+}
+
+.saved-plan-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-small {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Load button – themed with emerald accent */
+.btn-load {
+  background: transparent;
+  color: var(--color-accent-emerald);
+  border: 1px solid var(--color-accent-emerald);
+}
+
+.btn-load:hover {
+  background: var(--color-bg-surface);
+}
+
+/* Delete button – uses critical accent if defined */
+.btn-delete {
+  background: transparent;
+  color: var(--color-accent-critical, #ef4444);
+  border: 1px solid var(--color-accent-critical, #ef4444);
+}
+
+.btn-delete:hover {
+  background: var(--color-bg-surface);
+}
+
+/* Confirmation Dialog */
+.confirmation-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.confirmation-content {
+  background: var(--color-bg-elevated, var(--color-bg-surface));
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 400px;
+  width: 90%;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.confirmation-content h3 {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+}
+
+.confirmation-content p {
+  margin: 0 0 20px;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* ============================================================
+   RTL SUPPORT
+   Mirrors layout and alignment when html[dir="rtl"]
+   ============================================================ */
+
+[dir="rtl"] .page-wrapper {
+  direction: rtl;
+}
+
+/* Text alignment for key blocks */
+[dir="rtl"] .planner-header h1,
+[dir="rtl"] .planner-header p,
+[dir="rtl"] .field label,
+[dir="rtl"] .day-card h3,
+[dir="rtl"] .day-meta,
+[dir="rtl"] .saved-plan-info h4,
+[dir="rtl"] .saved-plan-meta,
+[dir="rtl"] .muted {
+  text-align: right;
+}
+
+/* Inputs/selects text direction */
+[dir="rtl"] .field input,
+[dir="rtl"] .field select {
+  text-align: right;
+}
+
+/* Chips: put the text before the checkbox in RTL */
+[dir="rtl"] .chip {
+  flex-direction: row-reverse;
+}
+
+/* Actions: keep primary button on the "visual end" for RTL */
+[dir="rtl"] .planner-actions,
+[dir="rtl"] .saved-plan-actions,
+[dir="rtl"] .confirmation-actions {
+  flex-direction: row-reverse;
+}
