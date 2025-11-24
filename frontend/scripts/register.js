@@ -125,12 +125,16 @@ const setupRegisterForm = () => {
 
       // ✅ نرجع للهوم وهو مسجل دخول (بدون /pages/)
       setTimeout(() => {
-        // Normalize any stored redirect and remove /pages/ if present
+        // Use document-relative path to work with /pages/ docroot
+        let redirectTo = "index.html";
         const redirectStored = localStorage.getItem("post_login_redirect");
-        let redirectTo = "/index.html";
         
         if (redirectStored) {
-          redirectTo = redirectStored.replace(/^\/pages/, '') || "/index.html";
+          // Normalize: convert absolute paths to document-relative paths
+          redirectTo = redirectStored
+            .replace(/^\/pages\//, '')  // remove /pages/ prefix if present
+            .replace(/^\//, '')         // remove leading slash to make it relative
+            || "index.html";
           localStorage.removeItem("post_login_redirect");
         }
         

@@ -124,10 +124,14 @@ const setupLoginForm = () => {
 
       // نرجع للهوم أو للصفحة اللي كان يبيها وهو مسجل دخول
       setTimeout(() => {
-        // Normalize redirect: remove /pages/ prefix if present
-        let redirectTo = "/index.html";
+        // Use document-relative path to work with /pages/ docroot
+        let redirectTo = "index.html";
         if (redirectStored) {
-          redirectTo = redirectStored.replace(/^\/pages/, '') || "/index.html";
+          // Normalize: convert absolute paths to document-relative paths
+          redirectTo = redirectStored
+            .replace(/^\/pages\//, '')  // remove /pages/ prefix if present
+            .replace(/^\//, '')         // remove leading slash to make it relative
+            || "index.html";
           localStorage.removeItem("post_login_redirect");
         }
 
