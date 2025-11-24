@@ -79,7 +79,7 @@ function bindLogout() {
     localStorage.removeItem("user_email");
     localStorage.removeItem("post_login_redirect");
 
-    window.location.href = "index.html";
+    window.location.href = "/index.html";
   });
 }
 
