@@ -1,18 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap");
 
-/* =============== Theme Tokens =============== */
-:root {
-  --chat-bg: #0b141a;
-  --chat-panel: #111b21;
-  --chat-panel-soft: #202c33;
-  --chat-bubble-bot: #2ecc71;
-  --chat-bubble-user: #202c33;
-  --chat-text-primary: #e9edef;
-  --chat-text-secondary: #8696a0;
-  --accent: #2ecc71;
-  --accent-hover: #36e07c;
-  --border-subtle: #202c33;
-}
+/* ============================================================
+   SAUDI TOURISM – CHATBOT STYLES
+   Follows same token system as itinerary:
+   - Backgrounds: var(--color-bg-base / surface / elevated)
+   - Text: var(--color-text-primary / secondary)
+   - Accent: var(--color-accent-emerald)
+   - Borders: var(--color-border / border-subtle)
+   - Shadows: var(--shadow-sm / shadow-lg)
+   ============================================================ */
 
 /* =============== Chatbot Toggler Button =============== */
 #chatbot-toggler {
@@ -28,8 +24,8 @@
   justify-content: center;
   cursor: pointer;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  background: var(--color-accent-emerald);
+  box-shadow: var(--shadow-lg);
   transition: all 0.2s ease;
 }
 
@@ -64,8 +60,8 @@ body.show-chatbot #chatbot-toggler span:last-child {
   right: 25px;
   bottom: 90px;
   width: 420px;
-  background: var(--chat-panel);
-  color: var(--chat-text-primary);
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
   overflow: hidden;
   border-radius: 20px;
   z-index: 2000;
@@ -73,8 +69,8 @@ body.show-chatbot #chatbot-toggler span:last-child {
   transform: scale(0.2);
   transform-origin: bottom right;
   pointer-events: none;
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 0 0 1px #202c33, 0 24px 48px rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-lg);
   transition: all 0.1s ease;
 }
 
@@ -89,9 +85,9 @@ body.show-chatbot .chatbot-popup {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--chat-panel);
+  background: var(--color-bg-surface);
   padding: 15px 22px;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .chat-header .header-info {
@@ -104,28 +100,29 @@ body.show-chatbot .chatbot-popup {
   height: 35px;
   width: 35px;
   padding: 6px;
-  fill: var(--accent);
+  fill: var(--color-accent-emerald);
   flex-shrink: 0;
-  background: #fff;
+  background: var(--color-bg-base);
   border-radius: 50%;
+  box-shadow: var(--shadow-sm);
 }
 
 .header-info .logo-text {
-  color: #fff;
+  color: var(--color-text-primary);
   font-size: 1.1rem;
   font-weight: 600;
 }
 
-/* small "Online" text under title (matches screenshot) */
+/* small "Online" text under title */
 .header-info .status-text {
   font-size: 0.78rem;
-  color: var(--accent);
+  color: var(--color-accent-emerald);
   margin-top: 2px;
 }
 
 .chat-header #close-chatbot {
   border: none;
-  color: var(--chat-text-primary);
+  color: var(--color-text-primary);
   height: 40px;
   width: 40px;
   font-size: 1.9rem;
@@ -144,7 +141,7 @@ body.show-chatbot .chatbot-popup {
 /* =============== Chat Body (Messages Area) =============== */
 .chat-body {
   padding: 20px 18px 0;
-  background-color: var(--chat-bg);
+  background-color: var(--color-bg-base);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -152,7 +149,7 @@ body.show-chatbot .chatbot-popup {
   margin-bottom: 82px;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--border-subtle) transparent;
+  scrollbar-color: var(--color-border-subtle) transparent;
 }
 
 .chat-body::-webkit-scrollbar {
@@ -164,7 +161,7 @@ body.show-chatbot .chatbot-popup {
 }
 
 .chat-body::-webkit-scrollbar-thumb {
-  background: var(--border-subtle);
+  background: var(--color-border-subtle);
   border-radius: 999px;
 }
 
@@ -179,11 +176,12 @@ body.show-chatbot .chatbot-popup {
   height: 35px;
   width: 35px;
   padding: 6px;
-  fill: #fff;
+  fill: var(--color-accent-emerald);
   flex-shrink: 0;
   margin-bottom: 2px;
-  background: #fff;
+  background: var(--color-bg-surface);
   border-radius: 50%;
+  box-shadow: var(--shadow-sm);
 }
 
 .chat-body .user-message {
@@ -196,8 +194,8 @@ body.show-chatbot .chatbot-popup {
   padding: 10px 14px;
   max-width: 75%;
   font-size: 0.95rem;
-  background: var(--chat-bubble-user);
-  color: var(--chat-text-primary);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   border-radius: 16px;
   line-height: 1.6;
   white-space: pre-wrap;
@@ -209,18 +207,19 @@ body.show-chatbot .chatbot-popup {
   padding: 2px 16px;
 }
 
-/* Bot bubble - green on the left */
+/* Bot bubble - emerald accent, left side corner clipped */
 .chat-body .bot-message .message-text {
-  background-color: var(--chat-bubble-bot);
-  color: #ffffff;
+  background-color: var(--color-accent-emerald);
+  color: var(--color-text-on-accent, #ffffff);
   border-radius: 16px 16px 16px 4px;
 }
 
-/* User bubble - dark grey on the right */
+/* User bubble - elevated card style */
 .chat-body .user-message .message-text {
-  background-color: var(--chat-bubble-user);
-  color: var(--chat-text-primary);
+  background-color: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   border-radius: 16px 16px 4px 16px;
+  border: 1px solid var(--color-border-subtle);
 }
 
 /* Attachments in user messages */
@@ -242,7 +241,7 @@ body.show-chatbot .chatbot-popup {
   width: 7px;
   opacity: 0.9;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--color-accent-emerald);
   animation: dotPulse 1.8s ease-in-out infinite;
 }
 
@@ -279,21 +278,21 @@ body.show-chatbot .chatbot-popup {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: var(--chat-bg);
+  background: var(--color-bg-base);
   padding: 12px 16px 18px;
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--color-border-subtle);
 }
 
 .chat-footer .chat-form {
   display: flex;
   align-items: center;
-  background: var(--chat-panel-soft);
+  background: var(--color-bg-elevated);
   border-radius: 24px;
   padding-left: 10px;
 }
 
 .chat-footer .chat-form:focus-within {
-  outline: 1px solid var(--accent);
+  outline: 1px solid var(--color-accent-emerald);
 }
 
 /* Textarea / Input */
@@ -303,7 +302,7 @@ body.show-chatbot .chatbot-popup {
   max-height: 47px;
   width: 100%;
   background: transparent;
-  color: var(--chat-text-primary);
+  color: var(--color-text-primary);
   resize: none;
   white-space: pre-line;
   font-size: 0.95rem;
@@ -315,15 +314,15 @@ body.show-chatbot .chatbot-popup {
 }
 
 .chat-form .message-input::placeholder {
-  color: var(--chat-text-secondary);
+  color: var(--color-text-secondary);
   font-family: "Inter", sans-serif;
 }
 
 .chat-form .message-input:hover {
-  scrollbar-color: var(--border-subtle) transparent;
+  scrollbar-color: var(--color-border-subtle) transparent;
 }
 
-/* Controls (send button) */
+/* Controls (send + icons) */
 .chat-form .chat-controls {
   padding-right: 6px;
 }
@@ -334,18 +333,18 @@ body.show-chatbot .chatbot-popup {
   border: none;
   font-size: 1.15rem;
   cursor: pointer;
-  color: var(--chat-text-secondary);
+  color: var(--color-text-secondary);
   background: none;
   border-radius: 50%;
   transition: 0.2s ease;
 }
 
-/* Send button – green circle like screenshot */
+/* Send button – emerald circle */
 .chat-form .chat-controls #send-message {
-  color: #0b141a;
+  color: var(--color-text-on-accent, #0b141a);
   display: none;
-  background: var(--accent);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  background: var(--color-accent-emerald);
+  box-shadow: var(--shadow-sm);
 }
 
 .chat-form .message-input:valid ~ .chat-controls #send-message {
@@ -353,7 +352,7 @@ body.show-chatbot .chatbot-popup {
 }
 
 .chat-form .chat-controls #send-message:hover {
-  background: var(--accent-hover);
+  filter: brightness(1.05);
 }
 
 .chat-form .chat-controls button:hover {
@@ -412,3 +411,51 @@ body.show-emoji-picker em-emoji-picker {
     width: 40px;
   }
 }
+
+/* =============== RTL SUPPORT =============== */
+
+/* Header: keep close button on the outer side, swap logo/text flow */
+[dir="rtl"] .chat-header {
+  direction: rtl;
+}
+
+[dir="rtl"] .chat-header .header-info {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .chat-header #close-chatbot {
+  margin-right: 0;
+  margin-left: -10px;
+}
+
+[dir="rtl"] .message .bot-message img{
+  direction: ltr;
+}
+
+[dir="rtl"] .chat-body .message .message-text {
+  text-align: right;
+}
+
+/* Input row: RTL typing & paddings swapped */
+[dir="rtl"] .chat-footer .chat-form {
+  direction: rtl;
+  padding-left: 0;
+  padding-right: 10px;
+}
+
+[dir="rtl"] .chat-form .message-input {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .chat-form .chat-controls {
+  padding-right: 0;
+  padding-left: 6px;
+}
+
+/* Optional: header text alignment (for multi-line titles) */
+[dir="rtl"] .chat-header .header-info .logo-text,
+[dir="rtl"] .chat-header .header-info .status-text {
+  text-align: right;
+}
+

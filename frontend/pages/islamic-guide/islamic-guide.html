@@ -59,16 +59,18 @@
       }
 
       .guide-list {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
       }
 
       .guide-item {
         display: flex;
+        flex: 1;
         align-items: center;
         gap: 14px;
         padding: 16px 18px;
+        min-width: 400px;
         border-radius: 14px;
         background: var(--bg-secondary);
         box-shadow: var(--shadow-sm);
@@ -234,18 +236,6 @@
             </h3>
             <p data-i18n="islamicGuidePage.quranDesc">
               Essential verses and travel supplications
-            </p>
-          </div>
-        </a>
-
-        <a class="guide-item" href="mosques.html">
-          <div class="guide-icon">🕌</div>
-          <div>
-            <h3 data-i18n="islamicGuidePage.mosquesTitle">
-              Nearby Mosques
-            </h3>
-            <p data-i18n="islamicGuidePage.mosquesDesc">
-              Find the closest places to pray
             </p>
           </div>
         </a>

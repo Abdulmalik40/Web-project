@@ -7,10 +7,16 @@
 :root {
   /* === CORE SAUDI CULTURAL COLORS (MANDATORY) === */
   --color-accent-saudi-green: #006C35;        /* Saudi National Green - CTAs, badges, key actions */
-  --color-accent-lavender: #A78BBA;           /* Vision 2030 Lavender - hover effects, dividers, accents */
+  --color-accent-lavender: #A78BBA;
+  --color-accent-lavender-dark: #5b456a;            /* Vision 2030 Lavender - hover effects, dividers, accents */
   --color-accent-gold: #FFD700;               /* Desert Sunset Gold - decorative lines, icons, highlights */
   --color-accent-ruby: #822659;               /* Heritage Ruby - premium, featured, special tags */
   --color-accent-teal: #004D61;               /* Skyline Teal - modern accents, info sections */
+
+  /* === EXTRA ACCENT GREEN (LEGACY / EMERALD) === */
+  --color-accent-emerald: #2ECC71;            /* Soft emerald accent (previous green from older designs) */
+  --accent-legacy-green: #2ECC71;             /* Alias for backwards compatibility with old --accent-green usage */
+
   --color-text-off-white: #F0F0F0;           /* Off-White Text (dark mode) */
   --color-bg-midnight: #1A1A1A;               /* Midnight Black (dark mode base) */
   --color-bg-pure-white: #FFFFFF;            /* Pure White (light mode base) */
@@ -79,10 +85,16 @@
 [data-theme="dark"] {
   /* === CORE SAUDI CULTURAL COLORS (unchanged) === */
   --color-accent-saudi-green: #006C35;        /* Saudi National Green - unchanged */
-  --color-accent-lavender: #A78BBA;           /* Vision 2030 Lavender - unchanged */
+  --color-accent-lavender: #A78BBA;
+  --color-accent-lavender-dark: #5b456a;           /* Vision 2030 Lavender - unchanged */
   --color-accent-gold: #FFD700;               /* Desert Sunset Gold - unchanged */
   --color-accent-ruby: #822659;               /* Heritage Ruby - unchanged */
   --color-accent-teal: #004D61;               /* Skyline Teal - unchanged */
+
+  /* === EXTRA ACCENT GREEN (LEGACY / EMERALD) === */
+  --color-accent-emerald: #2ECC71;            /* Same emerald accent in dark mode */
+  --accent-legacy-green: #2ECC71;             /* Alias for backwards compatibility */
+
   --color-text-off-white: #F0F0F0;           /* Off-White Text - unchanged */
   --color-bg-midnight: #1A1A1A;               /* Midnight Black - unchanged */
   --color-bg-pure-white: #FFFFFF;            /* Pure White - unchanged */
