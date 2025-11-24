@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Page title -->
-    <title>Jeddah • Red Sea Port City</title>
+    <title data-i18n="jeddahPage.titleTag">Jeddah • Red Sea Port City</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,7 +35,150 @@
     <script src="../../scripts/modules/weatherWidget.js" defer></script>
     <script src="../../scripts/chatbot.js" defer></script>
     <script src="../../scripts/header-component.js" defer></script>
-    <script src="../../scripts/event-card-component.js" defer></script>
+    <!-- Removed: event-card-component.js is no longer needed
+         since we're using hardcoded HTML cards matching the structure from riyadh.html -->
+
+    <!-- Added: CSS animations for event cards
+         Includes fade-in, slide-up animations on load, and hover effects -->
+    <style>
+      /* Animation keyframes for card entrance */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Animation keyframes for card hover scale */
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.02);
+        }
+      }
+
+      /* Event card container with animation */
+      .event-card-animated {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Staggered animation delays for each card */
+      .event-card-animated:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .event-card-animated:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .event-card-animated:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      /* Hover effects for cards */
+      .event-card-animated:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+        -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+        -moz-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+      }
+
+      /* Image hover effect */
+      .event-card-animated img {
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .event-card-animated:hover img {
+        transform: scale(1.1);
+      }
+
+      /* Button hover effect */
+      .event-card-animated a {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .event-card-animated a::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .event-card-animated a:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .event-card-animated a:hover {
+        background: #ff8d3d;
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(255, 125, 45, 0.4);
+      }
+
+      /* Smooth transitions for all card elements */
+      .event-card-animated h3,
+      .event-card-animated p {
+        transition: color 0.3s ease;
+      }
+
+      .event-card-animated:hover h3 {
+        color: #ff7d2d;
+      }
+
+      /* RTL/LTR Layout Switching for Section Content */
+      .section-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .section-image {
+        flex: 1;
+        order: 1;
+      }
+
+      .section-text {
+        flex: 1;
+        order: 2;
+      }
+
+      html[dir="rtl"] .section-content,
+      body.rtl .section-content {
+        flex-direction: row-reverse;
+      }
+
+      html[dir="rtl"] .section-image,
+      body.rtl .section-image {
+        order: 2;
+      }
+
+      html[dir="rtl"] .section-text,
+      body.rtl .section-text {
+        order: 1;
+      }
+
+      .history-container {
+        direction: inherit;
+      }
+    </style>
   </head>
 
   <body>
@@ -128,13 +271,17 @@
       <div class="hero-content">
         <div class="hero-text">
           <h1 class="hero-title">
-            <span class="title-line">RED SEA PORT</span>
-            <span class="title-line featured">JEDDAH</span>
-            <span class="title-line subtitle">
+            <span class="title-line" data-i18n="jeddahPage.heroTitle1"
+              >RED SEA PORT</span
+            >
+            <span class="title-line featured" data-i18n="jeddahPage.heroTitle2"
+              >JEDDAH</span
+            >
+            <span class="title-line subtitle" data-i18n="jeddahPage.heroTitle3">
               COASTAL • HERITAGE • GATEWAY
             </span>
           </h1>
-          <p class="hero-sub">
+          <p class="hero-sub" data-i18n="jeddahPage.heroSubtitle">
             The historic gateway to Makkah, blending centuries of maritime
             heritage with modern waterfront living.
           </p>
@@ -142,12 +289,12 @@
       </div>
       <div class="scroll-indicator">
         <div class="scroll-arrow"></div>
-        <span>Scroll to Explore</span>
+        <span data-i18n="common.scrollToExplore">Scroll to Explore</span>
       </div>
     </section>
 
     <!-- Main content -->
-    <main dir="rtl" class="history-container">
+    <main class="history-container">
       <!-- Replace the entire <section class="section" id="first-state"> with this -->
       <section class="section" id="first-state">
         <div class="section-content">
@@ -158,34 +305,53 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">جدة – عروس البحر الأحمر</h2>
-            <h3 class="section-subtitle">نبذة تاريخية موجزة</h3>
-            <p class="section-body">
+            <h2 class="section-title" data-i18n="jeddahPage.section1Title">
+              جدة – عروس البحر الأحمر
+            </h2>
+            <h3
+              class="section-subtitle"
+              data-i18n="jeddahPage.section1Subtitle"
+            >
+              نبذة تاريخية موجزة
+            </h3>
+            <p class="section-body" data-i18n="jeddahPage.section1Para1">
               ارتبط اسم جدة بالبحر والتجارة والضيافة منذ قرون؛ فهي بوابة الحجاز
               ومرفأ الحجاج والزوار. ومع تحوّلاتها العمرانية الحديثة، ظلت المدينة
               محافظةً على روحها البحرية وأسواقها التراثية ونبضها الثقافي.
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="jeddahPage.section1Para2">
               شهدت جدة موجات تطوير شاملة لأنسنة الأحياء والواجهة البحرية وشبكات
               الطرق والممرات، فغدت تجربة الزيارة أكثر سلاسة وجودة، مع تكامل بين
               التاريخ والهوية من جهة، والبنية التحتية والخدمات الذكية من جهة
               أخرى.
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="jeddahPage.section1Para3">
               اليوم تقدّم جدة تجربة متوازنة: سياحة بحرية وثقافية وفنية على مدار
               العام، ومشهدًا طهويًا متنوعًا، وفعاليات موسمية على الكورنيش ومحاور
               المدينة الحديثة.
             </p>
-            <p class="section-body">
-              وتستمر مشاريع الارتقاء الحضري في رفع جودة الحياة، مع عناية خاصة
-              بالمساحات المفتوحة والفنون العامة وتجربة المشاة.
-            </p>
-            <h4 class="section-subtitle">أبرز ما يميّز جدة</h4>
+            <h4
+              class="section-subtitle"
+              data-i18n="jeddahPage.section1Highlights"
+            >
+              أبرز ما يميّز جدة
+            </h4>
             <ul class="section-list">
-              <li>الواجهة البحرية والكورنيش الشمالي</li>
-              <li>جدة التاريخية (البلد) وبيوتها التراثية</li>
-              <li>الفعاليات الموسمية والفنون العامة</li>
-              <li>المطاعم والمقاهي ذات المذاقات العالمية</li>
+              <li data-i18n="jeddahPage.section1Item1">
+                الواجهة البحرية والكورنيش الشمالي
+              </li>
+              <li data-i18n="jeddahPage.section1Item2">
+                جدة التاريخية (البلد) وبيوتها التراثية
+              </li>
+              <li data-i18n="jeddahPage.section1Item3">
+                الفعاليات الموسمية والفنون العامة
+              </li>
+              <li data-i18n="jeddahPage.section1Item4">
+                المطاعم والمقاهي ذات المذاقات العالمية
+              </li>
+              <li data-i18n="jeddahPage.section1Item5">
+                غوص البحر الأحمر والأنشطة البحرية
+              </li>
             </ul>
           </div>
         </div>
@@ -201,32 +367,54 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">الواجهة البحرية والكورنيش</h2>
-            <h3 class="section-subtitle">ممشى ممتد ومسارات وأنشطة بحرية</h3>
-            <p class="section-body">
+            <h2 class="section-title" data-i18n="jeddahPage.section2Title">
+              الواجهة البحرية والكورنيش
+            </h2>
+            <h3
+              class="section-subtitle"
+              data-i18n="jeddahPage.section2Subtitle"
+            >
+              ممشى ممتد ومسارات وأنشطة بحرية
+            </h3>
+            <p class="section-body" data-i18n="jeddahPage.section2Para1">
               يمتد كورنيش جدة بمسارات مشي وركوب دراجات وحدائق مفتوحة ومناطق لعب
               للأطفال، مع منصات إطلالة على البحر ومراسي قوارب ومطاعم مطلة على
               الواجهة.
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="jeddahPage.section2Para2">
               تتوزع على الكورنيش أعمال فنية ونوافير ومناطق فعاليات موسمية، إلى
               جانب محطات جلوس وأنفاق عبور وخدمات مرافق تعزز راحة الزائر.
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="jeddahPage.section2Para3">
               كما تتكامل مع الكورنيش مناطق تجارية ومطاعم عالمية ومقاهي بإطلالات
               بحرية، ما يصنع تجربة نزهة متكاملة للعائلات والزوار.
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="jeddahPage.section2Para4">
               وتتوفر حلول مواقف وتنظيم حركة ذكية تتيح انسيابية الوصول وتوزيع
               الحشود في مواسم الإقبال.
             </p>
-            <h4 class="section-subtitle">تجربتك على الواجهة</h4>
+            <h4
+              class="section-subtitle"
+              data-i18n="jeddahPage.section2Highlights"
+            >
+              تجربتك على الواجهة
+            </h4>
             <ul class="section-list">
-              <li>ممشى الكورنيش الشمالي</li>
-              <li>المناطق الخضراء وحدائق العائلات</li>
-              <li>المطاعم والمقاهي المطلة على البحر</li>
-              <li>المراسي والأنشطة البحرية</li>
-              <li>العروض والفعاليات الموسمية</li>
+              <li data-i18n="jeddahPage.section2Item1">
+                ممشى الكورنيش الشمالي
+              </li>
+              <li data-i18n="jeddahPage.section2Item2">
+                المناطق الخضراء وحدائق العائلات
+              </li>
+              <li data-i18n="jeddahPage.section2Item3">
+                المطاعم والمقاهي المطلة على البحر
+              </li>
+              <li data-i18n="jeddahPage.section2Item4">
+                المراسي والأنشطة البحرية
+              </li>
+              <li data-i18n="jeddahPage.section2Item5">
+                العروض والفعاليات الموسمية
+              </li>
             </ul>
           </div>
         </div>
@@ -242,30 +430,47 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">جدة اليوم</h2>
-            <h3 class="section-subtitle">وصول سهل وخدمات ذكية وتجربة نابضة</h3>
-            <p class="section-body">
+            <h2 class="section-title" data-i18n="jeddahPage.section3Title">
+              جدة اليوم
+            </h2>
+            <h3
+              class="section-subtitle"
+              data-i18n="jeddahPage.section3Subtitle"
+            >
+              وصول سهل وخدمات ذكية وتجربة نابضة
+            </h3>
+            <p class="section-body" data-i18n="jeddahPage.section3Para1">
               ترتبط جدة بالعالم عبر مطار الملك عبدالعزيز الدولي، وبالمدن
               المجاورة عبر قطار الحرمين السريع وشبكات طرق دائرية حديثة.
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="jeddahPage.section3Para2">
               تستقبل المدينة زوارها بفنادق ومنتجعات ومراكز تسوق رئيسية، إلى جانب
               أحياء حديثة ومساحات عامة أنسنت التجربة الحضرية.
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="jeddahPage.section3Para3">
               وتعزّز الخدمات الرقمية الإرشاد والتنقل والاختيار، مع خرائط تفاعلية
               وتحديثات للفعاليات والأنشطة.
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="jeddahPage.section3Para4">
               وتتكامل الفنون العامة والبرامج الثقافية في صقل هوية المدينة
               وشخصيتها البحرية المعاصرة.
             </p>
             <ul class="section-list">
-              <li>مطار الملك عبدالعزيز الدولي (T1)</li>
-              <li>قطار الحرمين — محطات مطار جدة والمدينة</li>
-              <li>الطرق الدائرية ومحاور الوصول للكورنيش</li>
-              <li>خدمات الإرشاد والخرائط التفاعلية</li>
-              <li>فعاليات فنية وثقافية على مدار العام</li>
+              <li data-i18n="jeddahPage.section3Item1">
+                مطار الملك عبدالعزيز الدولي (T1)
+              </li>
+              <li data-i18n="jeddahPage.section3Item2">
+                قطار الحرمين — محطات مطار جدة والمدينة
+              </li>
+              <li data-i18n="jeddahPage.section3Item3">
+                الطرق الدائرية ومحاور الوصول للكورنيش
+              </li>
+              <li data-i18n="jeddahPage.section3Item4">
+                خدمات الإرشاد والخرائط التفاعلية
+              </li>
+              <li data-i18n="jeddahPage.section3Item5">
+                فعاليات فنية وثقافية على مدار العام
+              </li>
             </ul>
           </div>
         </div>
@@ -281,23 +486,32 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">جدة التاريخية (البلد)</h2>
-            <h3 class="section-subtitle">أزقة وأسواق وبيوت تراثية</h3>
-            <p class="section-body">
+            <h2 class="section-title" data-i18n="jeddahPage.section4Title">
+              جدة التاريخية (البلد)
+            </h2>
+            <h3
+              class="section-subtitle"
+              data-i18n="jeddahPage.section4Subtitle"
+            >
+              أزقة وأسواق وبيوت تراثية
+            </h3>
+            <p class="section-body" data-i18n="jeddahPage.section4Para1">
               تحتفظ "البلد" بملامح جدة القديمة: بيوت حجريّة وشبابيك روشان مزخرفة
               وأزقة وأسواق عتيقة تروي سيرة البحر والتجارة والضيافة.
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="jeddahPage.section4Para2">
               بين بيوت تاريخية مثل بيت نصيف ومقاهي وساحات متجددة، سيجد الزائر
               تجربة ثقافية حيّة تتجاور فيها الذاكرة مع العروض الفنية
               والمهرجانات.
             </p>
-            <p class="section-body">
+            <p class="section-body" data-i18n="jeddahPage.section4Para3">
               يُنصح بالزيارة مساءً لاعتدال الأجواء وازدهار الحركة، مع الالتزام
               بإرشادات الحفاظ على المواقع التراثية.
             </p>
-            <h4 class="section-subtitle">نصائح قبل الزيارة</h4>
-            <p class="section-body">
+            <h4 class="section-subtitle" data-i18n="jeddahPage.section4Tips">
+              نصائح قبل الزيارة
+            </h4>
+            <p class="section-body" data-i18n="jeddahPage.section4TipsText">
               ارتداء أحذية مريحة، استكشاف الأزقة على مهل، الاستفادة من الجولات
               الإرشادية، وتوثيق التجربة بالصور مع احترام خصوصية السكان.
             </p>
@@ -315,9 +529,16 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">نافورة الملك فهد</h2>
-            <h3 class="section-subtitle">أيقونة على ساحل البحر الأحمر</h3>
-            <p class="section-body">
+            <h2 class="section-title" data-i18n="jeddahPage.section5Title">
+              نافورة الملك فهد
+            </h2>
+            <h3
+              class="section-subtitle"
+              data-i18n="jeddahPage.section5Subtitle"
+            >
+              أيقونة على ساحل البحر الأحمر
+            </h3>
+            <p class="section-body" data-i18n="jeddahPage.section5Para1">
               تُعد النافورة معلمًا بصريًا ليلًا، يمكن مشاهدتها من عدة نقاط على
               الكورنيش؛ وتحيط بها مساحات جلوس وممشى وإطلالات بحرية مفتوحة.
             </p>
@@ -335,9 +556,16 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">متحف جدة للمجسمات</h2>
-            <h3 class="section-subtitle">حديقة مفتوحة للفن المعاصر</h3>
-            <p class="section-body">
+            <h2 class="section-title" data-i18n="jeddahPage.section6Title">
+              متحف جدة للمجسمات
+            </h2>
+            <h3
+              class="section-subtitle"
+              data-i18n="jeddahPage.section6Subtitle"
+            >
+              حديقة مفتوحة للفن المعاصر
+            </h3>
+            <p class="section-body" data-i18n="jeddahPage.section6Para1">
               يضم المتحف المفتوح أعمالًا نحتية لفنانين عالميين ومحليين على
               امتداد الكورنيش، ما يجعل النزهة تجربة ثقافية ومشهدية في الوقت
               ذاته.
@@ -356,9 +584,16 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">مسجد الرحمة (المسجد العائم)</h2>
-            <h3 class="section-subtitle">هندسة بحرية وإطلالة صفاء</h3>
-            <p class="section-body">
+            <h2 class="section-title" data-i18n="jeddahPage.section7Title">
+              مسجد الرحمة (المسجد العائم)
+            </h2>
+            <h3
+              class="section-subtitle"
+              data-i18n="jeddahPage.section7Subtitle"
+            >
+              هندسة بحرية وإطلالة صفاء
+            </h3>
+            <p class="section-body" data-i18n="jeddahPage.section7Para1">
               يُعد مسجد الرحمة من أشهر معالم جدة البحرية؛ تتماهى قبابه البيضاء
               مع زرقة البحر، ويمنح زواره لحظات روحية على صفحة الماء.
             </p>
@@ -376,9 +611,16 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">ممشى آرت بروميناد ومرسى اليخوت</h2>
-            <h3 class="section-subtitle">مطاعم وإطلالات ومراسي حديثة</h3>
-            <p class="section-body">
+            <h2 class="section-title" data-i18n="jeddahPage.section8Title">
+              ممشى آرت بروميناد ومرسى اليخوت
+            </h2>
+            <h3
+              class="section-subtitle"
+              data-i18n="jeddahPage.section8Subtitle"
+            >
+              مطاعم وإطلالات ومراسي حديثة
+            </h3>
+            <p class="section-body" data-i18n="jeddahPage.section8Para1">
               تتجاور المطاعم الراقية والمقاهي مع مراسي اليخوت ومناطق فعاليات،
               لتصنع أمسية حضرية بإطلالات بحرية ومشهد معماري معاصر.
             </p>
@@ -396,9 +638,16 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">التسوق والمشهد الطهوي</h2>
-            <h3 class="section-subtitle">تجارب عالمية بنكهات بحرية</h3>
-            <p class="section-body">
+            <h2 class="section-title" data-i18n="jeddahPage.section9Title">
+              التسوق والمشهد الطهوي
+            </h2>
+            <h3
+              class="section-subtitle"
+              data-i18n="jeddahPage.section9Subtitle"
+            >
+              تجارب عالمية بنكهات بحرية
+            </h3>
+            <p class="section-body" data-i18n="jeddahPage.section9Para1">
               من مراكز التسوق الكبرى إلى المطاعم المحلية والعالمية، تقدّم جدة
               مزيجًا طهويًا واسع الخيارات؛ من الأسماك الطازجة إلى المطابخ
               العالمية، في أجواء عائلية على امتداد المدينة.
@@ -417,9 +666,16 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">الفعاليات والرياضة</h2>
-            <h3 class="section-subtitle">مواسم نابضة ومسارح متعددة</h3>
-            <p class="section-body">
+            <h2 class="section-title" data-i18n="jeddahPage.section10Title">
+              الفعاليات والرياضة
+            </h2>
+            <h3
+              class="section-subtitle"
+              data-i18n="jeddahPage.section10Subtitle"
+            >
+              مواسم نابضة ومسارح متعددة
+            </h3>
+            <p class="section-body" data-i18n="jeddahPage.section10Para1">
               تستضيف جدة فعاليات فنية ورياضية على مدار العام، مع مسارح ومنصات
               خارجية ومناطق احتفالية، ما يجعل الزيارة متجددة في كل موسم.
             </p>
@@ -428,34 +684,235 @@
       </section>
 
       <!-- أحدث الفعاليات -->
-      <section style="margin: 3rem 0; width: 100%">
-        <h2
-          class="section-title"
-          data-i18n="events.latestEvents"
-          style="
-            color: #006233;
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            font-weight: 700;
-            width: 100%;
-            display: block;
-          "
-        >
-          Latest Events
-        </h2>
+      <!-- Changed: Replaced dynamic event card system with hardcoded card structure from riyadh.html
+           This implementation uses inline styles and hardcoded HTML cards instead of the dynamic component.
+           The card structure matches riyadh.html for visual consistency, but uses Jeddah's event data. -->
+      <div
+        style="
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          flex-wrap: wrap;
+          padding: 60px 0;
+        "
+      >
+        <!-- CARD 1: World Rally Championship -->
+        <!-- Added: event-card-animated class for fade-in and hover animations -->
         <div
-          id="events-section"
+          class="event-card-animated"
           style="
-            background: #0b141a;
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            width: 100%;
+            width: 400px;
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            color: var(--text-color);
+            text-align: center;
+            padding-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
           "
         >
-          <div id="events-container" class="events-container"></div>
+          <img
+            src="../../assets/images/events/jed1.png"
+            style="width: 100%; height: 200px; object-fit: cover"
+          />
+
+          <h3
+            style="font-size: 20px; margin: 18px 0 4px; text-align: center"
+            data-i18n="jeddahPage.event1Title"
+          >
+            World Rally Championship
+          </h3>
+          <p
+            style="
+              font-size: 14px;
+              padding: 10px 20px;
+              opacity: 0.8;
+              line-height: 1.6;
+              text-align: center;
+            "
+            data-i18n="jeddahPage.event1Description"
+          >
+            The World Rally Championship returns to Jeddah, showcasing elite
+            drivers, thrilling stages, and high-speed excitement along Saudi's
+            stunning landscapes.
+          </p>
+          <p
+            style="
+              font-size: 12px;
+              padding: 0 20px 10px;
+              opacity: 0.7;
+              text-align: center;
+            "
+            data-i18n="jeddahPage.event1Date"
+          >
+            25 - 29 November
+          </p>
+          <a
+            href="https://www.visitsaudi.com/en/jeddah/events/world-rally-championship?utm_campaign=VS_Saudi_Winter_2025&utm_content=En&utm_medium=Post&utm_source=Unreal_Calendar_En_OCT23"
+            style="
+              display: inline-block;
+              margin: 20px auto 0;
+              background: #ff7d2d;
+              color: #fff;
+              padding: 12px 35px;
+              border-radius: 25px;
+              text-decoration: none;
+              font-weight: 600;
+              margin-top: auto;
+            "
+            >Go</a
+          >
         </div>
-      </section>
+
+        <!-- CARD 2: F1H2O -->
+        <!-- Added: event-card-animated class for fade-in and hover animations -->
+        <div
+          class="event-card-animated"
+          style="
+            width: 400px;
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            color: var(--text-color);
+            text-align: center;
+            padding-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+          "
+        >
+          <img
+            src="../../assets/images/events/jed2.png"
+            style="width: 100%; height: 200px; object-fit: cover"
+          />
+
+          <h3
+            style="font-size: 20px; margin: 18px 0 4px; text-align: center"
+            data-i18n="jeddahPage.event2Title"
+          >
+            F1H2O
+          </h3>
+          <p
+            style="
+              font-size: 14px;
+              padding: 10px 20px;
+              opacity: 0.8;
+              line-height: 1.6;
+              text-align: center;
+            "
+            data-i18n="jeddahPage.event2Description"
+          >
+            Feel the adrenaline at F1H2O Jeddah, where world-class drivers race
+            high-speed boats in thrilling water battles along the Red Sea.
+          </p>
+          <p
+            style="
+              font-size: 12px;
+              padding: 0 20px 10px;
+              opacity: 0.7;
+              text-align: center;
+            "
+            data-i18n="jeddahPage.event2Date"
+          >
+            27 - 29 November
+          </p>
+          <a
+            href="https://webook.com/en/events/f1h2o-world-championship-2025?utm_campaign=VS_Saudi_Winter_2025&utm_content=En&utm_medium=Post&utm_source=Unreal_Calendar_En_OCT23"
+            style="
+              display: inline-block;
+              margin: 20px auto 0;
+              background: #ff7d2d;
+              color: #fff;
+              padding: 12px 35px;
+              border-radius: 25px;
+              text-decoration: none;
+              font-weight: 600;
+              margin-top: auto;
+            "
+            >Go</a
+          >
+        </div>
+
+        <!-- CARD 3: Winter Wonderland -->
+        <!-- Added: event-card-animated class for fade-in and hover animations -->
+        <div
+          class="event-card-animated"
+          style="
+            width: 400px;
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            color: var(--text-color);
+            text-align: center;
+            padding-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+          "
+        >
+          <img
+            src="../../assets/images/events/jed3.png"
+            style="width: 100%; height: 200px; object-fit: cover"
+          />
+
+          <h3
+            style="font-size: 20px; margin: 18px 0 4px; text-align: center"
+            data-i18n="jeddahPage.event3Title"
+          >
+            Winter Wonderland
+          </h3>
+          <p
+            style="
+              font-size: 14px;
+              padding: 10px 20px;
+              opacity: 0.8;
+              line-height: 1.6;
+              text-align: center;
+            "
+            data-i18n="jeddahPage.event3Description"
+          >
+            Experience a magical winter escape with thrilling rides, games,
+            shows, and festive fun for all ages.
+          </p>
+          <p
+            style="
+              font-size: 12px;
+              padding: 0 20px 10px;
+              opacity: 0.7;
+              text-align: center;
+            "
+            data-i18n="jeddahPage.event3Date"
+          >
+            1 December - 15 January
+          </p>
+          <a
+            href="https://www.visitsaudi.com/en/jeddah/events/winter-wonderland?utm_campaign=VS_Saudi_Winter_2025&utm_content=En&utm_medium=Post&utm_source=Unreal_Calendar_En_OCT23"
+            style="
+              display: inline-block;
+              margin: 20px auto 0;
+              background: #ff7d2d;
+              color: #fff;
+              padding: 12px 35px;
+              border-radius: 25px;
+              text-decoration: none;
+              font-weight: 600;
+              margin-top: auto;
+            "
+            >Go</a
+          >
+        </div>
+      </div>
     </main>
 
     <!-- Weather Widget at Bottom -->
@@ -469,51 +926,72 @@
     <script type="module" src="../../scripts/main.js"></script>
     <script src="../../scripts/Script.js"></script>
 
+    <!-- Translation and RTL/LTR Layout Script -->
     <script>
-      // Initialize event cards when page loads
       document.addEventListener("DOMContentLoaded", () => {
-        const eventsContainer = document.getElementById("events-container");
+        const updateLayoutDirection = () => {
+          const main = document.querySelector(".history-container");
+          if (!main) return;
 
-        if (eventsContainer && window.createEventCards) {
-          const events = [
-            {
-              imageName: "jed1.png",
-              titleKey: "events.worldRallyChampionship.title",
-              title: "World Rally Championship",
-              descriptionKey: "events.worldRallyChampionship.description",
-              description:
-                "The World Rally Championship returns to Jeddah, showcasing elite drivers, thrilling stages, and high-speed excitement along Saudi's stunning landscapes.",
-              date: "25 - 29 November",
-              ticketLink:
-                "https://www.visitsaudi.com/en/jeddah/events/world-rally-championship?utm_campaign=VS_Saudi_Winter_2025&utm_content=En&utm_medium=Post&utm_source=Unreal_Calendar_En_OCT23",
-            },
-            {
-              imageName: "jed2.png",
-              titleKey: "events.f1h2o.title",
-              title: "F1H2O",
-              descriptionKey: "events.f1h2o.description",
-              description:
-                "Feel the adrenaline at F1H2O Jeddah, where world-class drivers race high-speed boats in thrilling water battles along the Red Sea.",
-              date: "27 - 29 November",
-              ticketLink:
-                "https://webook.com/en/events/f1h2o-world-championship-2025?utm_campaign=VS_Saudi_Winter_2025&utm_content=En&utm_medium=Post&utm_source=Unreal_Calendar_En_OCT23",
-            },
-            {
-              imageName: "jed3.png",
-              titleKey: "events.winterWonderland.title",
-              title: "Winter Wonderland",
-              descriptionKey: "events.winterWonderland.description",
-              description:
-                "Experience a magical winter escape with thrilling rides, games, shows, and festive fun for all ages.",
-              date: "1 December - 15 January",
-              ticketLink:
-                "https://www.visitsaudi.com/en/jeddah/events/winter-wonderland?utm_campaign=VS_Saudi_Winter_2025&utm_content=En&utm_medium=Post&utm_source=Unreal_Calendar_En_OCT23",
-            },
-          ];
+          const currentLang =
+            window.i18n?.getLanguage() ||
+            localStorage.getItem("language") ||
+            "en";
 
-          window.createEventCards(eventsContainer, events);
+          if (currentLang === "ar") {
+            main.setAttribute("dir", "rtl");
+            document.documentElement.setAttribute("dir", "rtl");
+            document.body.classList.add("rtl");
+            document.body.classList.remove("ltr");
+          } else {
+            main.setAttribute("dir", "ltr");
+            document.documentElement.setAttribute("dir", "ltr");
+            document.body.classList.add("ltr");
+            document.body.classList.remove("rtl");
+          }
+        };
+
+        if (window.i18n) {
+          updateLayoutDirection();
+          window.i18n.subscribe(() => {
+            updateLayoutDirection();
+            if (window.i18n.refresh) {
+              window.i18n.refresh();
+            }
+          });
+        } else {
+          const checkI18n = setInterval(() => {
+            if (window.i18n) {
+              clearInterval(checkI18n);
+              updateLayoutDirection();
+              window.i18n.subscribe(() => {
+                updateLayoutDirection();
+                if (window.i18n.refresh) {
+                  window.i18n.refresh();
+                }
+              });
+            }
+          }, 100);
+          setTimeout(() => clearInterval(checkI18n), 5000);
+        }
+
+        const titleEl = document.querySelector("title");
+        if (titleEl && titleEl.hasAttribute("data-i18n")) {
+          const updateTitle = () => {
+            if (window.i18n && window.i18n.t) {
+              const key = titleEl.getAttribute("data-i18n");
+              document.title = window.i18n.t(key);
+            }
+          };
+          if (window.i18n) {
+            window.i18n.subscribe(updateTitle);
+            updateTitle();
+          }
         }
       });
     </script>
+    <!-- Removed: Event card initialization script is no longer needed
+         since we're using hardcoded HTML cards instead of the dynamic component system.
+         The cards are now directly embedded in the HTML above, matching the structure from riyadh.html. -->
   </body>
 </html>

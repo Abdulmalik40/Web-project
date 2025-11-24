@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Page title -->
-    <title>Aseer • Northern Region</title>
+    <title data-i18n="aseerPage.titleTag">Aseer • Northern Region</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,6 +32,148 @@
     <script src="../../scripts/modules/weatherWidget.js" defer></script>
     <script src="../../scripts/chatbot.js" defer></script>
     <script src="../../scripts/header-component.js" defer></script>
+    
+    <!-- Added: CSS animations for event cards
+         Includes fade-in, slide-up animations on load, and hover effects -->
+    <style>
+      /* Animation keyframes for card entrance */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Animation keyframes for card hover scale */
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.02);
+        }
+      }
+
+      /* Event card container with animation */
+      .event-card-animated {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Staggered animation delays for each card */
+      .event-card-animated:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .event-card-animated:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .event-card-animated:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      /* Hover effects for cards */
+      .event-card-animated:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+        -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+        -moz-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+      }
+
+      /* Image hover effect */
+      .event-card-animated img {
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .event-card-animated:hover img {
+        transform: scale(1.1);
+      }
+
+      /* Button hover effect */
+      .event-card-animated a {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .event-card-animated a::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .event-card-animated a:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .event-card-animated a:hover {
+        background: #ff8d3d;
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(255, 125, 45, 0.4);
+      }
+
+      /* Smooth transitions for all card elements */
+      .event-card-animated h3,
+      .event-card-animated p {
+        transition: color 0.3s ease;
+      }
+
+      .event-card-animated:hover h3 {
+        color: #ff7d2d;
+      }
+
+      /* RTL/LTR Layout Switching for Section Content */
+      .section-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .section-image {
+        flex: 1;
+        order: 1;
+      }
+
+      .section-text {
+        flex: 1;
+        order: 2;
+      }
+
+      html[dir="rtl"] .section-content,
+      body.rtl .section-content {
+        flex-direction: row-reverse;
+      }
+
+      html[dir="rtl"] .section-image,
+      body.rtl .section-image {
+        order: 2;
+      }
+
+      html[dir="rtl"] .section-text,
+      body.rtl .section-text {
+        order: 1;
+      }
+
+      .history-container {
+        direction: inherit;
+      }
+    </style>
   </head>
 
   <body>
@@ -124,25 +266,25 @@
       <div class="hero-content">
         <div class="hero-text">
           <h1 class="hero-title">
-            <span class="title-line">NORTHERN REGION</span>
-            <span class="title-line featured">ASEER</span>
-            <span class="title-line subtitle">
+            <span class="title-line" data-i18n="aseerPage.heroTitle1">NORTHERN REGION</span>
+            <span class="title-line featured" data-i18n="aseerPage.heroTitle2">ASEER</span>
+            <span class="title-line subtitle" data-i18n="aseerPage.heroTitle3">
               MOUNTAINS • VILLAGES • COOL CLIMATE
             </span>
           </h1>
-          <p class="hero-sub">
+          <p class="hero-sub" data-i18n="aseerPage.heroSubtitle">
             Experience Aseer's mountain scenery and traditional architecture.
           </p>
         </div>
       </div>
       <div class="scroll-indicator">
         <div class="scroll-arrow"></div>
-        <span>Scroll to Explore</span>
+        <span data-i18n="common.scrollToExplore">Scroll to Explore</span>
       </div>
     </section>
 
     <!-- Main content -->
-    <main dir="rtl" class="history-container site-main">
+    <main class="history-container site-main">
       
       <!-- مقدمة عن عسير -->
       <section class="section" id="first-state">
@@ -154,34 +296,20 @@
             />
           </div>
           <div class="section-text">
-            <h2 class="section-title">عسير – علوّ المكان وخصوبة الهوية</h2>
-            <h3 class="section-subtitle">نبذة تاريخية موجزة</h3>
-            <p class="section-body">
+            <h2 class="section-title" data-i18n="aseerPage.section1Title">عسير – علوّ المكان وخصوبة الهوية</h2>
+            <h3 class="section-subtitle" data-i18n="aseerPage.section1Subtitle">نبذة تاريخية موجزة</h3>
+            <p class="section-body" data-i18n="aseerPage.section1Para1">
               تمتد عسير بين قمم السروات وسهول تهامة، مما يمنحها تنوعًا كبيرًا في المناخ والطبيعة.
                وقد أسهمت الزراعة المدرّجة والتجارة الجبلية عبر التاريخ في تشكيل هوية ثقافية غنية
         تظهر في العمارة الحجرية والزي والفنون الشعبية.      
             </p>
-            <p class="section-body">
-              ومع التطور الحديث أصبحت عسير وجهة سياحية مهمة طوال العام، تجمع بين القرى التراثية
-             والمرتفعات الممطرة والمتنزهات المنظمة. وتقدّم تجارب تشمل المشي الجبلي، الإطلالات العالية،
-        الفعاليات الفنية، والمناطق الطبيعية.    
-            </p>
-            <p class="section-body">
-              اليوم تقدّم عسير تجربةً تجمع النسيم العليل والضباب الموسمي
-              والإطلالات الشاسعة، مع مسارات للمشي والرياضات الجبلية ومشاهد
-              فنية وحدائق مرتفعة، في مزيجٍ متوازن من الأصالة والخدمات الحديثة.
-            </p>
-            <p class="section-body">
-              وتستمر برامج الارتقاء الحضري والسياحي في صون الهوية المحلية
-              وتفعيل الاقتصاد الإبداعي، مع عناية بالاستدامة والمسارات
-              الطبيعية.
-            </p>
-            <h4 class="section-subtitle">ملامح تُميّز عسير</h4>
+            <h4 class="section-subtitle" data-i18n="aseerPage.section1Highlights">ملامح تُميّز عسير</h4>
             <ul class="section-list">
-              <li>مرتفعات السروات ومناخها المعتدل</li>
-              <li>القرى الحجرية والزراعة المدرّجة</li>
-              <li>المتنزهات الوطنية ومسارات المشاة</li>
-              <li>فنون مفتوحة وأسواق موسمية</li>
+              <li data-i18n="aseerPage.section1Item1">مرتفعات السروات ومناخها المعتدل</li>
+              <li data-i18n="aseerPage.section1Item2">القرى الحجرية والزراعة المدرّجة</li>
+              <li data-i18n="aseerPage.section1Item3">المتنزهات الوطنية ومسارات المشاة</li>
+              <li data-i18n="aseerPage.section1Item4">فنون مفتوحة وأسواق موسمية</li>
+              <li data-i18n="aseerPage.section1Item5">مرتفعات السروات ومناخها المعتدل</li>
             </ul>
           </div>
         </div>
@@ -200,33 +328,33 @@
     </div>
 
     <div class="section-text">
-      <h2 class="section-title">السودة ومرتفعات السروات</h2>
-      <h3 class="section-subtitle">ضباب عليل ومراصد ومغامرات</h3>
+      <h2 class="section-title" data-i18n="aseerPage.section2Title">السودة ومرتفعات السروات</h2>
+      <h3 class="section-subtitle" data-i18n="aseerPage.section2Subtitle">ضباب عليل ومراصد ومغامرات</h3>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="aseerPage.section2Para1">
         تُعد السودة من أعلى قمم المملكة، وتقدّم إطلالات واسعة على القرى والوديان
         مع غابات العرعر الكثيفة ومواقع جلوس مطلّة على السحاب. وتُعد وجهة مثالية
         لمحبي الطبيعة والهدوء.
       </p>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="aseerPage.section2Para2">
         توفر المنطقة خدمات منظمة تشمل المواقف، نقاط الإرشاد، المقاهي المرتفعة،
         ومسارات مجهّزة للمشي. كما تقدّم العربات الهوائية والزحاليق الجبلية
         تجارب ممتعة للعائلات وهواة المغامرة الخفيفة.
       </p>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="aseerPage.section2Para3">
         يُفضّل متابعة حالة الطقس لكثرة الضباب، وارتداء ملابس دافئة مساءً،
         مع الالتزام بالمسارات حفاظًا على البيئة الطبيعية.
       </p>
 
-      <h4 class="section-subtitle">محطات رئيسية لرحلتك</h4>
+      <h4 class="section-subtitle" data-i18n="aseerPage.section2Highlights">محطات رئيسية لرحلتك</h4>
       <ul class="section-list">
-        <li>منصّات الإطلالة العالية</li>
-        <li>مسارات المشي والهايكنغ</li>
-        <li>مناطق الاستجمام بين الغابات</li>
-        <li>أنشطة المغامرة العائلية</li>
-        <li>خدمات الإرشاد والمرافق</li>
+        <li data-i18n="aseerPage.section2Item1">منصّات الإطلالة العالية</li>
+        <li data-i18n="aseerPage.section2Item2">مسارات المشي والهايكنغ</li>
+        <li data-i18n="aseerPage.section2Item3">مناطق الاستجمام بين الغابات</li>
+        <li data-i18n="aseerPage.section2Item4">أنشطة المغامرة العائلية</li>
+        <li data-i18n="aseerPage.section2Item5">خدمات الإرشاد والمرافق</li>
       </ul>
     </div>
   </div>
@@ -245,17 +373,17 @@
     </div>
 
     <div class="section-text">
-      <h2 class="section-title">قرية رجال ألمع التراثية</h2>
-      <h3 class="section-subtitle">حكاية حجارة وألوان وفنون</h3>
+      <h2 class="section-title" data-i18n="aseerPage.section3Title">قرية رجال ألمع التراثية</h2>
+      <h3 class="section-subtitle" data-i18n="aseerPage.section3Subtitle">حكاية حجارة وألوان وفنون</h3>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="aseerPage.section3Para1">
         تُعد رجال ألمع إحدى أبرز القرى التراثية في المملكة؛ حيث تكشف
         مبانيها الحجرية المزخرفة ونوافذها الخشبية عن عمارة جبلية فريدة
         تُحاكي تاريخ المنطقة. بين الأزقة الصاعدة تنتشر المتاحف الصغيرة
         والمسارح المفتوحة والمقاهي، في تجربة ثقافية تنبض بالحياة.
       </p>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="aseerPage.section3Para2">
         يُنصح بزيارة القرية في فترات العصر والمساء للاستمتاع بالأجواء
         المعتدلة، مع ارتداء أحذية مريحة والمشي المتزن، مع الحفاظ على
         خصوصية الأهالي ونظافة الموقع.
@@ -276,16 +404,16 @@
     </div>
 
     <div class="section-text">
-      <h2 class="section-title">أبها — قلب عسير</h2>
-      <h3 class="section-subtitle">حدائق مرتفعة وممشى وإطلالات</h3>
+      <h2 class="section-title" data-i18n="aseerPage.section4Title">أبها — قلب عسير</h2>
+      <h3 class="section-subtitle" data-i18n="aseerPage.section4Subtitle">حدائق مرتفعة وممشى وإطلالات</h3>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="aseerPage.section4Para1">
         تُعد أبها مركز الحياة في منطقة عسير، وتتميّز بمتنزّهات مطلّة مثل
         منتزه أبو خيال وممشى السحاب، حيث الإطلالات الواسعة على الجبال
         والوديان وأجواء معتدلة طوال العام.
       </p>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="aseerPage.section4Para2">
         كما تضم المدينة بحيرة السد ومناطق جلوس عائلية، إضافة إلى مقاهٍ
         ومطاعم بشرفات مفتوحة تمنح تجربة مريحة مع مناظر طبيعية جذابة.
       </p>
@@ -305,16 +433,16 @@
     </div>
 
     <div class="section-text">
-      <h2 class="section-title">قرية المفتاحة للفنون</h2>
-      <h3 class="section-subtitle">جداريات ومعارض ومسارح صغيرة</h3>
+      <h2 class="section-title" data-i18n="aseerPage.section5Title">قرية المفتاحة للفنون</h2>
+      <h3 class="section-subtitle" data-i18n="aseerPage.section5Subtitle">جداريات ومعارض ومسارح صغيرة</h3>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="aseerPage.section5Para1">
         تُعد قرية المفتاحة مركزًا فنيًا نابضًا، حيث تنتشر الجداريات الملونة
         والمعارض المحلية التي تستعرض أعمال الفنانين الشباب. ويحتضن الحي أمسيات
         ثقافية ومسارح صغيرة تمنح الزوار تجربة فنية قريبة وتفاعلية.
       </p>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="aseerPage.section5Para2">
         كما تضم القرية ورش حِرف تقليدية ومساحات تصوير مفتوحة، مما يجعلها
         مكانًا مثاليًا للمهتمين بالفنون والهوية البصرية والتراث الإبداعي
         المعاصر في عسير.
@@ -335,16 +463,16 @@
     </div>
 
     <div class="section-text">
-      <h2 class="section-title">متنزّه عسير الوطني</h2>
-      <h3 class="section-subtitle">مسارات طبيعية ونِقاط مشاهدة</h3>
+      <h2 class="section-title" data-i18n="aseerPage.section6Title">متنزّه عسير الوطني</h2>
+      <h3 class="section-subtitle" data-i18n="aseerPage.section6Subtitle">مسارات طبيعية ونِقاط مشاهدة</h3>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="aseerPage.section6Para1">
         يُعد متنزّه عسير الوطني من أبرز المواقع الطبيعية في المنطقة، حيث
         يوفّر مسارات للمشي ومناطق مخصّصة للتخييم، إلى جانب نقاط مشاهدة تطل
         على القمم العالية والوديان العميقة في مشاهد بانورامية جميلة.
       </p>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="aseerPage.section6Para2">
         تنتشر في المتنزه اللوحات الإرشادية والتعريفية لضمان تجربة آمنة،
         مع تنبيه الزوار لأهمية الحفاظ على الغطاء النباتي واتباع إرشادات
         السلوك البيئي أثناء الاستكشاف.
@@ -365,38 +493,195 @@
     </div>
 
     <div class="section-text">
-      <h2 class="section-title">عسير اليوم</h2>
-      <h3 class="section-subtitle">وصول ميسّر وتجربة طبيعية وثقافية</h3>
+      <h2 class="section-title" data-i18n="aseerPage.section7Title">عسير اليوم</h2>
+      <h3 class="section-subtitle" data-i18n="aseerPage.section7Subtitle">وصول ميسّر وتجربة طبيعية وثقافية</h3>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="aseerPage.section7Para1">
         باتت عسير اليوم منطقة متصلة وسهلة الوصول بفضل مطار أبها وشبكات الطرق
         التي تربط قمم السروات بسهول تهامة، إضافة إلى ممرات حضرية وحدائق منظمة
         ومسارات درّاجات توفر تجربة متكاملة للزوار.
       </p>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="aseerPage.section7Para2">
         تدعم الأدلة الرقمية والتطبيقات التفاعلية التخطيط للرحلة، عبر عرض
         المسارات المثالية ومواقع المعالم الثقافية والمطاعم والأسواق، مما يسهل
         استكشاف المنطقة بثقة وسلاسة.
       </p>
 
-      <p class="section-body">
+      <p class="section-body" data-i18n="aseerPage.section7Para3">
         أما خيارات الضيافة فتتنوّع بين المنتجعات الجبلية والفنادق الحديثة
         ودور الضيافة الريفية، لتقديم إقامة مريحة بإطلالات خضراء وتجارب تجمع
         الأصالة بالحداثة.
       </p>
 
-      <h4 class="section-subtitle">ملامح حديثة في عسير</h4>
+      <h4 class="section-subtitle" data-i18n="aseerPage.section7Highlights">ملامح حديثة في عسير</h4>
       <ul class="section-list">
-        <li>مطار أبها الدولي</li>
-        <li>شبكة طرق تربط الجبال بالسهول</li>
-        <li>متنزّهات حضرية وخدمات ذكية</li>
-        <li>فعاليات موسمية وأسواق حرفية</li>
-        <li>خيارات إقامة مطلّة على الجبال</li>
+        <li data-i18n="aseerPage.section7Item1">مطار أبها الدولي</li>
+        <li data-i18n="aseerPage.section7Item2">شبكة طرق تربط الجبال بالسهول</li>
+        <li data-i18n="aseerPage.section7Item3">متنزّهات حضرية وخدمات ذكية</li>
+        <li data-i18n="aseerPage.section7Item4">فعاليات موسمية وأسواق حرفية</li>
+        <li data-i18n="aseerPage.section7Item5">خيارات إقامة مطلّة على الجبال</li>
       </ul>
     </div>
   </div>
 </section>
+
+
+
+
+
+<!-- أحدث الفعاليات -->
+       <div style="
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 60px 0;
+        
+      ">
+
+        <!-- CARD 1 -->
+        <!-- Added: event-card-animated class for fade-in and hover animations -->
+        <div
+          class="event-card-animated"
+          style="
+          width: 400px;
+          background: var(--card-bg);
+          border-radius: 18px;
+          overflow: hidden;
+          color: var(--text-color);
+          text-align: center;
+          padding-bottom: 20px;
+          border: 1px solid rgba(255,255,255,0.08);
+          display: flex;
+          flex-direction: column; 
+          box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+          -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+          -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        ">
+          <img src="../../assets/images/destinations/event1-aseer.jpg" style="
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+          ">
+
+          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="aseerPage.event1Title">Aseer Season 2025</h3>
+          <p style="
+            font-size: 14px;
+            padding: 10px 20px;
+            opacity: 0.8;
+            line-height: 1.6;
+            text-align: center;
+          " data-i18n="aseerPage.event1Description">
+            A broad summer festival featuring cultural shows, music, outdoor adventures and heritage-village activations across the region. Many activities require tickets or entry fees.</p>
+          <a href="https://www.visitsaudi.com/en/seasons/aseer-season?utm_source=chatgpt.com"  style="
+            display: inline-block;        /* important: keeps width to content */
+            margin: 20px auto 0;          /* centers button horizontally */
+            background: #ff7d2d;
+            color: #fff;
+            padding: 12px 35px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top:auto;
+          ">Go</a>
+        </div>
+
+        <!-- CARD 2 -->
+        <!-- Added: event-card-animated class for fade-in and hover animations -->
+        <div
+          class="event-card-animated"
+          style="
+         width: 400px;
+          background: var(--card-bg);
+          border-radius: 18px;
+          overflow: hidden;
+          color: var(--text-color);
+          text-align: center;
+          padding-bottom: 20px;
+          border: 1px solid rgba(255,255,255,0.08);
+          display: flex;
+          flex-direction: column; 
+          box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+          -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+          -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        ">
+          <img src="../../assets/images/destinations/event2-aseer.jpg" style="
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+          ">
+
+          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="aseerPage.event2Title">Nafas – Abha</h3>
+          <p style="
+            font-size: 14px;
+            padding: 10px 20px;
+            opacity: 0.8;
+            line-height: 1.6;
+            text-align: center;
+          " data-i18n="aseerPage.event2Description">
+          An outdoor lifestyle event at Asir National Park featuring dining, games, crafts and scenic hillside seating—booked via ticket.          </p>
+          <a href="https://abha.platinumlist.net/ar/event-tickets/87783/nafas?utm_source=chatgpt.com"  style="
+            display: inline-block;        /* important: keeps width to content */
+            margin: 20px auto 0;          /* centers button horizontally */
+            background: #ff7d2d;
+            color: #fff;
+            padding: 12px 35px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top:auto;
+          ">Go</a>
+        </div>
+
+        <!-- CARD 3 -->
+        <!-- Added: event-card-animated class for fade-in and hover animations -->
+        <div
+          class="event-card-animated"
+          style="
+          width: 400px;
+          background: var(--card-bg);
+          border-radius: 18px;
+          overflow: hidden;
+          color: var(--text-color);
+          text-align: center;
+          padding-bottom: 20px;
+          border: 1px solid rgba(255,255,255,0.08);
+          display: flex;
+          flex-direction: column; 
+          box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+          -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+          -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        ">
+          <img src="../../assets/images/destinations/event3-aseer.webp" style="
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+          ">
+
+          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="aseerPage.event3Title"> Discover the Essence of Asir – 5‑day Tour</h3>
+          <p style="
+            font-size: 14px;
+            padding: 10px 20px;
+            opacity: 0.8;
+            line-height: 1.6;
+            text-align: center;
+          " data-i18n="aseerPage.event3Description">
+          A pre-booked guided 5-day adventure spanning hiking, heritage village visits and natural scenery around Abha and the mountains.          </p>
+          <a href="https://webook.com/en/experiences/discover-the-essence-of-asir-5-days?utm_source=chatgpt.com" style="
+            display: inline-block;        /* important: keeps width to content */
+            margin: 20px auto 0;          /* centers button horizontally */
+            background: #ff7d2d;
+            color: #fff;
+            padding: 12px 35px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top:auto;
+          ">Go</a>
+        </div>
+
+
 
       <!-- عربات أبها الهوائية
       <section class="section">
@@ -465,8 +750,11 @@
             </p>
           </div>
         </div>
-      </section>
-    </main> -->
+      </section> -->
+
+      
+      </main>
+
 
     <!-- Weather Widget at Bottom -->
     <div style="max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 2rem;">
@@ -476,5 +764,70 @@
     <!-- Page scripts -->
      <script type="module" src="../../scripts/main.js"></script>
     <script src="../../scripts/Script.js"></script>
+    
+    <!-- Translation and RTL/LTR Layout Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const updateLayoutDirection = () => {
+          const main = document.querySelector(".history-container");
+          if (!main) return;
+
+          const currentLang =
+            window.i18n?.getLanguage() ||
+            localStorage.getItem("language") ||
+            "en";
+
+          if (currentLang === "ar") {
+            main.setAttribute("dir", "rtl");
+            document.documentElement.setAttribute("dir", "rtl");
+            document.body.classList.add("rtl");
+            document.body.classList.remove("ltr");
+          } else {
+            main.setAttribute("dir", "ltr");
+            document.documentElement.setAttribute("dir", "ltr");
+            document.body.classList.add("ltr");
+            document.body.classList.remove("rtl");
+          }
+        };
+
+        if (window.i18n) {
+          updateLayoutDirection();
+          window.i18n.subscribe(() => {
+            updateLayoutDirection();
+            if (window.i18n.refresh) {
+              window.i18n.refresh();
+            }
+          });
+        } else {
+          const checkI18n = setInterval(() => {
+            if (window.i18n) {
+              clearInterval(checkI18n);
+              updateLayoutDirection();
+              window.i18n.subscribe(() => {
+                updateLayoutDirection();
+                if (window.i18n.refresh) {
+                  window.i18n.refresh();
+                }
+              });
+            }
+          }, 100);
+          setTimeout(() => clearInterval(checkI18n), 5000);
+        }
+
+        const titleEl = document.querySelector("title");
+        if (titleEl && titleEl.hasAttribute("data-i18n")) {
+          const updateTitle = () => {
+            if (window.i18n && window.i18n.t) {
+              const key = titleEl.getAttribute("data-i18n");
+              document.title = window.i18n.t(key);
+            }
+          };
+          if (window.i18n) {
+            window.i18n.subscribe(updateTitle);
+            updateTitle();
+          }
+        }
+      });
+    </script>
   </body>
 </html>

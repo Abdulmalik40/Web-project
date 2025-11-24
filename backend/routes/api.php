@@ -14,7 +14,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/reviews', [ReviewController::class, 'store']); // for reviews
     Route::get('/reviews/{place_key}', [ReviewController::class, 'getByPlace']);
-    
+
     // خطط الرحلات (Itineraries)
     Route::post('/itineraries', [ItineraryController::class, 'store']);
     Route::get('/itineraries', [ItineraryController::class, 'index']);
