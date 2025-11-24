@@ -13,53 +13,15 @@
 (function () {
   'use strict';
 
-  // Get current page path to adjust navigation links
-  const currentPath = window.location.pathname;
-  const currentPage = currentPath.split('/').pop() || '';
-  const isIndexPage =
-    currentPage === 'index.html' || currentPage === '' || currentPage.endsWith('/');
-  
-  // Determine if we're in a subfolder and get the path prefix
-  // Find the 'pages' folder in the path and get everything after it
-  const pagesIndex = currentPath.indexOf('/pages/');
-  const pathAfterPages = pagesIndex >= 0 
-    ? currentPath.substring(pagesIndex + '/pages/'.length)
-    : currentPath;
-  const pathParts = pathAfterPages.split('/').filter(p => p);
-  const isInSubfolder = pathParts.length > 1; // More than just the filename
-  const pathPrefix = isInSubfolder ? '../' : '';
-
-  // Helper to get correct path for links داخل /pages/ أو من الصفحة الرئيسية
-  function getLink(hash, file) {
-    if (file) return file;                    // لو عطيناه ملف محدد استخدمه كما هو
-    return isIndexPage ? `#${hash}` : `${pathPrefix}index.html#${hash}`; // غير كذا رجّعه للهوم مع الـ hash
-  }
-  
-  // Helper to get correct path for files in other folders
-  function getNavPath(folder, file) {
-    // If we're in the same folder, no prefix needed
-    const currentFolder = pathParts.length > 1 ? pathParts[pathParts.length - 2] : '';
-    if (currentFolder === folder) {
-      return file;
-    }
-    // Otherwise, use pathPrefix to go up and then into the folder
-    return `${pathPrefix}${folder}/${file}`;
-  }
-
   /**
    * 🧱 Standard header HTML
    * - مطابق لهيدر index.html بالضبط
    * - مع إضافة عناصر auth (login/register/profile/logout)
-   * - يضيف class="site-header" للصفحة الرئيسية
+   * - نستخدم روابط تبدأ من الجذر / حتى تشتغل من أي صفحة
    */
   function getHeaderHTML() {
-    // Determine header class - add "site-header" for index page
-    const headerClass = isIndexPage ? 'header site-header' : 'header';
-    
-    // For index page, use direct paths; for other pages, use pathPrefix
-    const getIndexLink = (path) => isIndexPage ? path : `${pathPrefix}${path}`;
-    const getIndexHash = (hash) => isIndexPage ? `#${hash}` : `${pathPrefix}index.html#${hash}`;
-    
+    const headerClass = 'header site-header';
+
     return `
     <header class="${headerClass}" id="header">
       <div class="header-inner">
@@ -107,54 +69,50 @@
           <!-- Main navigation -->
           <nav class="nav" aria-label="Main Navigation">
             <div class="item">
-              <a href="${getIndexHash('home')}" data-i18n="common.home">Home</a>
+              <!-- Home section on index page -->
+              <a href="/#home" data-i18n="common.home">Home</a>
             </div>
             <div class="item">
               <a
-                href="${getIndexLink('maps/map-interactive.html')}"
+                href="/maps/map-interactive.html"
                 data-i18n="common.interactiveMap"
-                >Interactive Map</a
-              >
+              >Interactive Map</a>
             </div>
             <div class="item">
-              <a href="${getIndexLink('core/history.html')}" data-i18n="common.history">
+              <a href="/core/history.html" data-i18n="common.history">
                 History
               </a>
             </div>
             <div class="item has-dropdown">
               <a
-                href="${getIndexLink('islamic-guide/islamic-guide.html')}"
+                href="/islamic-guide/islamic-guide.html"
                 data-i18n="common.islamicGuide"
-                >Islamic Guide ▾</a
-              >
+              >Islamic Guide ▾</a>
               <div class="dropdown" role="menu">
                 <a
-                  href="${getIndexLink('islamic-guide/qibla.html')}"
+                  href="/islamic-guide/qibla.html"
                   role="menuitem"
                   data-i18n="common.qiblaFinder"
-                  >Qibla Finder</a
-                >
+                >Qibla Finder</a>
                 <a
-                  href="${getIndexLink('islamic-guide/prayer-times.html')}"
+                  href="/islamic-guide/prayer-times.html"
                   role="menuitem"
                   data-i18n="common.prayerTimes"
-                  >Prayer Times</a
-                >
+                >Prayer Times</a>
                 <a
-                  href="${getIndexLink('islamic-guide/quran.html')}"
+                  href="/islamic-guide/quran.html"
                   role="menuitem"
                   data-i18n="common.quran"
-                  >Quran &amp; Du'a</a
-                >
+                >Quran &amp; Du'a</a>
               </div>
             </div>
 
             <!-- Login / Register -->
             <div class="item" id="nav-login">
-              <a href="${getIndexLink('auth/login.html')}" data-i18n="common.login">Login</a>
+              <a href="/auth/login.html" data-i18n="common.login">Login</a>
             </div>
             <div class="item" id="nav-register">
-              <a href="${getIndexLink('auth/register.html')}" data-i18n="common.register">Register</a>
+              <a href="/auth/register.html" data-i18n="common.register">Register</a>
             </div>
 
             <!-- Profile & Logout (hidden by default) -->
@@ -163,7 +121,7 @@
               id="nav-profile"
               style="display: none;"
             >
-              <a href="${getIndexLink('user/profile.html')}" data-i18n="common.profile">Profile</a>
+              <a href="/user/profile.html" data-i18n="common.profile">Profile</a>
             </div>
             <div
               class="item"
@@ -193,7 +151,7 @@
     if (existingHeader && existingHeader.hasAttribute('data-header-placeholder')) {
       existingHeader.outerHTML = headerHTML;
     }
-    // 🟡 الحالة 2: هيدر موجود بدون placeholder → نستبدله بالكامل (خاصة للصفحة الرئيسية)
+    // 🟡 الحالة 2: هيدر موجود بدون placeholder → نستبدله بالكامل
     else if (existingHeader) {
       existingHeader.outerHTML = headerHTML;
     }
@@ -228,14 +186,13 @@
     const themeToggle = document.getElementById('themeToggle');
     if (!themeToggle) return;
 
-    // عشان ما يتصادم مع Script.js لو كان فيه تهيئة ثانية
-    // Check if theme is already initialized elsewhere
+    // عشان ما يتصادم مع سكربتات ثانية
     if (document.documentElement.hasAttribute('data-theme-initialized')) {
       return;
     }
     document.documentElement.setAttribute('data-theme-initialized', 'true');
 
-    // Get saved theme or default to light (matching index.html behavior)
+    // Get saved theme or default to light
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.body.setAttribute('data-theme', savedTheme);
     updateThemeButton(savedTheme);
@@ -246,8 +203,7 @@
       document.body.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       updateThemeButton(newTheme);
-      
-      // Refresh translation if i18n is available
+
       if (window.i18n) {
         window.i18n.refresh();
       }
@@ -265,7 +221,6 @@
       }
       if (text) {
         text.setAttribute('data-i18n', theme === 'dark' ? 'common.light' : 'common.dark');
-        // Refresh translation if i18n is available
         if (window.i18n) {
           window.i18n.refresh();
         }
@@ -276,22 +231,20 @@
   /**
    * 🌐 Language switcher
    * - يغير بين en / ar باستخدام i18n.js
-   * - يدعم نفس السلوك الموجود في index.html
    */
   function initLanguageSwitcher() {
     const langSwitcher = document.getElementById('language-switcher');
     if (!langSwitcher) return;
 
-    // Wait for i18n to be ready
     const setupLangSwitcher = () => {
       if (window.i18n) {
-        // Use the i18n module's setup if available
+        // لو في setup جاهز داخل i18n استخدمه
         if (window.i18n.setupLanguageSwitcher) {
           window.i18n.setupLanguageSwitcher();
         }
-        
-        // Also add direct handler (matching index.html behavior)
-        langSwitcher.addEventListener('click', (e) => {
+
+        // handler مباشر بسيط
+        langSwitcher.addEventListener('click', () => {
           if (window.i18n) {
             const currentLang = window.i18n.getLanguage();
             const newLang = currentLang === 'en' ? 'ar' : 'en';
@@ -299,12 +252,11 @@
           }
         });
       } else {
-        // Retry if i18n not ready yet
+        // لو i18n ما جاهز، نحاول بعد شوي
         setTimeout(setupLangSwitcher, 100);
       }
     };
 
-    // Start initialization
     setTimeout(setupLangSwitcher, 100);
   }
 
@@ -327,8 +279,7 @@
 
   /**
    * Dropdown handlers
-   * - فتح/إغلاق قائمة Islamic Guide بالهوفر والفوكس
-   * - مطابق للسلوك في index.html
+   * - فتح/إغلاق قائمة Islamic Guide
    */
   function initDropdownHandlers() {
     const dropdowns = document.querySelectorAll('.nav .has-dropdown');
