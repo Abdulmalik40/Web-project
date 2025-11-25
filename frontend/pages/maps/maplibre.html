@@ -345,17 +345,17 @@
     );
 
     // ملفات GeoJSON داخل مجلد Geojson بجانب هذا الملف
-    // استخدام مسارات document-relative (بدون / في البداية) لتعمل على الـ server
+    // استخدام مسارات مطلقة من جذر الخادم
     const GEOJSON_FILES = [
-        "Geojson/Bus_cleaned.geojson",
-        "Geojson/Resturant_cleaned.geojson",
-        "Geojson/MousqesTabeFull.geojson",
-        "Geojson/Metro_Final.geojson",
-        "Geojson/Hospital_full.geojson",
-        "Geojson/Full_hotel.geojson",
-        "Geojson/Full_entr.geojson",
-        "Geojson/Full_cafe.geojson",
-        "Geojson/FinalMusem.geojson"
+        "/maps/Geojson/Bus_cleaned.geojson",
+        "/maps/Geojson/Resturant_cleaned.geojson",
+        "/maps/Geojson/MousqesTabeFull.geojson",
+        "/maps/Geojson/Metro_Final.geojson",
+        "/maps/Geojson/Hospital_full.geojson",
+        "/maps/Geojson/Full_hotel.geojson",
+        "/maps/Geojson/Full_entr.geojson",
+        "/maps/Geojson/Full_cafe.geojson",
+        "/maps/Geojson/FinalMusem.geojson"
     ];
 
     const loadingEl = document.getElementById("loading");
