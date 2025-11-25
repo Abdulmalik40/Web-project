@@ -1,17 +1,34 @@
 // ../scripts/trips.js
-import { requireAuth, getToken } from "./auth-nav.js";
+// Non-module version, works with global auth-nav + config.js
+
+console.log("[trips] file loaded");
 
 // Load from config.js (fallback to default if not available)
 const API = window.API_BASE_URL || "http://127.0.0.1:9000/api";
 
-console.log("[trips] file loaded");
+// Wrapper around global getToken from auth-nav.js
+function getAuthToken() {
+  if (typeof window.getToken === "function") {
+    return window.getToken();
+  }
+  // Fallback if auth-nav hasn't loaded
+  return localStorage.getItem("auth_token");
+}
+
+// Wrapper around global requireAuth from auth-nav.js
+function ensureAuth() {
+  if (typeof window.requireAuth === "function") {
+    return window.requireAuth();
+  }
+  console.warn("[trips] window.requireAuth not found, allowing access");
+  return true;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("[trips] DOMContentLoaded fired");
 
-  // نتأكد أن المستخدم مسجّل دخول
-  const ok = requireAuth();
-  console.log("[trips] requireAuth() =>", ok);
+  const ok = ensureAuth();
+  console.log("[trips] ensureAuth() =>", ok);
   if (!ok) return;
 
   setupForm();
@@ -23,25 +40,23 @@ function setupForm() {
   const saveBtn = document.getElementById("saveTripBtn");
 
   if (!form || !saveBtn) {
-    console.warn("[trips] form or save button not found", { form, saveBtn });
+    console.warn("[trips] Missing form or save button", { form, saveBtn });
     return;
   }
 
-  console.log("[trips] setupForm: attaching click listener on saveTripBtn");
+  console.log("[trips] setupForm: attaching click listener");
 
   saveBtn.addEventListener("click", async (e) => {
     e.preventDefault();
-    console.log("[trips] saveTripBtn clicked");
+    console.log("[trips] Save clicked");
 
     const titleInput = document.getElementById("tripTitle");
-    const cityInput  = document.getElementById("tripCity");
-    const daysInput  = document.getElementById("tripDays");
+    const cityInput = document.getElementById("tripCity");
+    const daysInput = document.getElementById("tripDays");
 
     const title = titleInput?.value.trim() || "";
-    const city  = cityInput?.value.trim() || "";
-    const days  = Number(daysInput?.value || 1);
-
-    console.log("[trips] form data:", { title, city, days });
+    const city = cityInput?.value.trim() || "";
+    const days = Number(daysInput?.value || 1);
 
     if (!title) {
       alert("Please enter a trip title");
@@ -53,27 +68,23 @@ function setupForm() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${getToken()}`,
+          Authorization: `Bearer ${getAuthToken()}`,
         },
         body: JSON.stringify({ title, city, days }),
       });
 
-      console.log("[trips] POST /trips status:", res.status);
-
       if (!res.ok) {
-        const txt = await res.text();
-        console.error("Create trip failed:", res.status, txt);
+        console.error("Create trip failed:", await res.text());
         alert("Error creating trip");
         return;
       }
 
       form.reset();
       if (daysInput) daysInput.value = 1;
-
       await loadTrips();
     } catch (err) {
       console.error("Create trip error:", err);
-      alert("Error creating trip (network issue)");
+      alert("Network error");
     }
   });
 }
@@ -81,22 +92,18 @@ function setupForm() {
 async function loadTrips() {
   const container = document.getElementById("tripsContainer");
   const emptyHint = document.getElementById("tripsEmptyHint");
-  if (!container) {
-    console.warn("[trips] tripsContainer not found");
-    return;
-  }
 
-  console.log("[trips] loadTrips() start");
+  if (!container) return;
+
+  console.log("[trips] Loading trips...");
   container.innerHTML = "";
 
   try {
     const res = await fetch(`${API}/trips`, {
       headers: {
-        Authorization: `Bearer ${getToken()}`,
+        Authorization: `Bearer ${getAuthToken()}`,
       },
     });
-
-    console.log("[trips] GET /trips status:", res.status);
 
     if (!res.ok) {
       if (emptyHint) emptyHint.textContent = "Failed to load trips.";
@@ -104,7 +111,6 @@ async function loadTrips() {
     }
 
     const trips = await res.json();
-    console.log("[trips] trips data:", trips);
 
     if (!trips.length) {
       if (emptyHint) emptyHint.style.display = "block";
@@ -147,7 +153,7 @@ async function loadTrips() {
         const res = await fetch(`${API}/trips/${deleteId}`, {
           method: "DELETE",
           headers: {
-            Authorization: `Bearer ${getToken()}`,
+            Authorization: `Bearer ${getAuthToken()}`,
           },
         });
 

@@ -1,24 +1,24 @@
 // frontend/scripts/auth-nav.js
-// ✅ ملف ES Module فيه التوكن + حماية الصفحات + التحكم في عناصر الهيدر
+// Auth navigation helpers: token, protected pages, header controls
 
 // =============
 //  Helpers
 // =============
 
-// نرجّع التوكن من localStorage
-export function getToken() {
+// Get token from localStorage
+function getToken() {
   return localStorage.getItem("auth_token");
 }
 
-// نتأكد أن المستخدم مسجل دخول لو الصفحة طالبة auth
-// نستخدم data-requires-auth و data-post-login-redirect من الـ <body>
-export function requireAuth() {
+// Ensure user is logged in if the page requires auth
+// Uses data-requires-auth and data-post-login-redirect from <body>
+function requireAuth() {
   const token = getToken();
   const body = document.body;
   const requiresAuth = body?.dataset.requiresAuth === "true";
 
   if (!requiresAuth) {
-    // الصفحة عادي حتى لو المستخدم مو لاقن إن
+    // Page does NOT require auth
     return true;
   }
 
@@ -27,9 +27,12 @@ export function requireAuth() {
       body.dataset.postLoginRedirect ||
       window.location.pathname.split("/").pop();
 
-    console.log("[auth-nav] not logged in, redirecting to login.html, then ->", redirect);
+    console.log(
+      "[auth-nav] not logged in, redirecting to login.html, then ->",
+      redirect
+    );
 
-    // نخزن الوجهة اللي نرجع لها بعد اللوقن
+    // Save where to go after login
     localStorage.setItem("post_login_redirect", redirect);
     window.location.href = "/pages/auth/login.html";
     return false;
@@ -38,20 +41,29 @@ export function requireAuth() {
   return true;
 }
 
+// Expose helpers globally
+window.getToken = getToken;
+window.requireAuth = requireAuth;
+
 // =============
-//  داخلي: تحديث الهيدر + اللوق أوت + حماية الروابط
+//  Internal: update header + logout + protect links
 // =============
 
 function updateAuthNav() {
   const token = getToken();
   console.log("[auth-nav] updateAuthNav, token:", token);
 
-  const navLogin   = document.getElementById("nav-login");
+  const navLogin = document.getElementById("nav-login");
   const navRegister = document.getElementById("nav-register");
-  const navProfile  = document.getElementById("nav-profile");
-  const navLogout   = document.getElementById("nav-logout");
+  const navProfile = document.getElementById("nav-profile");
+  const navLogout = document.getElementById("nav-logout");
 
-  console.log("[auth-nav] nav items:", { navLogin, navRegister, navProfile, navLogout });
+  console.log("[auth-nav] nav items:", {
+    navLogin,
+    navRegister,
+    navProfile,
+    navLogout,
+  });
 
   if (token) {
     if (navLogin) navLogin.style.display = "none";
@@ -83,9 +95,11 @@ function bindLogout() {
   });
 }
 
-// أي رابط أو عنصر عليه data-requires-auth="true" نحميه
+// Any link / element with data-requires-auth="true" is protected
 function bindProtectedLinks() {
-  const protectedLinks = document.querySelectorAll("[data-requires-auth='true']");
+  const protectedLinks = document.querySelectorAll(
+    "[data-requires-auth='true']"
+  );
   console.log("[auth-nav] found protected links:", protectedLinks.length);
 
   protectedLinks.forEach((link) => {
@@ -102,7 +116,10 @@ function bindProtectedLinks() {
           link.href ||
           "";
 
-        console.log("[auth-nav] saving post_login_redirect:", targetHref);
+        console.log(
+          "[auth-nav] saving post_login_redirect:",
+          targetHref
+        );
         localStorage.setItem("post_login_redirect", targetHref);
         window.location.href = "/pages/auth/login.html";
       }
@@ -117,10 +134,10 @@ function initAuthNav() {
   bindProtectedLinks();
 }
 
-// نشغّل التهيئة أول ما تحمل الصفحة
+// Init when page loads
 document.addEventListener("DOMContentLoaded", initAuthNav);
 
-// لو التوكن تغيّر من تبويب ثاني
+// If token changes from another tab
 window.addEventListener("storage", (e) => {
   if (e.key === "auth_token") {
     updateAuthNav();
