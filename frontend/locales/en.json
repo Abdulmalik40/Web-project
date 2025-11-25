@@ -1669,11 +1669,13 @@
       "para1": "The Custodian of the Two Holy Mosques King Salman bin Abdulaziz Al Saud, may God protect him, was pledged allegiance as king of the Kingdom of Saudi Arabia on 3 Rabi' al-Thani 1436 AH, corresponding to January 23, 2015 CE. King Salman had spent more than two and a half years as Crown Prince and Deputy Prime Minister after his appointment on June 18, 2012 CE by royal decree, while remaining in his position as Minister of Defense, a position he had held since November 5, 2011 CE. Before that, King Salman was the Governor of Riyadh Region for more than fifty years.",
       "para2": "The Custodian of the Two Holy Mosques is known for his care for heritage and attention to the country's history, alongside his distinguished efforts in development and advancement in the country. He has also contributed to various humanitarian fields within and outside the Kingdom, especially in the areas of relief and assistance."
     }
+  },
+  "reviews": {
+    "leaveReview": "Leave a Review",
+    "namePlaceholder": "Your name...",
+    "commentPlaceholder": "Write your review...",
+    "submit": "Submit",
+    "missingFields": "Please enter your name, rating, and review.",
+    "star": "Star"
   }
-
-  
-
-
-
-
 }

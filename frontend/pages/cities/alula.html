@@ -28,6 +28,8 @@
       rel="stylesheet"
       href="../../styles/components/_weather-widget-weekly.css"
     />
+        <link rel="stylesheet" href="../../styles/review.css" />
+
 
     <!-- Scripts (deferred) -->
     <script src="../../config/api-keys.js" defer></script>
@@ -35,6 +37,8 @@
     <script src="../../scripts/modules/weatherWidget.js" defer></script>
     <script src="../../scripts/chatbot.js" defer></script>
     <script src="../../scripts/header-component.js" defer></script>
+    <script src="../../scripts/reviewSystem.js" defer></script>
+
     <!-- Removed: event-card-component.js is no longer needed
          since we're using hardcoded HTML cards matching the structure from riyadh.html -->
 
@@ -862,6 +866,63 @@
             >Go</a
           >
         </div>
+      </div>
+
+      <!-- Review system -->
+      <div class="review-container">
+        <div class="review-box">
+          <h3 data-i18n="reviews.leaveReview">Leave a Review</h3>
+
+          <input
+            type="text"
+            id="reviewName"
+            data-i18n="reviews.namePlaceholder"
+            data-i18n-attr="placeholder"
+            placeholder="Your name..."
+          />
+
+          <div class="stars" id="stars" aria-label="Star rating"></div>
+
+          <textarea
+            id="reviewText"
+            data-i18n="reviews.commentPlaceholder"
+            data-i18n-attr="placeholder"
+            placeholder="Write your review..."
+          ></textarea>
+
+          <button class="but" id="submitReview" data-i18n="reviews.submit">
+            Submit
+          </button>
+        </div>
+
+        <div id="reviewsList" class="reviews-list"></div>
+      </div>
+
+
+
+      <!-- Review system -->
+      <div class="review-container">
+        <div class="review-box">
+          <h3 data-i18n="reviews.leaveReview">Leave a Review</h3>
+          <input
+            type="text"
+            id="reviewName"
+            data-i18n="reviews.namePlaceholder"
+            data-i18n-attr="placeholder"
+            placeholder="Your name..."
+          />
+          <div class="stars" id="stars" aria-label="Star rating"></div>
+          <textarea
+            id="reviewText"
+            data-i18n="reviews.commentPlaceholder"
+            data-i18n-attr="placeholder"
+            placeholder="Write your review..."
+          ></textarea>
+          <button class="but" id="submitReview" data-i18n="reviews.submit">
+            Submit
+          </button>
+        </div>
+        <div id="reviewsList" class="reviews-list"></div>
       </div>
     </main>
 
