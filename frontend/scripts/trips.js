@@ -138,7 +138,7 @@ async function loadTrips() {
       const deleteId = target.getAttribute("data-delete");
 
       if (viewId) {
-        window.location.href = `/pages/user/trips-details.html?id=${viewId}`;
+        window.location.href = `/user/trips-details.html?id=${viewId}`;
       }
 
       if (deleteId) {
