@@ -1677,5 +1677,9 @@
     "submit": "Submit",
     "missingFields": "Please enter your name, rating, and review.",
     "star": "Star"
+  },
+  "search": {
+    "destinationsPlaceholder": "Search events or landmarks",
+    "destinationsHint": "Search for signature events and landmarks across the Kingdom."
   }
 }
