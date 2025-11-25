@@ -281,7 +281,7 @@
     <div id="sidebar">
         <div id="sidebar-header">
             <h2>خريطة الأماكن</h2>
-            <a class="back-button" href="/index.html">العودة الى الموقع</a>
+            <a class="back-button" href="../index.html">العودة الى الموقع</a>
         </div>
 
         <!-- Mode toggle A/B -->
@@ -345,16 +345,17 @@
     );
 
     // ملفات GeoJSON داخل مجلد Geojson بجانب هذا الملف
+    // استخدام مسارات document-relative (بدون / في البداية) لتعمل على الـ server
     const GEOJSON_FILES = [
-        "Geojson/Bus_cleaned.geojson",
-        "Geojson/Resturant_cleaned.geojson",
-        "Geojson/MousqesTabeFull.geojson",
-        "Geojson/Metro_Final.geojson",
-        "Geojson/Hospital_full.geojson",
-        "Geojson/Full_hotel.geojson",
-        "Geojson/Full_entr.geojson",
-        "Geojson/Full_cafe.geojson",
-        "Geojson/FinalMusem.geojson"
+        "./Geojson/Bus_cleaned.geojson",
+        "./Geojson/Resturant_cleaned.geojson",
+        "./Geojson/MousqesTabeFull.geojson",
+        "./Geojson/Metro_Final.geojson",
+        "./Geojson/Hospital_full.geojson",
+        "./Geojson/Full_hotel.geojson",
+        "./Geojson/Full_entr.geojson",
+        "./Geojson/Full_cafe.geojson",
+        "./Geojson/FinalMusem.geojson"
     ];
 
     const loadingEl = document.getElementById("loading");
