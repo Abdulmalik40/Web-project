@@ -69,7 +69,7 @@ function initMainScripts() {
       localStorage.removeItem("user_name");
       localStorage.removeItem("user_email");
 
-      window.location.href = "/pages/index.html";
+      window.location.href = "/index.html";
     });
   }
 

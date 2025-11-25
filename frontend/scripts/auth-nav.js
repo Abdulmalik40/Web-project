@@ -34,7 +34,7 @@ function requireAuth() {
 
     // Save where to go after login
     localStorage.setItem("post_login_redirect", redirect);
-    window.location.href = "/pages/auth/login.html";
+    window.location.href = "/auth/login.html";
     return false;
   }
 
@@ -91,7 +91,7 @@ function bindLogout() {
     localStorage.removeItem("user_email");
     localStorage.removeItem("post_login_redirect");
 
-    window.location.href = "/pages/index.html";
+    window.location.href = "/index.html";
   });
 }
 
@@ -121,7 +121,7 @@ function bindProtectedLinks() {
           targetHref
         );
         localStorage.setItem("post_login_redirect", targetHref);
-        window.location.href = "/pages/auth/login.html";
+        window.location.href = "/auth/login.html";
       }
     });
   });

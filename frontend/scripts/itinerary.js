@@ -744,7 +744,7 @@ async function saveItinerary(itinerary, formData) {
     // Store the full path for redirect after login
     const pathToStore = window.location.pathname.replace(/^\/pages/, '').replace(/^\//, '') || 'planner.html';
     localStorage.setItem("post_login_redirect", pathToStore);
-    window.location.href = "/pages/auth/login.html";
+    window.location.href = "/auth/login.html";
     return false;
   }
 
