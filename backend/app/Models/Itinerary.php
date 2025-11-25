@@ -5,29 +5,49 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Itinerary Model
+ * Represents a detailed trip itinerary with dates, budget, and complete plan
+ * Unlike Trip model, this stores all plan details in JSON format
+ * Better for complex trip planning with structured day-by-day plans
+ * 
+ * Relationship:
+ * - belongs to User (user_id)
+ * 
+ * Special Features:
+ * - plan_details is automatically converted between JSON (database) and Array (PHP)
+ * - dates are automatically converted to Carbon date objects
+ */
 class Itinerary extends Model
 {
     use HasFactory;
 
-    // الأعمدة اللي نسمح تعبئتها بالـ create() / update()
+    // Fields that can be mass-assigned using create() or update()
     protected $fillable = [
-        'user_id',
-        'title',
-        'main_destination',
-        'start_date',
-        'end_date',
-        'total_budget',
-        'plan_details',
+        'user_id', // Owner of the itinerary
+        'title', // Trip title
+        'main_destination', // Primary location/city
+        'start_date', // Trip start date
+        'end_date', // Trip end date
+        'total_budget', // Total budget amount
+        'plan_details', // Complete plan stored as JSON array
     ];
 
-    // نحول plan_details تلقائيًا من/إلى JSON -> Array
+    /**
+     * Automatic type casting
+     * Laravel automatically converts these fields between database format and PHP types
+     */
     protected $casts = [
-        'plan_details' => 'array',
-        'start_date' => 'date',
-        'end_date' => 'date',
+        'plan_details' => 'array', // JSON string <-> PHP array (automatic)
+        'start_date' => 'date', // Database date <-> Carbon date object
+        'end_date' => 'date', // Database date <-> Carbon date object
     ];
 
-    // كل خطة تابعة لمستخدم واحد
+    /**
+     * Relationship: Itinerary belongs to User
+     * Each itinerary is owned by one user
+     * Use this to get the owner: $itinerary->user
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
