@@ -125,20 +125,18 @@ const setupRegisterForm = () => {
 
       // ✅ نرجع للهوم وهو مسجل دخول
       setTimeout(() => {
-        // Redirect to home page (nginx serves from root, not /pages/)
-        let redirectTo = "/index.html";
+        // Use document-relative path (no leading slash) for Ubuntu server
+        let redirectTo = "index.html";
         const redirectStored = localStorage.getItem("post_login_redirect");
         
         if (redirectStored) {
-          // Normalize: remove /pages/ prefix if present, keep relative paths
+          // Normalize: remove /pages/ prefix and leading slash
           let normalizedPath = redirectStored
             .replace(/^\/pages\//, '')  // remove /pages/ prefix if present
             .replace(/^\//, '')         // remove leading slash
             || "index.html";
           
-          // Use normalized path (without /pages/ prefix)
-          redirectTo = `/${normalizedPath}`;
-          
+          redirectTo = normalizedPath;
           localStorage.removeItem("post_login_redirect");
         }
         
