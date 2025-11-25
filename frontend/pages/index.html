@@ -171,9 +171,36 @@
 
     <!-- Main content -->
     <main class="banner site-main" id="home">
-      <!-- Destinations grid -->
+      <!-- Destinations search + grid -->
+      <section class="destinations-filter" aria-label="Search destinations by event">
+        <div class="filter-inner">
+          <span class="material-symbols-rounded" aria-hidden="true">search</span>
+          <input
+            type="search"
+            id="destination-search"
+            name="destination-search"
+            placeholder="Search events or experiences (e.g. Winter at Tantora, Formula E)"
+            autocomplete="off"
+          />
+        </div>
+        <p class="filter-hint">
+          Search signature events and experiences across the Kingdom.
+        </p>
+      </section>
+
+      <div
+        id="event-search-results"
+        class="event-search-results"
+        aria-live="polite"
+        hidden
+      ></div>
+
       <section class="destinations-grid">
-        <article class="destination-card" id="makkah">
+        <article
+          class="destination-card"
+          id="makkah"
+          data-events="hajj umrah pilgrimage grand mosque haram"
+        >
           <a
             href="/cities/makkah.html"
             style="display: block; text-decoration: none; color: inherit"
@@ -203,7 +230,11 @@
           </a>
         </article>
 
-        <article class="destination-card" id="madinah">
+        <article
+          class="destination-card"
+          id="madinah"
+          data-events="prophet mosque ziyara spiritual ramadan"
+        >
           <a
             href="/cities/madinah.html"
             style="display: block; text-decoration: none; color: inherit"
@@ -233,7 +264,10 @@
           </a>
         </article>
 
-        <article class="destination-card">
+        <article
+          class="destination-card"
+          data-events="riyadh season diriyah formula e eprix music festival"
+        >
           <a
             href="/cities/riyadh.html"
             style="display: block; text-decoration: none; color: inherit"
@@ -263,7 +297,10 @@
           </a>
         </article>
 
-        <article class="destination-card">
+        <article
+          class="destination-card"
+          data-events="al khobar waterfront corniche half moon bay beach festival"
+        >
           <a
             href="/cities/alkhobar.html"
             style="display: block; text-decoration: none; color: inherit"
@@ -292,7 +329,10 @@
           </a>
         </article>
 
-        <article class="destination-card">
+        <article
+          class="destination-card"
+          data-events="asir season flower man highlands hiking"
+        >
           <a
             href="/cities/aseer.html"
             style="display: block; text-decoration: none; color: inherit"
@@ -321,7 +361,10 @@
           </a>
         </article>
 
-        <article class="destination-card">
+        <article
+          class="destination-card"
+          data-events="winter at tantora desert rock alula moments"
+        >
           <a
             href="/cities/alula.html"
             style="display: block; text-decoration: none; color: inherit"
@@ -350,7 +393,10 @@
           </a>
         </article>
 
-        <article class="destination-card">
+        <article
+          class="destination-card"
+          data-events="neom the line trojena sindalah future projects"
+        >
           <a
             href="/core/land.html"
             style="display: block; text-decoration: none; color: inherit"
@@ -381,7 +427,10 @@
           </a>
         </article>
 
-        <article class="destination-card">
+        <article
+          class="destination-card"
+          data-events="jeddah season red sea corniche formula1 f1"
+        >
           <a
             href="/cities/jeddah.html"
             style="display: block; text-decoration: none; color: inherit"
@@ -411,6 +460,21 @@
           </a>
         </article>
       </section>
+
+      <div
+        id="destinations-empty-state"
+        class="destinations-empty-state"
+        aria-live="polite"
+        hidden
+      >
+        <span class="material-symbols-rounded" aria-hidden="true">
+          travel_explore
+        </span>
+        <div class="empty-copy">
+          <h3>No matching events found</h3>
+          <p>Try a different event name or explore the highlighted events above.</p>
+        </div>
+      </div>
 
       <!-- Tour plans section -->
       <section class="tour-plans" id="tour-plans">
