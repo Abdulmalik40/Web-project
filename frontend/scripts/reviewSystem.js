@@ -1,70 +1,120 @@
-let rating = 0;
-const starContainer = document.getElementById("stars");
+// Review system with bilingual labels, dynamic stars, and theme-aware bubbles
+function initReviewSystem() {
+  const nameInput = document.getElementById("reviewName");
+  const textInput = document.getElementById("reviewText");
+  const submitBtn = document.getElementById("submitReview");
+  const starContainer = document.getElementById("stars");
+  const reviewsContainer = document.getElementById("reviewsList");
 
-// click to set rating
-starContainer.addEventListener("click", (e) => {
-  if (e.target.tagName !== "SPAN" && e.target.textContent !== "★") return;
+  if (!nameInput || !textInput || !submitBtn || !starContainer || !reviewsContainer) return;
 
-  const index = [...starContainer.children].indexOf(e.target);
-  rating = index + 1;
+  let rating = 0;
 
-  updateStars();
-});
+  // Helper that defers to global i18n when present so placeholders flip with language changes
+  const t = (key, fallback = "") => {
+    if (window.i18n?.t) return window.i18n.t(key) || fallback || key;
+    return fallback || key;
+  };
 
-// turn stars into span elements
-function initializeStars() {
-  const stars = "★★★★★"
-    .split("")
-    .map((star) => `<span>${star}</span>`)
-    .join("");
-  starContainer.innerHTML = stars;
-}
-initializeStars();
+  // Build the 5 clickable stars once
+  const buildStars = () => {
+    starContainer.innerHTML = "";
+    Array.from({ length: 5 }).forEach((_, i) => {
+      const star = document.createElement("span");
+      star.textContent = "★";
+      star.setAttribute("role", "button");
+      star.setAttribute("tabindex", "0");
+      star.setAttribute("aria-label", `${t("reviews.star", "star")} ${i + 1}`);
+      star.addEventListener("click", () => {
+        rating = i + 1;
+        paintStars();
+      });
+      star.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          rating = i + 1;
+          paintStars();
+        }
+      });
+      starContainer.appendChild(star);
+    });
+  };
 
-// update gold stars
-function updateStars() {
-  [...starContainer.children].forEach((star, i) => {
-    star.style.color = i < rating ? "gold" : "#555";
-  });
-}
+  // Toggle active class based on rating
+  const paintStars = () => {
+    [...starContainer.children].forEach((star, i) => {
+      star.classList.toggle("active", i < rating);
+    });
+  };
 
-// load reviews
-function loadReviews() {
-  const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
-  const container = document.getElementById("reviewsList");
+  // Render existing reviews from localStorage
+  const loadReviews = () => {
+    const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+    reviewsContainer.innerHTML = "";
 
-  container.innerHTML = reviews
-    .map(
-      (r) => `
-      <div class="review-item">
-        <div class="review-stars">${"★".repeat(r.rating)}</div>
-        <div class="review-name"><b>${r.name}</b></div>
-        <div class="review-text">${r.text}</div>
-      </div>
-    `
-    )
-    .join("");
-}
-loadReviews();
+    reviews.forEach((review) => {
+      const item = document.createElement("div");
+      item.className = "review-item";
 
-// submit review
-document
-  .getElementById("submitReview")
-  .addEventListener("click", () => {
-    const name = document.getElementById("reviewName").value.trim();
-    const text = document.getElementById("reviewText").value.trim();
+      const stars = document.createElement("div");
+      stars.className = "review-stars";
+      stars.textContent = "★".repeat(review.rating || 0);
 
-    if (!name || !rating || !text)
-      return alert("Please enter your name, rating, and review.");
+      const name = document.createElement("div");
+      name.className = "review-name";
+      name.textContent = review.name;
+
+      const text = document.createElement("div");
+      text.className = "review-text";
+      text.textContent = review.text;
+
+      item.appendChild(stars);
+      item.appendChild(name);
+      item.appendChild(text);
+      reviewsContainer.prepend(item);
+    });
+  };
+
+  // Save a new review locally
+  const saveReview = () => {
+    const name = nameInput.value.trim();
+    const text = textInput.value.trim();
+    if (!name || !text || rating === 0) {
+      alert(t("reviews.missingFields", "Please enter your name, rating, and review."));
+      return;
+    }
 
     const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
-    reviews.push({ name, rating, text });
-
+    reviews.push({ name, text, rating });
     localStorage.setItem("reviews", JSON.stringify(reviews));
-    loadReviews();
 
-    document.getElementById("reviewName").value = "";
-    document.getElementById("reviewText").value = "";
+    nameInput.value = "";
+    textInput.value = "";
     rating = 0;
-    updateStars();
-  });
+    paintStars();
+    loadReviews();
+  };
+
+  // Pull translated placeholders/labels from i18n so they update on toggle
+  const applyTranslations = () => {
+    nameInput.placeholder = t("reviews.namePlaceholder", "Your name...");
+    textInput.placeholder = t("reviews.commentPlaceholder", "Write your review...");
+    submitBtn.textContent = t("reviews.submit", "Submit");
+    const heading = document.querySelector("[data-i18n='reviews.leaveReview']");
+    if (heading) heading.textContent = t("reviews.leaveReview", "Leave a Review");
+  };
+
+  // Bind events and initialize UI
+  submitBtn.addEventListener("click", saveReview);
+  buildStars();
+  paintStars();
+  loadReviews();
+  applyTranslations();
+
+  // Refresh placeholders when the language changes
+  if (window.i18n?.subscribe) {
+    window.i18n.subscribe(applyTranslations);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", initReviewSystem);
