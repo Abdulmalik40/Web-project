@@ -1,26 +1,27 @@
-Content:
-
 name: Deploy to Droplet
 
 on:
   push:
     branches:
-      - main
+      
+main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout (required but we don't actually use it)
-        uses: actions/checkout@v4
+      
+name: Checkout (required by action)
+      uses: actions/checkout@v4
 
-      - name: SSH and deploy
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            echo "Running deploy script on server..."
-            /var/www/Web-project/deploy.sh
+      
+name: SSH and deploy
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}   # should be "root"
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        script: |
+          echo "[github-action] running deploy script..."/var/www/Web-project/deploy.sh
