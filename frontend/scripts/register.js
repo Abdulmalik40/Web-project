@@ -125,18 +125,24 @@ const setupRegisterForm = () => {
 
       // ✅ نرجع للهوم وهو مسجل دخول
       setTimeout(() => {
-        // Use document-relative path (no leading slash) for Ubuntu server
-        let redirectTo = "index.html";
+        // Use relative path with ../ to go up from /auth/ to /pages/
+        let redirectTo = "../index.html";
         const redirectStored = localStorage.getItem("post_login_redirect");
         
         if (redirectStored) {
-          // Normalize: remove /pages/ prefix and leading slash
+          // Normalize: remove /pages/ prefix and leading slash, but keep relative paths
           let normalizedPath = redirectStored
             .replace(/^\/pages\//, '')  // remove /pages/ prefix if present
+            .replace(/^\/auth\//, '')   // remove /auth/ prefix if present
             .replace(/^\//, '')         // remove leading slash
             || "index.html";
           
-          redirectTo = normalizedPath;
+          // If path doesn't start with ../, prepend it for auth pages
+          if (!normalizedPath.startsWith('../')) {
+            redirectTo = normalizedPath.startsWith('/') ? normalizedPath : '../' + normalizedPath;
+          } else {
+            redirectTo = normalizedPath;
+          }
           localStorage.removeItem("post_login_redirect");
         }
         
