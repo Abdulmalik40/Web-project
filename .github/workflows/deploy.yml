@@ -1,5 +1,3 @@
-Content:
-
 name: Deploy to Droplet
 
 on:
@@ -12,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout (required but we don't actually use it)
+      - name: Checkout (required by action)
         uses: actions/checkout@v4
 
       - name: SSH and deploy
@@ -21,6 +19,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
+          port: 22
           script: |
-            echo "Running deploy script on server..."
+            echo "[github-action] running deploy script..."
             /var/www/Web-project/deploy.sh
