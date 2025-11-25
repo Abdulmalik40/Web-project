@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../../styles/chatbot.css" />
     <link rel="stylesheet" href="../../styles/components/_weather-widget.css" />
     <link rel="stylesheet" href="../../styles/components/_weather-widget-weekly.css" />
-    <link rel="stylesheet" href="../../styles/review.css">
+    <link rel="stylesheet" href="../../styles/review.css" />
 
     <!-- Scripts (deferred) -->
     <script src="../../config/api-keys.js" defer></script>
@@ -595,25 +595,7 @@
       </section>
 
 
-      <!--review system-->
-      <div class="review-container">
-  <div class="review-box">
-    <h3>Leave a Review</h3>
-
-    <input type="text" id="reviewName" placeholder="Your name..." />
-
-    <div class="stars" id="stars">
-      ★★★★★
-    </div>
-
-    <textarea  id="reviewText" placeholder="Write your review..."></textarea>
-
-    <button class="but" id="submitReview">Submit</button>
-  </div>
-
-  <div id="reviewsList" class="reviews-list"></div>
-</div>
-
+      
 
 <!-- أحدث الفعاليات -->
        <div style="
@@ -770,74 +752,36 @@
         </div>
 
 
-    <!-- التسوق والمشهد الطهوي
-    <section class="section">
-      <div class="section-content">
-        <div class="section-image">
-          <img
-            src="../../assets/images/kings/king fahad.jpg"
-            alt="التسوق والمطاعم — تجربة بحرية وعائلية"
-          />
-        </div>
-        <div class="section-text">
-          <h2 class="section-title">التسوق والمشهد الطهوي</h2>
-          <h3 class="section-subtitle">
-            مراكز كبرى ونكهات بحرية عالمية
-          </h3>
-          <p class="section-body">
-            تنتشر في الخبر مراكز تسوق رئيسية وواجهات مطاعم بحرية ومقاهي
-            حديثة؛ من المأكولات البحرية الطازجة إلى المطابخ العالمية، في
-            أجواء عائلية ممتدة على الواجهة والشوارع المحيطة.
-          </p>
-        </div>
-      </div>
-    </section> -->
+        <!-- Review system -->
+      <div class="review-container">
+        <div class="review-box">
+          <h3 data-i18n="reviews.leaveReview">Leave a Review</h3>
 
-    <!-- الرياضة والأنشطة البحرية
-    <section class="section">
-      <div class="section-content">
-        <div class="section-image">
-          <img
-            src="../../assets/images/kings/king abdullah.jpg"
-            alt="الرياضة والأنشطة البحرية — مسارات وفعاليات"
+          <input
+            type="text"
+            id="reviewName"
+            data-i18n="reviews.namePlaceholder"
+            data-i18n-attr="placeholder"
+            placeholder="Your name..."
           />
-        </div>
-        <div class="section-text">
-          <h2 class="section-title">الرياضة والأنشطة البحرية</h2>
-          <h3 class="section-subtitle">
-            دراجات، جري، وتجارب على الماء
-          </h3>
-          <p class="section-body">
-            يضم الكورنيش مسارات جري ودراجات وأنشطة بحرية خفيفة، مع فعاليات
-            رياضية موسمية ومساحات لليوغا والتمارين الصباحية في أفقٍ بحري
-            مفتوح.
-          </p>
-        </div>
-      </div>
-    </section> -->
 
-    <!-- وجهات قريبة
-    <section class="section">
-      <div class="section-content">
-        <div class="section-image">
-          <img
-            src="../../assets/images/kings/king salman.jpg"
-            alt="وجهات قريبة — الدمام والظهران والبحرين"
-          />
+          <div class="stars" id="stars" aria-label="Star rating"></div>
+
+          <textarea
+            id="reviewText"
+            data-i18n="reviews.commentPlaceholder"
+            data-i18n-attr="placeholder"
+            placeholder="Write your review..."
+          ></textarea>
+
+          <button class="but" id="submitReview" data-i18n="reviews.submit">
+            Submit
+          </button>
         </div>
-        <div class="section-text">
-          <h2 class="section-title">وجهات قريبة من الخبر</h2>
-          <h3 class="section-subtitle">
-            تنقّل إقليمي سريع وتجارب متنوعة
-          </h3>
-          <p class="section-body">
-            يسهُل من الخبر الوصول إلى الدمام والظهران والأسواق التراثية
-            القريبة، إضافة إلى رحلة قصيرة عبر الجسر إلى مملكة البحرين، ما
-            يوسّع باقة التجارب أمام الزائر في نطاقٍ حضري متصل.
-          </p>
-        </div>
+
+        <div id="reviewsList" class="reviews-list"></div>
       </div>
-    </section> -->
+
 
     </main>
 
