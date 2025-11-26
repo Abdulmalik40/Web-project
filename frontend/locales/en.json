@@ -1692,5 +1692,14 @@
   "search": {
     "destinationsPlaceholder": "Search events or landmarks",
     "destinationsHint": "Search for signature events and landmarks across the Kingdom."
+  },
+  "profilePage": {
+    "title": "User Profile • Smart Tourism",
+    "subtitle": "Here you can see the account information used to sign in.",
+    "name": "Name:",
+    "email": "Email:",
+    "status": "Status:",
+    "loggedIn": "Logged in ✅",
+    "backToHome": "Back to Home"
   }
 }

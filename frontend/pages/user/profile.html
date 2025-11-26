@@ -2,12 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>User Profile • Smart Tourism</title>
+    <title data-i18n="profilePage.title">User Profile • Smart Tourism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
 
     <!-- Styles -->
     <link rel="stylesheet" href="../../styles/main.css" />
-    <link rel="stylesheet" href="../../styles/header.css" />
 
     <!-- Page-specific styles -->
     <style>
@@ -77,72 +90,34 @@
     </style>
   </head>
   <body>
-    <!-- Header / Navbar -->
-    <header class="header">
-      <div class="header-inner">
-        <div class="brand">
-          <a href="../index.html" class="logo">Smart Tourism</a>
-        </div>
-
-        <nav class="nav" aria-label="Main Navigation">
-          <!-- نفس الروابط اللي تستخدمها في باقي الصفحات -->
-          <div class="item"><a href="../index.html">Home</a></div>
-          <div class="item">
-            <a href="../maps/maplibre.html">Interactive Map</a>
-          </div>
-          <div class="item"><a href="../core/history.html">History</a></div>
-          <div class="item"><a href="../index.html#regions">Regions</a></div>
-
-          <div class="item has-dropdown">
-            <a href="../islamic-guide/islamic-guide.html">Islamic Guide ▾</a>
-            <div class="dropdown">
-              <!-- نفس محتوى الدروب داون اللي عندك (إن وجد) -->
-            </div>
-          </div>
-
-          <!-- عناصر الـ Auth (مهمة عشان main.js) -->
-          <div class="item" id="nav-login">
-            <a href="../auth/login.html">Login</a>
-          </div>
-          <div class="item" id="nav-register">
-            <a href="../auth/register.html">Register</a>
-          </div>
-
-          <div class="item" id="nav-profile" style="display: none">
-            <a href="profile.html">Profile</a>
-          </div>
-          <div class="item" id="nav-logout" style="display: none">
-            <a href="#" id="logoutBtn">Logout</a>
-          </div>
-        </nav>
-      </div>
-    </header>
+    <!-- Header - Injected by header-component.js -->
+    <header id="header" data-header-placeholder></header>
 
     <!-- Main Content -->
-    <main class="main-content" style="padding-top: 100px; min-height: 100vh">
+    <main class="main-content" style="padding-top: 120px; min-height: 100vh">
       <section class="profile-section container">
-        <h1 class="section-title">Your Profile</h1>
-        <p class="section-subtitle">
+        <h1 class="section-title" data-i18n="profilePage.title">Your Profile</h1>
+        <p class="section-subtitle" data-i18n="profilePage.subtitle">
           Here you can see the account information used to sign in.
         </p>
 
         <div class="profile-card">
           <div class="profile-row">
-            <span class="label">Name:</span>
+            <span class="label" data-i18n="profilePage.name">Name:</span>
             <span class="value" id="profileName">-</span>
           </div>
           <div class="profile-row">
-            <span class="label">Email:</span>
+            <span class="label" data-i18n="profilePage.email">Email:</span>
             <span class="value" id="profileEmail">-</span>
           </div>
           <div class="profile-row">
-            <span class="label">Status:</span>
+            <span class="label" data-i18n="profilePage.status">Status:</span>
             <span class="value" id="profileStatus">-</span>
           </div>
         </div>
 
         <div class="profile-actions">
-          <a href="../index.html" class="btn">Back to Home</a>
+          <a href="../index.html" class="btn" data-i18n="profilePage.backToHome">Back to Home</a>
         </div>
       </section>
     </main>
@@ -168,9 +143,46 @@
         const emailEl = document.getElementById("profileEmail");
         const statusEl = document.getElementById("profileStatus");
 
+        // Helper function for translations
+        const t = (key, fallback = "") => {
+          if (window.i18n?.t) {
+            const translation = window.i18n.t(key);
+            if (translation && translation !== key) {
+              return translation;
+            }
+          }
+          return fallback || key;
+        };
+
         if (nameEl) nameEl.textContent = name;
         if (emailEl) emailEl.textContent = email;
-        if (statusEl) statusEl.textContent = "Logged in ✅";
+        if (statusEl) {
+          // Update status text with translation
+          const updateStatus = () => {
+            statusEl.textContent = t("profilePage.loggedIn", "Logged in ✅");
+          };
+          updateStatus();
+          
+          // Update when language changes
+          if (window.i18n?.subscribe) {
+            window.i18n.subscribe(updateStatus);
+          }
+        }
+        
+        // Update title when language changes
+        const titleEl = document.querySelector("title");
+        if (titleEl && titleEl.hasAttribute("data-i18n")) {
+          const updateTitle = () => {
+            if (window.i18n?.t) {
+              const key = titleEl.getAttribute("data-i18n");
+              document.title = window.i18n.t(key) || document.title;
+            }
+          };
+          if (window.i18n) {
+            window.i18n.subscribe(updateTitle);
+            updateTitle();
+          }
+        }
       });
     </script>
   </body>
