@@ -343,6 +343,13 @@ function initReviewSystem() {
       loadReviews();
     }
   });
+
+  // Update UI when language changes
+  if (window.i18n?.subscribe) {
+    window.i18n.subscribe(() => {
+      updateAuthUI(); // This will re-translate the "Reviewing as" text
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", initReviewSystem);

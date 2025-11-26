@@ -1676,8 +1676,18 @@
     "namePlaceholder": "Your name...",
     "commentPlaceholder": "Write your review...",
     "submit": "Submit",
-    "missingFields": "Please enter your name, rating, and review.",
-    "star": "Star"
+    "submitting": "Submitting...",
+    "missingFields": "Please enter a rating and review text.",
+    "star": "Star",
+    "reviewingAs": "Reviewing as",
+    "loginToReview": "Please login to leave a review",
+    "loginLink": "Login",
+    "loginRequired": "You must be logged in to submit a review. Would you like to login now?",
+    "success": "Review submitted successfully!",
+    "submitError": "Failed to submit review. Please try again.",
+    "loadError": "Unable to load reviews. Please try again later.",
+    "noReviews": "No reviews yet. Be the first to review!",
+    "anonymous": "Anonymous"
   },
   "search": {
     "destinationsPlaceholder": "Search events or landmarks",
