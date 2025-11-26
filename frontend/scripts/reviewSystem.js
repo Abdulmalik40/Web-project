@@ -62,7 +62,14 @@ function initReviewSystem() {
 
   // Helper that defers to global i18n when present so placeholders flip with language changes
   const t = (key, fallback = "") => {
-    if (window.i18n?.t) return window.i18n.t(key) || fallback || key;
+    if (window.i18n?.t) {
+      const translation = window.i18n.t(key);
+      // If translation exists and is different from the key, use it
+      // Otherwise use fallback
+      if (translation && translation !== key) {
+        return translation;
+      }
+    }
     return fallback || key;
   };
 
@@ -120,9 +127,11 @@ function initReviewSystem() {
       reviewsContainer.innerHTML = "";
 
       if (reviews.length === 0) {
-        reviewsContainer.innerHTML = `<div style="text-align: center; color: var(--color-text-secondary, #b6c7c2); padding: 20px;">
-          ${t("reviews.noReviews", "No reviews yet. Be the first to review!")}
-        </div>`;
+        const noReviewsDiv = document.createElement("div");
+        noReviewsDiv.style.cssText = "text-align: center; color: var(--color-text-secondary, #b6c7c2); padding: 20px;";
+        noReviewsDiv.textContent = t("reviews.noReviews", "No reviews yet. Be the first to review!");
+        reviewsContainer.innerHTML = "";
+        reviewsContainer.appendChild(noReviewsDiv);
         return;
       }
 
@@ -191,7 +200,11 @@ function initReviewSystem() {
 
     try {
       const apiUrl = getApiUrl();
-      const response = await fetch(`${apiUrl}/reviews`, {
+      const requestUrl = `${apiUrl}/reviews`;
+      console.log("[Review System] Submitting review to:", requestUrl);
+      console.log("[Review System] Place key:", placeKey);
+      
+      const response = await fetch(requestUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -202,11 +215,23 @@ function initReviewSystem() {
           rating: rating,
           comment: text,
         }),
+      }).catch((fetchError) => {
+        // Handle network errors (CORS, connection refused, etc.)
+        console.error("[Review System] Fetch error:", fetchError);
+        throw new Error(`Network error: ${fetchError.message || "Could not connect to server"}`);
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || `HTTP ${response.status}`);
+        let errorMessage = `HTTP ${response.status}`;
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch (e) {
+          // If response is not JSON, get text
+          const errorText = await response.text().catch(() => "");
+          errorMessage = errorText || errorMessage;
+        }
+        throw new Error(errorMessage);
       }
 
       // Success - clear form and reload reviews
@@ -224,7 +249,16 @@ function initReviewSystem() {
 
     } catch (error) {
       console.error("[Review System] Error saving review:", error);
-      alert(t("reviews.submitError", "Failed to submit review. Please try again.") + "\n" + error.message);
+      let errorMessage = t("reviews.submitError", "Failed to submit review. Please try again.");
+      
+      // Provide more specific error messages
+      if (error.message.includes("Failed to fetch") || error.name === "TypeError") {
+        errorMessage += "\n\nNetwork error: Could not connect to the server. Please check your internet connection and try again.";
+      } else if (error.message) {
+        errorMessage += "\n\n" + error.message;
+      }
+      
+      alert(errorMessage);
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = t("reviews.submit", "Submit");
@@ -258,14 +292,18 @@ function initReviewSystem() {
         nameInput.style.display = "none";
         const loginPrompt = document.createElement("div");
         loginPrompt.style.cssText = "margin-bottom: 12px; padding: 12px; background: rgba(255, 125, 45, 0.1); border-radius: 8px; border: 1px solid rgba(255, 125, 45, 0.3);";
-        loginPrompt.innerHTML = `
-          <div style="color: var(--color-text-primary, #e8f3ec); margin-bottom: 8px;">
-            ${t("reviews.loginToReview", "Please login to leave a review")}
-          </div>
-          <a href="/auth/login.html" style="color: var(--color-accent-saudi-green, #00b365); text-decoration: underline;">
-            ${t("reviews.loginLink", "Login")}
-          </a>
-        `;
+        
+        const messageDiv = document.createElement("div");
+        messageDiv.style.cssText = "color: var(--color-text-primary, #e8f3ec); margin-bottom: 8px;";
+        messageDiv.textContent = t("reviews.loginToReview", "Please login to leave a review");
+        
+        const loginLink = document.createElement("a");
+        loginLink.href = "/auth/login.html";
+        loginLink.style.cssText = "color: var(--color-accent-saudi-green, #00b365); text-decoration: underline;";
+        loginLink.textContent = t("reviews.loginLink", "Login");
+        
+        loginPrompt.appendChild(messageDiv);
+        loginPrompt.appendChild(loginLink);
         nameInput.parentElement.insertBefore(loginPrompt, nameInput);
       }
     }
