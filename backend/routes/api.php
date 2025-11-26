@@ -9,11 +9,13 @@ use App\Http\Controllers\TripController;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+// Public route: anyone can view reviews for a place
+Route::get('/reviews/{place_key}', [ReviewController::class, 'getByPlace']);
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::post('/reviews', [ReviewController::class, 'store']); // for reviews
-    Route::get('/reviews/{place_key}', [ReviewController::class, 'getByPlace']);
+    Route::post('/reviews', [ReviewController::class, 'store']); // for reviews - requires auth
 
     // خطط الرحلات (Itineraries)
     Route::post('/itineraries', [ItineraryController::class, 'store']);
