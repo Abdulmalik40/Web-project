@@ -290,42 +290,41 @@ function initReviewSystem() {
     const token = getToken();
     const userName = getUserName();
 
+    if (!nameInput) return;
+
+    // Remove any existing dynamic elements (reviewing as label or login prompt)
+    const existingReviewingLabel = nameInput.parentElement.querySelector('[data-review-label]');
+    const existingLoginPrompt = nameInput.parentElement.querySelector('[data-login-prompt]');
+    if (existingReviewingLabel) existingReviewingLabel.remove();
+    if (existingLoginPrompt) existingLoginPrompt.remove();
+
+    nameInput.style.display = "none";
+
     if (token && userName) {
-      // User is logged in - hide name input, show user name
-      if (nameInput) {
-        nameInput.style.display = "none";
-        // Optionally show user name label
-        const nameLabel = nameInput.previousElementSibling;
-        if (nameLabel && nameLabel.tagName === "LABEL") {
-          nameLabel.textContent = `${t("reviews.reviewingAs", "Reviewing as")}: ${userName}`;
-        } else {
-          // Create a label if it doesn't exist
-          const label = document.createElement("div");
-          label.style.cssText = "margin-bottom: 8px; color: var(--color-text-secondary, #b6c7c2); font-size: 0.9rem;";
-          label.textContent = `${t("reviews.reviewingAs", "Reviewing as")}: ${userName}`;
-          nameInput.parentElement.insertBefore(label, nameInput);
-        }
-      }
+      // User is logged in - show user name label
+      const label = document.createElement("div");
+      label.setAttribute("data-review-label", "true");
+      label.style.cssText = "margin-bottom: 8px; color: var(--color-text-secondary, #b6c7c2); font-size: 0.9rem;";
+      label.textContent = `${t("reviews.reviewingAs", "Reviewing as")}: ${userName}`;
+      nameInput.parentElement.insertBefore(label, nameInput);
     } else {
-      // User is not logged in - show message
-      if (nameInput) {
-        nameInput.style.display = "none";
-        const loginPrompt = document.createElement("div");
-        loginPrompt.style.cssText = "margin-bottom: 12px; padding: 12px; background: rgba(255, 125, 45, 0.1); border-radius: 8px; border: 1px solid rgba(255, 125, 45, 0.3);";
-        
-        const messageDiv = document.createElement("div");
-        messageDiv.style.cssText = "color: var(--color-text-primary, #e8f3ec); margin-bottom: 8px;";
-        messageDiv.textContent = t("reviews.loginToReview", "Please login to leave a review");
-        
-        const loginLink = document.createElement("a");
-        loginLink.href = "/auth/login.html";
-        loginLink.style.cssText = "color: var(--color-accent-saudi-green, #00b365); text-decoration: underline;";
-        loginLink.textContent = t("reviews.loginLink", "Login");
-        
-        loginPrompt.appendChild(messageDiv);
-        loginPrompt.appendChild(loginLink);
-        nameInput.parentElement.insertBefore(loginPrompt, nameInput);
-      }
+      // User is not logged in - show login prompt
+      const loginPrompt = document.createElement("div");
+      loginPrompt.setAttribute("data-login-prompt", "true");
+      loginPrompt.style.cssText = "margin-bottom: 12px; padding: 12px; background: rgba(255, 125, 45, 0.1); border-radius: 8px; border: 1px solid rgba(255, 125, 45, 0.3);";
+      
+      const messageDiv = document.createElement("div");
+      messageDiv.style.cssText = "color: var(--color-text-primary, #e8f3ec); margin-bottom: 8px;";
+      messageDiv.textContent = t("reviews.loginToReview", "Please login to leave a review");
+      
+      const loginLink = document.createElement("a");
+      loginLink.href = "/auth/login.html";
+      loginLink.style.cssText = "color: var(--color-accent-saudi-green, #00b365); text-decoration: underline;";
+      loginLink.textContent = t("reviews.loginLink", "Login");
+      
+      loginPrompt.appendChild(messageDiv);
+      loginPrompt.appendChild(loginLink);
+      nameInput.parentElement.insertBefore(loginPrompt, nameInput);
     }
   };
 
