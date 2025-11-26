@@ -1,604 +1,556 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Page title -->
-    <title data-i18n="alkhobarPage.titleTag">Al Khobar • Eastern Region</title>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
-    />
+  <!-- Page title -->
+  <title data-i18n="alkhobarPage.titleTag">Al Khobar • Eastern Region</title>
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="../../styles/main.css" />
-    <link rel="stylesheet" href="../../styles/chatbot.css" />
-    <link rel="stylesheet" href="../../styles/components/_weather-widget.css" />
-    <link rel="stylesheet" href="../../styles/components/_weather-widget-weekly.css" />
-    <link rel="stylesheet" href="../../styles/review.css" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
 
-    <!-- Scripts (deferred) -->
-    <script src="../../config/api-keys.js" defer></script>
-    <script src="../../scripts/modules/weatherApi.js" defer></script>
-    <script src="../../scripts/modules/weatherWidget.js" defer></script>
-    <script src="../../scripts/chatbot.js" defer></script>
-    <script src="../../scripts/header-component.js" defer></script>
-    <script src="../../scripts/reviewSystem.js" defer></script>
-    
-    <!-- Added: CSS animations for event cards
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../styles/main.css" />
+  <link rel="stylesheet" href="../../styles/chatbot.css" />
+  <link rel="stylesheet" href="../../styles/components/_weather-widget.css" />
+  <link rel="stylesheet" href="../../styles/components/_weather-widget-weekly.css" />
+  <link rel="stylesheet" href="../../styles/review.css" />
+
+  <!-- Scripts (deferred) -->
+  <script src="../../config/api-keys.js" defer></script>
+  <script src="../../scripts/modules/weatherApi.js" defer></script>
+  <script src="../../scripts/modules/weatherWidget.js" defer></script>
+  <script src="../../scripts/chatbot.js" defer></script>
+  <script src="../../scripts/header-component.js" defer></script>
+  <script src="../../scripts/reviewSystem.js" defer></script>
+
+  <!-- Added: CSS animations for event cards
          Includes fade-in, slide-up animations on load, and hover effects -->
-    <style>
-      /* Animation keyframes for card entrance */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Animation keyframes for card hover scale */
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.02);
-        }
-      }
-
-      /* Event card container with animation */
-      .event-card-animated {
-        animation: fadeInUp 0.6s ease-out forwards;
+  <style>
+    /* Animation keyframes for card entrance */
+    @keyframes fadeInUp {
+      from {
         opacity: 0;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(30px);
       }
 
-      /* Staggered animation delays for each card */
-      .event-card-animated:nth-child(1) {
-        animation-delay: 0.1s;
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animation keyframes for card hover scale */
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
       }
 
-      .event-card-animated:nth-child(2) {
-        animation-delay: 0.2s;
+      50% {
+        transform: scale(1.02);
       }
+    }
 
-      .event-card-animated:nth-child(3) {
-        animation-delay: 0.3s;
-      }
+    /* Event card container with animation */
+    .event-card-animated {
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-      /* Hover effects for cards */
-      .event-card-animated:hover {
-        transform: translateY(-10px) scale(1.03);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-        -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-        -moz-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-      }
+    /* Staggered animation delays for each card */
+    .event-card-animated:nth-child(1) {
+      animation-delay: 0.1s;
+    }
 
-      /* Image hover effect */
-      .event-card-animated img {
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
+    .event-card-animated:nth-child(2) {
+      animation-delay: 0.2s;
+    }
 
-      .event-card-animated:hover img {
-        transform: scale(1.1);
-      }
+    .event-card-animated:nth-child(3) {
+      animation-delay: 0.3s;
+    }
 
-      /* Button hover effect */
-      .event-card-animated a {
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
+    /* Hover effects for cards */
+    .event-card-animated:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+      -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+      -moz-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+    }
 
-      .event-card-animated a::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-      }
+    /* Image hover effect */
+    .event-card-animated img {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-      .event-card-animated a:hover::before {
-        width: 300px;
-        height: 300px;
-      }
+    .event-card-animated:hover img {
+      transform: scale(1.1);
+    }
 
-      .event-card-animated a:hover {
-        background: #ff8d3d;
-        transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(255, 125, 45, 0.4);
-      }
+    /* Button hover effect */
+    .event-card-animated a {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-      /* Smooth transitions for all card elements */
-      .event-card-animated h3,
-      .event-card-animated p {
-        transition: color 0.3s ease;
-      }
+    .event-card-animated a::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
 
-      .event-card-animated:hover h3 {
-        color: #ff7d2d;
-      }
+    .event-card-animated a:hover::before {
+      width: 300px;
+      height: 300px;
+    }
 
-      /* RTL/LTR Layout Switching for Section Content */
-      .section-content {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 2rem;
-      }
+    .event-card-animated a:hover {
+      background: #ff8d3d;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(255, 125, 45, 0.4);
+    }
 
-      .section-image {
-        flex: 1;
-        order: 1;
-      }
+    /* Smooth transitions for all card elements */
+    .event-card-animated h3,
+    .event-card-animated p {
+      transition: color 0.3s ease;
+    }
 
-      .section-text {
-        flex: 1;
-        order: 2;
-      }
+    .event-card-animated:hover h3 {
+      color: #ff7d2d;
+    }
 
-      html[dir="rtl"] .section-content,
-      body.rtl .section-content {
-        flex-direction: row-reverse;
-      }
+    /* RTL/LTR Layout Switching for Section Content */
+    .section-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+    }
 
-      html[dir="rtl"] .section-image,
-      body.rtl .section-image {
-        order: 2;
-      }
+    .section-image {
+      flex: 1;
+      order: 1;
+    }
 
-      html[dir="rtl"] .section-text,
-      body.rtl .section-text {
-        order: 1;
-      }
+    .section-text {
+      flex: 1;
+      order: 2;
+    }
 
-      .history-container {
-        direction: inherit;
-      }
-    </style>
-  </head>
+    html[dir="rtl"] .section-content,
+    body.rtl .section-content {
+      flex-direction: row-reverse;
+    }
 
-  <body>
-    <!-- Header - Injected by header-component.js -->
-    <header id="header" data-header-placeholder></header>
+    html[dir="rtl"] .section-image,
+    body.rtl .section-image {
+      order: 2;
+    }
 
-    <!-- Chatbot toggle button -->
-    <button id="chatbot-toggler">
-      <span class="material-symbols-outlined">mode_comment</span>
-      <span class="material-symbols-rounded">close</span>
-    </button>
+    html[dir="rtl"] .section-text,
+    body.rtl .section-text {
+      order: 1;
+    }
 
-    <!-- Chatbot container -->
-    <div class="chatbot-popup">
-      <!-- Chat header -->
-      <div class="chat-header">
-        <div class="header-info">
-          <img
-            style="width: 50px; border-radius: 1000px;"
-            src="../../assets/icons/chatbot-icon.png"
-            alt=""
-          />
-          <h2 class="logo-text">Saudi Tourism Bot</h2>
-        </div>
-        <button id="close-chatbot" class="material-symbols-rounded">
-          keyboard_arrow_down
-        </button>
+    .history-container {
+      direction: inherit;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header - Injected by header-component.js -->
+  <header id="header" data-header-placeholder></header>
+
+  <!-- Chatbot toggle button -->
+  <button id="chatbot-toggler">
+    <span class="material-symbols-outlined">mode_comment</span>
+    <span class="material-symbols-rounded">close</span>
+  </button>
+
+  <!-- Chatbot container -->
+  <div class="chatbot-popup">
+    <!-- Chat header -->
+    <div class="chat-header">
+      <div class="header-info">
+        <img style="width: 50px; border-radius: 1000px;" src="../../assets/icons/chatbot-icon.png" alt="" />
+        <h2 class="logo-text">Saudi Tourism Bot</h2>
       </div>
+      <button id="close-chatbot" class="material-symbols-rounded">
+        keyboard_arrow_down
+      </button>
+    </div>
 
-      <!-- Chat body -->
-      <div class="chat-body">
-        <div class="message bot-message">
-          <img
-            style="width: 50px; border-radius: 1000px;"
-            src="../../assets/icons/chatbot-icon.png"
-            alt=""
-          />
-          <div dir="rtl" class="message-text">
-            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
-          </div>
+    <!-- Chat body -->
+    <div class="chat-body">
+      <div class="message bot-message">
+        <img style="width: 50px; border-radius: 1000px;" src="../../assets/icons/chatbot-icon.png" alt="" />
+        <div dir="rtl" class="message-text">
+          اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
         </div>
-      </div>
-
-      <!-- Chat footer -->
-      <div class="chat-footer">
-        <form action="#" class="chat-form">
-          <textarea
-            dir="rtl"
-            placeholder="اكتب سؤالك عن السياحة في السعودية..."
-            class="message-input"
-            required
-          ></textarea>
-          <div class="chat-controls">
-            <button
-              type="submit"
-              id="send-message"
-              class="material-symbols-rounded"
-            >
-              arrow_upward
-            </button>
-          </div>
-        </form>
       </div>
     </div>
 
-    <!-- Hero section -->
-    <section class="hero" aria-label="Hero section">
-      <div class="hero-bg">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-        >
-          <source
-            src="../../styles/videos/alkhobar_trim.mp4"
-            type="video/mp4"
-          />
-          <img
-            src="../../assets/images/cities/Saudi3.jpg"
-            alt="Al Khobar - Eastern Region"
-            class="hero-image"
-          />
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-particles">
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
+    <!-- Chat footer -->
+    <div class="chat-footer">
+      <form action="#" class="chat-form">
+        <textarea dir="rtl" placeholder="اكتب سؤالك عن السياحة في السعودية..." class="message-input"
+          required></textarea>
+        <div class="chat-controls">
+          <button type="submit" id="send-message" class="material-symbols-rounded">
+            arrow_upward
+          </button>
         </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Hero section -->
+  <section class="hero" aria-label="Hero section">
+    <div class="hero-bg">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+        <source src="../../styles/videos/alkhobar_trim.mp4" type="video/mp4" />
+        <img src="../../assets/images/cities/Saudi3.jpg" alt="Al Khobar - Eastern Region" class="hero-image" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
       </div>
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="title-line" data-i18n="alkhobarPage.heroTitle1">EASTERN REGION</span>
-            <span class="title-line featured" data-i18n="alkhobarPage.heroTitle2">AL KHOBAR</span>
-            <span class="title-line subtitle" data-i18n="alkhobarPage.heroTitle3">
-              COAST • CORNICHE • MODERN LIFESTYLE
-            </span>
-          </h1>
-          <p class="hero-sub" data-i18n="alkhobarPage.heroSubtitle">
-            Discover the vibrant coastal city of Al Khobar in Saudi Arabia's
-            Eastern Province.
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="title-line" data-i18n="alkhobarPage.heroTitle1">EASTERN REGION</span>
+          <span class="title-line featured" data-i18n="alkhobarPage.heroTitle2">AL KHOBAR</span>
+          <span class="title-line subtitle" data-i18n="alkhobarPage.heroTitle3">
+            COAST • CORNICHE • MODERN LIFESTYLE
+          </span>
+        </h1>
+        <p class="hero-sub" data-i18n="alkhobarPage.heroSubtitle">
+          Discover the vibrant coastal city of Al Khobar in Saudi Arabia's
+          Eastern Province.
+        </p>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-arrow"></div>
+      <span data-i18n="common.scrollToExplore">Scroll to Explore</span>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <main class="history-container site-main">
+
+
+
+    <!-- الخبر -->
+    <section class="section" id="first-state">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/khobar-onMap.avif"
+            alt="الخبر — بوابة الخليج وواجهة المنطقة الشرقية" />
+        </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alkhobarPage.section1Title">الخبر – أنفاس البحر وروح الحداثة</h2>
+          <h3 class="section-subtitle" data-i18n="alkhobarPage.section1Subtitle">نبذة تاريخية موجزة</h3>
+          <p class="section-body" data-i18n="alkhobarPage.section1Para1">
+            نشأت الخبر على ضفاف الخليج العربي وتطورت مع نهضة النفط
+            ومرافئه، لتصبح جزءًا من الحاضرة الشرقية إلى جانب الظهران
+            والدمام. تمازجت فيها التجارة البحرية مع بنى حضرية حديثة جعلت
+            المدينة عنوانًا للانفتاح والضيافة وجودة الحياة.
           </p>
+          <h4 class="section-subtitle" data-i18n="alkhobarPage.section1Highlights">أبرز ملامح الخبر</h4>
+          <ul class="section-list">
+            <li data-i18n="alkhobarPage.section1Item1">الواجهة البحرية والكورنيش</li>
+            <li data-i18n="alkhobarPage.section1Item2">اتصال مباشر بجسر الملك فهد</li>
+            <li data-i18n="alkhobarPage.section1Item3">قرب نصف القمر وشواطئ الأنشطة</li>
+            <li data-i18n="alkhobarPage.section1Item4">مراكز علمية وثقافية</li>
+            <li data-i18n="alkhobarPage.section1Item5">تسوق وتناول طعام حديث</li>
+          </ul>
         </div>
-      </div>
-      <div class="scroll-indicator">
-        <div class="scroll-arrow"></div>
-        <span data-i18n="common.scrollToExplore">Scroll to Explore</span>
       </div>
     </section>
 
-    <!-- Main content -->
-    <main class="history-container site-main">
-
-
-
-      <!-- الخبر -->
-      <section class="section" id="first-state">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/khobar-onMap.avif"
-              alt="الخبر — بوابة الخليج وواجهة المنطقة الشرقية"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="alkhobarPage.section1Title">الخبر – أنفاس البحر وروح الحداثة</h2>
-            <h3 class="section-subtitle" data-i18n="alkhobarPage.section1Subtitle">نبذة تاريخية موجزة</h3>
-            <p class="section-body" data-i18n="alkhobarPage.section1Para1">
-              نشأت الخبر على ضفاف الخليج العربي وتطورت مع نهضة النفط
-              ومرافئه، لتصبح جزءًا من الحاضرة الشرقية إلى جانب الظهران
-              والدمام. تمازجت فيها التجارة البحرية مع بنى حضرية حديثة جعلت
-              المدينة عنوانًا للانفتاح والضيافة وجودة الحياة.
-            </p>
-            <h4 class="section-subtitle" data-i18n="alkhobarPage.section1Highlights">أبرز ملامح الخبر</h4>
-            <ul class="section-list">
-              <li data-i18n="alkhobarPage.section1Item1">الواجهة البحرية والكورنيش</li>
-              <li data-i18n="alkhobarPage.section1Item2">اتصال مباشر بجسر الملك فهد</li>
-              <li data-i18n="alkhobarPage.section1Item3">قرب نصف القمر وشواطئ الأنشطة</li>
-              <li data-i18n="alkhobarPage.section1Item4">مراكز علمية وثقافية</li>
-              <li data-i18n="alkhobarPage.section1Item5">تسوق وتناول طعام حديث</li>
-            </ul>
-          </div>
+    <!-- الواجهة البحرية -->
+    <section class="section" id="second-state">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/wajehaa-ba7rea.jpg" alt="الواجهة البحرية — كورنيش الخبر وممراته" />
         </div>
-      </section>
-
-      <!-- الواجهة البحرية -->
-      <section class="section" id="second-state">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/wajehaa-ba7rea.jpg"
-              alt="الواجهة البحرية — كورنيش الخبر وممراته"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="alkhobarPage.section2Title">الواجهة البحرية والكورنيش</h2>
-            <h3 class="section-subtitle" data-i18n="alkhobarPage.section2Subtitle">
-              ممشى ممتد، حدائق، وإطلالات على الخليج
-            </h3>
-            <p class="section-body" data-i18n="alkhobarPage.section2Para1">
-              يمتد كورنيش الخبر بمسارات مشاة ودراجات وحدائق مفتوحة ونقاط
-              جلوس مطلة على البحر، مع منصات مشاهدة، ملاعب أطفال، ونقاط
-              تصوير على الامتداد الأزرق للخليج.
-            </p>
-            <p class="section-body" data-i18n="alkhobarPage.section2Para2">
-              تتوزع على الواجهة أعمال فنية ومناطق فعاليات موسمية، إلى جانب
-              مطاعم ومقاهٍ بإطلالات بحرية ومسارات إنارة تعزز متعة النزهة
-              المسائية.
-            </p>
-            <p class="section-body" data-i18n="alkhobarPage.section2Para3">
-              تتكامل التجربة بحلول مواقف منظمة وعبّارات آمنة لعبور المشاة،
-              وخدمات لذوي الإعاقة وكبار السن، وإرشادٍ بيئي يحفظ نظافة
-              الشاطئ.
-            </p>
-            <p class="section-body" data-i18n="alkhobarPage.section2Para4">
-              وتتيح المسارات اتصالًا سهلًا بين الحدائق، والمناطق التجارية،
-              ومراسي الأنشطة البحرية الخفيفة.
-            </p>
-            <h4 class="section-subtitle" data-i18n="alkhobarPage.section2Highlights">تجربتك على الواجهة</h4>
-            <ul class="section-list">
-              <li data-i18n="alkhobarPage.section2Item1">ممشى الكورنيش وممرات الدراجات</li>
-              <li data-i18n="alkhobarPage.section2Item2">الحدائق والمساحات الخضراء</li>
-              <li data-i18n="alkhobarPage.section2Item3">المطاعم والمقاهي المطلة على البحر</li>
-              <li data-i18n="alkhobarPage.section2Item4">مناطق ألعاب ومنصات مشاهدة</li>
-              <li data-i18n="alkhobarPage.section2Item5">فعاليات موسمية ومسارح مفتوحة</li>
-            </ul>
-          </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alkhobarPage.section2Title">الواجهة البحرية والكورنيش</h2>
+          <h3 class="section-subtitle" data-i18n="alkhobarPage.section2Subtitle">
+            ممشى ممتد، حدائق، وإطلالات على الخليج
+          </h3>
+          <p class="section-body" data-i18n="alkhobarPage.section2Para1">
+            يمتد كورنيش الخبر بمسارات مشاة ودراجات وحدائق مفتوحة ونقاط
+            جلوس مطلة على البحر، مع منصات مشاهدة، ملاعب أطفال، ونقاط
+            تصوير على الامتداد الأزرق للخليج.
+          </p>
+          <p class="section-body" data-i18n="alkhobarPage.section2Para2">
+            تتوزع على الواجهة أعمال فنية ومناطق فعاليات موسمية، إلى جانب
+            مطاعم ومقاهٍ بإطلالات بحرية ومسارات إنارة تعزز متعة النزهة
+            المسائية.
+          </p>
+          <p class="section-body" data-i18n="alkhobarPage.section2Para3">
+            تتكامل التجربة بحلول مواقف منظمة وعبّارات آمنة لعبور المشاة،
+            وخدمات لذوي الإعاقة وكبار السن، وإرشادٍ بيئي يحفظ نظافة
+            الشاطئ.
+          </p>
+          <p class="section-body" data-i18n="alkhobarPage.section2Para4">
+            وتتيح المسارات اتصالًا سهلًا بين الحدائق، والمناطق التجارية،
+            ومراسي الأنشطة البحرية الخفيفة.
+          </p>
+          <h4 class="section-subtitle" data-i18n="alkhobarPage.section2Highlights">تجربتك على الواجهة</h4>
+          <ul class="section-list">
+            <li data-i18n="alkhobarPage.section2Item1">ممشى الكورنيش وممرات الدراجات</li>
+            <li data-i18n="alkhobarPage.section2Item2">الحدائق والمساحات الخضراء</li>
+            <li data-i18n="alkhobarPage.section2Item3">المطاعم والمقاهي المطلة على البحر</li>
+            <li data-i18n="alkhobarPage.section2Item4">مناطق ألعاب ومنصات مشاهدة</li>
+            <li data-i18n="alkhobarPage.section2Item5">فعاليات موسمية ومسارح مفتوحة</li>
+          </ul>
         </div>
-      </section>
-
-      
-
-        <!-- جسر الملك فهد -->
-  <section class="section" id="king-fahd-causeway">
-    <div class="section-content">
-      <div class="section-image">
-        <img
-          src="../../assets/images/destinations/King_Fahd_Briedge.jpg"
-          alt="جسر الملك فهد — ارتباط إقليمي"
-        />
       </div>
+    </section>
 
-      <div class="section-text">
-        <h2 class="section-title" data-i18n="alkhobarPage.section3Title">جسر الملك فهد</h2>
-        <h3 class="section-subtitle" data-i18n="alkhobarPage.section3Subtitle">صلة برية بين المملكة العربية السعودية والبحرين</h3>
 
-        <p class="section-body" data-i18n="alkhobarPage.section3Para1">
-          يُعد جسر الملك فهد واحداً من أهم الجسور في المنطقة، حيث يربط مدينة الخبر
-          في المملكة العربية السعودية بمملكة البحرين عبر امتداد يبلغ نحو 25 كيلومترًا
-          فوق مياه الخليج العربي. افتُتح الجسر عام 1986 ليكون محوراً حيوياً للحركة
-          السياحية والتجارية بين البلدين.
-        </p>
 
-        <p class="section-body" data-i18n="alkhobarPage.section3Para2">
-          يُنصح بالاطلاع مسبقًا على الحالة المرورية عبر التطبيقات الرسمية 
+    <!-- جسر الملك فهد -->
+    <section class="section" id="king-fahd-causeway">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/King_Fahd_Briedge.jpg" alt="جسر الملك فهد — ارتباط إقليمي" />
+        </div>
+
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alkhobarPage.section3Title">جسر الملك فهد</h2>
+          <h3 class="section-subtitle" data-i18n="alkhobarPage.section3Subtitle">صلة برية بين المملكة العربية السعودية
+            والبحرين</h3>
+
+          <p class="section-body" data-i18n="alkhobarPage.section3Para1">
+            يُعد جسر الملك فهد واحداً من أهم الجسور في المنطقة، حيث يربط مدينة الخبر
+            في المملكة العربية السعودية بمملكة البحرين عبر امتداد يبلغ نحو 25 كيلومترًا
+            فوق مياه الخليج العربي. افتُتح الجسر عام 1986 ليكون محوراً حيوياً للحركة
+            السياحية والتجارية بين البلدين.
+          </p>
+
+          <p class="section-body" data-i18n="alkhobarPage.section3Para2">
+            يُنصح بالاطلاع مسبقًا على الحالة المرورية عبر التطبيقات الرسمية
             لمعرفة مدة الانتظار عند نقاط الجوازات.
-          يُفضَّل السفر خلال الأوقات خارج الذروة، مثل ساعات الصباح الباكر أو منتصف الأسبوع،
-          للحصول على تجربة عبور أكثر سرعة وسلاسة.
-        </p>
+            يُفضَّل السفر خلال الأوقات خارج الذروة، مثل ساعات الصباح الباكر أو منتصف الأسبوع،
+            للحصول على تجربة عبور أكثر سرعة وسلاسة.
+          </p>
 
-        <p class="section-body" data-i18n="alkhobarPage.section3Para3">
-          يوفّر الجسر عدداً من الخدمات على امتداد الطريق، مثل مراكز الجوازات،
-          خدمات الشرطة، مناطق استراحة محدودة، إضافة إلى مبنى المركز الحدودي
-          الذي يوفّر إجراءات منظمة وسريعة. يُعد الجسر خياراً مثالياً لرحلات قصيرة
-          إلى البحرين، سواء للاستجمام أو التسوق أو حضور الفعاليات الأسبوعية.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-        <!-- نصف القمر -->
-  <section class="section" id="half-moon-bay">
-    <div class="section-content">
-      <div class="section-image">
-        <img
-          src="../../assets/images/destinations/half-moon.jpg"
-          alt="خليج نصف القمر — شواطئ وأنشطة"
-        />
-      </div>
-
-      <div class="section-text">
-        <h2 class="section-title" data-i18n="alkhobarPage.section4Title">خليج نصف القمر</h2>
-        <h3 class="section-subtitle" data-i18n="alkhobarPage.section4Subtitle">
-          شواطئ ممتدة وأنشطة بحرية عائلية
-        </h3>
-
-        <p class="section-body" data-i18n="alkhobarPage.section4Para1">
-          يُعد خليج نصف القمر من أشهر الوجهات الشاطئية في المنطقة الشرقية، 
-          ويتمتع برماله الذهبية ومياهه الهادئة الممتدة على مسافة طويلة. 
-          يُعتبر المكان مثالياً للعائلات ومحبي البحر، حيث يجمع بين الاسترخاء 
-          والأنشطة الترفيهية المتنوعة.
-        </p>
-
-        <p class="section-body" data-i18n="alkhobarPage.section4Para2">
-          يتوفر في المنطقة عدة شواطئ مهيأة للجلوس والسباحة، إضافة إلى مساحات واسعة 
-          للأنشطة الرياضية مثل المشي، ركوب الدراجات، والكرة الشاطئية. كما تنتشر 
-          مرافق خدمية تشمل مواقف سيارات، جلسات مظللة، دورات مياه، وأكشاك بيع الوجبات 
-          السريعة والمشروبات.
-        </p>
-
-        <p class="section-body" data-i18n="alkhobarPage.section4Para3">
-          لعشّاق المغامرة، يوفر الخليج خيارات مثل ركوب الدبابات الرملية (ATV)، 
-          قيادة الدراجات البحرية (Jet Ski)، ورحلات القوارب القصيرة. كما يُعد 
-          الخليج وجهة مثالية للتخييم الليلي خلال المواسم المناسبة.
-        </p>
-
-        <p class="section-body" data-i18n="alkhobarPage.section4Para4">
-          يُنصح بمتابعة أحوال البحر والرياح قبل الزيارة، خصوصاً في أيام التيارات 
-          القوية. كما يجب الالتزام بإرشادات السلامة، والحفاظ على نظافة الشاطئ 
-          لضمان تجربة ممتعة وآمنة للجميع.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-        <!-- مركز سايتك للعلوم -->
-  <section class="section" id="scitech-center">
-    <div class="section-content">
-      <div class="section-image">
-        <img
-          src="../../assets/images/destinations/caitek.jpg"
-          alt="مركز سايتك للعلوم — تجارب تفاعلية"
-        />
-      </div>
-
-      <div class="section-text">
-        <h2 class="section-title" data-i18n="alkhobarPage.section5Title">مركز سايتك للعلوم</h2>
-        <h3 class="section-subtitle" data-i18n="alkhobarPage.section5Subtitle">علوم مدهشة ومعارض تعليمية</h3>
-
-        <p class="section-body" data-i18n="alkhobarPage.section5Para1">
-          يُعد مركز سلطان بن عبدالعزيز للعلوم والتقنية (سايتك) من أبرز الوجهات العلمية
-          في المنطقة الشرقية، حيث يقدم تجربة تعليمية تفاعلية تجمع بين المتعة والمعرفة
-          لجميع الأعمار. يتميز المركز بمعارضه المتجددة التي تُعرّف الزوار بأساسيات
-          العلوم الحديثة والتقنية والفضاء والطاقة.
-        </p>
-
-        <p class="section-body" data-i18n="alkhobarPage.section5Para2">
-          يضم المركز أكثر من 350 تجربة علمية تفاعلية موزعة على قاعات متنوعة، تشمل
-          معارض الفيزياء، الروبوتات، الحواس، التكنولوجيا، البيئة، وعلوم البحار. كما يوفر
-          عروضًا تعليمية في قبة سايتك العلمية (IMAX) بتقنيات عرض ضخمة ومحتوى بصري
-          ممتع.
-        </p>
-
-        <p class="section-body" data-i18n="alkhobarPage.section5Para3">
-          يعتبر المركز وجهة مثالية للطلاب والعائلات، حيث يقدم ورش عمل وبرامج تدريبية
-          مخصصة للأطفال واليافعين لتنمية مهارات التفكير والإبداع والاكتشاف. إضافة إلى
-          ذلك، يستضيف فعاليات ومسابقات علمية على مدار العام.
-        </p>
-
-        <p class="section-body" data-i18n="alkhobarPage.section5Para4">
-          يقع المركز بالقرب من الواجهة البحرية بالخبر، ما يجعله جزءًا رائعًا لرحلة
-          عائلية متكاملة تجمع بين التعليم والترفيه. يُفضل الاطلاع على جدول الفعاليات
-          وأوقات العروض قبل الزيارة لضمان أفضل تجربة.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-
-
-
-<!-- إثراء (الظهران) -->
-<section class="section" id="ithra">
-  <div class="section-content">
-    <div class="section-image">
-      <img
-        src="../../assets/images/destinations/ithraa.jpg"
-        alt="إثراء — مركز الملك عبدالعزيز الثقافي العالمي"
-      />
-    </div>
-
-    <div class="section-text">
-      <h2 class="section-title" data-i18n="alkhobarPage.section6Title">إثراء (الظهران)</h2>
-      <h3 class="section-subtitle" data-i18n="alkhobarPage.section6Subtitle">ثقافة وفنون ومعارض عالمية</h3>
-
-      <p class="section-body" data-i18n="alkhobarPage.section6Para1">
-        يُعد مركز الملك عبدالعزيز الثقافي العالمي "إثراء" واحداً من أبرز المعالم
-        الثقافية في المملكة، حيث يجمع بين الفن، الإبداع، التعليم، والتجارب
-        التفاعلية تحت سقف واحد. يضم المركز متاحف متنوعة، قاعات معارض عالمية،
-        مكتبة ضخمة تضم آلاف الكتب، إضافة إلى سينما حديثة وصالات مخصصة
-        للورش والدورات والإبداع.
-      </p>
-
-      <p class="section-body" data-i18n="alkhobarPage.section6Para2">
-        يتميز "إثراء" بتصميمه الهندسي الفريد الذي أصبح أحد أيقونات المنطقة
-        الشرقية، كما يستضيف على مدار العام فعاليات ثقافية، عروض مسرحية،
-        مهرجانات، وبرامج تعليمية للأطفال والبالغين، مما يجعله وجهة مثالية
-        للعائلات ومحبي الثقافة والفنون.
-      </p>
-
-      <p class="section-body" data-i18n="alkhobarPage.section6Para3">
-        يوفر المركز تجارب تفاعلية مثل مختبر الابتكار، معرض الطاقة، ومعرض
-        التاريخ الطبيعي، بالإضافة إلى مساحات مخصصة للفنون الحديثة والمعاصر.
-        كما يمكن للزوار الاستمتاع بالمطاعم والمقاهي المتنوعة داخل المبنى.
-      </p>
-
-      <p class="section-body" data-i18n="alkhobarPage.section6Para4">
-        يقع "إثراء" على بُعد دقائق من مدينة الخبر، ويُفضّل الاطلاع على جدول
-        الفعاليات والمعارض المؤقتة قبل الزيارة لضمان الاستفادة من التجارب
-        المتاحة في يوم الزيارة.
-      </p>
-    </div>
-  </div>
-</section>
-
-
-
-
-<!-- الخبر اليوم -->
-      <section class="section" id="modern-kingdom">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/khobar.avif"
-              alt="الخبر الحديثة — مطار، قطار، وخدمات ذكية"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="alkhobarPage.section7Title">الخبر اليوم</h2>
-            <h3 class="section-subtitle" data-i18n="alkhobarPage.section7Subtitle">
-              وصول ميسّر وخدمات ذكية وتجربة حضرية بحرية
-            </h3>
-            <p class="section-body" data-i18n="alkhobarPage.section7Para1">
-              ترتبط الخبر بالعالم عبر مطار الملك فهد الدولي (الدمام)،
-              وبالمدن المجاورة عبر شبكة طرق حديثة ومحطة قطار الدمام
-              القريبة، ما يجعل الوصول للواجهة البحرية والوجهات الترفيهية
-              سهلًا وسلسًا.
-            </p>
-            <p class="section-body" data-i18n="alkhobarPage.section7Para2">
-              تدعم التطبيقات والخرائط التفاعلية التخطيط للزيارة، من المواقف
-              إلى الفعاليات والمطاعم، مع تحديثات آنية وأدلة إرشادية متعددة
-              اللغات.
-            </p>
-            <p class="section-body" data-i18n="alkhobarPage.section7Para3">
-              وتقدّم المدينة خليطًا من الضيافة الراقية، والمراكز التجارية
-              الكبرى، والأنشطة الرياضية والبحرية، في مشهد حضري متصل مع
-              الظهران والدمام.
-            </p>
-            <ul class="section-list">
-              <li data-i18n="alkhobarPage.section7Item1">مطار الملك فهد الدولي</li>
-              <li data-i18n="alkhobarPage.section7Item2">محطة قطار الدمام (قريبة بالسيارة)</li>
-              <li data-i18n="alkhobarPage.section7Item3">شبكات طرق ومخارج متصلة بالكورنيش</li>
-              <li data-i18n="alkhobarPage.section7Item4">خدمات إرشاد وخرائط تفاعلية</li>
-              <li data-i18n="alkhobarPage.section7Item5">فنادق ومنتجعات ومراكز تسوق</li>
-            </ul>
-          </div>
+          <p class="section-body" data-i18n="alkhobarPage.section3Para3">
+            يوفّر الجسر عدداً من الخدمات على امتداد الطريق، مثل مراكز الجوازات،
+            خدمات الشرطة، مناطق استراحة محدودة، إضافة إلى مبنى المركز الحدودي
+            الذي يوفّر إجراءات منظمة وسريعة. يُعد الجسر خياراً مثالياً لرحلات قصيرة
+            إلى البحرين، سواء للاستجمام أو التسوق أو حضور الفعاليات الأسبوعية.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
 
-      
+    <!-- نصف القمر -->
+    <section class="section" id="half-moon-bay">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/half-moon.jpg" alt="خليج نصف القمر — شواطئ وأنشطة" />
+        </div>
 
-<!-- أحدث الفعاليات -->
-       <div style="
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alkhobarPage.section4Title">خليج نصف القمر</h2>
+          <h3 class="section-subtitle" data-i18n="alkhobarPage.section4Subtitle">
+            شواطئ ممتدة وأنشطة بحرية عائلية
+          </h3>
+
+          <p class="section-body" data-i18n="alkhobarPage.section4Para1">
+            يُعد خليج نصف القمر من أشهر الوجهات الشاطئية في المنطقة الشرقية،
+            ويتمتع برماله الذهبية ومياهه الهادئة الممتدة على مسافة طويلة.
+            يُعتبر المكان مثالياً للعائلات ومحبي البحر، حيث يجمع بين الاسترخاء
+            والأنشطة الترفيهية المتنوعة.
+          </p>
+
+          <p class="section-body" data-i18n="alkhobarPage.section4Para2">
+            يتوفر في المنطقة عدة شواطئ مهيأة للجلوس والسباحة، إضافة إلى مساحات واسعة
+            للأنشطة الرياضية مثل المشي، ركوب الدراجات، والكرة الشاطئية. كما تنتشر
+            مرافق خدمية تشمل مواقف سيارات، جلسات مظللة، دورات مياه، وأكشاك بيع الوجبات
+            السريعة والمشروبات.
+          </p>
+
+          <p class="section-body" data-i18n="alkhobarPage.section4Para3">
+            لعشّاق المغامرة، يوفر الخليج خيارات مثل ركوب الدبابات الرملية (ATV)،
+            قيادة الدراجات البحرية (Jet Ski)، ورحلات القوارب القصيرة. كما يُعد
+            الخليج وجهة مثالية للتخييم الليلي خلال المواسم المناسبة.
+          </p>
+
+          <p class="section-body" data-i18n="alkhobarPage.section4Para4">
+            يُنصح بمتابعة أحوال البحر والرياح قبل الزيارة، خصوصاً في أيام التيارات
+            القوية. كما يجب الالتزام بإرشادات السلامة، والحفاظ على نظافة الشاطئ
+            لضمان تجربة ممتعة وآمنة للجميع.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- مركز سايتك للعلوم -->
+    <section class="section" id="scitech-center">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/caitek.jpg" alt="مركز سايتك للعلوم — تجارب تفاعلية" />
+        </div>
+
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alkhobarPage.section5Title">مركز سايتك للعلوم</h2>
+          <h3 class="section-subtitle" data-i18n="alkhobarPage.section5Subtitle">علوم مدهشة ومعارض تعليمية</h3>
+
+          <p class="section-body" data-i18n="alkhobarPage.section5Para1">
+            يُعد مركز سلطان بن عبدالعزيز للعلوم والتقنية (سايتك) من أبرز الوجهات العلمية
+            في المنطقة الشرقية، حيث يقدم تجربة تعليمية تفاعلية تجمع بين المتعة والمعرفة
+            لجميع الأعمار. يتميز المركز بمعارضه المتجددة التي تُعرّف الزوار بأساسيات
+            العلوم الحديثة والتقنية والفضاء والطاقة.
+          </p>
+
+          <p class="section-body" data-i18n="alkhobarPage.section5Para2">
+            يضم المركز أكثر من 350 تجربة علمية تفاعلية موزعة على قاعات متنوعة، تشمل
+            معارض الفيزياء، الروبوتات، الحواس، التكنولوجيا، البيئة، وعلوم البحار. كما يوفر
+            عروضًا تعليمية في قبة سايتك العلمية (IMAX) بتقنيات عرض ضخمة ومحتوى بصري
+            ممتع.
+          </p>
+
+          <p class="section-body" data-i18n="alkhobarPage.section5Para3">
+            يعتبر المركز وجهة مثالية للطلاب والعائلات، حيث يقدم ورش عمل وبرامج تدريبية
+            مخصصة للأطفال واليافعين لتنمية مهارات التفكير والإبداع والاكتشاف. إضافة إلى
+            ذلك، يستضيف فعاليات ومسابقات علمية على مدار العام.
+          </p>
+
+          <p class="section-body" data-i18n="alkhobarPage.section5Para4">
+            يقع المركز بالقرب من الواجهة البحرية بالخبر، ما يجعله جزءًا رائعًا لرحلة
+            عائلية متكاملة تجمع بين التعليم والترفيه. يُفضل الاطلاع على جدول الفعاليات
+            وأوقات العروض قبل الزيارة لضمان أفضل تجربة.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+    <!-- إثراء (الظهران) -->
+    <section class="section" id="ithra">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/ithraa.jpg" alt="إثراء — مركز الملك عبدالعزيز الثقافي العالمي" />
+        </div>
+
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alkhobarPage.section6Title">إثراء (الظهران)</h2>
+          <h3 class="section-subtitle" data-i18n="alkhobarPage.section6Subtitle">ثقافة وفنون ومعارض عالمية</h3>
+
+          <p class="section-body" data-i18n="alkhobarPage.section6Para1">
+            يُعد مركز الملك عبدالعزيز الثقافي العالمي "إثراء" واحداً من أبرز المعالم
+            الثقافية في المملكة، حيث يجمع بين الفن، الإبداع، التعليم، والتجارب
+            التفاعلية تحت سقف واحد. يضم المركز متاحف متنوعة، قاعات معارض عالمية،
+            مكتبة ضخمة تضم آلاف الكتب، إضافة إلى سينما حديثة وصالات مخصصة
+            للورش والدورات والإبداع.
+          </p>
+
+          <p class="section-body" data-i18n="alkhobarPage.section6Para2">
+            يتميز "إثراء" بتصميمه الهندسي الفريد الذي أصبح أحد أيقونات المنطقة
+            الشرقية، كما يستضيف على مدار العام فعاليات ثقافية، عروض مسرحية،
+            مهرجانات، وبرامج تعليمية للأطفال والبالغين، مما يجعله وجهة مثالية
+            للعائلات ومحبي الثقافة والفنون.
+          </p>
+
+          <p class="section-body" data-i18n="alkhobarPage.section6Para3">
+            يوفر المركز تجارب تفاعلية مثل مختبر الابتكار، معرض الطاقة، ومعرض
+            التاريخ الطبيعي، بالإضافة إلى مساحات مخصصة للفنون الحديثة والمعاصر.
+            كما يمكن للزوار الاستمتاع بالمطاعم والمقاهي المتنوعة داخل المبنى.
+          </p>
+
+          <p class="section-body" data-i18n="alkhobarPage.section6Para4">
+            يقع "إثراء" على بُعد دقائق من مدينة الخبر، ويُفضّل الاطلاع على جدول
+            الفعاليات والمعارض المؤقتة قبل الزيارة لضمان الاستفادة من التجارب
+            المتاحة في يوم الزيارة.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- الخبر اليوم -->
+    <section class="section" id="modern-kingdom">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/khobar.avif" alt="الخبر الحديثة — مطار، قطار، وخدمات ذكية" />
+        </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alkhobarPage.section7Title">الخبر اليوم</h2>
+          <h3 class="section-subtitle" data-i18n="alkhobarPage.section7Subtitle">
+            وصول ميسّر وخدمات ذكية وتجربة حضرية بحرية
+          </h3>
+          <p class="section-body" data-i18n="alkhobarPage.section7Para1">
+            ترتبط الخبر بالعالم عبر مطار الملك فهد الدولي (الدمام)،
+            وبالمدن المجاورة عبر شبكة طرق حديثة ومحطة قطار الدمام
+            القريبة، ما يجعل الوصول للواجهة البحرية والوجهات الترفيهية
+            سهلًا وسلسًا.
+          </p>
+          <p class="section-body" data-i18n="alkhobarPage.section7Para2">
+            تدعم التطبيقات والخرائط التفاعلية التخطيط للزيارة، من المواقف
+            إلى الفعاليات والمطاعم، مع تحديثات آنية وأدلة إرشادية متعددة
+            اللغات.
+          </p>
+          <p class="section-body" data-i18n="alkhobarPage.section7Para3">
+            وتقدّم المدينة خليطًا من الضيافة الراقية، والمراكز التجارية
+            الكبرى، والأنشطة الرياضية والبحرية، في مشهد حضري متصل مع
+            الظهران والدمام.
+          </p>
+          <ul class="section-list">
+            <li data-i18n="alkhobarPage.section7Item1">مطار الملك فهد الدولي</li>
+            <li data-i18n="alkhobarPage.section7Item2">محطة قطار الدمام (قريبة بالسيارة)</li>
+            <li data-i18n="alkhobarPage.section7Item3">شبكات طرق ومخارج متصلة بالكورنيش</li>
+            <li data-i18n="alkhobarPage.section7Item4">خدمات إرشاد وخرائط تفاعلية</li>
+            <li data-i18n="alkhobarPage.section7Item5">فنادق ومنتجعات ومراكز تسوق</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- أحدث الفعاليات -->
+    <div style="
         display: flex;
         gap: 20px;
         justify-content: center;
@@ -607,11 +559,9 @@
         
       ">
 
-        <!-- CARD 1 -->
-        <!-- Added: event-card-animated class for fade-in and hover animations -->
-        <div
-          class="event-card-animated"
-          style="
+      <!-- CARD 1 -->
+      <!-- Added: event-card-animated class for fade-in and hover animations -->
+      <div class="event-card-animated" style="
           width: 400px;
           background: var(--card-bg);
           border-radius: 18px;
@@ -626,23 +576,25 @@
           -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
           -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
         ">
-          <img src="../../assets/images/destinations/event1-alkhobar.jpg" style="
+        <img src="../../assets/images/destinations/event1-alkhobar.jpg" style="
             width: 100%;
             height: 200px;
             object-fit: cover;
           ">
 
-          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="alkhobarPage.event1Title">Khobar Breeze Festival (Khobar Season)</h3>
-          <p style="
+        <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="alkhobarPage.event1Title">Khobar
+          Breeze Festival (Khobar Season)</h3>
+        <p style="
             font-size: 14px;
             padding: 10px 20px;
             opacity: 0.8;
             line-height: 1.6;
             text-align: center;
           " data-i18n="alkhobarPage.event1Description">
-          A large-scale seaside festival along the Corniche featuring music, food stalls, family rides and evening entertainment. Tickets purchase gives access to the festival grounds for a specified day.
-          </p>
-          <a href="https://khobar.platinumlist.net/ar/?utm_source=chatgpt.com"  style="
+          A large-scale seaside festival along the Corniche featuring music, food stalls, family rides and evening
+          entertainment. Tickets purchase gives access to the festival grounds for a specified day.
+        </p>
+        <a href="https://khobar.platinumlist.net/ar/?utm_source=chatgpt.com" style="
             display: inline-block;        /* important: keeps width to content */
             margin: 20px auto 0;          /* centers button horizontally */
             background: #ff7d2d;
@@ -653,13 +605,11 @@
             font-weight: 600;
             margin-top:auto;
           ">Go</a>
-        </div>
+      </div>
 
-        <!-- CARD 2 -->
-        <!-- Added: event-card-animated class for fade-in and hover animations -->
-        <div
-          class="event-card-animated"
-          style="
+      <!-- CARD 2 -->
+      <!-- Added: event-card-animated class for fade-in and hover animations -->
+      <div class="event-card-animated" style="
          width: 400px;
           background: var(--card-bg);
           border-radius: 18px;
@@ -674,23 +624,25 @@
           -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
           -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
         ">
-          <img src="../../assets/images/destinations/event2-alkhobar.jpg" style="
+        <img src="../../assets/images/destinations/event2-alkhobar.jpg" style="
             width: 100%;
             height: 200px;
             object-fit: cover;
           ">
 
-          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="alkhobarPage.event2Title">The Big Bounce Arabia – Al Khobar</h3>
-          <p style="
+        <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="alkhobarPage.event2Title">The
+          Big Bounce Arabia – Al Khobar</h3>
+        <p style="
             font-size: 14px;
             padding: 10px 20px;
             opacity: 0.8;
             line-height: 1.6;
             text-align: center;
           " data-i18n="alkhobarPage.event2Description">
-          An inflatable giant bounce-house experience offering fun for kids and adults with multiple zones like "The Giant", "Sport Slam" and "airSPACE". Standard ticket covers a 2-hour session.
-          </p>
-          <a href="https://webook.com/en/events/the-big-bounce-arabia-alkhobar-25?utm_source=chatgpt.com"  style="
+          An inflatable giant bounce-house experience offering fun for kids and adults with multiple zones like "The
+          Giant", "Sport Slam" and "airSPACE". Standard ticket covers a 2-hour session.
+        </p>
+        <a href="https://webook.com/en/events/the-big-bounce-arabia-alkhobar-25?utm_source=chatgpt.com" style="
             display: inline-block;        /* important: keeps width to content */
             margin: 20px auto 0;          /* centers button horizontally */
             background: #ff7d2d;
@@ -701,13 +653,11 @@
             font-weight: 600;
             margin-top:auto;
           ">Go</a>
-        </div>
+      </div>
 
-        <!-- CARD 3 -->
-        <!-- Added: event-card-animated class for fade-in and hover animations -->
-        <div
-          class="event-card-animated"
-          style="
+      <!-- CARD 3 -->
+      <!-- Added: event-card-animated class for fade-in and hover animations -->
+      <div class="event-card-animated" style="
           width: 400px;
           background: var(--card-bg);
           border-radius: 18px;
@@ -722,23 +672,25 @@
           -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
           -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
         ">
-          <img src="../../assets/images/destinations/event3-alkhobar.png" style="
+        <img src="../../assets/images/destinations/event3-alkhobar.png" style="
             width: 100%;
             height: 200px;
             object-fit: cover;
           ">
 
-          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="alkhobarPage.event3Title"> Jalasat Al Khobar Season – Oumaima Taleb Concert</h3>
-          <p style="
+        <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="alkhobarPage.event3Title">
+          Jalasat Al Khobar Season – Oumaima Taleb Concert</h3>
+        <p style="
             font-size: 14px;
             padding: 10px 20px;
             opacity: 0.8;
             line-height: 1.6;
             text-align: center;
           " data-i18n="alkhobarPage.event3Description">
-          A live concert by singer Oumaima Taleb held as part of the Khobar Season entertainment lineup. Ticket grants access to the venue and performance for that night.
-          </p>
-          <a href="https://khobar.platinumlist.net/ar/?utm_source=chatgpt.com" style="
+          A live concert by singer Oumaima Taleb held as part of the Khobar Season entertainment lineup. Ticket grants
+          access to the venue and performance for that night.
+        </p>
+        <a href="https://khobar.platinumlist.net/ar/?utm_source=chatgpt.com" style="
             display: inline-block;        /* important: keeps width to content */
             margin: 20px auto 0;          /* centers button horizontally */
             background: #ff7d2d;
@@ -749,30 +701,21 @@
             font-weight: 600;
             margin-top:auto;
           ">Go</a>
-        </div>
+      </div>
 
 
-        <!-- Review system -->
+      <!-- Review system -->
       <div class="review-container">
         <div class="review-box">
           <h3 data-i18n="reviews.leaveReview">Leave a Review</h3>
 
-          <input
-            type="text"
-            id="reviewName"
-            data-i18n="reviews.namePlaceholder"
-            data-i18n-attr="placeholder"
-            placeholder="Your name..."
-          />
+          <input type="text" id="reviewName" data-i18n="reviews.namePlaceholder" data-i18n-attr="placeholder"
+            placeholder="Your name..." />
 
           <div class="stars" id="stars" aria-label="Star rating"></div>
 
-          <textarea
-            id="reviewText"
-            data-i18n="reviews.commentPlaceholder"
-            data-i18n-attr="placeholder"
-            placeholder="Write your review..."
-          ></textarea>
+          <textarea id="reviewText" data-i18n="reviews.commentPlaceholder" data-i18n-attr="placeholder"
+            placeholder="Write your review..."></textarea>
 
           <button class="but" id="submitReview" data-i18n="reviews.submit">
             Submit
@@ -783,80 +726,82 @@
       </div>
 
 
-    </main>
+  </main>
 
-    <!-- Weather Widget at Bottom -->
-    <div style="max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 2rem;">
-      <div id="weather-widget" data-city="alkhobar"></div>
-    </div>
+  <!-- Weather Widget at Bottom -->
+  <div style="max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 2rem;">
+    <div id="weather-widget" data-city="alkhobar"></div>
+  </div>
 
-    <!-- Page scripts -->
-     <script type="module" src="../../scripts/main.js"></script>
-    <script src="../../scripts/Script.js"></script>
-    
-    <!-- Translation and RTL/LTR Layout Script -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const updateLayoutDirection = () => {
-          const main = document.querySelector(".history-container");
-          if (!main) return;
+  <!-- Page scripts -->
+  <script type="module" src="../../scripts/main.js"></script>
+  <script src="../../scripts/Script.js"></script>
+  <!-- API Configuration -->
+  <script src="../../scripts/config.js"></script>
+  <!-- Translation and RTL/LTR Layout Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const updateLayoutDirection = () => {
+        const main = document.querySelector(".history-container");
+        if (!main) return;
 
-          const currentLang =
-            window.i18n?.getLanguage() ||
-            localStorage.getItem("language") ||
-            "en";
+        const currentLang =
+          window.i18n?.getLanguage() ||
+          localStorage.getItem("language") ||
+          "en";
 
-          if (currentLang === "ar") {
-            main.setAttribute("dir", "rtl");
-            document.documentElement.setAttribute("dir", "rtl");
-            document.body.classList.add("rtl");
-            document.body.classList.remove("ltr");
-          } else {
-            main.setAttribute("dir", "ltr");
-            document.documentElement.setAttribute("dir", "ltr");
-            document.body.classList.add("ltr");
-            document.body.classList.remove("rtl");
+        if (currentLang === "ar") {
+          main.setAttribute("dir", "rtl");
+          document.documentElement.setAttribute("dir", "rtl");
+          document.body.classList.add("rtl");
+          document.body.classList.remove("ltr");
+        } else {
+          main.setAttribute("dir", "ltr");
+          document.documentElement.setAttribute("dir", "ltr");
+          document.body.classList.add("ltr");
+          document.body.classList.remove("rtl");
+        }
+      };
+
+      if (window.i18n) {
+        updateLayoutDirection();
+        window.i18n.subscribe(() => {
+          updateLayoutDirection();
+          if (window.i18n.refresh) {
+            window.i18n.refresh();
+          }
+        });
+      } else {
+        const checkI18n = setInterval(() => {
+          if (window.i18n) {
+            clearInterval(checkI18n);
+            updateLayoutDirection();
+            window.i18n.subscribe(() => {
+              updateLayoutDirection();
+              if (window.i18n.refresh) {
+                window.i18n.refresh();
+              }
+            });
+          }
+        }, 100);
+        setTimeout(() => clearInterval(checkI18n), 5000);
+      }
+
+      const titleEl = document.querySelector("title");
+      if (titleEl && titleEl.hasAttribute("data-i18n")) {
+        const updateTitle = () => {
+          if (window.i18n && window.i18n.t) {
+            const key = titleEl.getAttribute("data-i18n");
+            document.title = window.i18n.t(key);
           }
         };
-
         if (window.i18n) {
-          updateLayoutDirection();
-          window.i18n.subscribe(() => {
-            updateLayoutDirection();
-            if (window.i18n.refresh) {
-              window.i18n.refresh();
-            }
-          });
-        } else {
-          const checkI18n = setInterval(() => {
-            if (window.i18n) {
-              clearInterval(checkI18n);
-              updateLayoutDirection();
-              window.i18n.subscribe(() => {
-                updateLayoutDirection();
-                if (window.i18n.refresh) {
-                  window.i18n.refresh();
-                }
-              });
-            }
-          }, 100);
-          setTimeout(() => clearInterval(checkI18n), 5000);
+          window.i18n.subscribe(updateTitle);
+          updateTitle();
         }
+      }
+    });
+  </script>
+</body>
 
-        const titleEl = document.querySelector("title");
-        if (titleEl && titleEl.hasAttribute("data-i18n")) {
-          const updateTitle = () => {
-            if (window.i18n && window.i18n.t) {
-              const key = titleEl.getAttribute("data-i18n");
-              document.title = window.i18n.t(key);
-            }
-          };
-          if (window.i18n) {
-            window.i18n.subscribe(updateTitle);
-            updateTitle();
-          }
-        }
-      });
-    </script>
-  </body>
 </html>
