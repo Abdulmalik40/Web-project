@@ -1,519 +1,490 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-i18n="madinahPage.titleTag">Madinah • Religious City</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
-    />
-    <link rel="stylesheet" href="../../styles/main.css" />
-    <link rel="stylesheet" href="../../styles/chatbot.css" />
-    <link rel="stylesheet" href="../../styles/components/_weather-widget.css" />
-    <link rel="stylesheet" href="../../styles/components/_weather-widget-weekly.css" />
-    <!-- Review styles -->
-    <link rel="stylesheet" href="../../styles/review.css" />
-    
-    <script src="../../config/api-keys.js" defer></script>
-    <script src="../../scripts/modules/weatherApi.js" defer></script>
-    <script src="../../scripts/modules/weatherWidget.js" defer></script>
-    <script src="../../scripts/chatbot.js" defer></script>
-    <script src="../../scripts/header-component.js" defer></script>
-    <!-- Review system -->
-    <script src="../../scripts/reviewSystem.js" defer></script>
-    
-    <!-- Added: CSS animations for event cards
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="madinahPage.titleTag">Madinah • Religious City</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+  <link rel="stylesheet" href="../../styles/main.css" />
+  <link rel="stylesheet" href="../../styles/chatbot.css" />
+  <link rel="stylesheet" href="../../styles/components/_weather-widget.css" />
+  <link rel="stylesheet" href="../../styles/components/_weather-widget-weekly.css" />
+  <!-- Review styles -->
+  <link rel="stylesheet" href="../../styles/review.css" />
+
+  <script src="../../config/api-keys.js" defer></script>
+  <script src="../../scripts/modules/weatherApi.js" defer></script>
+  <script src="../../scripts/modules/weatherWidget.js" defer></script>
+  <script src="../../scripts/chatbot.js" defer></script>
+  <script src="../../scripts/header-component.js" defer></script>
+  <!-- Review system -->
+  <script src="../../scripts/reviewSystem.js" defer></script>
+  <!-- API Configuration -->
+  <script src="../../scripts/config.js"></script>
+  <!-- Added: CSS animations for event cards
          Includes fade-in, slide-up animations on load, and hover effects -->
-    <style>
-      /* Animation keyframes for card entrance */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Animation keyframes for card hover scale */
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.02);
-        }
-      }
-
-      /* Event card container with animation */
-      .event-card-animated {
-        animation: fadeInUp 0.6s ease-out forwards;
+  <style>
+    /* Animation keyframes for card entrance */
+    @keyframes fadeInUp {
+      from {
         opacity: 0;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(30px);
       }
 
-      /* Staggered animation delays for each card */
-      .event-card-animated:nth-child(1) {
-        animation-delay: 0.1s;
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animation keyframes for card hover scale */
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
       }
 
-      .event-card-animated:nth-child(2) {
-        animation-delay: 0.2s;
+      50% {
+        transform: scale(1.02);
       }
+    }
 
-      .event-card-animated:nth-child(3) {
-        animation-delay: 0.3s;
-      }
+    /* Event card container with animation */
+    .event-card-animated {
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-      /* Hover effects for cards */
-      .event-card-animated:hover {
-        transform: translateY(-10px) scale(1.03);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-        -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-        -moz-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-      }
+    /* Staggered animation delays for each card */
+    .event-card-animated:nth-child(1) {
+      animation-delay: 0.1s;
+    }
 
-      /* Image hover effect */
-      .event-card-animated img {
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
+    .event-card-animated:nth-child(2) {
+      animation-delay: 0.2s;
+    }
 
-      .event-card-animated:hover img {
-        transform: scale(1.1);
-      }
+    .event-card-animated:nth-child(3) {
+      animation-delay: 0.3s;
+    }
 
-      /* Button hover effect */
-      .event-card-animated a {
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
+    /* Hover effects for cards */
+    .event-card-animated:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+      -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+      -moz-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+    }
 
-      .event-card-animated a::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-      }
+    /* Image hover effect */
+    .event-card-animated img {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-      .event-card-animated a:hover::before {
-        width: 300px;
-        height: 300px;
-      }
+    .event-card-animated:hover img {
+      transform: scale(1.1);
+    }
 
-      .event-card-animated a:hover {
-        background: #ff8d3d;
-        transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(255, 125, 45, 0.4);
-      }
+    /* Button hover effect */
+    .event-card-animated a {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-      /* Smooth transitions for all card elements */
-      .event-card-animated h3,
-      .event-card-animated p {
-        transition: color 0.3s ease;
-      }
+    .event-card-animated a::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
 
-      .event-card-animated:hover h3 {
-        color: #ff7d2d;
-      }
+    .event-card-animated a:hover::before {
+      width: 300px;
+      height: 300px;
+    }
 
-      /* RTL/LTR Layout Switching for Section Content */
-      .section-content {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 2rem;
-      }
+    .event-card-animated a:hover {
+      background: #ff8d3d;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(255, 125, 45, 0.4);
+    }
 
-      .section-image {
-        flex: 1;
-        order: 1;
-      }
+    /* Smooth transitions for all card elements */
+    .event-card-animated h3,
+    .event-card-animated p {
+      transition: color 0.3s ease;
+    }
 
-      .section-text {
-        flex: 1;
-        order: 2;
-      }
+    .event-card-animated:hover h3 {
+      color: #ff7d2d;
+    }
 
-      html[dir="rtl"] .section-content,
-      body.rtl .section-content {
-        flex-direction: row-reverse;
-      }
+    /* RTL/LTR Layout Switching for Section Content */
+    .section-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+    }
 
-      html[dir="rtl"] .section-image,
-      body.rtl .section-image {
-        order: 2;
-      }
+    .section-image {
+      flex: 1;
+      order: 1;
+    }
 
-      html[dir="rtl"] .section-text,
-      body.rtl .section-text {
-        order: 1;
-      }
+    .section-text {
+      flex: 1;
+      order: 2;
+    }
 
-      .history-container {
-        direction: inherit;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- chatbot toggle button -->
-    <button id="chatbot-toggler">
-      <span class="material-symbols-outlined">mode_comment</span>
-      <span class="material-symbols-rounded">close</span>
-    </button>
+    html[dir="rtl"] .section-content,
+    body.rtl .section-content {
+      flex-direction: row-reverse;
+    }
 
-    <!-- chatbot container -->
-    <div class="chatbot-popup">
-      <!-- header -->
-      <div class="chat-header">
-        <div class="header-info">
-          <img
-            style="width: 50px; border-radius: 1000px"
-            src="../../assets/icons/chatbot-icon.png"
-            alt=""
-          />
-          <h2 class="logo-text">Saudi Tourism Bot</h2>
-        </div>
-        <button id="close-chatbot" class="material-symbols-rounded">
-          keyboard_arrow_down
-        </button>
+    html[dir="rtl"] .section-image,
+    body.rtl .section-image {
+      order: 2;
+    }
+
+    html[dir="rtl"] .section-text,
+    body.rtl .section-text {
+      order: 1;
+    }
+
+    .history-container {
+      direction: inherit;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- chatbot toggle button -->
+  <button id="chatbot-toggler">
+    <span class="material-symbols-outlined">mode_comment</span>
+    <span class="material-symbols-rounded">close</span>
+  </button>
+
+  <!-- chatbot container -->
+  <div class="chatbot-popup">
+    <!-- header -->
+    <div class="chat-header">
+      <div class="header-info">
+        <img style="width: 50px; border-radius: 1000px" src="../../assets/icons/chatbot-icon.png" alt="" />
+        <h2 class="logo-text">Saudi Tourism Bot</h2>
       </div>
+      <button id="close-chatbot" class="material-symbols-rounded">
+        keyboard_arrow_down
+      </button>
+    </div>
 
-      <!-- chat body -->
-      <div class="chat-body">
-        <div class="message bot-message">
-          <img
-            style="width: 50px; border-radius: 1000px"
-            src="../../assets/icons/chatbot-icon.png"
-            alt=""
-          />
-          <div dir="rtl" class="message-text">
-            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
-          </div>
+    <!-- chat body -->
+    <div class="chat-body">
+      <div class="message bot-message">
+        <img style="width: 50px; border-radius: 1000px" src="../../assets/icons/chatbot-icon.png" alt="" />
+        <div dir="rtl" class="message-text">
+          اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
         </div>
-      </div>
-
-      <!-- chat footer -->
-      <div class="chat-footer">
-        <form action="#" class="chat-form">
-          <textarea
-            dir="rtl"
-            placeholder="اكتب سؤالك عن السياحة في السعودية..."
-            class="message-input"
-            required
-          ></textarea>
-          <div class="chat-controls">
-            <button
-              type="submit"
-              id="send-message"
-              class="material-symbols-rounded"
-            >
-              arrow_upward
-            </button>
-          </div>
-        </form>
       </div>
     </div>
 
-    <section class="hero" aria-label="Hero section">
-      <div class="hero-bg">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-        >
-          <source src="../../styles/videos/madinah.mp4" type="video/mp4" />
-          <img
-            src="../../assets/images/cities/Saudi3.jpg"
-            alt="Madinah - Religious City"
-            class="hero-image"
-          />
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-particles">
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
+    <!-- chat footer -->
+    <div class="chat-footer">
+      <form action="#" class="chat-form">
+        <textarea dir="rtl" placeholder="اكتب سؤالك عن السياحة في السعودية..." class="message-input"
+          required></textarea>
+        <div class="chat-controls">
+          <button type="submit" id="send-message" class="material-symbols-rounded">
+            arrow_upward
+          </button>
         </div>
+      </form>
+    </div>
+  </div>
+
+  <section class="hero" aria-label="Hero section">
+    <div class="hero-bg">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+        <source src="../../styles/videos/madinah.mp4" type="video/mp4" />
+        <img src="../../assets/images/cities/Saudi3.jpg" alt="Madinah - Religious City" class="hero-image" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
       </div>
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="title-line" data-i18n="madinahPage.heroTitle1">RELIGIOUS CITY</span>
-            <span class="title-line featured" data-i18n="madinahPage.heroTitle2">MADINAH</span>
-            <span class="title-line subtitle" data-i18n="madinahPage.heroTitle3"
-              >PEACE • PROPHET'S MOSQUE • SPIRITUALITY</span
-            >
-          </h1>
-          <p class="hero-sub" data-i18n="madinahPage.heroSubtitle">
-            A sacred city and home to Al-Masjid an-Nabawi, the Prophet's Mosque.
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="title-line" data-i18n="madinahPage.heroTitle1">RELIGIOUS CITY</span>
+          <span class="title-line featured" data-i18n="madinahPage.heroTitle2">MADINAH</span>
+          <span class="title-line subtitle" data-i18n="madinahPage.heroTitle3">PEACE • PROPHET'S MOSQUE •
+            SPIRITUALITY</span>
+        </h1>
+        <p class="hero-sub" data-i18n="madinahPage.heroSubtitle">
+          A sacred city and home to Al-Masjid an-Nabawi, the Prophet's Mosque.
+        </p>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-arrow"></div>
+      <span data-i18n="common.scrollToExplore">Scroll to Explore</span>
+    </div>
+  </section>
+
+  <main class="history-container">
+
+
+
+
+    <!-- المدينة المنورة -->
+    <section class="section" id="first-state">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/madinah-onMap.jpg"
+            alt="المدينة المنورة — المسجد النبوي ومعالمها" />
+        </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="madinahPage.section1Title">المدينة المنورة – طيبة الطيبة</h2>
+          <h3 class="section-subtitle" data-i18n="madinahPage.section1Subtitle">نبذة تاريخية موجزة</h3>
+          <p class="section-body" data-i18n="madinahPage.section1Para1">
+            تتميز بأجواء استثنائية ومليئة بالروحانية، حيث يتوافد الزوار من مختلف أنحاء العالم للصلاة في المسجد النبوي،
+            ويستشعرون الطمأنينة والسكينة في كل زاوية. إلى جانب الأجواء الروحانية، يمكن للزوار الاستمتاع بجولات في
+            الأماكن الأثرية التي تروي تاريخ المدينة العريق
           </p>
+          <p class="section-body" data-i18n="madinahPage.section1Para2">
+            توالت على المدينة توسعات عمرانية منظّمة حافظت على أصالتها، وطالت
+            ساحات المسجد النبوي ومرافقه وشبكات الطرق والإرشاد، ما جعل الحركة
+            والانسيابية أكثر يسرًا للزوار على مدار العام.
+          </p>
+          <p class="section-body" data-i18n="madinahPage.section1Para3">
+            تجمع المدينة اليوم بين روحانية المكان ومنظومات خدمة ذكية؛ من النقل
+            والضيافة والخرائط التفاعلية إلى إدارة الحشود وجودة الحياة للساكنين
+            والزوّار.
+          </p>
+          <p class="section-body" data-i18n="madinahPage.section1Para4">
+            وتستمر مشاريع التطوير في تعزيز التجربة الإنسانية والإيمانية، مع صون
+            المواقع التاريخية وإحيائها بمحتوى ثقافي ومعرفي.
+          </p>
+          <h4 class="section-subtitle" data-i18n="madinahPage.section1Highlights">معالم بارزة</h4>
+          <ul class="section-list">
+            <li data-i18n="madinahPage.section1Item1">المسجد النبوي والروضة الشريفة</li>
+            <li data-i18n="madinahPage.section1Item2">مسجد قباء — أول مسجد أُسِّس في الإسلام</li>
+            <li data-i18n="madinahPage.section1Item3">جبل أحد</li>
+            <li data-i18n="madinahPage.section1Item4">مسجد القبلتين وموقع الخندق (جبل سلع)</li>
+            <li data-i18n="madinahPage.section1Item5">متحف دار المدينة</li>
+          </ul>
         </div>
-      </div>
-      <div class="scroll-indicator">
-        <div class="scroll-arrow"></div>
-        <span data-i18n="common.scrollToExplore">Scroll to Explore</span>
       </div>
     </section>
 
-    <main class="history-container">
 
-
-
-
-      <!-- المدينة المنورة -->
-      <section class="section" id="first-state">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/madinah-onMap.jpg"
-              alt="المدينة المنورة — المسجد النبوي ومعالمها"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="madinahPage.section1Title">المدينة المنورة – طيبة الطيبة</h2>
-            <h3 class="section-subtitle" data-i18n="madinahPage.section1Subtitle">نبذة تاريخية موجزة</h3>
-            <p class="section-body" data-i18n="madinahPage.section1Para1">
-              تتميز بأجواء استثنائية ومليئة بالروحانية، حيث يتوافد الزوار من مختلف أنحاء العالم للصلاة في المسجد النبوي، ويستشعرون الطمأنينة والسكينة في كل زاوية. إلى جانب الأجواء الروحانية، يمكن للزوار الاستمتاع بجولات في الأماكن الأثرية التي تروي تاريخ المدينة العريق
-            </p>
-            <p class="section-body" data-i18n="madinahPage.section1Para2">
-              توالت على المدينة توسعات عمرانية منظّمة حافظت على أصالتها، وطالت
-              ساحات المسجد النبوي ومرافقه وشبكات الطرق والإرشاد، ما جعل الحركة
-              والانسيابية أكثر يسرًا للزوار على مدار العام.
-            </p>
-            <p class="section-body" data-i18n="madinahPage.section1Para3">
-              تجمع المدينة اليوم بين روحانية المكان ومنظومات خدمة ذكية؛ من النقل
-              والضيافة والخرائط التفاعلية إلى إدارة الحشود وجودة الحياة للساكنين
-              والزوّار.
-            </p>
-            <p class="section-body" data-i18n="madinahPage.section1Para4">
-              وتستمر مشاريع التطوير في تعزيز التجربة الإنسانية والإيمانية، مع صون
-              المواقع التاريخية وإحيائها بمحتوى ثقافي ومعرفي.
-            </p>
-            <h4 class="section-subtitle" data-i18n="madinahPage.section1Highlights">معالم بارزة</h4>
-            <ul class="section-list">
-              <li data-i18n="madinahPage.section1Item1">المسجد النبوي والروضة الشريفة</li>
-              <li data-i18n="madinahPage.section1Item2">مسجد قباء — أول مسجد أُسِّس في الإسلام</li>
-              <li data-i18n="madinahPage.section1Item3">جبل أحد</li>
-              <li data-i18n="madinahPage.section1Item4">مسجد القبلتين وموقع الخندق (جبل سلع)</li>
-              <li data-i18n="madinahPage.section1Item5">متحف دار المدينة</li>
-            </ul>
-          </div>
+    <!-- المسارات الإيمانية -->
+    <section class="section" id="second-state">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/masarat.jpg" alt="المعالم الإيمانية — قباء والقبلتين والخندق" />
         </div>
-      </section>
-
-
-      <!-- المسارات الإيمانية -->
-      <section class="section" id="second-state">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/masarat.jpg"
-              alt="المعالم الإيمانية — قباء والقبلتين والخندق"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="madinahPage.section2Title">المسارات الإيمانية</h2>
-            <h3 class="section-subtitle" data-i18n="madinahPage.section2Subtitle">
-              قباء والقبلتين والخندق وميقات ذي الحليفة
-            </h3>
-            <p class="section-body" data-i18n="madinahPage.section2Para1">
-              تمتد حول المسجد النبوي مواقع إيمانية تروي فصول السيرة: قباء والقبلتين
-              وجبل سلع (موقع الخندق) وميقات ذي الحليفة (أبيار علي). تتكامل فيها
-              خدمات الإرشاد والتنقل والضيافة لضمان تجربة هادئة ومنظّمة.
-            </p>
-            <p class="section-body" data-i18n="madinahPage.section2Para2">
-              تتوافر مسارات مشاة ومواقف خارجية ونقل ترددي، مع لوحات تعريفية
-              باللغتين وإرشادات تخص السلوك العام واحترام خصوصية الأحياء التاريخية.
-            </p>
-            <p class="section-body" data-i18n="madinahPage.section2Para3">
-              تُساند التجربة تطبيقات توجيه رقمية لتحديد أوقات الذروة والمسارات
-              الأنسب، وتقديم معلومات موثوقة عن المواقع وأثرها في تاريخ الإسلام.
-            </p>
-            <p class="section-body" data-i18n="madinahPage.section2Para4">
-              يُراعى لباس محتشم، والمحافظة على نظافة المواقع، وعدم إعاقة حركة
-              المصلين والزوّار.
-            </p>
-            <h4 class="section-subtitle" data-i18n="madinahPage.section2Highlights">محطات رئيسية لرحلتك</h4>
-            <ul class="section-list">
-              <li data-i18n="madinahPage.section2Item1">مسجد قباء — زيارة وصلاة ركعتين</li>
-              <li data-i18n="madinahPage.section2Item2">مسجد القبلتين — قصة تحويل القبلة</li>
-              <li data-i18n="madinahPage.section2Item3">موقع الخندق — جبل سلع</li>
-              <li data-i18n="madinahPage.section2Item4">ميقات ذي الحليفة (أبيار علي) — الإحرام للعمرة</li>
-              <li data-i18n="madinahPage.section2Item5">مراكز الإرشاد والدعم التطوعي</li>
-              <li data-i18n="madinahPage.section2Item6">حلول النقل الترددي ومواقف الأطراف</li>
-            </ul>
-          </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="madinahPage.section2Title">المسارات الإيمانية</h2>
+          <h3 class="section-subtitle" data-i18n="madinahPage.section2Subtitle">
+            قباء والقبلتين والخندق وميقات ذي الحليفة
+          </h3>
+          <p class="section-body" data-i18n="madinahPage.section2Para1">
+            تمتد حول المسجد النبوي مواقع إيمانية تروي فصول السيرة: قباء والقبلتين
+            وجبل سلع (موقع الخندق) وميقات ذي الحليفة (أبيار علي). تتكامل فيها
+            خدمات الإرشاد والتنقل والضيافة لضمان تجربة هادئة ومنظّمة.
+          </p>
+          <p class="section-body" data-i18n="madinahPage.section2Para2">
+            تتوافر مسارات مشاة ومواقف خارجية ونقل ترددي، مع لوحات تعريفية
+            باللغتين وإرشادات تخص السلوك العام واحترام خصوصية الأحياء التاريخية.
+          </p>
+          <p class="section-body" data-i18n="madinahPage.section2Para3">
+            تُساند التجربة تطبيقات توجيه رقمية لتحديد أوقات الذروة والمسارات
+            الأنسب، وتقديم معلومات موثوقة عن المواقع وأثرها في تاريخ الإسلام.
+          </p>
+          <p class="section-body" data-i18n="madinahPage.section2Para4">
+            يُراعى لباس محتشم، والمحافظة على نظافة المواقع، وعدم إعاقة حركة
+            المصلين والزوّار.
+          </p>
+          <h4 class="section-subtitle" data-i18n="madinahPage.section2Highlights">محطات رئيسية لرحلتك</h4>
+          <ul class="section-list">
+            <li data-i18n="madinahPage.section2Item1">مسجد قباء — زيارة وصلاة ركعتين</li>
+            <li data-i18n="madinahPage.section2Item2">مسجد القبلتين — قصة تحويل القبلة</li>
+            <li data-i18n="madinahPage.section2Item3">موقع الخندق — جبل سلع</li>
+            <li data-i18n="madinahPage.section2Item4">ميقات ذي الحليفة (أبيار علي) — الإحرام للعمرة</li>
+            <li data-i18n="madinahPage.section2Item5">مراكز الإرشاد والدعم التطوعي</li>
+            <li data-i18n="madinahPage.section2Item6">حلول النقل الترددي ومواقف الأطراف</li>
+          </ul>
         </div>
-      </section>
+      </div>
+    </section>
 
 
-      
-      <!-- المسجد النبوي الشريف -->
-      <section class="section" id="king-abdulaziz">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/almasjed-alnabawe.jpg"
-              alt="المسجد النبوي الشريف"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="madinahPage.section3Title">المسجد النبوي الشريف</h2>
-            <h3 class="section-subtitle" data-i18n="madinahPage.section3Subtitle">نبذة عن المسجد النبوي</h3>
-            <p class="section-body" data-i18n="madinahPage.section3Para1">
-              بنى رسول الله ﷺ مسجده الشريف حينما وصل إلى المدينة مهاجرًا من مكة بعد بناء مسجد قباء، وشهد المسجد عدة توسعات عبر التاريخ؛ فأول توسعة له كان في عهده ﷺ في السنة السابعة للهجرة، ثم في عهد عمر بن الخطاب سنة 17هـ، وعثمان بن عفان سنة 29هـ، وأولى الحكام والولاة من الدول الإسلامية المتعاقبة عليه اهتمامهم ورعايتهم، وأجريت في عهد الملك عبد العزيز بن عبد الرحمن آل سعود وأبنائه الملوك عدة إصلاحات وتوسعات هي الأكبر في تاريخ عمارة المسجد النبوي الشريف.
-            </p>
-            <p class="section-body" data-i18n="madinahPage.section3Para2">
-              يُنصح بالزيارة في أوقات معتدلة واتباع مسارات المشاة واللوحات
-              الإرشادية، مع المحافظة على نظافة الموقع.
-            </p>
-          </div>
+
+    <!-- المسجد النبوي الشريف -->
+    <section class="section" id="king-abdulaziz">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/almasjed-alnabawe.jpg" alt="المسجد النبوي الشريف" />
         </div>
-      </section>
-
-
-       <!-- جبل أحد -->
-      <section class="section" id="king-abdulaziz">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/jabal-ahod.jpg"
-              alt="جبل أحد — سيرة وشواهد"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="madinahPage.section4Title">جبل أحد</h2>
-            <h3 class="section-subtitle" data-i18n="madinahPage.section4Subtitle">جبل مَهيب له مكانة خاصة عند رسولنا الكريم، فقد قال ﷺ: (أُحدٌ جبلٌ يُحِبُّنَا ونُحِبُّهُ).</h3>
-            <p class="section-body" data-i18n="madinahPage.section4Para1"> 
-         حصلت بجواره واحدة من أعظم معارك الإسلام، وهي معركة أحد التي استشهد فيها ٧٠ من الصحابة، منهم سيد الشهداء حمزة بن عبد المطلب رضي الله عنه.
-         <br>
-وكان رسول الله ﷺ كثيرًا ما يضرب به المثل لعظم الحجم، كقوله في مدح صحابته والثناء عليهم: "والذي نفسي بيده لو أنفق أحدكم مثل أُحد ذهبًا ما بلغ مُدَّ أحدهم ولا نَصِيفَه".          
-            </p>
-            <p class="section-body" data-i18n="madinahPage.section4Para2">
-              يُنصح بالزيارة في أوقات معتدلة واتباع مسارات المشاة واللوحات
-              الإرشادية، مع المحافظة على نظافة الموقع.
-            </p>
-          </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="madinahPage.section3Title">المسجد النبوي الشريف</h2>
+          <h3 class="section-subtitle" data-i18n="madinahPage.section3Subtitle">نبذة عن المسجد النبوي</h3>
+          <p class="section-body" data-i18n="madinahPage.section3Para1">
+            بنى رسول الله ﷺ مسجده الشريف حينما وصل إلى المدينة مهاجرًا من مكة بعد بناء مسجد قباء، وشهد المسجد عدة توسعات
+            عبر التاريخ؛ فأول توسعة له كان في عهده ﷺ في السنة السابعة للهجرة، ثم في عهد عمر بن الخطاب سنة 17هـ، وعثمان
+            بن عفان سنة 29هـ، وأولى الحكام والولاة من الدول الإسلامية المتعاقبة عليه اهتمامهم ورعايتهم، وأجريت في عهد
+            الملك عبد العزيز بن عبد الرحمن آل سعود وأبنائه الملوك عدة إصلاحات وتوسعات هي الأكبر في تاريخ عمارة المسجد
+            النبوي الشريف.
+          </p>
+          <p class="section-body" data-i18n="madinahPage.section3Para2">
+            يُنصح بالزيارة في أوقات معتدلة واتباع مسارات المشاة واللوحات
+            الإرشادية، مع المحافظة على نظافة الموقع.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
 
-
-      <!--مسجد قباء -->
-      <section class="section">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/masjed-qebaa.jpg"
-              alt="مسجد "
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="madinahPage.section5Title">مسجد قباء </h2>
-            <h3 class="section-subtitle" data-i18n="madinahPage.section5Subtitle">أول مسجد بُني في الإسلام</h3>
-            <p class="section-body" data-i18n="madinahPage.section5Para1">
-              أول مسجد بني في الإسلام، وضع حجر أساسه نبينا بيديه الشريفتين، ورفع بنيانه المهاجرون والأنصار، وبيَّن الله فضله بقرآن يُتلى إلى يوم الدين ﴿لَمَسْجِدٌ أُسِّسَ عَلَى التَّقْوَى مِنْ أَوَّلِ يَوْمٍ أَحَقُّ أَنْ تَقُومَ فِيهِ﴾. أعظم مسجد في الإسلام بعد المساجد الثلاثة، يقع في ديار بني عمرو بن عوف من الأنصار، يربطه اليوم بالمسجد النبوي طريق المشاة على امتداد 3 كم، يقصده أهل المدينة وزوَّارها للصلاة والتعبُّد فيه اتباعًا لسنة النبي ﷺ وطلبًا للأجر.
-            </p>
-          </div>
+    <!-- جبل أحد -->
+    <section class="section" id="king-abdulaziz">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/jabal-ahod.jpg" alt="جبل أحد — سيرة وشواهد" />
         </div>
-      </section>
-
-
-      <!-- مسجد القبلتين -->
-      <section class="section">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/masjed-alqeblaten.webp"
-              alt="مسجد قباء"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="madinahPage.section6Title">مسجد القبلتين </h2>
-            <h3 class="section-subtitle" data-i18n="madinahPage.section6Subtitle">أيقونة تاريخية إسلاميّة</h3>
-            <p class="section-body" data-i18n="madinahPage.section6Para1">
-              يقع المسجد شمال غرب المدينة، قريبًا من العقيق، عُرف باسم مسجد بني سَلِمَة لوقوعه في ديارهم، وهم فرع من الأنصار، ثم سُمِّي بمسجد القبلتين لأن النبي ﷺ جاء لحيهم وصلى بهم فصادف أن جاء الأمر بالتحول من بيت المقدس إلى الكعبة وهو قائم يصلي الظهر فيه إماما بأصحابه، فصلى بالمسلمين ركعتين إلى بيت المقدس ثم أكمل الركعتين الباقيتين مستقبلا المسجد الحرام، ليصبح هذا المسجد من الآثار الشاهدة على حدث من أهم الأحداث في تاريخ المسلمين
-            </p>
-          </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="madinahPage.section4Title">جبل أحد</h2>
+          <h3 class="section-subtitle" data-i18n="madinahPage.section4Subtitle">جبل مَهيب له مكانة خاصة عند رسولنا
+            الكريم، فقد قال ﷺ: (أُحدٌ جبلٌ يُحِبُّنَا ونُحِبُّهُ).</h3>
+          <p class="section-body" data-i18n="madinahPage.section4Para1">
+            حصلت بجواره واحدة من أعظم معارك الإسلام، وهي معركة أحد التي استشهد فيها ٧٠ من الصحابة، منهم سيد الشهداء حمزة
+            بن عبد المطلب رضي الله عنه.
+            <br>
+            وكان رسول الله ﷺ كثيرًا ما يضرب به المثل لعظم الحجم، كقوله في مدح صحابته والثناء عليهم: "والذي نفسي بيده لو
+            أنفق أحدكم مثل أُحد ذهبًا ما بلغ مُدَّ أحدهم ولا نَصِيفَه".
+          </p>
+          <p class="section-body" data-i18n="madinahPage.section4Para2">
+            يُنصح بالزيارة في أوقات معتدلة واتباع مسارات المشاة واللوحات
+            الإرشادية، مع المحافظة على نظافة الموقع.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
 
 
-
-
-      <!-- المدينة اليوم -->
-      <section class="section" id="modern-kingdom">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/madinah-today.webp"
-              alt="المدينة الحديثة — نقل وخدمات ذكية"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="madinahPage.section7Title">المدينة اليوم</h2>
-            <h3 class="section-subtitle" data-i18n="madinahPage.section7Subtitle">
-              وصول ميسّر ومنظومة خدمات متكاملة
-            </h3>
-            <p class="section-body" data-i18n="madinahPage.section7Para1">
-              ترتبط المدينة عبر مطار الأمير محمد بن عبدالعزيز الدولي، وقطار الحرمين
-              السريع، وشبكة طرق دائرية وأنفاق تُيسّر الوصول للساحات المحيطة
-              بالمسجد النبوي.
-            </p>
-            <p class="section-body" data-i18n="madinahPage.section7Para2">
-              ظلّت المظلات العملاقة في الساحات نموذجًا للهندسة المكيّفة
-              والرحابة، مع مسارات منظمة للمشاة وأماكن انتظار وخدمات لكبار السن
-              وذوي الإعاقة.
-            </p>
-            <p class="section-body" data-i18n="madinahPage.section7Para3">
-              تدعم التطبيقات الذكية والخرائط التفاعلية اتخاذ القرار في أوقات
-              الزيارة والانتقال بين المواقع، مع تحديثات آنية لحركة الحشود.
-            </p>
-            <p class="section-body" data-i18n="madinahPage.section7Para4">
-              وتزخر المدينة بخيارات ضيافة متنوعة وأسواق تراثية ومطابخ محلية
-              تعزّز تجربة الضيف وتُقارب ذائقته.
-            </p>
-            <ul class="section-list">
-              <li data-i18n="madinahPage.section7Item1">قطار الحرمين — محطة المدينة</li>
-              <li data-i18n="madinahPage.section7Item2">مطار الأمير محمد بن عبدالعزيز (الصالة الحديثة)</li>
-              <li data-i18n="madinahPage.section7Item3">الساحات المظللة حول المسجد النبوي</li>
-              <li data-i18n="madinahPage.section7Item4">أنفاق ومسارات مشاة منسّقة</li>
-              <li data-i18n="madinahPage.section7Item5">خدمات الإرشاد والخرائط التفاعلية</li>
-            </ul>
-          </div>
+    <!--مسجد قباء -->
+    <section class="section">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/masjed-qebaa.jpg" alt="مسجد " />
         </div>
-      </section>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="madinahPage.section5Title">مسجد قباء </h2>
+          <h3 class="section-subtitle" data-i18n="madinahPage.section5Subtitle">أول مسجد بُني في الإسلام</h3>
+          <p class="section-body" data-i18n="madinahPage.section5Para1">
+            أول مسجد بني في الإسلام، وضع حجر أساسه نبينا بيديه الشريفتين، ورفع بنيانه المهاجرون والأنصار، وبيَّن الله
+            فضله بقرآن يُتلى إلى يوم الدين ﴿لَمَسْجِدٌ أُسِّسَ عَلَى التَّقْوَى مِنْ أَوَّلِ يَوْمٍ أَحَقُّ أَنْ تَقُومَ
+            فِيهِ﴾. أعظم مسجد في الإسلام بعد المساجد الثلاثة، يقع في ديار بني عمرو بن عوف من الأنصار، يربطه اليوم
+            بالمسجد النبوي طريق المشاة على امتداد 3 كم، يقصده أهل المدينة وزوَّارها للصلاة والتعبُّد فيه اتباعًا لسنة
+            النبي ﷺ وطلبًا للأجر.
+          </p>
+        </div>
+      </div>
+    </section>
 
 
-      
+    <!-- مسجد القبلتين -->
+    <section class="section">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/masjed-alqeblaten.webp" alt="مسجد قباء" />
+        </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="madinahPage.section6Title">مسجد القبلتين </h2>
+          <h3 class="section-subtitle" data-i18n="madinahPage.section6Subtitle">أيقونة تاريخية إسلاميّة</h3>
+          <p class="section-body" data-i18n="madinahPage.section6Para1">
+            يقع المسجد شمال غرب المدينة، قريبًا من العقيق، عُرف باسم مسجد بني سَلِمَة لوقوعه في ديارهم، وهم فرع من
+            الأنصار، ثم سُمِّي بمسجد القبلتين لأن النبي ﷺ جاء لحيهم وصلى بهم فصادف أن جاء الأمر بالتحول من بيت المقدس
+            إلى الكعبة وهو قائم يصلي الظهر فيه إماما بأصحابه، فصلى بالمسلمين ركعتين إلى بيت المقدس ثم أكمل الركعتين
+            الباقيتين مستقبلا المسجد الحرام، ليصبح هذا المسجد من الآثار الشاهدة على حدث من أهم الأحداث في تاريخ المسلمين
+          </p>
+        </div>
+      </div>
+    </section>
 
-     
-      
 
-      <!-- ميقات ذي الحليفة
+
+
+
+    <!-- المدينة اليوم -->
+    <section class="section" id="modern-kingdom">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/madinah-today.webp" alt="المدينة الحديثة — نقل وخدمات ذكية" />
+        </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="madinahPage.section7Title">المدينة اليوم</h2>
+          <h3 class="section-subtitle" data-i18n="madinahPage.section7Subtitle">
+            وصول ميسّر ومنظومة خدمات متكاملة
+          </h3>
+          <p class="section-body" data-i18n="madinahPage.section7Para1">
+            ترتبط المدينة عبر مطار الأمير محمد بن عبدالعزيز الدولي، وقطار الحرمين
+            السريع، وشبكة طرق دائرية وأنفاق تُيسّر الوصول للساحات المحيطة
+            بالمسجد النبوي.
+          </p>
+          <p class="section-body" data-i18n="madinahPage.section7Para2">
+            ظلّت المظلات العملاقة في الساحات نموذجًا للهندسة المكيّفة
+            والرحابة، مع مسارات منظمة للمشاة وأماكن انتظار وخدمات لكبار السن
+            وذوي الإعاقة.
+          </p>
+          <p class="section-body" data-i18n="madinahPage.section7Para3">
+            تدعم التطبيقات الذكية والخرائط التفاعلية اتخاذ القرار في أوقات
+            الزيارة والانتقال بين المواقع، مع تحديثات آنية لحركة الحشود.
+          </p>
+          <p class="section-body" data-i18n="madinahPage.section7Para4">
+            وتزخر المدينة بخيارات ضيافة متنوعة وأسواق تراثية ومطابخ محلية
+            تعزّز تجربة الضيف وتُقارب ذائقته.
+          </p>
+          <ul class="section-list">
+            <li data-i18n="madinahPage.section7Item1">قطار الحرمين — محطة المدينة</li>
+            <li data-i18n="madinahPage.section7Item2">مطار الأمير محمد بن عبدالعزيز (الصالة الحديثة)</li>
+            <li data-i18n="madinahPage.section7Item3">الساحات المظللة حول المسجد النبوي</li>
+            <li data-i18n="madinahPage.section7Item4">أنفاق ومسارات مشاة منسّقة</li>
+            <li data-i18n="madinahPage.section7Item5">خدمات الإرشاد والخرائط التفاعلية</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- ميقات ذي الحليفة
       <section class="section">
         <div class="section-content">
           <div class="section-image">
@@ -533,7 +504,7 @@
         </div>
       </section> -->
 
-      <!-- الأسواق والمأكولات
+    <!-- الأسواق والمأكولات
       <section class="section">
         <div class="section-content">
           <div class="section-image">
@@ -553,7 +524,7 @@
         </div>
       </section> -->
 
-      <!-- الفعاليات والمسارات الحضرية
+    <!-- الفعاليات والمسارات الحضرية
       <section class="section">
         <div class="section-content">
           <div class="section-image">
@@ -575,8 +546,8 @@
         </div>
       </section> -->
 
-      <!-- أحدث الفعاليات -->
-       <div style="
+    <!-- أحدث الفعاليات -->
+    <div style="
         display: flex;
         gap: 20px;
         justify-content: center;
@@ -585,11 +556,9 @@
         
       ">
 
-        <!-- CARD 1 -->
-        <!-- Added: event-card-animated class for fade-in and hover animations -->
-        <div
-          class="event-card-animated"
-          style="
+      <!-- CARD 1 -->
+      <!-- Added: event-card-animated class for fade-in and hover animations -->
+      <div class="event-card-animated" style="
           width: 400px;
           background: var(--card-bg);
           border-radius: 18px;
@@ -604,23 +573,25 @@
           -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
           -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
         ">
-          <img src="../../assets/images/destinations/event1-madinah.webp" style="
+        <img src="../../assets/images/destinations/event1-madinah.webp" style="
             width: 100%;
             height: 200px;
             object-fit: cover;
           ">
 
-          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="madinahPage.event1Title">Madinah International Book Fair 2025</h3>
-          <p style="
+        <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="madinahPage.event1Title">Madinah
+          International Book Fair 2025</h3>
+        <p style="
             font-size: 14px;
             padding: 10px 20px;
             opacity: 0.8;
             line-height: 1.6;
             text-align: center;
           " data-i18n="madinahPage.event1Description">
-          A major cultural fair running July 29 to August 4 where 300+ publishers gather for book sales, author sessions and creative workshops.
+          A major cultural fair running July 29 to August 4 where 300+ publishers gather for book sales, author sessions
+          and creative workshops.
         </p>
-          <a href="https://webook.com/en/events/almadinah-book-fair-2025-moc?utm_source=chatgpt.com"  style="
+        <a href="https://webook.com/en/events/almadinah-book-fair-2025-moc?utm_source=chatgpt.com" style="
             display: inline-block;        /* important: keeps width to content */
             margin: 20px auto 0;          /* centers button horizontally */
             background: #ff7d2d;
@@ -631,13 +602,11 @@
             font-weight: 600;
             margin-top:auto;
           ">Go</a>
-        </div>
+      </div>
 
-        <!-- CARD 2 -->
-        <!-- Added: event-card-animated class for fade-in and hover animations -->
-        <div
-          class="event-card-animated"
-          style="
+      <!-- CARD 2 -->
+      <!-- Added: event-card-animated class for fade-in and hover animations -->
+      <div class="event-card-animated" style="
          width: 400px;
           background: var(--card-bg);
           border-radius: 18px;
@@ -652,23 +621,25 @@
           -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
           -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
         ">
-          <img src="../../assets/images/destinations/event2-madinah.jfif" style="
+        <img src="../../assets/images/destinations/event2-madinah.jfif" style="
             width: 100%;
             height: 200px;
             object-fit: cover;
           ">
 
-          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="madinahPage.event2Title">Legacy Tour – Al‑Madinah</h3>
-          <p style="
+        <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="madinahPage.event2Title">Legacy
+          Tour – Al‑Madinah</h3>
+        <p style="
             font-size: 14px;
             padding: 10px 20px;
             opacity: 0.8;
             line-height: 1.6;
             text-align: center;
           " data-i18n="madinahPage.event2Description">
-          A guided heritage tour through Al-Madinah's historical and sacred sites offering insight into Islamic history and local heritage.
-            </p>
-          <a href="https://pass-tickets.com/en-US/events/65eee1526e7e2b7bb2871df7?utm_source=chatgpt.com"  style="
+          A guided heritage tour through Al-Madinah's historical and sacred sites offering insight into Islamic history
+          and local heritage.
+        </p>
+        <a href="https://pass-tickets.com/en-US/events/65eee1526e7e2b7bb2871df7?utm_source=chatgpt.com" style="
             display: inline-block;        /* important: keeps width to content */
             margin: 20px auto 0;          /* centers button horizontally */
             background: #ff7d2d;
@@ -679,13 +650,11 @@
             font-weight: 600;
             margin-top:auto;
           ">Go</a>
-        </div>
+      </div>
 
-        <!-- CARD 3 -->
-        <!-- Added: event-card-animated class for fade-in and hover animations -->
-        <div
-          class="event-card-animated"
-          style="
+      <!-- CARD 3 -->
+      <!-- Added: event-card-animated class for fade-in and hover animations -->
+      <div class="event-card-animated" style="
           width: 400px;
           background: var(--card-bg);
           border-radius: 18px;
@@ -700,22 +669,24 @@
           -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
           -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
         ">
-          <img src="../../assets/images/destinations/event3-madinah.jpg" style="
+        <img src="../../assets/images/destinations/event3-madinah.jpg" style="
             width: 100%;
             height: 200px;
             object-fit: cover;
           ">
 
-          <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="madinahPage.event3Title">The International Fair & Museum of the Prophet's Biography – Al‑Madinah</h3>
-          <p style="
+        <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center;" data-i18n="madinahPage.event3Title">The
+          International Fair & Museum of the Prophet's Biography – Al‑Madinah</h3>
+        <p style="
             font-size: 14px;
             padding: 10px 20px;
             opacity: 0.8;
             line-height: 1.6;
             text-align: center;
           " data-i18n="madinahPage.event3Description">
-          An immersive museum-exhibition next to the Prophet's Mosque, using modern tech (VR/3D) to explore the life and teachings of Prophet Muhammad ﷺ.</p>
-          <a href="https://med.ethaf.com/en?utm_source=chatgpt.com" style="
+          An immersive museum-exhibition next to the Prophet's Mosque, using modern tech (VR/3D) to explore the life and
+          teachings of Prophet Muhammad ﷺ.</p>
+        <a href="https://med.ethaf.com/en?utm_source=chatgpt.com" style="
             display: inline-block;        /* important: keeps width to content */
             margin: 20px auto 0;          /* centers button horizontally */
             background: #ff7d2d;
@@ -726,130 +697,122 @@
             font-weight: 600;
             margin-top:auto;
           ">Go</a>
-        </div>
+      </div>
 
       <!-- Review system -->
       <div class="review-container">
         <div class="review-box">
           <h3 data-i18n="reviews.leaveReview">Leave a Review</h3>
-          <input
-            type="text"
-            id="reviewName"
-            data-i18n="reviews.namePlaceholder"
-            data-i18n-attr="placeholder"
-            placeholder="Your name..."
-          />
+          <input type="text" id="reviewName" data-i18n="reviews.namePlaceholder" data-i18n-attr="placeholder"
+            placeholder="Your name..." />
           <div class="stars" id="stars" aria-label="Star rating"></div>
-          <textarea
-            id="reviewText"
-            data-i18n="reviews.commentPlaceholder"
-            data-i18n-attr="placeholder"
-            placeholder="Write your review..."
-          ></textarea>
+          <textarea id="reviewText" data-i18n="reviews.commentPlaceholder" data-i18n-attr="placeholder"
+            placeholder="Write your review..."></textarea>
           <button class="but" id="submitReview" data-i18n="reviews.submit">
             Submit
           </button>
         </div>
         <div id="reviewsList" class="reviews-list"></div>
       </div>
-    </main>
+  </main>
 
 
-    <script type="module" src="../../scripts/main.js"></script>
-    <script src="../../scripts/Script.js"></script>
-    
-    <!-- Translation and RTL/LTR Layout Script -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const updateLayoutDirection = () => {
-          const main = document.querySelector(".history-container");
-          if (!main) return;
+  <script type="module" src="../../scripts/main.js"></script>
+  <script src="../../scripts/Script.js"></script>
 
-          const currentLang =
-            window.i18n?.getLanguage() ||
-            localStorage.getItem("language") ||
-            "en";
+  <!-- Translation and RTL/LTR Layout Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const updateLayoutDirection = () => {
+        const main = document.querySelector(".history-container");
+        if (!main) return;
 
-          if (currentLang === "ar") {
-            main.setAttribute("dir", "rtl");
-            document.documentElement.setAttribute("dir", "rtl");
-            document.body.classList.add("rtl");
-            document.body.classList.remove("ltr");
-          } else {
-            main.setAttribute("dir", "ltr");
-            document.documentElement.setAttribute("dir", "ltr");
-            document.body.classList.add("ltr");
-            document.body.classList.remove("rtl");
-          }
-        };
+        const currentLang =
+          window.i18n?.getLanguage() ||
+          localStorage.getItem("language") ||
+          "en";
 
-        if (window.i18n) {
-          updateLayoutDirection();
-          window.i18n.subscribe(() => {
-            updateLayoutDirection();
-            if (window.i18n.refresh) {
-              window.i18n.refresh();
-            }
-          });
+        if (currentLang === "ar") {
+          main.setAttribute("dir", "rtl");
+          document.documentElement.setAttribute("dir", "rtl");
+          document.body.classList.add("rtl");
+          document.body.classList.remove("ltr");
         } else {
-          const checkI18n = setInterval(() => {
-            if (window.i18n) {
-              clearInterval(checkI18n);
-              updateLayoutDirection();
-              window.i18n.subscribe(() => {
-                updateLayoutDirection();
-                if (window.i18n.refresh) {
-                  window.i18n.refresh();
-                }
-              });
-            }
-          }, 100);
-          setTimeout(() => clearInterval(checkI18n), 5000);
+          main.setAttribute("dir", "ltr");
+          document.documentElement.setAttribute("dir", "ltr");
+          document.body.classList.add("ltr");
+          document.body.classList.remove("rtl");
         }
+      };
 
-        const titleEl = document.querySelector("title");
-        if (titleEl && titleEl.hasAttribute("data-i18n")) {
-          const updateTitle = () => {
-            if (window.i18n && window.i18n.t) {
-              const key = titleEl.getAttribute("data-i18n");
-              document.title = window.i18n.t(key);
-            }
-          };
-          if (window.i18n) {
-            window.i18n.subscribe(updateTitle);
-            updateTitle();
+      if (window.i18n) {
+        updateLayoutDirection();
+        window.i18n.subscribe(() => {
+          updateLayoutDirection();
+          if (window.i18n.refresh) {
+            window.i18n.refresh();
           }
-        }
-      });
-    </script>
+        });
+      } else {
+        const checkI18n = setInterval(() => {
+          if (window.i18n) {
+            clearInterval(checkI18n);
+            updateLayoutDirection();
+            window.i18n.subscribe(() => {
+              updateLayoutDirection();
+              if (window.i18n.refresh) {
+                window.i18n.refresh();
+              }
+            });
+          }
+        }, 100);
+        setTimeout(() => clearInterval(checkI18n), 5000);
+      }
 
-    <!-- اختياري: مزامنة عنوان التبويب مع i18n إذا كان window.i18n موجود -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const applyTitleI18n = () => {
-          const titleEl = document.querySelector("title");
-          const key = titleEl && titleEl.getAttribute("data-i18n");
-          if (window.i18n && key) {
+      const titleEl = document.querySelector("title");
+      if (titleEl && titleEl.hasAttribute("data-i18n")) {
+        const updateTitle = () => {
+          if (window.i18n && window.i18n.t) {
+            const key = titleEl.getAttribute("data-i18n");
             document.title = window.i18n.t(key);
           }
         };
-
-        applyTitleI18n();
-
-        if (window.i18n && typeof window.i18n.refresh === "function") {
-          const originalRefresh = window.i18n.refresh.bind(window.i18n);
-          window.i18n.refresh = (...args) => {
-            const res = originalRefresh(...args);
-            applyTitleI18n();
-            return res;
-          };
+        if (window.i18n) {
+          window.i18n.subscribe(updateTitle);
+          updateTitle();
         }
-      });
-    </script>
+      }
+    });
+  </script>
 
-    <!-- Weather Widget at Bottom -->
-    <div style="max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 2rem;">
-      <div id="weather-widget" data-city="madinah"></div>
-    </div>
-  </body>
+  <!-- اختياري: مزامنة عنوان التبويب مع i18n إذا كان window.i18n موجود -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const applyTitleI18n = () => {
+        const titleEl = document.querySelector("title");
+        const key = titleEl && titleEl.getAttribute("data-i18n");
+        if (window.i18n && key) {
+          document.title = window.i18n.t(key);
+        }
+      };
+
+      applyTitleI18n();
+
+      if (window.i18n && typeof window.i18n.refresh === "function") {
+        const originalRefresh = window.i18n.refresh.bind(window.i18n);
+        window.i18n.refresh = (...args) => {
+          const res = originalRefresh(...args);
+          applyTitleI18n();
+          return res;
+        };
+      }
+    });
+  </script>
+
+  <!-- Weather Widget at Bottom -->
+  <div style="max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 2rem;">
+    <div id="weather-widget" data-city="madinah"></div>
+  </div>
+</body>
+
 </html>

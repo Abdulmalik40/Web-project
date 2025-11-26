@@ -1,614 +1,550 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Page title -->
-    <title data-i18n="alulaPage.titleTag">AlUla • Southern Region</title>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
-    />
+  <!-- Page title -->
+  <title data-i18n="alulaPage.titleTag">AlUla • Southern Region</title>
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="../../styles/main.css" />
-    <link rel="stylesheet" href="../../styles/chatbot.css" />
-    <link rel="stylesheet" href="../../styles/components/_weather-widget.css" />
-    <link
-      rel="stylesheet"
-      href="../../styles/components/_weather-widget-weekly.css"
-    />
-        <link rel="stylesheet" href="../../styles/review.css" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../styles/main.css" />
+  <link rel="stylesheet" href="../../styles/chatbot.css" />
+  <link rel="stylesheet" href="../../styles/components/_weather-widget.css" />
+  <link rel="stylesheet" href="../../styles/components/_weather-widget-weekly.css" />
+  <link rel="stylesheet" href="../../styles/review.css" />
 
 
-    <!-- Scripts (deferred) -->
-    <script src="../../config/api-keys.js" defer></script>
-    <script src="../../scripts/modules/weatherApi.js" defer></script>
-    <script src="../../scripts/modules/weatherWidget.js" defer></script>
-    <script src="../../scripts/chatbot.js" defer></script>
-    <script src="../../scripts/header-component.js" defer></script>
-    <script src="../../scripts/reviewSystem.js" defer></script>
-
-    <!-- Removed: event-card-component.js is no longer needed
+  <!-- Scripts (deferred) -->
+  <script src="../../config/api-keys.js" defer></script>
+  <script src="../../scripts/modules/weatherApi.js" defer></script>
+  <script src="../../scripts/modules/weatherWidget.js" defer></script>
+  <script src="../../scripts/chatbot.js" defer></script>
+  <script src="../../scripts/header-component.js" defer></script>
+  <script src="../../scripts/reviewSystem.js" defer></script>
+  <!-- API Configuration -->
+  <script src="../../scripts/config.js"></script>
+  <!-- Removed: event-card-component.js is no longer needed
          since we're using hardcoded HTML cards matching the structure from riyadh.html -->
 
-    <!-- Added: CSS animations for event cards
+  <!-- Added: CSS animations for event cards
          Includes fade-in, slide-up animations on load, and hover effects -->
-    <style>
-      /* Animation keyframes for card entrance */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Animation keyframes for card hover scale */
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.02);
-        }
-      }
-
-      /* Event card container with animation */
-      .event-card-animated {
-        animation: fadeInUp 0.6s ease-out forwards;
+  <style>
+    /* Animation keyframes for card entrance */
+    @keyframes fadeInUp {
+      from {
         opacity: 0;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(30px);
       }
 
-      /* Staggered animation delays for each card */
-      .event-card-animated:nth-child(1) {
-        animation-delay: 0.1s;
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animation keyframes for card hover scale */
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
       }
 
-      .event-card-animated:nth-child(2) {
-        animation-delay: 0.2s;
+      50% {
+        transform: scale(1.02);
       }
+    }
 
-      .event-card-animated:nth-child(3) {
-        animation-delay: 0.3s;
-      }
+    /* Event card container with animation */
+    .event-card-animated {
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-      /* Hover effects for cards */
-      .event-card-animated:hover {
-        transform: translateY(-10px) scale(1.03);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-        -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-        -moz-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-      }
+    /* Staggered animation delays for each card */
+    .event-card-animated:nth-child(1) {
+      animation-delay: 0.1s;
+    }
 
-      /* Image hover effect */
-      .event-card-animated img {
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
+    .event-card-animated:nth-child(2) {
+      animation-delay: 0.2s;
+    }
 
-      .event-card-animated:hover img {
-        transform: scale(1.1);
-      }
+    .event-card-animated:nth-child(3) {
+      animation-delay: 0.3s;
+    }
 
-      /* Button hover effect */
-      .event-card-animated a {
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
+    /* Hover effects for cards */
+    .event-card-animated:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+      -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+      -moz-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+    }
 
-      .event-card-animated a::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-      }
+    /* Image hover effect */
+    .event-card-animated img {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-      .event-card-animated a:hover::before {
-        width: 300px;
-        height: 300px;
-      }
+    .event-card-animated:hover img {
+      transform: scale(1.1);
+    }
 
-      .event-card-animated a:hover {
-        background: #ff8d3d;
-        transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(255, 125, 45, 0.4);
-      }
+    /* Button hover effect */
+    .event-card-animated a {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-      /* Smooth transitions for all card elements */
-      .event-card-animated h3,
-      .event-card-animated p {
-        transition: color 0.3s ease;
-      }
+    .event-card-animated a::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
 
-      .event-card-animated:hover h3 {
-        color: #ff7d2d;
-      }
+    .event-card-animated a:hover::before {
+      width: 300px;
+      height: 300px;
+    }
 
-      /* RTL/LTR Layout Switching for Section Content */
-      .section-content {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 2rem;
-      }
+    .event-card-animated a:hover {
+      background: #ff8d3d;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(255, 125, 45, 0.4);
+    }
 
-      .section-image {
-        flex: 1;
-        order: 1;
-      }
+    /* Smooth transitions for all card elements */
+    .event-card-animated h3,
+    .event-card-animated p {
+      transition: color 0.3s ease;
+    }
 
-      .section-text {
-        flex: 1;
-        order: 2;
-      }
+    .event-card-animated:hover h3 {
+      color: #ff7d2d;
+    }
 
-      html[dir="rtl"] .section-content,
-      body.rtl .section-content {
-        flex-direction: row-reverse;
-      }
+    /* RTL/LTR Layout Switching for Section Content */
+    .section-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+    }
 
-      html[dir="rtl"] .section-image,
-      body.rtl .section-image {
-        order: 2;
-      }
+    .section-image {
+      flex: 1;
+      order: 1;
+    }
 
-      html[dir="rtl"] .section-text,
-      body.rtl .section-text {
-        order: 1;
-      }
+    .section-text {
+      flex: 1;
+      order: 2;
+    }
 
-      .history-container {
-        direction: inherit;
-      }
-    </style>
-  </head>
+    html[dir="rtl"] .section-content,
+    body.rtl .section-content {
+      flex-direction: row-reverse;
+    }
 
-  <body>
-    <!-- Chatbot toggle button -->
-    <button id="chatbot-toggler">
-      <span class="material-symbols-outlined">mode_comment</span>
-      <span class="material-symbols-rounded">close</span>
-    </button>
+    html[dir="rtl"] .section-image,
+    body.rtl .section-image {
+      order: 2;
+    }
 
-    <!-- Chatbot container -->
-    <div class="chatbot-popup">
-      <!-- Chat header -->
-      <div class="chat-header">
-        <div class="header-info">
-          <img
-            style="width: 50px; border-radius: 1000px"
-            src="../../assets/icons/chatbot-icon.png"
-            alt=""
-          />
-          <h2 class="logo-text">Saudi Tourism Bot</h2>
-        </div>
-        <button id="close-chatbot" class="material-symbols-rounded">
-          keyboard_arrow_down
-        </button>
+    html[dir="rtl"] .section-text,
+    body.rtl .section-text {
+      order: 1;
+    }
+
+    .history-container {
+      direction: inherit;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Chatbot toggle button -->
+  <button id="chatbot-toggler">
+    <span class="material-symbols-outlined">mode_comment</span>
+    <span class="material-symbols-rounded">close</span>
+  </button>
+
+  <!-- Chatbot container -->
+  <div class="chatbot-popup">
+    <!-- Chat header -->
+    <div class="chat-header">
+      <div class="header-info">
+        <img style="width: 50px; border-radius: 1000px" src="../../assets/icons/chatbot-icon.png" alt="" />
+        <h2 class="logo-text">Saudi Tourism Bot</h2>
       </div>
+      <button id="close-chatbot" class="material-symbols-rounded">
+        keyboard_arrow_down
+      </button>
+    </div>
 
-      <!-- Chat body -->
-      <div class="chat-body">
-        <div class="message bot-message">
-          <img
-            style="width: 50px; border-radius: 1000px"
-            src="../../assets/icons/chatbot-icon.png"
-            alt=""
-          />
-          <div dir="rtl" class="message-text">
-            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
-          </div>
+    <!-- Chat body -->
+    <div class="chat-body">
+      <div class="message bot-message">
+        <img style="width: 50px; border-radius: 1000px" src="../../assets/icons/chatbot-icon.png" alt="" />
+        <div dir="rtl" class="message-text">
+          اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
         </div>
-      </div>
-
-      <!-- Chat footer -->
-      <div class="chat-footer">
-        <form action="#" class="chat-form">
-          <textarea
-            dir="rtl"
-            placeholder="اكتب سؤالك عن السياحة في السعودية..."
-            class="message-input"
-            required
-          ></textarea>
-          <div class="chat-controls">
-            <button
-              type="submit"
-              id="send-message"
-              class="material-symbols-rounded"
-            >
-              arrow_upward
-            </button>
-          </div>
-        </form>
       </div>
     </div>
 
-    <!-- Hero section -->
-    <section class="hero" aria-label="Hero section">
-      <div class="hero-bg">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-        >
-          <source src="../../styles/videos/Alula.mp4" type="video/mp4" />
-          <img
-            src="../../assets/images/cities/Saudi3.jpg"
-            alt="AlUla - Southern Region"
-            class="hero-image"
-          />
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-particles">
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
+    <!-- Chat footer -->
+    <div class="chat-footer">
+      <form action="#" class="chat-form">
+        <textarea dir="rtl" placeholder="اكتب سؤالك عن السياحة في السعودية..." class="message-input"
+          required></textarea>
+        <div class="chat-controls">
+          <button type="submit" id="send-message" class="material-symbols-rounded">
+            arrow_upward
+          </button>
         </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Hero section -->
+  <section class="hero" aria-label="Hero section">
+    <div class="hero-bg">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+        <source src="../../styles/videos/Alula.mp4" type="video/mp4" />
+        <img src="../../assets/images/cities/Saudi3.jpg" alt="AlUla - Southern Region" class="hero-image" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
       </div>
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="title-line" data-i18n="alulaPage.heroTitle1"
-              >SOUTHERN REGION</span
-            >
-            <span class="title-line featured" data-i18n="alulaPage.heroTitle2"
-              >ALULA</span
-            >
-            <span class="title-line subtitle" data-i18n="alulaPage.heroTitle3">
-              HERITAGE • ROCK FORMATIONS • OASES
-            </span>
-          </h1>
-          <p class="hero-sub" data-i18n="alulaPage.heroSubtitle">
-            Explore the timeless beauty of AlUla with its sandstone formations
-            and ancient heritage.
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="title-line" data-i18n="alulaPage.heroTitle1">SOUTHERN REGION</span>
+          <span class="title-line featured" data-i18n="alulaPage.heroTitle2">ALULA</span>
+          <span class="title-line subtitle" data-i18n="alulaPage.heroTitle3">
+            HERITAGE • ROCK FORMATIONS • OASES
+          </span>
+        </h1>
+        <p class="hero-sub" data-i18n="alulaPage.heroSubtitle">
+          Explore the timeless beauty of AlUla with its sandstone formations
+          and ancient heritage.
+        </p>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-arrow"></div>
+      <span data-i18n="common.scrollToExplore">Scroll to Explore</span>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <main class="history-container site-main">
+    <!-- مقدمة عن العلا -->
+    <section class="section" id="first-state">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/ula.jfif" alt="العلا — واحة التاريخ والطبيعة" />
+        </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alulaPage.section1Title">
+            العُلا – واحة التاريخ والطبيعة
+          </h2>
+          <h3 class="section-subtitle" data-i18n="alulaPage.section1Subtitle">
+            نبذة تاريخية موجزة
+          </h3>
+          <p class="section-body" data-i18n="alulaPage.section1Para1">
+            تمتد العُلا على وادٍ خصيب يتوسط تشكيلات صخرية مهيبة وبساتين نخيلٍ
+            وحمضيات، وكانت عبر قرون معبرًا لقوافل التجارة والحجاج ومحطةً
+            لحضاراتٍ عريقة كالدادانية واللحيانية والنبطية. هنا تلتقي الذاكرة
+            الحضارية بالبيئة الصحراوية الفريدة لتصوغ هويةً لا تُشبه سواها.
           </p>
+          <p class="section-body" data-i18n="alulaPage.section1Para2">
+            مع تطور البنية السياحية واستعادة المواقع الأثرية رونقها، أصبحت
+            العلا وجهةً عالمية للتاريخ والثقافة والمغامرة، تجمع التجارب
+            الأصيلة بالخدمات الحديثة ضمن منظومة استقبال وإرشادٍ عالية الكفاءة.
+          </p>
+          <h4 class="section-subtitle" data-i18n="alulaPage.section1Highlights">
+            ملامح تُميّز العلا
+          </h4>
+          <ul class="section-list">
+            <li data-i18n="alulaPage.section1Item1">
+              موقع تراث عالمي منحوت في الصخر
+            </li>
+            <li data-i18n="alulaPage.section1Item2">
+              واحة خضراء ومسارات طبيعية
+            </li>
+            <li data-i18n="alulaPage.section1Item3">
+              تجارب مغامرة ومراقبة نجوم
+            </li>
+            <li data-i18n="alulaPage.section1Item4">
+              عمارة معاصرة تحاور الطبيعة
+            </li>
+            <li data-i18n="alulaPage.section1Item5">
+              موقع تراث عالمي منحوت في الصخر
+            </li>
+          </ul>
         </div>
-      </div>
-      <div class="scroll-indicator">
-        <div class="scroll-arrow"></div>
-        <span data-i18n="common.scrollToExplore">Scroll to Explore</span>
       </div>
     </section>
 
-    <!-- Main content -->
-    <main class="history-container site-main">
-      <!-- مقدمة عن العلا -->
-      <section class="section" id="first-state">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/ula.jfif"
-              alt="العلا — واحة التاريخ والطبيعة"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="alulaPage.section1Title">
-              العُلا – واحة التاريخ والطبيعة
-            </h2>
-            <h3 class="section-subtitle" data-i18n="alulaPage.section1Subtitle">
-              نبذة تاريخية موجزة
-            </h3>
-            <p class="section-body" data-i18n="alulaPage.section1Para1">
-              تمتد العُلا على وادٍ خصيب يتوسط تشكيلات صخرية مهيبة وبساتين نخيلٍ
-              وحمضيات، وكانت عبر قرون معبرًا لقوافل التجارة والحجاج ومحطةً
-              لحضاراتٍ عريقة كالدادانية واللحيانية والنبطية. هنا تلتقي الذاكرة
-              الحضارية بالبيئة الصحراوية الفريدة لتصوغ هويةً لا تُشبه سواها.
-            </p>
-            <p class="section-body" data-i18n="alulaPage.section1Para2">
-              مع تطور البنية السياحية واستعادة المواقع الأثرية رونقها، أصبحت
-              العلا وجهةً عالمية للتاريخ والثقافة والمغامرة، تجمع التجارب
-              الأصيلة بالخدمات الحديثة ضمن منظومة استقبال وإرشادٍ عالية الكفاءة.
-            </p>
-            <h4
-              class="section-subtitle"
-              data-i18n="alulaPage.section1Highlights"
-            >
-              ملامح تُميّز العلا
-            </h4>
-            <ul class="section-list">
-              <li data-i18n="alulaPage.section1Item1">
-                موقع تراث عالمي منحوت في الصخر
-              </li>
-              <li data-i18n="alulaPage.section1Item2">
-                واحة خضراء ومسارات طبيعية
-              </li>
-              <li data-i18n="alulaPage.section1Item3">
-                تجارب مغامرة ومراقبة نجوم
-              </li>
-              <li data-i18n="alulaPage.section1Item4">
-                عمارة معاصرة تحاور الطبيعة
-              </li>
-              <li data-i18n="alulaPage.section1Item5">
-                موقع تراث عالمي منحوت في الصخر
-              </li>
-            </ul>
-          </div>
+    <!-- الحجر (مدائن صالح) -->
+    <section class="section" id="second-state">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/madain-salih.jpg" alt="الحِجر — مدائن صالح" />
         </div>
-      </section>
-
-      <!-- الحجر (مدائن صالح) -->
-      <section class="section" id="second-state">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/madain-salih.jpg"
-              alt="الحِجر — مدائن صالح"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="alulaPage.section2Title">
-              الحِجر (مدائن صالح)
-            </h2>
-            <h3 class="section-subtitle" data-i18n="alulaPage.section2Subtitle">
-              واجهات صخرية ومقابر نبطية ونقوش
-            </h3>
-            <p class="section-body" data-i18n="alulaPage.section2Para1">
-              يُعد موقع الحِجر أول موقع سعودي مُسجّل على قائمة التراث العالمي؛
-              يضم واجهاتٍ صخرية هائلة ودورَ دفنٍ منحوتة ونقوشًا تروي قصة العمارة
-              النبطية وعلاقاتها التجارية والطقسية.
-            </p>
-            <p class="section-body" data-i18n="alulaPage.section2Para2">
-              تُنظّم الزيارة عبر مسارات محددة وحافلاتٍ داخلية ومرشدين معتمدين،
-              مع لوحات تعريفية متعددة اللغات وإرشادات للحفاظ على سلامة الموقع.
-            </p>
-            <p class="section-body" data-i18n="alulaPage.section2Para3">
-              يُستحسن اختيار أوقات معتدلة من اليوم، وارتداء أحذيةٍ مريحة واصطحاب
-              الماء، والالتزام بتوجيهات الحفظ وعدم لمس الواجهات أو التسلق عليها.
-            </p>
-            <h4
-              class="section-subtitle"
-              data-i18n="alulaPage.section2Highlights"
-            >
-              محطات رئيسية لرحلتك
-            </h4>
-            <ul class="section-list">
-              <li data-i18n="alulaPage.section2Item1">قصر الصانع وقصر البنت</li>
-              <li data-i18n="alulaPage.section2Item2">جبل إثلب والديوان</li>
-              <li data-i18n="alulaPage.section2Item3">
-                القطار الحجازي ومحطته التاريخية
-              </li>
-              <li data-i18n="alulaPage.section2Item4">
-                مراكز الزوار وخدمات الإرشاد
-              </li>
-            </ul>
-          </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alulaPage.section2Title">
+            الحِجر (مدائن صالح)
+          </h2>
+          <h3 class="section-subtitle" data-i18n="alulaPage.section2Subtitle">
+            واجهات صخرية ومقابر نبطية ونقوش
+          </h3>
+          <p class="section-body" data-i18n="alulaPage.section2Para1">
+            يُعد موقع الحِجر أول موقع سعودي مُسجّل على قائمة التراث العالمي؛
+            يضم واجهاتٍ صخرية هائلة ودورَ دفنٍ منحوتة ونقوشًا تروي قصة العمارة
+            النبطية وعلاقاتها التجارية والطقسية.
+          </p>
+          <p class="section-body" data-i18n="alulaPage.section2Para2">
+            تُنظّم الزيارة عبر مسارات محددة وحافلاتٍ داخلية ومرشدين معتمدين،
+            مع لوحات تعريفية متعددة اللغات وإرشادات للحفاظ على سلامة الموقع.
+          </p>
+          <p class="section-body" data-i18n="alulaPage.section2Para3">
+            يُستحسن اختيار أوقات معتدلة من اليوم، وارتداء أحذيةٍ مريحة واصطحاب
+            الماء، والالتزام بتوجيهات الحفظ وعدم لمس الواجهات أو التسلق عليها.
+          </p>
+          <h4 class="section-subtitle" data-i18n="alulaPage.section2Highlights">
+            محطات رئيسية لرحلتك
+          </h4>
+          <ul class="section-list">
+            <li data-i18n="alulaPage.section2Item1">قصر الصانع وقصر البنت</li>
+            <li data-i18n="alulaPage.section2Item2">جبل إثلب والديوان</li>
+            <li data-i18n="alulaPage.section2Item3">
+              القطار الحجازي ومحطته التاريخية
+            </li>
+            <li data-i18n="alulaPage.section2Item4">
+              مراكز الزوار وخدمات الإرشاد
+            </li>
+          </ul>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- العلا اليوم -->
-      <section class="section" id="modern-kingdom">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/ula-today.png"
-              alt="العلا الحديثة — مطار وخدمات ومسارات"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="alulaPage.section3Title">
-              العلا اليوم
-            </h2>
-            <h3 class="section-subtitle" data-i18n="alulaPage.section3Subtitle">
-              وصول ميسّر ومنظومة خدمات متكاملة
-            </h3>
-            <p class="section-body" data-i18n="alulaPage.section3Para1">
-              ترتبط العلا جوًا عبر مطار العلا، وبرًا بشبكات طرق حديثة ومواقف
-              منظمة ونقلٍ داخلي إلى أبرز الوجهات، مع خرائط تفاعلية وتطبيقات
-              للحجوزات والجولات.
-            </p>
-            <p class="section-body" data-i18n="alulaPage.section3Para2">
-              تتوافر خيارات إقامة متنوّعة من نُزُلٍ صحراوية ومنتجعاتٍ مطلّة إلى
-              بيوت ضيافة محلية، مع معايير استدامة تُراعي حساسية البيئة.
-            </p>
-            <p class="section-body" data-i18n="alulaPage.section3Para3">
-              وتتكامل التجربة ببرامج ثقافية وموسمية ومعارض فنية وحفلات على منصات
-              معمارية معاصرة، ضمن تنظيمٍ مُحكَم لإدارة الحشود.
-            </p>
-            <ul class="section-list">
-              <li data-i18n="alulaPage.section3Item1">
-                مطار العلا وخدمات الاستقبال
-              </li>
-              <li data-i18n="alulaPage.section3Item2">
-                حافلات داخلية ومسارات محددة
-              </li>
-              <li data-i18n="alulaPage.section3Item3">
-                خرائط تفاعلية وتذاكر رقمية
-              </li>
-              <li data-i18n="alulaPage.section3Item4">
-                مراكز زوار ونقاط إرشاد
-              </li>
-              <li data-i18n="alulaPage.section3Item5">
-                خيارات إقامة وتجارب طهوية محلية
-              </li>
-            </ul>
-          </div>
+    <!-- العلا اليوم -->
+    <section class="section" id="modern-kingdom">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/ula-today.png" alt="العلا الحديثة — مطار وخدمات ومسارات" />
         </div>
-      </section>
-
-      <!-- صخرة الفيل -->
-      <section class="section" id="king-abdulaziz">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/rock.jpg"
-              alt="صخرة الفيل — تشكيل طبيعي أيقوني"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="alulaPage.section4Title">
-              صخرة الفيل (جبل الفيل)
-            </h2>
-            <h3 class="section-subtitle" data-i18n="alulaPage.section4Subtitle">
-              مشهد غروب ونُزهة على الرمال
-            </h3>
-            <p class="section-body" data-i18n="alulaPage.section4Para1">
-              يُعد هذا التكوين الصخري أيقونة العلا؛ حيث تمتد الرمال الذهبية
-              وتتلون السماء عند الغروب. تتوافر مناطق جلوس ومقاهٍ متنقلة ومساحات
-              تصوير آمنة تُحافظ على البيئة.
-            </p>
-            <p class="section-body" data-i18n="alulaPage.section4Para2">
-              يُنصح بالزيارة في ساعات العصر والمساء، والالتزام بالممرات المحددة
-              وعدم تسلق الصخور حفاظًا على السلامة.
-            </p>
-          </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alulaPage.section3Title">
+            العلا اليوم
+          </h2>
+          <h3 class="section-subtitle" data-i18n="alulaPage.section3Subtitle">
+            وصول ميسّر ومنظومة خدمات متكاملة
+          </h3>
+          <p class="section-body" data-i18n="alulaPage.section3Para1">
+            ترتبط العلا جوًا عبر مطار العلا، وبرًا بشبكات طرق حديثة ومواقف
+            منظمة ونقلٍ داخلي إلى أبرز الوجهات، مع خرائط تفاعلية وتطبيقات
+            للحجوزات والجولات.
+          </p>
+          <p class="section-body" data-i18n="alulaPage.section3Para2">
+            تتوافر خيارات إقامة متنوّعة من نُزُلٍ صحراوية ومنتجعاتٍ مطلّة إلى
+            بيوت ضيافة محلية، مع معايير استدامة تُراعي حساسية البيئة.
+          </p>
+          <p class="section-body" data-i18n="alulaPage.section3Para3">
+            وتتكامل التجربة ببرامج ثقافية وموسمية ومعارض فنية وحفلات على منصات
+            معمارية معاصرة، ضمن تنظيمٍ مُحكَم لإدارة الحشود.
+          </p>
+          <ul class="section-list">
+            <li data-i18n="alulaPage.section3Item1">
+              مطار العلا وخدمات الاستقبال
+            </li>
+            <li data-i18n="alulaPage.section3Item2">
+              حافلات داخلية ومسارات محددة
+            </li>
+            <li data-i18n="alulaPage.section3Item3">
+              خرائط تفاعلية وتذاكر رقمية
+            </li>
+            <li data-i18n="alulaPage.section3Item4">
+              مراكز زوار ونقاط إرشاد
+            </li>
+            <li data-i18n="alulaPage.section3Item5">
+              خيارات إقامة وتجارب طهوية محلية
+            </li>
+          </ul>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- البلدة القديمة -->
-      <section class="section" id="kings">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/old-town.jpg"
-              alt="البلدة القديمة — سوق وبيوت طينية"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="alulaPage.section5Title">
-              البلدة القديمة في العلا
-            </h2>
-            <h3 class="section-subtitle" data-i18n="alulaPage.section5Subtitle">
-              أزقة وسوق وبنية طينية متدرجة
-            </h3>
-            <p class="section-body" data-i18n="alulaPage.section5Para1">
-              تحكي البلدة القديمة قصة الاستيطان حول الواحة: بيوتٌ طينية متلاصقة،
-              أزقة ضيقة، وسوق نابض بالمقاهي والحِرَف. تجربة مثالية للمشي
-              والتصوير والتذوق المحلي.
-            </p>
-          </div>
+    <!-- صخرة الفيل -->
+    <section class="section" id="king-abdulaziz">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/rock.jpg" alt="صخرة الفيل — تشكيل طبيعي أيقوني" />
         </div>
-      </section>
-
-      <!-- دادان وجبل عكمة -->
-      <section class="section">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/mountian.jpg"
-              alt="دادان وجبل عكمة — نقوش ومسلات"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="alulaPage.section6Title">
-              موقِعا دادان وجبل عِكمة
-            </h2>
-            <h3 class="section-subtitle" data-i18n="alulaPage.section6Subtitle">
-              نقوش ولغات قديمة في وادٍ واحد
-            </h3>
-            <p class="section-body" data-i18n="alulaPage.section6Para1">
-              يكشف دادان عن آثار مملكةٍ عربيةٍ قديمة ومسلاتٍ مميزة، فيما يُعرف
-              جبل عِكمة بـ"مكتبةٍ مفتوحة" لنقوش ونصوص تاريخية توثّق شؤونًا
-              اجتماعية ودينية ولغوية.
-            </p>
-            <p class="section-body" data-i18n="alulaPage.section6Para2">
-              الزيارة عبر جولات منظّمة ومسارات واضحة ولوحات تعريفية تدعم فهم
-              السياق التاريخي للموقعين.
-            </p>
-          </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alulaPage.section4Title">
+            صخرة الفيل (جبل الفيل)
+          </h2>
+          <h3 class="section-subtitle" data-i18n="alulaPage.section4Subtitle">
+            مشهد غروب ونُزهة على الرمال
+          </h3>
+          <p class="section-body" data-i18n="alulaPage.section4Para1">
+            يُعد هذا التكوين الصخري أيقونة العلا؛ حيث تمتد الرمال الذهبية
+            وتتلون السماء عند الغروب. تتوافر مناطق جلوس ومقاهٍ متنقلة ومساحات
+            تصوير آمنة تُحافظ على البيئة.
+          </p>
+          <p class="section-body" data-i18n="alulaPage.section4Para2">
+            يُنصح بالزيارة في ساعات العصر والمساء، والالتزام بالممرات المحددة
+            وعدم تسلق الصخور حفاظًا على السلامة.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- مرايا -->
-      <section class="section">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/maraya.jpg"
-              alt="قاعة مرايا — عمارة تعكس الصحراء"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="alulaPage.section7Title">
-              قاعة مرايا
-            </h2>
-            <h3 class="section-subtitle" data-i18n="alulaPage.section7Subtitle">
-              معمار معاصر يعانق التكوينات
-            </h3>
-            <p class="section-body" data-i18n="alulaPage.section7Para1">
-              أيقونة معمارية بواجهات عاكسة تحتضن حفلاتٍ وعروضًا ومعارض. يتناغم
-              المبنى مع التكوينات الرملية والصخرية ليمنح تجربة بصرية فريدة.
-            </p>
-          </div>
+    <!-- البلدة القديمة -->
+    <section class="section" id="kings">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/old-town.jpg" alt="البلدة القديمة — سوق وبيوت طينية" />
         </div>
-      </section>
-
-      <!-- واحة العلا ومسار الواحة -->
-      <section class="section">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/Oasis-Trail.webp"
-              alt="واحة العلا — نخيل ومجارٍ مائية"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="alulaPage.section8Title">
-              واحة العلا ومسار الواحة
-            </h2>
-            <h3 class="section-subtitle" data-i18n="alulaPage.section8Subtitle">
-              بساتين نخيل وحمضيات ومشي تحت الظلال
-            </h3>
-            <p class="section-body" data-i18n="alulaPage.section8Para1">
-              يتيح المسار التجول بين بساتين الواحة وقنواتها وزراعاتها المحلية،
-              مع محطات استراحة وأسواقٍ صغيرة ومنتجاتٍ من المزرعة إلى المائدة.
-            </p>
-          </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alulaPage.section5Title">
+            البلدة القديمة في العلا
+          </h2>
+          <h3 class="section-subtitle" data-i18n="alulaPage.section5Subtitle">
+            أزقة وسوق وبنية طينية متدرجة
+          </h3>
+          <p class="section-body" data-i18n="alulaPage.section5Para1">
+            تحكي البلدة القديمة قصة الاستيطان حول الواحة: بيوتٌ طينية متلاصقة،
+            أزقة ضيقة، وسوق نابض بالمقاهي والحِرَف. تجربة مثالية للمشي
+            والتصوير والتذوق المحلي.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- مغامرات وسماء العلا -->
-      <section class="section">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/sky-of-alula.jpg"
-              alt="مغامرات وسماء العلا — منطاد وزِب لاين وهايكنغ"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="alulaPage.section9Title">
-              المغامرات وسماء العلا
-            </h2>
-            <h3 class="section-subtitle" data-i18n="alulaPage.section9Subtitle">
-              هايكنغ، منطاد، ونجوم لا تُعدّ
-            </h3>
-            <p class="section-body" data-i18n="alulaPage.section9Para1">
-              من مسارات الهايكنغ والدراجات إلى المنطاد والزيب لاين وتجارب مراقبة
-              النجوم، تقدّم العلا باقة نشاطاتٍ تتنوّع بين الاسترخاء والمغامرة،
-              ضمن معايير سلامة وتنظيم عالية.
-            </p>
-          </div>
+    <!-- دادان وجبل عكمة -->
+    <section class="section">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/mountian.jpg" alt="دادان وجبل عكمة — نقوش ومسلات" />
         </div>
-      </section>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alulaPage.section6Title">
+            موقِعا دادان وجبل عِكمة
+          </h2>
+          <h3 class="section-subtitle" data-i18n="alulaPage.section6Subtitle">
+            نقوش ولغات قديمة في وادٍ واحد
+          </h3>
+          <p class="section-body" data-i18n="alulaPage.section6Para1">
+            يكشف دادان عن آثار مملكةٍ عربيةٍ قديمة ومسلاتٍ مميزة، فيما يُعرف
+            جبل عِكمة بـ"مكتبةٍ مفتوحة" لنقوش ونصوص تاريخية توثّق شؤونًا
+            اجتماعية ودينية ولغوية.
+          </p>
+          <p class="section-body" data-i18n="alulaPage.section6Para2">
+            الزيارة عبر جولات منظّمة ومسارات واضحة ولوحات تعريفية تدعم فهم
+            السياق التاريخي للموقعين.
+          </p>
+        </div>
+      </div>
+    </section>
 
-      <!-- المطبخ المحلي والإقامة 
+    <!-- مرايا -->
+    <section class="section">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/maraya.jpg" alt="قاعة مرايا — عمارة تعكس الصحراء" />
+        </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alulaPage.section7Title">
+            قاعة مرايا
+          </h2>
+          <h3 class="section-subtitle" data-i18n="alulaPage.section7Subtitle">
+            معمار معاصر يعانق التكوينات
+          </h3>
+          <p class="section-body" data-i18n="alulaPage.section7Para1">
+            أيقونة معمارية بواجهات عاكسة تحتضن حفلاتٍ وعروضًا ومعارض. يتناغم
+            المبنى مع التكوينات الرملية والصخرية ليمنح تجربة بصرية فريدة.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- واحة العلا ومسار الواحة -->
+    <section class="section">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/Oasis-Trail.webp" alt="واحة العلا — نخيل ومجارٍ مائية" />
+        </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alulaPage.section8Title">
+            واحة العلا ومسار الواحة
+          </h2>
+          <h3 class="section-subtitle" data-i18n="alulaPage.section8Subtitle">
+            بساتين نخيل وحمضيات ومشي تحت الظلال
+          </h3>
+          <p class="section-body" data-i18n="alulaPage.section8Para1">
+            يتيح المسار التجول بين بساتين الواحة وقنواتها وزراعاتها المحلية،
+            مع محطات استراحة وأسواقٍ صغيرة ومنتجاتٍ من المزرعة إلى المائدة.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- مغامرات وسماء العلا -->
+    <section class="section">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/sky-of-alula.jpg"
+            alt="مغامرات وسماء العلا — منطاد وزِب لاين وهايكنغ" />
+        </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="alulaPage.section9Title">
+            المغامرات وسماء العلا
+          </h2>
+          <h3 class="section-subtitle" data-i18n="alulaPage.section9Subtitle">
+            هايكنغ، منطاد، ونجوم لا تُعدّ
+          </h3>
+          <p class="section-body" data-i18n="alulaPage.section9Para1">
+            من مسارات الهايكنغ والدراجات إلى المنطاد والزيب لاين وتجارب مراقبة
+            النجوم، تقدّم العلا باقة نشاطاتٍ تتنوّع بين الاسترخاء والمغامرة،
+            ضمن معايير سلامة وتنظيم عالية.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- المطبخ المحلي والإقامة 
 
       
       <section class="section">
@@ -638,26 +574,22 @@
         </div>
       </section>
       -->
-      
 
-      <!-- أحدث الفعاليات -->
-      <!-- Changed: Replaced dynamic event card system with hardcoded card structure from riyadh.html
+
+    <!-- أحدث الفعاليات -->
+    <!-- Changed: Replaced dynamic event card system with hardcoded card structure from riyadh.html
            This implementation uses inline styles and hardcoded HTML cards instead of the dynamic component.
            The card structure matches riyadh.html for visual consistency, but uses AlUla's event data. -->
-      <div
-        style="
+    <div style="
           display: flex;
           gap: 20px;
           justify-content: center;
           flex-wrap: wrap;
           padding: 60px 0;
-        "
-      >
-        <!-- CARD 1: Fine Dining: Annabel's -->
-        <!-- Added: event-card-animated class for fade-in and hover animations -->
-        <div
-          class="event-card-animated"
-          style="
+        ">
+      <!-- CARD 1: Fine Dining: Annabel's -->
+      <!-- Added: event-card-animated class for fade-in and hover animations -->
+      <div class="event-card-animated" style="
             width: 400px;
             background: var(--card-bg);
             border-radius: 18px;
@@ -671,47 +603,33 @@
             box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
             -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
             -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-          "
-        >
-          <img
-            src="../../assets/images/events/ula1.png"
-            style="width: 100%; height: 200px; object-fit: cover"
-          />
+          ">
+        <img src="../../assets/images/events/ula1.png" style="width: 100%; height: 200px; object-fit: cover" />
 
-          <h3
-            style="font-size: 20px; margin: 18px 0 4px; text-align: center"
-            data-i18n="alulaPage.event1Title"
-          >
-            Fine Dining: Annabel's
-          </h3>
-          <p
-            style="
+        <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center" data-i18n="alulaPage.event1Title">
+          Fine Dining: Annabel's
+        </h3>
+        <p style="
               font-size: 14px;
               padding: 10px 20px;
               opacity: 0.8;
               line-height: 1.6;
               text-align: center;
-            "
-            data-i18n="alulaPage.event1Description"
-          >
-            A refined dining experience under the palms, blending Mayfair
-            elegance with local charm, featuring signature dishes and live music
-            vibes.
-          </p>
-          <p
-            style="
+            " data-i18n="alulaPage.event1Description">
+          A refined dining experience under the palms, blending Mayfair
+          elegance with local charm, featuring signature dishes and live music
+          vibes.
+        </p>
+        <p style="
               font-size: 12px;
               padding: 0 20px 10px;
               opacity: 0.7;
               text-align: center;
-            "
-            data-i18n="alulaPage.event1Date"
-          >
-            17 October - 13 December
-          </p>
-          <a
-            href="https://www.experiencealula.com/en/things-to-do/food-and-drink/annabels-alula?utm_campaign=Winter_Event_Calendar_2025_2026&utm_medium=Event&utm_source=Winter_Event_Calendar_2025_2026&utm_term=20250918"
-            style="
+            " data-i18n="alulaPage.event1Date">
+          17 October - 13 December
+        </p>
+        <a href="https://www.experiencealula.com/en/things-to-do/food-and-drink/annabels-alula?utm_campaign=Winter_Event_Calendar_2025_2026&utm_medium=Event&utm_source=Winter_Event_Calendar_2025_2026&utm_term=20250918"
+          style="
               display: inline-block;
               margin: 20px auto 0;
               background: #ff7d2d;
@@ -721,16 +639,12 @@
               text-decoration: none;
               font-weight: 600;
               margin-top: auto;
-            "
-            >Go</a
-          >
-        </div>
+            ">Go</a>
+      </div>
 
-        <!-- CARD 2: Hegra Drone Show - Stories from the Sky -->
-        <!-- Added: event-card-animated class for fade-in and hover animations -->
-        <div
-          class="event-card-animated"
-          style="
+      <!-- CARD 2: Hegra Drone Show - Stories from the Sky -->
+      <!-- Added: event-card-animated class for fade-in and hover animations -->
+      <div class="event-card-animated" style="
             width: 400px;
             background: var(--card-bg);
             border-radius: 18px;
@@ -744,46 +658,32 @@
             box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
             -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
             -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-          "
-        >
-          <img
-            src="../../assets/images/events/ula2.png"
-            style="width: 100%; height: 200px; object-fit: cover"
-          />
+          ">
+        <img src="../../assets/images/events/ula2.png" style="width: 100%; height: 200px; object-fit: cover" />
 
-          <h3
-            style="font-size: 20px; margin: 18px 0 4px; text-align: center"
-            data-i18n="alulaPage.event2Title"
-          >
-            Hegra Drone Show - Stories from the Sky
-          </h3>
-          <p
-            style="
+        <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center" data-i18n="alulaPage.event2Title">
+          Hegra Drone Show - Stories from the Sky
+        </h3>
+        <p style="
               font-size: 14px;
               padding: 10px 20px;
               opacity: 0.8;
               line-height: 1.6;
               text-align: center;
-            "
-            data-i18n="alulaPage.event2Description"
-          >
-            Experience a breathtaking fusion of light, sound, and storytelling
-            as hundreds of drones light up the night sky.
-          </p>
-          <p
-            style="
+            " data-i18n="alulaPage.event2Description">
+          Experience a breathtaking fusion of light, sound, and storytelling
+          as hundreds of drones light up the night sky.
+        </p>
+        <p style="
               font-size: 12px;
               padding: 0 20px 10px;
               opacity: 0.7;
               text-align: center;
-            "
-            data-i18n="alulaPage.event2Date"
-          >
-            20 - 29 November
-          </p>
-          <a
-            href="https://www.visitsaudi.com/en/alula/events/hegra-drone-show?utm_campaign=VS_Saudi_Winter_2025&utm_content=En&utm_medium=Post&utm_source=Unreal_Calendar_En_OCT23"
-            style="
+            " data-i18n="alulaPage.event2Date">
+          20 - 29 November
+        </p>
+        <a href="https://www.visitsaudi.com/en/alula/events/hegra-drone-show?utm_campaign=VS_Saudi_Winter_2025&utm_content=En&utm_medium=Post&utm_source=Unreal_Calendar_En_OCT23"
+          style="
               display: inline-block;
               margin: 20px auto 0;
               background: #ff7d2d;
@@ -793,16 +693,12 @@
               text-decoration: none;
               font-weight: 600;
               margin-top: auto;
-            "
-            >Go</a
-          >
-        </div>
+            ">Go</a>
+      </div>
 
-        <!-- CARD 3: Ancient Kingdoms Festival -->
-        <!-- Added: event-card-animated class for fade-in and hover animations -->
-        <div
-          class="event-card-animated"
-          style="
+      <!-- CARD 3: Ancient Kingdoms Festival -->
+      <!-- Added: event-card-animated class for fade-in and hover animations -->
+      <div class="event-card-animated" style="
             width: 400px;
             background: var(--card-bg);
             border-radius: 18px;
@@ -816,47 +712,32 @@
             box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
             -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
             -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-          "
-        >
-          <img
-            src="../../assets/images/events/ula3.png"
-            style="width: 100%; height: 200px; object-fit: cover"
-          />
+          ">
+        <img src="../../assets/images/events/ula3.png" style="width: 100%; height: 200px; object-fit: cover" />
 
-          <h3
-            style="font-size: 20px; margin: 18px 0 4px; text-align: center"
-            data-i18n="alulaPage.event3Title"
-          >
-            Ancient Kingdoms Festival
-          </h3>
-          <p
-            style="
+        <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center" data-i18n="alulaPage.event3Title">
+          Ancient Kingdoms Festival
+        </h3>
+        <p style="
               font-size: 14px;
               padding: 10px 20px;
               opacity: 0.8;
               line-height: 1.6;
               text-align: center;
-            "
-            data-i18n="alulaPage.event3Description"
-          >
-            Become a Time Traveller and step into a world where history comes
-            alive, from the epic rise of Dadan and Lihyan to the enduring
-            marvels of the Nabataeans.
-          </p>
-          <p
-            style="
+            " data-i18n="alulaPage.event3Description">
+          Become a Time Traveller and step into a world where history comes
+          alive, from the epic rise of Dadan and Lihyan to the enduring
+          marvels of the Nabataeans.
+        </p>
+        <p style="
               font-size: 12px;
               padding: 0 20px 10px;
               opacity: 0.7;
               text-align: center;
-            "
-            data-i18n="alulaPage.event3Date"
-          >
-            20 November - 6 December
-          </p>
-          <a
-            href="https://www.visitsaudi.com/en/alula/events/ancient-kingdoms-festival"
-            style="
+            " data-i18n="alulaPage.event3Date">
+          20 November - 6 December
+        </p>
+        <a href="https://www.visitsaudi.com/en/alula/events/ancient-kingdoms-festival" style="
               display: inline-block;
               margin: 20px auto 0;
               background: #ff7d2d;
@@ -866,147 +747,126 @@
               text-decoration: none;
               font-weight: 600;
               margin-top: auto;
-            "
-            >Go</a
-          >
-        </div>
+            ">Go</a>
       </div>
-
-      <!-- Review system -->
-      <div class="review-container">
-        <div class="review-box">
-          <h3 data-i18n="reviews.leaveReview">Leave a Review</h3>
-
-          <input
-            type="text"
-            id="reviewName"
-            data-i18n="reviews.namePlaceholder"
-            data-i18n-attr="placeholder"
-            placeholder="Your name..."
-          />
-
-          <div class="stars" id="stars" aria-label="Star rating"></div>
-
-          <textarea
-            id="reviewText"
-            data-i18n="reviews.commentPlaceholder"
-            data-i18n-attr="placeholder"
-            placeholder="Write your review..."
-          ></textarea>
-
-          <button class="but" id="submitReview" data-i18n="reviews.submit">
-            Submit
-          </button>
-        </div>
-
-        <div id="reviewsList" class="reviews-list"></div>
-      </div>
-
-
-
-      <!-- Review system -->
-      <div class="review-container">
-        <div class="review-box">
-          <h3 data-i18n="reviews.leaveReview">Leave a Review</h3>
-          <input
-            type="text"
-            id="reviewName"
-            data-i18n="reviews.namePlaceholder"
-            data-i18n-attr="placeholder"
-            placeholder="Your name..."
-          />
-          <div class="stars" id="stars" aria-label="Star rating"></div>
-          <textarea
-            id="reviewText"
-            data-i18n="reviews.commentPlaceholder"
-            data-i18n-attr="placeholder"
-            placeholder="Write your review..."
-          ></textarea>
-          <button class="but" id="submitReview" data-i18n="reviews.submit">
-            Submit
-          </button>
-        </div>
-        <div id="reviewsList" class="reviews-list"></div>
-      </div>
-    </main>
-
-    <!-- Weather Widget at Bottom -->
-    <div
-      style="max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 2rem"
-    >
-      <div id="weather-widget" data-city="alula"></div>
     </div>
 
-    <!-- Page scripts -->
-    <script type="module" src="../../scripts/main.js"></script>
-    <script src="../../scripts/Script.js"></script>
+    <!-- Review system -->
+    <div class="review-container">
+      <div class="review-box">
+        <h3 data-i18n="reviews.leaveReview">Leave a Review</h3>
 
-    <!-- Translation and RTL/LTR Layout Script -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const updateLayoutDirection = () => {
-          const main = document.querySelector(".history-container");
-          if (!main) return;
+        <input type="text" id="reviewName" data-i18n="reviews.namePlaceholder" data-i18n-attr="placeholder"
+          placeholder="Your name..." />
 
-          const currentLang =
-            window.i18n?.getLanguage() ||
-            localStorage.getItem("language") ||
-            "en";
+        <div class="stars" id="stars" aria-label="Star rating"></div>
 
-          if (currentLang === "ar") {
-            main.setAttribute("dir", "rtl");
-            document.documentElement.setAttribute("dir", "rtl");
-            document.body.classList.add("rtl");
-            document.body.classList.remove("ltr");
-          } else {
-            main.setAttribute("dir", "ltr");
-            document.documentElement.setAttribute("dir", "ltr");
-            document.body.classList.add("ltr");
-            document.body.classList.remove("rtl");
+        <textarea id="reviewText" data-i18n="reviews.commentPlaceholder" data-i18n-attr="placeholder"
+          placeholder="Write your review..."></textarea>
+
+        <button class="but" id="submitReview" data-i18n="reviews.submit">
+          Submit
+        </button>
+      </div>
+
+      <div id="reviewsList" class="reviews-list"></div>
+    </div>
+
+
+
+    <!-- Review system -->
+    <div class="review-container">
+      <div class="review-box">
+        <h3 data-i18n="reviews.leaveReview">Leave a Review</h3>
+        <input type="text" id="reviewName" data-i18n="reviews.namePlaceholder" data-i18n-attr="placeholder"
+          placeholder="Your name..." />
+        <div class="stars" id="stars" aria-label="Star rating"></div>
+        <textarea id="reviewText" data-i18n="reviews.commentPlaceholder" data-i18n-attr="placeholder"
+          placeholder="Write your review..."></textarea>
+        <button class="but" id="submitReview" data-i18n="reviews.submit">
+          Submit
+        </button>
+      </div>
+      <div id="reviewsList" class="reviews-list"></div>
+    </div>
+  </main>
+
+  <!-- Weather Widget at Bottom -->
+  <div style="max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 2rem">
+    <div id="weather-widget" data-city="alula"></div>
+  </div>
+
+  <!-- Page scripts -->
+  <script type="module" src="../../scripts/main.js"></script>
+  <script src="../../scripts/Script.js"></script>
+
+  <!-- Translation and RTL/LTR Layout Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const updateLayoutDirection = () => {
+        const main = document.querySelector(".history-container");
+        if (!main) return;
+
+        const currentLang =
+          window.i18n?.getLanguage() ||
+          localStorage.getItem("language") ||
+          "en";
+
+        if (currentLang === "ar") {
+          main.setAttribute("dir", "rtl");
+          document.documentElement.setAttribute("dir", "rtl");
+          document.body.classList.add("rtl");
+          document.body.classList.remove("ltr");
+        } else {
+          main.setAttribute("dir", "ltr");
+          document.documentElement.setAttribute("dir", "ltr");
+          document.body.classList.add("ltr");
+          document.body.classList.remove("rtl");
+        }
+      };
+
+      if (window.i18n) {
+        updateLayoutDirection();
+        window.i18n.subscribe(() => {
+          updateLayoutDirection();
+          if (window.i18n.refresh) {
+            window.i18n.refresh();
+          }
+        });
+      } else {
+        const checkI18n = setInterval(() => {
+          if (window.i18n) {
+            clearInterval(checkI18n);
+            updateLayoutDirection();
+            window.i18n.subscribe(() => {
+              updateLayoutDirection();
+              if (window.i18n.refresh) {
+                window.i18n.refresh();
+              }
+            });
+          }
+        }, 100);
+        setTimeout(() => clearInterval(checkI18n), 5000);
+      }
+
+      const titleEl = document.querySelector("title");
+      if (titleEl && titleEl.hasAttribute("data-i18n")) {
+        const updateTitle = () => {
+          if (window.i18n && window.i18n.t) {
+            const key = titleEl.getAttribute("data-i18n");
+            document.title = window.i18n.t(key);
           }
         };
-
         if (window.i18n) {
-          updateLayoutDirection();
-          window.i18n.subscribe(() => {
-            updateLayoutDirection();
-            if (window.i18n.refresh) {
-              window.i18n.refresh();
-            }
-          });
-        } else {
-          const checkI18n = setInterval(() => {
-            if (window.i18n) {
-              clearInterval(checkI18n);
-              updateLayoutDirection();
-              window.i18n.subscribe(() => {
-                updateLayoutDirection();
-                if (window.i18n.refresh) {
-                  window.i18n.refresh();
-                }
-              });
-            }
-          }, 100);
-          setTimeout(() => clearInterval(checkI18n), 5000);
+          window.i18n.subscribe(updateTitle);
+          updateTitle();
         }
-
-        const titleEl = document.querySelector("title");
-        if (titleEl && titleEl.hasAttribute("data-i18n")) {
-          const updateTitle = () => {
-            if (window.i18n && window.i18n.t) {
-              const key = titleEl.getAttribute("data-i18n");
-              document.title = window.i18n.t(key);
-            }
-          };
-          if (window.i18n) {
-            window.i18n.subscribe(updateTitle);
-            updateTitle();
-          }
-        }
-      });
-    </script>
-    <!-- Removed: Event card initialization script is no longer needed
+      }
+    });
+  </script>
+  <!-- Removed: Event card initialization script is no longer needed
          since we're using hardcoded HTML cards instead of the dynamic component system.
          The cards are now directly embedded in the HTML above, matching the structure from riyadh.html. -->
-  </body>
+</body>
+
 </html>

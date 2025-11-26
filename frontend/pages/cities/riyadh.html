@@ -1,716 +1,605 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-i18n="riyadhPage.titleTag">Riyadh • Capital City</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="riyadhPage.titleTag">Riyadh • Capital City</title>
 
-    <link rel="stylesheet" href="../../styles/main.css" />
-    <link rel="stylesheet" href="../../styles/chatbot.css" />
-    <link rel="stylesheet" href="../../styles/components/_weather-widget.css" />
-    <link
-      rel="stylesheet"
-      href="../../styles/components/_weather-widget-weekly.css"
-    />
-    <!-- Review styles -->
-    <link rel="stylesheet" href="../../styles/review.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
 
-    <script src="../../config/api-keys.js" defer></script>
-    <script src="../../scripts/modules/weatherApi.js" defer></script>
-    <script src="../../scripts/modules/weatherWidget.js" defer></script>
-    <script src="../../scripts/chatbot.js" defer></script>
-    <script src="../../scripts/header-component.js" defer></script>
-    <!-- Review system -->
-    <script src="../../scripts/reviewSystem.js" defer></script>
-    <!-- Removed: event-card-component.js is no longer needed
+  <link rel="stylesheet" href="../../styles/main.css" />
+  <link rel="stylesheet" href="../../styles/chatbot.css" />
+  <link rel="stylesheet" href="../../styles/components/_weather-widget.css" />
+  <link rel="stylesheet" href="../../styles/components/_weather-widget-weekly.css" />
+  <!-- Review styles -->
+  <link rel="stylesheet" href="../../styles/review.css" />
+
+  <script src="../../config/api-keys.js" defer></script>
+  <script src="../../scripts/modules/weatherApi.js" defer></script>
+  <script src="../../scripts/modules/weatherWidget.js" defer></script>
+  <script src="../../scripts/chatbot.js" defer></script>
+  <script src="../../scripts/header-component.js" defer></script>
+  <!-- Review system -->
+  <script src="../../scripts/reviewSystem.js" defer></script>
+  <!-- Removed: event-card-component.js is no longer needed
          since we're using hardcoded HTML cards matching the structure from makkah.html -->
-
-    <!-- Added: CSS animations for event cards
+  <!-- API Configuration -->
+  <script src="../../scripts/config.js"></script>
+  <!-- Added: CSS animations for event cards
          Includes fade-in, slide-up animations on load, and hover effects -->
-    <style>
-      /* Animation keyframes for card entrance */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Animation keyframes for card hover scale */
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.02);
-        }
-      }
-
-      /* Event card container with animation */
-      .event-card-animated {
-        animation: fadeInUp 0.6s ease-out forwards;
+  <style>
+    /* Animation keyframes for card entrance */
+    @keyframes fadeInUp {
+      from {
         opacity: 0;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(30px);
       }
 
-      /* Staggered animation delays for each card */
-      .event-card-animated:nth-child(1) {
-        animation-delay: 0.1s;
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animation keyframes for card hover scale */
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
       }
 
-      .event-card-animated:nth-child(2) {
-        animation-delay: 0.2s;
+      50% {
+        transform: scale(1.02);
       }
+    }
 
-      .event-card-animated:nth-child(3) {
-        animation-delay: 0.3s;
-      }
+    /* Event card container with animation */
+    .event-card-animated {
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-      /* Hover effects for cards */
-      .event-card-animated:hover {
-        transform: translateY(-10px) scale(1.03);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-        -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-        -moz-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-      }
+    /* Staggered animation delays for each card */
+    .event-card-animated:nth-child(1) {
+      animation-delay: 0.1s;
+    }
 
-      /* Image hover effect */
-      .event-card-animated img {
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
+    .event-card-animated:nth-child(2) {
+      animation-delay: 0.2s;
+    }
 
-      .event-card-animated:hover img {
-        transform: scale(1.1);
-      }
+    .event-card-animated:nth-child(3) {
+      animation-delay: 0.3s;
+    }
 
-      /* Button hover effect */
-      .event-card-animated a {
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
+    /* Hover effects for cards */
+    .event-card-animated:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+      -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+      -moz-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+    }
 
-      .event-card-animated a::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-      }
+    /* Image hover effect */
+    .event-card-animated img {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-      .event-card-animated a:hover::before {
-        width: 300px;
-        height: 300px;
-      }
+    .event-card-animated:hover img {
+      transform: scale(1.1);
+    }
 
-      .event-card-animated a:hover {
-        background: #ff8d3d;
-        transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(255, 125, 45, 0.4);
-      }
+    /* Button hover effect */
+    .event-card-animated a {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-      /* Smooth transitions for all card elements */
-      .event-card-animated h3,
-      .event-card-animated p {
-        transition: color 0.3s ease;
-      }
+    .event-card-animated a::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
 
-      .event-card-animated:hover h3 {
-        color: #ff7d2d;
-      }
+    .event-card-animated a:hover::before {
+      width: 300px;
+      height: 300px;
+    }
 
-      /* RTL/LTR Layout Switching for Section Content */
-      /* Default LTR: image left, text right */
-      .section-content {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 2rem;
-      }
+    .event-card-animated a:hover {
+      background: #ff8d3d;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(255, 125, 45, 0.4);
+    }
 
-      .section-image {
-        flex: 1;
-        order: 1;
-      }
+    /* Smooth transitions for all card elements */
+    .event-card-animated h3,
+    .event-card-animated p {
+      transition: color 0.3s ease;
+    }
 
-      .section-text {
-        flex: 1;
-        order: 2;
-      }
+    .event-card-animated:hover h3 {
+      color: #ff7d2d;
+    }
 
-      /* RTL: image right, text left */
-      html[dir="rtl"] .section-content,
-      body.rtl .section-content {
-        flex-direction: row-reverse;
-      }
+    /* RTL/LTR Layout Switching for Section Content */
+    /* Default LTR: image left, text right */
+    .section-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+    }
 
-      html[dir="rtl"] .section-image,
-      body.rtl .section-image {
-        order: 2;
-      }
+    .section-image {
+      flex: 1;
+      order: 1;
+    }
 
-      html[dir="rtl"] .section-text,
-      body.rtl .section-text {
-        order: 1;
-      }
+    .section-text {
+      flex: 1;
+      order: 2;
+    }
 
-      /* Ensure main container respects direction */
-      .history-container {
-        direction: inherit;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- chatbot toggle button -->
-    <button id="chatbot-toggler">
-      <span class="material-symbols-outlined">mode_comment</span>
-      <span class="material-symbols-rounded">close</span>
-    </button>
+    /* RTL: image right, text left */
+    html[dir="rtl"] .section-content,
+    body.rtl .section-content {
+      flex-direction: row-reverse;
+    }
 
-    <!-- chatbot container -->
-    <div class="chatbot-popup">
-      <div class="chat-header">
-        <div class="header-info">
-          <img
-            style="width: 50px; border-radius: 1000px"
-            src="../../assets/icons/chatbot-icon.png"
-            alt=""
-          />
-          <h2 class="logo-text">Saudi Tourism Bot</h2>
-        </div>
-        <button id="close-chatbot" class="material-symbols-rounded">
-          keyboard_arrow_down
-        </button>
+    html[dir="rtl"] .section-image,
+    body.rtl .section-image {
+      order: 2;
+    }
+
+    html[dir="rtl"] .section-text,
+    body.rtl .section-text {
+      order: 1;
+    }
+
+    /* Ensure main container respects direction */
+    .history-container {
+      direction: inherit;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- chatbot toggle button -->
+  <button id="chatbot-toggler">
+    <span class="material-symbols-outlined">mode_comment</span>
+    <span class="material-symbols-rounded">close</span>
+  </button>
+
+  <!-- chatbot container -->
+  <div class="chatbot-popup">
+    <div class="chat-header">
+      <div class="header-info">
+        <img style="width: 50px; border-radius: 1000px" src="../../assets/icons/chatbot-icon.png" alt="" />
+        <h2 class="logo-text">Saudi Tourism Bot</h2>
       </div>
+      <button id="close-chatbot" class="material-symbols-rounded">
+        keyboard_arrow_down
+      </button>
+    </div>
 
-      <div class="chat-body">
-        <div class="message bot-message">
-          <img
-            style="width: 50px; border-radius: 1000px"
-            src="../../assets/icons/chatbot-icon.png"
-            alt=""
-          />
-          <div dir="rtl" class="message-text">
-            اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
-          </div>
+    <div class="chat-body">
+      <div class="message bot-message">
+        <img style="width: 50px; border-radius: 1000px" src="../../assets/icons/chatbot-icon.png" alt="" />
+        <div dir="rtl" class="message-text">
+          اهلأ انا مطلق, مساعدك الشخصي في تحديد الوجهة القادمة.أمرني ياغالي.
         </div>
-      </div>
-
-      <div class="chat-footer">
-        <form action="#" class="chat-form">
-          <textarea
-            dir="rtl"
-            placeholder="اكتب سؤالك عن السياحة في السعودية..."
-            class="message-input"
-            required
-          ></textarea>
-          <div class="chat-controls">
-            <button
-              type="submit"
-              id="send-message"
-              class="material-symbols-rounded"
-            >
-              arrow_upward
-            </button>
-          </div>
-        </form>
       </div>
     </div>
 
-    <section class="hero" aria-label="Hero section">
-      <div class="hero-bg">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-        >
-          <source src="../../styles/videos/Riyadh.mp4" type="video/mp4" />
-          <img
-            src="../../assets/images/cities/Saudi3.jpg"
-            alt="Riyadh - Capital City"
-            class="hero-image"
-          />
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-particles">
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
-          <div class="particle"></div>
+    <div class="chat-footer">
+      <form action="#" class="chat-form">
+        <textarea dir="rtl" placeholder="اكتب سؤالك عن السياحة في السعودية..." class="message-input"
+          required></textarea>
+        <div class="chat-controls">
+          <button type="submit" id="send-message" class="material-symbols-rounded">
+            arrow_upward
+          </button>
         </div>
-      </div>
+      </form>
+    </div>
+  </div>
 
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="title-line" data-i18n="riyadhPage.heroTitle1"
-              >CAPITAL CITY</span
-            >
-            <span class="title-line featured" data-i18n="riyadhPage.heroTitle2"
-              >RIYADH</span
-            >
-            <span class="title-line subtitle" data-i18n="riyadhPage.heroTitle3">
-              SKYLINE • CULTURE • BUSINESS
-            </span>
-          </h1>
-          <p class="hero-sub" data-i18n="riyadhPage.heroSubtitle">
-            A modern metropolis blending tradition and innovation at the heart
-            of the Kingdom.
+  <section class="hero" aria-label="Hero section">
+    <div class="hero-bg">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+        <source src="../../styles/videos/Riyadh.mp4" type="video/mp4" />
+        <img src="../../assets/images/cities/Saudi3.jpg" alt="Riyadh - Capital City" class="hero-image" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="title-line" data-i18n="riyadhPage.heroTitle1">CAPITAL CITY</span>
+          <span class="title-line featured" data-i18n="riyadhPage.heroTitle2">RIYADH</span>
+          <span class="title-line subtitle" data-i18n="riyadhPage.heroTitle3">
+            SKYLINE • CULTURE • BUSINESS
+          </span>
+        </h1>
+        <p class="hero-sub" data-i18n="riyadhPage.heroSubtitle">
+          A modern metropolis blending tradition and innovation at the heart
+          of the Kingdom.
+        </p>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-arrow"></div>
+      <span data-i18n="riyadhPage.scrollToExplore">Scroll to Explore</span>
+    </div>
+  </section>
+
+  <main class="history-container">
+    <!-- الرياض – قلب المملكة النابض -->
+    <section class="section" id="first-state">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/cities/Saudi1.png" alt="Riyadh — Cultural and Economic Capital"
+            data-i18n-attr="alt" data-i18n="riyadhPage.section1Title" />
+        </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="riyadhPage.section1Title">
+            الرياض – قلب المملكة النابض
+          </h2>
+          <h3 class="section-subtitle" data-i18n="riyadhPage.section1Subtitle">
+            نبذة تاريخية موجزة
+          </h3>
+          <p class="section-body" data-i18n="riyadhPage.section1Para1">
+            تمتد جذور الرياض إلى واحات نجد ومدنها التاريخية، حيث انطلقت من
+            الدرعية شرارة التوحيد ثم ازدهرت الرياض عاصمةً حديثة تجمع أصالة
+            المكان باندفاعٍ عمراني واقتصادي وثقافي متسارع.
           </p>
+          <p class="section-body" data-i18n="riyadhPage.section1Para2">
+            احتضنت المدينة مؤسسات الدولة ومراكز اتخاذ القرار، وتطورت فيها
+            البنية التحتية والفضاءات العامة والوجهات الثقافية، مع الحفاظ على
+            سمات الضيافة النجدية والهوية المعمارية المحلية.
+          </p>
+          <p class="section-body" data-i18n="riyadhPage.section1Para3">
+            اليوم تقدّم الرياض تجربة حضرية متكاملة: فعاليات دولية ومتاحف
+            وحدائق كبرى ومشهد طهوي متنوّع، إلى جانب أحياء تراثية أعيد إحياؤها
+            لتروي قصة المدينة عبر العصور.
+          </p>
+          <p class="section-body" data-i18n="riyadhPage.section1Para4">
+            وتستمر برامج الارتقاء الحضري في رفع جودة الحياة عبر مشاريع خضراء
+            ومسارات مشاة ونقل عام حديث وخدمات رقمية للإرشاد والتنقل.
+          </p>
+          <h4 class="section-subtitle" data-i18n="riyadhPage.section1Highlights">
+            أبرز ما يميّز الرياض
+          </h4>
+          <ul class="section-list">
+            <li data-i18n="riyadhPage.section1Item1">
+              الدرعية التاريخية وحي الطريف (موقع تراث عالمي)
+            </li>
+            <li data-i18n="riyadhPage.section1Item2">
+              المتحف الوطني ومنطقة المربع
+            </li>
+            <li data-i18n="riyadhPage.section1Item3">
+              المراكز المالية والتجارية الحديثة
+            </li>
+            <li data-i18n="riyadhPage.section1Item4">
+              الفعاليات الموسمية والمشهد الثقافي والفني
+            </li>
+          </ul>
         </div>
-      </div>
-
-      <div class="scroll-indicator">
-        <div class="scroll-arrow"></div>
-        <span data-i18n="riyadhPage.scrollToExplore">Scroll to Explore</span>
       </div>
     </section>
 
-    <main class="history-container">
-      <!-- الرياض – قلب المملكة النابض -->
-      <section class="section" id="first-state">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/cities/Saudi1.png"
-              alt="Riyadh — Cultural and Economic Capital"
-              data-i18n-attr="alt"
-              data-i18n="riyadhPage.section1Title"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="riyadhPage.section1Title">
-              الرياض – قلب المملكة النابض
-            </h2>
-            <h3
-              class="section-subtitle"
-              data-i18n="riyadhPage.section1Subtitle"
-            >
-              نبذة تاريخية موجزة
-            </h3>
-            <p class="section-body" data-i18n="riyadhPage.section1Para1">
-              تمتد جذور الرياض إلى واحات نجد ومدنها التاريخية، حيث انطلقت من
-              الدرعية شرارة التوحيد ثم ازدهرت الرياض عاصمةً حديثة تجمع أصالة
-              المكان باندفاعٍ عمراني واقتصادي وثقافي متسارع.
-            </p>
-            <p class="section-body" data-i18n="riyadhPage.section1Para2">
-              احتضنت المدينة مؤسسات الدولة ومراكز اتخاذ القرار، وتطورت فيها
-              البنية التحتية والفضاءات العامة والوجهات الثقافية، مع الحفاظ على
-              سمات الضيافة النجدية والهوية المعمارية المحلية.
-            </p>
-            <p class="section-body" data-i18n="riyadhPage.section1Para3">
-              اليوم تقدّم الرياض تجربة حضرية متكاملة: فعاليات دولية ومتاحف
-              وحدائق كبرى ومشهد طهوي متنوّع، إلى جانب أحياء تراثية أعيد إحياؤها
-              لتروي قصة المدينة عبر العصور.
-            </p>
-            <p class="section-body" data-i18n="riyadhPage.section1Para4">
-              وتستمر برامج الارتقاء الحضري في رفع جودة الحياة عبر مشاريع خضراء
-              ومسارات مشاة ونقل عام حديث وخدمات رقمية للإرشاد والتنقل.
-            </p>
-            <h4
-              class="section-subtitle"
-              data-i18n="riyadhPage.section1Highlights"
-            >
-              أبرز ما يميّز الرياض
-            </h4>
-            <ul class="section-list">
-              <li data-i18n="riyadhPage.section1Item1">
-                الدرعية التاريخية وحي الطريف (موقع تراث عالمي)
-              </li>
-              <li data-i18n="riyadhPage.section1Item2">
-                المتحف الوطني ومنطقة المربع
-              </li>
-              <li data-i18n="riyadhPage.section1Item3">
-                المراكز المالية والتجارية الحديثة
-              </li>
-              <li data-i18n="riyadhPage.section1Item4">
-                الفعاليات الموسمية والمشهد الثقافي والفني
-              </li>
-            </ul>
-          </div>
+    <!-- الدرعية ووادي حنيفة -->
+    <section class="section" id="second-state">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/cities/Saudi2.jpg" alt="Diriyah and Wadi Hanifa" data-i18n-attr="alt"
+            data-i18n="riyadhPage.section2Title" />
         </div>
-      </section>
-
-      <!-- الدرعية ووادي حنيفة -->
-      <section class="section" id="second-state">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/cities/Saudi2.jpg"
-              alt="Diriyah and Wadi Hanifa"
-              data-i18n-attr="alt"
-              data-i18n="riyadhPage.section2Title"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="riyadhPage.section2Title">
-              الدرعية ووادي حنيفة
-            </h2>
-            <h3
-              class="section-subtitle"
-              data-i18n="riyadhPage.section2Subtitle"
-            >
-              هوية نجدية ومسارات طبيعية
-            </h3>
-            <p class="section-body" data-i18n="riyadhPage.section2Para1">
-              تُعد الدرعية مهد الدولة السعودية وواجهة للعمارة النجدية؛ وفي
-              محيطها يمتد وادي حنيفة بحدائقه وممراته وجسوره، ليشكّل متنزّهًا
-              مفتوحًا للتنزه والمشي وركوب الدراجات.
-            </p>
-            <p class="section-body" data-i18n="riyadhPage.section2Para2">
-              يجتمع في المنطقة محتوى ثقافي ومعماري مع مطاعم ومقاهي مطلّة على
-              الوادي، إضافة إلى مسارات إنارة ولوحات تعريفية تُثري تجربة الزائر.
-            </p>
-            <p class="section-body" data-i18n="riyadhPage.section2Para3">
-              تتكامل الخدمات عبر مواقف منظمة، وممرات مُهيّأة للعائلات وكبار
-              السن، مع إرشادٍ رقمي وتوجيه للفعاليات والمعارض المتخصصة.
-            </p>
-            <p class="section-body" data-i18n="riyadhPage.section2Para4">
-              تُحترم الأنظمة البيئية للموقع بالحفاظ على النظافة والهدوء، وعدم
-              الإضرار بالغطاء النباتي أو التضاريس التاريخية.
-            </p>
-            <h4
-              class="section-subtitle"
-              data-i18n="riyadhPage.section2Highlights"
-            >
-              محطات رئيسية لرحلتك
-            </h4>
-            <ul class="section-list">
-              <li data-i18n="riyadhPage.section2Item1">
-                حي الطريف — عمارة طينية ومسارات عرض
-              </li>
-              <li data-i18n="riyadhPage.section2Item2">
-                ميادين وباحات الدرعية الثقافية
-              </li>
-              <li data-i18n="riyadhPage.section2Item3">
-                ممرات المشاة على ضفاف وادي حنيفة
-              </li>
-              <li data-i18n="riyadhPage.section2Item4">
-                مطلات ومناطق جلوس عائلية
-              </li>
-              <li data-i18n="riyadhPage.section2Item5">
-                جولات إرشادية ومراكز زوار
-              </li>
-            </ul>
-          </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="riyadhPage.section2Title">
+            الدرعية ووادي حنيفة
+          </h2>
+          <h3 class="section-subtitle" data-i18n="riyadhPage.section2Subtitle">
+            هوية نجدية ومسارات طبيعية
+          </h3>
+          <p class="section-body" data-i18n="riyadhPage.section2Para1">
+            تُعد الدرعية مهد الدولة السعودية وواجهة للعمارة النجدية؛ وفي
+            محيطها يمتد وادي حنيفة بحدائقه وممراته وجسوره، ليشكّل متنزّهًا
+            مفتوحًا للتنزه والمشي وركوب الدراجات.
+          </p>
+          <p class="section-body" data-i18n="riyadhPage.section2Para2">
+            يجتمع في المنطقة محتوى ثقافي ومعماري مع مطاعم ومقاهي مطلّة على
+            الوادي، إضافة إلى مسارات إنارة ولوحات تعريفية تُثري تجربة الزائر.
+          </p>
+          <p class="section-body" data-i18n="riyadhPage.section2Para3">
+            تتكامل الخدمات عبر مواقف منظمة، وممرات مُهيّأة للعائلات وكبار
+            السن، مع إرشادٍ رقمي وتوجيه للفعاليات والمعارض المتخصصة.
+          </p>
+          <p class="section-body" data-i18n="riyadhPage.section2Para4">
+            تُحترم الأنظمة البيئية للموقع بالحفاظ على النظافة والهدوء، وعدم
+            الإضرار بالغطاء النباتي أو التضاريس التاريخية.
+          </p>
+          <h4 class="section-subtitle" data-i18n="riyadhPage.section2Highlights">
+            محطات رئيسية لرحلتك
+          </h4>
+          <ul class="section-list">
+            <li data-i18n="riyadhPage.section2Item1">
+              حي الطريف — عمارة طينية ومسارات عرض
+            </li>
+            <li data-i18n="riyadhPage.section2Item2">
+              ميادين وباحات الدرعية الثقافية
+            </li>
+            <li data-i18n="riyadhPage.section2Item3">
+              ممرات المشاة على ضفاف وادي حنيفة
+            </li>
+            <li data-i18n="riyadhPage.section2Item4">
+              مطلات ومناطق جلوس عائلية
+            </li>
+            <li data-i18n="riyadhPage.section2Item5">
+              جولات إرشادية ومراكز زوار
+            </li>
+          </ul>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- الرياض اليوم -->
-      <section class="section" id="modern-kingdom">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/riyadh.jpg"
-              alt="Modern Riyadh"
-              data-i18n-attr="alt"
-              data-i18n="riyadhPage.section3Title"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="riyadhPage.section3Title">
-              الرياض اليوم
-            </h2>
-            <h3
-              class="section-subtitle"
-              data-i18n="riyadhPage.section3Subtitle"
-            >
-              وصول ميسّر وخدمات ذكية وتجربة حضرية متوازنة
-            </h3>
-            <p class="section-body" data-i18n="riyadhPage.section3Para1">
-              ترتبط المدينة بالعالم عبر مطار الملك خالد الدولي، وتتهيأ بمنظومة
-              نقل عام حديثة يجري تشغيلها تدريجيًا، مع طرق دائرية ومحاور ربط تضمن
-              انسيابية التنقل بين أحيائها ومحاورها الرئيسة.
-            </p>
-            <p class="section-body" data-i18n="riyadhPage.section3Para2">
-              وتزدهر الرياض بحدائق ومتنزهات حضرية وممرات مشاة ومشاريع خضراء
-              كبرى، إلى جانب مرافق ثقافية وواجهات مدينية تستوعب الفعاليات
-              الدولية.
-            </p>
-            <p class="section-body" data-i18n="riyadhPage.section3Para3">
-              تدعم التطبيقات الذكية والخرائط التفاعلية التخطيط للزيارة واختيار
-              المسارات وتحديثات الفعاليات والمطاعم والمتاحف.
-            </p>
-            <p class="section-body" data-i18n="riyadhPage.section3Para4">
-              كما تتكامل خيارات الضيافة والتسوّق والترفيه لتقديم تجربة مدينة
-              عالمية الهوى بهوية محلية راسخة.
-            </p>
-            <ul class="section-list">
-              <li data-i18n="riyadhPage.section3Item1">
-                مطار الملك خالد الدولي
-              </li>
-              <li data-i18n="riyadhPage.section3Item2">
-                شبكة نقل عام حديثة ومسارات حضرية
-              </li>
-              <li data-i18n="riyadhPage.section3Item3">
-                حدائق كبرى وممرات مشاة
-              </li>
-              <li data-i18n="riyadhPage.section3Item4">
-                واجهات ثقافية ومتاحف ومعارض
-              </li>
-              <li data-i18n="riyadhPage.section3Item5">
-                خدمات إرشاد وخرائط تفاعلية
-              </li>
-            </ul>
-          </div>
+    <!-- الرياض اليوم -->
+    <section class="section" id="modern-kingdom">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/riyadh.jpg" alt="Modern Riyadh" data-i18n-attr="alt"
+            data-i18n="riyadhPage.section3Title" />
         </div>
-      </section>
-
-      <!-- حي الطريف (الدرعية) -->
-      <section class="section" id="king-abdulaziz">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/diriyah.webp"
-              alt="At-Turaif District"
-              data-i18n-attr="alt"
-              data-i18n="riyadhPage.section4Title"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="riyadhPage.section4Title">
-              حي الطريف — الدرعية
-            </h2>
-            <h3
-              class="section-subtitle"
-              data-i18n="riyadhPage.section4Subtitle"
-            >
-              عمارة طينية وقصص تأسيس
-            </h3>
-            <p class="section-body" data-i18n="riyadhPage.section4Para1">
-              يقدّم حي الطريف تجربة متحفية في الهواء الطلق، بمسارات عرض ومكونات
-              عمرانية تُعرّف بالعمارة النجدية ومسارات التأسيس، مع فعاليات فنية
-              وموسمية تُضيء فناءات الحي وساحاته.
-            </p>
-            <p class="section-body" data-i18n="riyadhPage.section4Para2">
-              يُنصح بحجز التذاكر مبكرًا، وارتداء أحذية مناسبة للمشي، والاستفادة
-              من الجولات الإرشادية والوسائط الرقمية المتاحة في الموقع.
-            </p>
-          </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="riyadhPage.section3Title">
+            الرياض اليوم
+          </h2>
+          <h3 class="section-subtitle" data-i18n="riyadhPage.section3Subtitle">
+            وصول ميسّر وخدمات ذكية وتجربة حضرية متوازنة
+          </h3>
+          <p class="section-body" data-i18n="riyadhPage.section3Para1">
+            ترتبط المدينة بالعالم عبر مطار الملك خالد الدولي، وتتهيأ بمنظومة
+            نقل عام حديثة يجري تشغيلها تدريجيًا، مع طرق دائرية ومحاور ربط تضمن
+            انسيابية التنقل بين أحيائها ومحاورها الرئيسة.
+          </p>
+          <p class="section-body" data-i18n="riyadhPage.section3Para2">
+            وتزدهر الرياض بحدائق ومتنزهات حضرية وممرات مشاة ومشاريع خضراء
+            كبرى، إلى جانب مرافق ثقافية وواجهات مدينية تستوعب الفعاليات
+            الدولية.
+          </p>
+          <p class="section-body" data-i18n="riyadhPage.section3Para3">
+            تدعم التطبيقات الذكية والخرائط التفاعلية التخطيط للزيارة واختيار
+            المسارات وتحديثات الفعاليات والمطاعم والمتاحف.
+          </p>
+          <p class="section-body" data-i18n="riyadhPage.section3Para4">
+            كما تتكامل خيارات الضيافة والتسوّق والترفيه لتقديم تجربة مدينة
+            عالمية الهوى بهوية محلية راسخة.
+          </p>
+          <ul class="section-list">
+            <li data-i18n="riyadhPage.section3Item1">
+              مطار الملك خالد الدولي
+            </li>
+            <li data-i18n="riyadhPage.section3Item2">
+              شبكة نقل عام حديثة ومسارات حضرية
+            </li>
+            <li data-i18n="riyadhPage.section3Item3">
+              حدائق كبرى وممرات مشاة
+            </li>
+            <li data-i18n="riyadhPage.section3Item4">
+              واجهات ثقافية ومتاحف ومعارض
+            </li>
+            <li data-i18n="riyadhPage.section3Item5">
+              خدمات إرشاد وخرائط تفاعلية
+            </li>
+          </ul>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- قصر المصمك ومنطقة قصر الحكم -->
-      <section class="section" id="kings">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/Masmak.avif"
-              alt="Masmak Fort"
-              data-i18n-attr="alt"
-              data-i18n="riyadhPage.section5Title"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="riyadhPage.section5Title">
-              قصر المصمك ومنطقة قصر الحكم
-            </h2>
-            <h3
-              class="section-subtitle"
-              data-i18n="riyadhPage.section5Subtitle"
-            >
-              ذاكرة المدينة ومشهدها التراثي
-            </h3>
-            <p class="section-body" data-i18n="riyadhPage.section5Para1">
-              يشكّل المصمك محطة تاريخية بارزة في قلب الرياض؛ تحيط به ساحات
-              ومنابر ثقافية وأسواق تقليدية، ما يجعل الزيارة فرصة للتعرّف على
-              ملامح المدينة القديمة وعاداتها التجارية.
-            </p>
-          </div>
+    <!-- حي الطريف (الدرعية) -->
+    <section class="section" id="king-abdulaziz">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/diriyah.webp" alt="At-Turaif District" data-i18n-attr="alt"
+            data-i18n="riyadhPage.section4Title" />
         </div>
-      </section>
-
-      <!-- المتحف الوطني ومنطقة المربع -->
-      <section class="section">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/nationalMuseum.avif"
-              alt="National Museum"
-              data-i18n-attr="alt"
-              data-i18n="riyadhPage.section6Title"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="riyadhPage.section6Title">
-              المتحف الوطني ومنطقة المربع
-            </h2>
-            <h3
-              class="section-subtitle"
-              data-i18n="riyadhPage.section6Subtitle"
-            >
-              سردية الجزيرة العربية عبر العصور
-            </h3>
-            <p class="section-body" data-i18n="riyadhPage.section6Para1">
-              يعرض المتحف الوطني مسارات تتبّع تاريخ الجزيرة العربية، من العصور
-              القديمة حتى الدولة السعودية، ويجاوره مجمّع المربع بعمارة نجديّة
-              وحدائق رحبة ومعارض دورية.
-            </p>
-          </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="riyadhPage.section4Title">
+            حي الطريف — الدرعية
+          </h2>
+          <h3 class="section-subtitle" data-i18n="riyadhPage.section4Subtitle">
+            عمارة طينية وقصص تأسيس
+          </h3>
+          <p class="section-body" data-i18n="riyadhPage.section4Para1">
+            يقدّم حي الطريف تجربة متحفية في الهواء الطلق، بمسارات عرض ومكونات
+            عمرانية تُعرّف بالعمارة النجدية ومسارات التأسيس، مع فعاليات فنية
+            وموسمية تُضيء فناءات الحي وساحاته.
+          </p>
+          <p class="section-body" data-i18n="riyadhPage.section4Para2">
+            يُنصح بحجز التذاكر مبكرًا، وارتداء أحذية مناسبة للمشي، والاستفادة
+            من الجولات الإرشادية والوسائط الرقمية المتاحة في الموقع.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- بوليفارد رياض سيتي -->
-      <section class="section">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/boulevard.webp"
-              alt="Boulevard Riyadh City"
-              data-i18n-attr="alt"
-              data-i18n="riyadhPage.section7Title"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="riyadhPage.section7Title">
-              بوليفارد رياض سيتي
-            </h2>
-            <h3
-              class="section-subtitle"
-              data-i18n="riyadhPage.section7Subtitle"
-            >
-              مطاعم وعروض ومسارح مفتوحة
-            </h3>
-            <p class="section-body" data-i18n="riyadhPage.section7Para1">
-              وجهة ترفيهية نابضة تحتضن فعاليات موسمية ومطاعم ومقاهي ومتاجر
-              وتجارب تفاعلية، مع منصات عروض ومسارح في الهواء الطلق.
-            </p>
-          </div>
+    <!-- قصر المصمك ومنطقة قصر الحكم -->
+    <section class="section" id="kings">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/Masmak.avif" alt="Masmak Fort" data-i18n-attr="alt"
+            data-i18n="riyadhPage.section5Title" />
         </div>
-      </section>
-
-      <!-- كافد (مركز الملك عبدالله المالي) -->
-      <section class="section">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/Kafd.webp"
-              alt="KAFD"
-              data-i18n-attr="alt"
-              data-i18n="riyadhPage.section8Title"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="riyadhPage.section8Title">
-              مركز الملك عبدالله المالي (كافد)
-            </h2>
-            <h3
-              class="section-subtitle"
-              data-i18n="riyadhPage.section8Subtitle"
-            >
-              أفق معماري ومشهد أعمال حديث
-            </h3>
-            <p class="section-body" data-i18n="riyadhPage.section8Para1">
-              يبرز كافد بأبراجه وتصاميمه المعمارية ومساحاته العامة، ويستضيف
-              مؤسسات مالية وشركات وخيارات ضيافة، مع ممرات مشاة مُهيّأة وفنون
-              عامة تُثري المشهد الحضري.
-            </p>
-          </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="riyadhPage.section5Title">
+            قصر المصمك ومنطقة قصر الحكم
+          </h2>
+          <h3 class="section-subtitle" data-i18n="riyadhPage.section5Subtitle">
+            ذاكرة المدينة ومشهدها التراثي
+          </h3>
+          <p class="section-body" data-i18n="riyadhPage.section5Para1">
+            يشكّل المصمك محطة تاريخية بارزة في قلب الرياض؛ تحيط به ساحات
+            ومنابر ثقافية وأسواق تقليدية، ما يجعل الزيارة فرصة للتعرّف على
+            ملامح المدينة القديمة وعاداتها التجارية.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- حديقة الملك عبدالله -->
-      <section class="section">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/kingAbdullahGarden.jpg"
-              alt="King Abdullah Garden"
-              data-i18n-attr="alt"
-              data-i18n="riyadhPage.section9Title"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="riyadhPage.section9Title">
-              حديقة الملك عبدالله
-            </h2>
-            <h3
-              class="section-subtitle"
-              data-i18n="riyadhPage.section9Subtitle"
-            >
-              متنفس حضري ومسارات عائلية
-            </h3>
-            <p class="section-body" data-i18n="riyadhPage.section9Para1">
-              تُوفّر مسطحات خضراء ومسارات مشاة ومناطق لعب، مع عروض نوافير ومرافق
-              خدمية تجعلها خيارًا عائليًا لوقتٍ هادئ في قلب المدينة.
-            </p>
-          </div>
+    <!-- المتحف الوطني ومنطقة المربع -->
+    <section class="section">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/nationalMuseum.avif" alt="National Museum" data-i18n-attr="alt"
+            data-i18n="riyadhPage.section6Title" />
         </div>
-      </section>
-
-      <!-- حافة العالم (جبل فِهرين) -->
-      <section class="section">
-        <div class="section-content">
-          <div class="section-image">
-            <img
-              src="../../assets/images/destinations/edge-of-the-world.jpg"
-              alt="Edge of the World"
-              data-i18n-attr="alt"
-              data-i18n="riyadhPage.section10Title"
-            />
-          </div>
-          <div class="section-text">
-            <h2 class="section-title" data-i18n="riyadhPage.section10Title">
-              حافة العالم (جبل فِهرين)
-            </h2>
-            <h3
-              class="section-subtitle"
-              data-i18n="riyadhPage.section10Subtitle"
-            >
-              طبيعة صحراوية وإطلالات شاسعة
-            </h3>
-            <p class="section-body" data-i18n="riyadhPage.section10Para1">
-              على مسافة من المدينة تمنح "حافة العالم" مشهدًا بانوراميًا على
-              الأودية والنتوءات الصخرية. يُنصح بالزيارة مع دليلٍ مختص ومركبة
-              مناسبة، واصطحاب الماء وتجهيزات السلامة والالتزام بتعليمات الموقع.
-            </p>
-          </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="riyadhPage.section6Title">
+            المتحف الوطني ومنطقة المربع
+          </h2>
+          <h3 class="section-subtitle" data-i18n="riyadhPage.section6Subtitle">
+            سردية الجزيرة العربية عبر العصور
+          </h3>
+          <p class="section-body" data-i18n="riyadhPage.section6Para1">
+            يعرض المتحف الوطني مسارات تتبّع تاريخ الجزيرة العربية، من العصور
+            القديمة حتى الدولة السعودية، ويجاوره مجمّع المربع بعمارة نجديّة
+            وحدائق رحبة ومعارض دورية.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- أحدث الفعاليات -->
-      <!-- Changed: Replaced dynamic event card system with hardcoded card structure from makkah.html
+    <!-- بوليفارد رياض سيتي -->
+    <section class="section">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/boulevard.webp" alt="Boulevard Riyadh City" data-i18n-attr="alt"
+            data-i18n="riyadhPage.section7Title" />
+        </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="riyadhPage.section7Title">
+            بوليفارد رياض سيتي
+          </h2>
+          <h3 class="section-subtitle" data-i18n="riyadhPage.section7Subtitle">
+            مطاعم وعروض ومسارح مفتوحة
+          </h3>
+          <p class="section-body" data-i18n="riyadhPage.section7Para1">
+            وجهة ترفيهية نابضة تحتضن فعاليات موسمية ومطاعم ومقاهي ومتاجر
+            وتجارب تفاعلية، مع منصات عروض ومسارح في الهواء الطلق.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- كافد (مركز الملك عبدالله المالي) -->
+    <section class="section">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/Kafd.webp" alt="KAFD" data-i18n-attr="alt"
+            data-i18n="riyadhPage.section8Title" />
+        </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="riyadhPage.section8Title">
+            مركز الملك عبدالله المالي (كافد)
+          </h2>
+          <h3 class="section-subtitle" data-i18n="riyadhPage.section8Subtitle">
+            أفق معماري ومشهد أعمال حديث
+          </h3>
+          <p class="section-body" data-i18n="riyadhPage.section8Para1">
+            يبرز كافد بأبراجه وتصاميمه المعمارية ومساحاته العامة، ويستضيف
+            مؤسسات مالية وشركات وخيارات ضيافة، مع ممرات مشاة مُهيّأة وفنون
+            عامة تُثري المشهد الحضري.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- حديقة الملك عبدالله -->
+    <section class="section">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/kingAbdullahGarden.jpg" alt="King Abdullah Garden"
+            data-i18n-attr="alt" data-i18n="riyadhPage.section9Title" />
+        </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="riyadhPage.section9Title">
+            حديقة الملك عبدالله
+          </h2>
+          <h3 class="section-subtitle" data-i18n="riyadhPage.section9Subtitle">
+            متنفس حضري ومسارات عائلية
+          </h3>
+          <p class="section-body" data-i18n="riyadhPage.section9Para1">
+            تُوفّر مسطحات خضراء ومسارات مشاة ومناطق لعب، مع عروض نوافير ومرافق
+            خدمية تجعلها خيارًا عائليًا لوقتٍ هادئ في قلب المدينة.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- حافة العالم (جبل فِهرين) -->
+    <section class="section">
+      <div class="section-content">
+        <div class="section-image">
+          <img src="../../assets/images/destinations/edge-of-the-world.jpg" alt="Edge of the World" data-i18n-attr="alt"
+            data-i18n="riyadhPage.section10Title" />
+        </div>
+        <div class="section-text">
+          <h2 class="section-title" data-i18n="riyadhPage.section10Title">
+            حافة العالم (جبل فِهرين)
+          </h2>
+          <h3 class="section-subtitle" data-i18n="riyadhPage.section10Subtitle">
+            طبيعة صحراوية وإطلالات شاسعة
+          </h3>
+          <p class="section-body" data-i18n="riyadhPage.section10Para1">
+            على مسافة من المدينة تمنح "حافة العالم" مشهدًا بانوراميًا على
+            الأودية والنتوءات الصخرية. يُنصح بالزيارة مع دليلٍ مختص ومركبة
+            مناسبة، واصطحاب الماء وتجهيزات السلامة والالتزام بتعليمات الموقع.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- أحدث الفعاليات -->
+    <!-- Changed: Replaced dynamic event card system with hardcoded card structure from makkah.html
            This implementation uses inline styles and hardcoded HTML cards instead of the dynamic component.
            The card structure matches makkah.html for visual consistency, but uses Riyadh's event data. -->
-      <div
-        style="
+    <div style="
           display: flex;
           gap: 20px;
           justify-content: center;
           flex-wrap: wrap;
           padding: 60px 0;
-        "
-      >
-        <!-- CARD 1: Saudi Falcon Cup -->
-        <!-- Added: event-card-animated class for fade-in and hover animations -->
-        <div
-          class="event-card-animated"
-          style="
+        ">
+      <!-- CARD 1: Saudi Falcon Cup -->
+      <!-- Added: event-card-animated class for fade-in and hover animations -->
+      <div class="event-card-animated" style="
             width: 400px;
             background: var(--card-bg);
             border-radius: 18px;
@@ -724,46 +613,32 @@
             box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
             -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
             -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-          "
-        >
-          <img
-            src="../../assets/images/events/riy1.png"
-            style="width: 100%; height: 200px; object-fit: cover"
-          />
+          ">
+        <img src="../../assets/images/events/riy1.png" style="width: 100%; height: 200px; object-fit: cover" />
 
-          <h3
-            style="font-size: 20px; margin: 18px 0 4px; text-align: center"
-            data-i18n="events.saudiFalconCup.title"
-          >
-            Saudi Falcon Cup
-          </h3>
-          <p
-            style="
+        <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center" data-i18n="events.saudiFalconCup.title">
+          Saudi Falcon Cup
+        </h3>
+        <p style="
               font-size: 14px;
               padding: 10px 20px;
               opacity: 0.8;
               line-height: 1.6;
               text-align: center;
-            "
-            data-i18n="events.saudiFalconCup.description"
-          >
-            A unique heritage event uniting falcon enthusiasts in sporting and
-            cultural competitions that reflect Saudi authenticity and national
-            pride.
-          </p>
-          <p
-            style="
+            " data-i18n="events.saudiFalconCup.description">
+          A unique heritage event uniting falcon enthusiasts in sporting and
+          cultural competitions that reflect Saudi authenticity and national
+          pride.
+        </p>
+        <p style="
               font-size: 12px;
               padding: 0 20px 10px;
               opacity: 0.7;
               text-align: center;
-            "
-          >
-            23 - 30 November
-          </p>
-          <a
-            href="https://www.visitsaudi.com/en/riyadh/events/saudi-falcon-cup"
-            style="
+            ">
+          23 - 30 November
+        </p>
+        <a href="https://www.visitsaudi.com/en/riyadh/events/saudi-falcon-cup" style="
               display: inline-block;
               margin: 20px auto 0;
               background: #ff7d2d;
@@ -773,267 +648,221 @@
               text-decoration: none;
               font-weight: 600;
               margin-top: auto;
-            "
-            >Go</a
-          >
-        </div>
-
-        <!-- CARD 2: General Aviation Airshow 2025 Sand & Fun -->
-        <!-- Added: event-card-animated class for fade-in and hover animations -->
-        <div
-          class="event-card-animated"
-          style="
-            width: 400px;
-            background: var(--card-bg);
-            border-radius: 18px;
-            overflow: hidden;
-            color: var(--text-color);
-            text-align: center;
-            padding-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            display: flex;
-            flex-direction: column;
-            box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-            -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-            -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-          "
-        >
-          <img
-            src="../../assets/images/events/riy2.png"
-            style="width: 100%; height: 200px; object-fit: cover"
-          />
-
-          <h3
-            style="font-size: 20px; margin: 18px 0 4px; text-align: center"
-            data-i18n="events.generalAviationAirshow.title"
-          >
-            General Aviation Airshow 2025 Sand & Fun
-          </h3>
-          <p
-            style="
-              font-size: 14px;
-              padding: 10px 20px;
-              opacity: 0.8;
-              line-height: 1.6;
-              text-align: center;
-            "
-            data-i18n="events.generalAviationAirshow.description"
-          >
-            Sand & Fun 2025, Saudi's first general aviation event, brings
-            together air shows, innovation, and culture in a fun-filled
-            experience for the whole family.
-          </p>
-          <p
-            style="
-              font-size: 12px;
-              padding: 0 20px 10px;
-              opacity: 0.7;
-              text-align: center;
-            "
-          >
-            25 - 29 November
-          </p>
-          <a
-            href="https://www.visitsaudi.com/en/riyadh/events/general-aviation-airshow-2025-sand-and-fun"
-            style="
-              display: inline-block;
-              margin: 20px auto 0;
-              background: #ff7d2d;
-              color: #fff;
-              padding: 12px 35px;
-              border-radius: 25px;
-              text-decoration: none;
-              font-weight: 600;
-              margin-top: auto;
-            "
-            >Go</a
-          >
-        </div>
-
-        <!-- CARD 3: Black Hat MEA -->
-        <!-- Added: event-card-animated class for fade-in and hover animations -->
-        <div
-          class="event-card-animated"
-          style="
-            width: 400px;
-            background: var(--card-bg);
-            border-radius: 18px;
-            overflow: hidden;
-            color: var(--text-color);
-            text-align: center;
-            padding-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            display: flex;
-            flex-direction: column;
-            box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-            -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-            -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-          "
-        >
-          <img
-            src="../../assets/images/events/riy3.png"
-            style="width: 100%; height: 200px; object-fit: cover"
-          />
-
-          <h3
-            style="font-size: 20px; margin: 18px 0 4px; text-align: center"
-            data-i18n="events.blackHatMEA.title"
-          >
-            Black Hat MEA
-          </h3>
-          <p
-            style="
-              font-size: 14px;
-              padding: 10px 20px;
-              opacity: 0.8;
-              line-height: 1.6;
-              text-align: center;
-            "
-            data-i18n="events.blackHatMEA.description"
-          >
-            Black Hat MEA gathers cybersecurity experts and tech innovators to
-            confront threats and advance digital knowledge.
-          </p>
-          <p
-            style="
-              font-size: 12px;
-              padding: 0 20px 10px;
-              opacity: 0.7;
-              text-align: center;
-            "
-          >
-            2 - 4 December
-          </p>
-          <a
-            href="https://www.visitsaudi.com/en/destinations/riyadh/events/black-hat-mea?utm_campaign=VS_Calander_Winter_2025&utm_content=Saudi_Winter_Calendar_2025_Oct10&utm_medium=Post&utm_source=Saudi_Winter_Calendar_2025_Oct10&utm_term=En"
-            style="
-              display: inline-block;
-              margin: 20px auto 0;
-              background: #ff7d2d;
-              color: #fff;
-              padding: 12px 35px;
-              border-radius: 25px;
-              text-decoration: none;
-              font-weight: 600;
-              margin-top: auto;
-            "
-            >Go</a
-          >
-        </div>
+            ">Go</a>
       </div>
-      <!-- Review system -->
-      <div class="review-container">
-        <div class="review-box">
-          <h3 data-i18n="reviews.leaveReview">Leave a Review</h3>
-          <input
-            type="text"
-            id="reviewName"
-            data-i18n="reviews.namePlaceholder"
-            data-i18n-attr="placeholder"
-            placeholder="Your name..."
-          />
-          <div class="stars" id="stars" aria-label="Star rating"></div>
-          <textarea
-            id="reviewText"
-            data-i18n="reviews.commentPlaceholder"
-            data-i18n-attr="placeholder"
-            placeholder="Write your review..."
-          ></textarea>
-          <button class="but" id="submitReview" data-i18n="reviews.submit">
-            Submit
-          </button>
-        </div>
-        <div id="reviewsList" class="reviews-list"></div>
-      </div>
-    </main>
 
-    <!-- Weather Widget at Bottom -->
-    <div
-      style="max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 2rem"
-    >
-      <div id="weather-widget" data-city="riyadh"></div>
+      <!-- CARD 2: General Aviation Airshow 2025 Sand & Fun -->
+      <!-- Added: event-card-animated class for fade-in and hover animations -->
+      <div class="event-card-animated" style="
+            width: 400px;
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            color: var(--text-color);
+            text-align: center;
+            padding-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+          ">
+        <img src="../../assets/images/events/riy2.png" style="width: 100%; height: 200px; object-fit: cover" />
+
+        <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center"
+          data-i18n="events.generalAviationAirshow.title">
+          General Aviation Airshow 2025 Sand & Fun
+        </h3>
+        <p style="
+              font-size: 14px;
+              padding: 10px 20px;
+              opacity: 0.8;
+              line-height: 1.6;
+              text-align: center;
+            " data-i18n="events.generalAviationAirshow.description">
+          Sand & Fun 2025, Saudi's first general aviation event, brings
+          together air shows, innovation, and culture in a fun-filled
+          experience for the whole family.
+        </p>
+        <p style="
+              font-size: 12px;
+              padding: 0 20px 10px;
+              opacity: 0.7;
+              text-align: center;
+            ">
+          25 - 29 November
+        </p>
+        <a href="https://www.visitsaudi.com/en/riyadh/events/general-aviation-airshow-2025-sand-and-fun" style="
+              display: inline-block;
+              margin: 20px auto 0;
+              background: #ff7d2d;
+              color: #fff;
+              padding: 12px 35px;
+              border-radius: 25px;
+              text-decoration: none;
+              font-weight: 600;
+              margin-top: auto;
+            ">Go</a>
+      </div>
+
+      <!-- CARD 3: Black Hat MEA -->
+      <!-- Added: event-card-animated class for fade-in and hover animations -->
+      <div class="event-card-animated" style="
+            width: 400px;
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            color: var(--text-color);
+            text-align: center;
+            padding-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+          ">
+        <img src="../../assets/images/events/riy3.png" style="width: 100%; height: 200px; object-fit: cover" />
+
+        <h3 style="font-size: 20px; margin: 18px 0 4px; text-align: center" data-i18n="events.blackHatMEA.title">
+          Black Hat MEA
+        </h3>
+        <p style="
+              font-size: 14px;
+              padding: 10px 20px;
+              opacity: 0.8;
+              line-height: 1.6;
+              text-align: center;
+            " data-i18n="events.blackHatMEA.description">
+          Black Hat MEA gathers cybersecurity experts and tech innovators to
+          confront threats and advance digital knowledge.
+        </p>
+        <p style="
+              font-size: 12px;
+              padding: 0 20px 10px;
+              opacity: 0.7;
+              text-align: center;
+            ">
+          2 - 4 December
+        </p>
+        <a href="https://www.visitsaudi.com/en/destinations/riyadh/events/black-hat-mea?utm_campaign=VS_Calander_Winter_2025&utm_content=Saudi_Winter_Calendar_2025_Oct10&utm_medium=Post&utm_source=Saudi_Winter_Calendar_2025_Oct10&utm_term=En"
+          style="
+              display: inline-block;
+              margin: 20px auto 0;
+              background: #ff7d2d;
+              color: #fff;
+              padding: 12px 35px;
+              border-radius: 25px;
+              text-decoration: none;
+              font-weight: 600;
+              margin-top: auto;
+            ">Go</a>
+      </div>
     </div>
+    <!-- Review system -->
+    <div class="review-container">
+      <div class="review-box">
+        <h3 data-i18n="reviews.leaveReview">Leave a Review</h3>
+        <input type="text" id="reviewName" data-i18n="reviews.namePlaceholder" data-i18n-attr="placeholder"
+          placeholder="Your name..." />
+        <div class="stars" id="stars" aria-label="Star rating"></div>
+        <textarea id="reviewText" data-i18n="reviews.commentPlaceholder" data-i18n-attr="placeholder"
+          placeholder="Write your review..."></textarea>
+        <button class="but" id="submitReview" data-i18n="reviews.submit">
+          Submit
+        </button>
+      </div>
+      <div id="reviewsList" class="reviews-list"></div>
+    </div>
+  </main>
 
-    <script type="module" src="../../scripts/main.js"></script>
-    <script src="../../scripts/Script.js"></script>
-    <!-- Removed: Event card initialization script is no longer needed
+  <!-- Weather Widget at Bottom -->
+  <div style="max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 2rem">
+    <div id="weather-widget" data-city="riyadh"></div>
+  </div>
+
+  <script type="module" src="../../scripts/main.js"></script>
+  <script src="../../scripts/Script.js"></script>
+  <!-- Removed: Event card initialization script is no longer needed
          since we're using hardcoded HTML cards instead of the dynamic component system.
          The cards are now directly embedded in the HTML above, matching the structure from makkah.html. -->
 
-    <!-- Translation and RTL/LTR Layout Script -->
-    <script>
-      // Wait for i18n to be ready
-      document.addEventListener("DOMContentLoaded", () => {
-        // Function to update layout direction
-        const updateLayoutDirection = () => {
-          const main = document.querySelector(".history-container");
-          if (!main) return;
+  <!-- Translation and RTL/LTR Layout Script -->
+  <script>
+    // Wait for i18n to be ready
+    document.addEventListener("DOMContentLoaded", () => {
+      // Function to update layout direction
+      const updateLayoutDirection = () => {
+        const main = document.querySelector(".history-container");
+        if (!main) return;
 
-          const currentLang =
-            window.i18n?.getLanguage() ||
-            localStorage.getItem("language") ||
-            "en";
+        const currentLang =
+          window.i18n?.getLanguage() ||
+          localStorage.getItem("language") ||
+          "en";
 
-          if (currentLang === "ar") {
-            main.setAttribute("dir", "rtl");
-            document.documentElement.setAttribute("dir", "rtl");
-            document.body.classList.add("rtl");
-            document.body.classList.remove("ltr");
-          } else {
-            main.setAttribute("dir", "ltr");
-            document.documentElement.setAttribute("dir", "ltr");
-            document.body.classList.add("ltr");
-            document.body.classList.remove("rtl");
+        if (currentLang === "ar") {
+          main.setAttribute("dir", "rtl");
+          document.documentElement.setAttribute("dir", "rtl");
+          document.body.classList.add("rtl");
+          document.body.classList.remove("ltr");
+        } else {
+          main.setAttribute("dir", "ltr");
+          document.documentElement.setAttribute("dir", "ltr");
+          document.body.classList.add("ltr");
+          document.body.classList.remove("rtl");
+        }
+      };
+
+      // Initial update
+      if (window.i18n) {
+        updateLayoutDirection();
+
+        // Subscribe to language changes
+        window.i18n.subscribe(() => {
+          updateLayoutDirection();
+          // Refresh translations
+          if (window.i18n.refresh) {
+            window.i18n.refresh();
+          }
+        });
+      } else {
+        // Wait for i18n to load
+        const checkI18n = setInterval(() => {
+          if (window.i18n) {
+            clearInterval(checkI18n);
+            updateLayoutDirection();
+            window.i18n.subscribe(() => {
+              updateLayoutDirection();
+              if (window.i18n.refresh) {
+                window.i18n.refresh();
+              }
+            });
+          }
+        }, 100);
+
+        // Timeout after 5 seconds
+        setTimeout(() => clearInterval(checkI18n), 5000);
+      }
+
+      // Update title when language changes
+      const titleEl = document.querySelector("title");
+      if (titleEl && titleEl.hasAttribute("data-i18n")) {
+        const updateTitle = () => {
+          if (window.i18n && window.i18n.t) {
+            const key = titleEl.getAttribute("data-i18n");
+            document.title = window.i18n.t(key);
           }
         };
 
-        // Initial update
         if (window.i18n) {
-          updateLayoutDirection();
-
-          // Subscribe to language changes
-          window.i18n.subscribe(() => {
-            updateLayoutDirection();
-            // Refresh translations
-            if (window.i18n.refresh) {
-              window.i18n.refresh();
-            }
-          });
-        } else {
-          // Wait for i18n to load
-          const checkI18n = setInterval(() => {
-            if (window.i18n) {
-              clearInterval(checkI18n);
-              updateLayoutDirection();
-              window.i18n.subscribe(() => {
-                updateLayoutDirection();
-                if (window.i18n.refresh) {
-                  window.i18n.refresh();
-                }
-              });
-            }
-          }, 100);
-
-          // Timeout after 5 seconds
-          setTimeout(() => clearInterval(checkI18n), 5000);
+          window.i18n.subscribe(updateTitle);
+          updateTitle();
         }
+      }
+    });
+  </script>
+</body>
 
-        // Update title when language changes
-        const titleEl = document.querySelector("title");
-        if (titleEl && titleEl.hasAttribute("data-i18n")) {
-          const updateTitle = () => {
-            if (window.i18n && window.i18n.t) {
-              const key = titleEl.getAttribute("data-i18n");
-              document.title = window.i18n.t(key);
-            }
-          };
-
-          if (window.i18n) {
-            window.i18n.subscribe(updateTitle);
-            updateTitle();
-          }
-        }
-      });
-    </script>
-  </body>
 </html>
