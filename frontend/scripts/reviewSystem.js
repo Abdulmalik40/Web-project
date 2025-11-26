@@ -203,12 +203,19 @@ function initReviewSystem() {
       const requestUrl = `${apiUrl}/reviews`;
       console.log("[Review System] Submitting review to:", requestUrl);
       console.log("[Review System] Place key:", placeKey);
+      console.log("[Review System] Token present:", !!token);
+      console.log("[Review System] Request body:", {
+        place_key: placeKey,
+        rating: rating,
+        comment: text.substring(0, 50) + "...",
+      });
       
       const response = await fetch(requestUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
+          "Accept": "application/json",
         },
         body: JSON.stringify({
           place_key: placeKey,
@@ -217,8 +224,21 @@ function initReviewSystem() {
         }),
       }).catch((fetchError) => {
         // Handle network errors (CORS, connection refused, etc.)
-        console.error("[Review System] Fetch error:", fetchError);
-        throw new Error(`Network error: ${fetchError.message || "Could not connect to server"}`);
+        console.error("[Review System] Fetch error details:", {
+          name: fetchError.name,
+          message: fetchError.message,
+          stack: fetchError.stack,
+        });
+        
+        // Provide more specific error message
+        let errorMsg = "Could not connect to server";
+        if (fetchError.message.includes("Failed to fetch") || fetchError.message.includes("NetworkError")) {
+          errorMsg = `Cannot reach server at ${apiUrl}. Please ensure:\n1. Backend server is running\n2. Server is accessible at this URL\n3. CORS is properly configured`;
+        } else {
+          errorMsg = fetchError.message || errorMsg;
+        }
+        
+        throw new Error(`Network error: ${errorMsg}`);
       });
 
       if (!response.ok) {
