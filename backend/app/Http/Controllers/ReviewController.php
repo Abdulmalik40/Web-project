@@ -59,11 +59,28 @@ class ReviewController extends Controller
         // Get all reviews for this place, including user details
         // with('user') loads user information (name, etc.) in the same query
         // Ordered by newest reviews first
-        $reviews = Review::with('user') // Load user relationship
+        $reviews = Review::with('user:id,name') // Load only user id and name (privacy)
             ->where('place_key', $place_key) // Filter by place
             ->orderBy('created_at', 'desc') // Newest first
             ->get();
 
-        return response()->json($reviews);
+        // Format response to include only necessary user data
+        $formattedReviews = $reviews->map(function ($review) {
+            return [
+                'id' => $review->id,
+                'user_id' => $review->user_id,
+                'place_key' => $review->place_key,
+                'rating' => $review->rating,
+                'comment' => $review->comment,
+                'created_at' => $review->created_at,
+                'updated_at' => $review->updated_at,
+                'user' => $review->user ? [
+                    'id' => $review->user->id,
+                    'name' => $review->user->name,
+                ] : null,
+            ];
+        });
+
+        return response()->json($formattedReviews);
     }
 }
