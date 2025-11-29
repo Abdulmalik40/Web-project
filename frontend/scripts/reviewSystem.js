@@ -35,6 +35,35 @@ function initReviewSystem() {
     return localStorage.getItem("user_name") || "";
   };
 
+  // Get current user ID from API
+  let currentUserId = null;
+  const getCurrentUserId = async () => {
+    if (currentUserId) return currentUserId;
+    
+    const token = getToken();
+    if (!token) return null;
+
+    try {
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/me`, {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Accept": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        const userData = await response.json();
+        currentUserId = userData.id || null;
+        return currentUserId;
+      }
+    } catch (error) {
+      console.error("[Review System] Error getting user ID:", error);
+    }
+    return null;
+  };
+
   // Determine place_key from current page
   const determinePlaceKey = () => {
     // Extract from URL path (e.g., /pages/cities/makkah.html -> makkah)
@@ -135,6 +164,9 @@ function initReviewSystem() {
         return;
       }
 
+      // Get current user ID to check if review belongs to them
+      const userId = await getCurrentUserId();
+
       reviews.forEach((review) => {
         const item = document.createElement("div");
         item.className = "review-item";
@@ -160,6 +192,23 @@ function initReviewSystem() {
           item.appendChild(date);
         }
 
+        // Add delete button if this is the user's own review
+        if (userId && review.user_id === userId) {
+          const deleteBtn = document.createElement("button");
+          deleteBtn.className = "review-delete-btn";
+          deleteBtn.textContent = t("reviews.delete", "Delete");
+          deleteBtn.setAttribute("aria-label", t("reviews.deleteReview", "Delete review"));
+          deleteBtn.style.cssText = "margin-top: 8px; padding: 6px 12px; background: rgba(255, 77, 77, 0.1); border: 1px solid rgba(255, 77, 77, 0.3); color: #ff4d4d; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s;";
+          deleteBtn.addEventListener("click", () => deleteReview(review.id));
+          deleteBtn.addEventListener("mouseenter", () => {
+            deleteBtn.style.background = "rgba(255, 77, 77, 0.2)";
+          });
+          deleteBtn.addEventListener("mouseleave", () => {
+            deleteBtn.style.background = "rgba(255, 77, 77, 0.1)";
+          });
+          item.appendChild(deleteBtn);
+        }
+
         item.appendChild(stars);
         item.appendChild(name);
         item.appendChild(text);
@@ -170,6 +219,49 @@ function initReviewSystem() {
       reviewsContainer.innerHTML = `<div style="text-align: center; color: var(--color-text-secondary, #b6c7c2); padding: 20px;">
         ${t("reviews.loadError", "Unable to load reviews. Please try again later.")}
       </div>`;
+    }
+  };
+
+  // Delete a review
+  const deleteReview = async (reviewId) => {
+    const token = getToken();
+    if (!token) {
+      alert(t("reviews.loginRequired", "You must be logged in to delete a review."));
+      return;
+    }
+
+    if (!confirm(t("reviews.confirmDelete", "Are you sure you want to delete your review?"))) {
+      return;
+    }
+
+    try {
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/reviews/${reviewId}`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Accept": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || `HTTP ${response.status}`);
+      }
+
+      // Reload reviews after successful deletion
+      await loadReviews();
+
+      // Show success message
+      const successMsg = document.createElement("div");
+      successMsg.style.cssText = "text-align: center; color: var(--color-accent-saudi-green, #00b365); padding: 10px; margin-top: 10px; background: rgba(0, 179, 101, 0.1); border-radius: 8px;";
+      successMsg.textContent = t("reviews.deleteSuccess", "Review deleted successfully!");
+      reviewsContainer.parentElement.insertBefore(successMsg, reviewsContainer);
+      setTimeout(() => successMsg.remove(), 3000);
+
+    } catch (error) {
+      console.error("[Review System] Error deleting review:", error);
+      alert(t("reviews.deleteError", "Failed to delete review. Please try again.") + "\n\n" + error.message);
     }
   };
 

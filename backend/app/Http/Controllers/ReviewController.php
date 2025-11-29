@@ -83,4 +83,34 @@ class ReviewController extends Controller
 
         return response()->json($formattedReviews);
     }
+
+    /**
+     * Delete a review
+     * Users can only delete their own reviews
+     * 
+     * DELETE /api/reviews/{id}
+     */
+    public function destroy(Request $request, $id)
+    {
+        $review = Review::find($id);
+
+        if (!$review) {
+            return response()->json([
+                'message' => 'Review not found',
+            ], 404);
+        }
+
+        // Check if the review belongs to the authenticated user
+        if ($review->user_id !== $request->user()->id) {
+            return response()->json([
+                'message' => 'Unauthorized. You can only delete your own reviews.',
+            ], 403);
+        }
+
+        $review->delete();
+
+        return response()->json([
+            'message' => 'Review deleted successfully',
+        ], 200);
+    }
 }
