@@ -97,13 +97,19 @@ const setupRegisterForm = () => {
       const responseText = await res.text();
       console.log("Response text:", responseText);
       
-      let data;
+      let data = {};
       try {
         data = JSON.parse(responseText);
         console.log("Register response (parsed):", data);
       } catch (parseError) {
         console.error("Failed to parse response as JSON:", parseError);
         console.error("Response was:", responseText);
+        // If we can't parse JSON but got a response, still try to show error
+        if (!res.ok) {
+          messageEl.textContent = "Registration failed. Please try again.";
+          messageEl.classList.add("error");
+          return;
+        }
         throw new Error("Invalid JSON response from server");
       }
 
@@ -119,8 +125,8 @@ const setupRegisterForm = () => {
               ? data.errors.email[0] 
               : data.errors.email;
             // Show user-friendly message for duplicate email
-            if (emailError.includes('already been taken') || emailError.includes('unique')) {
-              errorMessage = "This email is already being used. Please use a different email.";
+            if (emailError.includes('already been taken') || emailError.includes('unique') || emailError.includes('مستخدم')) {
+              errorMessage = "البريد الإلكتروني مستخدم بالفعل. يرجى استخدام بريد إلكتروني آخر.";
             } else {
               errorMessage = emailError;
             }
@@ -180,7 +186,14 @@ const setupRegisterForm = () => {
     } catch (err) {
       console.error("Register fetch error:", err);
       if (messageEl) {
-        messageEl.textContent = "Error connecting to server";
+        // Check if it's a network error or other error
+        if (err.message && err.message.includes('fetch')) {
+          messageEl.textContent = "خطأ في الاتصال بالسيرفر. يرجى التحقق من الاتصال بالإنترنت.";
+        } else if (err.message && err.message.includes('JSON')) {
+          messageEl.textContent = "خطأ في استجابة السيرفر. يرجى المحاولة مرة أخرى.";
+        } else {
+          messageEl.textContent = "حدث خطأ أثناء التسجيل. يرجى المحاولة مرة أخرى.";
+        }
         messageEl.classList.add("error");
       }
     }
