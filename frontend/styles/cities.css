@@ -18,6 +18,7 @@
   max-width: 1400px;
   padding: 0 24px;
   display: flex;
+  align-items: flex-start;
   gap: 40px;
   opacity: 0;
   transform: translateY(50px);
