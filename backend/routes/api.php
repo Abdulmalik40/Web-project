@@ -16,6 +16,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/reviews', [ReviewController::class, 'store']); // for reviews - requires auth
+    Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']); // delete review - requires auth
 
     // خطط الرحلات (Itineraries)
     Route::post('/itineraries', [ItineraryController::class, 'store']);

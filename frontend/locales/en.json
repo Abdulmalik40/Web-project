@@ -1700,7 +1700,7 @@
     "submit": "Submit",
     "submitting": "Submitting...",
     "missingFields": "Please enter a rating and review text.",
-    "star": "Star",
+    "star": "star",
     "reviewingAs": "Reviewing as",
     "loginToReview": "Please login to leave a review",
     "loginLink": "Login",
@@ -1709,7 +1709,12 @@
     "submitError": "Failed to submit review. Please try again.",
     "loadError": "Unable to load reviews. Please try again later.",
     "noReviews": "No reviews yet. Be the first to review!",
-    "anonymous": "Anonymous"
+    "anonymous": "Anonymous",
+    "delete": "Delete",
+    "deleteReview": "Delete review",
+    "confirmDelete": "Are you sure you want to delete your review?",
+    "deleteSuccess": "Review deleted successfully!",
+    "deleteError": "Failed to delete review. Please try again."
   },
   "search": {
     "destinationsPlaceholder": "Search events or landmarks",
