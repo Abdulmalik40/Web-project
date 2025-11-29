@@ -1,6 +1,4 @@
-// =====================================
-// 0) API & Auth Setup
-// =====================================
+// API & Auth Setup
 
 // Load from config.js (fallback to default if not available)
 // Use a function to avoid redeclaration error
@@ -17,9 +15,7 @@ function getToken() {
 let currentItineraryData = null;
 let currentFormData = null;
 
-// =====================================
 // 1) تحميل الداتا من JSON الموحد
-// =====================================
 
 let PLACES = [];
 
@@ -43,9 +39,7 @@ async function loadPlaces() {
 
 loadPlaces();
 
-// =====================================
 // 2) تصنيف الاهتمامات لكل مكان
-// =====================================
 
 function enrichPlaceInterests(place) {
   const name = (place.name || "").toLowerCase();
@@ -117,9 +111,7 @@ function getEnrichedPlaces() {
   });
 }
 
-// =====================================
 // Helpers
-// =====================================
 
 function getPlaceId(place) {
   return (
@@ -160,9 +152,7 @@ function matchesBudget(place, budget) {
   return true;
 }
 
-// =======================
 // Helpers للوقت
-// =======================
 
 function parseTimeToMinutes(t) {
   if (!t) return 540;
@@ -179,9 +169,7 @@ function formatMinutesToTime(mins) {
     .padStart(2, "0")}`;
 }
 
-// =====================================
 // اختيار مكان للاهتمام
-// =====================================
 
 function pickPlaceForInterest({
   interest,
@@ -220,9 +208,7 @@ function pickPlaceForInterest({
   return { place: null, cafesUsedToday };
 }
 
-// =====================================
 // 3) توليد الخطة
-// =====================================
 
 function generateItinerary({ city, days, hoursPerDay, interests, budget, startTime }) {
   const enrichedPlaces = getEnrichedPlaces();
@@ -383,9 +369,7 @@ function generateItinerary({ city, days, hoursPerDay, interests, budget, startTi
   return result;
 }
 
-// =====================================
 // 4) الفورم
-// =====================================
 
 function setupPlannerForm() {
   const plannerForm = document.getElementById("plannerForm");
@@ -495,9 +479,7 @@ setTimeout(() => {
   }
 }, 500);
 
-// =====================================
 // 5) عرض تأكيد الحفظ
-// =====================================
 
 function showSaveConfirmation() {
   const token = getToken();
@@ -669,9 +651,7 @@ function showSaveConfirmation() {
   }
 }
 
-// =====================================
-// 6) حفظ الخطة في قاعدة البيانات
-// =====================================
+// po 6) حفظ الخطة في قاعدة البيانات POSTGRESQL
 
 async function handleSaveItinerary() {
   console.log("handleSaveItinerary called");
@@ -804,9 +784,7 @@ async function saveItinerary(itinerary, formData) {
   }
 }
 
-// =====================================
 // 7) عرض الخطة
-// =====================================
 
 function renderItinerary(itinerary) {
   const container = document.getElementById("itineraryResult");
@@ -893,9 +871,7 @@ function renderItinerary(itinerary) {
   });
 }
 
-// =====================================
 // 8) تحميل وعرض الخطط المحفوظة
-// =====================================
 
 async function loadSavedPlans() {
   const token = getToken();
@@ -1010,9 +986,7 @@ async function loadSavedPlans() {
   }
 }
 
-// =====================================
 // 9) تحميل خطة محفوظة
-// =====================================
 
 async function loadSavedPlan(id) {
   const token = getToken();
@@ -1071,9 +1045,7 @@ async function loadSavedPlan(id) {
   }
 }
 
-// =====================================
 // 10) حذف خطة محفوظة
-// =====================================
 
 async function deleteSavedPlan(id) {
   const token = getToken();
@@ -1104,9 +1076,7 @@ async function deleteSavedPlan(id) {
   }
 }
 
-// =====================================
 // 11) تهيئة الصفحة
-// =====================================
 
 // Load saved plans when page loads
 document.addEventListener("DOMContentLoaded", () => {
