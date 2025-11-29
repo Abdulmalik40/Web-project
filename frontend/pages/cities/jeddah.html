@@ -35,12 +35,8 @@
   <script src="../../scripts/header-component.js" defer></script>
   <!-- Review system -->
   <script src="../../scripts/reviewSystem.js" defer></script>
-  <!-- Removed: event-card-component.js is no longer needed
-         since we're using hardcoded HTML cards matching the structure from riyadh.html -->
   <!-- API Configuration -->
   <script src="../../scripts/config.js"></script>
-  <!-- Added: CSS animations for event cards
-         Includes fade-in, slide-up animations on load, and hover effects -->
   <style>
     /* Animation keyframes for card entrance */
     @keyframes fadeInUp {
@@ -268,7 +264,6 @@
 
   <!-- Main content -->
   <main class="history-container">
-    <!-- Replace the entire <section class="section" id="first-state"> with this -->
     <section class="section" id="first-state">
       <div class="section-content">
         <div class="section-image">
@@ -568,9 +563,6 @@
     </section>
 
     <!-- أحدث الفعاليات -->
-    <!-- Changed: Replaced dynamic event card system with hardcoded card structure from riyadh.html
-           This implementation uses inline styles and hardcoded HTML cards instead of the dynamic component.
-           The card structure matches riyadh.html for visual consistency, but uses Jeddah's event data. -->
     <div style="
           display: flex;
           gap: 20px;

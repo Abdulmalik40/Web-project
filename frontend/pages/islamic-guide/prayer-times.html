@@ -20,7 +20,7 @@
   <script type="module" src="../../scripts/modules/i18n.js"></script>
   <script src="../../scripts/header-component.js" defer></script>
 
-  <style>
+  <style> 
     .prayer-container {
       max-width: 1200px;
       margin: 140px auto 60px;
@@ -1061,15 +1061,15 @@
   </style>
 </head>
 
-<body>
-  <!-- chatbot toggle button -->
-  <button id="chatbot-toggler">
-    <span class="material-symbols-outlined">mode_comment</span>
-    <span class="material-symbols-rounded">close</span>
+  <body>
+    <!-- Chatbot toggle -->
+    <button id="chatbot-toggler">
+      <span class="material-symbols-outlined">mode_comment</span>
+      <span class="material-symbols-rounded">close</span>
   </button>
 
-  <!-- chatbot container -->
-  <div class="chatbot-popup">
+    <!-- Chatbot container -->
+    <div class="chatbot-popup">
     <div class="chat-header">
       <div class="header-info">
         <img style="width: 50px; border-radius: 1000px;" src="../../assets/icons/chatbot-icon.png" alt="">
@@ -1098,7 +1098,9 @@
     </div>
   </div>
 
+  <!-- Prayer page content -->
   <main class="prayer-container">
+        <!-- Hero text -->
     <div class="prayer-header">
       <h1 class="prayer-title" data-i18n="prayerTimesPage.title">Prayer Times</h1>
       <p class="prayer-subtitle" data-i18n="prayerTimesPage.subtitle">
@@ -1106,6 +1108,7 @@
       </p>
     </div>
 
+        <!-- Prayer widget iframe (external) -->
     <div class="prayer-widget-section">
       <h3 class="widget-title" data-i18n="prayerTimesPage.widgetTitle">Prayer Times</h3>
       <p class="widget-description" data-i18n="prayerTimesPage.widgetDesc">
