@@ -108,7 +108,36 @@ const setupRegisterForm = () => {
       }
 
       if (!res.ok) {
-        messageEl.textContent = data.message || "Registration failed";
+        // Handle Laravel validation errors (422 status)
+        let errorMessage = "Registration failed";
+        
+        if (data.errors) {
+          // Laravel validation errors format: { errors: { field: ["message"] } }
+          // Check specifically for email errors
+          if (data.errors.email) {
+            const emailError = Array.isArray(data.errors.email) 
+              ? data.errors.email[0] 
+              : data.errors.email;
+            // Show user-friendly message for duplicate email
+            if (emailError.includes('already been taken') || emailError.includes('unique')) {
+              errorMessage = "This email is already being used. Please use a different email.";
+            } else {
+              errorMessage = emailError;
+            }
+          } else {
+            // For other field errors, get the first one
+            const firstError = Object.values(data.errors)[0];
+            if (Array.isArray(firstError) && firstError.length > 0) {
+              errorMessage = firstError[0];
+            } else if (typeof firstError === 'string') {
+              errorMessage = firstError;
+            }
+          }
+        } else if (data.message) {
+          errorMessage = data.message;
+        }
+        
+        messageEl.textContent = errorMessage;
         messageEl.classList.add("error");
         return;
       }
