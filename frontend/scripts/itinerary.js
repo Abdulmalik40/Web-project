@@ -22,7 +22,7 @@ let PLACES = [];
 async function loadPlaces() {
   try {
     const response = await fetch("../../data/places_unified.json");
-    PLACES = await response.json();
+    PLACES = await response.json(); // نحولها مصفوفة 
 
     console.log("Loaded places:", PLACES.length);
 
@@ -91,12 +91,12 @@ function enrichPlaceInterests(place) {
 
   if (isEntertainment) interests.push("entertainment");
 
-  if (interests.length === 0) interests.push("entertainment");
+  if (interests.length === 0) interests.push("entertainment"); // اذا المكان ماله تصنيف في الداتا نخليه ترفيهي 
 
   return interests;
 }
 
-function getEnrichedPlaces() {
+function getEnrichedPlaces() { // normalization of data, if it does not have interest or duration, we add it before adding the plan
   return PLACES.map((p) => {
     const interests =
       Array.isArray(p.interests) && p.interests.length > 0
@@ -155,16 +155,16 @@ function matchesBudget(place, budget) {
 // Helpers للوقت
 
 function parseTimeToMinutes(t) {
-  if (!t) return 540;
-  const [h, m] = t.split(":").map(Number);
-  return h * 60 + m;
+  if (!t) return 540; // if there is not time, return 9:00 am
+  const [h, m] = t.split(":").map(Number); // يفصل الوقت إلى ساعة ودقيقة ويحولهما إلى أرقام
+  return h * 60 + m; // مجموع الدقائق
 }
 
-function formatMinutesToTime(mins) {
-  mins = ((mins % 1440) + 1440) % 1440;
-  const h = Math.floor(mins / 60);
+function formatMinutesToTime(mins) { // العكس — تحول لنا عدد الدقائق إلى وقت  "HH:MM".
+  mins = ((mins % 1440) + 1440) % 1440; // يضبط الدقايق بحيث لو تجاوز اليوم (24 ساعة) يرجعها لمدى صحيح
+  const h = Math.floor(mins / 60); // يقسم الدقائق إلى ساعات + دقائق
   const m = mins % 60;
-  return `${h.toString().padStart(2, "0")}:${m
+  return `${h.toString().padStart(2, "0")}:${m // يرجع الناتج بصيغة مرتبة
     .toString()
     .padStart(2, "0")}`;
 }
@@ -182,23 +182,23 @@ function pickPlaceForInterest({
   const bucket = buckets[interest] || [];
   if (bucket.length === 0) return { place: null, cafesUsedToday };
 
-  const allowRepeat = interest === "religion";
+  const allowRepeat = interest === "religion"; // لو الاهتمام religion نسمح بتكرار نفس المكان في أيام/أوقات مختلفة غير كذا ماينفع
 
-  let startIndex = ptrs[interest] || 0;
+  let startIndex = ptrs[interest] || 0; // هنا نجيب من وين وقفنا اخر مرة فهذا الاهتمام.. هذا أساس خوارزمية round-robin.
 
-  for (let offset = 0; offset < bucket.length; offset++) {
+  for (let offset = 0; offset < bucket.length; offset++) { // نلف على الأماكن بدايةً من startIndex وبشكل دائري % bucket.length.
     const idx = (startIndex + offset) % bucket.length;
     const p = bucket[idx];
     const id = getPlaceId(p);
 
-    if (!allowRepeat && usedPlaceIds.has(id)) continue;
+    if (!allowRepeat && usedPlaceIds.has(id)) continue; // لو التكرار غير مسموح وهذا المكان مستخدم قبل → نطنشه ونروح للي بعده.
 
-    if (interest === "food" && isCafe(p)) {
+    if (interest === "food" && isCafe(p)) { // لو الاهتمام أكل وجانا مقهى ووصلنا للحد الأقصى, نسوي له سكب ونزيد العداد
       if (cafesUsedToday >= maxCafesPerDay) continue;
       cafesUsedToday++;
     }
 
-    ptrs[interest] = (idx + 1) % bucket.length;
+    ptrs[interest] = (idx + 1) % bucket.length; // نحدّث المؤشر لهذا الاهتمام عشان المرة الجاية نكمّل من اللي بعده 
 
     if (!allowRepeat) usedPlaceIds.add(id);
 
@@ -226,7 +226,7 @@ function generateItinerary({ city, days, hoursPerDay, interests, budget, startTi
   const hasFood = selectedInterests.includes("food");
   const hasOther = selectedInterests.some((i) => i !== "food");
 
-  let filtered = enrichedPlaces.filter((p) => {
+  let filtered = enrichedPlaces.filter((p) => { // فلترة الأماكن حسب المدينة + الاهتمامات + الميزانية
     const region = (p.region || p.reigon || "").toLowerCase();
     const matchRegion = region.includes(cityNorm);
     if (!matchRegion) return false;
@@ -251,7 +251,7 @@ function generateItinerary({ city, days, hoursPerDay, interests, budget, startTi
 
   console.log("After filter:", filtered.length);
 
-  if (filtered.length === 0) {
+  if (filtered.length === 0) { // لو ما فيه ولا مكان → رجّع أيام فاضية
     return Array.from({ length: days }).map((_, d) => ({
       day: d + 1,
       totalHours: 0,
@@ -259,7 +259,7 @@ function generateItinerary({ city, days, hoursPerDay, interests, budget, startTi
     }));
   }
 
-  filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+  filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0)); // ترتيب الأماكن حسب التقييم
 
   // buckets
   const buckets = {};
@@ -279,14 +279,14 @@ function generateItinerary({ city, days, hoursPerDay, interests, budget, startTi
   const usedIds = new Set();
   const AVG = 1.5;
 
-  const slotsPerDay = Math.max(1, Math.floor(hoursPerDay / AVG));
+  const slotsPerDay = Math.max(1, Math.floor(hoursPerDay / AVG)); // حساب كم مكان نختاره كل يوم ويعتمد على متوسط ساعات اليوم / مدة المكان
 
   const ptrs = {};
-  available.forEach((i) => (ptrs[i] = 0));
+  available.forEach((i) => (ptrs[i] = 0)); // كل اهتمام له مؤشر بداية ك ROUND ROUBIN POINTERS
 
   const startMinutes = parseTimeToMinutes(startTime);
 
-  for (let d = 1; d <= days; d++) {
+  for (let d = 1; d <= days; d++) { // بناء أيام الرحلة ويمر على كل يوم
     let slots = slotsPerDay;
     const chosen = [];
 
@@ -297,7 +297,7 @@ function generateItinerary({ city, days, hoursPerDay, interests, budget, startTi
     const daily = [...available];
 
     // 1) واحد من كل اهتمام
-    for (const interest of daily) {
+    for (const interest of daily) { // أول لفة والهدف منها تمنع تكرار
       if (slots <= 0) break;
       const pick = pickPlaceForInterest({
         interest,
@@ -315,7 +315,7 @@ function generateItinerary({ city, days, hoursPerDay, interests, budget, startTi
       }
     }
 
-    // 2) الباقي round-robin
+    // 2) اللفة الثانية round-robin
     while (slots > 0) {
       let added = false;
       for (const interest of daily) {
@@ -371,7 +371,7 @@ function generateItinerary({ city, days, hoursPerDay, interests, budget, startTi
 
 // 4) الفورم
 
-function setupPlannerForm() {
+function setupPlannerForm() { // يمسك الفورم من الصفحة نفسها اللي فيها (id="plannerForm")
   const plannerForm = document.getElementById("plannerForm");
   if (!plannerForm) {
     console.error("plannerForm not found!");
@@ -400,6 +400,7 @@ function setupPlannerForm() {
       document.querySelectorAll("input[name='interests']:checked")
     ).map((i) => i.value);
 
+    // VALIDATION
     console.log("Form data:", { city, days, hoursPerDay, startTime, budget, interests });
 
     if (!city) {
@@ -413,7 +414,7 @@ function setupPlannerForm() {
     }
 
     // Store form data for saving
-    currentFormData = {
+    currentFormData = { // يخزن البيانات في متغير global currentFormData عشان نستخدمها وقت الحفظ في الداتا بيس
       city,
       days,
       hoursPerDay,
@@ -422,7 +423,7 @@ function setupPlannerForm() {
       budget,
     };
 
-    const itinerary = generateItinerary({
+    const itinerary = generateItinerary({ // ينادي الفنكشن generateItinerary اللي تولّد خطة الأيام بناءً على البيانات
       city,
       days,
       hoursPerDay,
