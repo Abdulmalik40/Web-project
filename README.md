@@ -16,8 +16,6 @@ A comprehensive tourism website for Saudi Arabia featuring Islamic guides, praye
 - 🌐 **Bilingual-ready**: `i18n` module with Arabic and English locale files plus RTL-aware layouts.  
 - ☁️ **Weather integration**: Centralized weather widget and city pages with real-time weather data.
 
-For a narrative description of every page and artifact, see `frontend/site-organization.txt`.
-
 ---
 
 ## Repository Layout
@@ -41,14 +39,6 @@ saudi-tourism-website/
 └── start-server.py, build.js  # Local dev utilities
 ```
 
-Key supporting files:
-- `frontend/site-organization.txt` – report-ready Site Organization section (pages, navigation, artifacts).  
-- `frontend/config/api-keys.js` – wrapper used by weather/map modules (expects OpenWeatherMap key).  
-- `NETWORK_SETUP.md` – networking notes for multi-machine previews.  
-- `deploy.sh` / `build.js` – helper scripts for packaging the static site.
-
----
-
 - 🕌 Islamic Guide and Prayer Times
 - 🧭 Qibla Direction Finder
 - 📖 Quran Reader
@@ -61,7 +51,7 @@ Key supporting files:
 
 - **PHP 8.2+** with Composer (for backend)
 - **PostgreSQL** database server
-- **Python 3** or **Node.js** (for frontend static server)
+- **Python 3** or **Node.js** (local frontend static server)
 
 ## Setup Instructions
 
