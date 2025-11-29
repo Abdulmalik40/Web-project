@@ -55,7 +55,10 @@
     "aseer": "عسير",
     "alkhobar": "الخبر",
     "lands": "الأراضي",
-    "developmentProject": "مشروع تطوير"
+    "developmentProject": "مشروع تطوير",
+    "planner": "مسؤول الخطط",
+    "plannerScheduler": "قم بتوليد خطتك المثالية الان",
+    "Assistant": "مساعد"
   },
   "tourPlans": {
     "eyebrow": "تجارب مختارة",

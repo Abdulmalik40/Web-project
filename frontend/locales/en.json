@@ -55,7 +55,10 @@
     "aseer": "Aseer",
     "alkhobar": "Al-Khobar",
     "lands": "Lands",
-    "developmentProject": "Development Project"
+    "developmentProject": "Development Project",
+    "planner": "planner",
+    "plannerScheduler": "generate the perfect plan for your self",
+    "Assistant": "Assistant"
   },
   "tourPlans": {
     "eyebrow": "Curated Experiences",
