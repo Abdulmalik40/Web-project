@@ -200,7 +200,7 @@ Navigation, authentication guards, and asset inventories are detailed in `fronte
 - Expand multilingual support beyond ar/en
 - Add more interactive map features
 - Implement advanced search and filtering
-- Package with Docker + Nginx for production deployment
+- Package with Docker for production deployment
 - Add admin panel for content management
 
 ---
