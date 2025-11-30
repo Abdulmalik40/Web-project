@@ -4,6 +4,7 @@
  * Supports light/dark themes and RTL
  */
 
+/* Primary container with gradient background and cultural accent line */
 .weather-widget {
     background: linear-gradient(135deg, #A78BBA 0%, #E8D5C4 100%);
     border-radius: 16px;

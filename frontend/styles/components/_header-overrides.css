@@ -1,5 +1,7 @@
 /* Global header and dropdown overrides to keep headers consistent across pages */
-.brand-mark { display: none; }
+.brand-mark {
+  display: none;
+}
 
 .header {
   background: rgba(26, 26, 26, 0.8);
@@ -63,7 +65,9 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="light"] .nav .dropdown a { color: #2a2a2a; }
+[data-theme="light"] .nav .dropdown a {
+  color: #2a2a2a;
+}
 [data-theme="light"] .nav .dropdown a:hover {
   background: rgba(0, 108, 53, 0.08);
   color: #006c35;
@@ -79,5 +83,3 @@
   background: rgba(0, 108, 53, 0.3);
   border-color: rgba(0, 108, 53, 0.6);
 }
-
-

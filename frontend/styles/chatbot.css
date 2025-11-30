@@ -428,7 +428,7 @@ body.show-emoji-picker em-emoji-picker {
   margin-left: -10px;
 }
 
-[dir="rtl"] .message .bot-message img{
+[dir="rtl"] .message .bot-message img {
   direction: ltr;
 }
 
@@ -458,4 +458,3 @@ body.show-emoji-picker em-emoji-picker {
 [dir="rtl"] .chat-header .header-info .status-text {
   text-align: right;
 }
-

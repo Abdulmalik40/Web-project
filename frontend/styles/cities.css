@@ -2,6 +2,7 @@
    HISTORY / CITY SECTIONS (inside <main class="history-container">)
    ============================================================ */
 
+/* Main section wrapper with flex layout */
 .section {
   position: relative;
   min-height: 80vh;
@@ -109,6 +110,7 @@
    ANIMATIONS (used by hero)
    ============================================================ */
 
+/* Slide in from left animation */
 @keyframes slideInLeft {
   from {
     opacity: 0;

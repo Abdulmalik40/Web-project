@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Tajawal", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: #f5f5f5;
   color: #333;
   line-height: 1.6;
@@ -383,7 +383,7 @@ body {
 /* Popup Styles */
 .place-popup {
   max-width: 300px;
-  font-family: 'Tajawal', sans-serif;
+  font-family: "Tajawal", sans-serif;
   direction: rtl;
 }
 
@@ -508,23 +508,23 @@ body {
   .main-container {
     flex-direction: column;
   }
-  
+
   .sidebar {
     width: 100%;
     border-left: none;
     border-bottom: 1px solid #e5e7eb;
   }
-  
+
   .category-filters {
     grid-template-columns: 1fr;
   }
-  
+
   .header-inner {
     padding: 0 1rem;
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .nav {
     gap: 1rem;
   }
@@ -536,29 +536,29 @@ body {
     background: #1a1a1a;
     color: #f0f0f0;
   }
-  
+
   .sidebar {
     background: #2a2a2a;
     border-left-color: #404040;
   }
-  
+
   .control-input,
   .control-select {
     background: #3a3a3a;
     border-color: #404040;
     color: #f0f0f0;
   }
-  
+
   .filter-section {
     background: #3a3a3a;
     border-color: #404040;
   }
-  
+
   .loading {
     background: #2a2a2a;
     border-color: #404040;
   }
-  
+
   .loading p {
     color: #4ade80;
   }

@@ -26,7 +26,7 @@
 }
 
 .makkah-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -81,7 +81,7 @@
 }
 
 .riyadh-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -123,7 +123,7 @@
 }
 
 .vision-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -258,7 +258,7 @@
 }
 
 .main-nav .nav-link.active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 50%;
@@ -306,7 +306,7 @@
 }
 
 .islamic-guide-nav .nav-link.active::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 50%;
@@ -332,7 +332,7 @@
 }
 
 .section-header::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -353,7 +353,7 @@
 }
 
 .subsection-header::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -369,31 +369,44 @@
 
 /* Hero Section with Saudi Cultural Colors */
 .hero-section {
-  background: linear-gradient(135deg, var(--color-bg-base), var(--color-bg-surface));
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-base),
+    var(--color-bg-surface)
+  );
   position: relative;
   padding: 80px 0;
   overflow: hidden;
 }
 
 .hero-section::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent 0%, rgba(0, 108, 53, 0.05) 100%);
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(0, 108, 53, 0.05) 100%
+  );
   pointer-events: none;
 }
 
 .hero-section::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--color-accent-saudi-green), var(--color-accent-lavender), var(--color-accent-gold));
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-saudi-green),
+    var(--color-accent-lavender),
+    var(--color-accent-gold)
+  );
 }
 
 .hero-title {
@@ -422,18 +435,18 @@
     padding: 16px 20px;
     font-size: 1.1rem;
   }
-  
+
   .explore-all-button {
     width: 100%;
     text-align: center;
     padding: 20px 32px;
     font-size: 1.2rem;
   }
-  
+
   .hero-title {
     font-size: 2.5rem;
   }
-  
+
   .section-header {
     font-size: 2rem;
   }
@@ -444,7 +457,7 @@
   .tourism-card {
     padding: 20px;
   }
-  
+
   .hero-title {
     font-size: 3rem;
   }
@@ -481,7 +494,7 @@
   .main-nav .nav-link {
     transition: none;
   }
-  
+
   .tourism-card:hover,
   .explore-all-button:hover,
   .main-nav .nav-link:hover {

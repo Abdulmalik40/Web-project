@@ -1,4 +1,11 @@
-/* frontend/styles/utils/_responsive.css */
+/* 
+   RESPONSIVE DESIGN UTILITIES
+   
+   Mobile-first responsive breakpoints and adjustments.
+   Handles layout changes for tablets and mobile devices.
+ */
+
+/*  Mobile Breakpoint (768px and below)  */
 @media (max-width: 768px) {
     .header-inner {
       padding: 12px 20px;

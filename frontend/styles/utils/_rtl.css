@@ -1,6 +1,13 @@
-/* RTL (Right-to-Left) Support for Arabic Language */
+/* 
+   RTL (RIGHT-TO-LEFT) SUPPORT
+   
+   This file provides comprehensive RTL support for Arabic language.
+   Includes layout reversals, text alignment, and component adjustments.
+   All styles are scoped to [dir="rtl"] or .rtl classes.
+    */
 
-/* Base RTL styles */
+/*  Base RTL Styles  */
+/* Fundamental direction and text alignment for RTL */
 [dir="rtl"],
 .rtl {
   direction: rtl;

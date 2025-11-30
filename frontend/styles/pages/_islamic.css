@@ -1,123 +1,125 @@
 /* frontend/styles/pages/_islamic.css */
 .islamic-tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    margin-top: 32px;
-  }
-  
-  .section-header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  .section-title {
-    font-family: "Cairo", sans-serif;
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 16px;
-    background: linear-gradient(135deg, var(--saudi-green), var(--saudi-gold));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .section-desc {
-    color: var(--text-light);
-    font-size: 1.1rem;
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-  
-  .controls-section {
-    background: var(--bg-primary);
-    border-radius: var(--radius-xl);
-    padding: 32px;
-    margin-bottom: 40px;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-  }
-  
-  .control-group {
-    margin-bottom: 24px;
-  }
-  
-  .control-label {
-    display: block;
-    font-family: "Cairo", sans-serif;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 12px;
-    font-size: 1.1rem;
-  }
-  
-  select, input {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: var(--radius-md);
-    background: var(--bg-primary);
-    color: var(--text);
-    font-family: "Inter", sans-serif;
-    font-size: 1rem;
-    transition: all 0.2s ease;
-  }
-  
-  select:focus, input:focus {
-    outline: none;
-    border-color: var(--saudi-green);
-    box-shadow: 0 0 0 3px rgba(0, 98, 51, 0.1);
-  }
-  
-  .player-section {
-    background: var(--bg-primary);
-    border-radius: var(--radius-xl);
-    padding: 32px;
-    margin-bottom: 40px;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    display: none;
-  }
-  
-  .player-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  }
-  
-  .current-info h3 {
-    font-family: "Cairo", sans-serif;
-    font-size: 1.4rem;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-  
-  .current-info p {
-    color: var(--text-light);
-    font-size: 0.95rem;
-  }
-  
-  .audio-player {
-    width: 100%;
-    margin-top: 16px;
-  }
-  
-  .loading {
-    text-align: center;
-    padding: 40px;
-    color: var(--text-light);
-  }
-  
-  .error {
-    background: rgba(206, 17, 38, 0.1);
-    border: 1px solid var(--saudi-red);
-    border-radius: var(--radius-md);
-    padding: 20px;
-    margin: 20px 0;
-    color: var(--saudi-red);
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-family: "Cairo", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--saudi-green), var(--saudi-gold));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-desc {
+  color: var(--text-light);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.controls-section {
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.control-group {
+  margin-bottom: 24px;
+}
+
+.control-label {
+  display: block;
+  font-family: "Cairo", sans-serif;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+select,
+input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+  border-color: var(--saudi-green);
+  box-shadow: 0 0 0 3px rgba(0, 98, 51, 0.1);
+}
+
+.player-section {
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: none;
+}
+
+.player-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.current-info h3 {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.4rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.current-info p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.audio-player {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-light);
+}
+
+.error {
+  background: rgba(206, 17, 38, 0.1);
+  border: 1px solid var(--saudi-red);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin: 20px 0;
+  color: var(--saudi-red);
+}

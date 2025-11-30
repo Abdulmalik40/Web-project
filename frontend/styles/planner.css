@@ -1,11 +1,13 @@
-/* ========================================
-   SAUDI TOURISM – PLANNER STYLES
-   Uses the same Saudi cultural token system:
-   - Colors: --color-*
-   - Shadows: --shadow-*
-   - Radii:  (optional) --radius-*
-   ======================================== */
+/* ============================================================
+   TRIP PLANNER PAGE STYLES
+   ============================================================
+   Interactive trip planner with form inputs, filters, and itinerary results.
+   Uses Saudi cultural token system for consistent theming.
+   Supports saved plans, confirmation dialogs, and RTL layouts.
+   ============================================================ */
 
+/* ========== Base Styles ========== */
+/* Body and typography setup */
 body {
   font-family: "Tajawal", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
@@ -21,6 +23,8 @@ body {
   padding: 0 16px 40px;
 }
 
+/* ========== Planner Card ========== */
+/* Main container card for planner form */
 .planner-card {
   background: var(--color-bg-surface);
   border-radius: 20px;
@@ -86,7 +90,8 @@ body {
   box-shadow: 0 0 0 1px var(--color-accent-emerald);
 }
 
-/* Chips (interests, pace, etc.) */
+/* ========== Chip Selection ========== */
+/* Chips for selecting interests, pace, etc. */
 .chips-group {
   display: flex;
   flex-wrap: wrap;
@@ -112,7 +117,8 @@ body {
   accent-color: var(--color-accent-emerald);
 }
 
-/* Actions row */
+/* ========== Action Buttons ========== */
+/* Row of action buttons (Generate, Clear, etc.) */
 .planner-actions {
   margin-top: 18px;
   display: flex;
@@ -121,7 +127,7 @@ body {
   justify-content: flex-end;
 }
 
-/* Primary CTA */
+/* Primary CTA button */
 .btn-primary {
   border: none;
   border-radius: 999px;
@@ -153,7 +159,8 @@ body {
   cursor: pointer;
 }
 
-/* Itinerary result list */
+/* ========== Itinerary Results ========== */
+/* Container for generated itinerary results */
 .itinerary-result {
   margin-top: 24px;
 }
@@ -210,7 +217,8 @@ body {
   font-size: 0.85rem;
 }
 
-/* Saved Plans Styles */
+/* ========== Saved Plans ========== */
+/* Styles for saved trip plans */
 .saved-plan-card {
   background: var(--color-bg-elevated, var(--color-bg-surface));
   border-radius: 14px;
@@ -276,7 +284,8 @@ body {
   background: var(--color-bg-surface);
 }
 
-/* Confirmation Dialog */
+/* ========== Confirmation Dialog ========== */
+/* Modal dialog for confirming actions (e.g., delete plan) */
 .confirmation-dialog {
   position: fixed;
   top: 0;
@@ -320,8 +329,10 @@ body {
 }
 
 /* ============================================================
-   RTL SUPPORT
-   Mirrors layout and alignment when html[dir="rtl"]
+   RTL (RIGHT-TO-LEFT) SUPPORT
+   ============================================================
+   Layout and alignment adjustments for Arabic language
+   Mirrors layout when html[dir="rtl"]
    ============================================================ */
 
 [dir="rtl"] .page-wrapper {

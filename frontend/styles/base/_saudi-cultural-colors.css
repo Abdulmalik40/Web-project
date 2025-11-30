@@ -6,157 +6,173 @@
 /* LIGHT MODE - Pure White Base */
 :root {
   /* === CORE SAUDI CULTURAL COLORS (MANDATORY) === */
-  --color-accent-saudi-green: #006C35;        /* Saudi National Green - CTAs, badges, key actions */
-  --color-accent-lavender: #A78BBA;
-  --color-accent-lavender-dark: #5b456a;            /* Vision 2030 Lavender - hover effects, dividers, accents */
-  --color-accent-gold: #FFD700;               /* Desert Sunset Gold - decorative lines, icons, highlights */
-  --color-accent-ruby: #822659;               /* Heritage Ruby - premium, featured, special tags */
-  --color-accent-teal: #004D61;               /* Skyline Teal - modern accents, info sections */
+  --color-accent-saudi-green: #006c35; /* Saudi National Green - CTAs, badges, key actions */
+  --color-accent-lavender: #a78bba;
+  --color-accent-lavender-dark: #5b456a; /* Vision 2030 Lavender - hover effects, dividers, accents */
+  --color-accent-gold: #ffd700; /* Desert Sunset Gold - decorative lines, icons, highlights */
+  --color-accent-ruby: #822659; /* Heritage Ruby - premium, featured, special tags */
+  --color-accent-teal: #004d61; /* Skyline Teal - modern accents, info sections */
 
   /* === EXTRA ACCENT GREEN (LEGACY / EMERALD) === */
-  --color-accent-emerald: #2ECC71;            /* Soft emerald accent (previous green from older designs) */
-  --accent-legacy-green: #2ECC71;             /* Alias for backwards compatibility with old --accent-green usage */
+  --color-accent-emerald: #2ecc71; /* Soft emerald accent (previous green from older designs) */
+  --accent-legacy-green: #2ecc71; /* Alias for backwards compatibility with old --accent-green usage */
 
-  --color-text-off-white: #F0F0F0;           /* Off-White Text (dark mode) */
-  --color-bg-midnight: #1A1A1A;               /* Midnight Black (dark mode base) */
-  --color-bg-pure-white: #FFFFFF;            /* Pure White (light mode base) */
+  --color-text-off-white: #f0f0f0; /* Off-White Text (dark mode) */
+  --color-bg-midnight: #1a1a1a; /* Midnight Black (dark mode base) */
+  --color-bg-pure-white: #ffffff; /* Pure White (light mode base) */
 
   /* === LIGHT MODE BACKGROUND SYSTEM === */
-  --color-bg-base: #FFFFFF;                  /* Pure white - main background */
-  --color-bg-surface: #F8F8F8;               /* Soft off-white - cards, panels */
-  --color-bg-elevated: #F5F5F5;              /* Elevated surfaces - modals, dropdowns */
+  --color-bg-base: #ffffff; /* Pure white - main background */
+  --color-bg-surface: #f8f8f8; /* Soft off-white - cards, panels */
+  --color-bg-elevated: #f5f5f5; /* Elevated surfaces - modals, dropdowns */
   --color-bg-glass: rgba(255, 255, 255, 0.85); /* Glass morphism */
-  --color-bg-overlay: rgba(26, 26, 26, 0.6);   /* Modal overlays */
+  --color-bg-overlay: rgba(26, 26, 26, 0.6); /* Modal overlays */
 
   /* === LIGHT MODE TEXT SYSTEM === */
-  --color-text-primary: #1A1A1A;             /* Rich black - main text */
-  --color-text-secondary: #555555;            /* Secondary text */
-  --color-text-tertiary: #777777;            /* Muted text */
-  --color-text-disabled: #AAAAAA;            /* Disabled text */
-  --color-text-inverse: #FFFFFF;             /* White text on dark backgrounds */
+  --color-text-primary: #1a1a1a; /* Rich black - main text */
+  --color-text-secondary: #555555; /* Secondary text */
+  --color-text-tertiary: #777777; /* Muted text */
+  --color-text-disabled: #aaaaaa; /* Disabled text */
+  --color-text-inverse: #ffffff; /* White text on dark backgrounds */
 
   /* === LIGHT MODE INTERACTIVE ELEMENTS === */
-  --color-button-primary: #006C35;           /* Saudi green - primary CTAs */
-  --color-button-primary-hover: #008A42;     /* Darker green on hover */
-  --color-button-primary-active: #005229;    /* Active state */
-  --color-button-secondary: #004D61;         /* Teal - secondary buttons */
-  --color-button-secondary-hover: #006B7A;   /* Darker teal on hover */
-  --color-button-tertiary: transparent;      /* Ghost buttons */
-  --color-button-tertiary-border: #A78BBA;   /* Lavender border */
-  --color-button-tertiary-text: #A78BBA;     /* Lavender text */
-  --color-button-text: #FFFFFF;              /* White text on buttons */
+  --color-button-primary: #006c35; /* Saudi green - primary CTAs */
+  --color-button-primary-hover: #008a42; /* Darker green on hover */
+  --color-button-primary-active: #005229; /* Active state */
+  --color-button-secondary: #004d61; /* Teal - secondary buttons */
+  --color-button-secondary-hover: #006b7a; /* Darker teal on hover */
+  --color-button-tertiary: transparent; /* Ghost buttons */
+  --color-button-tertiary-border: #a78bba; /* Lavender border */
+  --color-button-tertiary-text: #a78bba; /* Lavender text */
+  --color-button-text: #ffffff; /* White text on buttons */
 
   /* === LIGHT MODE BORDERS & DIVIDERS === */
-  --color-border: #DDDDDD;                    /* Light borders */
-  --color-border-subtle: #EEEEEE;             /* Very subtle borders */
-  --color-border-accent: #006C35;            /* Saudi green borders */
-  --color-border-lavender: #A78BBA;          /* Lavender accent borders */
-  --color-border-gold: #FFD700;              /* Gold accent borders */
-  --color-divider: #DDDDDD;                  /* Section dividers */
+  --color-border: #dddddd; /* Light borders */
+  --color-border-subtle: #eeeeee; /* Very subtle borders */
+  --color-border-accent: #006c35; /* Saudi green borders */
+  --color-border-lavender: #a78bba; /* Lavender accent borders */
+  --color-border-gold: #ffd700; /* Gold accent borders */
+  --color-divider: #dddddd; /* Section dividers */
 
   /* === LIGHT MODE HOVER & FOCUS STATES === */
   --color-hover-overlay: rgba(167, 139, 186, 0.05); /* 5% lavender overlay */
-  --color-hover-primary: rgba(0, 108, 53, 0.08);    /* Saudi green hover */
+  --color-hover-primary: rgba(0, 108, 53, 0.08); /* Saudi green hover */
   --color-hover-lavender: rgba(167, 139, 186, 0.08); /* Lavender hover */
-  --color-focus-ring: rgba(0, 108, 53, 0.3);        /* Focus ring */
-  --color-active: rgba(0, 108, 53, 0.12);           /* Active state */
+  --color-focus-ring: rgba(0, 108, 53, 0.3); /* Focus ring */
+  --color-active: rgba(0, 108, 53, 0.12); /* Active state */
 
   /* === LIGHT MODE BADGE/TAG SYSTEM === */
-  --color-badge-religious: #006C35;          /* Religious tags */
-  --color-badge-capital: #822659;            /* Capital tags */
-  --color-badge-industrial: #004D61;         /* Industrial tags */
-  --color-badge-heritage: #FFD700;           /* Heritage tags */
-  --color-badge-vision: #A78BBA;             /* Vision 2030 tags */
-  --color-badge-text: #FFFFFF;               /* White text on badges */
+  --color-badge-religious: #006c35; /* Religious tags */
+  --color-badge-capital: #822659; /* Capital tags */
+  --color-badge-industrial: #004d61; /* Industrial tags */
+  --color-badge-heritage: #ffd700; /* Heritage tags */
+  --color-badge-vision: #a78bba; /* Vision 2030 tags */
+  --color-badge-text: #ffffff; /* White text on badges */
 
   /* === LIGHT MODE ACCENT LINES === */
-  --color-accent-line: #FFD700;              /* Gold accent lines under headers */
-  --color-nav-active: #006C35;               /* Navigation active state underline */
+  --color-accent-line: #ffd700; /* Gold accent lines under headers */
+  --color-nav-active: #006c35; /* Navigation active state underline */
 
   /* === LIGHT MODE SHADOWS === */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-saudi: 0 4px 12px rgba(0, 108, 53, 0.15); /* Saudi green shadow */
 }
 
 /* DARK MODE - Midnight Black Base */
 [data-theme="dark"] {
   /* === CORE SAUDI CULTURAL COLORS (unchanged) === */
-  --color-accent-saudi-green: #006C35;        /* Saudi National Green - unchanged */
-  --color-accent-lavender: #A78BBA;
-  --color-accent-lavender-dark: #5b456a;           /* Vision 2030 Lavender - unchanged */
-  --color-accent-gold: #FFD700;               /* Desert Sunset Gold - unchanged */
-  --color-accent-ruby: #822659;               /* Heritage Ruby - unchanged */
-  --color-accent-teal: #004D61;               /* Skyline Teal - unchanged */
+  --color-accent-saudi-green: #006c35; /* Saudi National Green - unchanged */
+  --color-accent-lavender: #a78bba;
+  --color-accent-lavender-dark: #5b456a; /* Vision 2030 Lavender - unchanged */
+  --color-accent-gold: #ffd700; /* Desert Sunset Gold - unchanged */
+  --color-accent-ruby: #822659; /* Heritage Ruby - unchanged */
+  --color-accent-teal: #004d61; /* Skyline Teal - unchanged */
 
   /* === EXTRA ACCENT GREEN (LEGACY / EMERALD) === */
-  --color-accent-emerald: #2ECC71;            /* Same emerald accent in dark mode */
-  --accent-legacy-green: #2ECC71;             /* Alias for backwards compatibility */
+  --color-accent-emerald: #2ecc71; /* Same emerald accent in dark mode */
+  --accent-legacy-green: #2ecc71; /* Alias for backwards compatibility */
 
-  --color-text-off-white: #F0F0F0;           /* Off-White Text - unchanged */
-  --color-bg-midnight: #1A1A1A;               /* Midnight Black - unchanged */
-  --color-bg-pure-white: #FFFFFF;            /* Pure White - unchanged */
+  --color-text-off-white: #f0f0f0; /* Off-White Text - unchanged */
+  --color-bg-midnight: #1a1a1a; /* Midnight Black - unchanged */
+  --color-bg-pure-white: #ffffff; /* Pure White - unchanged */
 
   /* === DARK MODE BACKGROUND SYSTEM === */
-  --color-bg-base: #1A1A1A;                  /* Midnight Black - main background */
-  --color-bg-surface: #222222;               /* Slightly lighter for depth - cards, panels */
-  --color-bg-elevated: #2A2A2A;             /* Elevated surfaces - modals, dropdowns */
-  --color-bg-glass: rgba(26, 26, 26, 0.85);  /* Dark glass morphism */
-  --color-bg-overlay: rgba(0, 0, 0, 0.8);    /* Dark modal overlays */
+  --color-bg-base: #1a1a1a; /* Midnight Black - main background */
+  --color-bg-surface: #222222; /* Slightly lighter for depth - cards, panels */
+  --color-bg-elevated: #2a2a2a; /* Elevated surfaces - modals, dropdowns */
+  --color-bg-glass: rgba(26, 26, 26, 0.85); /* Dark glass morphism */
+  --color-bg-overlay: rgba(0, 0, 0, 0.8); /* Dark modal overlays */
 
   /* === DARK MODE TEXT SYSTEM === */
-  --color-text-primary: #F0F0F0;             /* Off-white - main text */
-  --color-text-secondary: #CCCCCC;          /* Softer gray - secondary text */
-  --color-text-tertiary: #AAAAAA;           /* Muted gray - captions, labels */
-  --color-text-disabled: #666666;           /* Disabled text */
-  --color-text-inverse: #1A1A1A;            /* Dark text on light backgrounds */
+  --color-text-primary: #f0f0f0; /* Off-white - main text */
+  --color-text-secondary: #cccccc; /* Softer gray - secondary text */
+  --color-text-tertiary: #aaaaaa; /* Muted gray - captions, labels */
+  --color-text-disabled: #666666; /* Disabled text */
+  --color-text-inverse: #1a1a1a; /* Dark text on light backgrounds */
 
   /* === DARK MODE INTERACTIVE ELEMENTS === */
-  --color-button-primary: #006C35;           /* Saudi green - unchanged */
-  --color-button-primary-hover: #008A42;     /* Darker green on hover */
-  --color-button-primary-active: #005229;    /* Active state */
-  --color-button-secondary: #004D61;         /* Teal - unchanged */
-  --color-button-secondary-hover: #006B7A;   /* Darker teal on hover */
-  --color-button-tertiary: transparent;      /* Ghost buttons */
-  --color-button-tertiary-border: #A78BBA;   /* Lavender border */
-  --color-button-tertiary-text: #A78BBA;     /* Lavender text */
-  --color-button-text: #FFFFFF;              /* White text on buttons */
+  --color-button-primary: #006c35; /* Saudi green - unchanged */
+  --color-button-primary-hover: #008a42; /* Darker green on hover */
+  --color-button-primary-active: #005229; /* Active state */
+  --color-button-secondary: #004d61; /* Teal - unchanged */
+  --color-button-secondary-hover: #006b7a; /* Darker teal on hover */
+  --color-button-tertiary: transparent; /* Ghost buttons */
+  --color-button-tertiary-border: #a78bba; /* Lavender border */
+  --color-button-tertiary-text: #a78bba; /* Lavender text */
+  --color-button-text: #ffffff; /* White text on buttons */
 
   /* === DARK MODE BORDERS & DIVIDERS === */
-  --color-border: #333333;                  /* Dark borders */
-  --color-border-subtle: #444444;           /* Subtle dark borders */
-  --color-border-accent: #006C35;          /* Saudi green borders */
-  --color-border-lavender: #A78BBA;         /* Lavender accent borders */
-  --color-border-gold: #FFD700;             /* Gold accent borders */
-  --color-divider: #333333;                 /* Dark section dividers */
+  --color-border: #333333; /* Dark borders */
+  --color-border-subtle: #444444; /* Subtle dark borders */
+  --color-border-accent: #006c35; /* Saudi green borders */
+  --color-border-lavender: #a78bba; /* Lavender accent borders */
+  --color-border-gold: #ffd700; /* Gold accent borders */
+  --color-divider: #333333; /* Dark section dividers */
 
   /* === DARK MODE HOVER & FOCUS STATES === */
   --color-hover-overlay: rgba(167, 139, 186, 0.1); /* 10% lavender overlay */
-  --color-hover-primary: rgba(0, 108, 53, 0.15);   /* Enhanced Saudi green hover */
-  --color-hover-lavender: rgba(167, 139, 186, 0.12); /* Enhanced lavender hover */
-  --color-focus-ring: rgba(0, 108, 53, 0.4);        /* Enhanced focus ring */
-  --color-active: rgba(0, 108, 53, 0.2);            /* Enhanced active state */
+  --color-hover-primary: rgba(
+    0,
+    108,
+    53,
+    0.15
+  ); /* Enhanced Saudi green hover */
+  --color-hover-lavender: rgba(
+    167,
+    139,
+    186,
+    0.12
+  ); /* Enhanced lavender hover */
+  --color-focus-ring: rgba(0, 108, 53, 0.4); /* Enhanced focus ring */
+  --color-active: rgba(0, 108, 53, 0.2); /* Enhanced active state */
 
   /* === DARK MODE BADGE/TAG SYSTEM === */
-  --color-badge-religious: #006C35;          /* Religious tags */
-  --color-badge-capital: #822659;            /* Capital tags */
-  --color-badge-industrial: #004D61;         /* Industrial tags */
-  --color-badge-heritage: #FFD700;           /* Heritage tags */
-  --color-badge-vision: #A78BBA;            /* Vision 2030 tags */
-  --color-badge-text: #FFFFFF;               /* White text on badges */
+  --color-badge-religious: #006c35; /* Religious tags */
+  --color-badge-capital: #822659; /* Capital tags */
+  --color-badge-industrial: #004d61; /* Industrial tags */
+  --color-badge-heritage: #ffd700; /* Heritage tags */
+  --color-badge-vision: #a78bba; /* Vision 2030 tags */
+  --color-badge-text: #ffffff; /* White text on badges */
 
   /* === DARK MODE ACCENT LINES === */
-  --color-accent-line: #FFD700;              /* Gold accent lines under headers */
-  --color-nav-active: #006C35;               /* Navigation active state underline */
+  --color-accent-line: #ffd700; /* Gold accent lines under headers */
+  --color-nav-active: #006c35; /* Navigation active state underline */
 
   /* === DARK MODE SHADOWS === */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
-  --shadow-saudi: 0 4px 12px rgba(0, 108, 53, 0.3);  /* Enhanced Saudi green shadow */
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4),
+    0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4),
+    0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5),
+    0 10px 10px -5px rgba(0, 0, 0, 0.4);
+  --shadow-saudi: 0 4px 12px rgba(0, 108, 53, 0.3); /* Enhanced Saudi green shadow */
 }
 
 /* ========================================
@@ -243,13 +259,17 @@
 }
 
 .tourism-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--color-accent-saudi-green), var(--color-accent-lavender));
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-saudi-green),
+    var(--color-accent-lavender)
+  );
   border-radius: 12px 12px 0 0;
 }
 
@@ -316,7 +336,7 @@
 }
 
 .nav-link.active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -334,7 +354,7 @@
 }
 
 .section-header::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
