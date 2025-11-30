@@ -67,7 +67,11 @@ a {
   width: 40px;
   height: 40px;
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, var(--color-accent-saudi-green), var(--color-accent-gold));
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-saudi-green),
+    var(--color-accent-gold)
+  );
   box-shadow: var(--shadow-saudi);
   position: relative;
   overflow: hidden;
@@ -81,7 +85,12 @@ a {
   right: 2px;
   bottom: 2px;
   border-radius: var(--radius-sm);
-  background: conic-gradient(from 140deg, var(--color-accent-gold), var(--color-accent-gold), var(--color-accent-gold));
+  background: conic-gradient(
+    from 140deg,
+    var(--color-accent-gold),
+    var(--color-accent-gold),
+    var(--color-accent-gold)
+  );
 }
 
 .brand-title {
@@ -152,7 +161,7 @@ a {
 }
 
 .nav .item a.active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 50%;
@@ -164,8 +173,14 @@ a {
 }
 
 /* Islamic Guide dropdown in header */
-.nav .has-dropdown { position: relative; }
-.nav .has-dropdown > a { display: inline-flex; align-items: center; gap: 6px; }
+.nav .has-dropdown {
+  position: relative;
+}
+.nav .has-dropdown > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
 .nav .dropdown {
   position: absolute;
   top: 100%;
@@ -181,11 +196,11 @@ a {
   display: none;
   z-index: 1001;
 }
-.nav .dropdown a { 
-  display: block; 
-  color: var(--color-text-primary); 
-  padding: 12px 16px; 
-  border-radius: 10px; 
+.nav .dropdown a {
+  display: block;
+  color: var(--color-text-primary);
+  padding: 12px 16px;
+  border-radius: 10px;
   margin-bottom: 4px;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -194,15 +209,15 @@ a {
   position: relative;
 }
 
-.nav .dropdown a:hover { 
-  background: var(--color-hover-lavender); 
+.nav .dropdown a:hover {
+  background: var(--color-hover-lavender);
   color: var(--color-accent-saudi-green);
   transform: translateX(4px);
   box-shadow: 0 2px 8px rgba(167, 139, 186, 0.2);
 }
 
 .nav .dropdown a::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 50%;
@@ -218,7 +233,9 @@ a {
   height: 20px;
 }
 .nav .has-dropdown:hover .dropdown,
-.nav .has-dropdown:focus-within .dropdown { display: block; }
+.nav .has-dropdown:focus-within .dropdown {
+  display: block;
+}
 
 /* Hero Section - Full Screen NEOM */
 .hero {
@@ -254,16 +271,27 @@ a {
 }
 
 @keyframes heroZoom {
-  0% { transform: scale(1.1); }
-  100% { transform: scale(1.2); }
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(circle at 30% 20%, rgba(0, 98, 51, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(247, 220, 111, 0.2) 0%, transparent 50%),
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(0, 98, 51, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(247, 220, 111, 0.2) 0%,
+      transparent 50%
+    ),
     linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 100%);
   z-index: 2;
 }
@@ -283,51 +311,62 @@ a {
   animation: float 8s ease-in-out infinite;
 }
 
-.particle:nth-child(1) { 
-  width: 6px; height: 6px; 
-  top: 20%; left: 10%; 
+.particle:nth-child(1) {
+  width: 6px;
+  height: 6px;
+  top: 20%;
+  left: 10%;
   animation-delay: 0s;
   animation-duration: 6s;
 }
-.particle:nth-child(2) { 
-  width: 4px; height: 4px; 
-  top: 70%; left: 85%; 
+.particle:nth-child(2) {
+  width: 4px;
+  height: 4px;
+  top: 70%;
+  left: 85%;
   animation-delay: 2s;
   animation-duration: 8s;
 }
-.particle:nth-child(3) { 
-  width: 8px; height: 8px; 
-  top: 50%; left: 5%; 
+.particle:nth-child(3) {
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  left: 5%;
   animation-delay: 4s;
   animation-duration: 10s;
 }
-.particle:nth-child(4) { 
-  width: 5px; height: 5px; 
-  top: 30%; left: 90%; 
+.particle:nth-child(4) {
+  width: 5px;
+  height: 5px;
+  top: 30%;
+  left: 90%;
   animation-delay: 1s;
   animation-duration: 7s;
 }
-.particle:nth-child(5) { 
-  width: 7px; height: 7px; 
-  top: 80%; left: 60%; 
+.particle:nth-child(5) {
+  width: 7px;
+  height: 7px;
+  top: 80%;
+  left: 60%;
   animation-delay: 3s;
   animation-duration: 9s;
 }
 
 @keyframes float {
-  0%, 100% { 
+  0%,
+  100% {
     transform: translateY(0px) translateX(0px) rotate(0deg);
     opacity: 0.7;
   }
-  25% { 
+  25% {
     transform: translateY(-30px) translateX(10px) rotate(90deg);
     opacity: 1;
   }
-  50% { 
+  50% {
     transform: translateY(-20px) translateX(-15px) rotate(180deg);
     opacity: 0.8;
   }
-  75% { 
+  75% {
     transform: translateY(-40px) translateX(20px) rotate(270deg);
     opacity: 0.9;
   }
@@ -373,7 +412,11 @@ a {
 .title-line:first-child {
   font-size: clamp(1.5rem, 4vw, 3rem);
   color: rgba(255, 255, 255, 0);
-  background: linear-gradient(149deg, var(--color-accent-lavender-dark) 10%, var(--color-accent-lavender) 30%);
+  background: linear-gradient(
+    149deg,
+    var(--color-accent-lavender-dark) 10%,
+    var(--color-accent-lavender) 30%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   margin-bottom: 8px;
@@ -384,8 +427,12 @@ a {
   font-size: clamp(3rem, 8vw, 7rem);
   font-weight: 900;
   color: rgba(255, 255, 255, 0);
-  background: linear-gradient(120deg, var(--color-accent-saudi-green) 10%, var(--accent-legacy-green) 60%);
-   background-clip: text;
+  background: linear-gradient(
+    120deg,
+    var(--color-accent-saudi-green) 10%,
+    var(--accent-legacy-green) 60%
+  );
+  background-clip: text;
   -webkit-background-clip: text;
   margin-bottom: 8px;
   animation: slideInRight 1s ease-out 0.8s both;
@@ -434,10 +481,15 @@ a {
 }
 
 .cta-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transform: translateX(-100%);
   transition: transform 0.6s;
 }
@@ -447,7 +499,11 @@ a {
 }
 
 .cta-btn.primary {
-  background: linear-gradient(135deg, var(--color-button-primary), var(--color-button-primary-hover));
+  background: linear-gradient(
+    135deg,
+    var(--color-button-primary),
+    var(--color-button-primary-hover)
+  );
   color: var(--color-button-text);
   box-shadow: var(--shadow-saudi);
 }
@@ -455,7 +511,11 @@ a {
 .cta-btn.primary:hover {
   transform: translateY(-4px) scale(1.05);
   box-shadow: var(--shadow-lg);
-  background: linear-gradient(135deg, var(--color-button-primary-hover), var(--color-button-primary));
+  background: linear-gradient(
+    135deg,
+    var(--color-button-primary-hover),
+    var(--color-button-primary)
+  );
 }
 
 .cta-btn.secondary {
@@ -476,16 +536,15 @@ a {
   bottom: 30px;
   left: 0;
   right: 0;
-  margin-inline: auto;      /* center horizontally */
+  margin-inline: auto; /* center horizontally */
   display: flex;
-  justify-content: center;  /* center content inside */
+  justify-content: center; /* center content inside */
   flex-direction: column;
   align-items: center;
   color: white;
   z-index: 4;
   animation: fadeInUp 2s ease-out 2s both;
 }
-
 
 .scroll-arrow {
   width: 2px;
@@ -497,7 +556,7 @@ a {
 }
 
 .scroll-arrow::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: -3.8px;
@@ -509,8 +568,15 @@ a {
 }
 
 @keyframes scrollPulse {
-  0%, 100% { opacity: 0.6; transform: translateY(0); }
-  50% { opacity: 1; transform: translateY(10px); }
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
 }
 
 .scroll-indicator span {
@@ -557,7 +623,12 @@ a {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--color-accent-saudi-green), var(--color-accent-gold), var(--saudi-red));
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-saudi-green),
+    var(--color-accent-gold),
+    var(--saudi-red)
+  );
 }
 
 .program-header h2 {
@@ -716,7 +787,11 @@ a {
 }
 
 .badge.vision {
-  background: linear-gradient(135deg, var(--color-accent-gold), var(--saudi-red));
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-gold),
+    var(--saudi-red)
+  );
 }
 
 /* Two Column Layout for Programs */
@@ -865,8 +940,6 @@ a {
   color: #3cd4a0;
 }
 
-
-
 /* Islamic Guide Tools Section */
 .islamic-tools-grid {
   display: grid;
@@ -898,7 +971,11 @@ a {
 }
 
 .qibla-card::before {
-  background: linear-gradient(90deg, var(--color-accent-saudi-green), var(--color-accent-gold));
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-saudi-green),
+    var(--color-accent-gold)
+  );
 }
 
 .prayer-card::before {
@@ -906,11 +983,19 @@ a {
 }
 
 .quran-card::before {
-  background: linear-gradient(90deg, var(--color-accent-gold), var(--saudi-red));
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-gold),
+    var(--saudi-red)
+  );
 }
 
 .mosque-card::before {
-  background: linear-gradient(90deg, var(--saudi-red), var(--color-accent-saudi-green));
+  background: linear-gradient(
+    90deg,
+    var(--saudi-red),
+    var(--color-accent-saudi-green)
+  );
 }
 
 .islamic-tool-card:hover {
@@ -1105,12 +1190,24 @@ a {
   animation: fadeInUp 0.6s ease forwards;
 }
 
-.destination-card:nth-child(1) { animation-delay: 0.1s; }
-.destination-card:nth-child(2) { animation-delay: 0.2s; }
-.destination-card:nth-child(3) { animation-delay: 0.3s; }
-.destination-card:nth-child(4) { animation-delay: 0.4s; }
-.destination-card:nth-child(5) { animation-delay: 0.5s; }
-.destination-card:nth-child(6) { animation-delay: 0.6s; }
+.destination-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.destination-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.destination-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.destination-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.destination-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.destination-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
 
 /* Dark theme adjustments */
 [data-theme="dark"] .destination-card {
@@ -1150,7 +1247,11 @@ a {
   font-weight: 800;
   color: var(--color-text-primary);
   margin-bottom: 16px;
-  background: linear-gradient(135deg, var(--color-accent-saudi-green), var(--color-accent-gold));
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-saudi-green),
+    var(--color-accent-gold)
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1186,7 +1287,8 @@ a {
   font-size: 1.1rem;
 }
 
-select, input {
+select,
+input {
   width: 100%;
   padding: 14px 16px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -1198,7 +1300,8 @@ select, input {
   transition: all 0.2s ease;
 }
 
-select:focus, input:focus {
+select:focus,
+input:focus {
   outline: none;
   border-color: var(--color-accent-saudi-green);
   box-shadow: 0 0 0 3px rgba(0, 98, 51, 0.1);
@@ -1287,16 +1390,16 @@ select:focus, input:focus {
     margin-top: 100px;
     padding: 0 20px;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .controls-section,
   .player-section {
     padding: 24px;
   }
-  
+
   .player-header {
     flex-direction: column;
     align-items: flex-start;
@@ -1321,7 +1424,11 @@ select:focus, input:focus {
   font-weight: 800;
   color: var(--color-text-primary);
   margin-bottom: 16px;
-  background: linear-gradient(135deg, var(--color-accent-saudi-green), var(--color-accent-gold));
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-saudi-green),
+    var(--color-accent-gold)
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1457,22 +1564,33 @@ input[type="number"]:focus {
 
 /* Subtle Islamic pattern background */
 .compass-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: 
-    radial-gradient(circle at 25% 25%, rgba(44, 62, 80, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(44, 62, 80, 0.03) 0%, transparent 50%);
+  background: radial-gradient(
+      circle at 25% 25%,
+      rgba(44, 62, 80, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(44, 62, 80, 0.03) 0%,
+      transparent 50%
+    );
   animation: rotate 20s linear infinite;
   z-index: 0;
 }
 
 @keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .compass {
@@ -1482,62 +1600,94 @@ input[type="number"]:focus {
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   border: 3px solid #2c3e50;
   position: relative;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 
-              0 0 0 1px rgba(44, 62, 80, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(44, 62, 80, 0.1);
   transition: all 0.3s ease;
   animation: compassSlideIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @keyframes compassSlideIn {
-  0% { 
-    transform: translateY(-50px); 
-    opacity: 0; 
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
   }
-  70% { 
-    opacity: 0.7; 
+  70% {
+    opacity: 0.7;
   }
-  100% { 
-    transform: translateY(0); 
-    opacity: 1; 
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
 .compass:hover {
   transform: scale(1.02);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 
-              0 0 0 1px rgba(44, 62, 80, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(44, 62, 80, 0.2);
 }
 
 /* Compass rose pattern */
 .compass::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 20px;
   left: 20px;
   right: 20px;
   bottom: 20px;
   border-radius: 50%;
-  background: 
-    radial-gradient(circle at 30% 30%, rgba(44, 62, 80, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 70% 70%, rgba(44, 62, 80, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(44, 62, 80, 0.05) 0%, transparent 70%);
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgba(44, 62, 80, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(44, 62, 80, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(44, 62, 80, 0.05) 0%,
+      transparent 70%
+    );
   z-index: 1;
 }
 
 /* Compass rose directional markers */
 .compass::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 80%;
   height: 80%;
   transform: translate(-50%, -50%);
-  background: 
-    linear-gradient(0deg, transparent 48%, rgba(44, 62, 80, 0.1) 49%, rgba(44, 62, 80, 0.1) 51%, transparent 52%),
-    linear-gradient(90deg, transparent 48%, rgba(44, 62, 80, 0.1) 49%, rgba(44, 62, 80, 0.1) 51%, transparent 52%),
-    linear-gradient(45deg, transparent 48%, rgba(44, 62, 80, 0.05) 49%, rgba(44, 62, 80, 0.05) 51%, transparent 52%),
-    linear-gradient(135deg, transparent 48%, rgba(44, 62, 80, 0.05) 49%, rgba(44, 62, 80, 0.05) 51%, transparent 52%);
+  background: linear-gradient(
+      0deg,
+      transparent 48%,
+      rgba(44, 62, 80, 0.1) 49%,
+      rgba(44, 62, 80, 0.1) 51%,
+      transparent 52%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 48%,
+      rgba(44, 62, 80, 0.1) 49%,
+      rgba(44, 62, 80, 0.1) 51%,
+      transparent 52%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 48%,
+      rgba(44, 62, 80, 0.05) 49%,
+      rgba(44, 62, 80, 0.05) 51%,
+      transparent 52%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 48%,
+      rgba(44, 62, 80, 0.05) 49%,
+      rgba(44, 62, 80, 0.05) 51%,
+      transparent 52%
+    );
   border-radius: 50%;
   z-index: 1;
 }
@@ -1559,7 +1709,7 @@ input[type="number"]:focus {
 
 /* Needle tip */
 .needle::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -8px;
   left: 50%;
@@ -1574,7 +1724,7 @@ input[type="number"]:focus {
 
 /* Needle tail */
 .needle::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -8px;
   left: 50%;
@@ -1602,7 +1752,7 @@ input[type="number"]:focus {
 
 /* Islamic star pattern in center */
 .center-dot::before {
-  content: '★';
+  content: "★";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1628,7 +1778,7 @@ input[type="number"]:focus {
 
 .direction-labels span {
   position: absolute;
-  font-family: 'Cairo', 'Tajawal', 'Arial', sans-serif;
+  font-family: "Cairo", "Tajawal", "Arial", sans-serif;
   font-size: 18px;
   color: #2c3e50;
   font-weight: 700;
@@ -1638,28 +1788,28 @@ input[type="number"]:focus {
   text-rendering: optimizeLegibility;
 }
 
-.north { 
-  top: 15px; 
-  left: 50%; 
-  transform: translateX(-50%); 
+.north {
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.east { 
-  top: 50%; 
-  right: 15px; 
-  transform: translateY(-50%); 
+.east {
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
 }
 
-.south { 
-  bottom: 15px; 
-  left: 50%; 
-  transform: translateX(-50%); 
+.south {
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.west { 
-  top: 50%; 
-  left: 15px; 
-  transform: translateY(-50%); 
+.west {
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
 }
 
 .result-info h3 {
@@ -1681,16 +1831,16 @@ input[type="number"]:focus {
     margin-top: 100px;
     padding: 0 20px;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .compass-container {
     padding: 15px;
     margin-bottom: 24px;
   }
-  
+
   .compass {
     width: 160px;
     height: 160px;

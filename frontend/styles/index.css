@@ -1,4 +1,12 @@
-/* Immediate fixes for header and dropdown */
+/* ============================================================
+   INDEX PAGE OVERRIDES
+   ============================================================
+   Immediate fixes and overrides for header, dropdown, and theme.
+   Includes video header styles, destination filters, and event search.
+   ============================================================ */
+
+/* ========== Header Fixes ========== */
+/* Hide brand mark */
       .brand-mark {
         display: none !important;
       }
@@ -277,6 +285,7 @@
 
       /* Destination card layout normalized globally in _cards.css */
 
+/* Search and filter interface for destinations */
 .destinations-filter {
   max-width: 1024px;
   margin: 3rem auto 1.5rem;
@@ -374,6 +383,7 @@
   color: #3a3a3a;
 }
 
+/* Container for event search results */
 .event-search-results {
   max-width: 1024px;
   margin: 0.5rem auto 2rem;

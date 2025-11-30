@@ -1,7 +1,11 @@
-/* frontend/styles/components/_header.css */
-/* Standardized header styles - matches index.html exactly */
+/*  HEADER COMPONENT STYLES
+   
+   Standardized header navigation with dropdown menus.
+   Includes theme toggle, language switcher, and responsive design.
+   Supports both light and dark themes.
+    */
 
-/* Hide brand mark */
+/* Hide brand mark icon */
 .brand-mark {
   display: none !important;
 }
@@ -19,7 +23,8 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Light mode header */
+/*  Theme-Specific Header Styles  */
+/* Light mode header styling */
 [data-theme="light"] .header {
   background: rgba(248, 248, 248, 0.9) !important;
   border-bottom: 1px solid rgba(0, 108, 53, 0.15) !important;
@@ -78,7 +83,8 @@
     gap: 16px;
   }
   
-  /* Theme toggle button styling - matches index.html */
+  /*  Theme Toggle Button  */
+  /* Button to switch between light and dark themes */
   .theme-toggle {
     background: rgba(0, 108, 53, 0.1) !important;
     border: 1px solid rgba(0, 108, 53, 0.3) !important;
@@ -112,7 +118,8 @@
     border-color: rgba(0, 108, 53, 0.6) !important;
   }
 
-  /* Language toggle button styling */
+  /*  Language Toggle Button  */
+  /* Button to switch between Arabic and English */
   .language-toggle {
     background: rgba(0, 108, 53, 0.1) !important;
     border: 1px solid rgba(0, 108, 53, 0.3) !important;
@@ -192,7 +199,8 @@
     border-radius: 1px;
   }
   
-  /* Islamic Guide dropdown in header */
+  /*  Dropdown Navigation  */
+  /* Islamic Guide dropdown menu in header */
   .nav .has-dropdown { 
     position: relative; 
   }
@@ -354,7 +362,8 @@
     transform: translateY(0);
   }
 
-  /* Mobile responsiveness for dropdown */
+  /*  Mobile Responsive  */
+  /* Mobile-specific dropdown adjustments */
   @media (max-width: 768px) {
     .nav .dropdown {
       position: fixed;

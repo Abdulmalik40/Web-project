@@ -1,4 +1,6 @@
-/* frontend/styles/components/_cards.css */
+/*  CARD COMPONENT STYLES*/
+
+/* Card component for displaying destination information */
 .destination-card {
     background: var(--bg-primary);
     border-radius: var(--radius-xl);
@@ -63,6 +65,7 @@
     font-weight: 500;
   }
   
+  /* Card for displaying program information */
   .program-card {
     background: var(--bg-primary);
     border-radius: var(--radius-xl);
@@ -105,6 +108,7 @@
     line-height: 1.6;
   }
   
+  /* Card for Islamic guide tools (Qibla, Prayer, Quran, etc.) */
   .islamic-tool-card {
     background: var(--bg-primary);
     border-radius: var(--radius-xl);

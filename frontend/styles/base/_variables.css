@@ -1,7 +1,9 @@
-/* frontend/styles/base/_variables.css */
+/*   CSS VARIABLES */
+
 /* Import the Saudi cultural color system */
 @import '_saudi-cultural-colors.css';
 
+/*  Root Variables  */
 :root {
     /* Legacy compatibility - map old variables to new Saudi cultural system */
     --text: var(--color-text-primary);
