@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Your Plan | Saudi Tourism</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../../styles/main.css" />
+    <link rel="stylesheet" href="../../styles/planner.css" />
+    <link rel="stylesheet" href="../../styles/chatbot.css" />
+    <link rel="icon" type="image/png" href="../../assets/icons/Fav-icon.png" />
+
+    <script src="../../scripts/chatbot.js" defer></script>
+    <script src="../../scripts/header-component.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Chatbot toggle button -->
+    <button id="chatbot-toggler">
+      <span class="material-symbols-outlined">mode_comment</span>
+      <span class="material-symbols-rounded">close</span>
+    </button>
+
+    <!-- Chatbot container -->
+    <div class="chatbot-popup">
+      <div class="chat-header">
+        <div class="header-info">
+          <img
+            style="width: 50px; border-radius: 1000px"
+            src="../../assets/icons/chatbot-icon.png"
+            alt="Mutlaq assistant"
+          />
+          <h2 class="logo-text">Saudi Tourism Bot</h2>
+        </div>
+        <button id="close-chatbot" class="material-symbols-rounded">
+          keyboard_arrow_down
+        </button>
+      </div>
+      <div class="chat-body">
+        <div class="message bot-message">
+          <img
+            style="width: 50px; border-radius: 1000px"
+            src="../../assets/icons/chatbot-icon.png"
+            alt=""
+          />
+          <div dir="auto" class="message-text">
+            Hello, I'm Mutlaq, your personal assistant in choosing your next
+            destination. How can I help you?
+          </div>
+        </div>
+      </div>
+      <div class="chat-footer">
+        <form action="#" class="chat-form">
+          <textarea
+            dir="auto"
+            placeholder="Ask your question about tourism in Saudi Arabia..."
+            class="message-input"
+            required
+          ></textarea>
+          <div class="chat-controls">
+            <button
+              type="submit"
+              id="send-message"
+              class="material-symbols-rounded"
+            >
+              arrow_upward
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Site header -->
+    <header id="header" data-header-placeholder></header>
+
+    <main class="page-wrapper">
+      <section class="planner-card" aria-labelledby="create-plan-title">
+        <div class="planner-header">
+          <p class="form-note accent">Crete a new Plan</p>
+          <h1 id="create-plan-title">Create a new Saudi plan</h1>
+          <p class="form-note">
+            ADD A NAME FOR THE PLAN AND HOW MANY DAYS, THEN DESCRIPE EACH DAY </p>
+        </div>
+
+        <form id="createPlanForm" novalidate>
+          <div class="planner-grid">
+            <div class="field">
+              <label for="planName">Plan name</label>
+              <input
+                type="text"
+                id="planName"
+                name="planName"
+                placeholder="e.g., Grand 1-Month Saudi Discovery"
+                minlength="3"
+                maxlength="80"
+                required
+              />
+              <span class="helper-text">3–80 characters</span>
+            </div>
+
+            <div class="field">
+              <label for="planDays">How many days is your plan</label>
+              <input
+                type="number"
+                id="planDays"
+                name="planDays"
+                min="1"
+                max="30"
+                value="7"
+                required
+              />
+              <span class="helper-text">Between 1 and 30 days</span>
+            </div>
+          </div>
+
+          <div class="planner-actions">
+            <button type="reset" class="btn-secondary">Reset</button>
+            <button type="submit" class="btn-primary">
+              Save structure
+            </button>
+          </div>
+        </form>
+
+        <div class="day-sections" aria-live="polite" aria-label="Plan days">
+          <div class="day-sections__header">
+            <div>
+              <p class="form-note accent">Day-by-day outlines</p>
+              <h2 class="section-title">Describe each day</h2>
+              <p class="form-note">
+                Add notes about key stops, travel time, meals, or bookings. You
+                can update the number of days anytime to regenerate the cards.
+              </p>
+            </div>
+            <div class="day-meta-chip" id="daysSummary">0 days</div>
+          </div>
+          <div id="daysContainer" class="day-cards"></div>
+        </div>
+
+        <div id="saveStatus" class="status-text" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script type="module" src="../../scripts/main.js"></script>
+    <script>
+      (() => {
+        const form = document.getElementById("createPlanForm");
+        const nameInput = document.getElementById("planName");
+        const daysInput = document.getElementById("planDays");
+        const daysContainer = document.getElementById("daysContainer");
+        const daysSummary = document.getElementById("daysSummary");
+        const statusText = document.getElementById("saveStatus");
+
+        const clampDays = (value) => {
+          const number = Number(value);
+          if (Number.isNaN(number)) return 1;
+          return Math.min(30, Math.max(1, number));
+        };
+
+        const updateStatus = (message, tone = "muted") => {
+          statusText.textContent = message;
+          statusText.className = `status-text ${tone}`;
+        };
+
+        const renderDaySections = (count) => {
+          daysContainer.innerHTML = "";
+          daysSummary.textContent = `${count} day${count === 1 ? "" : "s"}`;
+
+          for (let i = 1; i <= count; i += 1) {
+            const card = document.createElement("article");
+            card.className = "day-card day-card--editable";
+
+            const heading = document.createElement("div");
+            heading.className = "day-card__heading";
+            heading.innerHTML = `<div class="day-chip">Day ${i}</div>`;
+            card.appendChild(heading);
+
+            const label = document.createElement("label");
+            label.setAttribute("for", `day-${i}-details`);
+            label.className = "field-label";
+            label.textContent = `Describe day ${i}`;
+            card.appendChild(label);
+
+            const textarea = document.createElement("textarea");
+            textarea.id = `day-${i}-details`;
+            textarea.name = `day-${i}-details`;
+            textarea.rows = 4;
+            textarea.maxLength = 600;
+            textarea.placeholder =
+              "Key stops, travel time, meals, and bookings for the day.";
+            textarea.setAttribute("aria-label", `Details for day ${i}`);
+            card.appendChild(textarea);
+
+            const helper = document.createElement("p");
+            helper.className = "helper-text";
+            helper.textContent = "Up to 600 characters";
+            card.appendChild(helper);
+
+            daysContainer.appendChild(card);
+          }
+
+          updateStatus("Day cards refreshed.");
+        };
+
+        const handleDaysChange = () => {
+          const clamped = clampDays(daysInput.value);
+          if (String(clamped) !== daysInput.value) {
+            daysInput.value = clamped;
+          }
+          renderDaySections(clamped);
+        };
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (!form.reportValidity()) return;
+          updateStatus(
+            `${nameInput.value || "Your plan"} saved. Day cards ready for details.`,
+            "success"
+          );
+          daysContainer
+            .querySelector("textarea")
+            ?.focus({ preventScroll: true });
+        });
+
+        form.addEventListener("reset", () => {
+          setTimeout(() => {
+            nameInput.value = "";
+            daysInput.value = 7;
+            handleDaysChange();
+            updateStatus("Form reset.");
+          }, 0);
+        });
+
+        daysInput.addEventListener("input", handleDaysChange);
+
+        // Initial render
+        handleDaysChange();
+      })();
+    </script>
+  </body>
+</html>
