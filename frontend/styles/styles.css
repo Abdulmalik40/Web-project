@@ -834,6 +834,30 @@ a {
   color: var(--color-text-secondary);
 }
 
+.tour-plans__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 28px auto 36px;
+}
+
+.tour-plans__cta .cta-btn {
+  min-width: 240px;
+  text-align: center;
+  letter-spacing: 0.08em;
+  box-shadow: var(--shadow-saudi);
+}
+
+.tour-plans__cta .cta-btn:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.tour-plans__cta-note {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
 .plans-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

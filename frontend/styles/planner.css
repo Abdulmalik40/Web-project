@@ -49,6 +49,30 @@ body {
   color: var(--color-text-secondary);
 }
 
+.form-note {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.form-note.accent {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--color-accent-emerald);
+}
+
+.helper-text {
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+}
+
+.section-title {
+  margin: 2px 0 6px;
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+}
+
 .planner-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -69,6 +93,7 @@ body {
 }
 
 .field input,
+.field textarea,
 .field select {
   border-radius: 10px;
   border: 1px solid var(--color-border);
@@ -77,14 +102,17 @@ body {
   color: var(--color-text-primary);
   font-size: 0.9rem;
   outline: none;
+  resize: vertical;
 }
 
 .field input::placeholder,
+.field textarea::placeholder,
 .field select::placeholder {
   color: var(--color-text-secondary);
 }
 
 .field input:focus,
+.field textarea:focus,
 .field select:focus {
   border-color: var(--color-accent-emerald);
   box-shadow: 0 0 0 1px var(--color-accent-emerald);
@@ -215,6 +243,78 @@ body {
 .muted {
   color: var(--color-text-secondary);
   font-size: 0.85rem;
+}
+
+.day-sections {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.day-sections__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.day-meta-chip {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--color-bg-elevated, var(--color-bg-surface));
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.day-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.day-card--editable textarea {
+  width: 100%;
+  min-height: 120px;
+}
+
+.day-card__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.day-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  background: var(--color-hover-primary);
+  color: var(--color-accent-emerald);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.field-label {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.status-text {
+  margin-top: 14px;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.status-text.success {
+  color: var(--color-accent-emerald);
 }
 
 /* ========== Saved Plans ========== */
