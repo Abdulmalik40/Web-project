@@ -884,11 +884,17 @@ function renderItinerary(itinerary) {
       return level === 'cheap' ? 'اقتصادي' : level === 'medium' ? 'متوسط' : 'فاخر';
     };
 
+    // Calculate totalHours if not present (for plans saved from create-plan.html)
+    const totalHours = day.totalHours !== undefined ? day.totalHours : 
+      (day.places && day.places.length > 0 ? day.places.length * 1.5 : 0);
+
     div.innerHTML = `
       <h3>${t('plannerPage.day')} ${day.day}</h3>
+      ${totalHours > 0 ? `
       <div class="day-meta">
-        ${t('plannerPage.approxHours')} ${day.totalHours.toFixed(1)} ${t('plannerPage.hoursSuffix')}
+        ${t('plannerPage.approxHours')} ${totalHours.toFixed(1)} ${t('plannerPage.hoursSuffix')}
       </div>
+      ` : ''}
 
       ${day.places.length === 0
         ? `<p class="muted">${t('plannerPage.noPlaces')}</p>`
@@ -896,20 +902,33 @@ function renderItinerary(itinerary) {
         <ul class="day-list">
           ${day.places
           .map(
-            (p) => `
+            (p) => {
+              // Handle both formats: planner.html (visit_start/visit_end) and create-plan.html (visit_time)
+              const visitTime = p.visit_start && p.visit_end 
+                ? `${p.visit_start} — ${p.visit_end}` 
+                : p.visit_time 
+                  ? `⏰ ${p.visit_time}` 
+                  : '';
+              
+              const location = p.location || p.region || '';
+              const category = p.category || '';
+              const duration = p.estimated_duration || 1.5;
+              
+              return `
             <li>
-              <div class="place-time">${p.visit_start} — ${p.visit_end}</div>
-              <span class="place-name">${p.name}</span><br>
+              ${visitTime ? `<div class="place-time">${visitTime}</div>` : ''}
+              <span class="place-name">${p.name || 'Unnamed Place'}</span><br>
               <span class="place-meta">
-  ${(p.region || "").toString()} • ${p.category || ""}
-  • ${t('plannerPage.visitDuration')} ${p.estimated_duration || 1.5} ${t('plannerPage.visitDurationHours')}
+  ${location ? `${location} • ` : ''}${category}
+  ${duration ? ` • ${t('plannerPage.visitDuration')} ${duration} ${t('plannerPage.visitDurationHours')}` : ''}
   ${p.price_level ? ` • ${getPriceLevelText(p.price_level)}` : ""}
 </span><br>
               ${p.link
                 ? `<a href="${p.link}" target="_blank" style="color:#2ECC71;">${t('plannerPage.viewOnMaps')}</a>`
                 : ""
               }
-            </li>`
+            </li>`;
+            }
           )
           .join("")}
         </ul>
