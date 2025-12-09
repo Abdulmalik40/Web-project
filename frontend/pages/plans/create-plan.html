@@ -170,7 +170,8 @@
                 type="text"
                 id="planName"
                 name="planName"
-                data-i18n-placeholder="createPlanPage.planNamePlaceholder"
+                data-i18n="createPlanPage.planNamePlaceholder"
+                data-i18n-attr="placeholder"
                 placeholder="e.g., Grand 1-Month Saudi Discovery"
                 minlength="3"
                 maxlength="80"
@@ -310,7 +311,8 @@
           const nameInput = document.createElement("input");
           nameInput.type = "text";
           nameInput.name = `day-${dayIndex}-place-${placeIndex}-name`;
-          nameInput.setAttribute("data-i18n-placeholder", "createPlanPage.placeNamePlaceholder");
+          nameInput.setAttribute("data-i18n", "createPlanPage.placeNamePlaceholder");
+          nameInput.setAttribute("data-i18n-attr", "placeholder");
           nameInput.placeholder = "e.g., Al-Masjid Al-Haram";
           nameInput.required = true;
           nameField.appendChild(nameLabel);
@@ -357,7 +359,8 @@
           const locationInput = document.createElement("input");
           locationInput.type = "text";
           locationInput.name = `day-${dayIndex}-place-${placeIndex}-location`;
-          locationInput.setAttribute("data-i18n-placeholder", "createPlanPage.locationPlaceholder");
+          locationInput.setAttribute("data-i18n", "createPlanPage.locationPlaceholder");
+          locationInput.setAttribute("data-i18n-attr", "placeholder");
           locationInput.placeholder = "e.g., Makkah, Saudi Arabia";
           locationField.appendChild(locationLabel);
           locationField.appendChild(locationInput);
