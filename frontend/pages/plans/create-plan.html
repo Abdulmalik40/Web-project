@@ -88,6 +88,7 @@
       }
     </style>
 
+    <script src="../../scripts/config.js"></script>
     <script src="../../scripts/chatbot.js" defer></script>
     <script src="../../scripts/header-component.js" defer></script>
   </head>
@@ -240,24 +241,9 @@
           return;
         }
 
-        // Get API URL (same pattern as itinerary.js)
+        // Get API URL (same pattern as other pages - uses config.js)
         const getApiUrl = () => {
-          // Check if API_BASE_URL is set on window (from apiConfig.js if loaded as module)
-          if (window.API_BASE_URL) {
-            return window.API_BASE_URL;
-          }
-          // Fallback: auto-detect for local development
-          const hostname = window.location.hostname;
-          const isLocalhost =
-            hostname === "localhost" ||
-            hostname === "127.0.0.1" ||
-            hostname === "";
-          
-          if (isLocalhost) {
-            return "http://127.0.0.1:9000/api";
-          } else {
-            return `http://${hostname}:9000/api`;
-          }
+          return window.API_BASE_URL || "http://127.0.0.1:9000/api";
         };
 
         // Get auth token
