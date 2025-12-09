@@ -219,7 +219,8 @@
 
     <script type="module" src="../../scripts/main.js"></script>
     <script>
-      (() => {
+      // Wait for DOM to be ready
+      const initCreatePlan = () => {
         const form = document.getElementById("createPlanForm");
         const nameInput = document.getElementById("planName");
         const daysInput = document.getElementById("planDays");
@@ -227,6 +228,17 @@
         const daysSummary = document.getElementById("daysSummary");
         const statusText = document.getElementById("saveStatus");
         const savePlanBtn = document.getElementById("savePlanBtn");
+
+        if (!form || !nameInput || !daysInput || !daysContainer || !savePlanBtn) {
+          console.error("Required elements not found:", {
+            form: !!form,
+            nameInput: !!nameInput,
+            daysInput: !!daysInput,
+            daysContainer: !!daysContainer,
+            savePlanBtn: !!savePlanBtn
+          });
+          return;
+        }
 
         // Get API URL (same pattern as itinerary.js)
         const getApiUrl = () => {
@@ -472,10 +484,16 @@
             const placeRows = dayCard.querySelectorAll(".place-row");
 
             placeRows.forEach((row) => {
-              const name = row.querySelector(`input[name*="place"][name*="name"]`)?.value.trim();
-              const category = row.querySelector(`select[name*="place"][name*="category"]`)?.value;
-              const location = row.querySelector(`input[name*="place"][name*="location"]`)?.value.trim();
-              const visitTime = row.querySelector(`input[name*="place"][name*="time"]`)?.value;
+              // Use more specific selectors
+              const nameInput = row.querySelector('input[type="text"][name*="-name"]');
+              const categorySelect = row.querySelector('select[name*="-category"]');
+              const locationInput = row.querySelector('input[type="text"][name*="-location"]');
+              const timeInput = row.querySelector('input[type="time"]');
+
+              const name = nameInput?.value.trim();
+              const category = categorySelect?.value;
+              const location = locationInput?.value.trim();
+              const visitTime = timeInput?.value;
 
               if (name && category && visitTime) {
                 places.push({
@@ -525,9 +543,14 @@
               if (placeRows.length > 0) {
                 // Check if at least one place is complete
                 placeRows.forEach((row) => {
-                  const name = row.querySelector(`input[name*="place"][name*="name"]`)?.value.trim();
-                  const category = row.querySelector(`select[name*="place"][name*="category"]`)?.value;
-                  const visitTime = row.querySelector(`input[name*="place"][name*="time"]`)?.value;
+                  const nameInput = row.querySelector('input[type="text"][name*="-name"]');
+                  const categorySelect = row.querySelector('select[name*="-category"]');
+                  const timeInput = row.querySelector('input[type="time"]');
+                  
+                  const name = nameInput?.value.trim();
+                  const category = categorySelect?.value;
+                  const visitTime = timeInput?.value;
+                  
                   if (name && category && visitTime) {
                     hasPlaces = true;
                   }
@@ -546,7 +569,10 @@
 
         // Save plan to database
         const savePlan = async () => {
+          console.log("Save plan button clicked");
+          
           if (!validatePlan()) {
+            console.log("Validation failed");
             return;
           }
 
@@ -560,6 +586,20 @@
           }
 
           const planData = collectPlanData();
+          console.log("Collected plan data:", planData);
+
+          // Validate that we have plan details
+          if (!planData.planDetails || planData.planDetails.length === 0) {
+            updateStatus("No plan details to save. Please add places to your plan.", "error");
+            return;
+          }
+
+          // Check if at least one day has places
+          const hasPlaces = planData.planDetails.some(day => day.places && day.places.length > 0);
+          if (!hasPlaces) {
+            updateStatus("Please add at least one place to your plan before saving.", "error");
+            return;
+          }
 
           // Disable save button
           savePlanBtn.disabled = true;
@@ -568,26 +608,31 @@
 
           try {
             const apiUrl = getApiUrl();
+            console.log("API URL:", apiUrl);
+            
+            const requestBody = {
+              title: planData.planName,
+              plan_details: planData.planDetails
+            };
+            
+            console.log("Request body:", JSON.stringify(requestBody, null, 2));
+
             const response = await fetch(`${apiUrl}/itineraries`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
               },
-              body: JSON.stringify({
-                title: planData.planName,
-                main_destination: null, // Optional
-                start_date: null, // Optional
-                end_date: null, // Optional
-                total_budget: null, // Optional
-                plan_details: planData.planDetails
-              })
+              body: JSON.stringify(requestBody)
             });
 
+            console.log("Response status:", response.status);
+            
             const data = await response.json();
+            console.log("Response data:", data);
 
             if (!response.ok) {
-              throw new Error(data.message || "Failed to save plan");
+              throw new Error(data.message || `Failed to save plan (${response.status})`);
             }
 
             updateStatus(`✅ Plan "${planData.planName}" saved successfully!`, "success");
@@ -626,11 +671,28 @@
 
         daysInput.addEventListener("input", handleDaysChange);
 
-        savePlanBtn.addEventListener("click", savePlan);
+        // Attach save button event listener
+        if (savePlanBtn) {
+          savePlanBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            savePlan();
+          });
+          console.log("Save plan button event listener attached");
+        } else {
+          console.error("Save plan button not found!");
+        }
 
         // Initial render
         handleDaysChange();
-      })();
+      };
+
+      // Initialize when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCreatePlan);
+      } else {
+        initCreatePlan();
+      }
     </script>
   </body>
 </html>

@@ -729,6 +729,17 @@ async function saveItinerary(itinerary, formData) {
     return false;
   }
 
+  // Validate required data
+  if (!itinerary || !Array.isArray(itinerary) || itinerary.length === 0) {
+    console.error("Invalid itinerary data:", itinerary);
+    return { success: false, error: "لا توجد خطة لحفظها" };
+  }
+
+  if (!formData || !formData.city || !formData.days) {
+    console.error("Invalid form data:", formData);
+    return { success: false, error: "بيانات النموذج غير صحيحة" };
+  }
+
   // Generate title
   const cityNames = {
     "Makkah": "مكة المكرمة",
@@ -736,7 +747,13 @@ async function saveItinerary(itinerary, formData) {
     "Riyadh": "الرياض"
   };
   const cityName = cityNames[formData.city] || formData.city;
-  const title = `خطة ${formData.days} أيام في ${cityName}`;
+  let title = `خطة ${formData.days} أيام في ${cityName}`;
+
+  // Validate title length (max 255 characters as per database)
+  if (title.length > 255) {
+    title = title.substring(0, 252) + "...";
+    console.warn("Title too long, truncated to:", title);
+  }
 
   // Calculate dates (optional - can be null)
   const today = new Date();
@@ -745,14 +762,46 @@ async function saveItinerary(itinerary, formData) {
     .toISOString()
     .split('T')[0];
 
-  // Prepare budget (optional)
+  // Prepare budget (optional) - ensure it's an integer or null
   const budgetMap = {
     "cheap": 500,
     "medium": 1500,
     "luxury": 5000,
     "any": null
   };
-  const totalBudget = budgetMap[formData.budget] || null;
+  let totalBudget = budgetMap[formData.budget] || null;
+  if (totalBudget !== null) {
+    totalBudget = parseInt(totalBudget, 10);
+    if (isNaN(totalBudget)) {
+      totalBudget = null;
+    }
+  }
+
+  // Validate main_destination length (max 255 characters)
+  let mainDestination = formData.city || null;
+  if (mainDestination && mainDestination.length > 255) {
+    console.warn("Main destination too long, truncating:", mainDestination);
+    mainDestination = mainDestination.substring(0, 255);
+  }
+
+  // Prepare request body
+  const requestBody = {
+    title: title,
+    main_destination: mainDestination,
+    start_date: startDate,
+    end_date: endDate,
+    total_budget: totalBudget,
+    plan_details: itinerary,
+  };
+
+  console.log("Saving itinerary with data:", {
+    title: requestBody.title,
+    main_destination: requestBody.main_destination,
+    start_date: requestBody.start_date,
+    end_date: requestBody.end_date,
+    total_budget: requestBody.total_budget,
+    plan_details_length: requestBody.plan_details.length
+  });
 
   try {
     const apiUrl = getApiUrl();
@@ -762,26 +811,25 @@ async function saveItinerary(itinerary, formData) {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        title: title,
-        main_destination: formData.city,
-        start_date: startDate,
-        end_date: endDate,
-        total_budget: totalBudget,
-        plan_details: itinerary,
-      }),
+      body: JSON.stringify(requestBody),
     });
 
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.message || "فشل حفظ الخطة");
+      console.error("API Error Response:", {
+        status: response.status,
+        statusText: response.statusText,
+        data: data
+      });
+      throw new Error(data.message || `فشل حفظ الخطة (${response.status})`);
     }
 
+    console.log("Itinerary saved successfully:", data);
     return { success: true, data };
   } catch (error) {
     console.error("Error saving itinerary:", error);
-    return { success: false, error: error.message };
+    return { success: false, error: error.message || "حدث خطأ أثناء حفظ الخطة" };
   }
 }
 
