@@ -1034,7 +1034,7 @@
     "title": "إنشاء خطة سعودية جديدة",
     "description": "أضف اسماً للخطة وعدد الأيام، ثم صف كل يوم",
     "planNameLabel": "اسم الخطة",
-    "planNamePlaceholder": "مثال: اكتشاف سعودي كبير لمدة شهر",
+    "planNamePlaceholder": "مثال: استكشاف السعودية لمدة شهر",
     "planNameHelper": "3–80 حرف",
     "daysLabel": "كم عدد أيام خطتك",
     "daysHelper": "بين 1 و 30 يوم",
