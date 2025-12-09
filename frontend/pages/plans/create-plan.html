@@ -258,8 +258,10 @@
 
         // Get translation helper
         const getTranslation = (key) => {
-          if (window.i18n && typeof window.i18n.t === 'function') {
-            return window.i18n.t(key);
+          if (window.i18n && typeof window.i18n.t === 'function' && window.i18n.translations) {
+            const translation = window.i18n.t(key);
+            // If translation returns the key itself, return null to use fallback
+            return translation !== key ? translation : null;
           }
           return null;
         };
@@ -408,7 +410,7 @@
         };
 
         // Render day sections with custom planner UI
-        const renderDaySections = (count) => {
+        let renderDaySections = (count) => {
           daysContainer.innerHTML = "";
           daysSummary.textContent = `${count} day${count === 1 ? "" : "s"}`;
 
@@ -432,8 +434,10 @@
             `;
             const dayChip = document.createElement("div");
             dayChip.className = "day-chip";
-            const dayText = (window.i18n && window.i18n.t) ? window.i18n.t("createPlanPage.day") : "Day";
-            dayChip.textContent = `${dayText} ${i}`;
+            // Use data-i18n for translation, but we need to handle the number separately
+            dayChip.setAttribute("data-day-number", i);
+            // Set initial text, will be updated by i18n.refresh()
+            dayChip.textContent = `Day ${i}`;
             heading.appendChild(dayChip);
             
             const placeCountBadge = document.createElement("div");
@@ -478,7 +482,13 @@
             daysContainer.appendChild(card);
           }
 
-          updateStatus(getTranslation("createPlanPage.statusReady") || "Day sections ready. Add places to each day.");
+          // Set status with data-i18n attribute
+          statusText.setAttribute("data-i18n", "createPlanPage.statusReady");
+          statusText.textContent = "Day sections ready. Add places to each day.";
+          // Refresh translations after creating dynamic content
+          if (window.i18n && typeof window.i18n.refresh === 'function') {
+            window.i18n.refresh();
+          }
         };
 
         const handleDaysChange = () => {
@@ -710,14 +720,29 @@
         handleDaysChange();
 
         // Initialize i18n translations
+        const refreshTranslations = () => {
+          if (window.i18n && window.i18n.translations && Object.keys(window.i18n.translations).length > 0) {
+            if (typeof window.i18n.refresh === 'function') {
+              window.i18n.refresh();
+            }
+            
+            // Update day chips with translations
+            document.querySelectorAll('.day-chip[data-day-number]').forEach(chip => {
+              const dayNum = chip.getAttribute('data-day-number');
+              const dayText = window.i18n.t('createPlanPage.day') || 'Day';
+              chip.textContent = `${dayText} ${dayNum}`;
+            });
+            
+            return true;
+          }
+          return false;
+        };
+
         const initI18n = () => {
-          if (window.i18n && typeof window.i18n.refresh === 'function') {
-            window.i18n.refresh();
-          } else {
+          if (!refreshTranslations()) {
             // Wait for i18n to load
             const checkI18n = setInterval(() => {
-              if (window.i18n && typeof window.i18n.refresh === 'function') {
-                window.i18n.refresh();
+              if (refreshTranslations()) {
                 clearInterval(checkI18n);
               }
             }, 100);
@@ -735,9 +760,19 @@
         // Refresh translations when language changes
         if (window.i18n && typeof window.i18n.subscribe === 'function') {
           window.i18n.subscribe(() => {
-            window.i18n.refresh();
+            refreshTranslations();
           });
         }
+
+        // Wrap renderDaySections to refresh translations after rendering
+        const originalRenderDaySections = renderDaySections;
+        renderDaySections = (count) => {
+          originalRenderDaySections(count);
+          // Refresh translations after rendering
+          setTimeout(() => {
+            refreshTranslations();
+          }, 100);
+        };
       };
 
       // Initialize when DOM is ready
