@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Your Plan | Saudi Tourism</title>
+    <title data-i18n="createPlanPage.titleTag">Create Your Plan | Saudi Tourism</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -89,6 +89,7 @@
     </style>
 
     <script src="../../scripts/config.js"></script>
+    <script type="module" src="../../scripts/modules/i18n.js"></script>
     <script src="../../scripts/chatbot.js" defer></script>
     <script src="../../scripts/header-component.js" defer></script>
   </head>
@@ -155,30 +156,31 @@
     <main class="page-wrapper">
       <section class="planner-card" aria-labelledby="create-plan-title">
         <div class="planner-header">
-          <p class="form-note accent">Crete a new Plan</p>
-          <h1 id="create-plan-title">Create a new Saudi plan</h1>
-          <p class="form-note">
+          <p class="form-note accent" data-i18n="createPlanPage.accent">Create a new Plan</p>
+          <h1 id="create-plan-title" data-i18n="createPlanPage.title">Create a new Saudi plan</h1>
+          <p class="form-note" data-i18n="createPlanPage.description">
             ADD A NAME FOR THE PLAN AND HOW MANY DAYS, THEN DESCRIPE EACH DAY </p>
         </div>
 
         <form id="createPlanForm" novalidate>
           <div class="planner-grid">
             <div class="field">
-              <label for="planName">Plan name</label>
+              <label for="planName" data-i18n="createPlanPage.planNameLabel">Plan name</label>
               <input
                 type="text"
                 id="planName"
                 name="planName"
+                data-i18n-placeholder="createPlanPage.planNamePlaceholder"
                 placeholder="e.g., Grand 1-Month Saudi Discovery"
                 minlength="3"
                 maxlength="80"
                 required
               />
-              <span class="helper-text">3–80 characters</span>
+              <span class="helper-text" data-i18n="createPlanPage.planNameHelper">3–80 characters</span>
             </div>
 
             <div class="field">
-              <label for="planDays">How many days is your plan</label>
+              <label for="planDays" data-i18n="createPlanPage.daysLabel">How many days is your plan</label>
               <input
                 type="number"
                 id="planDays"
@@ -188,13 +190,16 @@
                 value="7"
                 required
               />
-              <span class="helper-text">Between 1 and 30 days</span>
+              <span class="helper-text" data-i18n="createPlanPage.daysHelper">Between 1 and 30 days</span>
             </div>
           </div>
 
           <div class="planner-actions">
-            <button type="reset" class="btn-secondary">Reset</button>
-            <button type="button" id="savePlanBtn" class="btn-primary">
+            <button type="reset" class="btn-secondary" data-i18n="createPlanPage.resetBtn">Reset</button>
+            <a href="planner.html" class="btn-secondary" data-i18n="createPlanPage.viewSavedPlansBtn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+              View Saved Plans
+            </a>
+            <button type="button" id="savePlanBtn" class="btn-primary" data-i18n="createPlanPage.savePlanBtn">
               Save Plan
             </button>
           </div>
@@ -203,9 +208,9 @@
         <div class="day-sections" aria-live="polite" aria-label="Plan days">
           <div class="day-sections__header">
             <div>
-              <p class="form-note accent">Day-by-day planner</p>
-              <h2 class="section-title">Build your custom daily plan</h2>
-              <p class="form-note">
+              <p class="form-note accent" data-i18n="createPlanPage.dayByDayAccent">Day-by-day planner</p>
+              <h2 class="section-title" data-i18n="createPlanPage.dayByDayTitle">Build your custom daily plan</h2>
+              <p class="form-note" data-i18n="createPlanPage.dayByDayDesc">
                 Add places to visit for each day. For each place, specify the name, category, location, and visit time.
               </p>
             </div>
@@ -251,6 +256,14 @@
           return localStorage.getItem("auth_token");
         };
 
+        // Get translation helper
+        const getTranslation = (key) => {
+          if (window.i18n && typeof window.i18n.t === 'function') {
+            return window.i18n.t(key);
+          }
+          return null;
+        };
+
         const clampDays = (value) => {
           const number = Number(value);
           if (Number.isNaN(number)) return 1;
@@ -289,11 +302,13 @@
           const nameField = document.createElement("div");
           nameField.className = "field";
           const nameLabel = document.createElement("label");
+          nameLabel.setAttribute("data-i18n", "createPlanPage.placeNameLabel");
           nameLabel.textContent = "Place Name";
           nameLabel.style.fontSize = "0.85rem";
           const nameInput = document.createElement("input");
           nameInput.type = "text";
           nameInput.name = `day-${dayIndex}-place-${placeIndex}-name`;
+          nameInput.setAttribute("data-i18n-placeholder", "createPlanPage.placeNamePlaceholder");
           nameInput.placeholder = "e.g., Al-Masjid Al-Haram";
           nameInput.required = true;
           nameField.appendChild(nameLabel);
@@ -303,22 +318,28 @@
           const categoryField = document.createElement("div");
           categoryField.className = "field";
           const categoryLabel = document.createElement("label");
+          categoryLabel.setAttribute("data-i18n", "createPlanPage.categoryLabel");
           categoryLabel.textContent = "Category";
           categoryLabel.style.fontSize = "0.85rem";
           const categorySelect = document.createElement("select");
           categorySelect.name = `day-${dayIndex}-place-${placeIndex}-category`;
           categorySelect.required = true;
           const categories = [
-            { value: "", text: "Select..." },
-            { value: "Historical", text: "Historical" },
-            { value: "Religious", text: "Religious" },
-            { value: "Food/Cafés", text: "Food/Cafés" },
-            { value: "Entertainment", text: "Entertainment" }
+            { value: "", textKey: "createPlanPage.categorySelect", text: "Select..." },
+            { value: "Historical", textKey: "createPlanPage.categoryHistorical", text: "Historical" },
+            { value: "Religious", textKey: "createPlanPage.categoryReligious", text: "Religious" },
+            { value: "Food/Cafés", textKey: "createPlanPage.categoryFood", text: "Food/Cafés" },
+            { value: "Entertainment", textKey: "createPlanPage.categoryEntertainment", text: "Entertainment" }
           ];
           categories.forEach(cat => {
             const option = document.createElement("option");
             option.value = cat.value;
-            option.textContent = cat.text;
+            if (cat.textKey && window.i18n && window.i18n.t) {
+              option.setAttribute("data-i18n", cat.textKey);
+              option.textContent = window.i18n.t(cat.textKey);
+            } else {
+              option.textContent = cat.text;
+            }
             categorySelect.appendChild(option);
           });
           categoryField.appendChild(categoryLabel);
@@ -328,11 +349,13 @@
           const locationField = document.createElement("div");
           locationField.className = "field";
           const locationLabel = document.createElement("label");
+          locationLabel.setAttribute("data-i18n", "createPlanPage.locationLabel");
           locationLabel.textContent = "Location";
           locationLabel.style.fontSize = "0.85rem";
           const locationInput = document.createElement("input");
           locationInput.type = "text";
           locationInput.name = `day-${dayIndex}-place-${placeIndex}-location`;
+          locationInput.setAttribute("data-i18n-placeholder", "createPlanPage.locationPlaceholder");
           locationInput.placeholder = "e.g., Makkah, Saudi Arabia";
           locationField.appendChild(locationLabel);
           locationField.appendChild(locationInput);
@@ -341,6 +364,7 @@
           const timeField = document.createElement("div");
           timeField.className = "field";
           const timeLabel = document.createElement("label");
+          timeLabel.setAttribute("data-i18n", "createPlanPage.visitTimeLabel");
           timeLabel.textContent = "Visit Time";
           timeLabel.style.fontSize = "0.85rem";
           const timeInput = document.createElement("input");
@@ -354,6 +378,7 @@
           const removeBtn = document.createElement("button");
           removeBtn.type = "button";
           removeBtn.className = "btn-secondary";
+          removeBtn.setAttribute("data-i18n", "createPlanPage.removeBtn");
           removeBtn.textContent = "Remove";
           // Button styles are handled by CSS
           removeBtn.addEventListener("click", () => {
@@ -405,17 +430,24 @@
               align-items: center;
               margin-bottom: 16px;
             `;
-            heading.innerHTML = `
-              <div class="day-chip">Day ${i}</div>
-              <div class="place-count-badge" style="
-                padding: 4px 10px;
-                border-radius: 999px;
-                background: var(--color-bg-elevated);
-                border: 1px solid var(--color-border-subtle);
-                font-size: 0.8rem;
-                color: var(--color-text-secondary);
-              ">0 places</div>
+            const dayChip = document.createElement("div");
+            dayChip.className = "day-chip";
+            const dayText = (window.i18n && window.i18n.t) ? window.i18n.t("createPlanPage.day") : "Day";
+            dayChip.textContent = `${dayText} ${i}`;
+            heading.appendChild(dayChip);
+            
+            const placeCountBadge = document.createElement("div");
+            placeCountBadge.className = "place-count-badge";
+            placeCountBadge.style.cssText = `
+              padding: 4px 10px;
+              border-radius: 999px;
+              background: var(--color-bg-elevated);
+              border: 1px solid var(--color-border-subtle);
+              font-size: 0.8rem;
+              color: var(--color-text-secondary);
             `;
+            placeCountBadge.textContent = "0 places";
+            heading.appendChild(placeCountBadge);
             card.appendChild(heading);
 
             // Places container
@@ -430,6 +462,7 @@
             const addPlaceBtn = document.createElement("button");
             addPlaceBtn.type = "button";
             addPlaceBtn.className = "btn-secondary";
+            addPlaceBtn.setAttribute("data-i18n", "createPlanPage.addPlaceBtn");
             addPlaceBtn.textContent = "+ Add Place";
             addPlaceBtn.style.cssText = `
               width: 100%;
@@ -445,7 +478,7 @@
             daysContainer.appendChild(card);
           }
 
-          updateStatus("Day sections ready. Add places to each day.");
+          updateStatus(getTranslation("createPlanPage.statusReady") || "Day sections ready. Add places to each day.");
         };
 
         const handleDaysChange = () => {
@@ -508,14 +541,14 @@
         const validatePlan = () => {
           const planName = nameInput.value.trim();
           if (!planName || planName.length < 3) {
-            updateStatus("Please enter a plan name (at least 3 characters).", "error");
+            updateStatus(getTranslation("createPlanPage.validationPlanName") || "Please enter a plan name (at least 3 characters).", "error");
             nameInput.focus();
             return false;
           }
 
           const days = clampDays(daysInput.value);
           if (days < 1) {
-            updateStatus("Please enter a valid number of days.", "error");
+            updateStatus(getTranslation("createPlanPage.validationDays") || "Please enter a valid number of days.", "error");
             daysInput.focus();
             return false;
           }
@@ -546,7 +579,7 @@
           }
 
           if (!hasPlaces) {
-            updateStatus("Please add at least one place to your plan.", "error");
+            updateStatus(getTranslation("createPlanPage.validationPlaces") || "Please add at least one place to your plan.", "error");
             return false;
           }
 
@@ -564,7 +597,7 @@
 
           const token = getToken();
           if (!token) {
-            updateStatus("Please log in to save your plan.", "error");
+            updateStatus(getTranslation("createPlanPage.loginRequired") || "Please log in to save your plan.", "error");
             setTimeout(() => {
               window.location.href = "../../auth/login.html";
             }, 2000);
@@ -576,21 +609,22 @@
 
           // Validate that we have plan details
           if (!planData.planDetails || planData.planDetails.length === 0) {
-            updateStatus("No plan details to save. Please add places to your plan.", "error");
+            updateStatus(getTranslation("createPlanPage.validationNoPlaces") || "No plan details to save. Please add places to your plan.", "error");
             return;
           }
 
           // Check if at least one day has places
           const hasPlaces = planData.planDetails.some(day => day.places && day.places.length > 0);
           if (!hasPlaces) {
-            updateStatus("Please add at least one place to your plan before saving.", "error");
+            updateStatus(getTranslation("createPlanPage.validationPlaces") || "Please add at least one place to your plan before saving.", "error");
             return;
           }
 
           // Disable save button
           savePlanBtn.disabled = true;
-          savePlanBtn.textContent = "Saving...";
-          updateStatus("Saving plan...", "muted");
+          const savingText = getTranslation("createPlanPage.saving") || "Saving...";
+          savePlanBtn.textContent = savingText;
+          updateStatus(savingText, "muted");
 
           try {
             const apiUrl = getApiUrl();
@@ -621,7 +655,8 @@
               throw new Error(data.message || `Failed to save plan (${response.status})`);
             }
 
-            updateStatus(`✅ Plan "${planData.planName}" saved successfully!`, "success");
+            const successMsg = getTranslation("createPlanPage.saveSuccess") || `✅ Plan "${planData.planName}" saved successfully!`;
+            updateStatus(successMsg.replace("{name}", planData.planName), "success");
             
             // Reset form after successful save
             setTimeout(() => {
@@ -633,10 +668,12 @@
 
           } catch (error) {
             console.error("Error saving plan:", error);
-            updateStatus(`❌ Error: ${error.message}`, "error");
+            const errorMsg = getTranslation("createPlanPage.saveError") || `❌ Error: {error}`;
+            updateStatus(errorMsg.replace("{error}", error.message), "error");
           } finally {
             savePlanBtn.disabled = false;
-            savePlanBtn.textContent = "Save Plan";
+            const saveBtnText = getTranslation("createPlanPage.savePlanBtn") || "Save Plan";
+            savePlanBtn.textContent = saveBtnText;
           }
         };
 
@@ -651,7 +688,7 @@
             nameInput.value = "";
             daysInput.value = 7;
             handleDaysChange();
-            updateStatus("Form reset.");
+            updateStatus(getTranslation("createPlanPage.statusReset") || "Form reset.");
           }, 0);
         });
 
@@ -671,6 +708,36 @@
 
         // Initial render
         handleDaysChange();
+
+        // Initialize i18n translations
+        const initI18n = () => {
+          if (window.i18n && typeof window.i18n.refresh === 'function') {
+            window.i18n.refresh();
+          } else {
+            // Wait for i18n to load
+            const checkI18n = setInterval(() => {
+              if (window.i18n && typeof window.i18n.refresh === 'function') {
+                window.i18n.refresh();
+                clearInterval(checkI18n);
+              }
+            }, 100);
+            setTimeout(() => clearInterval(checkI18n), 5000);
+          }
+        };
+
+        // Setup i18n when ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initI18n);
+        } else {
+          initI18n();
+        }
+
+        // Refresh translations when language changes
+        if (window.i18n && typeof window.i18n.subscribe === 'function') {
+          window.i18n.subscribe(() => {
+            window.i18n.refresh();
+          });
+        }
       };
 
       // Initialize when DOM is ready
