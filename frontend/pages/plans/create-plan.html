@@ -409,8 +409,73 @@
           }
         };
 
+        // Save current day data before re-rendering
+        const saveDayData = () => {
+          const savedData = {};
+          const existingDays = daysContainer.querySelectorAll('[data-day]');
+          
+          existingDays.forEach(dayCard => {
+            const dayNum = parseInt(dayCard.getAttribute('data-day'));
+            const placesContainer = dayCard.querySelector(".places-container");
+            const placeRows = placesContainer.querySelectorAll(".place-row");
+            const places = [];
+
+            placeRows.forEach((row) => {
+              const nameInput = row.querySelector('input[type="text"][name*="-name"]');
+              const categorySelect = row.querySelector('select[name*="-category"]');
+              const locationInput = row.querySelector('input[type="text"][name*="-location"]');
+              const timeInput = row.querySelector('input[type="time"]');
+
+              const name = nameInput?.value.trim();
+              const category = categorySelect?.value;
+              const location = locationInput?.value.trim();
+              const visitTime = timeInput?.value;
+
+              if (name || category || location || visitTime) {
+                places.push({
+                  name: name || '',
+                  category: category || '',
+                  location: location || '',
+                  visitTime: visitTime || ''
+                });
+              }
+            });
+
+            if (places.length > 0) {
+              savedData[dayNum] = places;
+            }
+          });
+
+          return savedData;
+        };
+
+        // Restore place data to a day
+        const restorePlaceToDay = (dayIndex, placeData, placesContainer) => {
+          placeData.forEach((place, placeIndex) => {
+            const placeRow = createPlaceRow(dayIndex, placeIndex + 1);
+            
+            // Restore values
+            const nameInput = placeRow.querySelector('input[type="text"][name*="-name"]');
+            const categorySelect = placeRow.querySelector('select[name*="-category"]');
+            const locationInput = placeRow.querySelector('input[type="text"][name*="-location"]');
+            const timeInput = placeRow.querySelector('input[type="time"]');
+
+            if (nameInput && place.name) nameInput.value = place.name;
+            if (categorySelect && place.category) categorySelect.value = place.category;
+            if (locationInput && place.location) locationInput.value = place.location;
+            if (timeInput && place.visitTime) timeInput.value = place.visitTime;
+
+            placesContainer.appendChild(placeRow);
+          });
+          
+          updatePlaceCount(dayIndex);
+        };
+
         // Render day sections with custom planner UI
         let renderDaySections = (count) => {
+          // Save current data before clearing
+          const savedData = saveDayData();
+          
           daysContainer.innerHTML = "";
           daysSummary.textContent = `${count} day${count === 1 ? "" : "s"}`;
 
@@ -460,6 +525,12 @@
             placesContainer.style.cssText = `
               margin-bottom: 12px;
             `;
+            
+            // Restore saved data for this day if it exists
+            if (savedData[i] && savedData[i].length > 0) {
+              restorePlaceToDay(i, savedData[i], placesContainer);
+            }
+            
             card.appendChild(placesContainer);
 
             // Add place button
