@@ -27,10 +27,12 @@
 
 [dir="rtl"] .nav-container {
   flex-direction: row-reverse;
+  order: 2; /* In Arabic, keep brand on the right, nav after it */
 }
 
 [dir="rtl"] .nav {
-  flex-direction: row-reverse;
+  /* Keep DOM order for nav items: logo → الرئيسية → rest */
+  flex-direction: row;
 }
 
 /* RTL Navigation dropdown */
@@ -51,6 +53,7 @@
 /* RTL Brand */
 [dir="rtl"] .brand {
   flex-direction: row-reverse;
+  order: 1;
 }
 
 /* RTL Buttons */
@@ -223,4 +226,3 @@ body {
 [dir="rtl"] .plan-card {
   animation: slideInRTL 0.6s ease-out;
 }
-
