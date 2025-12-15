@@ -107,6 +107,11 @@
               </div>
             </div>
 
+            <!-- Contributors -->
+            <div class="item">
+              <a href="/contributors.html" data-i18n="common.contributors">Contributors</a>
+            </div>
+
             <!-- Login / Register -->
             <div class="item" id="nav-login">
               <a href="/auth/login.html" data-i18n="common.login">Login</a>

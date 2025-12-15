@@ -20,7 +20,8 @@
     "login": "Login",
     "register": "Register",
     "profile": "Profile",
-    "logout": "Logout"
+    "logout": "Logout",
+    "contributors": "Contributors"
   },
   "header": {
     "brandTitle": "Visit Saudi Arabia",
@@ -1770,5 +1771,25 @@
     "status": "Status:",
     "loggedIn": "Logged in ✅",
     "backToHome": "Back to Home"
+  },
+  "contributorsPage": {
+    "title": "Contributors",
+    "projectIdea": "Project Idea",
+    "projectDescription": "This website aims to provide a smart tourism experience about the Kingdom of Saudi Arabia, combining history, culture, and modern interactive services to help visitors plan their trip easily and enjoyably.",
+    "smartGuide": "Smart Tourism Guide",
+    "smartGuideDesc": "Explore Saudi cities, top destinations, and events through interactive cards and simplified content that supports visitors with essential information before and during the trip.",
+    "religiousContent": "Religious and Cultural Content",
+    "religiousContentDesc": "A dedicated section for the Islamic guide, prayer times, Qibla direction, and introduction to religious and historical sites.",
+    "interactiveServices": "Interactive Experiences and Services",
+    "interactiveServicesDesc": "Interactive maps, trip planners, and a smart assistant to customize the experience, helping visitors build a travel itinerary that suits their needs and interests.",
+    "team": "Team",
+    "supervision": "Under Supervision",
+    "supervisorName": "Dr. Hassan Alhuzali",
+    "student1": "Badr Mousa Alyasi",
+    "student2": "Anas Mohammed Almehmadi",
+    "student3": "Abdullah Ibrahim Alsaab",
+    "student4": "Abdulmalik Khalid Almatrafi",
+    "student5": "Mohammed Abdulhamid Alsaedi",
+    "student6": "Hamza Salem Sairafi"
   }
 }

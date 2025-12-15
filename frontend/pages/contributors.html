@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page title -->
+    <title data-i18n="contributorsPage.title">Contributors</title>
+    <link rel="icon" type="image/png" href="../assets/icons/Fav-icon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/chatbot.css" />
+
+    <!-- Page-specific styles -->
+    <style>
+      .contributors-page {
+        max-width: 1100px;
+        margin: 4rem auto 3rem;
+        padding: 0 1.5rem 3rem;
+      }
+
+      .contributors-hero {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .contributors-hero h1 {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .contributors-hero p {
+        max-width: 720px;
+        margin: 0.5rem auto 0;
+        color: var(--color-text-secondary);
+        line-height: 1.7;
+      }
+
+      .contributors-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.25rem;
+        margin-bottom: 3rem;
+      }
+
+      .contributors-card {
+        /* Match planner day-card theme */
+        background: var(--color-bg-elevated, var(--color-bg-surface));
+        border-radius: 14px;
+        padding: 1.25rem 1.5rem;
+        border: 1px solid var(--color-border-subtle);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .contributors-card-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .contributors-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 108, 53, 0.1);
+        color: var(--color-accent-saudi-green);
+        font-size: 1.25rem;
+      }
+
+      .contributors-card-title {
+        font-weight: 700;
+        font-size: 1rem;
+      }
+
+      .contributors-card-body {
+        font-size: 0.9rem;
+        color: var(--color-text-secondary);
+        line-height: 1.7;
+      }
+
+      .contributors-section-title {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.75rem;
+      }
+
+      .contributors-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+        margin-bottom: 3rem;
+      }
+
+      .student-card,
+      .supervisor-card {
+        text-align: center;
+      }
+
+      .student-card .contrib-avatar,
+      .supervisor-card .contrib-avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 999px;
+        margin: 0 auto 0.85rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.18);
+        color: var(--color-accent-gold);
+        font-weight: 800;
+        font-size: 1.35rem;
+      }
+
+      .student-name,
+      .supervisor-name {
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+        font-size: 0.98rem;
+      }
+
+      .student-role,
+      .supervisor-role {
+        font-size: 0.85rem;
+        color: var(--color-text-secondary);
+        margin-bottom: 0.75rem;
+      }
+
+      .contributors-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.85rem;
+        color: var(--color-accent-saudi-green);
+        text-decoration: none;
+      }
+
+      .contributors-link img {
+        width: 18px;
+        height: 18px;
+      }
+
+      .supervisor-wrapper {
+        max-width: 680px;
+        margin: 0 auto;
+      }
+
+      @media (max-width: 768px) {
+        .contributors-page {
+          margin-top: 3rem;
+        }
+
+        .contributors-grid {
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+      }
+
+      @media (min-width: 769px) and (max-width: 1100px) {
+        .contributors-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+
+    <!-- Scripts (deferred) -->
+    <script src="../scripts/chatbot.js" defer></script>
+    <script type="module" src="../scripts/modules/i18n.js"></script>
+    <script src="../scripts/header-component.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Header - injected by header-component.js -->
+    <header id="header" data-header-placeholder></header>
+
+    <!-- Chatbot toggle button -->
+    <button id="chatbot-toggler">
+      <span class="material-symbols-outlined">mode_comment</span>
+      <span class="material-symbols-rounded">close</span>
+    </button>
+
+    <!-- Chatbot container -->
+    <div class="chatbot-popup">
+      <div class="chat-header">
+        <div class="header-info">
+          <img
+            style="width: 50px; border-radius: 1000px"
+            src="../assets/icons/chatbot-icon.png"
+            alt=""
+          />
+          <h2 class="logo-text" data-i18n="chatbot.title">Saudi Tourism Bot</h2>
+        </div>
+        <button id="close-chatbot" class="material-symbols-rounded">
+          keyboard_arrow_down
+        </button>
+      </div>
+
+      <div class="chat-body">
+        <div class="message bot-message">
+          <img
+            style="width: 50px; border-radius: 1000px"
+            src="../assets/icons/chatbot-icon.png"
+            alt=""
+          />
+          <div dir="auto" class="message-text" data-i18n="chatbot.greeting">
+            Hello, I'm Mutlaq, your personal assistant in choosing your next
+            destination. How can I help you?
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-footer">
+        <form action="#" class="chat-form">
+          <textarea
+            dir="auto"
+            data-i18n="chatbot.placeholder"
+            data-i18n-attr="placeholder"
+            placeholder="Ask your question about tourism in Saudi Arabia..."
+            class="message-input"
+            required
+          ></textarea>
+          <div class="chat-controls">
+            <button
+              type="submit"
+              id="send-message"
+              class="material-symbols-rounded"
+            >
+              arrow_upward
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <main class="site-main">
+      <div class="contributors-page">
+        <!-- 1. About the website & features -->
+        <section class="contributors-hero">
+          <h1 data-i18n="contributorsPage.projectIdea">Project Idea</h1>
+          <p data-i18n="contributorsPage.projectDescription">
+            This website aims to provide a smart tourism experience about the
+            Kingdom of Saudi Arabia, combining history, culture, and modern
+            interactive services to help visitors plan their trip easily and
+            enjoyably.
+          </p>
+        </section>
+
+        <section class="contributors-features">
+          <article class="contributors-card">
+            <div class="contributors-card-header">
+              <div class="contributors-icon">🌍</div>
+              <h2
+                class="contributors-card-title"
+                data-i18n="contributorsPage.smartGuide"
+              >
+                Smart Tourism Guide
+              </h2>
+            </div>
+            <p
+              class="contributors-card-body"
+              data-i18n="contributorsPage.smartGuideDesc"
+            >
+              Explore Saudi cities, top destinations, and events through
+              interactive cards and simplified content that supports visitors
+              with essential information before and during the trip.
+            </p>
+          </article>
+
+          <article class="contributors-card">
+            <div class="contributors-card-header">
+              <div class="contributors-icon">🕋</div>
+              <h2
+                class="contributors-card-title"
+                data-i18n="contributorsPage.religiousContent"
+              >
+                Religious and Cultural Content
+              </h2>
+            </div>
+            <p
+              class="contributors-card-body"
+              data-i18n="contributorsPage.religiousContentDesc"
+            >
+              A dedicated section for the Islamic guide, prayer times, Qibla
+              direction, and introduction to religious and historical sites.
+            </p>
+          </article>
+
+          <article class="contributors-card">
+            <div class="contributors-card-header">
+              <div class="contributors-icon">🗺️</div>
+              <h2
+                class="contributors-card-title"
+                data-i18n="contributorsPage.interactiveServices"
+              >
+                Interactive Experiences and Services
+              </h2>
+            </div>
+            <p
+              class="contributors-card-body"
+              data-i18n="contributorsPage.interactiveServicesDesc"
+            >
+              Interactive maps, trip planners, and a smart assistant to
+              customize the experience, helping visitors build a travel
+              itinerary that suits their needs and interests.
+            </p>
+          </article>
+        </section>
+
+        <!-- 2. Six students -->
+        <section>
+          <h2
+            class="contributors-section-title"
+            data-i18n="contributorsPage.team"
+          >
+            Team
+          </h2>
+          <div class="contributors-grid">
+            <article class="contributors-card student-card">
+              <div class="contrib-avatar">B</div>
+              <div class="student-name" data-i18n="contributorsPage.student1">
+                Badr Mousa Alyasi
+              </div>
+
+              <a
+                href="https://www.linkedin.com/in/badr-alyasi"
+                class="contributors-link"
+                aria-label="LinkedIn profile"
+                target="_blank"
+              >
+                <img
+                  src="../assets/images/destinations/linkedin.svg"
+                  alt="LinkedIn"
+                />
+              </a>
+            </article>
+
+            <article class="contributors-card student-card">
+              <div class="contrib-avatar">A</div>
+              <div class="student-name" data-i18n="contributorsPage.student2">
+                Anas Mohammed Almehmadi
+              </div>
+              <a
+                href="https://www.linkedin.com/in/anas-almehmadi/"
+                class="contributors-link"
+                aria-label="LinkedIn profile"
+                target="_blank"
+              >
+                <img
+                  src="../assets/images/destinations/linkedin.svg"
+                  alt="LinkedIn"
+                />
+              </a>
+            </article>
+
+            <article class="contributors-card student-card">
+              <div class="contrib-avatar">A</div>
+              <div class="student-name" data-i18n="contributorsPage.student3">
+                Abdullah Ibrahim Alsaab
+              </div>
+
+              <a
+                href="https://www.linkedin.com/in/aalsaab/"
+                class="contributors-link"
+                aria-label="LinkedIn profile"
+                target="_blank"
+              >
+                <img
+                  src="../assets/images/destinations/linkedin.svg"
+                  alt="LinkedIn"
+                />
+              </a>
+            </article>
+
+            <article class="contributors-card student-card">
+              <div class="contrib-avatar">A</div>
+              <div class="student-name" data-i18n="contributorsPage.student4">
+                Abdulmalik Khalid Almatrafi
+              </div>
+
+              <a
+                href="https://www.linkedin.com/in/abdulmalik-almatrafi-620bb2303/"
+                class="contributors-link"
+                aria-label="LinkedIn profile"
+                target="_blank"
+              >
+                <img
+                  src="../assets/images/destinations/linkedin.svg"
+                  alt="LinkedIn"
+                />
+              </a>
+            </article>
+
+            <article class="contributors-card student-card">
+              <div class="contrib-avatar">M</div>
+              <div class="student-name" data-i18n="contributorsPage.student5">
+                Mohammed Abdulhamid Alsaedi
+              </div>
+              <a
+                href="https://www.linkedin.com/in/mohammedalsaadi1/"
+                class="contributors-link"
+                aria-label="LinkedIn profile"
+                target="_blank"
+              >
+                <img
+                  src="../assets/images/destinations/linkedin.svg"
+                  alt="LinkedIn"
+                />
+              </a>
+            </article>
+
+            <article class="contributors-card student-card">
+              <div class="contrib-avatar">H</div>
+              <div class="student-name" data-i18n="contributorsPage.student6">
+                Hamza Salem Sairafi
+              </div>
+              <a
+                href="https://www.linkedin.com/in/hamzasairafi/"
+                class="contributors-link"
+                aria-label="LinkedIn profile"
+                target="_blank"
+              >
+                <img
+                  src="../assets/images/destinations/linkedin.svg"
+                  alt="LinkedIn"
+                />
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <!-- 3. Supervisor card -->
+        <section class="supervisor-wrapper">
+          <h2
+            class="contributors-section-title"
+            data-i18n="contributorsPage.supervision"
+          >
+            Under Supervision
+          </h2>
+          <article class="contributors-card supervisor-card">
+            <div class="contrib-avatar">د</div>
+            <div
+              class="supervisor-name"
+              data-i18n="contributorsPage.supervisorName"
+            >
+              Dr. Hassan Al-Hudhali
+            </div>
+
+            <a
+              href="https://www.linkedin.com/in/hassan-alhuzali-a33888267/"
+              class="contributors-link"
+              aria-label="LinkedIn profile"
+              target="_blank"
+            >
+              <img
+                src="../assets/images/destinations/linkedin.svg"
+                alt="LinkedIn"
+              />
+            </a>
+          </article>
+        </section>
+      </div>
+    </main>
+
+    <!-- Main scripts -->
+    <script type="module" src="../scripts/main.js"></script>
+    <script src="../scripts/auth-nav.js"></script>
+  </body>
+</html>
